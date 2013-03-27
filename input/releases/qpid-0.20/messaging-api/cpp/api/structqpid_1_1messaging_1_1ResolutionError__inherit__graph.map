@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node11" href="$structqpid_1_1messaging_1_1AssertionFailed.html" title="qpid::messaging::Assertion\lFailed" alt="" coords="5,427,192,469"/>
+<area shape="rect" id="node13" href="$structqpid_1_1messaging_1_1NotFound.html" title="qpid::messaging::NotFound" alt="" coords="216,435,405,461"/>
+<area shape="rect" id="node2" href="$structqpid_1_1messaging_1_1AddressError.html" title="qpid::messaging::Address\lError" alt="" coords="113,246,295,287"/>
+<area shape="rect" id="node4" href="$structqpid_1_1messaging_1_1LinkError.html" title="qpid::messaging::LinkError" alt="" coords="113,171,295,197"/>
+<area shape="rect" id="node6" href="$structqpid_1_1messaging_1_1MessagingException.html" title="qpid::messaging::Messaging\lException" alt="" coords="105,81,303,122"/>
+<area shape="rect" id="node8" href="$classqpid_1_1types_1_1Exception.html" title="qpid::types::Exception" alt="" coords="127,5,280,32"/>
+</map>

@@ -1,0 +1,332 @@
+/*
+ *
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ * 
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ *
+ */
+
+/*
+linen: #f2f2e9
+lighter linen: #f7f7ef
+darker linen: #d4d4da
+blue: #0d6dad
+darker blue: #0d567f
+light indigo: #d0c6e7
+*/
+
+@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,700italic,400,300,700|Fjalla+One);
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 48em;
+    margin: 0 auto;
+    font-family: "Roboto Condensed", sans-serif;
+    font-weight: 300;
+    font-size: 14pt;
+}
+
+body.single {
+    background: -webkit-linear-gradient(top, #f7f7ef, #f2f2e9 100%) no-repeat, #f2f2e9;
+    background: linear-gradient(to bottom, #f7f7ef, #f2f2e9 100%) no-repeat, #f2f2e9;
+}
+
+div#content {
+    float: left;
+    padding: 0 2em;
+    background-color: white;
+}
+
+body.single div#content {
+    box-shadow: 0 0.1em 0.2em #d0c6e7;
+    border-left: 1px solid #d4d4ca;
+    border-right: 1px solid #d4d4ca;
+    border-bottom: 1px solid #d4d4ca;
+}
+
+div#top {
+    margin: 0.8em 0 0 0;
+}
+
+img#logo {
+    vertical-align: -0.25em;
+    margin: 0 0.1em 0 0;
+}
+
+div#middle {
+    margin: 0.6em 0 0 0;
+}
+
+div#left {
+    float: left;
+    width: 28em;
+    padding: 0 1em 0 0;
+}
+
+div#welcome {
+    font-size: 1.1em;
+    padding: 0.8em 1em;
+    border: 1px solid #d4d4ca;
+    border-radius: 0.3em;
+    margin: 0.2em 0 1.5em 0;
+    background: -webkit-linear-gradient(top, #f2f2e9, #f7f7ef 20%) no-repeat, #f7f7ef;
+    background: linear-gradient(to bottom, #f2f2e9, #f7f7ef 20%) no-repeat, #f7f7ef;
+    box-shadow: 0 0.1em 0.3em #d0c6e7;
+}
+
+div#right {
+    float: right;
+    width: 13.7em;
+    padding: 0 0 0 1em;
+    border-left: 1px solid #d4d4ca;
+    margin: 0.7em 0 0 0;
+}
+
+div#resources {
+    font-size: 0.95em;
+}
+
+div#resources h2 {
+    font-weight: 300;
+}
+
+div#bottom {
+    float: left;
+    width: 44em;
+    margin: 1em 0;
+}
+
+div#details {
+    font-size: 0.8em;
+}
+
+div#components {
+    margin: 0 0 1.5em 0;
+}
+
+div#components-apis {
+    width: 13em;
+    padding: 0 1em 0 0;
+}
+
+div#components-brokers {
+    float: right;
+    width: 13em;
+    padding: 0 0 0 1em;
+}
+
+div#project {
+}
+
+div#project-proton {
+    width: 13em;
+    padding: 0 1em 0 0;
+}
+
+div#project-links {
+    float: right;
+    width: 13em;
+    padding: 0 0 0 1em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Oswald", "Helvetica", "Arial", sans-serif;
+    font-weight: normal;
+    margin: 0 0 0.4em 0;
+    color: black;
+}
+
+h1 {
+    font-size: 2em;
+    margin: 0 0 0.3em 0;
+}
+
+h1.nameplate {
+    color: black;
+    font-size: 2.8em;
+    margin: 0.2em 0 0.5em 0;
+}
+
+h1.nameplate img {
+    margin: 0 0.2em 0 0;
+    vertical-align: bottom;
+}
+
+h1.logotype {
+    font-size: 1.9em;
+    margin: 0.6em 0 0.5em 0;
+}
+
+h1.logotype img {
+    margin: 0 0.2em 0 0;
+    vertical-align: bottom;
+}
+
+h1.logotype a {
+    color: #0d6dad;
+}
+
+h2 {
+    font-size: 1.25em;
+}
+
+h3 {
+    font-size: 1.05em;
+}
+
+h4 {
+    font-size: 0.9em;
+}
+
+ol, ul {
+    list-style-image: url(images/bullet.png);
+    padding: 0 0 0 0.7em;
+    margin: 0 0 0.8em 0.8em;
+}
+
+ul ul, ol ol {
+    margin: 0;
+}
+
+ul#apache-links {
+    list-style-image: url(images/bullet.png);
+}
+
+ul#apache-links li {
+    display: inline;
+}
+
+.twocolumn {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+}
+
+.twocolumn ul {
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+    column-break-inside: avoid;
+}
+
+.fourcolumn {
+    -webkit-column-count: 4;
+    -moz-column-count: 4;
+}
+
+div.indent {
+    margin: 0 0 0 0.8em;
+}
+
+div.spacious {
+    margin: 1.2em 1.2em;
+}
+
+p {
+    margin: 0 0 0.8em 0;
+}
+
+a {
+    text-decoration: none;
+    color: #0d6dad;
+}
+
+a:visited {
+    color: #0d567f;
+}
+
+form {
+    margin: 0 0 0.8em 0;
+}
+
+form#jira-goto-form {
+    display: inline;
+    margin: 0;
+}
+
+form input, form button {
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    border: 1px solid #d4d4ca;
+}
+
+form button {
+    background-color: #f2f2e9;
+    padding: 0 0.4em;
+}
+
+img#apache-feather {
+    margin: 0 0 2em 2em;
+    display: inline;
+    float: right;
+}
+
+span.date {
+    color: #666;
+    font-size: 0.8em;
+    font-style: italic;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 0 0 0.8em 0.8em;
+}
+
+table td, table th {
+    border-bottom: 1px solid #d4d4ca;
+    padding: 0.2em 1.5em 0.2em 0;
+    vertical-align: top;
+}
+
+table td em, table th em {
+    font-family: "Oswald", "Helvetica", "Arial", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+code, pre {
+    font-size: 0.95em;
+    font-family: "Share Tech Mono", monospace;
+}
+
+pre {
+    color: #222;
+    background-color: #f7f7ef;
+    padding: 0.8em 1em;
+    border: 1px solid #d4d4ca;
+    margin: 1em;
+    box-shadow: 0 0 0.1em #d0c6e7;
+    overflow: auto;
+}
+
+div.highlight pre {
+    width: 44em;
+    margin: 1em 0;
+}
+
+div.color-block {
+    font-size: 0.9em;
+    float: left;
+    color: white;
+    padding: 0.8em 1em;
+    font-weight: bold;
+    min-height: 6em;
+    width: 6em;
+}

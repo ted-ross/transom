@@ -1,0 +1,59 @@
+# High
+
+ - document how to add content to site
+   - document placeholder values
+ - figure out layout and priority of stuff in the left lower front
+   page
+ - custom templates for api docs
+   - nav from api ref back to site
+ - fix overview, specifically the abilities of messaging
+ - gen books
+
+# Medium
+
+ - doxygen for just the qmf api
+ - qmf2 examples
+ - becoming a contributor, more detail
+ - qpid integrations, azure, openmama
+ - keep old site at old-site
+ - source modules
+ - loosely coupled, reliable, asynchronous
+ - proton speaks amqp 1.0, comprehensive wrt protocol, supports all
+   programming models
+ - roadmap
+ - gen release notes
+ - qpid 0.20 optionally depends on proton 0.3
+ - messenger feature
+ - list archive search
+ - search function, top right
+ - there are some trunk doc links in the java broker page that should
+   be converted to current version when 0.22 lands
+
+# Low
+
+ - script to check for licenses
+ - news feed
+ - qips
+ - fix smarty-pants to get the nice curly quotes back
+ - spell check
+ - colorize code snippets
+ - add line numbers to code samples
+ - sparklines for commits
+ - code climate
+ - ci status
+ - generate site map
+
+# Done
+
+ - comments about release cadence
+ - nav in page header or footer
+   - context nav
+ - in check, url parsing
+ - tighten and clean up css
+ - link to qpid reviewboard
+ - building from source code
+ - redirect pages
+ - pygmentize code files
+ - doxygen for just the messaging api
+ - documentation is a top rated link for the existing site
+   - redirected to components

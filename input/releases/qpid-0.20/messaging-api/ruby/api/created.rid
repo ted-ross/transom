@@ -1,0 +1,12 @@
+Tue, 12 Mar 2013 07:55:37 -0400
+qpid/ruby/lib/qpid_messaging/errors.rb	Thu, 11 Oct 2012 15:43:23 -0400
+qpid/ruby/lib/qpid_messaging/encoding.rb	Thu, 11 Oct 2012 15:43:29 -0400
+qpid/ruby/lib/qpid_messaging/session.rb	Thu, 11 Oct 2012 15:43:29 -0400
+qpid/ruby/lib/qpid_messaging/version.rb	Thu, 11 Oct 2012 15:43:23 -0400
+qpid/ruby/lib/qpid_messaging/sender.rb	Thu, 11 Oct 2012 15:43:23 -0400
+qpid/ruby/lib/qpid_messaging/receiver.rb	Thu, 11 Oct 2012 15:43:29 -0400
+qpid/ruby/lib/qpid_messaging/address.rb	Thu, 11 Oct 2012 15:43:29 -0400
+qpid/ruby/lib/qpid_messaging/connection.rb	Thu, 11 Oct 2012 15:43:29 -0400
+qpid/ruby/lib/qpid_messaging/message.rb	Thu, 11 Oct 2012 15:43:29 -0400
+qpid/ruby/lib/qpid_messaging/duration.rb	Thu, 11 Oct 2012 15:43:29 -0400
+qpid/ruby/lib/qpid_messaging.rb	Thu, 11 Oct 2012 15:43:29 -0400

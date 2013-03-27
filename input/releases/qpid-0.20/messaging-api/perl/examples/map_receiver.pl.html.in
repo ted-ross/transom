@@ -1,0 +1,33 @@
+
+<h1>map_receiver.pl</h1>
+<div class="highlight"><pre><span class="k">use</span> <span class="n">strict</span><span class="p">;</span>
+<span class="k">use</span> <span class="n">warnings</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">Data::</span><span class="n">Dumper</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="n">cqpid_perl</span><span class="p">;</span>
+
+<span class="k">my</span> <span class="nv">$url</span>               <span class="o">=</span> <span class="p">(</span> <span class="nv">@ARGV</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">)</span> <span class="p">?</span> <span class="nv">$ARGV</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">:</span> <span class="s">&quot;amqp:tcp:127.0.0.1:5672&quot;</span><span class="p">;</span>
+<span class="k">my</span> <span class="nv">$address</span>           <span class="o">=</span> <span class="p">(</span> <span class="nv">@ARGV</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="p">)</span> <span class="p">?</span> <span class="nv">$ARGV</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">:</span> <span class="s">&quot;message_queue; {create: always}&quot;</span><span class="p">;</span>
+<span class="k">my</span> <span class="nv">$connectionOptions</span> <span class="o">=</span> <span class="p">(</span> <span class="nv">@ARGV</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="p">)</span> <span class="p">?</span> <span class="nv">$ARGV</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+
+<span class="k">my</span> <span class="nv">$connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nn">cqpid_perl::</span><span class="n">Connection</span><span class="p">(</span><span class="nv">$url</span><span class="p">,</span> <span class="nv">$connectionOptions</span><span class="p">);</span>
+
+<span class="nb">eval</span> <span class="p">{</span>
+    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="nb">open</span><span class="p">();</span>
+    <span class="k">my</span> <span class="nv">$session</span>  <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="n">createSession</span><span class="p">();</span>
+    <span class="k">my</span> <span class="nv">$receiver</span> <span class="o">=</span> <span class="nv">$session</span><span class="o">-&gt;</span><span class="n">createReceiver</span><span class="p">(</span><span class="nv">$address</span><span class="p">);</span>
+
+    <span class="k">my</span> <span class="nv">$content</span> <span class="o">=</span> <span class="nn">cqpid_perl::</span><span class="n">decodeMap</span><span class="p">(</span><span class="nv">$receiver</span><span class="o">-&gt;</span><span class="n">fetch</span><span class="p">());</span>
+    <span class="c1">#my $content = cqpid_perl::decodeList($receiver-&gt;fetch());</span>
+   
+    <span class="k">print</span> <span class="n">Dumper</span><span class="p">(</span><span class="nv">$content</span><span class="p">);</span>
+
+    <span class="nv">$session</span><span class="o">-&gt;</span><span class="n">acknowledge</span><span class="p">();</span>
+    <span class="nv">$receiver</span><span class="o">-&gt;</span><span class="nb">close</span><span class="p">();</span>
+    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="nb">close</span><span class="p">();</span>
+<span class="p">};</span>
+
+<span class="nb">die</span> <span class="vg">$@</span> <span class="k">if</span> <span class="p">(</span><span class="vg">$@</span><span class="p">);</span>
+</pre></div>
+
+<p><a href="map_receiver.pl">Download this file</a></p>

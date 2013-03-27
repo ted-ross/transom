@@ -1,0 +1,10 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$messaging_2ImportExport_8h.html" title="qpid/messaging/ImportExport.h" alt="" coords="8,155,214,181"/>
+<area shape="rect" id="node7" href="$exceptions_8h.html" title="qpid/messaging/exceptions.h" alt="" coords="224,80,422,107"/>
+<area shape="rect" id="node36" href="$Handle_8h.html" title="qpid/messaging/Handle.h" alt="" coords="23,80,199,107"/>
+<area shape="rect" id="node39" href="$Duration_8h.html" title="qpid/messaging/Duration.h" alt="" coords="447,80,629,107"/>
+<area shape="rect" id="node10" href="$Exception_8h.html" title="qpid/types/Exception.h" alt="" coords="97,229,253,256"/>
+<area shape="rect" id="node17" href="$Variant_8h.html" title="qpid/types/Variant.h" alt="" coords="379,155,518,181"/>
+<area shape="rect" id="node14" href="$types_2ImportExport_8h.html" title="qpid/types/ImportExport.h" alt="" coords="231,304,402,331"/>
+<area shape="rect" id="node26" href="$Uuid_8h.html" title="Uuid.h" alt="" coords="559,229,617,256"/>
+</map>

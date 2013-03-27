@@ -1,0 +1,132 @@
+#!/usr/bin/python
+#
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+# 
+#   http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+#
+
+import sys, os, urllib, string
+
+version = sys.argv[1]
+version = float(version)
+
+devel_version = version - 0.01
+
+version = "%0.2f" % version
+devel_version = "%0.2f" % devel_version
+
+component_records = (
+    ("C++ broker", "cpp-broker/index.html", "C++", "Linux, Windows", "0-10"),
+    ("Java broker", "java-broker/index.html", "Java", "JVM", "0-10, 0-91, 0-9, 0-8"),
+    ("Qpid JMS", "qpid-jms/index.html", "Java", "JVM", "0-10, 0-91, 0-9, 0-8"),
+    ("Qpid Messaging API", "messaging-api/index.html", "C++, Perl, Python, Ruby",
+     "Linux, Windows", "0-10"),
+    ("Qpid WCF", "qpid-wcf/index.html", "C#", "Windows", "0-10"),
+    ("QMF", "qmf/index.html", "C++, Python", "Linux", "0-10"),
+    )
+
+component_rows = list()
+
+for name, url, languages, platforms, amqp_versions in component_records:
+    url = "@site-url@/components/%s" % url
+
+    args = name, url, platforms, amqp_versions
+    component_rows.append("|| [%s](%s) || %s || %s ||" % args)
+
+components = "\n  ".join(component_rows)
+
+download_records = (
+    ("Full source", "qpid-%s.tar.gz"),
+    ("C++ broker and Messaging API", "qpid-cpp-%s.tar.gz"),
+    ("C++ broker command-line tools", "qpid-tools-%s.tar.gz"),
+    ("Java broker, Qpid JMS, and tools", "qpid-java-%s.tar.gz"),
+    ("Java broker", "qpid-java-broker-%s.tar.gz"),
+    ("Qpid JMS", "qpid-java-client-%s.tar.gz"),
+    ("Python Messaging API", "qpid-python-%s.tar.gz"),
+    ("Qpid WCF", "qpid-wcf-%s.zip"),
+    ("QMF", "qpid-qmf-%s.tar.gz"),
+    )
+
+download_rows = list()
+
+for summary, artifact in download_records:
+    artifact = artifact % version
+    artifact_url = "http://www.apache.org/dyn/closer.cgi/qpid/%s/%s" % (version, artifact)
+    sig_url = "http://www.apache.org/dist/qpid/%s/%s.asc" % (version, artifact)
+
+    args = summary, artifact, artifact_url, sig_url
+    row = "|| %s || [%s](%s) || [PGP](%s) ||" % args
+
+    download_rows.append(row)
+
+downloads = "\n  ".join(download_rows)
+
+args = devel_version, version
+jql = "project = QPID AND fixVersion in ('%s', '%s') ORDER BY priority DESC" % args
+issues_url = "https://issues.apache.org/jira/issues/?jql=%s" % urllib.quote_plus(jql)
+
+template_string = \
+"""
+# Qpid $version
+
+Qpid is a cross-platform AMQP messaging system.  It provides message
+brokers written in C++ and Java, and clients for C++, C#, JMS, Perl,
+Python, and Ruby.  More about [Qpid](@site-url@/index.html).
+
+## Changes
+
+ - [Release notes](release-notes.html)
+
+## Components
+
+  || *Component* || *Platforms* || *AMQP versions* ||
+  $components
+
+## Downloads
+
+It's important to [verify the
+integrity](@site-url@/releases/index.html#verify-what-you-download) of
+the files you download.
+
+  || *Content* || *Download* || *Signature* ||
+  $downloads
+
+## Documentation
+
+ - [Programming in Apache Qpid](http://qpid.apache.org/books/${version}/Programming-In-Apache-Qpid/html/index.html) ([PDF](http://qpid.apache.org/books/${version}/Programming-In-Apache-Qpid/pdf/Programming-In-Apache-Qpid.pdf))
+ - [Guide to the C++ broker](http://qpid.apache.org/books/${version}/AMQP-Messaging-Broker-CPP-Book/html/index.html) ([PDF](http://qpid.apache.org/books/${version}/AMQP-Messaging-Broker-CPP-Book/pdf/AMQP-Messaging-Broker-CPP-Book.pdf))
+ - [Guide to the Java broker](http://qpid.apache.org/books/${version}/AMQP-Messaging-Broker-Java-Book/html/index.html) ([PDF](http://qpid.apache.org/books/${version}/AMQP-Messaging-Broker-Java-Book/pdf/AMQP-Messaging-Broker-Java-Book.pdf))
+ - [Installing and Using Qpid Java](https://cwiki.apache.org/qpid/getting-started-guide.html)
+ - [Installing Qpid C++](http://svn.apache.org/repos/asf/qpid/tags/${version}/qpid/cpp/INSTALL)
+ - [Installing Qpid Python](http://svn.apache.org/repos/asf/qpid/tags/${version}/qpid/python/README.txt)
+ - [Installing Qpid WCF](http://svn.apache.org/repos/asf/qpid/tags/${version}/qpid/wcf/ReadMe.txt)
+ - [C++ Messaging API reference](http://qpid.apache.org/apis/${version}/cpp/html/index.html) ([qpid-cpp-doxygen-${version}.html.tar.gz](http://qpid.apache.org/apis/${version}/cpp/qpid-cpp-doxygen-${version}.html.tar.gz))
+ - [Python Messaging API reference](http://qpid.apache.org/apis/${version}/python/html/index.html) ([qpid-python-epydoc-${version}.html.tar.gz](http://qpid.apache.org/apis/${version}/python/qpid-python-epydoc-${version}.html.tar.gz))
+
+## More information
+
+ - [All release artifacts](http://www.apache.org/dyn/closer.cgi/qpid/${version})
+ - [Resolved issues in JIRA]($issues_url)
+ - [Source repository branch](https://svn.apache.org/repos/asf/qpid/branches/${version})
+ - [Source repository tag](https://svn.apache.org/repos/asf/qpid/tags/${version})
+"""
+
+template = string.Template(template_string)
+
+output = template.substitute(locals())
+output = output.strip()
+
+print output

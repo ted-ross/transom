@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>class Qpid::Messaging::Message - Qpid Ruby Messaging API</title>
+
+<link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../../index.html">Home</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>qpid/ruby/lib/qpid_messaging/message.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">Object
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-new">::new</a>
+    
+    <li><a href="#method-i-5B-5D">#[]</a>
+    
+    <li><a href="#method-i-5B-5D-3D">#[]=</a>
+    
+    <li><a href="#method-i-content">#content</a>
+    
+    <li><a href="#method-i-content-3D">#content=</a>
+    
+    <li><a href="#method-i-content_size">#content_size</a>
+    
+    <li><a href="#method-i-content_type">#content_type</a>
+    
+    <li><a href="#method-i-content_type-3D">#content_type=</a>
+    
+    <li><a href="#method-i-correlation_id">#correlation_id</a>
+    
+    <li><a href="#method-i-correlation_id-3D">#correlation_id=</a>
+    
+    <li><a href="#method-i-durable">#durable</a>
+    
+    <li><a href="#method-i-durable-3D">#durable=</a>
+    
+    <li><a href="#method-i-message_id">#message_id</a>
+    
+    <li><a href="#method-i-message_id-3D">#message_id=</a>
+    
+    <li><a href="#method-i-priority">#priority</a>
+    
+    <li><a href="#method-i-priority-3D">#priority=</a>
+    
+    <li><a href="#method-i-properties">#properties</a>
+    
+    <li><a href="#method-i-redelivered">#redelivered</a>
+    
+    <li><a href="#method-i-redelivered-3D">#redelivered=</a>
+    
+    <li><a href="#method-i-reply_to">#reply_to</a>
+    
+    <li><a href="#method-i-reply_to-3D">#reply_to=</a>
+    
+    <li><a href="#method-i-subject">#subject</a>
+    
+    <li><a href="#method-i-subject-3D">#subject=</a>
+    
+    <li><a href="#method-i-ttl">#ttl</a>
+    
+    <li><a href="#method-i-ttl-3D">#ttl=</a>
+    
+    <li><a href="#method-i-user_id">#user_id</a>
+    
+    <li><a href="#method-i-user_id-3D">#user_id=</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../Qpid.html">Qpid</a>
+  
+    <li><a href="../../Qpid/Messaging.html">Qpid::Messaging</a>
+  
+    <li><a href="../../Qpid/Messaging/Address.html">Qpid::Messaging::Address</a>
+  
+    <li><a href="../../Qpid/Messaging/Connection.html">Qpid::Messaging::Connection</a>
+  
+    <li><a href="../../Qpid/Messaging/Duration.html">Qpid::Messaging::Duration</a>
+  
+    <li><a href="../../Qpid/Messaging/KeyError.html">Qpid::Messaging::KeyError</a>
+  
+    <li><a href="../../Qpid/Messaging/Message.html">Qpid::Messaging::Message</a>
+  
+    <li><a href="../../Qpid/Messaging/Receiver.html">Qpid::Messaging::Receiver</a>
+  
+    <li><a href="../../Qpid/Messaging/Sender.html">Qpid::Messaging::Sender</a>
+  
+    <li><a href="../../Qpid/Messaging/Session.html">Qpid::Messaging::Session</a>
+  
+    <li><a href="../../Qpid/Messaging/SessionNameException.html">Qpid::Messaging::SessionNameException</a>
+  
+    <li><a href="../../Qpid/Version.html">Qpid::Version</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class Qpid::Messaging::Message</h1>
+
+  <div id="description" class="description">
+    
+<p>A <code>Message</code> represents an routable piece of information.</p>
+
+<p>The content for a message is automatically encoded and decoded.</p>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(args = {})</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Creates a new instance of <code>Message</code>.</p>
+
+<h4 id="method-c-new-label-Options">Options</h4>
+<ul><li>
+<p>:content - The content.</p>
+</li></ul>
+
+<h4 id="method-c-new-label-Examples">Examples</h4>
+
+<pre class="ruby"><span class="ruby-identifier">message</span> = <span class="ruby-constant">Qpid</span><span class="ruby-operator">::</span><span class="ruby-constant">Messaging</span><span class="ruby-operator">::</span><span class="ruby-constant">Message</span>.<span class="ruby-identifier">new</span> :<span class="ruby-identifier">content</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;This is a message.&quot;</span>
+</pre>
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/message.rb, line 40</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">args</span> = {})
+  <span class="ruby-ivar">@message_impl</span> = (<span class="ruby-identifier">args</span>[<span class="ruby-value">:impl</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>[<span class="ruby-value">:impl</span>]) <span class="ruby-operator">||</span> <span class="ruby-keyword">nil</span>
+  <span class="ruby-ivar">@message_impl</span> = <span class="ruby-constant">Cqpid</span><span class="ruby-operator">::</span><span class="ruby-constant">Message</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@message_impl</span>.<span class="ruby-identifier">nil?</span>
+  <span class="ruby-ivar">@content</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">args</span> = {} <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">nil?</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">content</span> = <span class="ruby-identifier">args</span>[<span class="ruby-value">:content</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>[<span class="ruby-value">:content</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- new-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- new-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-5B-5D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">[]</span><span
+            class="method-args">(key)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the value for the named property.</p>
+
+<h4 id="method-i-5B-5D-label-Options">Options</h4>
+<ul><li>
+<p>name - the property name</p>
+</li></ul>
+
+<h4 id="method-i-5B-5D-label-Examples">Examples</h4>
+
+<pre># use of message properties to mark a message as digitally signed
+verify(msg) if msg[:signed]</pre>
+          
+
+          
+          <div class="method-source-code" id="5B-5D-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/message.rb, line 282</span>
+<span class="ruby-keyword">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-identifier">key</span>); <span class="ruby-keyword">self</span>.<span class="ruby-identifier">properties</span>[<span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_s</span>]; <span class="ruby-keyword">end</span></pre>
+          </div><!-- 5B-5D-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- 5B-5D-method -->
+
+    
+      <div id="method-i-5B-5D-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">[]=</span><span
+            class="method-args">(key, value)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Assigns a value to the named property.</p>
+
+<p><strong>NOTE:</strong> Both the key or the value may be a symbol, but they
+will both be converted to a <code>String</code> for ease of transport.</p>
+
+<h4 id="method-i-5B-5D-3D-label-Options">Options</h4>
+<ul><li>
+<p>name - the property name</p>
+</li><li>
+<p>value - the property value</p>
+</li></ul>
+          
+
+          
+          <div class="method-source-code" id="5B-5D-3D-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/message.rb, line 293</span>
+<span class="ruby-keyword">def</span> <span class="ruby-operator">[]=</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>); <span class="ruby-ivar">@message_impl</span>.<span class="ruby-identifier">setProperty</span>(<span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_s</span>); <span class="ruby-keyword">end</span></pre>
+          </div><!-- 5B-5D-3D-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- 5B-5D-3D-method -->
+
+    
+      <div id="method-i-content" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">content</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the content of the <code>Message</code>.</p>
+
+<p>Content is automatically decoded based on the specified content type. If
+the content type is application-specific, then no decoding is performed and
+the content is returnedas a <code>String</code> representation.</p>
+
+<p>For example, if an array of integers are sent, then the receiver will find
+the message content to be an array of String objects, where each String is
+a representation of the sent integer value.</p>
+          
+
+          
+          <div class="method-source-code" id="content-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/message.rb, line 342</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">content</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@content</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-ivar">@content</span> = <span class="ruby-ivar">@message_impl</span>.<span class="ruby-identifier">getContent</span>
+
+    <span class="ruby-comment"># decode the content is necessary if it</span>
+    <span class="ruby-comment"># has an encoded content type</span>
+    <span class="ruby-keyword">if</span> [<span class="ruby-string">&quot;amqp/list&quot;</span>, <span class="ruby-string">&quot;amqp/map&quot;</span>].<span class="ruby-identifier">include?</span> <span class="ruby-ivar">@message_impl</span>.<span class="ruby-identifier">getContentType</span>
+      <span class="ruby-ivar">@content</span> = <span class="ruby-constant">Qpid</span><span class="ruby-operator">::</span><span class="ruby-constant">Messaging</span>.<span class="ruby-identifier">decode</span>(<span class="ruby-keyword">self</span>,
+                                        <span class="ruby-ivar">@message_impl</span>.<span class="ruby-identifier">getContentType</span>)
+    <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-ivar">@content</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- content-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- content-method -->
+
+    
+      <div id="method-i-content-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">content=</span><span
+            class="method-args">(content)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Sets the content for the <code>Message</code>.</p>
+
+<p>Content is automatically encoded for Array and Hash types. Other types need
+to set their own content types (via <code>content_type</code>) in order to
+specify how recipients should process the content.</p>
+
+<h4 id="method-i-content-3D-label-Options">Options</h4>
+<ul><li>
+<p>content - the content</p>
+</li></ul>
+
+<h4 id="method-i-content-3D-label-Examples">Examples</h4>
+
+<pre class="ruby"><span class="ruby-identifier">msg</span>.<span class="ruby-identifier">content</span> = <span class="ruby-string">&quot;This is a simple message.&quot;</span> <span class="ruby-comment"># a simple message</span>
+<span class="ruby-identifier">msg</span>.<span class="ruby-identifier">content</span> = {:<span class="ruby-identifier">foo</span> =<span class="ruby-operator">&gt;</span> :<span class="ruby-identifier">bar</span>} <span class="ruby-comment"># content is automatically encoded</span>
+</pre>
+          
+
+          
+          <div class="method-source-code" id="content-3D-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/message.rb, line 310</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">content=</span>(<span class="ruby-identifier">content</span>)
+  <span class="ruby-identifier">content_type</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-ivar">@content</span> = <span class="ruby-identifier">content</span>
+  <span class="ruby-keyword">case</span> <span class="ruby-ivar">@content</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">Hash</span>
+    <span class="ruby-identifier">content_type</span> = <span class="ruby-string">&quot;amqp/map&quot;</span>
+    <span class="ruby-identifier">new_content</span>  = {}
+    <span class="ruby-identifier">content</span>.<span class="ruby-identifier">each_pair</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span> <span class="ruby-identifier">new_content</span>[<span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_s</span>] = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_s</span>}
+    <span class="ruby-ivar">@content</span> = <span class="ruby-identifier">new_content</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">Array</span>
+    <span class="ruby-identifier">new_content</span>  = []
+    <span class="ruby-identifier">content_type</span> = <span class="ruby-string">&quot;amqp/list&quot;</span>
+    <span class="ruby-identifier">content</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">element</span><span class="ruby-operator">|</span> <span class="ruby-identifier">new_content</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">element</span>.<span class="ruby-identifier">to_s</span>}
+    <span class="ruby-ivar">@content</span> = <span class="ruby-identifier">new_content</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">content_type</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-ivar">@message_impl</span>.<span class="ruby-identifier">setContent</span> <span class="ruby-ivar">@content</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-constant">Qpid</span><span class="ruby-operator">::</span><span class="ruby-constant">Messaging</span>.<span class="ruby-identifier">encode</span> <span class="ruby-ivar">@content</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">content_type</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- content-3D-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- content-3D-method -->
+
+    
+      <div id="method-i-content_size" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">content_size</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the content’s size.</p>
+          
+
+          
+          <div class="method-source-code" id="content_size-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/message.rb, line 359</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">content_size</span>; <span class="ruby-ivar">@message_impl</span>.<span class="ruby-identifier">getContentSize</span>; <span class="ruby-keyword">end</span></pre>
+          </div><!-- content_size-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- content_size-method -->
+
+    
+      <div id="method-i-content_type" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">content_type</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the content type for the <code>Message</code>.</p>
+
+<h4 id="method-i-content_type-label-Examples">Examples</h4>
+
+<pre>case msg.content_type
+  when &quot;myapp/image&quot;
+    ctl.handle_image msg
+    end
+  when &quot;myapp/audio&quot;
+    ctl.handle_audio msg
+    end
+end</pre>
+          
+
+          
+          <div class="method-source-code" id="content_type-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/message.rb, line 125</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">content_type</span>; <span class="ruby-ivar">@message_impl</span>.<span class="ruby-identifier">getContentType</span>; <span class="ruby-keyword">end</span></pre>
+          </div><!-- content_type-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- content_type-method -->
+
+    
+      <div id="method-i-content_type-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">content_type=</span><span
+            class="method-args">(content_type)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Sets the content type for the <code>Message</code>.</p>
+
+<p>This should be set by the sending applicaton and indicates to recipients of
+the message how to interpret or decode the content.</p>
+
+<p>By default, only dictionaries and maps are automatically given a content
+type. If this content type is replaced then retrieving the content will not
+behave correctly.</p>
+
+<h4 id="method-i-content_type-3D-label-Options">Options</h4>
+<ul><li>
+<p><a href="Message.html#method-i-content_type">#content_type</a> - the
+content type.</p>
+</li></ul>
+          
+
+          
+          <div class="method-source-code" id="content_type-3D-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/message.rb, line 110</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">content_type=</span>(<span class="ruby-identifier">content_type</span>); <span class="ruby-ivar">@message_impl</span>.<span class="ruby-identifier">setContentType</span> <span class="ruby-identifier">content_type</span>; <span class="ruby-keyword">end</span></pre>
+          </div><!-- content_type-3D-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- content_type-3D-method -->
+
+    
+      <div id="method-i-correlation_id" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">correlation_id</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the correlation id of the <code>Message</code>.</p>
+
+<p><strong>NOTE:</strong> See <code>correlation_id=</code> for details.</p>
+          
+
+          
+          <div class="method-source-code" id="correlation_id-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/message.rb, line 190</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">correlation_id</span>; <span class="ruby-ivar">@message_impl</span>.<span class="ruby-identifier">getCorrelationId</span>; <span class="ruby-keyword">end</span></pre>
+          </div><!-- correlation_id-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- correlation_id-method -->
+
+    
+      <div id="method-i-correlation_id-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">correlation_id=</span><span
+            class="method-args">(correlation_id)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Sets the correlation id of the <code>Message</code>.</p>
+
+<p>The correlation id can be used as part of a protocol for message exchange
+patterns; e.g., a requestion-response pattern might require the correlation
+id of the request and the response to match, or it might use the message id
+of the request as the correlation id on the response</p>
+
+<p><strong>NOTE:</strong> If the id is not a <code>String</code> then the id
+is setup using the object's string representation.</p>
+
+<h4 id="method-i-correlation_id-3D-label-Options">Options</h4>
+<ul><li>
+<p>id - the id</p>
+</li></ul>
+          
+
+          
+          <div class="method-source-code" id="correlation_id-3D-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/message.rb, line 184</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">correlation_id=</span>(<span class="ruby-identifier">correlation_id</span>); <span class="ruby-ivar">@message_impl</span>.<span class="ruby-identifier">setCorrelationId</span> <span class="ruby-identifier">correlation_id</span>; <span class="ruby-keyword">end</span></pre>
+          </div><!-- correlation_id-3D-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- correlation_id-3D-method -->
+
+    
+      <div id="method-i-durable" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">durable</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the durability for the <code>Message</code>.</p>
+          
+
+          
+          <div class="method-source-code" id="durable-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/message.rb, line 242</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">durable</span>; <span class="ruby-ivar">@message_impl</span>.<span class="ruby-identifier">getDurable</span>; <span class="ruby-keyword">end</span></pre>
+          </div><!-- durable-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- durable-method -->
+
+    
+      <div id="method-i-durable-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">durable=</span><span
+            class="method-args">(durable)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Sets the durability of the <code>Message</code>.</p>
+
+<p>This is a hint to the messaging infrastructure that the message should be
+persisted or otherwise stored. This helps to ensure that th emessage is not
+lost during to failures or a shutdown.</p>
+
+<h4 id="method-i-durable-3D-label-Options">Options</h4>
+<ul><li>
+<p>durable - the durability flag (def. false)</p>
+</li></ul>
+          
+
+          
+          <div class="method-source-code" id="durable-3D-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/message.rb, line 238</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">durable=</span>(<span class="ruby-identifier">durable</span>); <span class="ruby-ivar">@message_impl</span>.<span class="ruby-identifier">setDurable</span> <span class="ruby-identifier">durable</span>; <span class="ruby-keyword">end</span></pre>
+          </div><!-- durable-3D-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- durable-3D-method -->
+
+    
+      <div id="method-i-message_id" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">message_id</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the message id.</p>
+
+<p>See <code>message_id=</code> for details.</p>
+          
+
+          
+          <div class="method-source-code" id="message_id-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/message.rb, line 144</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">message_id</span>; <span class="ruby-ivar">@message_impl</span>.<span class="ruby-identifier">getMessageId</span>; <span class="ruby-keyword">end</span></pre>
+          </div><!-- message_id-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- message_id-method -->
+
+    
+      <div id="method-i-message_id-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">message_id=</span><span
+            class="method-args">(message_id)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Sets the message id.</p>
+
+<p><strong>NOTE:</strong> this field must be a UUID type currently. A non-UUID
+value will be converted to a zero UUID, though a blank ID will be left
+untouched.</p>
+
+<h4 id="method-i-message_id-3D-label-Options">Options</h4>
+<ul><li>
+<p>id - the id</p>
+</li></ul>
+
+<h4 id="method-i-message_id-3D-label-Examples">Examples</h4>
+          
+
+          
+          <div class="method-source-code" id="message_id-3D-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/message.rb, line 139</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">message_id=</span>(<span class="ruby-identifier">message_id</span>); <span class="ruby-ivar">@message_impl</span>.<span class="ruby-identifier">setMessageId</span> <span class="ruby-identifier">message_id</span>.<span class="ruby-identifier">to_s</span>; <span class="ruby-keyword">end</span></pre>
+          </div><!-- message_id-3D-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- message_id-3D-method -->
+
+    
+      <div id="method-i-priority" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">priority</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the priority for the <code>Message</code>.</p>
+          
+
+          
+          <div class="method-source-code" id="priority-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/message.rb, line 209</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">priority</span>; <span class="ruby-ivar">@message_impl</span>.<span class="ruby-identifier">getPriority</span>; <span class="ruby-keyword">end</span></pre>
+          </div><!-- priority-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- priority-method -->
+
+    
+      <div id="method-i-priority-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">priority=</span><span
+            class="method-args">(priority)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Sets the priority of the <code>Message</code>.</p>
+
+<p>This may be used by the messaging infrastructure to prioritize delivery of
+messages with higher priority.</p>
+
+<p><strong>NOTE:</strong> If the priority is not an integer type then it is
+set using the object's integer representation. If the integer value is
+greater than 8-bits then only the first 8-bits are used.</p>
+
+<h4 id="method-i-priority-3D-label-Options">Options</h4>
+<ul><li>
+<p>priority - the priority</p>
+</li></ul>
+          
+
+          
+          <div class="method-source-code" id="priority-3D-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/message.rb, line 205</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">priority=</span>(<span class="ruby-identifier">priority</span>); <span class="ruby-ivar">@message_impl</span>.<span class="ruby-identifier">setPriority</span> <span class="ruby-identifier">priority</span>; <span class="ruby-keyword">end</span></pre>
+          </div><!-- priority-3D-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- priority-3D-method -->
+
+    
+      <div id="method-i-properties" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">properties</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns all named properties.</p>
+
+<p><strong>NOTE:</strong> It is recommended to use the []= method for
+retrieving and setting properties. Using this method may result in
+non-deterministic behavior.</p>
+          
+
+          
+          <div class="method-source-code" id="properties-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/message.rb, line 269</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">properties</span>; <span class="ruby-ivar">@message_impl</span>.<span class="ruby-identifier">getProperties</span>; <span class="ruby-keyword">end</span></pre>
+          </div><!-- properties-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- properties-method -->
+
+    
+      <div id="method-i-redelivered" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">redelivered</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns whether the <code>Message</code> has been marked as redelivered.</p>
+          
+
+          
+          <div class="method-source-code" id="redelivered-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/message.rb, line 261</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">redelivered</span>; <span class="ruby-ivar">@message_impl</span>.<span class="ruby-identifier">getRedelivered</span>; <span class="ruby-keyword">end</span></pre>
+          </div><!-- redelivered-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- redelivered-method -->
+
+    
+      <div id="method-i-redelivered-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">redelivered=</span><span
+            class="method-args">(redelivered)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>This is a hint to the messaging infrastructure that if de-duplication is
+required, that this message should be examined to determine if it is a
+duplicate.</p>
+
+<h4 id="method-i-redelivered-3D-label-Options">Options</h4>
+<ul><li>
+<p>redelivered - sets the redelivered state (def. false)</p>
+</li></ul>
+
+<h4 id="method-i-redelivered-3D-label-Examples">Examples</h4>
+
+<pre># processed is an array of processed message ids
+msg.redelivered = true if processed.include? msg.message_id</pre>
+          
+
+          
+          <div class="method-source-code" id="redelivered-3D-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/message.rb, line 257</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">redelivered=</span>(<span class="ruby-identifier">redelivered</span>); <span class="ruby-ivar">@message_impl</span>.<span class="ruby-identifier">setRedelivered</span> <span class="ruby-identifier">redelivered</span>; <span class="ruby-keyword">end</span></pre>
+          </div><!-- redelivered-3D-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- redelivered-3D-method -->
+
+    
+      <div id="method-i-reply_to" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">reply_to</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the reply to address for the <code>Message</code>.</p>
+          
+
+          
+          <div class="method-source-code" id="reply_to-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/message.rb, line 71</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">reply_to</span>
+  <span class="ruby-identifier">address_impl</span> = <span class="ruby-ivar">@message_impl</span>.<span class="ruby-identifier">getReplyTo</span>
+  <span class="ruby-comment"># only return an address if a reply to was specified</span>
+  <span class="ruby-constant">Qpid</span><span class="ruby-operator">::</span><span class="ruby-constant">Messaging</span><span class="ruby-operator">::</span><span class="ruby-constant">Address</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">nil</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">address_impl</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">address_impl</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- reply_to-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- reply_to-method -->
+
+    
+      <div id="method-i-reply_to-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">reply_to=</span><span
+            class="method-args">(address)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Sets the address to which replies should be sent for the
+<code>Message</code>.</p>
+
+<p><strong>NOTE:</strong> The address must be an instance of <a
+href="Address.html">Address</a>.</p>
+
+<h4 id="method-i-reply_to-3D-label-Options">Options</h4>
+<ul><li>
+<p>address - an instance of <code>Address</code></p>
+</li></ul>
+
+<h4 id="method-i-reply_to-3D-label-Examples">Examples</h4>
+
+<pre>msg.reply_to = Qpid:Messaging::Address.new &quot;my-responses&quot;</pre>
+          
+
+          
+          <div class="method-source-code" id="reply_to-3D-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/message.rb, line 64</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">reply_to=</span>(<span class="ruby-identifier">address</span>)
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&quot;Agument must be an Address&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">address</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Qpid</span><span class="ruby-operator">::</span><span class="ruby-constant">Messaging</span><span class="ruby-operator">::</span><span class="ruby-constant">Address</span>
+  <span class="ruby-ivar">@message_impl</span>.<span class="ruby-identifier">setReplyTo</span> <span class="ruby-identifier">address</span>.<span class="ruby-identifier">address_impl</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- reply_to-3D-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- reply_to-3D-method -->
+
+    
+      <div id="method-i-subject" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">subject</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the subject of the <code>Message</code>.</p>
+
+<h4 id="method-i-subject-label-Options">Options</h4>
+
+<pre>puts &quot;The subject is #{msg.subject}&quot;</pre>
+          
+
+          
+          <div class="method-source-code" id="subject-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/message.rb, line 95</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">subject</span>; <span class="ruby-ivar">@message_impl</span>.<span class="ruby-identifier">getSubject</span>; <span class="ruby-keyword">end</span></pre>
+          </div><!-- subject-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- subject-method -->
+
+    
+      <div id="method-i-subject-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">subject=</span><span
+            class="method-args">(subject)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Sets the subject for the <code>Message</code>.</p>
+
+<h4 id="method-i-subject-3D-label-Options">Options</h4>
+<ul><li>
+<p>subject - the subject</p>
+</li></ul>
+
+<h4 id="method-i-subject-3D-label-Examples">Examples</h4>
+
+<pre>msg.subject = &quot;mysubject&quot;</pre>
+          
+
+          
+          <div class="method-source-code" id="subject-3D-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/message.rb, line 87</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">subject=</span>(<span class="ruby-identifier">subject</span>); <span class="ruby-ivar">@message_impl</span>.<span class="ruby-identifier">setSubject</span> <span class="ruby-identifier">subject</span>; <span class="ruby-keyword">end</span></pre>
+          </div><!-- subject-3D-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- subject-3D-method -->
+
+    
+      <div id="method-i-ttl" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">ttl</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the time-to-live in milliseconds.</p>
+          
+
+          
+          <div class="method-source-code" id="ttl-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/message.rb, line 226</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">ttl</span>; <span class="ruby-constant">Qpid</span><span class="ruby-operator">::</span><span class="ruby-constant">Messaging</span><span class="ruby-operator">::</span><span class="ruby-constant">Duration</span>.<span class="ruby-identifier">new</span> <span class="ruby-ivar">@message_impl</span>.<span class="ruby-identifier">getTtl</span>.<span class="ruby-identifier">getMilliseconds</span>; <span class="ruby-keyword">end</span></pre>
+          </div><!-- ttl-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- ttl-method -->
+
+    
+      <div id="method-i-ttl-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">ttl=</span><span
+            class="method-args">(duration)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Sets the time-to-live in milliseconds.</p>
+
+<h4 id="method-i-ttl-3D-label-Options">Options</h4>
+<ul><li>
+<p>duration - the number of milliseconds</p>
+</li></ul>
+          
+
+          
+          <div class="method-source-code" id="ttl-3D-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/message.rb, line 217</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">ttl=</span>(<span class="ruby-identifier">duration</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">duration</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Qpid</span><span class="ruby-operator">::</span><span class="ruby-constant">Messaging</span><span class="ruby-operator">::</span><span class="ruby-constant">Duration</span>
+    <span class="ruby-ivar">@message_impl</span>.<span class="ruby-identifier">setTtl</span> <span class="ruby-identifier">duration</span>.<span class="ruby-identifier">duration_impl</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@message_impl</span>.<span class="ruby-identifier">setTtl</span> <span class="ruby-constant">Cqpid</span><span class="ruby-operator">::</span><span class="ruby-constant">Duration</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">duration</span>.<span class="ruby-identifier">to_i</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- ttl-3D-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- ttl-3D-method -->
+
+    
+      <div id="method-i-user_id" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">user_id</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the user id for the <code>Message</code>.</p>
+
+<p>See <code>user_id=</code> for details.</p>
+          
+
+          
+          <div class="method-source-code" id="user_id-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/message.rb, line 167</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">user_id</span>; <span class="ruby-ivar">@message_impl</span>.<span class="ruby-identifier">getUserId</span>; <span class="ruby-keyword">end</span></pre>
+          </div><!-- user_id-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- user_id-method -->
+
+    
+      <div id="method-i-user_id-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">user_id=</span><span
+            class="method-args">(user_id)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Sets the user id for the <code>Message</code>.</p>
+
+<p>This should in general be the user-id which was used when authenticating
+the connection itself, as the messaging infrastructure will verify this.</p>
+
+<p>See +<a
+href="Connection.html#method-i-authenticated_username">Qpid::Messaging::Connection#authenticated_username</a>+</p>
+
+<p><strong>NOTE:</strong> If the id is not a <code>String</code> then the id
+is set using the object's string representation.</p>
+
+<h4 id="method-i-user_id-3D-label-Options">Options</h4>
+<ul><li>
+<p>id - the id</p>
+</li></ul>
+          
+
+          
+          <div class="method-source-code" id="user_id-3D-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/message.rb, line 161</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">user_id=</span>(<span class="ruby-identifier">user_id</span>); <span class="ruby-ivar">@message_impl</span>.<span class="ruby-identifier">setUserId</span> <span class="ruby-identifier">user_id</span>; <span class="ruby-keyword">end</span></pre>
+          </div><!-- user_id-3D-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- user_id-3D-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

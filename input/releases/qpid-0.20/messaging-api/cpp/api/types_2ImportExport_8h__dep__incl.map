@@ -1,0 +1,11 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$Exception_8h.html" title="qpid/types/Exception.h" alt="" coords="353,80,508,107"/>
+<area shape="rect" id="node17" href="$Variant_8h.html" title="qpid/types/Variant.h" alt="" coords="526,155,665,181"/>
+<area shape="rect" id="node23" href="$Uuid_8h.html" title="qpid/types/Uuid.h" alt="" coords="533,80,659,107"/>
+<area shape="rect" id="node5" href="$exceptions_8h.html" title="qpid/messaging/exceptions.h" alt="" coords="211,229,409,256"/>
+<area shape="rect" id="node15" href="$Message_8h.html" title="qpid/messaging/Message.h" alt="" coords="434,229,624,256"/>
+<area shape="rect" id="node7" href="$Address_8h.html" title="qpid/messaging/Address.h" alt="" coords="423,304,607,331"/>
+<area shape="rect" id="node9" href="$Connection_8h.html" title="qpid/messaging/Connection.h" alt="" coords="631,304,832,331"/>
+<area shape="rect" id="node11" href="$Receiver_8h.html" title="qpid/messaging/Receiver.h" alt="" coords="212,304,399,331"/>
+<area shape="rect" id="node13" href="$Session_8h.html" title="qpid/messaging/Session.h" alt="" coords="5,304,187,331"/>
+</map>

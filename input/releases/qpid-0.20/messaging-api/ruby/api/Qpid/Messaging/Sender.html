@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>class Qpid::Messaging::Sender - Qpid Ruby Messaging API</title>
+
+<link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../../index.html">Home</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>qpid/ruby/lib/qpid_messaging/sender.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">Object
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-available">#available</a>
+    
+    <li><a href="#method-i-capacity">#capacity</a>
+    
+    <li><a href="#method-i-capacity-3D">#capacity=</a>
+    
+    <li><a href="#method-i-close">#close</a>
+    
+    <li><a href="#method-i-name">#name</a>
+    
+    <li><a href="#method-i-send">#send</a>
+    
+    <li><a href="#method-i-session">#session</a>
+    
+    <li><a href="#method-i-unsettled">#unsettled</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../Qpid.html">Qpid</a>
+  
+    <li><a href="../../Qpid/Messaging.html">Qpid::Messaging</a>
+  
+    <li><a href="../../Qpid/Messaging/Address.html">Qpid::Messaging::Address</a>
+  
+    <li><a href="../../Qpid/Messaging/Connection.html">Qpid::Messaging::Connection</a>
+  
+    <li><a href="../../Qpid/Messaging/Duration.html">Qpid::Messaging::Duration</a>
+  
+    <li><a href="../../Qpid/Messaging/KeyError.html">Qpid::Messaging::KeyError</a>
+  
+    <li><a href="../../Qpid/Messaging/Message.html">Qpid::Messaging::Message</a>
+  
+    <li><a href="../../Qpid/Messaging/Receiver.html">Qpid::Messaging::Receiver</a>
+  
+    <li><a href="../../Qpid/Messaging/Sender.html">Qpid::Messaging::Sender</a>
+  
+    <li><a href="../../Qpid/Messaging/Session.html">Qpid::Messaging::Session</a>
+  
+    <li><a href="../../Qpid/Messaging/SessionNameException.html">Qpid::Messaging::SessionNameException</a>
+  
+    <li><a href="../../Qpid/Version.html">Qpid::Version</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class Qpid::Messaging::Sender</h1>
+
+  <div id="description" class="description">
+    
+<p><a href="Sender.html">Sender</a> is the entity through which messages sent.</p>
+
+<p>An instance of <a href="Sender.html">Sender</a> can only be created using
+an active (not previously closed) <a href="Session.html">Session</a>.</p>
+
+<h4 id="label-Examples">Examples</h4>
+
+<pre class="ruby"><span class="ruby-identifier">conn</span>    = <span class="ruby-constant">Qpid</span><span class="ruby-operator">::</span><span class="ruby-constant">Messaging</span><span class="ruby-operator">::</span><span class="ruby-constant">Connection</span>.<span class="ruby-identifier">new</span> :<span class="ruby-identifier">url</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;mybroker:5762&quot;</span>
+<span class="ruby-identifier">conn</span>.<span class="ruby-identifier">open</span>
+<span class="ruby-identifier">session</span> = <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">create_session</span>
+<span class="ruby-identifier">sender</span>  = <span class="ruby-identifier">session</span>.<span class="ruby-identifier">create_session</span> <span class="ruby-string">&quot;my-sender-queue;{create:always}&quot;</span>
+</pre>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-available" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">available</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the available slots for sending messages.</p>
+
+<p>This differs from <code>capacity</code> in that it is the available slots
+in the senders capacity for holding outgoing messages. The difference
+between capacity and available is the number of messages that have not been
+delivered yet.</p>
+
+<h4 id="method-i-available-label-Examples">Examples</h4>
+
+<pre>puts &quot;You can send #{sender.available} messages before blocking.&quot;</pre>
+          
+
+          
+          <div class="method-source-code" id="available-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/sender.rb, line 135</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">available</span>
+  <span class="ruby-ivar">@sender_impl</span>.<span class="ruby-identifier">getAvailable</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- available-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- available-method -->
+
+    
+      <div id="method-i-capacity" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">capacity</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the capacity.</p>
+
+<p>The capacity is the total number of outgoing messages that can be sent
+before a called to <code>send</code> begins to block by default.</p>
+
+<h4 id="method-i-capacity-label-Examples">Examples</h4>
+
+<pre>puts &quot;You can send a maximum of #{sender.capacity} messages.&quot;</pre>
+          
+
+          
+          <div class="method-source-code" id="capacity-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/sender.rb, line 111</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">capacity</span>; <span class="ruby-ivar">@sender_impl</span>.<span class="ruby-identifier">getCapacity</span>; <span class="ruby-keyword">end</span></pre>
+          </div><!-- capacity-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- capacity-method -->
+
+    
+      <div id="method-i-capacity-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">capacity=</span><span
+            class="method-args">(capacity)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Sets the capacity for this <code>Sender</code>.</p>
+
+<p>The capacity is the number of outgoing messages that can be held pending
+confirmation or receipt by the broker.</p>
+
+<h4 id="method-i-capacity-3D-label-Options">Options</h4>
+<ul><li>
+<p>capacity - the capacity</p>
+</li></ul>
+
+<h4 id="method-i-capacity-3D-label-Examples">Examples</h4>
+
+<pre>sender.capacity = 50 # sets the outgoing capacity to 50 messages</pre>
+          
+
+          
+          <div class="method-source-code" id="capacity-3D-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/sender.rb, line 100</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">capacity=</span>(<span class="ruby-identifier">capacity</span>); <span class="ruby-ivar">@sender_impl</span>.<span class="ruby-identifier">setCapacity</span> <span class="ruby-identifier">capacity</span>; <span class="ruby-keyword">end</span></pre>
+          </div><!-- capacity-3D-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- capacity-3D-method -->
+
+    
+      <div id="method-i-close" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">close</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Closes this <code>Sender</code>.</p>
+
+<p>This does not affect the <code>Session</code>.</p>
+          
+
+          
+          <div class="method-source-code" id="close-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/sender.rb, line 77</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">close</span>; <span class="ruby-ivar">@sender_impl</span>.<span class="ruby-identifier">close</span>; <span class="ruby-keyword">end</span></pre>
+          </div><!-- close-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- close-method -->
+
+    
+      <div id="method-i-name" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">name</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the human-readable name for this <code>Sender</code>.</p>
+
+<h4 id="method-i-name-label-Examples">Examples</h4>
+
+<pre>puts &quot;Sender: #{sender.name}&quot;</pre>
+          
+
+          
+          <div class="method-source-code" id="name-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/sender.rb, line 85</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">name</span>; <span class="ruby-ivar">@sender_impl</span>.<span class="ruby-identifier">getName</span>; <span class="ruby-keyword">end</span></pre>
+          </div><!-- name-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- name-method -->
+
+    
+      <div id="method-i-send" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">send</span><span
+            class="method-args">(message, args = {}, &block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Sends a message.</p>
+
+<p>If a block is given, then it will be invoked after the message is sent.</p>
+
+<h4 id="method-i-send-label-Options">Options</h4>
+<ul><li>
+<p>message - The message to send.</p>
+</li><li>
+<p>:sync - See note below on synching.</p>
+</li></ul>
+
+<h4 id="method-i-send-label-Synching">Synching</h4>
+
+<p>If :sync =&gt; true, then the call will block until the broker confirms
+receipt of the message. Otherwise it will only block for available
+capacity; i.e., until pending is equal to capacity.</p>
+
+<h4 id="method-i-send-label-Examples">Examples</h4>
+
+<pre class="ruby"><span class="ruby-identifier">sender</span>.<span class="ruby-identifier">send</span> <span class="ruby-identifier">message</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">message</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Message sent: #{message.content}&quot;</span>
+<span class="ruby-keyword">end</span>
+</pre>
+          
+
+          
+          <div class="method-source-code" id="send-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/sender.rb, line 68</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">send</span>(<span class="ruby-identifier">message</span>, <span class="ruby-identifier">args</span> = {}, &amp;<span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">sync</span> = <span class="ruby-identifier">args</span>[<span class="ruby-value">:sync</span>] <span class="ruby-operator">||</span> <span class="ruby-keyword">false</span>
+  <span class="ruby-ivar">@sender_impl</span>.<span class="ruby-identifier">send</span> <span class="ruby-identifier">message</span>.<span class="ruby-identifier">message_impl</span>, <span class="ruby-identifier">sync</span>
+  <span class="ruby-identifier">block</span>.<span class="ruby-identifier">call</span> <span class="ruby-identifier">message</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">block</span>.<span class="ruby-identifier">nil?</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- send-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- send-method -->
+
+    
+      <div id="method-i-session" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">session</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the <code>Session</code> for this sender.</p>
+
+<h4 id="method-i-session-label-Examples">Examples</h4>
+
+<pre>recv.session.close if done</pre>
+          
+
+          
+          <div class="method-source-code" id="session-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/sender.rb, line 145</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">session</span>; <span class="ruby-ivar">@session</span>; <span class="ruby-keyword">end</span></pre>
+          </div><!-- session-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- session-method -->
+
+    
+      <div id="method-i-unsettled" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">unsettled</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the number of messages sent that are pending receipt confirmation
+by the broker.</p>
+
+<h4 id="method-i-unsettled-label-Examples">Examples</h4>
+
+<pre>if sender.unsettled &gt; 0
+  puts &quot;There are #{sender.unsettled} messages pending.&quot;
+end</pre>
+          
+
+          
+          <div class="method-source-code" id="unsettled-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/sender.rb, line 122</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">unsettled</span>; <span class="ruby-ivar">@sender_impl</span>.<span class="ruby-identifier">getUnsettled</span>; <span class="ruby-keyword">end</span></pre>
+          </div><!-- unsettled-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- unsettled-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

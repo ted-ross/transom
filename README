@@ -1,0 +1,32 @@
+# Using transom
+
+## To cover:
+
+ - setting up your env, config.sh
+ - dirs: input/output
+ - notable stuff in input
+   - template.html
+   - site.css, site.js
+   - site.conf
+ - adding or changing content
+   - .html files
+   - .html.in files
+   - .md files
+     - markdown syntax
+       - daringfireball link
+       - highlights
+         - 4 spaces for blockquote
+         - [link text](http://linkurl/)
+         ... tables, emphasis, 
+   - placeholders
+ - rendering to output
+ - publishing
+
+## Project layout
+
+    config.sh
+    Makefile        
+    python          Python library code, used by scripts
+    scripts
+    input
+    output

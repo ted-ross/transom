@@ -1,0 +1,188 @@
+<h1>Qpid 0.18 Release Notes</h1>
+
+<p>The full list of changes in the Qpid 0.18 release
+  incorporates both the issues worked on during the 0.17
+  development stream and any final touches made during the
+  0.18 release process. A list of these JIRA issues can be
+  found below.</p>
+
+<p><strong>Note:</strong> This release addresses
+  CVE-2012-3467. See
+  <a href="https://issues.apache.org/jira/browse/QPID-3849">QPID-3849</a>.</p>
+
+<p><strong>Note:</strong> Late in the 0.18 release process,
+  we discovered a scenario where the negotiate-timeout
+  feature
+  (<a href="https://issues.apache.org/jira/browse/QPID-2518">QPID-2518</a>)
+  of the Qpid C++ broker can be triggered by the Java client
+  on some platforms.  This issue is under investigation.  If
+  you are affected, the workaround is to increase the
+  negotiate timeout value.</p>
+<h2>New Features</h2>
+<ul>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3913">QPID-3913</a> - Add functionality to upgrade bdb store automatically on broker startup</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3918">QPID-3918</a> - Add management acl-query test methods to C++ broker ACL plugin</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3933">QPID-3933</a> - [Java] Add interim AMQP 1-0 implementation to Java Broker, JMS over 1-0 implementation</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3936">QPID-3936</a> - Add new framework for running distributed tests, eg for performance testing</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3986">QPID-3986</a> - [Java Broker] Add producer flow control based on total disk usage</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4006">QPID-4006</a> - Introduce HA support for Java Broker</li>
+</ul>
+<h2>Bugs Fixed</h2>
+<ul>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-2518">QPID-2518</a> - Qpid C++ broker can easily be blocked by client trying to connect over SSL port</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-2567">QPID-2567</a> - [c++] Timer - possible thread lock ordering violation</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3478">QPID-3478</a> - Windows Visual Studio 2010 warning C4251 'needs to have dll interface' qpid::amqp_0_10::MapCodec::contentType</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3510">QPID-3510</a> - Holes in C++ client configuration</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3671">QPID-3671</a> - WinSDk package is incomplete</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3749">QPID-3749</a> - Remove unused properties/methods from QpidResourceAdapter, QpidActivationSpec, QpidRAManagedConnectionFactory</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3757">QPID-3757</a> - Difficult recovery on broker death</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3767">QPID-3767</a> - Federation link index becomes invalid on failover against a cluster.</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3849">QPID-3849</a> - Client connection breaks broker-to-broker cluster SASL authentication (CVE-2012-3467)</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3879">QPID-3879</a> - Session#close() on session can produce spurious "dispatcher is not started" messages at ERROR to client logs</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3895">QPID-3895</a> - A reference to AMQChannel object is not removed from SimpleAMQQueue#_blockedChannels map on closing connections with producer side flow control when flow is blocked</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3903">QPID-3903</a> - Session#close() should not wait forever if broker fails to respond to channel close (0-8..0-9-1 protocols)</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3904">QPID-3904</a> - Java client should set AMQConnection#_closed flag on receipt of 0-10 connection.close</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3915">QPID-3915</a> - Add missing newlines to the end of the following source modules: ManagementAgentImpl.cpp, Exchange.cpp, Queue.cpp, ManagementAgent.cpp</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3924">QPID-3924</a> - Remove colons from conditionals that cause problems in Ruby 1.9</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3925">QPID-3925</a> - Fix string encoding support for Ruby 1.9</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3926">QPID-3926</a> - Fixes how unsigned 16 bit ints are assigned in the UUID test.</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3931">QPID-3931</a> - x-qpid.cluster-update exchange existing but hidden</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3932">QPID-3932</a> - HA library links to non-existant broker::SignalHandler::shutdown()</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3942">QPID-3942</a> - XID printed as binary form in trace logs</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3947">QPID-3947</a> - long subject causes encode errors in a loop</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3949">QPID-3949</a> - [Java AMQP 1.0] Update JMS Filter implementations to use new proposed descriptors</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3958">QPID-3958</a> - queue replication fails for messages with empty content frames</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3963">QPID-3963</a> - A federated broker may not reconnect to a remote cluster on link failure.</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3964">QPID-3964</a> - Incorrect ACL checks for passive declares</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3965">QPID-3965</a> - Case sensitivity issue with java broker ACL</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3969">QPID-3969</a> - arguments for QMFv2 methods may have undefined values if not specified</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3970">QPID-3970</a> - If reroute specifies that alt exchange should be used, and no such exchange was defined, then messages are silently dropped</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3971">QPID-3971</a> - PropertiesFileInitialContextFactory cannot open file URL</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3973">QPID-3973</a> - QPID Java SSLUtil does not support non-JKS key store types</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3974">QPID-3974</a> - replication exchange msgDrop and byteDrop to increase when duplicate messages detected</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3980">QPID-3980</a> - Last value queue - entries replaced by conflation are never deleted, causing memory leak</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3982">QPID-3982</a> - C++ broker on Windows hangs on shutdown intermittently</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3985">QPID-3985</a> - BrokerMessagesTest fails depending on locale</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3990">QPID-3990</a> - Multiple XAResources isSameRM behavior</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3993">QPID-3993</a> - [Java AMQP 1.0] NPE on receiving continuation transfers which do not have the delvieryId set</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4008">QPID-4008</a> - tcpNoDelay connection setting causes fatal exception on Windows</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4011">QPID-4011</a> - TestIsLocalHost unit_test fails with if machine name resolves to loopback address</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4012">QPID-4012</a> - [Java Broker] PriorityQueue entries may attempt to access message metadata in the store after it is no longer available</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4014">QPID-4014</a> - System test ConflationQueueTest.testParallelProductionAndConsumption failed</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4017">QPID-4017</a> - AMQP 0-9: Failover causes flow control blocked flag to get stuck </li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4022">QPID-4022</a> - C++ Broker connection limits by host ip and by user name can get confused</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4023">QPID-4023</a> - restore connection URL setter to enable using an AMQConnectionFactoy instance created with the default constructor</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4030">QPID-4030</a> - qpid-latency-test does not report if it cannot achieve desired sending rate</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4031">QPID-4031</a> - Deadlock when destroying a broker Link</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4032">QPID-4032</a> - Broker does not accept sub-groups in group declaration, contrary to wiki documentation</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4034">QPID-4034</a> - XASessionImpl should override resubscribe() for correct XA failover behavior</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4036">QPID-4036</a> - Failed client connections permanently exhaust broker's max connections limit</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4040">QPID-4040</a> - Destination federation broker needs to close connection if heartbeats are missed</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4041">QPID-4041</a> - Check for valid protocol occurs before actual protocol value is available.</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4043">QPID-4043</a> - The cluster code (c++ broker) uses deprecated CPG definitions</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4047">QPID-4047</a> - IoNetworkTransport doesn't use timeout on socket connect</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4049">QPID-4049</a> - Linux C++ broker crashes when Windows client connects SSL with expired certificate</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4052">QPID-4052</a> - HAClusterTwoNodeTest.testSecondaryDesignatedAsPrimaryAfterOrginalPrimaryStopped occasionally fails on Apache CI</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4055">QPID-4055</a> - [Java Broker] Update optional BDB store to use version 5.0.55 of BDB</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4062">QPID-4062</a> - Java system tests sometimes fail due to JMX port already initialised</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4069">QPID-4069</a> - DistributedClientTest.testClientFailsToCreateProducerUsingInvalidSession occasionally seen to fail on CI</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4072">QPID-4072</a> - HA use backup messages in failover.</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4075">QPID-4075</a> - Auto-Delete queues event Listener</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4081">QPID-4081</a> - If Exception is thrown on stopping of first broker from several brokers started by test case, the remaining brokers continue running and impact all following test cases</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4082">QPID-4082</a> - cluster de-sync after broker restart &amp; queue replication</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4085">QPID-4085</a> - HA fails long running failover test</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4090">QPID-4090</a> - Can't connect from Java Client to Java Broker when Broker uses Base64MD5PasswordFilePrincipalDatabase principal database (0-10 protocol only)</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4091">QPID-4091</a> - [Java Broker] Incorrect handling of timeout values on DtxSetTimeout</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4092">QPID-4092</a> - org.apache.qpid.server.queue.AMQPriorityQueueTest.testPriorityOrdering failed on Qpid-Java-Java-Test-IBMJDK1.6 Apache Jenkins CI job</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4094">QPID-4094</a> - Qpid MC misformats JMX notification dates</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4097">QPID-4097</a> - WCF Interop compile error</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4099">QPID-4099</a> - FailoverBehaviourTest.testFlowControlFlagResetOnFailover fails occasionally on CI</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4101">QPID-4101</a> - Fixes building the Ruby language bindings for Ruby 1.9</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4104">QPID-4104</a> - Test org.apache.qpid.server.store.StoreOverfullTest.testCapacityExceededCausesBlockTwoConnections fails occasionally</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4112">QPID-4112</a> - Queue's alternate  (non-mandatory) exchange does not survive broker restart </li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4117">QPID-4117</a> - alternate-exchange specified in links x-declare is ignored</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4121">QPID-4121</a> - ConcurrentModificationException reported by HouseKeepingTask while closing session</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4126">QPID-4126</a> - HA primary times out expected backups.</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4128">QPID-4128</a> - HA should not use amq.failover for replication links</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4130">QPID-4130</a> - Remove use of intrusive_ptr::reset in ha/Primary.cpp, not supported by older boost versions.</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4131">QPID-4131</a> - Broker should close connection on transaction timeout rather than close session for better compatibility with Java clients</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4136">QPID-4136</a> - HA sporadic failures in ha_tests</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4138">QPID-4138</a> - HA sporadic failure in ha_tests</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4142">QPID-4142</a> - C++ broker connection counting username error when used in ha cluster and auth is EXTERNAL</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4144">QPID-4144</a> - HA broker deadlocks on broeker::QueueRegistry lock and ha::Primary lock</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4145">QPID-4145</a> - HA Minor fixes to recovery</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4148">QPID-4148</a> - HA Not setting initial queues for new RemoteBackups</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4155">QPID-4155</a> - qpid-stat fails while trying to display queue names that have non-ascii characters</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4156">QPID-4156</a> - HA close window for clients to connect before HA broker is initialized</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4158">QPID-4158</a> - HA transition to CATCHUP status too early.</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4159">QPID-4159</a> - HA missing messages in failover test.</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4163">QPID-4163</a> - Deadlock between LinkRegistry and TimerTask locks</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4164">QPID-4164</a> - management move/copy and max delivery attempt functionality fail to properly move/copy the message if it was loaded from the message store at startup</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4165">QPID-4165</a> - Fix unsused variable warnings when compiling with -DNDEBUG </li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4167">QPID-4167</a> - Queue attributes are ignored on queue creation with web management console</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4170">QPID-4170</a> - JMX threads can spin in the Queue MBean if there is a failure when viewing message content</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4171">QPID-4171</a> - persistent messages from a non-transactional session can be enqueued out of order</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4172">QPID-4172</a> - [Java Broker] Virtualhost tasks should reset their thread name upon completion</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4175">QPID-4175</a> - HA code rationalize logging</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4182">QPID-4182</a> - Define a reasonable default for the 'minimumAlertRepeatGap'</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4183">QPID-4183</a> - [Java Broker] AMQP 1.0 implementation broken by management adaptation layer</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4184">QPID-4184</a> - queue alert notifications are not being logged by default</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4191">QPID-4191</a> - HA removing self address breaks if a VIP is used.</li>
+</ul>
+<h2>Improvements</h2>
+<ul>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-2082">QPID-2082</a> - Put all of the C++ code in the source tree into a namespace</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3333">QPID-3333</a> - Make Python SWIG bindings a drop-in replacement for pure Python qpid.messaging package</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3603">QPID-3603</a> - New approach to HA</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3701">QPID-3701</a> - Add support for Glassfish Application Server to Qpid JCA Adapter</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3745">QPID-3745</a> - Improve JCA Documentation </li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3751">QPID-3751</a> - Add Unit/System Testing to JCA Component</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3776">QPID-3776</a> - Add Support for JBoss7 Application Server to Qpid JCA Adapter</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3878">QPID-3878</a> - QpidActivation should use connection per inbound listener</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3884">QPID-3884</a> - Batch acknowledgements for XA transactions until end()</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3885">QPID-3885</a> - Improve logging in JMS client</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3894">QPID-3894</a> - Improve MessageListener system tests</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3902">QPID-3902</a> - Add formal message categories to C++ Broker log messages</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3916">QPID-3916</a> - Refactor message store interface</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3917">QPID-3917</a> - Refactor VirtualHost/MessageStore implementations to be ready for BDB-HA</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3928">QPID-3928</a> - Removed trailing colons in conditionals.</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3943">QPID-3943</a> - subscription queues for links with no explicit name not marked auto-delete</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3945">QPID-3945</a> - .gitignore should include classes folder</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3955">QPID-3955</a> - Qpid JCA Adapter should throw ResourceException if TransactionManager cannot be located</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3956">QPID-3956</a> - Add Weblogic TransactionManagerLocator class</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3988">QPID-3988</a> - [Java] Update dependencies to latest version</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3995">QPID-3995</a> - Cleans up queues created during Cucumber feature tests</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3996">QPID-3996</a> - [Java Broker] Update optional BDB dependency to use latest version</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3998">QPID-3998</a> - [Java Broker] Create RESTful Management API for Java Broker</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3999">QPID-3999</a> - [Java Broker] Implement Web based management tool for the Java Broker</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4004">QPID-4004</a> - Cruft in qpid::framing::Buffer class should be removed</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4009">QPID-4009</a> - Make failover method invocation timeout configurable for 0-8/0-9/0-9-1 amqp clients</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4013">QPID-4013</a> - Windows Broker SSL is more difficult to use than necessary and possibly less secure than possible</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4029">QPID-4029</a> - [Java broker] enable selective inclusion of protocol versions on particular ports</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4033">QPID-4033</a> - [Java client] add a connection id to the session dispatcher thread name to avoid name overloading</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4035">QPID-4035</a> - JCA examples should allow for possibility of cluster deployment</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4038">QPID-4038</a> - [Java client] log the connection number and associated local and remote address after each successfull [re]connection</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4039">QPID-4039</a> - [Java client] move certain implementation-detail type log statements on the 0-8/0-9/0-9-1 path from info to debug to reduce verbosity/confusion</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4046">QPID-4046</a> - Improve broker's performance by rate limiting queue cleanup.</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4048">QPID-4048</a> - Refactor TopicExchange to separate the topic-key lookup engine from the exchange</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4050">QPID-4050</a> - Reduce verbosity of logging in disttest classes</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4059">QPID-4059</a> - qpid-printevents refactored to use the lighter-weight management library</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4060">QPID-4060</a> - qpid-stat - Improve the help text to clarify use of the different display modes</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4061">QPID-4061</a> - Added statistic: Number of unacknowledged messages in a session</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4065">QPID-4065</a> - Remove the message's trace list during Queue::reRoute</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4066">QPID-4066</a> - Allow configuration to override the broker's federation tag</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4070">QPID-4070</a> - Minor internal-api changes for LinkRegistry and Bridge (in qpid::broker)</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4076">QPID-4076</a> - Change bridge message credit to value less than infinity</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4093">QPID-4093</a> - [Java Broker] extract the JMX management functionality into its own module</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4105">QPID-4105</a> - Performance test framework uses sessions non-thread-safely</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4110">QPID-4110</a> - [Java Performance Tests] Add topic support to distributed test framework</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4113">QPID-4113</a> - [Java Performance Tests] allow all test durations to be overridden</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4173">QPID-4173</a> - [Java Broker] disable the subscription state operational logging by default</li>
+</ul>
+<h2>Tasks</h2>
+<ul>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3992">QPID-3992</a> - Removed the Boost license text from the Ruby LICENSE file.</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-3994">QPID-3994</a> - enable use of Ivy to retrieve dependencies for the Java components</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4045">QPID-4045</a> - [Java broker] remove the 'extras' plugin as it isnt used</li>
+  <li><a href="https://issues.apache.org/jira/browse/QPID-4089">QPID-4089</a> - Add latency tests into Java Performance Tests</li>
+</ul>
