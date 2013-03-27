@@ -30,7 +30,7 @@ All of Qpid's API libraries speak [AMQP](@site-url@/amqp.html).
  - [Qpid WCF](qpid-wcf/index.html) - An AMQP [Windows Communication Foundation](http://msdn.microsoft.com/en-us/library/ms731082.aspx) implementation
  - [QMF](qmf/index.html) - Management built on Qpid messaging
 
-## Brokers
+## Servers
 
 Qpid's message brokers are full-featured [message-oriented
 middleware](http://en.wikipedia.org/wiki/Message-oriented_middleware)

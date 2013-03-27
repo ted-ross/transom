@@ -52,7 +52,8 @@ Qpid contributors often use Review Board to discuss patches.
 ## More information
 
  - [About this site](site.html)
-
+ - [Qpid's wiki](https://cwiki.apache.org/qpid/)
+ 
 ;; http://planet.apache.org/committers/
 ;; http://blogs.apache.org/
 ;; http://blogs.apache.org/infra/
