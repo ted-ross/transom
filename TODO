@@ -1,25 +1,28 @@
 # High
 
- - document how to add content to site
-   - document placeholder values
- - figure out layout and priority of stuff in the left lower front
-   page
  - custom templates for api docs
    - nav from api ref back to site
  - fix overview, specifically the abilities of messaging
  - gen books
+ - consolidate download methods
+ - add TM to apache qpid page title
+ - clarify that jms protocol support is split between two artifacts
+ - the mirror links for past releases don't work
 
 # Medium
 
+ - hilighted java examples
+ - host fonts locally
+ - fix columns in contributors page
+ - investigate top nav
+ - clarify TM on logo
+ - fix output for IE8
  - doxygen for just the qmf api
  - qmf2 examples
  - becoming a contributor, more detail
  - qpid integrations, azure, openmama
  - keep old site at old-site
  - source modules
- - loosely coupled, reliable, asynchronous
- - proton speaks amqp 1.0, comprehensive wrt protocol, supports all
-   programming models
  - roadmap
  - gen release notes
  - qpid 0.20 optionally depends on proton 0.3
@@ -31,7 +34,6 @@
 
 # Low
 
- - script to check for licenses
  - news feed
  - qips
  - fix smarty-pants to get the nice curly quotes back
@@ -40,20 +42,5 @@
  - add line numbers to code samples
  - sparklines for commits
  - code climate
- - ci status
+ - live ci status
  - generate site map
-
-# Done
-
- - comments about release cadence
- - nav in page header or footer
-   - context nav
- - in check, url parsing
- - tighten and clean up css
- - link to qpid reviewboard
- - building from source code
- - redirect pages
- - pygmentize code files
- - doxygen for just the messaging api
- - documentation is a top rated link for the existing site
-   - redirected to components
