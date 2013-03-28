@@ -28,8 +28,6 @@ darker blue: #0d567f
 light indigo: #d0c6e7
 */
 
-@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,700italic,400,300,700|Fjalla+One);
-
 * {
     margin: 0;
     padding: 0;
@@ -91,6 +89,10 @@ div#welcome {
     box-shadow: 0 0.1em 0.3em #d0c6e7;
 }
 
+div#welcome p:last-child {
+    margin: 0;
+}
+
 div#right {
     float: right;
     width: 13.7em;
@@ -99,11 +101,7 @@ div#right {
     margin: 0.7em 0 0 0;
 }
 
-div#resources {
-    font-size: 0.95em;
-}
-
-div#resources h2 {
+div#right h2 {
     font-weight: 300;
 }
 
@@ -117,38 +115,9 @@ div#details {
     font-size: 0.8em;
 }
 
-div#components {
-    margin: 0 0 1.5em 0;
-}
-
-div#components-apis {
-    width: 13em;
-    padding: 0 1em 0 0;
-}
-
-div#components-brokers {
-    float: right;
-    width: 13em;
-    padding: 0 0 0 1em;
-}
-
-div#project {
-}
-
-div#project-proton {
-    width: 13em;
-    padding: 0 1em 0 0;
-}
-
-div#project-links {
-    float: right;
-    width: 13em;
-    padding: 0 0 0 1em;
-}
-
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Oswald", "Helvetica", "Arial", sans-serif;
-    font-weight: normal;
+    font-family: "Oswald", sans-serif;
+    font-weight: 400;
     margin: 0 0 0.4em 0;
     color: black;
 }
@@ -205,27 +174,19 @@ ul ul, ol ol {
     margin: 0;
 }
 
-ul#apache-links {
-    list-style-image: url(images/bullet.png);
-}
-
-ul#apache-links li {
-    display: inline;
-}
-
-.twocolumn {
+div.twocolumn {
     -webkit-column-count: 2;
     -moz-column-count: 2;
     column-count: 2;
 }
 
-.twocolumn ul {
+div.twocolumn ul {
     -webkit-column-break-inside: avoid;
     -moz-column-break-inside: avoid;
     column-break-inside: avoid;
 }
 
-.fourcolumn {
+div.fourcolumn {
     -webkit-column-count: 4;
     -moz-column-count: 4;
 }
@@ -296,7 +257,7 @@ table td, table th {
 }
 
 table td em, table th em {
-    font-family: "Oswald", "Helvetica", "Arial", sans-serif;
+    font-family: "Oswald", sans-serif;
     font-weight: 300;
     font-style: normal;
 }
@@ -326,7 +287,7 @@ div.color-block {
     float: left;
     color: white;
     padding: 0.8em 1em;
-    font-weight: bold;
+    font-weight: 400;
     min-height: 6em;
     width: 6em;
 }
