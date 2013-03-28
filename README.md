@@ -16,7 +16,7 @@ To setup paths in your environment, source the "config.sh" script.
     input/                # The site content before rendering
     output/               # The rendered result
 
-Some notable files in input/:
+Some notable files in "input/":
 
     input/template.html   # The standard page template
     input/site.js         # Site javascript code
@@ -47,14 +47,14 @@ These are the important ones:
 
 ## Render transformations
 
-The render step takes files under input/ and reproduces them under
+The render step takes files under "input/" and reproduces them under
 "output/".  The following transformations are applied in the process:
 
  - ".html" files are just copied
  - ".html.in" files are wrapped in the site template and copied
  - ".md" (markdown) files are converted to HTML and then treated
    just as ".html.in" files are
- - All files undergo substitution for @placeholders@
+ - All pages undergo substitution for @placeholders@
 
 ## Markdown syntax
 
