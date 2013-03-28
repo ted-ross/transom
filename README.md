@@ -2,7 +2,7 @@
 
 ## Setup your environment
 
-To setup paths in your environment, source the "config.sh" script.
+To setup paths in your environment, source the `config.sh` script.
 
     ~$ cd transom/
     transom$ . config.sh
@@ -16,7 +16,7 @@ To setup paths in your environment, source the "config.sh" script.
     input/                # The site content before rendering
     output/               # The rendered result
 
-Some notable files in "input/":
+Some notable files in `input/`:
 
     input/template.html   # The standard page template
     input/site.js         # Site javascript code
@@ -28,33 +28,33 @@ Some notable files in "input/":
 After that most everything is accomplished by running make targets.
 These are the important ones:
 
-    transom$ make render  # Renders "input/*" to "output/"
-    transom$ make clean   # Removes "output/"
+    transom$ make render  # Renders input/* to output/
+    transom$ make clean   # Removes output/
 
 ## Adding content
 
-1. Use your editor to create or edit a file under "input/"
+1. Use your editor to create or edit a file under `input/`
 
-    transom$ emacs input/somepage.md
+        transom$ emacs input/somepage.md
 
 2. Render the site
 
-    transom$ make render
+        transom$ make render
 
-3. Look at the site in your browser; navigate to 
+3. To look at the result in your browser, navigate to 
 
-    file:///home/jross/transom/output/index.html
+        file:///$somepath/transom/output/somepage.html
 
 ## Render transformations
 
-The render step takes files under "input/" and reproduces them under
-"output/".  The following transformations are applied in the process:
+The render step takes files under `input/` and reproduces them under
+`output/`.  The following transformations are applied in the process:
 
- - ".html" files are just copied
- - ".html.in" files are wrapped in the site template and copied
- - ".md" (markdown) files are converted to HTML and then treated
-   just as ".html.in" files are
- - All pages undergo substitution for @placeholders@
+ - `.html` files are just copied
+ - `.html.in` files are wrapped in the site template and copied
+ - `.md` (markdown) files are converted to HTML and then treated
+   just as `.html.in` files are
+ - All pages undergo substitution for `@placeholders@`
 
 ## Markdown syntax
 
@@ -68,14 +68,14 @@ I personally benefit from using [emacs markdown mode][emacs].
 
 ## Placeholders
 
-"input/site.conf" defines some variables usable for any input page.
+`input/site.conf` defines some variables usable for any input page.
 To illustrate:
 
     @site-url@                 -> http://qpid.apache.org
     @current-release@          -> 0.20
     @current-proton-release@   -> 0.4
 
-You can see more definitions in "input/site.conf".
+You can see more definitions in `input/site.conf`.
 
 ## Publishing your work
 
