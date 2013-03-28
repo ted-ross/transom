@@ -17,12 +17,14 @@
 # under the License.
 #
 
-from common import *
+from __future__ import print_function
 
 import atexit
 import codecs
 import fnmatch
 import getpass
+import os
+import shutil
 import subprocess
 import tempfile
 
@@ -43,6 +45,29 @@ import tempfile
 #
 # - If the function involves creating a file or directory, it may well
 #   return the path
+
+def error(message, *args):
+    _print("Error", message, args, sys.stderr)
+
+    raise Exception()
+
+def warn(message, *args):
+    _print("Warn", message, args, sys.stderr)
+
+def notice(message, *args):
+    _print(None, message, args, sys.stdout)
+
+def debug(message, *args):
+    pass
+
+def _print(category, message, args, file):
+    if category:
+        message = "{}: {}".format(category, message)
+
+    if args:
+        message = message.format(*args)
+
+    print(message, file=file)
 
 join = os.path.join
 split = os.path.split

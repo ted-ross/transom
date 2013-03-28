@@ -17,13 +17,15 @@
 # under the License.
 #
 
-from common import *
-
 import fnmatch
 import markdown2
+import os
+import shutil
+import sys
 import tempfile
 
 from ConfigParser import SafeConfigParser
+from collections import defaultdict
 from urlparse import urlsplit, urljoin
 from xml.etree.ElementTree import XML
 
@@ -55,7 +57,6 @@ class Site(object):
 
         self.links = defaultdict(set)
         self.targets = set()
-        self.url_re = re.compile(r"^[a-z]+:")
 
     def init(self):
         self.config.read(self.config_path)
