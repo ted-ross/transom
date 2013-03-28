@@ -51,4 +51,4 @@ the files you download.
  - [All release artifacts](http://www.apache.org/dyn/closer.cgi/qpid/proton/0.3)
  - [Resolved issues in JIRA](https://issues.apache.org/jira/issues/?jql=project+%3D+PROTON+AND+fixVersion+%3D+%270.3%27+ORDER+BY+priority+DESC)
  - [Source repository branch](http://svn.apache.org/repos/asf/qpid/proton/branches/0.3)
-;; - [Source repository tag](http://svn.apache.org/repos/asf/qpid/proton/tags/0.3)
+ - [Source repository tag](http://svn.apache.org/repos/asf/qpid/proton/tags/0.3)

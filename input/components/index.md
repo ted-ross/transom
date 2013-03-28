@@ -19,7 +19,7 @@
 
 # Components
 
-## APIs
+## Messaging APIs
 
 All of Qpid's API libraries speak [AMQP](@site-url@/amqp.html).
 
@@ -28,9 +28,8 @@ All of Qpid's API libraries speak [AMQP](@site-url@/amqp.html).
  - [Qpid JMS](qpid-jms/index.html) - An AMQP-fluent [Java Message Service](http://en.wikipedia.org/wiki/Java_Message_Service) implementation
  - [Qpid Messaging API](messaging-api/index.html) - A JMS alternative that supports many languages
  - [Qpid WCF](qpid-wcf/index.html) - An AMQP [Windows Communication Foundation](http://msdn.microsoft.com/en-us/library/ms731082.aspx) implementation
- - [QMF](qmf/index.html) - Management built on Qpid messaging
 
-## Brokers
+## Servers
 
 Qpid's message brokers are full-featured [message-oriented
 middleware](http://en.wikipedia.org/wiki/Message-oriented_middleware)
@@ -39,6 +38,11 @@ persistence, and manageability.
 
  - [C++ broker](cpp-broker/index.html) - A native-code AMQP message broker
  - [Java broker](java-broker/index.html) - A pure-Java AMQP message broker
+
+## Tools
+
+ - [Qpid JCA](qpid-jca/index.html) - A JCA resource adapter for Qpid brokers
+ - [QMF](qmf/index.html) - Management built on Qpid messaging
 
 ;; ## Servers
 

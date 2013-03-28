@@ -1,0 +1,62 @@
+;;
+;; Licensed to the Apache Software Foundation (ASF) under one
+;; or more contributor license agreements.  See the NOTICE file
+;; distributed with this work for additional information
+;; regarding copyright ownership.  The ASF licenses this file
+;; to you under the Apache License, Version 2.0 (the
+;; "License"); you may not use this file except in compliance
+;; with the License.  You may obtain a copy of the License at
+;; 
+;;   http://www.apache.org/licenses/LICENSE-2.0
+;; 
+;; Unless required by applicable law or agreed to in writing,
+;; software distributed under the License is distributed on an
+;; "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+;; KIND, either express or implied.  See the License for the
+;; specific language governing permissions and limitations
+;; under the License.
+;;
+
+# Download
+
+It's important to [verify the
+integrity](@site-url@/releases/index.html#verify-what-you-download) of
+the files you download.
+
+## Messaging APIs
+
+  || *Content* || *Download* || *Signature* ||
+  || [Messenger](@site-url@/components/messenger/index.html), [Protocol Engine](@site-url@/components/protocol-engine/index.html) (C, bindings) || [qpid-proton-c-@current-proton-release@.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/proton/@current-proton-release@/qpid-proton-c-@current-proton-release@.tar.gz) || [PGP](http://www.apache.org/dist/qpid/proton/@current-proton-release@/qpid-proton-c-@current-proton-release@.tar.gz.asc) ||
+  || [Messenger](@site-url@/components/messenger/index.html), [Protocol Engine](@site-url@/components/protocol-engine/index.html) (Java) || [qpid-proton-j-@current-proton-release@.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/proton/@current-proton-release@/qpid-proton-j-@current-proton-release@.tar.gz) || [PGP](http://www.apache.org/dist/qpid/proton/@current-proton-release@/qpid-proton-j-@current-proton-release@.tar.gz.asc) ||
+  || [Qpid JMS](@site-url@/components/qpid-jms/index.html) || [qpid-java-client-@current-release@.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/@current-release@/qpid-java-client-@current-release@.tar.gz) || [PGP](http://www.apache.org/dist/qpid/@current-release@/qpid-java-client-@current-release@.tar.gz.asc) ||
+  || [Qpid JMS](@site-url@/components/qpid-jms/index.html) (AMQP 1.0) || [qpid-java-amqp-1-0-client-@current-release@.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/@current-release@/qpid-java-amqp-1-0-client-@current-release@.tar.gz) || [PGP](http://www.apache.org/dist/qpid/@current-release@/qpid-java-amqp-1-0-client-@current-release@.tar.gz.asc) ||
+  || [Qpid Messaging API](@site-url@/components/messaging-api/index.html) (C++, bindings) || [qpid-cpp-@current-release@.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/@current-release@/qpid-cpp-@current-release@.tar.gz) || [PGP](http://www.apache.org/dist/qpid/@current-release@/qpid-cpp-@current-release@.tar.gz.asc) ||
+  || [Qpid Messaging API](@site-url@/components/messaging-api/index.html) (Python) || [qpid-python-@current-release@.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/@current-release@/qpid-python-@current-release@.tar.gz) || [PGP](http://www.apache.org/dist/qpid/@current-release@/qpid-python-@current-release@.tar.gz.asc) ||
+  || [Qpid WCF](@site-url@/components/qpid-wcf/index.html) || [qpid-wcf-@current-release@.zip](http://www.apache.org/dyn/closer.cgi/qpid/@current-release@/qpid-wcf-@current-release@.zip) || [PGP](http://www.apache.org/dist/qpid/@current-release@/qpid-wcf-@current-release@.zip.asc) ||
+
+## Servers and tools
+
+  || *Content* || *Download* || *Signature* ||
+  || [Java broker](@site-url@/components/java-broker/index.html) || [qpid-java-broker-@current-release@.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/@current-release@/qpid-java-broker-@current-release@.tar.gz) || [PGP](http://www.apache.org/dist/qpid/@current-release@/qpid-java-broker-@current-release@.tar.gz.asc) ||
+  || [C++ broker](@site-url@/components/cpp-broker/index.html) || [qpid-cpp-@current-release@.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/@current-release@/qpid-cpp-@current-release@.tar.gz) || [PGP](http://www.apache.org/dist/qpid/@current-release@/qpid-cpp-@current-release@.tar.gz.asc) ||
+  || C++ broker command-line tools || [qpid-tools-@current-release@.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/@current-release@/qpid-tools-@current-release@.tar.gz) || [PGP](http://www.apache.org/dist/qpid/@current-release@/qpid-tools-@current-release@.tar.gz.asc) ||
+  || [Qpid JCA](@site-url@/components/qpid-jca/index.html) || [qpid-java-broker-@current-release@.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/@current-release@/qpid-java-@current-release@.tar.gz) || [PGP](http://www.apache.org/dist/qpid/@current-release@/qpid-java-@current-release@.tar.gz.asc) ||
+  || [QMF](@site-url@/components/qmf/index.html) || [qpid-qmf-@current-release@.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/@current-release@/qpid-qmf-@current-release@.tar.gz) || [PGP](http://www.apache.org/dist/qpid/@current-release@/qpid-qmf-@current-release@.tar.gz.asc) ||
+
+;; ## Components
+;; 
+;;   || *Component* || *Platforms* || *AMQP versions* ||
+;;   || [Messenger](@site-url@/components/messenger/index.html) || Linux, OS X, JVM || 1.0 ||
+;;   || [Protocol Engine](@site-url@/components/protocol-engine/index.html) || Linux, OS X, JVM || 1.0 ||
+;;   || [C++ broker](@site-url@/components/cpp-broker/index.html) || Linux, Windows || 1.0, 0-10 ||
+;;   || [Java broker](@site-url@/components/java-broker/index.html) || JVM || 1.0, 0-10, 0-91, 0-9, 0-8 ||
+;;   || [Qpid JMS](@site-url@/components/qpid-jms/index.html) || JVM || 1.0, 0-10, 0-91, 0-9, 0-8 ||
+;;   || [Qpid Messaging API](@site-url@/components/messaging-api/index.html) || Linux, Windows || 1.0, 0-10 ||
+;;   || [Qpid WCF](@site-url@/components/qpid-wcf/index.html) || Windows || 0-10 ||
+;;   || [QMF](@site-url@/components/qmf/index.html) || Linux || 0-10 ||
+
+## More information
+
+ - @current-release-link@
+ - @current-proton-release-link@
+ - [Releases](@site-url@/releases/index.html)

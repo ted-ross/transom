@@ -262,6 +262,7 @@ span.date {
 table {
     border-collapse: collapse;
     margin: 0 0 0.8em 0.8em;
+    min-width: 85%;
 }
 
 table td, table th {

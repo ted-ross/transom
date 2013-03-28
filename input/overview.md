@@ -76,9 +76,9 @@ and core libraries for making AMQP part of your own messaging product.
 
  - *Custom application development* - Messaging is essential to
     reliable distributed applications, and we offer the tools you need
-    to build one.  Check out our [messaging
-    APIs](@site-url@/components/index.html#apis) and [message
-    brokers](@site-url@/components/index.html#brokers).
+    to build one.  Check out our
+    [messaging APIs](@site-url@/components/index.html#messaging-apis)
+    and [servers](@site-url@/components/index.html#servers).
 
  - *Your messaging product* - We know that there are many established
    messaging systems, and we want to make it easy for them to speak
