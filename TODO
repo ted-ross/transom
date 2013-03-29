@@ -8,6 +8,7 @@
  - add TM to apache qpid page title
  - clarify that jms protocol support is split between two artifacts
  - the mirror links for past releases don't work
+ - handle unicode in titles
 
 # Medium
 
