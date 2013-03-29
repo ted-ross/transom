@@ -28,73 +28,73 @@ contributions.  If you'd like to become a contributor, learn how to
 As of 1 February 2013, the following committers have been active since
 1 January 2012.
 
-<ul class="fourcolumn">
-  <li>Alan Conway</li>
-  <li>Andrew Kennedy</li>
-  <li>Andrew Stitcher</li>
-  <li>Chuck Rolke</li>
-  <li>Cliff Jansen</li>
-  <li>Darryl Pierce</li>
-  <li>Gordon Sim</li>
-  <li>Justin Ross</li>
-  <li>Keith Wall</li>
-  <li>Ken Giusti</li>
-  <li>Kim van der Riet</li>
-  <li>Mick Goulish</li>
-  <li>Nuno Santos</li>
-  <li>Oleksandr Rudyy</li>
-  <li>Phil Harvey</li>
-  <li>Rafael Schloming</li>
-  <li>Rajith Attapattu</li>
-  <li>Rob Godfrey</li>
-  <li>Robbie Gemmell</li>
-  <li>Steve Huston</li>
-  <li>Ted Ross</li>
-  <li>Weston Price</li>
-</ul>
+<div class="fourcolumn" markdown="1">
+  - Alan Conway
+  - Andrew Kennedy
+  - Andrew Stitcher
+  - Chuck Rolke
+  - Cliff Jansen
+  - Darryl Pierce
+  - Gordon Sim
+  - Justin Ross
+  - Keith Wall
+  - Ken Giusti
+  - Kim van der Riet
+  - Mick Goulish
+  - Nuno Santos
+  - Oleksandr Rudyy
+  - Phil Harvey
+  - Rafael Schloming
+  - Rajith Attapattu
+  - Rob Godfrey
+  - Robbie Gemmell
+  - Steve Huston
+  - Ted Ross
+  - Weston Price
+</div>
 
 ## Past committers
 
-<ul class="fourcolumn">
-  <li>Aidan Skinner</li>
-  <li>Andrea Gazzarini</li>
-  <li>Arnaud Simon</li>
-  <li>Carl Trieloff</li>
-  <li>Jim Meyering</li>
-  <li>John O'Hara</li>
-  <li>Jonathan Robie</li>
-  <li>Lahiru Gunathilake</li>
-  <li>Manuel Teira</li>
-  <li>Marnie McCormack</li>
-  <li>Martin Ritchie</li>
-  <li>Paul Fremantle</li>
-  <li>Robert Greig</li>
-  <li>Rupert Smith</li>
-  <li>Yoav Shapira</li>
-</ul>
+<div class="fourcolumn" markdown="1">
+  - Aidan Skinner
+  - Andrea Gazzarini
+  - Arnaud Simon
+  - Carl Trieloff
+  - Jim Meyering
+  - John O'Hara
+  - Jonathan Robie
+  - Lahiru Gunathilake
+  - Manuel Teira
+  - Marnie McCormack
+  - Martin Ritchie
+  - Paul Fremantle
+  - Robert Greig
+  - Rupert Smith
+  - Yoav Shapira
+</div>
 
 ## Other contributors
 
-<ul class="fourcolumn">
-  <li>Bhupendra Bhardwaj</li>
-  <li>Colin Crist</li>
-  <li>Ernie Allen</li>
-  <li>Fraser Adams</li>
-  <li>Kevin Smith</li>
-  <li>Steve Vinoski</li>
-  <li>Steven Shaw</li>
-  <li>Tomas Restrepo</li>
-</ul>
+<div class="fourcolumn" markdown="1">
+  - Bhupendra Bhardwaj
+  - Colin Crist
+  - Ernie Allen
+  - Fraser Adams
+  - Kevin Smith
+  - Steve Vinoski
+  - Steven Shaw
+  - Tomas Restrepo
+</div>
 
 ## Project mentors
 
-<ul class="fourcolumn">
-  <li>Cliff Schmidt</li>
-  <li>Craig Russell</li>
-  <li>Paul Fremantle</li>
-  <li>Scott Deboy</li>
-  <li>Yoav Shapira</li>
-</ul>
+<div class="fourcolumn" markdown="1">
+  - Cliff Schmidt
+  - Craig Russell
+  - Paul Fremantle
+  - Scott Deboy
+  - Yoav Shapira
+</div>
 
 ## Companies
 
@@ -104,3 +104,9 @@ improve ours.
  - <img style="float: right; margin: 0 0 0 1em;" src="@site-url@/images/jprofiler.png"/>[ej-technologies](http://www.ej-technologies.com/) for giving us a free team license for profiling Qpid Java code.
 
  - <img style="float: right; margin: 0 0 0 1em;" width="100" src="@site-url@/images/structure101.jpg"/>[Headway Software](http://structure101.com/) for giving us free licenses of Structure101 for analyzing and managing the architecture of Qpid Java code.
+
+## Apache sponsors
+
+As a member of the Apache Software Foundation, Qpid would like to
+[thank the sponsors](http://www.apache.org/foundation/thanks.html) who
+generously support its ongoing work.
