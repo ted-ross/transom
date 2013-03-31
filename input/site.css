@@ -34,25 +34,23 @@ light indigo: #d0c6e7
 }
 
 body {
-    width: 48em;
+    max-width: 52em;
     margin: 0 auto;
     font-family: "Roboto Condensed", sans-serif;
     font-weight: 300;
-    font-size: 14pt;
-}
-
-body.single {
+    font-size: 15pt;
     background: -webkit-linear-gradient(top, #f7f7ef, #f2f2e9 100%) no-repeat, #f2f2e9;
     background: linear-gradient(to bottom, #f7f7ef, #f2f2e9 100%) no-repeat, #f2f2e9;
 }
 
-div#content {
-    float: left;
-    padding: 0 2em;
-    background-color: white;
+body.front {
+    width: 52em;
 }
 
-body.single div#content {
+div#content {
+    float: left;
+    padding: 0 1.6em;
+    background-color: white;
     box-shadow: 0 0.1em 0.2em #d0c6e7;
     border-left: 1px solid #d4d4ca;
     border-right: 1px solid #d4d4ca;
@@ -74,7 +72,7 @@ div#middle {
 
 div#left {
     float: left;
-    width: 28em;
+    width: 34em;
     padding: 0 1em 0 0;
 }
 
@@ -95,8 +93,8 @@ div#welcome p:last-child {
 
 div#right {
     float: right;
-    width: 13.7em;
-    padding: 0 0 0 1em;
+    width: 12em;
+    padding: 0 0 0 1.2em;
     border-left: 1px solid #d4d4ca;
     margin: 0.7em 0 0 0;
 }
@@ -121,7 +119,6 @@ div#download h2 {
 
 div#bottom {
     float: left;
-    width: 44em;
     margin: 1em 0;
 }
 
@@ -143,7 +140,7 @@ h1 {
 
 h1.nameplate {
     color: black;
-    font-size: 2.8em;
+    font-size: 2.6em;
     margin: 0.2em 0 0.5em 0;
 }
 
@@ -262,7 +259,7 @@ span.date {
 table {
     border-collapse: collapse;
     margin: 0 0 0.8em 0.8em;
-    min-width: 85%;
+    min-width: 90%;
 }
 
 table td, table th {
@@ -293,7 +290,6 @@ pre {
 }
 
 div.highlight pre {
-    width: 44em;
     margin: 1em 0;
 }
 
