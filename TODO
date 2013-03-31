@@ -9,14 +9,14 @@
  - clarify that jms protocol support is split between two artifacts
  - the mirror links for past releases don't work
  - handle unicode in titles
+ - tools need a component page
+ - investigate top nav
 
 # Medium
 
  - Correct fonts on about site page
  - hilighted java examples
  - host fonts locally
- - fix columns in contributors page
- - investigate top nav
  - clarify TM on logo
  - fix output for IE8
  - doxygen for just the qmf api
