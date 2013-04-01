@@ -63,5 +63,80 @@ function focusJiraSearchForm() {
     }
 }
 
+function getDescendant(elem, path) {
+    var names = path.split(".");
+    var node = elem;
+
+    for (var i = 0; i < names.length; i++) {
+        var elems = node.getElementsByTagName(names[i]);
+
+        if (elems.length === 0) {
+            return null;
+        }
+
+        node = elems[0];
+    }
+
+    return node;
+}
+
+function getText(elem) {
+    var child = elem.firstChild;
+
+    while (child) {
+        if (child.nodeType === Node.TEXT_NODE) {
+            return child.data;
+        }
+
+        child = child.nextSibling;
+    }
+}
+
+function highlightNavigation() {
+    elem = document.getElementById("global-navigation");
+
+    if (!elem) {
+        return;
+    }
+
+    var pageTitleElems = document.getElementsByTagName("h1");
+
+    if (pageTitleElems.length === 0) {
+        return;
+    }
+
+    var pageTitle = getText(pageTitleElems[0]);
+
+    var child = elem.firstChild;
+
+    while (child) {
+        if (child.nodeType === Node.ELEMENT_NODE) {
+            desc = getDescendant(child, "a");
+
+            if (getText(desc) === pageTitle) {
+                desc.style.color = "black";
+                break;
+            }
+        }
+
+        child = child.nextSibling;
+    }
+}
+
 window.addEventListener("load", register, false);
 window.addEventListener("load", focusJiraSearchForm, false);
+window.addEventListener("load", highlightNavigation, false);
+
+// var child = node.firstChild;
+// while (child) {
+//     if (child.nodeType == 1 && child.nodeName == "script") {
+//         var oScript = document.createElement("script");
+//         if(child.textContent) {
+//         	oScript.text = child.textContent;
+//         } else {
+//         	oScript.text = child.text;  // for IE
+//         }                
+//         document.getElementsByTagName("head").item(0).appendChild(oScript);
+//     }
+//     child = child.nextSibling;
+// }
