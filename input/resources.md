@@ -49,6 +49,12 @@ Qpid contributors often use Review Board to discuss patches.
  - [Automated tests in Jenkins](https://builds.apache.org//view/M-R/view/Qpid/)
  - [Overview of Qpid CI](https://cwiki.apache.org/qpid/continuous-integration.html)
 
+## Wiki
+
+ - [Wiki home](https://cwiki.apache.org/qpid/)
+ - [Developer pages](https://cwiki.apache.org/qpid/developer-pages.html)
+ - [Qpid release pages](https://cwiki.apache.org/qpid/qpid-release-page.html)
+
 ## More information
 
  - [About this site](site.html)
