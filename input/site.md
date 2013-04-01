@@ -51,10 +51,9 @@
 ## Typefaces
 
 <div class="spacious">
-  <p style="font-family: Oswald;"><a href="http://www.google.com/webfonts/specimen/Oswald">Oswald</a> by Vernon Adams</p>
-  <p style="font-family: News Cycle;"><a href="http://www.google.com/webfonts/specimen/News+Cycle">News Cycle</a> by Nathan Willis</p>
-  <p style="font-family: Share Tech Mono;"><a href="http://www.google.com/webfonts/specimen/Share+Tech+Mono">Share Tech Mono</a> by Botio Nikoltchev</p>
+  <p style="font-family: 'Oswald';"><a href="http://www.google.com/webfonts/specimen/Oswald">Oswald</a> by Vernon Adams</p>
+  <p style="font-family: 'Roboto Condensed';"><a href="http://www.google.com/webfonts/specimen/Roboto+Condensed">Roboto Condensed</a> by Christian Robertson</p>
+  <p style="font-family: 'Share Tech Mono';"><a href="http://www.google.com/webfonts/specimen/Share+Tech+Mono">Share Tech Mono</a> by Botio Nikoltchev</p>
 
-  <p>The webfonts used here are licensed under the <a href="http://scripts.sil.org/OFL">SIL Open Font License 1.1</a>.</p>
+  <p>Roboto Condensed is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>. All other webfonts used here are licensed under the <a href="http://scripts.sil.org/OFL">SIL Open Font License 1.1</a>.</p>
 </div>
-
