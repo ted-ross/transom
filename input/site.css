@@ -59,6 +59,7 @@ div#content {
 div#top {
     padding: 0.3em 1.6em 0.4em 1.6em;
     border-bottom: 1px solid #d4d4ca;
+    background-color: #f9f9f9;
 }
 
 div#top a {
@@ -68,7 +69,7 @@ div#top a {
 div#top a#logotype {
     color: black;
     font-family: "Oswald", sans-serif;
-    vertical-align: -0.05em;
+    vertical-align: -0.06em;
     font-weight: 400;
 }
 
@@ -104,8 +105,8 @@ div#welcome {
     border: 1px solid #d4d4ca;
     border-radius: 0.3em;
     margin: 0.2em 0 1em 0;
-    background: -webkit-linear-gradient(top, #f2f2e9, #f7f7ef 20%) no-repeat, #f7f7ef;
-    background: linear-gradient(to bottom, #f2f2e9, #f7f7ef 20%) no-repeat, #f7f7ef;
+    background: -webkit-linear-gradient(top, rgb(252, 252, 247), #f7f7ef 20%) no-repeat, #f7f7ef;
+    background: linear-gradient(to bottom, rgb(252, 252, 247), #f7f7ef 20%) no-repeat, #f7f7ef;
     box-shadow: 0 0.1em 0.3em #d0c6e7;
 }
 
@@ -145,7 +146,9 @@ div#download h2 {
 
 div#bottom {
     float: left;
-    margin: 0.8em 1.6em;
+    padding: 0.8em 1.6em;
+    border-top: 1px solid #d4d4ca;
+    background-color: #f9f9f9;
 }
 
 div#details {
