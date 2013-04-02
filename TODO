@@ -4,17 +4,14 @@
    - nav from api ref back to site
  - fix overview, specifically the abilities of messaging
  - gen books
- - consolidate download methods
  - add TM to apache qpid page title
  - clarify that jms protocol support is split between two artifacts
  - the mirror links for past releases don't work
  - handle unicode in titles
  - tools need a component page
- - investigate top nav
 
 # Medium
 
- - Correct fonts on about site page
  - hilighted java examples
  - host fonts locally
  - clarify TM on logo
@@ -30,7 +27,6 @@
  - qpid 0.20 optionally depends on proton 0.3
  - messenger feature
  - list archive search
- - search function, top right
  - there are some trunk doc links in the java broker page that should
    be converted to current version when 0.22 lands
 
