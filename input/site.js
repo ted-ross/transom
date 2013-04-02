@@ -84,7 +84,7 @@ function getText(elem) {
     var child = elem.firstChild;
 
     while (child) {
-        if (child.nodeType === Node.TEXT_NODE) {
+        if (child.nodeType === 3) {
             return child.data;
         }
 
@@ -92,8 +92,8 @@ function getText(elem) {
     }
 }
 
-function highlightNavigation() {
-    elem = document.getElementById("global-navigation");
+function updateNavigation() {
+    var elem = document.getElementById("global-navigation");
 
     if (!elem) {
         return;
@@ -106,11 +106,10 @@ function highlightNavigation() {
     }
 
     var pageTitle = getText(pageTitleElems[0]);
-
     var child = elem.firstChild;
 
     while (child) {
-        if (child.nodeType === Node.ELEMENT_NODE) {
+        if (child.nodeType === 1) {
             desc = getDescendant(child, "a");
 
             if (getText(desc) === pageTitle) {
@@ -121,22 +120,24 @@ function highlightNavigation() {
 
         child = child.nextSibling;
     }
+
+    elem = document.getElementById("path-navigation");
+    child = elem.firstChild;
+    var count = 0;
+
+    while (child) {
+        if (child.nodeType === 1) {
+            count++;
+        }
+
+        child = child.nextSibling;
+    }
+
+    if (count < 2) {
+        elem.style.display = "none";
+    }
 }
 
 window.addEventListener("load", register, false);
 window.addEventListener("load", focusJiraSearchForm, false);
-window.addEventListener("load", highlightNavigation, false);
-
-// var child = node.firstChild;
-// while (child) {
-//     if (child.nodeType == 1 && child.nodeName == "script") {
-//         var oScript = document.createElement("script");
-//         if(child.textContent) {
-//         	oScript.text = child.textContent;
-//         } else {
-//         	oScript.text = child.text;  // for IE
-//         }                
-//         document.getElementsByTagName("head").item(0).appendChild(oScript);
-//     }
-//     child = child.nextSibling;
-// }
+window.addEventListener("load", updateNavigation, false);

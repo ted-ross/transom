@@ -225,9 +225,9 @@ class _Page(object):
             error("{} fails to parse; {}; see {}", self, str(e), path)
 
     def render(self):
-        navigation = self.render_navigation()
+        path_nav = self.render_path_navigation()
 
-        self.output = self.output.replace("@navigation@", navigation)
+        self.output = self.output.replace("@path-navigation@", path_nav)
         self.output = self.output.replace("@title@", self.title)
 
         overrides = dict()
@@ -239,11 +239,11 @@ class _Page(object):
     def render_link(self):
         return "<a href=\"{}\">{}</a>".format(self.url, self.title)
 
-    def render_navigation(self):
+    def render_path_navigation(self):
         path_names = self.site_path.split("/")
         links = list()
 
-        for i in range(len(path_names)):
+        for i in range(1, len(path_names)):
             item_names = path_names[0:i]
             item_names.append("index.html")
 
@@ -262,7 +262,9 @@ class _Page(object):
         if path_names[-1] != "index.html":
             links.append(self.title)
 
-        return " &gt; ".join(links)
+        links = "".join(("<li>{}</li>".format(x) for x in links))
+
+        return "<ul id=\"path-navigation\">{}</ul>".format(links)
 
     def check(self):
         # Reparse to pick up new attr values after substitutions
