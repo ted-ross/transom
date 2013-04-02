@@ -43,10 +43,6 @@ body {
     background: linear-gradient(to bottom, #f7f7ef, #f2f2e9 100%) no-repeat, #f2f2e9;
 }
 
-body.front {
-    width: 52em;
-}
-
 div#content {
     float: left;
     background-color: white;
@@ -54,6 +50,16 @@ div#content {
     border-left: 1px solid #d4d4ca;
     border-right: 1px solid #d4d4ca;
     border-bottom: 1px solid #d4d4ca;
+}
+
+body.front {
+    width: 52em;
+    background: white;
+}
+
+body.front div#content {
+    box-shadow: none;
+    border: none;
 }
 
 div#top {

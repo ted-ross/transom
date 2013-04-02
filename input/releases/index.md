@@ -36,39 +36,6 @@ Qpid](@site-url@/get-qpid.html).
 Still older releases are available at
 <http://archive.apache.org/dist/qpid/>.
 
-## Verify what you download
-
-It is essential that you verify the integrity of the downloaded files
-using the PGP signatures or SHA1 checksums.
-
-The PGP signatures can be verified using PGP or GPG. First download
-the [KEYS](http://www.apache.org/dist/qpid/KEYS) file as well as the
-<code>.asc</code> PGP signature file for the relevant artefact. Make
-sure you get these files from the relevant subdirectory of the [main
-distribution directory](http://www.apache.org/dist/qpid/), rather than
-from a mirror. Then verify the signatures using one of the following
-sets of commands.
-
-    % pgpk -a KEYS
-    % pgpv qpid-0.@current-release@.tar.gz.asc
-
-    % pgp -ka KEYS
-    % pgp qpid-@current-release@.tar.gz.asc
-
-    % gpg --import KEYS
-    % gpg --verify qpid-@current-release@.tar.gz.asc
-
-Alternatively, you can verify the SHA1 checksum of the files. A unix
-program called sha1 or sha1sum is included in many unix
-distributions. It is also available as part of [GNU
-Textutils](http://www.gnu.org/software/textutils/textutils.html). For
-Windows users, [fsum](http://www.slavasoft.com/fsum/) supports
-SHA1. Ensure your generated checksum string matches the string
-published in the SHA1SUM file included with each release. Again, make
-sure you get this file from the relevant subdirectory of the [main
-distribution directory](http://www.apache.org/dist/qpid/), rather than
-from a mirror.
-
 ## Release process
 
 Qpid produces three releases a year on a time-based schedule.  They
@@ -76,3 +43,7 @@ usually drop in January, April, and August.  New releases are
 announced on the [Qpid mailing lists](@site-url@/mailing-lists.html)
 and the
 [Apache announce list](http://mail-archives.apache.org/mod_mbox/www-announce/).
+
+## More information
+
+ - [Release pages on the wiki](https://cwiki.apache.org/qpid/qpid-release-page.html)

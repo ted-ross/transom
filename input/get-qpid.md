@@ -19,10 +19,10 @@
 
 # Ways to Get Qpid
 
-## Source distributions
+## Source releases
 
-Each new Qpid release is available as a source distribution.  More
-about [Qpid releases](releases/index.html).
+Each new Qpid release is available as a set of
+[source artifacts](@site-url@/download.html).
 
 ## Maven
 
@@ -62,7 +62,7 @@ be the following.
 
 ### Fedora
 
-Use <code>yum</code> to install Qpid and any dependencies.
+Use `yum` to install Qpid and any dependencies.
 
 To install the C++ broker:
 
@@ -75,11 +75,11 @@ To install the C++ and Python Messaging APIs:
 
 ### Windows
 
-The Windows installer is available at
-<http://www.riverace.com/qpid/downloads.htm>. It is built from the C++
-and C# source distributions.
+A [Windows installer](http://www.riverace.com/qpid/downloads.htm) is
+available from Riverace. It is built from the C++ and C# source
+distributions.
 
-## Build Qpid from a checkout
+## Install Qpid from a checkout
 
 To get started, [check out the
 code](source-code.html#check-out-the-code) and consult the [install
