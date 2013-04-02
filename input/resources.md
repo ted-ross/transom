@@ -32,7 +32,7 @@ about Qpid and would like your blog linked here.
 
 ## Chat
 
-We hang out on <code>#qpid</code> on [freenode](http://freenode.net).
+We hang out on `#qpid` on [freenode](http://freenode.net).
 
  - <a href="irc://irc.freenode.net/qpid">irc://irc.freenode.net/qpid</a>
  - [freenode webchat](http://webchat.freenode.net/?channels=#qpid)

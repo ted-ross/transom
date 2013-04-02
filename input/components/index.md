@@ -63,6 +63,5 @@ persistence, and manageability.
 
 The following components are no longer supported.
 
- - The qpid::client API, replaced by the [Qpid Messaging API](messaging-api/index.html)
- - The qpid::management API, replaced by [QMF](qmf/index.html)
-
+ - The `qpid::client` API, replaced by the [Qpid Messaging API](messaging-api/index.html)
+ - The `qpid::management` API, replaced by [QMF](qmf/index.html)

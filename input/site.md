@@ -17,7 +17,7 @@
 ;; under the License.
 ;;
 
-# About this Site
+# About This Site
 
 ;; who maintains it
 ;; code used to produce it

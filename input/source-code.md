@@ -43,8 +43,9 @@ To access the repository as a committer, use <https://svn.apache.org/repos/asf/q
 
 When adding files to subversion, it's important that the appropriate
 Subversion properties are set. The client can do it automatically by
-modifying the <code>auto-props</code> section of the Subversion config
-file.  Use the contents of <http://svn.apache.org/repos/asf/qpid/trunk/qpid/etc/svn-auto-props>.
+modifying the `auto-props` section of the Subversion config file.  Use
+the contents of
+<http://svn.apache.org/repos/asf/qpid/trunk/qpid/etc/svn-auto-props>.
 
 ### Git
 
@@ -55,9 +56,9 @@ of the following commands.
 
     % git clone http://git.apache.org/qpid.git qpid
 
-If you have commit access, it's also possible to commit back with
-<code>git svn dcommit</code> by following the instructions on the [Git
-at Apache](http://www.apache.org/dev/git.html) page.
+If you have commit access, it's also possible to commit back with `git
+svn dcommit` by following the instructions on the
+[Git at Apache](http://www.apache.org/dev/git.html) page.
 
 ## Install the code
 
