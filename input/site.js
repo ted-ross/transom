@@ -133,8 +133,8 @@ function updateNavigation() {
         child = child.nextSibling;
     }
 
-    if (count < 2) {
-        elem.style.display = "none";
+    if (count >= 2) {
+        elem.style.display = null;
     }
 }
 
