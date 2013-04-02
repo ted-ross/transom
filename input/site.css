@@ -65,6 +65,8 @@ body.front div#content {
 div#top {
     padding: 0.3em 1.6em 0.4em 1.6em;
     border-bottom: 1px solid #d4d4ca;
+    font-family: "Oswald", sans-serif;
+    font-weight: 300;
 }
 
 div#top a {
@@ -73,7 +75,6 @@ div#top a {
 
 div#top a#logotype {
     color: black;
-    font-family: "Oswald", sans-serif;
     vertical-align: -0.06em;
     font-weight: 400;
 }

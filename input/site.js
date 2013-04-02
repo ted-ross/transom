@@ -134,7 +134,7 @@ function updateNavigation() {
     }
 
     if (count >= 2) {
-        elem.style.display = null;
+        elem.style.display = "inherit";
     }
 }
 
