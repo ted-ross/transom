@@ -74,9 +74,12 @@ div#top a {
 }
 
 div#top a#logotype {
-    color: black;
     vertical-align: -0.06em;
     font-weight: 400;
+}
+
+body.front a#logotype {
+    color: black;
 }
 
 ul#global-navigation {
