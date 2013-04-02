@@ -22,8 +22,8 @@
 ## Use our software
 
 Our code is [open source](http://www.apache.org/licenses/LICENSE-2.0),
-free to use, and built to help you solve problems.  Download the
-[latest release](@site-url@/releases/index.html) and try it.
+free to use, and built to help you solve problems.
+[Download Qpid](@site-url@/download.html) and try it.
 
 ## Tell us about problems
 
@@ -50,7 +50,7 @@ list](@site-url@/mailing-lists.html#developer-list).
 
 ## Write about it
 
-We think Qpid is good stuff, and more people need to know about it.
+We think Qpid is good stuff, and more people ought to know about it.
 If you use Qpid to do something cool, tell others about it in a [blog
 post](@site-url@/resources.html#blogs), news article, or your
 project's website.  We really appreciate it.
