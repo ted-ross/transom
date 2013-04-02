@@ -163,10 +163,11 @@ div#download {
 }
 
 div#download h2 {
-    color: white;
-    background-color: #0d6dad;
     padding: 0.2em 0.6em;
     display: inline;
+    font-weight: 400;
+    color: #0d6dad;
+    border: 0.1em solid #0d6dad;
 }
 
 div#bottom {
