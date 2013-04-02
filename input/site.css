@@ -82,6 +82,10 @@ body.front a#logotype {
     color: black;
 }
 
+a#search-link {
+    float: right;
+}
+
 ul#global-navigation {
     margin: 0;
     padding: 0;

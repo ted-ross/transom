@@ -221,8 +221,10 @@ class _Page(object):
             self.root_elem = XML(self.output)
         except Exception as e:
             path = tempfile.mkstemp(".xml")[1]
+            msg = "{} fails to parse; {}; see {}".format(self, str(e), path)
+
             self.write_output(path)
-            error("{} fails to parse; {}; see {}", self, str(e), path)
+            raise Exception(msg)
 
     def render(self):
         path_nav = self.render_path_navigation()
