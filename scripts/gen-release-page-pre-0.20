@@ -118,7 +118,7 @@ the files you download.
 
 ## More information
 
- - [All release artifacts](http://www.apache.org/dyn/closer.cgi/qpid/${version})
+ - [All release artefacts](http://www.apache.org/dyn/closer.cgi/qpid/${version})
  - [Resolved issues in JIRA]($issues_url)
  - [Source repository branch](https://svn.apache.org/repos/asf/qpid/branches/${version})
  - [Source repository tag](https://svn.apache.org/repos/asf/qpid/tags/${version})

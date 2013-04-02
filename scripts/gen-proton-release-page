@@ -90,7 +90,7 @@ the files you download.
 
 ## More information
 
- - [All release artifacts](http://www.apache.org/dyn/closer.cgi/qpid/proton/${version})
+ - [All release artefacts](http://www.apache.org/dyn/closer.cgi/qpid/proton/${version})
  - [Resolved issues in JIRA]($issues_url)
  - [Source repository branch](http://svn.apache.org/repos/asf/qpid/proton/branches/${version})
 ;; - [Source repository tag](http://svn.apache.org/repos/asf/qpid/proton/tags/${version})
