@@ -39,15 +39,15 @@ function searchJiras() {
 }
 
 function register() {
-    gotoForm = document.getElementById("jira-goto-form")
-    searchForm = document.getElementById("jira-search-form")
+    jiraGotoForm = document.getElementById("jira-goto-form");
+    jiraSearchForm = document.getElementById("jira-search-form");
 
-    if (gotoForm !== null) {
-        gotoForm.addEventListener("submit", gotoJira, false);
+    if (jiraGotoForm !== null) {
+        jiraGotoForm.addEventListener("submit", gotoJira, false);
     }
 
-    if (searchForm !== null) {
-        searchForm.addEventListener("submit", searchJiras, false);
+    if (jiraSearchForm !== null) {
+        jiraSearchForm.addEventListener("submit", searchJiras, false);
     }
 }
 
@@ -55,10 +55,22 @@ function focusJiraSearchForm() {
     hash = window.location.hash;
 
     if (hash === "#search-existing-issues") {
-        searchForm = document.getElementById("jira-search-form")
+        searchForm = document.getElementById("jira-search-form");
 
         if (searchForm !== null) {
-            searchForm.text.focus()
+            searchForm.text.focus();
+        }
+    }
+}
+
+function focusSiteSearchForm() {
+    pathname = window.location.pathname;
+
+    if (pathname.substring(pathname.length - 11) === "search.html") {
+        searchForm = document.getElementById("site-search-form");
+
+        if (searchForm !== null) {
+            searchForm.q.focus();
         }
     }
 }
@@ -146,4 +158,5 @@ function updateNavigation() {
 
 window.addEventListener("load", register, false);
 window.addEventListener("load", focusJiraSearchForm, false);
+window.addEventListener("load", focusSiteSearchForm, false);
 window.addEventListener("load", updateNavigation, false);
