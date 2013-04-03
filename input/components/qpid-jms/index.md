@@ -25,9 +25,12 @@ implementation that speaks all versions of AMQP.
 
   || *Languages* || Java ||
   || *Platforms* || JVM ||
-  || *AMQP versions* || 1.0, 0-10, 0-91, 0-9, 0-8 ||
+  || *AMQP versions* || 1.0\*, 0-10, 0-91, 0-9, 0-8 ||
   || *Current release* || @current-release-link@ ||
   || *Source location* ||  <http://svn.apache.org/repos/asf/qpid/trunk/qpid/java> ||
+
+\*1.0 support is offered in a distinct implementation from that of
+older protocol versions.
 
 ## Documentation
 
