@@ -35,7 +35,7 @@ Proton](@site-url@/proton/overview.html).
 
  - @current-proton-release-link@
 
-## Bugs and enhancements
+## Issues
 
  - [Search existing issues](@site-url@/issues.html#search-existing-issues)
  - [Report a bug](https://issues.apache.org/jira/secure/CreateIssue.jspa?pid=12313720&issuetype=1&priority=3)

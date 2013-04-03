@@ -17,7 +17,7 @@
 ;; under the License.
 ;;
 
-# Qpid Proton Overview
+# Overview
 
 The goal of Proton is to provide ubiquitous access to a global-scale
 interoperable message bus based on AMQP 1.0. At its core Proton

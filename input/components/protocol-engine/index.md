@@ -22,6 +22,10 @@
 Control the details of AMQP 1.0 without needing to develop custom
 protocol support.
 
+The AMQP Protocol Engine API is part of the
+[Qpid Proton](@site-url@/proton/index.html) toolkit for making any
+application speak AMQP.
+
   || *Languages* || C, Java, Perl, PHP, Python, Ruby ||
   || *Platforms* || Linux, OS X, JVM ||
   || *AMQP versions* || 1.0 ||

@@ -23,6 +23,10 @@ AMQP Messenger offers a simple but powerful programming model.
 Connection management happens under the covers, leaving you to focus
 on your application.  Messenger supports point-to-point messaging.
 
+The AMQP Messenger API is part of the
+[Qpid Proton](@site-url@/proton/index.html) toolkit for making any
+application speak AMQP.
+
   || *Languages* || C, Java, Perl, PHP, Python, Ruby ||
   || *Platforms* || Linux, OS X, JVM ||
   || *AMQP versions* || 1.0 ||
