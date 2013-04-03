@@ -187,8 +187,8 @@ div#download h2 {
     color: #0d6dad;
     border: 0.1em solid #0d6dad;
     border-radius: 0.3em;
-    background: -webkit-linear-gradient(top, white, #f2f2e9 10%, #f2f2e9 90%, #d4d4ca) no-repeat, #f2f2e9;
-    background: linear-gradient(to bottom, white, #f2f2e9 10%, #f2f2e9 90%, #d4d4ca) no-repeat, #f2f2e9;
+    background: -webkit-linear-gradient(top, white, #f2f2e9 10%, #f2f2e9 95%, #d4d4ca) no-repeat, #f2f2e9;
+    background: linear-gradient(to bottom, white, #f2f2e9 10%, #f2f2e9 95%, #d4d4ca) no-repeat, #f2f2e9;
     box-shadow: 0 0.1em 0.3em #d0c6e7;
 }
 
