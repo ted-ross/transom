@@ -121,6 +121,12 @@ function updateNavigation() {
         child = child.nextSibling;
     }
 
+    if (pageTitle === "Search") {
+        elem = document.getElementById("search-link");
+        child = getDescendant(elem, "img");
+        child.src = child.src.replace("-blue", "-black");
+    }
+
     elem = document.getElementById("path-navigation");
     child = elem.firstChild;
     var count = 0;
