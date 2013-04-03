@@ -19,8 +19,8 @@
 
 # Download
 
-In addition to the source releases below, there are more
-[ways to get Qpid](@site-url@/get-qpid.html).
+*In addition to the source releases below, there are
+[more ways to get Qpid](@site-url@/get-qpid.html).*
 
 It's important to [verify the integrity](#verify-what-you-download) of
 the files you download.
