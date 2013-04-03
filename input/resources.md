@@ -52,6 +52,7 @@ Qpid contributors often use Review Board to discuss patches.
 ## Wiki
 
  - [Wiki home](https://cwiki.apache.org/qpid/)
+ - [FAQ](https://cwiki.apache.org/qpid/faq.html)
  - [Developer pages](https://cwiki.apache.org/qpid/developer-pages.html)
  - [Qpid release pages](https://cwiki.apache.org/qpid/qpid-release-page.html)
 
