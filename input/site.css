@@ -314,6 +314,10 @@ form input, form button {
     border: 1px solid #d4d4ca;
 }
 
+form input {
+    width: 16em;
+}
+
 form button {
     background-color: #f2f2e9;
     padding: 0 0.4em;
