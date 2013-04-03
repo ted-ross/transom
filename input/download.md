@@ -45,7 +45,8 @@ the files you download.
   || [Qpid JCA](@site-url@/components/qpid-jca/index.html)\* || [qpid-java-broker-@current-release@.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/@current-release@/qpid-java-@current-release@.tar.gz) || [PGP](http://www.apache.org/dist/qpid/@current-release@/qpid-java-@current-release@.tar.gz.asc) ||
   || [QMF](@site-url@/components/qmf/index.html) || [qpid-qmf-@current-release@.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/@current-release@/qpid-qmf-@current-release@.tar.gz) || [PGP](http://www.apache.org/dist/qpid/@current-release@/qpid-qmf-@current-release@.tar.gz.asc) ||
 
-\*Java artefacts are released as compiled bytecode.  We also offer the
+\*These Java artefacts are released as compiled bytecode.  We also
+offer the
 [Qpid Java source](http://www.apache.org/dyn/closer.cgi/qpid/@current-release@/qpid-java-@current-release@.tar.gz)
 ([PGP](http://www.apache.org/dist/qpid/@current-release@/qpid-java-@current-release@.tar.gz.asc)).
 
