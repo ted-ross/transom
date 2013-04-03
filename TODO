@@ -7,14 +7,14 @@
  - add TM to apache qpid page title
  - handle unicode in titles
  - tools need a component page
- - site search
+ - replace release links with download links to specific artifacts
 
 # Medium
 
+ - isolate maven howto
  - developer home
  - hilighted java examples
  - host fonts locally
- - clarify TM on logo
  - fix output for IE8
  - doxygen for just the qmf api
  - qmf2 examples
@@ -43,4 +43,3 @@
  - code climate
  - live ci status
  - generate site map
- - darken the search icon when navved there
