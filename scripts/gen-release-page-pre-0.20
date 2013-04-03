@@ -64,8 +64,8 @@ download_rows = list()
 
 for summary, artifact in download_records:
     artifact = artifact % version
-    artifact_url = "http://www.apache.org/dyn/closer.cgi/qpid/%s/%s" % (version, artifact)
-    sig_url = "http://www.apache.org/dist/qpid/%s/%s.asc" % (version, artifact)
+    artifact_url = "http://archive.apache.org/dist/qpid/%s/%s" % (version, artifact)
+    sig_url = "http://archive.apache.org/dist/qpid/%s/%s.asc" % (version, artifact)
 
     args = summary, artifact, artifact_url, sig_url
     row = "|| %s || [%s](%s) || [PGP](%s) ||" % args

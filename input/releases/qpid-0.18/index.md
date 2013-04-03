@@ -44,15 +44,15 @@ integrity](@site-url@/download.html#verify-what-you-download) of the
 files you download.
 
   || *Content* || *Download* || *Signature* ||
-  || Full source || [qpid-0.18.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.18/qpid-0.18.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.18/qpid-0.18.tar.gz.asc) ||
-  || C++ broker and Messaging API || [qpid-cpp-0.18.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.18/qpid-cpp-0.18.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.18/qpid-cpp-0.18.tar.gz.asc) ||
-  || C++ broker command-line tools || [qpid-tools-0.18.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.18/qpid-tools-0.18.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.18/qpid-tools-0.18.tar.gz.asc) ||
-  || Java broker, Qpid JMS, and tools || [qpid-java-0.18.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.18/qpid-java-0.18.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.18/qpid-java-0.18.tar.gz.asc) ||
-  || Java broker || [qpid-java-broker-0.18.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.18/qpid-java-broker-0.18.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.18/qpid-java-broker-0.18.tar.gz.asc) ||
-  || Qpid JMS || [qpid-java-client-0.18.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.18/qpid-java-client-0.18.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.18/qpid-java-client-0.18.tar.gz.asc) ||
-  || Python Messaging API || [qpid-python-0.18.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.18/qpid-python-0.18.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.18/qpid-python-0.18.tar.gz.asc) ||
-  || Qpid WCF || [qpid-wcf-0.18.zip](http://www.apache.org/dyn/closer.cgi/qpid/0.18/qpid-wcf-0.18.zip) || [PGP](http://www.apache.org/dist/qpid/0.18/qpid-wcf-0.18.zip.asc) ||
-  || QMF || [qpid-qmf-0.18.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.18/qpid-qmf-0.18.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.18/qpid-qmf-0.18.tar.gz.asc) ||
+  || Full source || [qpid-0.18.tar.gz](http://archive.apache.org/dist/qpid/0.18/qpid-0.18.tar.gz) || [PGP](http://archive.apache.org/dist/qpid/0.18/qpid-0.18.tar.gz.asc) ||
+  || C++ broker and Messaging API || [qpid-cpp-0.18.tar.gz](http://archive.apache.org/dist/qpid/0.18/qpid-cpp-0.18.tar.gz) || [PGP](http://archive.apache.org/dist/qpid/0.18/qpid-cpp-0.18.tar.gz.asc) ||
+  || C++ broker command-line tools || [qpid-tools-0.18.tar.gz](http://archive.apache.org/dist/qpid/0.18/qpid-tools-0.18.tar.gz) || [PGP](http://archive.apache.org/dist/qpid/0.18/qpid-tools-0.18.tar.gz.asc) ||
+  || Java broker, Qpid JMS, and tools || [qpid-java-0.18.tar.gz](http://archive.apache.org/dist/qpid/0.18/qpid-java-0.18.tar.gz) || [PGP](http://archive.apache.org/dist/qpid/0.18/qpid-java-0.18.tar.gz.asc) ||
+  || Java broker || [qpid-java-broker-0.18.tar.gz](http://archive.apache.org/dist/qpid/0.18/qpid-java-broker-0.18.tar.gz) || [PGP](http://archive.apache.org/dist/qpid/0.18/qpid-java-broker-0.18.tar.gz.asc) ||
+  || Qpid JMS || [qpid-java-client-0.18.tar.gz](http://archive.apache.org/dist/qpid/0.18/qpid-java-client-0.18.tar.gz) || [PGP](http://archive.apache.org/dist/qpid/0.18/qpid-java-client-0.18.tar.gz.asc) ||
+  || Python Messaging API || [qpid-python-0.18.tar.gz](http://archive.apache.org/dist/qpid/0.18/qpid-python-0.18.tar.gz) || [PGP](http://archive.apache.org/dist/qpid/0.18/qpid-python-0.18.tar.gz.asc) ||
+  || Qpid WCF || [qpid-wcf-0.18.zip](http://archive.apache.org/dist/qpid/0.18/qpid-wcf-0.18.zip) || [PGP](http://archive.apache.org/dist/qpid/0.18/qpid-wcf-0.18.zip.asc) ||
+  || QMF || [qpid-qmf-0.18.tar.gz](http://archive.apache.org/dist/qpid/0.18/qpid-qmf-0.18.tar.gz) || [PGP](http://archive.apache.org/dist/qpid/0.18/qpid-qmf-0.18.tar.gz.asc) ||
 
 ## Documentation
 
