@@ -5,13 +5,13 @@
  - fix overview, specifically the abilities of messaging
  - gen books
  - add TM to apache qpid page title
- - clarify that jms protocol support is split between two artifacts
- - the mirror links for past releases don't work
  - handle unicode in titles
  - tools need a component page
+ - site search
 
 # Medium
 
+ - developer home
  - hilighted java examples
  - host fonts locally
  - clarify TM on logo
@@ -32,6 +32,7 @@
 
 # Low
 
+ - external link checking
  - news feed
  - qips
  - fix smarty-pants to get the nice curly quotes back
@@ -42,3 +43,4 @@
  - code climate
  - live ci status
  - generate site map
+ - darken the search icon when navved there

@@ -33,5 +33,5 @@ on your application.  Messenger supports point-to-point messaging.
 
  - [Introduction](tour.html)
  - [API reference](http://qpid.apache.org/proton/api-doc/proton.Messenger-class.html)
- - [Examples](http://svn.apache.org/repos/asf/qpid/proton/branches/@current-proton-release@/proton-c/examples/messenger/)
- - [Installing Qpid Proton](http://svn.apache.org/repos/asf/qpid/proton/branches/@current-proton-release@/README)
+ - [Examples](http://svn.apache.org/repos/asf/qpid/proton/tags/@current-proton-release@/proton-c/examples/messenger/)
+ - [Installing Qpid Proton](http://svn.apache.org/repos/asf/qpid/proton/tags/@current-proton-release@/README)
