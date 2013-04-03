@@ -143,7 +143,7 @@ div#left {
 }
 
 div#welcome {
-    font-size: 1.2em;
+    font-size: 1.1em;
     padding: 0.8em 1em;
     border: 1px solid #d4d4ca;
     border-radius: 0.3em;
@@ -151,10 +151,6 @@ div#welcome {
     background: -webkit-linear-gradient(top, rgb(252, 252, 247), #f7f7ef 20%) no-repeat, #f7f7ef;
     background: linear-gradient(to bottom, rgb(252, 252, 247), #f7f7ef 20%) no-repeat, #f7f7ef;
     box-shadow: 0 0.1em 0.3em #d0c6e7;
-}
-
-div#components {
-    font-size: 1.1em;
 }
 
 div#welcome p:last-child {
