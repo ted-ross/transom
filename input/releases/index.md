@@ -19,8 +19,11 @@
 
 # Releases
 
-In addition to the source releases below, there are more [ways to get
-Qpid](@site-url@/get-qpid.html).
+Qpid produces three releases a year on a time-based schedule.  They
+usually drop in January, April, and August.  New releases are
+announced on the [Qpid mailing lists](@site-url@/mailing-lists.html)
+and the
+[Apache announce list](http://mail-archives.apache.org/mod_mbox/www-announce/).
 
 ## Current releases
 
@@ -36,14 +39,7 @@ Qpid](@site-url@/get-qpid.html).
 Still older releases are available at
 <http://archive.apache.org/dist/qpid/>.
 
-## Release process
-
-Qpid produces three releases a year on a time-based schedule.  They
-usually drop in January, April, and August.  New releases are
-announced on the [Qpid mailing lists](@site-url@/mailing-lists.html)
-and the
-[Apache announce list](http://mail-archives.apache.org/mod_mbox/www-announce/).
-
 ## More information
 
+ - [More ways to get Qpid](@site-url@/get-qpid.html)
  - [Release pages on the wiki](https://cwiki.apache.org/qpid/qpid-release-page.html)

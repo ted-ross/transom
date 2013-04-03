@@ -86,4 +86,4 @@ rather than from a mirror.
 
  - @current-release-link@
  - @current-proton-release-link@
- - [Past releases](@site-url@/releases/index.html#past-releases)
+ - More about [Qpid releases](@site-url@/releases/index.html)
