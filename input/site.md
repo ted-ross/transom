@@ -39,8 +39,7 @@
 <div class="spacious">
   <img src="@site-url@/images/logo-300-300.png"/> &#160;
   <img src="@site-url@/images/logo-75-75.png"/> &#160;
-  <img src="@site-url@/images/logo-50-50.png"/> &#160;
-  <img src="@site-url@/images/logo-25-25.png"/>
+  <img src="@site-url@/images/logo-50-50.png"/>
 
   <p><a href="@site-url@/images/logo.svg">SVG source</a>.  The "Q" is
   from the <a
