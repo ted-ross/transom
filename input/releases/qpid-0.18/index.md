@@ -40,8 +40,8 @@ Python, and Ruby.  More about [Qpid](@site-url@/index.html).
 ## Downloads
 
 It's important to [verify the
-integrity](@site-url@/releases/index.html#verify-what-you-download) of
-the files you download.
+integrity](@site-url@/download.html#verify-what-you-download) of the
+files you download.
 
   || *Content* || *Download* || *Signature* ||
   || Full source || [qpid-0.18.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.18/qpid-0.18.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.18/qpid-0.18.tar.gz.asc) ||
@@ -68,7 +68,7 @@ the files you download.
 
 ## More information
 
- - [All release artifacts](http://www.apache.org/dyn/closer.cgi/qpid/0.18)
+ - [All release artefacts](http://www.apache.org/dyn/closer.cgi/qpid/0.18)
  - [Resolved issues in JIRA](https://issues.apache.org/jira/issues/?jql=project+%3D+QPID+AND+fixVersion+in+%28%270.17%27%2C+%270.18%27%29+ORDER+BY+priority+DESC)
  - [Source repository branch](https://svn.apache.org/repos/asf/qpid/branches/0.18)
  - [Source repository tag](https://svn.apache.org/repos/asf/qpid/tags/0.18)
