@@ -140,19 +140,22 @@ function updateNavigation() {
     }
 
     elem = document.getElementById("path-navigation");
-    child = elem.firstChild;
-    var count = 0;
 
-    while (child) {
-        if (child.nodeType === 1) {
-            count++;
+    if (elem) {
+        child = elem.firstChild;
+        var count = 0;
+
+        while (child) {
+            if (child.nodeType === 1) {
+                count++;
+            }
+
+            child = child.nextSibling;
         }
 
-        child = child.nextSibling;
-    }
-
-    if (count >= 2) {
-        elem.style.display = "inherit";
+        if (count >= 2) {
+            elem.style.display = "inherit";
+        }
     }
 }
 
