@@ -127,11 +127,6 @@ ul#path-navigation li:last-child:after {
     content: none;
 }
 
-img#logo {
-    vertical-align: -0.25em;
-    margin: 0 0.1em 0 0;
-}
-
 div#middle {
     margin: 0.6em 1.6em;
 }
@@ -218,6 +213,7 @@ h1.nameplate {
 h1.nameplate img {
     margin: 0 0.2em 0 0;
     vertical-align: bottom;
+    box-shadow: 0 0.05em 0.15em #d0c6e7;
 }
 
 h1.logotype {
