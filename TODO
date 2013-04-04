@@ -8,9 +8,12 @@
  - handle unicode in titles
  - tools need a component page
  - replace release links with download links to specific artifacts
+ - make the proton page look more like the front page
 
 # Medium
 
+ - add glassfish to jca page
+ - link to proton roadmap
  - isolate maven howto
  - developer home
  - hilighted java examples
