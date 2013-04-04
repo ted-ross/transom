@@ -79,7 +79,7 @@ div#top a#logotype {
 }
 
 body.front a#logotype {
-    color: black;
+    color: #444;
 }
 
 a#search-link {
