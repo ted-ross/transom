@@ -20,11 +20,12 @@
  */
 
 /*
-linen: #f2f2e9
-lighter linen: #f7f7ef
-darker linen: #d4d4da
+light linen: #fcfcfa
+medium linen: #f7f7ef
+darker linen: #ecece0
+darkest linen: #d4d4da
 blue: #0d6dad
-darker blue: #0d567f
+dark blue: #0d567f
 light indigo: #d0c6e7
 */
 
@@ -39,8 +40,8 @@ body {
     font-family: "Roboto Condensed", sans-serif;
     font-weight: 300;
     font-size: 15pt;
-    background: -webkit-linear-gradient(top, #f7f7ef, #f2f2e9 100%) no-repeat, #f2f2e9;
-    background: linear-gradient(to bottom, #f7f7ef, #f2f2e9 100%) no-repeat, #f2f2e9;
+    background: -webkit-linear-gradient(top, #fcfcfa, #f7f7ef 100%) no-repeat, #f7f7ef;
+    background: linear-gradient(to bottom, #fcfcfa, #f7f7ef 100%) no-repeat, #f7f7ef;
 }
 
 div#content {
@@ -140,12 +141,12 @@ div#left {
 div#welcome {
     font-size: 1.1em;
     padding: 0.8em 1em;
-    border: 1px solid #d4d4ca;
+    border: 1px solid #ecece0;
     border-radius: 0.3em;
     margin: 0.2em 0 1em 0;
-    background: -webkit-linear-gradient(top, rgb(252, 252, 247), #f7f7ef 20%) no-repeat, #f7f7ef;
-    background: linear-gradient(to bottom, rgb(252, 252, 247), #f7f7ef 20%) no-repeat, #f7f7ef;
-    box-shadow: 0 0.1em 0.3em #d0c6e7;
+    background: -webkit-linear-gradient(top, #fcfcfa 70%, #f7f7ef) no-repeat, #fcfcfa;
+    background: linear-gradient(to bottom, #fcfcfa 70%, #f7f7ef) no-repeat, #fcfcfa;
+    box-shadow: 0 0.1em 0.15em #d0c6e7;
 }
 
 div#welcome p:last-child {
@@ -178,8 +179,8 @@ div#download h2 {
     color: #0d6dad;
     border: 0.1em solid #0d6dad;
     border-radius: 0.3em;
-    background: -webkit-linear-gradient(top, white, #f2f2e9 10%, #f2f2e9 95%, #d4d4ca) no-repeat, #f2f2e9;
-    background: linear-gradient(to bottom, white, #f2f2e9 10%, #f2f2e9 95%, #d4d4ca) no-repeat, #f2f2e9;
+    background: -webkit-linear-gradient(top, white, #f7f7ef 10%, #f7f7ef 95%, #d4d4ca) no-repeat, #f7f7ef;
+    background: linear-gradient(to bottom, white, #f7f7ef 10%, #f7f7ef 95%, #d4d4ca) no-repeat, #f7f7ef;
     box-shadow: 0 0.1em 0.3em #d0c6e7;
 }
 
@@ -308,12 +309,12 @@ form input, form button {
 
 form input {
     width: 16em;
-    box-shadow: inset 0.05em 0.05em 0.2em 0.05em #f7f7ef;
+    box-shadow: inset 0.05em 0.05em 0.2em 0.05em #fcfcfa;
 }
 
 form button {
-    background: -webkit-linear-gradient(top, white, #f2f2e9 10%, #f2f2e9 98%, #d4d4ca) no-repeat, #f2f2e9;
-    background: linear-gradient(to bottom, white, #f2f2e9 10%, #f2f2e9 98%, #d4d4ca) no-repeat, #f2f2e9;
+    background: -webkit-linear-gradient(top, white, #f7f7ef 10%, #f7f7ef 98%, #d4d4ca) no-repeat, #f7f7ef;
+    background: linear-gradient(to bottom, white, #f7f7ef 10%, #f7f7ef 98%, #d4d4ca) no-repeat, #f7f7ef;
     padding: 0 0.4em 0.1em 0.4em;
     font-size: 0.9em;
     vertical-align: 0.1em;
@@ -365,11 +366,11 @@ code, pre {
 
 pre {
     color: #222;
-    background-color: #f7f7ef;
+    background-color: #fcfcfa;
     padding: 0.8em 1em;
-    border: 1px solid #d4d4ca;
+    border: 1px solid #ecece0;
     margin: 1em;
-    box-shadow: 0 0 0.1em #d0c6e7;
+    box-shadow: 0 0 0.05em #d0c6e7;
     overflow: auto;
 }
 
@@ -383,6 +384,6 @@ div.color-block {
     color: white;
     padding: 0.8em 1em;
     font-weight: 400;
-    min-height: 6em;
-    width: 6em;
+    min-height: 8em;
+    width: 8em;
 }

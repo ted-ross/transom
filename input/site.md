@@ -28,31 +28,34 @@
   <div class="color-block" style="background-color: #0d6dad;">Qpid blue<br/>#0d6dad<br/>#0d567f</div>
   <div class="color-block" style="width: 0; background-color: #0d567f"></div>
   <div class="color-block" style="width: 0; background-color: #d4d4ca"></div>
-  <div class="color-block" style="background-color: #f2f2e9; color: #0d6dad">Linen<br/>#d4d4ca<br/>#f2f2e9<br/>#f7f7ef</div>
-  <div class="color-block" style="width: 0; background-color: #f7f7ef"></div>
+  <div class="color-block" style="width: 0; background-color: #ecece0"></div>
+  <div class="color-block" style="background-color: #f7f7ef; color: #0d6dad">Linen<br/>#d4d4ca<br/>#ecece0<br/>#f7f7ef<br/>#fcfcfa</div>
+  <div class="color-block" style="width: 0; background-color: #fcfcfa"></div>
   <div class="color-block" style="width: 0; background-color: #d0c6e7"></div>
-  <div style="height: 7em;"></div>
+  <div style="height: 9em;"></div>
 </div>
 
 ## Logos
 
-<div class="spacious">
-  <img src="@site-url@/images/logo-300-300.png"/> &#160;
-  <img src="@site-url@/images/logo-75-75.png"/> &#160;
-  <img src="@site-url@/images/logo-50-50.png"/>
+<div class="spacious" markdown="1">
+![](@site-url@/images/logo-300-300.png) &#160;
+![](@site-url@/images/logo-75-75.png) &#160;
+![](@site-url@/images/logo-50-50.png)
 
-  <p><a href="@site-url@/images/logo.svg">SVG source</a>.  The "Q" is
-  from the <a
-  href="http://www.impallari.com/projects/overview/libre-baskerville">Libre
-  Baskerville</a> typeface by Impallari Type.</p>
+[SVG source](@site-url@/images/logo.svg).  The "Q" is from the
+[Libre Baskerville](http://www.impallari.com/projects/overview/libre-baskerville)
+typeface by Impallari Type.
 </div>
 
 ## Typefaces
 
-<div class="spacious">
+<div class="spacious" markdown="1">
   <p style="font-family: 'Oswald';"><a href="http://www.google.com/webfonts/specimen/Oswald">Oswald</a> by Vernon Adams</p>
   <p style="font-family: 'Roboto Condensed';"><a href="http://www.google.com/webfonts/specimen/Roboto+Condensed">Roboto Condensed</a> by Christian Robertson</p>
   <p style="font-family: 'Share Tech Mono';"><a href="http://www.google.com/webfonts/specimen/Share+Tech+Mono">Share Tech Mono</a> by Botio Nikoltchev</p>
 
-  <p>Roboto Condensed is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>. All other webfonts used here are licensed under the <a href="http://scripts.sil.org/OFL">SIL Open Font License 1.1</a>.</p>
+Roboto Condensed is licensed under the
+[Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0). All
+other webfonts used here are licensed under the
+[SIL Open Font License 1.1](http://scripts.sil.org/OFL)
 </div>
