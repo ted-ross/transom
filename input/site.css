@@ -85,6 +85,7 @@ body.front a#logotype {
 
 a#search-link {
     float: right;
+    margin: 0 0 0 1.6em;
 }
 
 a#developer-link {
@@ -126,6 +127,31 @@ ul#path-navigation li:after {
 
 ul#path-navigation li:last-child:after {
     content: none;
+}
+
+ul#apache-navigation {
+    margin: 0.8em 0;
+    padding: 0;
+    font-size: 1.1em;
+}
+
+ul#apache-navigation li {
+    display: inline;
+}
+
+ul#apache-navigation li:after {
+    content: "\2022";
+    margin: 0 0.1em 0 0.35em;
+    color: #d4d4ca;
+}
+
+ul#apache-navigation li:last-child:after {
+    content: none;
+}
+
+img#apache-feather {
+    display: inline;
+    vertical-align: -0.1em;
 }
 
 div#middle {
@@ -327,12 +353,6 @@ form#jira-goto-form {
 
 form#jira-goto-form input {
     width: 6em;
-}
-
-img#apache-feather {
-    margin: 0 0 2em 2em;
-    display: inline;
-    float: right;
 }
 
 span.date {
