@@ -211,10 +211,11 @@ class _Page(object):
         self.title = os.path.split(self.output_path)[1]
 
         for elem in self.root_elem.iter("{http://www.w3.org/1999/xhtml}h1"):
-            self.title = " ".join(elem.itertext())
+            self.title = "".join(elem.itertext())
             break
 
         self.title = self.title.strip()
+        self.title = self.title.encode('ascii', 'xmlcharrefreplace')
 
     def parse_xml(self, input):
         try:

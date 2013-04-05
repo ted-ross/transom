@@ -216,6 +216,11 @@ h1.nameplate img {
     /* box-shadow: 0 0.05em 0.15em #d0c6e7, inset 0 0 0.4em #d0c6e7; */
 }
 
+h1.nameplate sup {
+    font-size: 0.4em;
+    vertical-align: 1.5em;
+}
+
 h1.logotype {
     font-size: 1.9em;
     margin: 0.6em 0 0.5em 0;
