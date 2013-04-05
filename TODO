@@ -27,7 +27,6 @@
  - gen release notes
  - qpid 0.20 optionally depends on proton 0.3
  - messenger feature
- - list archive search
  - there are some trunk doc links in the java broker page that should
    be converted to current version when 0.22 lands
 

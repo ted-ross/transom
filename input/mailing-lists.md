@@ -19,6 +19,15 @@
 
 # Mailing Lists
 
+## Search archives
+
+<form action="http://qpid.2158936.n2.nabble.com/template/NamlServlet.jtp" method="get">
+  <input type="hidden" name="macro" value="search_page"/>
+  <input type="hidden" name="node" value="7106518"/>
+  <input type="text" name="query"/>
+  <button type="submit">Search</button>
+</form>
+
 ## User list
 
 The user list is the place to ask about how to use Qpid.  Raise
