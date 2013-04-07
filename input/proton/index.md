@@ -62,3 +62,8 @@ Proton](@site-url@/proton/overview.html).
    <http://svn.apache.org/repos/asf/qpid/proton/trunk>.
  - To access the repository as a committer, use
    <https://svn.apache.org/repos/asf/qpid/proton/trunk>.
+
+## More information
+
+ - [AMQP 1.0 roadmap](https://cwiki.apache.org/qpid/amqp-10-roadmap.html)
+ - [Index of Proton wiki pages](https://cwiki.apache.org/confluence/display/qpid/Proton)
