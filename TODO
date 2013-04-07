@@ -2,7 +2,6 @@
 
  - custom templates for api docs
    - nav from api ref back to site
- - fix overview, specifically the abilities of messaging
  - gen books
  - tools need a component page
  - replace release links with download links to specific artifacts

@@ -1,3 +1,4 @@
+;;
 ;; Licensed to the Apache Software Foundation (ASF) under one
 ;; or more contributor license agreements.  See the NOTICE file
 ;; distributed with this work for additional information
@@ -14,6 +15,7 @@
 ;; KIND, either express or implied.  See the License for the
 ;; specific language governing permissions and limitations
 ;; under the License.
+;;
 
 # Overview
 
@@ -33,15 +35,16 @@ be able to tolerate failures.
 Modern messaging systems aren't the only way to get processes talking.
 Your application's parts can share a view into a database, or you can
 use HTTP and REST to expose information.  But these approaches have
-some serious drawbacks.  A database is reliable, but it makes all the
-parts of your application dependent on one component.  REST offers the
-reverse: it allows you to decouple the parts of your application, but
-it gives you no guarantee of reliabile communication.
+some serious drawbacks.  A database is reliable, but it isn't designed
+to intermediate communication.  Its focus is storing data, not moving
+it between processes.  REST lets you communicate, but it offers no
+reliability.
 
-A store-and-forward messaging system gives you both.  Message brokers
-take responsibility for ensuring messages reach their destination,
-even if the destination is temporarily out of reach.  Messaging APIs
-manage acknowledgments so that no messages are dropped in transit.
+A store-and-forward messaging system gives you reliable communication.
+Message brokers take responsibility for ensuring messages reach their
+destination, even if the destination is temporarily out of reach.
+Messaging APIs manage acknowledgments so that no messages are dropped
+in transit.
 
 ## Proprietary messaging solutions
 
@@ -68,17 +71,22 @@ offer messaging APIs and message brokers for use in your application,
 and core libraries for making AMQP part of your own messaging product.
 
  - *Open source* - We do our work in the community, and you can gain
-    from our contributions just as we can gain from yours.
+   from our contributions just as we can gain from yours.
 
  - *Many languages, many platforms* - We want AMQP to be available
-    everywhere.  That's why we have focused on supporting a wide range
-    of programming languages and computing environments.
+   everywhere.  That's why we have focused on supporting a wide range
+   of programming languages and computing environments.
 
- - *Custom application development* - Messaging is essential to
-    reliable distributed applications, and we offer the tools you need
-    to build one.  Check out our
-    [messaging APIs](@site-url@/components/index.html#messaging-apis)
-    and [servers](@site-url@/components/index.html#servers).
+ - *Application development* - Messaging is essential to reliable
+   distributed applications, and we offer the tools you need to build
+   one.  Check out our
+   [messaging APIs](@site-url@/components/index.html#messaging-apis).
+
+ - *Messaging infrastructure* - You can design and deploy an AMQP
+   network that integrates with other services in your organization.
+   See our
+   [messaging servers](@site-url@/components/index.html#servers) and
+   [tools](@site-url@/components/index.html#servers).
 
  - *Your messaging product* - We know that there are many established
    messaging systems, and we want to make it easy for them to speak
@@ -86,8 +94,9 @@ and core libraries for making AMQP part of your own messaging product.
    instead of developing your own protocol support.
 
 ;; - *Language-native communication frameworks* - Java, .NET, Python,
-;;    and others have their own generic communication frameworks.  
-
+;;   and others have their own generic communication frameworks, and
+;;   Qpid integrates with many of them.
+   
 ## The future of messaging is bigger still
 
 Traditional messaging has focused on the back office, with just one
@@ -98,7 +107,7 @@ intermediaries.  It will leverage redundancy in the network to route
 around failures, just as TCP and routers do, and it will allow
 messaging applications to operate at unprecedented scale.
 
-The Qpid community is right now building the foundations for these new
+The Qpid community is building the foundations for these new
 technologies.
 
 ## More information
