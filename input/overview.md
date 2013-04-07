@@ -110,6 +110,10 @@ messaging applications to operate at unprecedented scale.
 The Qpid community is building the foundations for these new
 technologies.
 
+;; XXX add link to roadmap once we have a reasonable one
+
 ## More information
 
- - [Roadmap](roadmap.html)
+ - [How to get involved](get-involved.html)
+ - [Qpid integrations with other projects](https://cwiki.apache.org/qpid/qpid-integrations.html)
+ - [Project status at Apache](https://cwiki.apache.org/qpid/project-status.html)

@@ -9,6 +9,7 @@
 
 # Medium
 
+ - cpp broker feature links
  - add glassfish to jca page
  - link to proton roadmap
  - isolate maven howto
@@ -19,7 +20,6 @@
  - doxygen for just the qmf api
  - qmf2 examples
  - becoming a contributor, more detail
- - qpid integrations, azure, openmama
  - keep old site at old-site
  - source modules
  - roadmap
