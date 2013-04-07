@@ -9,6 +9,8 @@
 
 # Medium
 
+ - tarballs of apidocs and examples
+ - go to revision
  - cpp broker feature links
  - add glassfish to jca page
  - isolate maven howto
@@ -30,6 +32,7 @@
 
 # Low
 
+ - check dev env (python 2.7, for example)
  - external link checking
  - news feed
  - qips

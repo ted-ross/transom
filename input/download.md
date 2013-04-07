@@ -83,8 +83,11 @@ make sure you get this file from the relevant subdirectory of the
 [main distribution directory](http://www.apache.org/dist/qpid/),
 rather than from a mirror.
 
-## More information
+## Qpid releases
 
- - @current-release-link@
- - @current-proton-release-link@
+Qpid's source artefacts are produced as part of our community release
+process.  The downloads on this page are from our current releases,
+@current-release-link@ and @current-proton-release-link@.
+
+ - [Find past releases](@site-url@/releases/index.html#past-releases) 
  - More about [Qpid releases](@site-url@/releases/index.html)
