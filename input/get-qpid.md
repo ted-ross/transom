@@ -22,7 +22,7 @@
 ## Source releases
 
 Each new Qpid release is available as a set of
-[source distributions](@site-url@/download.html).
+[source artefacts](@site-url@/download.html).
 
 ## Maven
 

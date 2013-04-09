@@ -19,7 +19,7 @@
 
 # Download
 
-*In addition to the source releases below, there are
+*In addition to the source artefacts below, there are
 [more ways to get Qpid](@site-url@/get-qpid.html).*
 
 It's important to [verify the integrity](#verify-what-you-download) of
@@ -30,7 +30,7 @@ the files you download.
   || *Content* || *Download* || *Signature* ||
   || [AMQP Messenger](@site-url@/components/messenger/index.html), [AMQP Protocol Engine](@site-url@/components/protocol-engine/index.html) (C, bindings) || [qpid-proton-c-@current-proton-release@.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/proton/@current-proton-release@/qpid-proton-c-@current-proton-release@.tar.gz) || [PGP](http://www.apache.org/dist/qpid/proton/@current-proton-release@/qpid-proton-c-@current-proton-release@.tar.gz.asc) ||
   || [AMQP Messenger](@site-url@/components/messenger/index.html), [AMQP Protocol Engine](@site-url@/components/protocol-engine/index.html) (Java) || [qpid-proton-j-@current-proton-release@.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/proton/@current-proton-release@/qpid-proton-j-@current-proton-release@.tar.gz) || [PGP](http://www.apache.org/dist/qpid/proton/@current-proton-release@/qpid-proton-j-@current-proton-release@.tar.gz.asc) ||
-  || [Qpid JMS](@site-url@/components/qpid-jms/index.html)\* || [qpid-java-client-@current-release@.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/@current-release@/qpid-java-client-@current-release@.tar.gz) || [PGP](http://www.apache.org/dist/qpid/@current-release@/qpid-java-client-@current-release@.tar.gz.asc) ||
+  || [Qpid JMS](@site-url@/components/qpid-jms/index.html)\* (AMQP 0-10, 0-91, 0-9, 0-8) || [qpid-java-client-@current-release@.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/@current-release@/qpid-java-client-@current-release@.tar.gz) || [PGP](http://www.apache.org/dist/qpid/@current-release@/qpid-java-client-@current-release@.tar.gz.asc) ||
   || [Qpid JMS](@site-url@/components/qpid-jms/index.html)\* (AMQP 1.0) || [qpid-java-amqp-1-0....tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/@current-release@/qpid-java-amqp-1-0-client-@current-release@.tar.gz) || [PGP](http://www.apache.org/dist/qpid/@current-release@/qpid-java-amqp-1-0-client-@current-release@.tar.gz.asc) ||
   || [Qpid Messaging API](@site-url@/components/messaging-api/index.html) (C++, bindings) || [qpid-cpp-@current-release@.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/@current-release@/qpid-cpp-@current-release@.tar.gz) || [PGP](http://www.apache.org/dist/qpid/@current-release@/qpid-cpp-@current-release@.tar.gz.asc) ||
   || [Qpid Messaging API](@site-url@/components/messaging-api/index.html) (Python) || [qpid-python-@current-release@.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/@current-release@/qpid-python-@current-release@.tar.gz) || [PGP](http://www.apache.org/dist/qpid/@current-release@/qpid-python-@current-release@.tar.gz.asc) ||
@@ -46,9 +46,9 @@ the files you download.
   || [QMF](@site-url@/components/qmf/index.html) || [qpid-qmf-@current-release@.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/@current-release@/qpid-qmf-@current-release@.tar.gz) || [PGP](http://www.apache.org/dist/qpid/@current-release@/qpid-qmf-@current-release@.tar.gz.asc) ||
 
 \*These Java artefacts are released as compiled bytecode.  We also
-offer the
-[Qpid Java source](http://www.apache.org/dyn/closer.cgi/qpid/@current-release@/qpid-java-@current-release@.tar.gz)
-([PGP](http://www.apache.org/dist/qpid/@current-release@/qpid-java-@current-release@.tar.gz.asc)).
+offer the source as part of our
+[Qpid source release](http://www.apache.org/dyn/closer.cgi/qpid/@current-release@/qpid-@current-release@.tar.gz)
+([PGP](http://www.apache.org/dist/qpid/@current-release@/qpid-@current-release@.tar.gz.asc)).
 
 ## Verify what you download
 
