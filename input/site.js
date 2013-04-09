@@ -19,61 +19,7 @@
  *
  */
 
-function gotoJira() {
-    form = document.getElementById("jira-goto-form");
-
-    jira = form.jira.value;
-    uri = "https://issues.apache.org/jira/browse/" + encodeURIComponent(jira);
-
-    form.action = uri;
-}
-
-function searchJiras() {
-    form = document.getElementById("jira-search-form");
-
-    text = form.text.value;
-    jql = "project in (QPID, PROTON) and text ~ \"" + text + "\" order by updatedDate desc";
-    uri = "https://issues.apache.org/jira/issues/?jql=" + encodeURIComponent(jql);
-
-    form.action = uri;
-}
-
-function register() {
-    jiraGotoForm = document.getElementById("jira-goto-form");
-    jiraSearchForm = document.getElementById("jira-search-form");
-
-    if (jiraGotoForm !== null) {
-        jiraGotoForm.addEventListener("submit", gotoJira, false);
-    }
-
-    if (jiraSearchForm !== null) {
-        jiraSearchForm.addEventListener("submit", searchJiras, false);
-    }
-}
-
-function focusJiraSearchForm() {
-    hash = window.location.hash;
-
-    if (hash === "#search-existing-issues") {
-        searchForm = document.getElementById("jira-search-form");
-
-        if (searchForm !== null) {
-            searchForm.text.focus();
-        }
-    }
-}
-
-function focusSiteSearchForm() {
-    pathname = window.location.pathname;
-
-    if (pathname.substring(pathname.length - 11) === "search.html") {
-        searchForm = document.getElementById("site-search-form");
-
-        if (searchForm !== null) {
-            searchForm.q.focus();
-        }
-    }
-}
+"use strict";
 
 function getDescendant(elem, path) {
     var names = path.split(".");
@@ -96,7 +42,7 @@ function getText(elem) {
     var child = elem.firstChild;
 
     while (child) {
-        if (child.nodeType === 3) {
+        if (child.nodeType === 3 && child.data.trim() !== "") {
             return child.data;
         }
 
@@ -104,27 +50,86 @@ function getText(elem) {
     }
 }
 
-function updateNavigation() {
-    var elem = document.getElementById("global-navigation");
+function gotoJira() {
+    var form = document.getElementById("jira-goto-form");
 
-    if (!elem) {
+    if (!form) {
         return;
     }
 
+    var jira = form.jira.value;
+    var uri = "https://issues.apache.org/jira/browse/" + encodeURIComponent(jira);
+
+    form.action = uri;
+}
+
+function searchJiras() {
+    var form = document.getElementById("jira-search-form");
+
+    if (!form) {
+        return;
+    }
+
+    var text = form.text.value;
+    var jql = "project in (QPID, PROTON) and text ~ \"" + text + "\" order by updatedDate desc";
+    var uri = "https://issues.apache.org/jira/issues/?jql=" + encodeURIComponent(jql);
+
+    form.action = uri;
+}
+
+function registerEventListeners() {
+    var jiraGotoForm = document.getElementById("jira-goto-form");
+    var jiraSearchForm = document.getElementById("jira-search-form");
+
+    if (jiraGotoForm) {
+        jiraGotoForm.addEventListener("submit", gotoJira, false);
+    }
+
+    if (jiraSearchForm) {
+        jiraSearchForm.addEventListener("submit", searchJiras, false);
+    }
+}
+
+function focusJiraSearchForm() {
+    var hash = window.location.hash;
+
+    if (hash === "#search-existing-issues") {
+        var searchForm = document.getElementById("jira-search-form");
+
+        if (searchForm !== null) {
+            searchForm.text.focus();
+        }
+    }
+}
+
+function focusSiteSearchForm() {
+    var pathname = window.location.pathname;
+
+    if (pathname.substring(pathname.length - 11) === "search.html") {
+        var searchForm = document.getElementById("site-search-form");
+
+        if (searchForm !== null) {
+            searchForm.q.focus();
+        }
+    }
+}
+
+function updateGlobalNavigation() {
+    var elem = document.getElementById("global-navigation");
     var pageTitleElems = document.getElementsByTagName("h1");
 
-    if (pageTitleElems.length === 0) {
+    if (!elem || pageTitleElems.length === 0) {
         return;
     }
 
-    var pageTitle = getText(pageTitleElems[0]);
+    var pageTitle = getText(pageTitleElems[0]).trim();
     var child = elem.firstChild;
 
     while (child) {
         if (child.nodeType === 1) {
-            desc = getDescendant(child, "a");
+            var desc = getDescendant(child, "a");
 
-            if (getText(desc) === pageTitle) {
+            if (getText(desc).trim() === pageTitle) {
                 desc.style.color = "black";
                 break;
             }
@@ -138,28 +143,33 @@ function updateNavigation() {
         child = getDescendant(elem, "img");
         child.src = child.src.replace("-blue", "-black");
     }
+}
 
-    elem = document.getElementById("path-navigation");
+function updatePathNavigation() {
+    var elem = document.getElementById("path-navigation");
 
-    if (elem) {
-        child = elem.firstChild;
-        var count = 0;
+    if (!elem) {
+        return;
+    }
 
-        while (child) {
-            if (child.nodeType === 1) {
-                count++;
-            }
+    var child = elem.firstChild;
+    var count = 0;
 
-            child = child.nextSibling;
+    while (child) {
+        if (child.nodeType === 1) {
+            count++;
         }
 
-        if (count >= 2) {
-            elem.style.display = "inherit";
-        }
+        child = child.nextSibling;
+    }
+
+    if (count >= 2) {
+        elem.style.display = "inherit";
     }
 }
 
-window.addEventListener("load", register, false);
+window.addEventListener("load", registerEventListeners, false);
 window.addEventListener("load", focusJiraSearchForm, false);
 window.addEventListener("load", focusSiteSearchForm, false);
-window.addEventListener("load", updateNavigation, false);
+window.addEventListener("load", updateGlobalNavigation, false);
+window.addEventListener("load", updatePathNavigation, false);
