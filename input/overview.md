@@ -37,14 +37,15 @@ Your application's parts can share a view into a database, or you can
 use HTTP and REST to expose information.  But these approaches have
 some serious drawbacks.  A database is reliable, but it isn't designed
 to intermediate communication.  Its focus is storing data, not moving
-it between processes.  REST lets you communicate, but it offers no
-reliability.
+it between processes.  REST helps you communicate efficiently, but it
+offers no reliability.  If the party you're talking to is unavailable,
+the transmission is dropped.
 
-A store-and-forward messaging system gives you reliable communication.
-Message brokers take responsibility for ensuring messages reach their
-destination, even if the destination is temporarily out of reach.
-Messaging APIs manage acknowledgments so that no messages are dropped
-in transit.
+A store-and-forward messaging system gives you efficient, reliable
+communication.  Message brokers take responsibility for ensuring
+messages reach their destination, even if the destination is
+temporarily out of reach.  Messaging APIs manage acknowledgments so
+that no messages are dropped in transit.
 
 ## Proprietary messaging solutions
 
