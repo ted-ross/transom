@@ -47,7 +47,7 @@ the files you download.
 
 \*These Java artefacts are released as compiled bytecode.  We also
 offer the source as part of our
-[Qpid source release](http://www.apache.org/dyn/closer.cgi/qpid/@current-release@/qpid-@current-release@.tar.gz)
+[full source release](http://www.apache.org/dyn/closer.cgi/qpid/@current-release@/qpid-@current-release@.tar.gz)
 ([PGP](http://www.apache.org/dist/qpid/@current-release@/qpid-@current-release@.tar.gz.asc)).
 
 ## Verify what you download
