@@ -266,19 +266,19 @@ ul ul, ol ol {
     margin: 0;
 }
 
-div.twocolumn {
+div.two-column {
     -webkit-column-count: 2;
     -moz-column-count: 2;
     column-count: 2;
 }
 
-div.twocolumn ul {
+div.two-column ul {
     -webkit-column-break-inside: avoid;
     -moz-column-break-inside: avoid;
     column-break-inside: avoid;
 }
 
-div.fourcolumn {
+div.four-column {
     -webkit-column-count: 4;
     -moz-column-count: 4;
 }

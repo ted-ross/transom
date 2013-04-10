@@ -1,6 +1,7 @@
 # Developer Central
 
-<div class="twocolumn" markdown="1">
+<div class="two-column" markdown="1">
+
 ## Releases in development
 
  - [Qpid 0.24](https://cwiki.apache.org/qpid/024-release.html) - Trunk
@@ -40,6 +41,7 @@
  - [Review Board requests](https://reviews.apache.org/groups/qpid/)
  - [Apache URI shortener](http://s.apache.org/)
  - [Apache pastebin](https://paste.apache.org/)
+
 </div>
 
 ;; jira queries

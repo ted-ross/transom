@@ -28,7 +28,7 @@ contributions.  If you'd like to become a contributor, learn how to
 As of 1 February 2013, the following committers have been active since
 1 January 2012.
 
-<div class="fourcolumn" markdown="1">
+<div class="four-column" markdown="1">
   - Alan Conway
   - Andrew Kennedy
   - Andrew Stitcher
@@ -55,7 +55,7 @@ As of 1 February 2013, the following committers have been active since
 
 ## Past committers
 
-<div class="fourcolumn" markdown="1">
+<div class="four-column" markdown="1">
   - Aidan Skinner
   - Andrea Gazzarini
   - Arnaud Simon
@@ -75,7 +75,7 @@ As of 1 February 2013, the following committers have been active since
 
 ## Other contributors
 
-<div class="fourcolumn" markdown="1">
+<div class="four-column" markdown="1">
   - Bhupendra Bhardwaj
   - Colin Crist
   - Ernie Allen
@@ -88,7 +88,7 @@ As of 1 February 2013, the following committers have been active since
 
 ## Project mentors
 
-<div class="fourcolumn" markdown="1">
+<div class="four-column" markdown="1">
   - Cliff Schmidt
   - Craig Russell
   - Paul Fremantle

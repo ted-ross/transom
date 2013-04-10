@@ -39,7 +39,7 @@ An alternative to JMS that supports many languages and platforms.
   || *Ruby* || [hello_world.rb](@current-release-url@/messaging-api/ruby/examples/hello_world.rb.html) || [client.rb](@current-release-url@/messaging-api/ruby/examples/client.rb.html) || [server.rb](@current-release-url@/messaging-api/ruby/examples/server.rb.html) || [spout.rb](@current-release-url@/messaging-api/ruby/examples/spout.rb.html) || [drain.rb](@current-release-url@/messaging-api/ruby/examples/drain.rb.html) || [More](@current-release-url@/messaging-api/ruby/examples/index.html) ||
   || *.NET* || [helloworld.cs](@current-release-url@/messaging-api/dotnet/examples/csharp.example.helloworld.cs.html) || [client.cs](@current-release-url@/messaging-api/dotnet/examples/csharp.example.client.cs.html) || [server.cs](@current-release-url@/messaging-api/dotnet/examples/csharp.example.server.cs.html) || [spout.cs](@current-release-url@/messaging-api/dotnet/examples/csharp.example.spout.cs.html) || [drain.cs](@current-release-url@/messaging-api/dotnet/examples/csharp.example.drain.cs.html) || [More](@current-release-url@/messaging-api/dotnet/examples/index.html) ||
 
-<div class="twocolumn" markdown="1">
+<div class="two-column" markdown="1">
 
 ### C++
 
