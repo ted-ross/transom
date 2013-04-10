@@ -19,9 +19,11 @@
 
 # Issues
 
-Qpid uses JIRA to track bugs and enhancements.  You can browse Qpid
-issues at the [JIRA project
-page](https://issues.apache.org/jira/browse/qpid).
+Qpid uses [JIRA](http://www.atlassian.com/software/jira/overview) to
+track bugs and enhancements.
+
+ - [Browse Qpid issues](https://issues.apache.org/jira/browse/qpid)
+ - <form id="jira-goto-form" action="?" method="get">Go to issue <input name="jira" value="QPID-"/></form>
 
 ## Search existing issues
 
@@ -65,7 +67,6 @@ you give to make Qpid better.
  - [Sign up for an account](https://issues.apache.org/jira/secure/Signup!default.jspa)
  - [Report a bug](https://issues.apache.org/jira/secure/CreateIssue.jspa?pid=12310520&amp;issuetype=1&amp;priority=3)
  - [Create a new issue](https://issues.apache.org/jira/secure/CreateIssue.jspa?pid=12310520) of another type
- - <form id="jira-goto-form" action="?" method="get">Go to <input name="jira" size="12" value="QPID-"/></form>
 
 ## More information
 

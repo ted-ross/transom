@@ -337,6 +337,15 @@ form#jira-goto-form input {
     width: 6em;
 }
 
+form#viewvc-goto-form {
+    display: inline;
+    margin: 0;
+}
+
+form#viewvc-goto-form input {
+    width: 6em;
+}
+
 span.date {
     color: #666;
     font-size: 0.8em;

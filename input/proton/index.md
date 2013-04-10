@@ -40,7 +40,7 @@ Proton](@site-url@/proton/overview.html).
  - [Search existing issues](@site-url@/issues.html#search-existing-issues)
  - [Report a bug](https://issues.apache.org/jira/secure/CreateIssue.jspa?pid=12313720&issuetype=1&priority=3)
  - [Create a new issue](https://issues.apache.org/jira/secure/CreateIssue.jspa?pid=12313720) of another type
- - <form id="jira-goto-form" action="?" method="get">Go to <input name="jira" size="14" value="PROTON-"/></form>
+ - <form id="jira-goto-form" action="?" method="get">Go to issue <input name="jira" value="PROTON-"/></form>
  - [Proton JIRA project page](https://issues.apache.org/jira/browse/PROTON)
 
 ## Mailing list

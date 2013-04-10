@@ -19,6 +19,10 @@
 
 # Mailing Lists
 
+Qpid contributors and users collaborate primarily via these mailing
+lists.  You can also catch us on
+[chat](@site-url@/resources.html#chat).
+
 ## Search archives
 
 <form action="http://qpid.2158936.n2.nabble.com/template/NamlServlet.jtp" method="get">

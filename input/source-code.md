@@ -22,10 +22,8 @@
 Qpid uses [Subversion](http://subversion.apache.org/) to manage its
 source code.
 
-## Browse the code
-
-You can see all of Qpid's source code via the [repository web
-interface](http://svn.apache.org/viewvc/qpid/trunk/qpid).
+ - [Browse the code](http://svn.apache.org/viewvc/qpid/trunk/qpid)
+ - <form id="viewvc-goto-form" action="http://svn.apache.org/viewvc" method="get"><input type="hidden" name="view" value="revision"/>Go to revision <input type="text" name="revision"/></form>
 
 ## Check out the code
 
@@ -72,7 +70,6 @@ Consult the install documentation below.
 
 ## More information
 
- - [Repository web interface](http://svn.apache.org/viewvc/qpid/trunk/qpid)
  - [Subversion project](http://subversion.apache.org/)
  - [Subversion manual](http://svnbook.red-bean.com/)
  - [Subversion at Apache](http://www.apache.org/dev/version-control.html)

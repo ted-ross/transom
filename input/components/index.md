@@ -19,6 +19,9 @@
 
 # Components
 
+Qpid offers these tools to help you build AMQP-based distributed
+applications.
+
 ## Messaging APIs
 
 All of Qpid's API libraries speak [AMQP](@site-url@/amqp.html).
