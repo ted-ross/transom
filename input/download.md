@@ -22,6 +22,12 @@
 *In addition to the source artefacts below, there are
 [more ways to get Qpid](@site-url@/get-qpid.html).*
 
+Qpid's source artefacts are produced as part of our community release
+process.  The downloads on this page are from our current releases,
+@current-release-link@ and @current-proton-release-link@.  You can
+also see our
+[past releases](@site-url@/releases/index.html#past-releases).
+
 It's important to [verify the integrity](#verify-what-you-download) of
 the files you download.
 
@@ -83,11 +89,6 @@ make sure you get this file from the relevant subdirectory of the
 [main distribution directory](http://www.apache.org/dist/qpid/),
 rather than from a mirror.
 
-## Qpid releases
+## More information
 
-Qpid's source artefacts are produced as part of our community release
-process.  The downloads on this page are from our current releases,
-@current-release-link@ and @current-proton-release-link@.
-
- - [Find past releases](@site-url@/releases/index.html#past-releases) 
  - More about [Qpid releases](@site-url@/releases/index.html)
