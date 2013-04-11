@@ -24,8 +24,8 @@ messages using AMQP.
 
   || *Platforms* || JVM ||
   || *AMQP versions* || 1.0, 0-10, 0-91, 0-9, 0-8 ||
-  || *Current release* || @current-release-link@ ||
-  || *Source location* ||  <http://svn.apache.org/repos/asf/qpid/trunk/qpid/java> ||
+  || *Download* || [qpid-java-broker-@current-release@.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/@current-release@/qpid-java-broker-@current-release@.tar.gz) \[[PGP](http://www.apache.org/dist/qpid/@current-release@/qpid-java-broker-@current-release@.tar.gz.asc)] ||
+  || *Source location* ||  <http://svn.apache.org/repos/asf/qpid/trunk/qpid/java/> ||
 
 ## Features
 
@@ -59,6 +59,10 @@ messages using AMQP.
  - [Virtual hosts](https://cwiki.apache.org/qpid/configure-the-virtual-hosts-via-virtualhostsxml.html)
 
 ## Documentation
+
+This is the documentation for the current released version.  You can
+find previous versions with our
+[past releases](@site-url@/releases/index.html#past-releases).
 
  - [Guide to the Java broker](http://qpid.apache.org/books/@current-release@/AMQP-Messaging-Broker-Java-Book/html/index.html) ([PDF](http://qpid.apache.org/books/@current-release@/AMQP-Messaging-Broker-Java-Book/pdf/AMQP-Messaging-Broker-Java-Book.pdf))
  - [How to build Qpid Java](https://cwiki.apache.org/qpid/qpid-java-build-how-to.html)

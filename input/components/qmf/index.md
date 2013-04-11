@@ -27,10 +27,14 @@ easy-to-use manageability to a large set of applications.
   || *Languages* || C++, Python ||
   || *Platforms* || Linux ||
   || *AMQP versions* || 0-10 ||
-  || *Current release* || @current-release-link@ ||
-  || *Source locations* ||  <http://svn.apache.org/repos/asf/qpid/trunk/qpid/cpp> <br/> <http://svn.apache.org/repos/asf/qpid/trunk/qpid/extras/qmf> ||
+  || *Downloads* || [qpid-cpp-@current-release@.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/@current-release@/qpid-cpp-@current-release@.tar.gz) \[[PGP](http://www.apache.org/dist/qpid/@current-release@/qpid-cpp-@current-release@.tar.gz.asc)], [qpid-qmf-@current-release@.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/@current-release@/qpid-qmf-@current-release@.tar.gz) \[[PGP](http://www.apache.org/dist/qpid/@current-release@/qpid-qmf-@current-release@.tar.gz.asc)] ||
+  || *Source locations* ||  <http://svn.apache.org/repos/asf/qpid/trunk/qpid/cpp/>,<br/> <http://svn.apache.org/repos/asf/qpid/trunk/qpid/extras/qmf/> ||
 
 ## Documentation
+
+This is the documentation for the current released version.  You can
+find previous versions with our
+[past releases](@site-url@/releases/index.html#past-releases).
 
  - [API reference](http://qpid.apache.org/apis/@current-release@/cpp/html/index.html) ([qpid-cpp-doxygen-@current-release@.html.tar.gz](http://qpid.apache.org/apis/@current-release@/cpp/qpid-cpp-doxygen-@current-release@.html.tar.gz))
  - [Installing Qpid C++](http://svn.apache.org/repos/asf/qpid/tags/@current-release@/qpid/cpp/INSTALL)

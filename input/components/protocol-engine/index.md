@@ -29,10 +29,14 @@ application speak AMQP.
   || *Languages* || C, Java, Perl, PHP, Python, Ruby ||
   || *Platforms* || Linux, OS X, JVM ||
   || *AMQP versions* || 1.0 ||
-  || *Current release* || @current-proton-release-link@ ||
+  || *Downloads* || [qpid-proton-c-@current-proton-release@.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/proton/@current-proton-release@/qpid-proton-c-@current-proton-release@.tar.gz) \[[PGP](http://www.apache.org/dist/qpid/proton/@current-proton-release@/qpid-proton-c-@current-proton-release@.tar.gz.asc)] (C, bindings),<br/> [qpid-proton-j-@current-proton-release@.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/proton/@current-proton-release@/qpid-proton-j-@current-proton-release@.tar.gz) \[[PGP](http://www.apache.org/dist/qpid/proton/@current-proton-release@/qpid-proton-j-@current-proton-release@.tar.gz.asc)] (Java) ||
   || *Source location* ||  <http://svn.apache.org/repos/asf/qpid/proton/trunk/> ||
 
 ## Documentation
+
+This is the documentation for the current released version.  You can
+find previous versions with our
+[past releases](@site-url@/releases/index.html#past-releases).
 
  - [Overview](https://cwiki.apache.org/qpid/protocol-engines.html)
  - [API reference](http://qpid.apache.org/proton/api-doc/)

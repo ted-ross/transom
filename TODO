@@ -4,13 +4,11 @@
    - nav from api ref back to site
  - gen books
  - tools need a component page
- - replace release links with download links to specific artifacts
  - make the proton page look more like the front page
 
 # Medium
 
  - tarballs of apidocs and examples
- - go to revision
  - cpp broker feature links
  - add glassfish to jca page
  - isolate maven howto

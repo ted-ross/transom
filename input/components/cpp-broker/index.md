@@ -24,8 +24,8 @@ messages using AMQP.
 
   || *Platforms* || Linux, Windows ||
   || *AMQP versions* || 1.0, 0-10 ||
-  || *Current release* || @current-release-link@ ||
-  || *Source location* ||  <http://svn.apache.org/repos/asf/qpid/trunk/qpid/cpp> ||
+  || *Download* || [qpid-cpp-@current-release@.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/@current-release@/qpid-cpp-@current-release@.tar.gz) \[[PGP](http://www.apache.org/dist/qpid/@current-release@/qpid-cpp-@current-release@.tar.gz.asc)] ||
+  || *Source location* ||  <http://svn.apache.org/repos/asf/qpid/trunk/qpid/cpp/> ||
 
 ## Features
 
@@ -43,6 +43,10 @@ messages using AMQP.
  - Transactions
 
 ## Documentation
+
+This is the documentation for the current released version.  You can
+find previous versions with our
+[past releases](@site-url@/releases/index.html#past-releases).
 
  - [Guide to the C++ broker](http://qpid.apache.org/books/@current-release@/AMQP-Messaging-Broker-CPP-Book/html/index.html) ([PDF](http://qpid.apache.org/books/@current-release@/AMQP-Messaging-Broker-CPP-Book/pdf/AMQP-Messaging-Broker-CPP-Book.pdf))
  - [Installing Qpid C++](http://svn.apache.org/repos/asf/qpid/tags/@current-release@/qpid/cpp/INSTALL)

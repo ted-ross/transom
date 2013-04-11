@@ -26,10 +26,14 @@ channel implementation that speaks AMQP.
   || *Languages* || C# ||
   || *Platforms* || Windows ||
   || *AMQP versions* || 0-10 ||
-  || *Current release* || @current-release-link@ ||
-  || *Source location* ||  <http://svn.apache.org/repos/asf/qpid/trunk/qpid/wcf> ||
+  || *Downloads* || [qpid-wcf-@current-release@.zip](http://www.apache.org/dyn/closer.cgi/qpid/@current-release@/qpid-wcf-@current-release@.zip) \[[PGP](http://www.apache.org/dist/qpid/@current-release@/qpid-wcf-@current-release@.zip.asc)] ||
+  || *Source location* ||  <http://svn.apache.org/repos/asf/qpid/trunk/qpid/wcf/> ||
 
 ## Documentation
+
+This is the documentation for the current released version.  You can
+find previous versions with our
+[past releases](@site-url@/releases/index.html#past-releases).
 
  - [Examples](http://svn.apache.org/repos/asf/qpid/tags/@current-release@/qpid/wcf/samples)
  - [API reference](http://msdn.microsoft.com/en-us/library/vstudio/ms735119\(v=vs.90\).aspx)

@@ -26,13 +26,17 @@ implementation that speaks all versions of AMQP.
   || *Languages* || Java ||
   || *Platforms* || JVM ||
   || *AMQP versions* || 1.0\*, 0-10, 0-91, 0-9, 0-8 ||
-  || *Current release* || @current-release-link@ ||
-  || *Source location* ||  <http://svn.apache.org/repos/asf/qpid/trunk/qpid/java> ||
+  || *Downloads* || [qpid-java-client-@current-release@.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/@current-release@/qpid-java-client-@current-release@.tar.gz) \[[PGP](http://www.apache.org/dist/qpid/@current-release@/qpid-java-client-@current-release@.tar.gz.asc)] (AMQP 0-10, 0-91, 0-9, 0-8),<br/> [qpid-java-amqp-1-0-client-@current-release@.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/@current-release@/qpid-java-amqp-1-0-client-@current-release@.tar.gz) \[[PGP](http://www.apache.org/dist/qpid/@current-release@/qpid-java-amqp-1-0-client-@current-release@.tar.gz.asc)] (AMQP 1.0) ||
+  || *Source location* ||  <http://svn.apache.org/repos/asf/qpid/trunk/qpid/java/> ||
 
 \*1.0 support is offered in a distinct implementation from that of
 older protocol versions.
 
 ## Documentation
+
+This is the documentation for the current released version.  You can
+find previous versions with our
+[past releases](@site-url@/releases/index.html#past-releases).
 
  - [API reference](http://docs.oracle.com/javaee/1.4/api/javax/jms/package-summary.html)
  - [Examples](http://svn.apache.org/repos/asf/qpid/tags/@current-release@/qpid/java/client/example/src/main/java/org/apache/qpid/example/)

@@ -27,13 +27,18 @@ EE applications and AMQP 0-10 message brokers.
   || *Languages* || Java ||
   || *Platforms* || JVM ||
   || *AMQP versions* || 0-10 ||
-  || *Current release* || @current-release-link@ ||
-  || *Source location* ||  <http://svn.apache.org/repos/asf/qpid/trunk/qpid/java/jca> ||
+  || *Download* || [qpid-java-broker-@current-release@.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/@current-release@/qpid-java-broker-@current-release@.tar.gz) \[[PGP](http://www.apache.org/dist/qpid/@current-release@/qpid-java-broker-@current-release@.tar.gz.asc)] ||
+  || *Source location* ||  <http://svn.apache.org/repos/asf/qpid/trunk/qpid/java/jca/> ||
 
 ## Documentation
 
- - [README](http://svn.apache.org/repos/asf/qpid/trunk/qpid/java/jca/README.txt)
- - [Connect with JBoss](http://svn.apache.org/repos/asf/qpid/trunk/qpid/java/jca/README-JBOSS.txt)
- - [Connect with JBoss EAP6](http://svn.apache.org/repos/asf/qpid/trunk/qpid/java/jca/README-JBOSS-EAP6.txt)
- - [Connect with Geronimo](http://svn.apache.org/repos/asf/qpid/trunk/qpid/java/jca/README-GERONIMO.txt)
- - [Examples](http://svn.apache.org/repos/asf/qpid/trunk/qpid/java/jca/example/)
+This is the documentation for the current released version.  You can
+find previous versions with our
+[past releases](@site-url@/releases/index.html#past-releases).
+
+ - [README](http://svn.apache.org/repos/asf/qpid/tags/@current-release@/qpid/java/jca/README.txt)
+ - [Connect with JBoss](http://svn.apache.org/repos/asf/qpid/tags/@current-release@/qpid/java/jca/README-JBOSS.txt)
+;; - [Connect with JBoss EAP6](http://svn.apache.org/repos/asf/qpid/tags/@current-release@/qpid/java/jca/README-JBOSS-EAP6.txt)
+ - [Connect with Geronimo](http://svn.apache.org/repos/asf/qpid/tags/@current-release@/qpid/java/jca/README-GERONIMO.txt)
+ - [Connect with Glassfish](http://svn.apache.org/repos/asf/qpid/tags/@current-release@/qpid/java/jca/example/README-GLASSFISH.txt)
+ - [Examples](http://svn.apache.org/repos/asf/qpid/tags/@current-release@/qpid/java/jca/example/)

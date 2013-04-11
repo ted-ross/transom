@@ -19,15 +19,20 @@
 
 # Qpid Messaging API
 
-An alternative to JMS that supports many languages and platforms.
+A connection-oriented messaging API that supports many languages and
+platforms.
 
   || *Languages* || C++, Perl, Python, Ruby, .NET ||
   || *Platforms* || Linux, Windows ||
   || *AMQP versions* || 1.0, 0-10 ||
-  || *Current release* || @current-release-link@ ||
-  || *Source locations* ||  <http://svn.apache.org/repos/asf/qpid/trunk/qpid/cpp> <br/> <http://svn.apache.org/repos/asf/qpid/trunk/qpid/python> ||
+  || *Downloads* || [qpid-cpp-@current-release@.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/@current-release@/qpid-cpp-@current-release@.tar.gz) \[[PGP](http://www.apache.org/dist/qpid/@current-release@/qpid-cpp-@current-release@.tar.gz.asc)] (C++, bindings),<br/> [qpid-python-@current-release@.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/@current-release@/qpid-python-@current-release@.tar.gz) \[[PGP](http://www.apache.org/dist/qpid/@current-release@/qpid-python-@current-release@.tar.gz.asc)] (Python) ||
+  || *Source locations* ||  <http://svn.apache.org/repos/asf/qpid/trunk/qpid/cpp/>,<br/> <http://svn.apache.org/repos/asf/qpid/trunk/qpid/python/> ||
 
 ## Documentation
+
+This is the documentation for the current released version.  You can
+find previous versions with our
+[past releases](@site-url@/releases/index.html#past-releases).
 
  - [Programming in Apache Qpid](http://qpid.apache.org/books/@current-release@/Programming-In-Apache-Qpid/html/index.html) ([PDF](http://qpid.apache.org/books/@current-release@/Programming-In-Apache-Qpid/pdf/Programming-In-Apache-Qpid.pdf))
 
