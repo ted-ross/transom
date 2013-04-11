@@ -26,6 +26,7 @@ import tempfile
 
 from ConfigParser import SafeConfigParser
 from collections import defaultdict
+from urllib import urlopen
 from urlparse import urlsplit, urljoin
 from xml.etree.ElementTree import XML
 
@@ -84,25 +85,62 @@ class Site(object):
         for file in self.files:
             self.copy_file_to_output(file)
 
-    def check(self):
+    def check_links(self, internal=True, external=False):
         for page in self.pages:
-            page.check()
+            page.read_output()
 
-        for link in self.links:
-            errors = list()
+        for page in self.pages:
+            page.check_links()
 
-            if link.startswith(self.url):
-                if link not in self.targets:
-                    errors.append("Link has no target")
+        errors_by_link = defaultdict(list)
 
-            if errors:
-                print "Link: {}".format(link)
+        if internal:
+            for link in self.links:
+                if not link.startswith(self.url):
+                    continue
 
-                for error in errors:
-                    print "  Warning: {}".format(error)
+                if link in self.targets:
+                    continue
 
-                for source in self.links[link]:
-                    print "  Source: {}".format(source)
+                try:
+                    file = urlopen(link)
+                except IOError:
+                    errors_by_link[link].append("Link has no target")
+                finally:
+                    file.close()
+
+        if external:
+            for link in self.links:
+                if link.startswith(self.url):
+                    continue
+
+                if link.startswith("https://issues.apache.org/"):
+                    continue
+
+                code = None
+                sock = urlopen(link)
+
+                try:
+                    code = sock.getcode()
+                finally:
+                    sock.close()
+
+                sys.stdout.write(".")
+                sys.stdout.flush()
+
+                if code and code >= 400:
+                    errors_by_link[link].append("HTTP error code {}".format(code))
+
+            print
+
+        for link in errors_by_link:
+            print "Link: {}".format(link)
+
+            for error in errors_by_link[link]:
+                print "  Warning: {}".format(error)
+
+            for source in self.links[link]:
+                print "  Source: {}".format(source)
 
     def traverse_inputs(self, dir, page, skipped):
         names = set(os.listdir(dir))
@@ -132,9 +170,6 @@ class Site(object):
             os.makedirs(output_dir)
 
         shutil.copy(input_path, output_path)
-
-        site_path = self.get_site_path(output_path)
-        self.targets.add(self.get_url(site_path))
 
     def get_output_path(self, input_path):
         path = input_path[len(self.input_dir) + 1:]
@@ -185,6 +220,22 @@ class _Page(object):
     def read_input(self):
         with open(self.input_path, "r") as file:
             self.input = file.read()
+
+    def write_output(self, path=None):
+        if path is None:
+            path = self.output_path
+
+        output_dir = os.path.dirname(path)
+
+        if not os.path.exists(output_dir):
+            os.makedirs(output_dir)
+
+        with open(path, "w") as file:
+            file.write(self.output)
+
+    def read_output(self):
+        with open(self.output_path, "r") as file:
+            self.output = file.read()
 
     def convert(self):
         self.output = self.input
@@ -269,7 +320,7 @@ class _Page(object):
 
         return "<ul id=\"path-navigation\">{}</ul>".format(links)
 
-    def check(self):
+    def check_links(self):
         # Reparse to pick up new attr values after substitutions
         self.parse_xml(self.output)
 
@@ -323,18 +374,6 @@ class _Page(object):
             targets.add(target)
 
         return targets
-
-    def write_output(self, path=None):
-        if path is None:
-            path = self.output_path
-
-        output_dir = os.path.dirname(path)
-
-        if not os.path.exists(output_dir):
-            os.makedirs(output_dir)
-
-        with open(path, "w") as file:
-            file.write(self.output)
 
     def __repr__(self):
         args = self.__class__.__name__, self.input_dir, self.input_name

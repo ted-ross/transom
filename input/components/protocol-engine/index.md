@@ -29,7 +29,7 @@ application speak AMQP.
   || *Languages* || C, Java, Perl, PHP, Python, Ruby ||
   || *Platforms* || Linux, OS X, JVM ||
   || *AMQP versions* || 1.0 ||
-  || *Downloads* || [qpid-proton-c-@current-proton-release@.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/proton/@current-proton-release@/qpid-proton-c-@current-proton-release@.tar.gz) \[[PGP](http://www.apache.org/dist/qpid/proton/@current-proton-release@/qpid-proton-c-@current-proton-release@.tar.gz.asc)] (C, bindings),<br/> [qpid-proton-j-@current-proton-release@.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/proton/@current-proton-release@/qpid-proton-j-@current-proton-release@.tar.gz) \[[PGP](http://www.apache.org/dist/qpid/proton/@current-proton-release@/qpid-proton-j-@current-proton-release@.tar.gz.asc)] (Java) ||
+  || *Download* || [qpid-proton-@current-proton-release@.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/proton/@current-proton-release@/qpid-proton-@current-proton-release@.tar.gz) \[[PGP](http://www.apache.org/dist/qpid/proton/@current-proton-release@/qpid-proton-@current-proton-release@.tar.gz.asc)] ||
   || *Source location* ||  <http://svn.apache.org/repos/asf/qpid/proton/trunk/> ||
 
 ## Documentation
@@ -40,5 +40,5 @@ find previous versions with our
 
  - [Overview](https://cwiki.apache.org/qpid/protocol-engines.html)
  - [API reference](http://qpid.apache.org/proton/api-doc/)
- - [Example](http://svn.apache.org/repos/asf/qpid/proton/tags/@current-proton-release@/proton-c/examples/mailbox/)
+ - [Example](http://svn.apache.org/repos/asf/qpid/proton/tags/@current-proton-release@/examples/mailbox/)
  - [Installing Qpid Proton](http://svn.apache.org/repos/asf/qpid/proton/tags/@current-proton-release@/README)

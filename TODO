@@ -30,7 +30,6 @@
 
  - source modules
  - check dev env (python 2.7, for example)
- - external link checking
  - news feed
  - qips
  - fix smarty-pants to get the nice curly quotes back

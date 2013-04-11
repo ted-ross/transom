@@ -1,4 +1,4 @@
-.PHONY: default help render clean publish \
+.PHONY: default help render check-links clean publish \
 	gen-release x-release-pages
 
 OUTPUT_DIR := "output"
@@ -14,6 +14,9 @@ help:
 render: clean
 	mkdir -p ${OUTPUT_DIR}
 	scripts/render ${SITE_URL} input ${OUTPUT_DIR}
+
+check-links: render
+	scripts/check-links ${SITE_URL} input ${OUTPUT_DIR}
 
 clean:
 	rm -rf ${OUTPUT_DIR}
