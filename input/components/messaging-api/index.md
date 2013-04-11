@@ -45,6 +45,7 @@ find previous versions with our
   || *.NET* || [helloworld.cs](@current-release-url@/messaging-api/dotnet/examples/csharp.example.helloworld.cs.html) || [client.cs](@current-release-url@/messaging-api/dotnet/examples/csharp.example.client.cs.html) || [server.cs](@current-release-url@/messaging-api/dotnet/examples/csharp.example.server.cs.html) || [spout.cs](@current-release-url@/messaging-api/dotnet/examples/csharp.example.spout.cs.html) || [drain.cs](@current-release-url@/messaging-api/dotnet/examples/csharp.example.drain.cs.html) || [More](@current-release-url@/messaging-api/dotnet/examples/index.html) ||
 
 <div class="two-column" markdown="1">
+<div class="column" markdown="1">
 
 ### C++
 
@@ -62,6 +63,9 @@ find previous versions with our
  - [Examples](@current-release-url@/messaging-api/python/examples/index.html)
  - [Installing Qpid Python](http://svn.apache.org/repos/asf/qpid/tags/@current-release@/qpid/python/README.txt)
 
+</div>
+<div class="column" markdown="1">
+
 ### Ruby
 
  - [API reference](@current-release-url@/messaging-api/ruby/api/index.html)
@@ -74,4 +78,5 @@ find previous versions with our
  - [Examples](@current-release-url@/messaging-api/dotnet/examples/index.html)
  - [Installing the .NET Messaging API](http://svn.apache.org/repos/asf/qpid/tags/@current-release@/qpid/cpp/bindings/qpid/dotnet/ReadMe.txt)
 
+</div>
 </div>

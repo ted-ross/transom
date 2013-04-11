@@ -1,6 +1,7 @@
 # Developer Central
 
 <div class="two-column" markdown="1">
+<div class="column" markdown="1">
 
 ## Releases in development
 
@@ -26,6 +27,9 @@
  - [User list archive](http://qpid.2158936.n2.nabble.com/Apache-Qpid-users-f2158936.html)
  - [Commits list archive](http://qpid.2158936.n2.nabble.com/Apache-Qpid-commits-f7106555.html)
 
+</div>
+<div class="column" markdown="1">
+
 ## Trunk documentation
 
  - [C++ API reference](http://qpid.apache.org/apis/trunk/cpp/html/)
@@ -43,6 +47,7 @@
  - [Apache URI shortener](http://s.apache.org/)
  - [Apache pastebin](https://paste.apache.org/)
 
+</div>
 </div>
 
 ;; jira queries
