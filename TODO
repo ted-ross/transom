@@ -3,16 +3,15 @@
  - custom templates for api docs
    - nav from api ref back to site
  - gen books
- - tools need a component page
  - make the proton page look more like the front page
+ - cpp broker feature links
 
 # Medium
 
+ - tools need a component page
  - tarballs of apidocs and examples
- - cpp broker feature links
  - add glassfish to jca page
  - isolate maven howto
- - developer home
  - hilighted java examples
  - host fonts locally
  - fix output for IE8
@@ -20,7 +19,6 @@
  - qmf2 examples
  - becoming a contributor, more detail
  - keep old site at old-site
- - source modules
  - roadmap
  - gen release notes
  - qpid 0.20 optionally depends on proton 0.3
@@ -30,6 +28,7 @@
 
 # Low
 
+ - source modules
  - check dev env (python 2.7, for example)
  - external link checking
  - news feed

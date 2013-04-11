@@ -39,6 +39,7 @@
  - [Automated tests in Jenkins](https://builds.apache.org//view/M-R/view/Qpid/)
  - [Developer pages on the wiki](https://cwiki.apache.org/qpid/developer-pages.html)
  - [Review Board requests](https://reviews.apache.org/groups/qpid/)
+ - [Project etiquette](https://cwiki.apache.org/qpid/qpid-project-etiquette-guide.html)
  - [Apache URI shortener](http://s.apache.org/)
  - [Apache pastebin](https://paste.apache.org/)
 

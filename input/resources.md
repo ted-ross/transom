@@ -39,10 +39,12 @@ We hang out on `#qpid` on [freenode](http://freenode.net).
 
 ## Code reviews
 
-Qpid contributors often use Review Board to discuss patches.
+Qpid contributors often use
+[Review Board](http://www.reviewboard.org/) to discuss patches.
 
  - [Review requests for Qpid](https://reviews.apache.org/groups/qpid/)
  - [User dashboard](https://reviews.apache.org/dashboard/)
+ - [Review Board documentation](http://www.reviewboard.org/docs/)
 
 ## Continuous integration
 
