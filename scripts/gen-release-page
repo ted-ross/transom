@@ -58,7 +58,7 @@ component_records = (
     ("cpp-broker", "C++ broker", "C++", "Linux, Windows", "1.0, 0-10"),
     ("java-broker", "Java broker", "Java", "JVM", "1.0, 0-10, 0-91, 0-9, 0-8"),
     ("qpid-jms", "Qpid JMS", "Java", "JVM", "1.0, 0-10, 0-91, 0-9, 0-8"),
-    ("messaging-api", "Qpid Messaging API", "C++, Perl, Python, Ruby", "Linux, Windows", "1.0, 0-10"),
+    ("messaging-api", "Qpid Messaging API", "C++, Perl, Python, Ruby, .NET", "Linux, Windows", "1.0, 0-10"),
     ("qpid-wcf", "Qpid WCF", "C#", "Windows", "0-10"),
     ("qmf", "QMF", "C++, Python", "Linux", "0-10"),
     )
