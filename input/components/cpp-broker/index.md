@@ -33,6 +33,7 @@ messages using AMQP.
  - [Management](http://qpid.apache.org/books/0.20/AMQP-Messaging-Broker-CPP-Book/html/chapter-Managing-CPP-Broker.html#section-Managing-CPP-Broker) via [QMF](@site-url@/components/qmf/index.html)
  - [Access control lists](http://qpid.apache.org/books/0.20/AMQP-Messaging-Broker-CPP-Book/html/chap-Messaging_User_Guide-Security.html#sect-Messaging_User_Guide-Security-Authorization)
  - [Federation](http://qpid.apache.org/books/0.20/AMQP-Messaging-Broker-CPP-Book/html/chap-Messaging_User_Guide-Broker_Federation.html)
+ - Flexible logging
  - Header-based routing
  - Heartbeats
  - [High availability](http://qpid.apache.org/books/0.20/AMQP-Messaging-Broker-CPP-Book/html/chap-Messaging_User_Guide-Active_Passive_Cluster.html)
@@ -45,8 +46,9 @@ messages using AMQP.
  - Specialized queueing
    - Last value queue
    - [Message groups](http://qpid.apache.org/books/0.20/AMQP-Messaging-Broker-CPP-Book/html/Using-message-groups.html)
+   - Priority queue
    - Ring queue
- - Threshold alerts
+ - [Threshold alerts](https://issues.apache.org/jira/browse/QPID-3002)
  - Transactions
 </div>
 
