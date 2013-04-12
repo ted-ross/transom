@@ -12,5 +12,7 @@ var classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Receiver =
     [ "Get", "classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Receiver.html#a099e6106631f42ea28acb6c262d818f1", null ],
     [ "Get", "classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Receiver.html#a4c4bf40293f5e0b57d0591057a1fa90d", null ],
     [ "Get", "classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Receiver.html#a149eb3ba53db2926807dbd1c604e87c6", null ],
-    [ "operator=", "classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Receiver.html#aed24f122d8d93910eafa758faf13cae9", null ]
+    [ "operator=", "classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Receiver.html#aed24f122d8d93910eafa758faf13cae9", null ],
+    [ "Capacity", "classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Receiver.html#aa2b4d498c47ef1b6757eee0fb87c044c", null ],
+    [ "IsDisposed", "classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Receiver.html#ad4b9c29329bc2ebd9753d3b7b2d10417", null ]
 ];

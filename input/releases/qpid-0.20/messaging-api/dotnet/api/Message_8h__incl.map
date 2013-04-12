@@ -1,7 +1,7 @@
-<map id="G" name="G">
+<map id="Message.h" name="Message.h">
 <area shape="rect" id="node15" href="$QpidMarshal_8h.html" title="QpidMarshal.h" alt="" coords="40,155,147,181"/>
-<area shape="rect" id="node17" href="$Address_8h.html" title="Address.h" alt="" coords="362,80,443,107"/>
+<area shape="rect" id="node17" href="$Address_8h.html" title="Address.h" alt="" coords="362,80,445,107"/>
 <area shape="rect" id="node34" href="$TypeTranslator_8h.html" title="TypeTranslator.h" alt="" coords="635,155,761,181"/>
-<area shape="rect" id="node44" href="$Duration_8h.html" title="Duration.h" alt="" coords="746,229,827,256"/>
-<area shape="rect" id="node27" href="$QpidTypeCheck_8h.html" title="QpidTypeCheck.h" alt="" coords="375,229,505,256"/>
+<area shape="rect" id="node44" href="$Duration_8h.html" title="Duration.h" alt="" coords="746,229,829,256"/>
+<area shape="rect" id="node27" href="$QpidTypeCheck_8h.html" title="QpidTypeCheck.h" alt="" coords="375,229,506,256"/>
 </map>

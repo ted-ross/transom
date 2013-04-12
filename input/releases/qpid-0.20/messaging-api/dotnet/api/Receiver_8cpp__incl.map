@@ -1,11 +1,11 @@
-<map id="G" name="G">
+<map id="Receiver.cpp" name="Receiver.cpp">
 <area shape="rect" id="node21" href="$Receiver_8h.html" title="Receiver.h" alt="" coords="906,304,992,331"/>
 <area shape="rect" id="node33" href="$Session_8h.html" title="Session.h" alt="" coords="749,304,829,331"/>
-<area shape="rect" id="node47" href="$Message_8h.html" title="Message.h" alt="" coords="1477,80,1565,107"/>
-<area shape="rect" id="node84" href="$Duration_8h.html" title="Duration.h" alt="" coords="1945,304,2027,331"/>
+<area shape="rect" id="node47" href="$Message_8h.html" title="Message.h" alt="" coords="1478,80,1567,107"/>
+<area shape="rect" id="node84" href="$Duration_8h.html" title="Duration.h" alt="" coords="1945,304,2028,331"/>
 <area shape="rect" id="node93" href="$QpidException_8h.html" title="QpidException.h" alt="" coords="2407,80,2525,107"/>
 <area shape="rect" id="node55" href="$QpidMarshal_8h.html" title="QpidMarshal.h" alt="" coords="1306,229,1413,256"/>
-<area shape="rect" id="node57" href="$Address_8h.html" title="Address.h" alt="" coords="1603,155,1684,181"/>
+<area shape="rect" id="node57" href="$Address_8h.html" title="Address.h" alt="" coords="1632,155,1715,181"/>
 <area shape="rect" id="node74" href="$TypeTranslator_8h.html" title="TypeTranslator.h" alt="" coords="1541,229,1667,256"/>
-<area shape="rect" id="node67" href="$QpidTypeCheck_8h.html" title="QpidTypeCheck.h" alt="" coords="1689,304,1819,331"/>
+<area shape="rect" id="node67" href="$QpidTypeCheck_8h.html" title="QpidTypeCheck.h" alt="" coords="1689,304,1820,331"/>
 </map>

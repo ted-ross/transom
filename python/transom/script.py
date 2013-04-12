@@ -26,6 +26,7 @@ import getpass
 import os
 import shutil
 import subprocess
+import sys
 import tempfile
 
 # The notion here is to use the global function namespace for common

@@ -1,6 +1,7 @@
 var namespaceqpid_1_1messaging =
 [
     [ "Address", "classqpid_1_1messaging_1_1Address.html", "classqpid_1_1messaging_1_1Address" ],
+    [ "PrivateImplRef", "classqpid_1_1messaging_1_1PrivateImplRef.html", null ],
     [ "Connection", "classqpid_1_1messaging_1_1Connection.html", "classqpid_1_1messaging_1_1Connection" ],
     [ "Duration", "classqpid_1_1messaging_1_1Duration.html", "classqpid_1_1messaging_1_1Duration" ],
     [ "MessagingException", "structqpid_1_1messaging_1_1MessagingException.html", "structqpid_1_1messaging_1_1MessagingException" ],

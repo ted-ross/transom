@@ -56,7 +56,7 @@ Proton](@site-url@/proton/overview.html).
 
 ## Source code
 
- - [Repository web interface](http://svn.apache.org/viewvc/qpid/proton/trunk)
+ - [Browse via ViewVC](http://svn.apache.org/viewvc/qpid/proton/trunk)
  - To access the repository anonymously, use
    [Subversion](http://subversion.apache.org/) to check out
    <http://svn.apache.org/repos/asf/qpid/proton/trunk>.

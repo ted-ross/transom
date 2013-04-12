@@ -13,5 +13,7 @@ var classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Connection =
     [ "CreateTransactionalSession", "classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Connection.html#a46b44bb584aa1b298ca42570731d28e3", null ],
     [ "GetSession", "classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Connection.html#acae5782cf02f04721f5ea05c7b480d43", null ],
     [ "Open", "classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Connection.html#a9a71c02b72e4b8f404fec65f06d25435", null ],
-    [ "operator=", "classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Connection.html#afa98550f75afc5e28924cacd7b12b090", null ]
+    [ "operator=", "classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Connection.html#afa98550f75afc5e28924cacd7b12b090", null ],
+    [ "IsDisposed", "classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Connection.html#a2ce940d0de43a6543b8a09041a939142", null ],
+    [ "IsOpen", "classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Connection.html#a572b87e7492c1d22231162e756cfc572", null ]
 ];

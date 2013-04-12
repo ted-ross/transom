@@ -1,9 +1,9 @@
-<map id="G" name="G">
-<area shape="rect" id="node9" href="$structqpid_1_1messaging_1_1MalformedAddress.html" title="qpid::messaging::Malformed\lAddress" alt="" coords="5,337,200,378"/>
-<area shape="rect" id="node11" href="$structqpid_1_1messaging_1_1ResolutionError.html" title="qpid::messaging::Resolution\lError" alt="" coords="224,337,419,378"/>
-<area shape="rect" id="node2" href="$structqpid_1_1messaging_1_1LinkError.html" title="qpid::messaging::LinkError" alt="" coords="121,171,303,197"/>
-<area shape="rect" id="node4" href="$structqpid_1_1messaging_1_1MessagingException.html" title="qpid::messaging::Messaging\lException" alt="" coords="113,81,311,122"/>
-<area shape="rect" id="node6" href="$classqpid_1_1types_1_1Exception.html" title="qpid::types::Exception" alt="" coords="135,5,288,32"/>
-<area shape="rect" id="node13" href="$structqpid_1_1messaging_1_1AssertionFailed.html" title="qpid::messaging::Assertion\lFailed" alt="" coords="121,427,308,469"/>
-<area shape="rect" id="node15" href="$structqpid_1_1messaging_1_1NotFound.html" title="qpid::messaging::NotFound" alt="" coords="332,435,521,461"/>
+<map id="qpid::messaging::AddressError" name="qpid::messaging::AddressError">
+<area shape="rect" id="node11" href="$structqpid_1_1messaging_1_1MalformedAddress.html" title="qpid::messaging::Malformed\lAddress" alt="" coords="5,411,200,453"/>
+<area shape="rect" id="node13" href="$structqpid_1_1messaging_1_1ResolutionError.html" title="qpid::messaging::Resolution\lError" alt="" coords="224,411,419,453"/>
+<area shape="rect" id="node2" href="$structqpid_1_1messaging_1_1LinkError.html" title="qpid::messaging::LinkError" alt="" coords="121,245,303,272"/>
+<area shape="rect" id="node4" href="$structqpid_1_1messaging_1_1MessagingException.html" title="qpid::messaging::Messaging\lException" alt="" coords="113,155,311,197"/>
+<area shape="rect" id="node6" href="$classqpid_1_1types_1_1Exception.html" title="qpid::types::Exception" alt="" coords="135,80,289,107"/>
+<area shape="rect" id="node15" href="$structqpid_1_1messaging_1_1AssertionFailed.html" title="qpid::messaging::Assertion\lFailed" alt="" coords="121,502,308,543"/>
+<area shape="rect" id="node17" href="$structqpid_1_1messaging_1_1NotFound.html" title="qpid::messaging::NotFound" alt="" coords="332,509,521,536"/>
 </map>

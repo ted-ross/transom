@@ -2,11 +2,10 @@ var dir_0517290dea7d9ffdd1a8c1b1a3db95da =
 [
     [ "Address.h", "Address_8h.html", "Address_8h" ],
     [ "Connection.h", "Connection_8h.html", [
-      [ "Connection", "classqpid_1_1messaging_1_1Connection.html", "classqpid_1_1messaging_1_1Connection" ]
+      [ "PrivateImplRef", "classqpid_1_1messaging_1_1PrivateImplRef.html", null ]
     ] ],
     [ "Duration.h", "Duration_8h.html", "Duration_8h" ],
     [ "exceptions.h", "exceptions_8h.html", [
-      [ "MessagingException", "structqpid_1_1messaging_1_1MessagingException.html", "structqpid_1_1messaging_1_1MessagingException" ],
       [ "InvalidOptionString", "structqpid_1_1messaging_1_1InvalidOptionString.html", "structqpid_1_1messaging_1_1InvalidOptionString" ],
       [ "KeyError", "structqpid_1_1messaging_1_1KeyError.html", "structqpid_1_1messaging_1_1KeyError" ],
       [ "LinkError", "structqpid_1_1messaging_1_1LinkError.html", "structqpid_1_1messaging_1_1LinkError" ],
@@ -32,17 +31,17 @@ var dir_0517290dea7d9ffdd1a8c1b1a3db95da =
       [ "FailoverUpdates", "classqpid_1_1messaging_1_1FailoverUpdates.html", "classqpid_1_1messaging_1_1FailoverUpdates" ]
     ] ],
     [ "Handle.h", "Handle_8h.html", [
-      [ "Handle", "classqpid_1_1messaging_1_1Handle.html", "classqpid_1_1messaging_1_1Handle" ]
+      [ "PrivateImplRef", "classqpid_1_1messaging_1_1PrivateImplRef.html", null ]
     ] ],
     [ "ImportExport.h", "messaging_2ImportExport_8h.html", "messaging_2ImportExport_8h" ],
     [ "Message.h", "Message_8h.html", "Message_8h" ],
     [ "Receiver.h", "Receiver_8h.html", [
-      [ "Receiver", "classqpid_1_1messaging_1_1Receiver.html", "classqpid_1_1messaging_1_1Receiver" ]
+      [ "PrivateImplRef", "classqpid_1_1messaging_1_1PrivateImplRef.html", null ]
     ] ],
     [ "Sender.h", "Sender_8h.html", [
-      [ "Sender", "classqpid_1_1messaging_1_1Sender.html", "classqpid_1_1messaging_1_1Sender" ]
+      [ "PrivateImplRef", "classqpid_1_1messaging_1_1PrivateImplRef.html", null ]
     ] ],
     [ "Session.h", "Session_8h.html", [
-      [ "Session", "classqpid_1_1messaging_1_1Session.html", "classqpid_1_1messaging_1_1Session" ]
+      [ "PrivateImplRef", "classqpid_1_1messaging_1_1PrivateImplRef.html", null ]
     ] ]
 ];

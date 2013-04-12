@@ -1,7 +1,7 @@
-<map id="G" name="G">
-<area shape="rect" id="node2" href="$structqpid_1_1messaging_1_1SendError.html" title="qpid::messaging::SendError" alt="" coords="22,320,212,347"/>
-<area shape="rect" id="node4" href="$structqpid_1_1messaging_1_1SenderError.html" title="qpid::messaging::SenderError" alt="" coords="16,245,219,272"/>
-<area shape="rect" id="node6" href="$structqpid_1_1messaging_1_1LinkError.html" title="qpid::messaging::LinkError" alt="" coords="26,171,208,197"/>
-<area shape="rect" id="node8" href="$structqpid_1_1messaging_1_1MessagingException.html" title="qpid::messaging::Messaging\lException" alt="" coords="18,81,216,122"/>
-<area shape="rect" id="node10" href="$classqpid_1_1types_1_1Exception.html" title="qpid::types::Exception" alt="" coords="40,5,193,32"/>
+<map id="qpid::messaging::TargetCapacityExceeded" name="qpid::messaging::TargetCapacityExceeded">
+<area shape="rect" id="node2" href="$structqpid_1_1messaging_1_1SendError.html" title="qpid::messaging::SendError" alt="" coords="22,395,212,421"/>
+<area shape="rect" id="node4" href="$structqpid_1_1messaging_1_1SenderError.html" title="qpid::messaging::SenderError" alt="" coords="16,320,219,347"/>
+<area shape="rect" id="node6" href="$structqpid_1_1messaging_1_1LinkError.html" title="qpid::messaging::LinkError" alt="" coords="26,245,208,272"/>
+<area shape="rect" id="node8" href="$structqpid_1_1messaging_1_1MessagingException.html" title="qpid::messaging::Messaging\lException" alt="" coords="18,155,216,197"/>
+<area shape="rect" id="node10" href="$classqpid_1_1types_1_1Exception.html" title="qpid::types::Exception" alt="" coords="40,80,195,107"/>
 </map>

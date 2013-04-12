@@ -1,3 +1,26 @@
-<map id="G" name="G">
-<area shape="rect" id="node1" href="$classqpid_1_1types_1_1Uuid.html" title="qpid::types::Uuid" alt="" coords="5,5,128,32"/>
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node3" href="$classqpid_1_1types_1_1Exception.html" title="qpid::types::Exception" alt="" coords="133,173,288,200"/>
+<area shape="rect" id="node5" href="$structqpid_1_1messaging_1_1EncodingException.html" title="qpid::messaging::Encoding\lException" alt="" coords="345,101,532,142"/>
+<area shape="rect" id="node7" href="$structqpid_1_1messaging_1_1MessagingException.html" title="qpid::messaging::Messaging\lException" alt="" coords="339,166,538,207"/>
+<area shape="rect" id="node49" href="$structqpid_1_1types_1_1InvalidConversion.html" title="qpid::types::InvalidConversion" alt="" coords="337,232,541,259"/>
+<area shape="rect" id="node9" href="$structqpid_1_1messaging_1_1ConnectionError.html" title="qpid::messaging::Connection\lError" alt="" coords="590,17,789,58"/>
+<area shape="rect" id="node11" href="$structqpid_1_1messaging_1_1InvalidOptionString.html" title="qpid::messaging::Invalid\lOptionString" alt="" coords="604,82,775,123"/>
+<area shape="rect" id="node13" href="$structqpid_1_1messaging_1_1KeyError.html" title="qpid::messaging::KeyError" alt="" coords="598,148,781,175"/>
+<area shape="rect" id="node15" href="$structqpid_1_1messaging_1_1LinkError.html" title="qpid::messaging::LinkError" alt="" coords="598,199,781,225"/>
+<area shape="rect" id="node39" href="$structqpid_1_1messaging_1_1SessionError.html" title="qpid::messaging::Session\lError" alt="" coords="599,250,779,291"/>
+<area shape="rect" id="node47" href="$structqpid_1_1messaging_1_1TransportFailure.html" title="qpid::messaging::Transport\lFailure" alt="" coords="595,315,784,357"/>
+<area shape="rect" id="node17" href="$structqpid_1_1messaging_1_1AddressError.html" title="qpid::messaging::Address\lError" alt="" coords="851,67,1034,109"/>
+<area shape="rect" id="node27" href="$structqpid_1_1messaging_1_1ReceiverError.html" title="qpid::messaging::Receiver\lError" alt="" coords="850,133,1035,174"/>
+<area shape="rect" id="node33" href="$structqpid_1_1messaging_1_1SenderError.html" title="qpid::messaging::SenderError" alt="" coords="841,199,1044,225"/>
+<area shape="rect" id="node19" href="$structqpid_1_1messaging_1_1MalformedAddress.html" title="qpid::messaging::Malformed\lAddress" alt="" coords="1100,5,1295,46"/>
+<area shape="rect" id="node21" href="$structqpid_1_1messaging_1_1ResolutionError.html" title="qpid::messaging::Resolution\lError" alt="" coords="1100,70,1295,111"/>
+<area shape="rect" id="node23" href="$structqpid_1_1messaging_1_1AssertionFailed.html" title="qpid::messaging::Assertion\lFailed" alt="" coords="1367,13,1553,54"/>
+<area shape="rect" id="node25" href="$structqpid_1_1messaging_1_1NotFound.html" title="qpid::messaging::NotFound" alt="" coords="1365,79,1555,105"/>
+<area shape="rect" id="node29" href="$structqpid_1_1messaging_1_1FetchError.html" title="qpid::messaging::FetchError" alt="" coords="1101,139,1293,165"/>
+<area shape="rect" id="node31" href="$structqpid_1_1messaging_1_1NoMessageAvailable.html" title="qpid::messaging::NoMessage\lAvailable" alt="" coords="1357,130,1563,171"/>
+<area shape="rect" id="node35" href="$structqpid_1_1messaging_1_1SendError.html" title="qpid::messaging::SendError" alt="" coords="1102,199,1293,225"/>
+<area shape="rect" id="node37" href="$structqpid_1_1messaging_1_1TargetCapacityExceeded.html" title="qpid::messaging::TargetCapacity\lExceeded" alt="" coords="1347,195,1573,237"/>
+<area shape="rect" id="node41" href="$structqpid_1_1messaging_1_1TransactionError.html" title="qpid::messaging::Transaction\lError" alt="" coords="841,250,1044,291"/>
+<area shape="rect" id="node45" href="$structqpid_1_1messaging_1_1UnauthorizedAccess.html" title="qpid::messaging::Unauthorized\lAccess" alt="" coords="837,315,1048,357"/>
+<area shape="rect" id="node43" href="$structqpid_1_1messaging_1_1TransactionAborted.html" title="qpid::messaging::Transaction\lAborted" alt="" coords="1096,250,1299,291"/>
 </map>

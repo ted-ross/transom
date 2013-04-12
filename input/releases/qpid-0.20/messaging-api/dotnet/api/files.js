@@ -26,7 +26,7 @@ var files =
       [ "QpidException", "classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1QpidException.html", "classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1QpidException" ]
     ] ],
     [ "QpidMarshal.h", "QpidMarshal_8h.html", [
-      [ "QpidMarshal", "classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1QpidMarshal.html", "classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1QpidMarshal" ]
+      [ "QpidMarshal", "classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1QpidMarshal.html", null ]
     ] ],
     [ "QpidTypeCheck.h", "QpidTypeCheck_8h.html", "QpidTypeCheck_8h" ],
     [ "Receiver.cpp", "Receiver_8cpp.html", null ],

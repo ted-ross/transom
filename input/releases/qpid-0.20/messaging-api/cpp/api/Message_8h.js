@@ -1,6 +1,5 @@
 var Message_8h =
 [
-    [ "Message", "classqpid_1_1messaging_1_1Message.html", "classqpid_1_1messaging_1_1Message" ],
     [ "EncodingException", "structqpid_1_1messaging_1_1EncodingException.html", "structqpid_1_1messaging_1_1EncodingException" ],
     [ "decode", "Message_8h.html#aee600167b6d0045085aa87486d15e3ce", null ],
     [ "decode", "Message_8h.html#ab95026f0bcfab3f7d5f2dfdc91f7165e", null ],

@@ -26,5 +26,8 @@ var classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Session =
     [ "Release", "classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Session.html#a917b88408f48da12400ae7c6530ca978", null ],
     [ "Rollback", "classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Session.html#ae004f5f9ff57d8e878b6d4b0342eebc8", null ],
     [ "Sync", "classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Session.html#a83deca2eeff6fe1f4d6884730b4320b7", null ],
-    [ "Sync", "classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Session.html#a771084d377a5964f6f6e510ce6b857c6", null ]
+    [ "Sync", "classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Session.html#a771084d377a5964f6f6e510ce6b857c6", null ],
+    [ "Connection", "classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Session.html#abf397fbcc6db73daa9a029bc5dd8769f", null ],
+    [ "IsDisposed", "classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Session.html#a1198e602445dbf0f3520dd661aea558e", null ],
+    [ "Receivable", "classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Session.html#a6125279c7a0b71251bde169261388837", null ]
 ];

@@ -18,5 +18,8 @@ var classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Message =
     [ "MapAsString", "classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Message.html#a8dd8cb0f914f8d9da6f21cb4175ed74a", null ],
     [ "operator=", "classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Message.html#a6422f5f34fdf08ba767c4d5b742cdb48", null ],
     [ "SetContent", "classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Message.html#a47d623d539013068aa73b5468cf9fdd6", null ],
-    [ "SetContent", "classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Message.html#a8fb4b3afc532e98be1fb296ebfc57c6d", null ]
+    [ "SetContent", "classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Message.html#a8fb4b3afc532e98be1fb296ebfc57c6d", null ],
+    [ "ContentSize", "classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Message.html#a199acd8a130c36ffbbcb34c91c3b8904", null ],
+    [ "IsDisposed", "classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Message.html#a2eae44fcf0528ff4cf16ca9950767fc9", null ],
+    [ "Properties", "classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Message.html#aedf088463fbbf681da8ef0442946b00e", null ]
 ];

@@ -1,8 +1,8 @@
-<map id="G" name="G">
-<area shape="rect" id="node19" href="$QpidMarshal_8h.html" title="QpidMarshal.h" alt="" coords="1314,80,1422,107"/>
+<map id="Connection.cpp" name="Connection.cpp">
+<area shape="rect" id="node19" href="$QpidMarshal_8h.html" title="QpidMarshal.h" alt="" coords="1316,80,1423,107"/>
 <area shape="rect" id="node21" href="$Connection_8h.html" title="Connection.h" alt="" coords="658,155,758,181"/>
 <area shape="rect" id="node30" href="$Session_8h.html" title="Session.h" alt="" coords="885,155,966,181"/>
-<area shape="rect" id="node45" href="$QpidException_8h.html" title="QpidException.h" alt="" coords="1446,80,1564,107"/>
+<area shape="rect" id="node45" href="$QpidException_8h.html" title="QpidException.h" alt="" coords="1448,80,1566,107"/>
 <area shape="rect" id="node47" href="$TypeTranslator_8h.html" title="TypeTranslator.h" alt="" coords="302,80,428,107"/>
-<area shape="rect" id="node56" href="$QpidTypeCheck_8h.html" title="QpidTypeCheck.h" alt="" coords="351,155,480,181"/>
+<area shape="rect" id="node56" href="$QpidTypeCheck_8h.html" title="QpidTypeCheck.h" alt="" coords="351,155,482,181"/>
 </map>

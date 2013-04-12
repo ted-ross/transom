@@ -60,9 +60,9 @@ available in the full source artefact.
 
 ## Documentation
 
- - [Programming in Apache Qpid](http://qpid.apache.org/books/0.20/Programming-In-Apache-Qpid/html/index.html)
- - [Guide to the C++ broker](http://qpid.apache.org/books/0.20/AMQP-Messaging-Broker-CPP-Book/html/index.html)
- - [Guide to the Java broker](http://qpid.apache.org/books/0.20/AMQP-Messaging-Broker-Java-Book/html/index.html)
+ - [Programming in Apache Qpid](prog-guide/book/html/index.html)
+ - [Guide to the C++ broker](cpp-broker/book/html/index.html)
+ - [Guide to the Java broker](java-broker/book/html/index.html)
  - [Installing and Using Qpid Java](https://cwiki.apache.org/qpid/getting-started-guide.html)
  - [Installing Qpid C++](http://svn.apache.org/repos/asf/qpid/tags/0.20/qpid/cpp/INSTALL)
  - [Installing Qpid Python](http://svn.apache.org/repos/asf/qpid/tags/0.20/qpid/python/README.txt)

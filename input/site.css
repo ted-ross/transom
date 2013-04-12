@@ -266,6 +266,10 @@ ul ul, ol ol {
     margin: 0;
 }
 
+dd > dl {
+    margin: 0 0 0 1em;
+}
+
 div.two-column {
     -webkit-column-count: 2;
     -moz-column-count: 2;
@@ -295,13 +299,17 @@ p {
     margin: 0 0 0.8em 0;
 }
 
-a {
+a[href] {
     text-decoration: none;
     color: #0d6dad;
 }
 
-a:visited {
+a[href]:visited {
     color: #0d567f;
+}
+
+strong {
+    font-weight: 400;
 }
 
 form {
@@ -353,8 +361,9 @@ span.date {
 }
 
 table {
+    border: none;
     border-collapse: collapse;
-    margin: 0 0 0.8em 0.8em;
+    margin: 0 0.8em 0.8em 0.8em;
     min-width: 90%;
 }
 
@@ -362,9 +371,14 @@ table td, table th {
     border-bottom: 1px solid #d4d4ca;
     padding: 0.2em 1.5em 0.2em 0;
     vertical-align: top;
+    text-align: left;
 }
 
-table td em, table th em {
+table td:last-child, table th:last-child {
+    padding-right: 0;
+}
+
+table td em, table th em, table th {
     font-family: "Oswald", sans-serif;
     font-weight: 300;
     font-style: normal;
@@ -382,6 +396,7 @@ pre {
     border: 1px solid #ecece0;
     margin: 1em;
     box-shadow: 0 0 0.05em #d0c6e7;
+    max-width: 48em;
     overflow: auto;
 }
 
@@ -397,4 +412,23 @@ div.color-block {
     font-weight: 400;
     min-height: 8em;
     width: 8em;
+}
+
+/* Docbook xhtml output requires unpleasant style hacks */
+
+div.docbook div.navheader {
+    display: none;
+}
+
+div.docbook hr {
+    display: none;
+}
+
+div.docbook table {
+    margin: 0 0 0.8em 0;
+    border: white;
+}
+
+div.docbook div.toc, div.docbook div.list-of-tables, div.docbook div.list-of-examples {
+    margin: 0 0 0.8em 0;
 }

@@ -19,6 +19,5 @@ var classqpid_1_1types_1_1Uuid =
     [ "operator==", "classqpid_1_1types_1_1Uuid.html#ade1e4263b646d63ce5df5ef13b58f183", null ],
     [ "operator>", "classqpid_1_1types_1_1Uuid.html#a8485ac42bcd584fb14b90ab390354a37", null ],
     [ "operator>=", "classqpid_1_1types_1_1Uuid.html#a35fed4f46169200406c0db3b7ed1925f", null ],
-    [ "operator>>", "classqpid_1_1types_1_1Uuid.html#a516a2d0f74836fb0e130ea7c294aebc6", null ],
-    [ "SIZE", "classqpid_1_1types_1_1Uuid.html#a8753b8f534e850d9c67033de0cfa237e", null ]
+    [ "operator>>", "classqpid_1_1types_1_1Uuid.html#a516a2d0f74836fb0e130ea7c294aebc6", null ]
 ];

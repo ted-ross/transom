@@ -1,7 +1,7 @@
-<map id="G" name="G">
-<area shape="rect" id="node7" href="$structqpid_1_1messaging_1_1TransactionError.html" title="qpid::messaging::Transaction\lError" alt="" coords="5,262,208,303"/>
-<area shape="rect" id="node11" href="$structqpid_1_1messaging_1_1UnauthorizedAccess.html" title="qpid::messaging::Unauthorized\lAccess" alt="" coords="232,262,441,303"/>
-<area shape="rect" id="node2" href="$structqpid_1_1messaging_1_1MessagingException.html" title="qpid::messaging::Messaging\lException" alt="" coords="122,81,320,122"/>
-<area shape="rect" id="node4" href="$classqpid_1_1types_1_1Exception.html" title="qpid::types::Exception" alt="" coords="144,5,297,32"/>
-<area shape="rect" id="node9" href="$structqpid_1_1messaging_1_1TransactionAborted.html" title="qpid::messaging::Transaction\lAborted" alt="" coords="5,353,208,394"/>
+<map id="qpid::messaging::SessionError" name="qpid::messaging::SessionError">
+<area shape="rect" id="node9" href="$structqpid_1_1messaging_1_1TransactionError.html" title="qpid::messaging::Transaction\lError" alt="" coords="5,337,208,378"/>
+<area shape="rect" id="node13" href="$structqpid_1_1messaging_1_1UnauthorizedAccess.html" title="qpid::messaging::Unauthorized\lAccess" alt="" coords="232,337,443,378"/>
+<area shape="rect" id="node2" href="$structqpid_1_1messaging_1_1MessagingException.html" title="qpid::messaging::Messaging\lException" alt="" coords="122,155,320,197"/>
+<area shape="rect" id="node4" href="$classqpid_1_1types_1_1Exception.html" title="qpid::types::Exception" alt="" coords="144,80,299,107"/>
+<area shape="rect" id="node11" href="$structqpid_1_1messaging_1_1TransactionAborted.html" title="qpid::messaging::Transaction\lAborted" alt="" coords="5,427,208,469"/>
 </map>

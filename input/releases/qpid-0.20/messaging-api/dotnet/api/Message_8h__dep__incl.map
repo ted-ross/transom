@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="Message.h" name="Message.h">
 <area shape="rect" id="node3" href="$Message_8cpp.html" title="Message.cpp" alt="" coords="5,80,107,107"/>
 <area shape="rect" id="node5" href="$Receiver_8cpp.html" title="Receiver.cpp" alt="" coords="131,80,231,107"/>
 <area shape="rect" id="node7" href="$Sender_8cpp.html" title="Sender.cpp" alt="" coords="256,80,347,107"/>

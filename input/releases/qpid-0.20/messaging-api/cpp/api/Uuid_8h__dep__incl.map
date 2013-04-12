@@ -1,5 +1,5 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$Variant_8h.html" title="qpid/types/Variant.h" alt="" coords="245,80,384,107"/>
+<map id="qpid/types/Uuid.h" name="qpid/types/Uuid.h">
+<area shape="rect" id="node3" href="$Variant_8h.html" title="qpid/types/Variant.h" alt="" coords="243,80,383,107"/>
 <area shape="rect" id="node5" href="$Address_8h.html" title="qpid/messaging/Address.h" alt="" coords="5,229,189,256"/>
 <area shape="rect" id="node7" href="$Connection_8h.html" title="qpid/messaging/Connection.h" alt="" coords="214,229,415,256"/>
 <area shape="rect" id="node9" href="$exceptions_8h.html" title="qpid/messaging/exceptions.h" alt="" coords="283,155,481,181"/>

@@ -261,9 +261,10 @@ class _Page(object):
 
         self.title = os.path.split(self.output_path)[1]
 
-        for elem in self.root_elem.iter("{http://www.w3.org/1999/xhtml}h1"):
+        elem = self.root_elem.find(".//{http://www.w3.org/1999/xhtml}h1")
+
+        if elem is not None:
             self.title = "".join(elem.itertext())
-            break
 
         self.title = self.title.strip()
         self.title = self.title.encode('ascii', 'xmlcharrefreplace')
