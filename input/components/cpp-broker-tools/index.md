@@ -27,4 +27,8 @@ Administer your C++ broker deployment.
 
 ## Documentation
 
+This is the documentation for the current released version.  You can
+find previous versions with our
+[past releases](@site-url@/releases/index.html#past-releases).
+
  - [Managing the C++ broker](http://qpid.apache.org/books/0.20/AMQP-Messaging-Broker-CPP-Book/html/chapter-Managing-CPP-Broker.html#section-Managing-CPP-Broker)
