@@ -37,7 +37,7 @@ Proton](@site-url@/proton/overview.html).
 
 ## Issues
 
- - [Search existing issues](@site-url@/issues.html#search-existing-issues)
+ - [Search existing issues](@site-url@/issues.html#search-issues)
  - [Report a bug](https://issues.apache.org/jira/secure/CreateIssue.jspa?pid=12313720&issuetype=1&priority=3)
  - [Create a new issue](https://issues.apache.org/jira/secure/CreateIssue.jspa?pid=12313720) of another type
  - <form id="jira-goto-form" action="?" method="get">Go to issue <input name="jira" value="PROTON-"/></form>

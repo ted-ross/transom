@@ -19,13 +19,14 @@
 
 # Issues
 
-Qpid uses [JIRA](http://www.atlassian.com/software/jira/overview) to
-track bugs and enhancements.
+Qpid uses an
+[issue tracking system](http://en.wikipedia.org/wiki/Issue_tracking_system)
+to organize its work, breaking it into individual bugs, enhancements,
+and tasks.  Qpid uses the
+[JIRA](http://www.atlassian.com/software/jira/overview) issue tracking
+system.
 
- - [Browse Qpid issues](https://issues.apache.org/jira/browse/qpid)
- - <form id="jira-goto-form" action="?" method="get">Go to issue <input name="jira" value="QPID-"/></form>
-
-## Search existing issues
+## Search issues
 
 <form id="jira-search-form" action="?" method="post">
   <input name="text" type="text"/>
@@ -38,10 +39,9 @@ JIRA allows users to anonymously search issues, but an account is
 required to create new ones.  [Sign up for an
 account](https://issues.apache.org/jira/secure/Signup!default.jspa).
 
-Before reporting a bug, [search existing
-issues](#search-existing-issues) to see if it has already been
-reported.  If it has, feel free to add a comment describing the case
-where you see it.
+Before reporting a bug, [search the existing issues](#search-issues)
+to see if it has already been reported.  If it has, feel free to add a
+comment describing the case where you see it.
 
 If it hasn't, it's time to [report a
 bug](https://issues.apache.org/jira/secure/CreateIssue.jspa?pid=12310520&amp;issuetype=1&amp;priority=3).
@@ -67,6 +67,7 @@ you give to make Qpid better.
  - [Sign up for an account](https://issues.apache.org/jira/secure/Signup!default.jspa)
  - [Report a bug](https://issues.apache.org/jira/secure/CreateIssue.jspa?pid=12310520&amp;issuetype=1&amp;priority=3)
  - [Create a new issue](https://issues.apache.org/jira/secure/CreateIssue.jspa?pid=12310520) of another type
+ - <form id="jira-goto-form" action="?" method="get">Go to issue <input name="jira" value="QPID-"/></form>
 
 ## More information
 

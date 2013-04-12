@@ -93,7 +93,7 @@ function registerEventListeners() {
 function focusJiraSearchForm() {
     var hash = window.location.hash;
 
-    if (hash === "#search-existing-issues") {
+    if (hash === "#search-issues") {
         var searchForm = document.getElementById("jira-search-form");
 
         if (searchForm !== null) {

@@ -30,7 +30,7 @@ free to use, and built to help you solve problems.
 If everything just works, great!  If not, tell us what's wrong.  You
 can ask questions on the [user
 list](@site-url@/mailing-lists.html#user-list) or [report a
-bug](@site-url@/issues.html).
+bug](@site-url@/issues.html#report-a-bug).
 
 ## Follow what's happening
 

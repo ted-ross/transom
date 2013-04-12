@@ -19,10 +19,15 @@
 
 # Source Code
 
-Qpid uses [Subversion](http://subversion.apache.org/) to manage its
-source code.
+Qpid employs
+[revision control](http://en.wikipedia.org/wiki/Revision_control) to
+track and manage changes to its source code.  Qpid uses the
+[Subversion](http://subversion.apache.org/) revision control system.
 
- - [Browse the code](http://svn.apache.org/viewvc/qpid/trunk/qpid)
+## Browse the code
+
+ - [Browse via ViewVC](http://svn.apache.org/viewvc/qpid/trunk/qpid)
+ - [Browse the source tree directly](https://svn.apache.org/repos/asf/qpid/trunk/qpid)
  - <form id="viewvc-goto-form" action="http://svn.apache.org/viewvc" method="get"><input type="hidden" name="view" value="revision"/>Go to revision <input type="text" name="revision"/></form>
 
 ## Check out the code
