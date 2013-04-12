@@ -32,6 +32,7 @@ and the
 
 ## Past releases
 
+ - [Qpid Proton 0.3](qpid-proton-0.3/index.html)
  - [Qpid 0.18](qpid-0.18/index.html)
  - [Qpid 0.16](qpid-0.16/index.html)
  - [Qpid 0.14](qpid-0.14/index.html)

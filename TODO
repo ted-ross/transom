@@ -1,13 +1,13 @@
 # High
 
- - custom templates for api docs
-   - nav from api ref back to site
  - gen books
  - make the proton page look more like the front page
  - cpp broker feature links
 
 # Medium
 
+ - custom templates for api docs
+   - nav from api ref back to site
  - tools need a component page
  - tarballs of apidocs and examples
  - add glassfish to jca page

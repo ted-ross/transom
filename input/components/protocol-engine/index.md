@@ -40,5 +40,4 @@ find previous versions with our
 
  - [Overview](https://cwiki.apache.org/qpid/protocol-engines.html)
  - [API reference](http://qpid.apache.org/proton/api-doc/)
- - [Example](http://svn.apache.org/repos/asf/qpid/proton/tags/@current-proton-release@/examples/mailbox/)
  - [Installing Qpid Proton](http://svn.apache.org/repos/asf/qpid/proton/tags/@current-proton-release@/README)

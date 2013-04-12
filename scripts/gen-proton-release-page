@@ -22,44 +22,42 @@ import sys, os, urllib, string
 
 version = sys.argv[1]
 
-component_records = (
-    ("AMQP Messenger", "messenger/index.html", "", "Linux, OS X, JVM", "1.0"),
-    ("AMQP Protocol Engine", "protocol-engine/index.html", "", "Linux, OS X, JVM", "1.0"),
-    )
-
-component_rows = list()
-
-for name, url, languages, platforms, amqp_versions in component_records:
-    url = "@site-url@/components/%s" % url
-
-    args = name, url, platforms, amqp_versions
-    component_rows.append("|| [%s](%s) || %s || %s ||" % args)
-
-components = "\n  ".join(component_rows)
-
 download_records = (
-    ("C, Perl, PHP, Python, and Ruby", "qpid-proton-c-%s.tar.gz"),
-    ("Java", "qpid-proton-j-%s.tar.gz"),
+    ("qpid-proton-{}.tar.gz", "AMQP Messenger, AMQP Protocol Engine"),
     )
 
 download_rows = list()
 
-for summary, artifact in download_records:
-    artifact = artifact % version
-    artifact_url = "http://www.apache.org/dyn/closer.cgi/qpid/proton/%s/%s" % (version, artifact)
-    sig_url = "http://www.apache.org/dist/qpid/proton/%s/%s.asc" % (version, artifact)
+for artifact, summary in download_records:
+    artifact = artifact.format(version)
+    artifact_url = "http://www.apache.org/dyn/closer.cgi/qpid/proton/{}/{}".format(version, artifact)
+    sig_url = "http://www.apache.org/dist/qpid/proton/{}/{}.asc".format(version, artifact)
 
     args = summary, artifact, artifact_url, sig_url
-    row = "|| %s || [%s](%s) || [PGP](%s) ||" % args
+    row = "|| {} || [{}]({}) || [PGP]({}) ||".format(*args)
 
     download_rows.append(row)
 
 downloads = "\n  ".join(download_rows)
 
-jql = "project = PROTON AND fixVersion = '%s' ORDER BY priority DESC" % version
-issues_url = "https://issues.apache.org/jira/issues/?jql=%s" % urllib.quote_plus(jql)
+component_records = (
+    ("messenger", "AMQP Messenger", "C, Java, Perl, PHP, Python, Ruby", "Linux, OS X, JVM", "1.0"),
+    ("protocol-engine", "AMQP Protocol Engine", "C, Java, Perl, PHP, Python, Ruby", "Linux, OS X, JVM", "1.0"),
+    )
 
-template_string = \
+component_rows = list()
+
+for key, name, languages, platforms, amqp_versions in component_records:
+    link = "[{}](@site-url@/components/{}/index.html)".format(name, key)
+    args = link, languages, platforms, amqp_versions
+    component_rows.append("|| {} || {} || {} || {} ||".format(*args))
+
+components = "\n  ".join(component_rows)
+
+jql = "project = PROTON AND fixVersion = '{}' ORDER BY priority DESC".format(version)
+issues_url = "https://issues.apache.org/jira/issues/?jql={}".format(urllib.quote_plus(jql))
+
+template = \
 """
 ;;
 ;; Licensed to the Apache Software Foundation (ASF) under one
@@ -80,18 +78,13 @@ template_string = \
 ;; under the License.
 ;;
 
-# Qpid Proton $version
+# Qpid Proton {version}
 
 Proton is a high-performance, lightweight messaging library. More
 about [Qpid
 Proton](file:///home/jross/transom/output/proton/index.html).
 
 ;; - [Release notes](release-notes.html)
-
-## Components
-
-  || *Component* || *Platforms* || *AMQP versions* ||
-  $components
 
 ## Downloads
 
@@ -100,24 +93,26 @@ integrity](@site-url@/download.html#verify-what-you-download) of the
 files you download.
 
   || *Content* || *Download* || *Signature* ||
-  $downloads
+  {downloads}
+
+## Components
+
+  || *Component* || *Languages* || *Platforms* || *AMQP versions* ||
+  {components}
 
 ## Documentation
 
- - [Installing Qpid Proton C](http://svn.apache.org/repos/asf/qpid/proton/tags/${version}/proton-c/README)
- - [Installing Qpid Proton Java](http://svn.apache.org/repos/asf/qpid/proton/tags/${version}/proton-j/proton/README)
+ - [Installing Qpid Proton](http://svn.apache.org/repos/asf/qpid/proton/tags/{version}/README)
 
 ## More information
 
- - [All release artefacts](http://www.apache.org/dyn/closer.cgi/qpid/proton/${version})
- - [Resolved issues in JIRA]($issues_url)
- - [Source repository branch](http://svn.apache.org/repos/asf/qpid/proton/branches/${version})
- - [Source repository tag](http://svn.apache.org/repos/asf/qpid/proton/tags/${version})
+ - [All release artefacts](http://www.apache.org/dyn/closer.cgi/qpid/proton/{version})
+ - [Resolved issues in JIRA]({issues_url})
+ - [Source repository branch](http://svn.apache.org/repos/asf/qpid/proton/branches/{version})
+ - [Source repository tag](http://svn.apache.org/repos/asf/qpid/proton/tags/{version})
 """
 
-template = string.Template(template_string)
-
-output = template.substitute(locals())
+output = template.format(**locals())
 output = output.strip()
 
 print output

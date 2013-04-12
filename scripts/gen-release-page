@@ -25,103 +25,58 @@ version = float(version)
 
 devel_version = version - 0.01
 
-version = "%0.2f" % version
-devel_version = "%0.2f" % devel_version
-
-component_records = (
-    ("C++ broker", "cpp-broker/index.html", "C++", "Linux, Windows", "1.0, 0-10"),
-    ("Java broker", "java-broker/index.html", "Java", "JVM", "1.0, 0-10, 0-91, 0-9, 0-8"),
-    ("Qpid JMS", "qpid-jms/index.html", "Java", "JVM", "1.0, 0-10, 0-91, 0-9, 0-8"),
-    ("Qpid Messaging API", "messaging-api/index.html", "C++, Perl, Python, Ruby",
-     "Linux, Windows", "1.0, 0-10"),
-    ("Qpid WCF", "qpid-wcf/index.html", "C#", "Windows", "0-10"),
-    ("QMF", "qmf/index.html", "C++, Python", "Linux", "0-10"),
-    )
-
-component_rows = list()
-
-for name, url, languages, platforms, amqp_versions in component_records:
-    url = "@site-url@/components/%s" % url
-
-    args = name, url, platforms, amqp_versions
-    component_rows.append("|| [%s](%s) || %s || %s ||" % args)
-
-components = "\n  ".join(component_rows)
+version = "{:0.2f}".format(version)
+devel_version = "{:0.2f}".format(devel_version)
 
 download_records = (
-    ("Full source", "qpid-%s.tar.gz"),
-    ("C++ broker and Messaging API", "qpid-cpp-%s.tar.gz"),
-    ("C++ broker command-line tools", "qpid-tools-%s.tar.gz"),
-    ("Java broker, Qpid JMS, and tools", "qpid-java-%s.tar.gz"),
-    ("Java broker", "qpid-java-broker-%s.tar.gz"),
-    ("Qpid JMS", "qpid-java-client-%s.tar.gz"),
-    ("Qpid AMQP 1.0 JMS", "qpid-java-amqp-1-0-client-%s.tar.gz"),
-    ("Python Messaging API", "qpid-python-%s.tar.gz"),
-    ("Qpid WCF", "qpid-wcf-%s.zip"),
-    ("QMF", "qpid-qmf-%s.tar.gz"),
+    ("qpid-{}.tar.gz", "Full source"),
+    ("qpid-cpp-{}.tar.gz", "C++ broker, Qpid Messaging API (C++, bindings)"),
+    ("qpid-tools-{}.tar.gz", "C++ broker command-line tools"),
+    ("qpid-java-broker-{}.tar.gz", "Java broker"),
+    ("qpid-java-client-{}.tar.gz", "Qpid JMS (AMQP 0-10, 0-91, 0-9, 0-8)"),
+    ("qpid-java-amqp-1-0-client-jms-{}.tar.gz", "Qpid JMS (AMQP 1.0)"),
+    ("qpid-python-{}.tar.gz", "Qpid Messaging API (Python)"),
+    ("qpid-wcf-{}.zip", "Qpid WCF"),
+    ("qpid-qmf-{}.tar.gz", "QMF"),
     )
 
 download_rows = list()
 
-for summary, artifact in download_records:
-    artifact = artifact % version
-    artifact_url = "http://www.apache.org/dyn/closer.cgi/qpid/%s/%s" % (version, artifact)
-    sig_url = "http://www.apache.org/dist/qpid/%s/%s.asc" % (version, artifact)
+for artifact, summary in download_records:
+    artifact = artifact.format(version)
+    artifact_url = "http://www.apache.org/dyn/closer.cgi/qpid/{}/{}".format(version, artifact)
+    sig_url = "http://www.apache.org/dist/qpid/{}/{}.asc".format(version, artifact)
 
     args = summary, artifact, artifact_url, sig_url
-    row = "|| %s || [%s](%s) || [PGP](%s) ||" % args
+    row = "|| {} || [{}]({}) || [PGP]({}) ||".format(*args)
 
     download_rows.append(row)
 
 downloads = "\n  ".join(download_rows)
 
-args = devel_version, version
-jql = "project = QPID AND fixVersion in ('%s', '%s') ORDER BY priority DESC" % args
-issues_url = "https://issues.apache.org/jira/issues/?jql=%s" % urllib.quote_plus(jql)
-
-messaging_api_example_records = (
-    ("cpp", "C++", "hello_world.cpp", "client.cpp", "server.cpp", "spout.cpp", "drain.cpp"),
-    ("perl", "Perl", "hello_world.pl", "client.pl", "server.pl", "spout.pl", "drain.pl"),
-    ("python", "Python", "hello", None, None, "spout", "drain"),
-    ("ruby", "Ruby", "hello_world.rb", "client.rb", "server.rb", "spout.rb", "drain.rb"),
-    ("dotnet", ".NET", "csharp.example.helloworld.cs", "csharp.example.client.cs",
-     "csharp.example.server.cs", "csharp.example.spout.cs", "csharp.example.drain.cs"), 
+component_records = (
+    ("cpp-broker", "C++ broker", "C++", "Linux, Windows", "1.0, 0-10"),
+    ("java-broker", "Java broker", "Java", "JVM", "1.0, 0-10, 0-91, 0-9, 0-8"),
+    ("qpid-jms", "Qpid JMS", "Java", "JVM", "1.0, 0-10, 0-91, 0-9, 0-8"),
+    ("messaging-api", "Qpid Messaging API", "C++, Perl, Python, Ruby", "Linux, Windows", "1.0, 0-10"),
+    ("qpid-wcf", "Qpid WCF", "C#", "Windows", "0-10"),
+    ("qmf", "QMF", "C++, Python", "Linux", "0-10"),
     )
 
-messaging_api_example_rows = list()
+component_rows = list()
 
-for record in messaging_api_example_records:
-    lang, name = record[0:2]
-    files = record[2:]
+for key, name, languages, platforms, amqp_versions in component_records:
+    link = "[{}](@site-url@/components/{}/index.html)".format(name, key)
+    args = link, languages, platforms, amqp_versions
+    component_rows.append("|| {} || {} || {} || {} ||".format(*args))
 
-    file_links = list()
+components = "\n  ".join(component_rows)
 
-    for file in files:
-        if file:
-            alias = file
+args = devel_version, version
+jql = "project = QPID AND fixVersion in ('{}', '{}') ORDER BY priority DESC".format(*args)
+issues_url = "https://issues.apache.org/jira/issues/?jql={}".format(urllib.quote_plus(jql))
 
-            if lang == "dotnet":
-                alias = file[15:]
-
-            args = alias, lang, file
-            link = "[%s](messaging-api/%s/examples/%s.html)" % args
-        else:
-            link = ""
-
-        file_links.append(link)
-
-    file_links = " || ".join(file_links)
-
-    more_link = "[More](messaging-api/%s/examples/index.html)" % lang
-
-    args = name, file_links, more_link
-    row = "|| *%s* || %s || %s ||" % args
-
-    messaging_api_example_rows.append(row)
-
-messaging_api_examples = "\n  ".join(messaging_api_example_rows)
-
-template_string = \
+template = \
 """
 ;;
 ;; Licensed to the Apache Software Foundation (ASF) under one
@@ -142,7 +97,7 @@ template_string = \
 ;; under the License.
 ;;
 
-# Qpid $version
+# Qpid {version}
 
 Qpid is a cross-platform AMQP messaging system.  It provides message
 brokers written in C++ and Java, and clients for C++, C#, JMS, Perl,
@@ -152,11 +107,6 @@ Python, and Ruby.  More about [Qpid](@site-url@/index.html).
 
  - [Release notes](release-notes.html)
 
-## Components
-
-  || *Component* || *Platforms* || *AMQP versions* ||
-  $components
-
 ## Downloads
 
 It's important to [verify the
@@ -164,19 +114,25 @@ integrity](@site-url@/download.html#verify-what-you-download) of the
 files you download.
 
   || *Content* || *Download* || *Signature* ||
-  $downloads
+  {downloads}
+
+Java artefacts are released as compiled bytecode.  Source code is
+available in the full source artefact.
+
+## Components
+
+  || *Component* || *Languages* || *Platforms* || *AMQP versions* ||
+  {components}
 
 ## Documentation
 
- - [Programming in Apache Qpid](http://qpid.apache.org/books/${version}/Programming-In-Apache-Qpid/html/index.html)
- - [Guide to the C++ broker](http://qpid.apache.org/books/${version}/AMQP-Messaging-Broker-CPP-Book/html/index.html)
- - [Guide to the Java broker](http://qpid.apache.org/books/${version}/AMQP-Messaging-Broker-Java-Book/html/index.html)
+ - [Programming in Apache Qpid](http://qpid.apache.org/books/{version}/Programming-In-Apache-Qpid/html/index.html)
+ - [Guide to the C++ broker](http://qpid.apache.org/books/{version}/AMQP-Messaging-Broker-CPP-Book/html/index.html)
+ - [Guide to the Java broker](http://qpid.apache.org/books/{version}/AMQP-Messaging-Broker-Java-Book/html/index.html)
  - [Installing and Using Qpid Java](https://cwiki.apache.org/qpid/getting-started-guide.html)
- - [Installing Qpid C++](http://svn.apache.org/repos/asf/qpid/tags/${version}/qpid/cpp/INSTALL)
- - [Installing Qpid Python](http://svn.apache.org/repos/asf/qpid/tags/${version}/qpid/python/README.txt)
- - [Installing Qpid WCF](http://svn.apache.org/repos/asf/qpid/tags/${version}/qpid/wcf/ReadMe.txt)
-
-## Qpid Messaging API
+ - [Installing Qpid C++](http://svn.apache.org/repos/asf/qpid/tags/{version}/qpid/cpp/INSTALL)
+ - [Installing Qpid Python](http://svn.apache.org/repos/asf/qpid/tags/{version}/qpid/python/README.txt)
+ - [Installing Qpid WCF](http://svn.apache.org/repos/asf/qpid/tags/{version}/qpid/wcf/ReadMe.txt)
 
 ### API reference
 
@@ -185,21 +141,15 @@ files you download.
  - [Ruby Messaging API](messaging-api/ruby/api/index.html)
  - [.NET Messaging API](messaging-api/dotnet/api/index.html)
 
-### Examples
-
-  $messaging_api_examples
-
 ## More information
 
- - [All release artefacts](http://www.apache.org/dyn/closer.cgi/qpid/${version})
- - [Resolved issues in JIRA]($issues_url)
- - [Source repository branch](http://svn.apache.org/repos/asf/qpid/branches/${version})
- - [Source repository tag](http://svn.apache.org/repos/asf/qpid/tags/${version})
+ - [All release artefacts](http://www.apache.org/dyn/closer.cgi/qpid/{version})
+ - [Resolved issues in JIRA]({issues_url})
+ - [Source repository branch](http://svn.apache.org/repos/asf/qpid/branches/{version})
+ - [Source repository tag](http://svn.apache.org/repos/asf/qpid/tags/{version})
 """
 
-template = string.Template(template_string)
-
-output = template.substitute(locals())
+output = template.format(**locals())
 output = output.strip()
 
 print output

@@ -27,16 +27,6 @@ Python, and Ruby.  More about [Qpid](@site-url@/index.html).
 
  - [Release notes](release-notes.html)
 
-## Components
-
-  || *Component* || *Platforms* || *AMQP versions* ||
-  || [C++ broker](@site-url@/components/cpp-broker/index.html) || Linux, Windows || 1.0, 0-10 ||
-  || [Java broker](@site-url@/components/java-broker/index.html) || JVM || 1.0, 0-10, 0-91, 0-9, 0-8 ||
-  || [Qpid JMS](@site-url@/components/qpid-jms/index.html) || JVM || 1.0, 0-10, 0-91, 0-9, 0-8 ||
-  || [Qpid Messaging API](@site-url@/components/messaging-api/index.html) || Linux, Windows || 1.0, 0-10 ||
-  || [Qpid WCF](@site-url@/components/qpid-wcf/index.html) || Windows || 0-10 ||
-  || [QMF](@site-url@/components/qmf/index.html) || Linux || 0-10 ||
-
 ## Downloads
 
 It's important to [verify the
@@ -45,15 +35,27 @@ files you download.
 
   || *Content* || *Download* || *Signature* ||
   || Full source || [qpid-0.20.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.20/qpid-0.20.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.20/qpid-0.20.tar.gz.asc) ||
-  || C++ broker and Messaging API || [qpid-cpp-0.20.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.20/qpid-cpp-0.20.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.20/qpid-cpp-0.20.tar.gz.asc) ||
+  || C++ broker, Qpid Messaging API (C++, bindings) || [qpid-cpp-0.20.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.20/qpid-cpp-0.20.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.20/qpid-cpp-0.20.tar.gz.asc) ||
   || C++ broker command-line tools || [qpid-tools-0.20.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.20/qpid-tools-0.20.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.20/qpid-tools-0.20.tar.gz.asc) ||
-  || Java broker, Qpid JMS, and tools || [qpid-java-0.20.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.20/qpid-java-0.20.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.20/qpid-java-0.20.tar.gz.asc) ||
   || Java broker || [qpid-java-broker-0.20.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.20/qpid-java-broker-0.20.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.20/qpid-java-broker-0.20.tar.gz.asc) ||
-  || Qpid JMS || [qpid-java-client-0.20.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.20/qpid-java-client-0.20.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.20/qpid-java-client-0.20.tar.gz.asc) ||
-  || Qpid AMQP 1.0 JMS || [qpid-java-amqp-1-0-client-0.20.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.20/qpid-java-amqp-1-0-client-0.20.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.20/qpid-java-amqp-1-0-client-0.20.tar.gz.asc) ||
-  || Python Messaging API || [qpid-python-0.20.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.20/qpid-python-0.20.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.20/qpid-python-0.20.tar.gz.asc) ||
+  || Qpid JMS (AMQP 0-10, 0-91, 0-9, 0-8) || [qpid-java-client-0.20.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.20/qpid-java-client-0.20.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.20/qpid-java-client-0.20.tar.gz.asc) ||
+  || Qpid JMS (AMQP 1.0) || [qpid-java-amqp-1-0-client-jms-0.20.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.20/qpid-java-amqp-1-0-client-jms-0.20.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.20/qpid-java-amqp-1-0-client-jms-0.20.tar.gz.asc) ||
+  || Qpid Messaging API (Python) || [qpid-python-0.20.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.20/qpid-python-0.20.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.20/qpid-python-0.20.tar.gz.asc) ||
   || Qpid WCF || [qpid-wcf-0.20.zip](http://www.apache.org/dyn/closer.cgi/qpid/0.20/qpid-wcf-0.20.zip) || [PGP](http://www.apache.org/dist/qpid/0.20/qpid-wcf-0.20.zip.asc) ||
   || QMF || [qpid-qmf-0.20.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.20/qpid-qmf-0.20.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.20/qpid-qmf-0.20.tar.gz.asc) ||
+
+Java artefacts are released as compiled bytecode.  Source code is
+available in the full source artefact.
+
+## Components
+
+  || *Component* || *Languages* || *Platforms* || *AMQP versions* ||
+  || [C++ broker](@site-url@/components/cpp-broker/index.html) || C++ || Linux, Windows || 1.0, 0-10 ||
+  || [Java broker](@site-url@/components/java-broker/index.html) || Java || JVM || 1.0, 0-10, 0-91, 0-9, 0-8 ||
+  || [Qpid JMS](@site-url@/components/qpid-jms/index.html) || Java || JVM || 1.0, 0-10, 0-91, 0-9, 0-8 ||
+  || [Qpid Messaging API](@site-url@/components/messaging-api/index.html) || C++, Perl, Python, Ruby || Linux, Windows || 1.0, 0-10 ||
+  || [Qpid WCF](@site-url@/components/qpid-wcf/index.html) || C# || Windows || 0-10 ||
+  || [QMF](@site-url@/components/qmf/index.html) || C++, Python || Linux || 0-10 ||
 
 ## Documentation
 
@@ -65,22 +67,12 @@ files you download.
  - [Installing Qpid Python](http://svn.apache.org/repos/asf/qpid/tags/0.20/qpid/python/README.txt)
  - [Installing Qpid WCF](http://svn.apache.org/repos/asf/qpid/tags/0.20/qpid/wcf/ReadMe.txt)
 
-## Qpid Messaging API
-
 ### API reference
 
  - [C++ Messaging API](messaging-api/cpp/api/index.html)
  - [Python Messaging API](messaging-api/python/api/index.html)
  - [Ruby Messaging API](messaging-api/ruby/api/index.html)
  - [.NET Messaging API](messaging-api/dotnet/api/index.html)
-
-### Examples
-
-  || *C++* || [hello_world.cpp](messaging-api/cpp/examples/hello_world.cpp.html) || [client.cpp](messaging-api/cpp/examples/client.cpp.html) || [server.cpp](messaging-api/cpp/examples/server.cpp.html) || [spout.cpp](messaging-api/cpp/examples/spout.cpp.html) || [drain.cpp](messaging-api/cpp/examples/drain.cpp.html) || [More](messaging-api/cpp/examples/index.html) ||
-  || *Perl* || [hello_world.pl](messaging-api/perl/examples/hello_world.pl.html) || [client.pl](messaging-api/perl/examples/client.pl.html) || [server.pl](messaging-api/perl/examples/server.pl.html) || [spout.pl](messaging-api/perl/examples/spout.pl.html) || [drain.pl](messaging-api/perl/examples/drain.pl.html) || [More](messaging-api/perl/examples/index.html) ||
-  || *Python* || [hello](messaging-api/python/examples/hello.html) ||  ||  || [spout](messaging-api/python/examples/spout.html) || [drain](messaging-api/python/examples/drain.html) || [More](messaging-api/python/examples/index.html) ||
-  || *Ruby* || [hello_world.rb](messaging-api/ruby/examples/hello_world.rb.html) || [client.rb](messaging-api/ruby/examples/client.rb.html) || [server.rb](messaging-api/ruby/examples/server.rb.html) || [spout.rb](messaging-api/ruby/examples/spout.rb.html) || [drain.rb](messaging-api/ruby/examples/drain.rb.html) || [More](messaging-api/ruby/examples/index.html) ||
-  || *.NET* || [helloworld.cs](messaging-api/dotnet/examples/csharp.example.helloworld.cs.html) || [client.cs](messaging-api/dotnet/examples/csharp.example.client.cs.html) || [server.cs](messaging-api/dotnet/examples/csharp.example.server.cs.html) || [spout.cs](messaging-api/dotnet/examples/csharp.example.spout.cs.html) || [drain.cs](messaging-api/dotnet/examples/csharp.example.drain.cs.html) || [More](messaging-api/dotnet/examples/index.html) ||
 
 ## More information
 
