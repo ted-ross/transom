@@ -44,8 +44,9 @@ persistence, and manageability.
 
 ## Tools
 
- - [Qpid JCA](qpid-jca/index.html) - A JCA resource adapter for Qpid brokers
+ - [C++ broker command-line tools](cpp-broker-tools/index.html) - Manage the C++ broker
  - [QMF](qmf/index.html) - Management built on Qpid messaging
+ - [Qpid JCA](qpid-jca/index.html) - A JCA resource adapter for Qpid brokers
 
 ;; ## Servers
 
