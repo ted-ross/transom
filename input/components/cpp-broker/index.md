@@ -29,18 +29,26 @@ messages using AMQP.
 
 ## Features
 
- - Access control
- - Federation
- - Flow control
+<div class="two-column" markdown="1">
+ - [Management](http://qpid.apache.org/books/0.20/AMQP-Messaging-Broker-CPP-Book/html/chapter-Managing-CPP-Broker.html#section-Managing-CPP-Broker) via [QMF](@site-url@/components/qmf/index.html)
+ - [Access control lists](http://qpid.apache.org/books/0.20/AMQP-Messaging-Broker-CPP-Book/html/chap-Messaging_User_Guide-Security.html#sect-Messaging_User_Guide-Security-Authorization)
+ - [Federation](http://qpid.apache.org/books/0.20/AMQP-Messaging-Broker-CPP-Book/html/chap-Messaging_User_Guide-Broker_Federation.html)
  - Header-based routing
- - High availability
- - Management via [QMF](@site-url@/components/qmf/index.html)
- - Persistence
- - Pluggable authentication via SASL
- - Queue replication
- - Secure connection via SSL
+ - Heartbeats
+ - [High availability](http://qpid.apache.org/books/0.20/AMQP-Messaging-Broker-CPP-Book/html/chap-Messaging_User_Guide-Active_Passive_Cluster.html)
+ - Pluggable persistence
+ - [Pluggable authentication via SASL](http://qpid.apache.org/books/0.20/AMQP-Messaging-Broker-CPP-Book/html/chap-Messaging_User_Guide-Security.html)
+ - [Producer flow control](http://qpid.apache.org/books/0.20/AMQP-Messaging-Broker-CPP-Book/html/producer-flow-control.html)
+ - [Queue replication](http://qpid.apache.org/books/0.20/AMQP-Messaging-Broker-CPP-Book/html/ch01s14.html)
+ - [Resource limits](http://qpid.apache.org/books/0.20/AMQP-Messaging-Broker-CPP-Book/html/chap-Messaging_User_Guide-Security.html#sect-Messaging_User_Guide-Authorization-Specifying_ACL_Quotas)
+ - [Secure connection via SSL](http://qpid.apache.org/books/0.20/AMQP-Messaging-Broker-CPP-Book/html/chap-Messaging_User_Guide-Security.html#sect-Messaging_User_Guide-Security-Encryption_using_SSL)
  - Specialized queueing
+   - Last value queue
+   - [Message groups](http://qpid.apache.org/books/0.20/AMQP-Messaging-Broker-CPP-Book/html/Using-message-groups.html)
+   - Ring queue
+ - Threshold alerts
  - Transactions
+</div>
 
 ## Documentation
 

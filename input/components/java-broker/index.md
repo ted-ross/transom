@@ -29,6 +29,7 @@ messages using AMQP.
 
 ## Features
 
+<div class="two-column" markdown="1">
  - JMS 1.1 compliant
  - Speaks and translates among all versions of AMQP
  - [Management via JMX, REST, QMF, and web console](http://qpid.apache.org/books/trunk/AMQP-Messaging-Broker-Java-Book/html/Java-Broker-Configuring-And-Managing.html)
@@ -38,7 +39,6 @@ messages using AMQP.
  - Header-based routing
  - [Heartbeats](https://cwiki.apache.org/qpid/configure-broker-and-client-heartbeating.html)
  - [High availability](http://qpid.apache.org/books/@current-release@/AMQP-Messaging-Broker-Java-Book/html/Java-Broker-High-Availability.html)
- - Message groups
  - Pluggable persistence
    - [Derby store](http://qpid.apache.org/books/@current-release@/AMQP-Messaging-Broker-Java-Book/html/Java-Broker-Stores-Derby-Store.html)
    - [BDB store](http://qpid.apache.org/books/@current-release@/AMQP-Messaging-Broker-Java-Book/html/Java-Broker-Stores-BDB-Store.html)
@@ -52,11 +52,13 @@ messages using AMQP.
  - Server-side selectors
  - Specialized queuing
    - [Last value queue](http://qpid.apache.org/books/@current-release@/AMQP-Messaging-Broker-Java-Book/html/Java-Broker-Queues-OtherTypes.html#Java-Broker-Queues-OtherTypes-LVQ)
+   - Message groups
    - [Priority queue](http://qpid.apache.org/books/@current-release@/AMQP-Messaging-Broker-Java-Book/html/Java-Broker-Queues-OtherTypes.html#Java-Broker-Queues-OtherTypes-Priority)
    - [Sorted queue](http://qpid.apache.org/books/@current-release@/AMQP-Messaging-Broker-Java-Book/html/Java-Broker-Queues-OtherTypes.html#Java-Broker-Queues-OtherTypes-Sorted)
  - Threshold alerts
  - Transactions
  - [Virtual hosts](https://cwiki.apache.org/qpid/configure-the-virtual-hosts-via-virtualhostsxml.html)
+</div>
 
 ## Documentation
 
