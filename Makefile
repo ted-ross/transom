@@ -15,8 +15,10 @@ render: clean
 	mkdir -p ${OUTPUT_DIR}
 	scripts/render ${SITE_URL} input ${OUTPUT_DIR}
 
+check-links: INTERNAL := 1
+check-links: EXTERNAL := 0
 check-links: render
-	scripts/check-links ${SITE_URL} input ${OUTPUT_DIR}
+	scripts/check-links ${SITE_URL} input ${OUTPUT_DIR} ${INTERNAL} ${EXTERNAL}
 
 clean:
 	rm -rf ${OUTPUT_DIR}

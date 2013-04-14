@@ -28,25 +28,24 @@ free to use, and built to help you solve problems.
 ## Tell us about problems
 
 If everything just works, great!  If not, tell us what's wrong.  You
-can ask questions on the [user
-list](@site-url@/mailing-lists.html#user-list) or [report a
-bug](@site-url@/issues.html#report-a-bug).
+can ask questions on the Qpid
+[mailing lists](@site-url@/discussion.html#mailing-lists) or
+[report a bug](@site-url@/issues.html#report-a-bug).
 
 ## Follow what's happening
 
 Qpid is an active community.  There's ongoing development of new
 features, lots of bug fixing, and discussion of messaging
-architecture.  Subscribe to our [mailing
-lists](@site-url@/mailing-lists.html#subscribe) to watch our progress and voice
-your opinion.
+architecture.  Subscribe to our
+[mailing lists](@site-url@/discussion.html#subscribe) to watch our
+progress and voice your opinion.
 
 ## Make Qpid work for you
 
 Each new user brings a new use case and new challenges.  Maybe Qpid
 doesn't do something that you need.  Since Qpid is open source, *you
 can make Qpid do what you need*.  Write a patch and send it to us.  If
-you want guidance, ask on the [developer
-list](@site-url@/mailing-lists.html#developer-list).
+you want guidance, [discuss it with us](@site-url@/discussion.html).
 
 ## Write about it
 

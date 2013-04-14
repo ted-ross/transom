@@ -21,7 +21,7 @@
 
 Qpid produces three releases a year on a time-based schedule.  They
 usually drop in January, April, and August.  New releases are
-announced on the [Qpid mailing lists](@site-url@/mailing-lists.html)
+announced on the [Qpid mailing lists](@site-url@/discussion.html)
 and the
 [Apache announce list](http://mail-archives.apache.org/mod_mbox/www-announce/).
 

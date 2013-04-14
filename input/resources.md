@@ -21,8 +21,8 @@
 
 ## Blogs
 
-[Contact us](@site-url@/mailing-lists.html#user-list) if you write
-about Qpid and would like your blog linked here.
+[Contact us](@site-url@/discussion.html) if you write about Qpid and
+would like your blog linked here.
 
  - [Dial M for Messaging](http://dialmformessaging.blogspot.com/), Mick Goulish
  - [IPBabble](http://www.ipbabble.com/), William Henry
