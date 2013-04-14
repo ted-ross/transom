@@ -32,15 +32,14 @@ track and manage changes to its source code.  Qpid uses the
 
 ## Check out the code
 
-To access the repository anonymously, use
-[Subversion](http://subversion.apache.org/) to check out
-<http://svn.apache.org/repos/asf/qpid/trunk/qpid>.
+To access the repository anonymously, use the `svn checkout` command
+with the following URL:
 
-    % svn co http://svn.apache.org/repos/asf/qpid/trunk/qpid
+    % svn checkout http://svn.apache.org/repos/asf/qpid/trunk/qpid
 
-To access the repository as a committer, use <https://svn.apache.org/repos/asf/qpid/trunk/qpid>.
+To access the repository as a committer (note the use of *`https`*):
 
-    % svn co https://svn.apache.org/repos/asf/qpid/trunk/qpid
+    % svn checkout https://svn.apache.org/repos/asf/qpid/trunk/qpid
 
 When adding files to subversion, it's important that the appropriate
 Subversion properties are set. The client can do it automatically by

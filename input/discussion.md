@@ -26,14 +26,14 @@ lists.  You can also catch us on [chat](#chat).
 
  - *Users* - Raise general questions, find out how a feature works, or
    ask about any problems you encounter.
- - *Developers* - For discussing the ongoing development of Qpid.
+ - *Developers* - Discuss the ongoing development of Qpid.
 
 ### Subscribe
 
 Subscribe to these lists by sending an email with the word "subscribe"
-in the subject to one of the subscribe addresses below.  To
-unsubscribe, it's the reverse: send an email with "unsubscribe" in the
-subject to the unsubscribe address.
+in the subject to the subscribe address.  To unsubscribe, it's the
+reverse: send an email with "unsubscribe" in the subject to the
+unsubscribe address.
 
 || || *Subscribe* || *Unsubscribe* ||
 || *Users* || <users-subscribe@qpid.apache.org> || <users-unsubscribe@qpid.apache.org> ||
