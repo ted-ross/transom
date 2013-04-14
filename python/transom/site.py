@@ -17,7 +17,6 @@
 # under the License.
 #
 
-import codecs
 import fnmatch
 import markdown2
 import os
@@ -130,7 +129,8 @@ class Site(object):
                 sys.stdout.flush()
 
                 if code and code >= 400:
-                    errors_by_link[link].append("HTTP error code {}".format(code))
+                    error = "HTTP error code {}".format(code)
+                    errors_by_link[link].append(error)
 
             print
 
@@ -195,10 +195,7 @@ class _Page(object):
         self.site_path = None
         self.url = None
 
-        self.input = None
-        self.output = None
-
-        self.root_elem = None
+        self.content = None
         self.title = None
 
         self.site.pages.append(self)
@@ -219,8 +216,8 @@ class _Page(object):
         self.site.pages_by_site_path[self.site_path] = self
 
     def read_input(self):
-        with codecs.open(self.input_path, "r") as file:
-            self.input = file.read()
+        with open(self.input_path, "r") as file:
+            self.content = file.read()
 
     def write_output(self, path=None):
         if path is None:
@@ -232,67 +229,69 @@ class _Page(object):
             os.makedirs(output_dir)
 
         with open(path, "w") as file:
-            file.write(self.output)
+            file.write(self.content)
 
     def read_output(self):
         with open(self.output_path, "r") as file:
-            self.output = file.read()
+            self.content = file.read()
 
     def convert(self):
-        self.output = self.input
+        pass
 
     def convert_from_markdown(self):
         # Strip out comments
-        input_lines = self.input.splitlines()
-        input_lines = (x for x in input_lines if not x.startswith(";;"))
+        content_lines = self.content.splitlines()
+        content_lines = (x for x in content_lines if not x.startswith(";;"))
 
-        content = os.linesep.join(input_lines)
+        content = os.linesep.join(content_lines)
         content = self.site.markdown.convert(content)
 
-        self.output = self.apply_template(content)
+        self.content = self.apply_template(content)
 
     def convert_from_html_in(self):
-        self.output = self.apply_template(self.input)
+        self.content = self.apply_template(self.content)
 
     def apply_template(self, content):
         return self.site.template_content.replace("@content@", content)
 
     def process(self):
-        self.parse_xml(self.output)
-
         self.title = os.path.split(self.output_path)[1]
 
-        elem = self.root_elem.find(".//{http://www.w3.org/1999/xhtml}h1")
+        root = self.parse_xml(self.content)
+        elem = root.find(".//{http://www.w3.org/1999/xhtml}h1")
+
+        if elem is None:
+            elem = root.find(".//{http://www.w3.org/1999/xhtml}h2")
 
         if elem is not None:
             self.title = "".join(elem.itertext())
 
         self.title = self.title.strip()
-        self.title = ascii(self.title)
+        self.title = _ascii(self.title)
 
-    def parse_xml(self, input):
-        self.output = ascii(self.output)
-
+    def parse_xml(self, xml):
         try:
-            self.root_elem = XML(self.output)
+            return XML(xml)
         except Exception as e:
             path = tempfile.mkstemp(".xml")[1]
             msg = "{} fails to parse; {}; see {}".format(self, str(e), path)
 
-            self.write_output(path)
+            with open(path, "w") as file:
+                file.write(xml)
+
             raise Exception(msg)
 
     def render(self):
         path_nav = self.render_path_navigation()
 
-        self.output = self.output.replace("@path-navigation@", path_nav)
-        self.output = self.output.replace("@title@", self.title)
+        self.content = self.content.replace("@path-navigation@", path_nav)
+        self.content = self.content.replace("@title@", self.title)
 
         overrides = dict()
         overrides["site-url"] = self.site.url
 
         for name, value in self.site.config.items("main", vars=overrides):
-            self.output = self.output.replace("@{}@".format(name), value)
+            self.content = self.content.replace("@{}@".format(name), value)
 
     def render_link(self):
         return "<a href=\"{}\">{}</a>".format(self.url, self.title)
@@ -326,10 +325,10 @@ class _Page(object):
 
     def check_links(self):
         # Reparse to pick up new attr values after substitutions
-        self.parse_xml(self.output)
+        root = self.parse_xml(self.content)
 
-        links = self.gather_links()
-        targets = self.gather_targets()
+        links = self.gather_links(root)
+        targets = self.gather_targets(root)
 
         for link in links:
             scheme, netloc, path, query, fragment = urlsplit(link)
@@ -347,10 +346,10 @@ class _Page(object):
 
         self.site.targets.update(targets)
 
-    def gather_links(self):
+    def gather_links(self, root_elem):
         links = set()
 
-        for elem in self.root_elem.iter("*"):
+        for elem in root_elem.iter("*"):
             for name in ("href", "src", "action"):
                 try:
                     link = elem.attrib[name]
@@ -361,11 +360,11 @@ class _Page(object):
 
         return links
 
-    def gather_targets(self):
+    def gather_targets(self, root_elem):
         targets = set()
         targets.add(self.url)
 
-        for elem in self.root_elem.iter("*"):
+        for elem in root_elem.iter("*"):
             try:
                 id = elem.attrib["id"]
             except KeyError:
@@ -383,7 +382,7 @@ class _Page(object):
         args = self.__class__.__name__, self.input_dir, self.input_name
         return "{}({},{})".format(*args)
 
-def ascii(string):
+def _ascii(string):
     if isinstance(string, unicode):
         return string.encode("ascii", "xmlcharrefreplace")
 
