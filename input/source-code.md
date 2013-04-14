@@ -41,7 +41,7 @@ To access the repository as a committer (note the use of *`https`*):
 
     % svn checkout https://svn.apache.org/repos/asf/qpid/trunk/qpid
 
-When adding files to subversion, it's important that the appropriate
+When adding files to Subversion, it's important that the appropriate
 Subversion properties are set. The client can do it automatically by
 modifying the `auto-props` section of the Subversion config file.  Use
 the contents of
