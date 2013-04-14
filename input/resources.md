@@ -30,13 +30,6 @@ about Qpid and would like your blog linked here.
  - [Sajini's Blog](http://sajinid.blogspot.com/), Sajini De Silva
  - [Steve Huston's Networked Programming Blog](http://stevehuston.wordpress.com/), Steve Huston
 
-## Chat
-
-We hang out on `#qpid` on [freenode](http://freenode.net).
-
- - <a href="irc://irc.freenode.net/qpid">irc://irc.freenode.net/qpid</a>
- - [freenode webchat](http://webchat.freenode.net/?channels=#qpid)
-
 ## Code reviews
 
 Qpid contributors often use
@@ -50,6 +43,24 @@ Qpid contributors often use
 
  - [Automated tests in Jenkins](https://builds.apache.org//view/M-R/view/Qpid/)
  - [Overview of Qpid CI](https://cwiki.apache.org/qpid/continuous-integration.html)
+
+## Notifications
+
+The traffic on these lists is automatically generated.  With the
+exception of the developers list, you should not post messages to
+them.
+
+ - *Commits* - Alerts for changes committed to the Qpid source
+   repository.
+ - *Issues* - Alerts for new issues and changes to issue content are
+   directed to the
+   [developers list](@site-url@/discussion.html#mailing-lists).
+ - *Notifications* - Alerts for build and test failures from our
+   automated tests.
+
+|| || *Subscribe* || *Unsubscribe* ||
+|| *Commits* || <commits-subscribe@qpid.apache.org> || <commits-unsubscribe@qpid.apache.org> ||
+|| *Notifications* || <notifications-subscribe@qpid.apache.org> || <notifications-unsubscribe@qpid.apache.org> ||
 
 ## Wiki
 

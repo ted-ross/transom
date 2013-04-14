@@ -28,10 +28,12 @@ system.
 
 ## Search issues
 
-<form id="jira-search-form" action="?" method="post">
-  <input name="text" type="text"/>
-  <button type="submit">Search</button>
-</form>
+<div class="indent">
+  <form id="jira-search-form" action="?" method="post">
+    <input name="text" type="text"/>
+    <button type="submit">Search</button>
+  </form>
+</div>
 
 ## Report a bug
 

@@ -32,8 +32,6 @@ track and manage changes to its source code.  Qpid uses the
 
 ## Check out the code
 
-### Subversion
-
 To access the repository anonymously, use
 [Subversion](http://subversion.apache.org/) to check out
 <http://svn.apache.org/repos/asf/qpid/trunk/qpid>.
@@ -50,7 +48,17 @@ modifying the `auto-props` section of the Subversion config file.  Use
 the contents of
 <http://svn.apache.org/repos/asf/qpid/trunk/qpid/etc/svn-auto-props>.
 
-### Git
+## Install the code
+
+Consult the install documentation below.
+
+ - [Installing Qpid C++](http://svn.apache.org/repos/asf/qpid/trunk/qpid/cpp/INSTALL)
+ - [Installing Qpid Proton](http://svn.apache.org/repos/asf/qpid/proton/trunk/README)
+ - [Installing Qpid WCF](http://svn.apache.org/repos/asf/qpid/trunk/qpid/wcf/ReadMe.txt)
+ - [How to build Qpid Java](https://cwiki.apache.org/qpid/qpid-java-build-how-to.html)
+ - [Installing and Using Qpid Java](https://cwiki.apache.org/qpid/getting-started-guide.html)
+
+## Git
 
 A read-only [Git](http://git-scm.com/) mirror is available.  Use one
 of the following commands.
@@ -62,16 +70,6 @@ of the following commands.
 If you have commit access, it's also possible to commit back with `git
 svn dcommit` by following the instructions on the
 [Git at Apache](http://www.apache.org/dev/git.html) page.
-
-## Install the code
-
-Consult the install documentation below.
-
- - [Installing Qpid C++](http://svn.apache.org/repos/asf/qpid/trunk/qpid/cpp/INSTALL)
- - [Installing Qpid Proton](http://svn.apache.org/repos/asf/qpid/proton/trunk/README)
- - [Installing Qpid WCF](http://svn.apache.org/repos/asf/qpid/trunk/qpid/wcf/ReadMe.txt)
- - [How to build Qpid Java](https://cwiki.apache.org/qpid/qpid-java-build-how-to.html)
- - [Installing and Using Qpid Java](https://cwiki.apache.org/qpid/getting-started-guide.html)
 
 ## More information
 

@@ -23,7 +23,7 @@
 light linen: #fcfcfa
 medium linen: #f7f7ef
 darker linen: #ecece0
-darkest linen: #d4d4da
+darkest linen: #d4d4ca
 blue: #0d6dad
 dark blue: #0d567f
 light indigo: #d0c6e7
@@ -288,7 +288,7 @@ div.column {
 }
 
 div.indent {
-    margin: 0 0.8em;
+    margin: 0.8em;
 }
 
 div.spacious {
@@ -332,7 +332,7 @@ form button {
     background: -webkit-linear-gradient(top, white, #f7f7ef 10%, #f7f7ef 98%, #d4d4ca) no-repeat, #f7f7ef;
     background: linear-gradient(to bottom, white, #f7f7ef 10%, #f7f7ef 98%, #d4d4ca) no-repeat, #f7f7ef;
     padding: 0 0.4em 0.1em 0.4em;
-    font-size: 0.9em;
+    font-size: 0.95em;
     vertical-align: 0.1em;
 }
 
@@ -380,8 +380,8 @@ table td:last-child, table th:last-child {
 
 table td em, table th em, table th {
     font-family: "Oswald", sans-serif;
-    font-weight: 300;
     font-style: normal;
+    color: rgb(150, 150, 140);
 }
 
 code, pre {

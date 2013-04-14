@@ -23,7 +23,7 @@
   <button type="submit">Search</button>
 </form>
 
-### Search mailing list archives
+### Search mailing lists
 
 <form action="http://qpid.2158936.n2.nabble.com/template/NamlServlet.jtp" method="get">
   <input type="hidden" name="macro" value="search_page"/>
