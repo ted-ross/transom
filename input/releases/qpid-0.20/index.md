@@ -60,9 +60,16 @@ available in the full source artefact.
 
 ## Documentation
 
+<div class="two-column" markdown="1">
+
+### Books
+
  - [Programming in Apache Qpid](prog-guide/book/html/index.html)
- - [Guide to the C++ broker](cpp-broker/book/html/index.html)
- - [Guide to the Java broker](java-broker/book/html/index.html)
+ - [C++ broker](cpp-broker/book/html/index.html)
+ - [Java broker](java-broker/book/html/index.html)
+
+### Installation guides
+
  - [Installing and Using Qpid Java](https://cwiki.apache.org/qpid/getting-started-guide.html)
  - [Installing Qpid C++](http://svn.apache.org/repos/asf/qpid/tags/0.20/qpid/cpp/INSTALL)
  - [Installing Qpid Python](http://svn.apache.org/repos/asf/qpid/tags/0.20/qpid/python/README.txt)
@@ -74,6 +81,15 @@ available in the full source artefact.
  - [Python Messaging API](messaging-api/python/api/index.html)
  - [Ruby Messaging API](messaging-api/ruby/api/index.html)
  - [.NET Messaging API](messaging-api/dotnet/api/index.html)
+
+### Examples
+
+ - [C++ Messaging API](messaging-api/cpp/examples/index.html)
+ - [Python Messaging API](messaging-api/python/examples/index.html)
+ - [Ruby Messaging API](messaging-api/ruby/examples/index.html)
+ - [.NET Messaging API](messaging-api/dotnet/examples/index.html)
+
+</div>
 
 ## More information
 
