@@ -127,9 +127,9 @@ available in the full source artefact.
 
 ## Documentation
 
- - [Programming in Apache Qpid](prog-guide/book/html/index.html)
- - [Guide to the C++ broker](cpp-broker/book/html/index.html)
- - [Guide to the Java broker](java-broker/book/html/index.html)
+ - [Programming in Apache Qpid](programming/book/index.html)
+ - [Guide to the C++ broker](cpp-broker/book/index.html)
+ - [Guide to the Java broker](java-broker/book/index.html)
  - [Installing and Using Qpid Java](https://cwiki.apache.org/qpid/getting-started-guide.html)
  - [Installing Qpid C++](http://svn.apache.org/repos/asf/qpid/tags/{version}/qpid/cpp/INSTALL)
  - [Installing Qpid Python](http://svn.apache.org/repos/asf/qpid/tags/{version}/qpid/python/README.txt)

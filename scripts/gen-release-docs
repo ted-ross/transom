@@ -31,8 +31,7 @@ call("dot -V")
 call("doxygen --version")
 call("epydoc --version")
 call("rdoc --version")
-call("xsltproc --version")
-call("xmllint --version")
+call("pandoc --version")
 
 ## API docs ##
 
@@ -447,6 +446,59 @@ def remove_namespace(doc, namespace):
     for elem in doc.getiterator():
         if elem.tag.startswith(ns):
             elem.tag = elem.tag[nsl:]
+
+def alternate_gen_books(release, source_dir, output_dir):
+    input_dir = join(source_dir, "doc", "book")
+
+    cpp_broker_input_dir = join(input_dir, "src", "cpp-broker")
+    java_broker_input_dir = join(input_dir, "src", "java-broker")
+    programming_input_dir = join(input_dir, "src", "programming")
+
+    cpp_broker_output_dir = join(output_dir, "cpp-broker", "book")
+    java_broker_output_dir = join(output_dir, "java-broker", "book")
+    programming_output_dir = join(output_dir, "programming", "book")
+
+    convert_book(cpp_broker_input_dir, cpp_broker_output_dir, "C++ Broker Book")
+    convert_book(java_broker_input_dir, java_broker_output_dir, "Java Broker Book")
+    convert_book(programming_input_dir, programming_output_dir, "Programming in Apache Qpid")
+
+book_index_template = """
+# {title}
+
+{links}
+"""
+
+def convert_book(input_dir, output_dir, title):
+    remove(output_dir)
+
+    copy(join(input_dir, "images"), join(output_dir, "images"))
+
+    command = "pandoc --from docbook --to html"
+
+    links = list()
+
+    for input_name in list_dir(input_dir, "*.xml"):
+        input_path = join(input_dir, input_name)
+        output_name = "{}.html.in".format(input_name[:-4])
+        output_path = join(output_dir, output_name)
+
+        call("{} --output {} {}", command, output_path, input_path)
+
+        link_path = "{}.html".format(input_name[:-4])
+        link_title = link_path
+
+        #tree = ElementTree.parse(input_path)
+        #elem = tree.find(".//title")
+
+        #if elem is not None:
+        #    link_title = "".join(elem.itertext())
+
+        links.append(" - [{}]({})".format(link_title, link_path))
+
+    links = os.linesep.join(links)
+    index = book_index_template.format(**locals())
+
+    write(join(output_dir, "index.md"), index)
 
 ## Now do stuff ##
 

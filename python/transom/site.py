@@ -17,6 +17,7 @@
 # under the License.
 #
 
+import codecs
 import fnmatch
 import markdown2
 import os
@@ -218,7 +219,7 @@ class _Page(object):
         self.site.pages_by_site_path[self.site_path] = self
 
     def read_input(self):
-        with open(self.input_path, "r") as file:
+        with codecs.open(self.input_path, "r") as file:
             self.input = file.read()
 
     def write_output(self, path=None):
@@ -267,9 +268,11 @@ class _Page(object):
             self.title = "".join(elem.itertext())
 
         self.title = self.title.strip()
-        self.title = self.title.encode('ascii', 'xmlcharrefreplace')
+        self.title = ascii(self.title)
 
     def parse_xml(self, input):
+        self.output = ascii(self.output)
+
         try:
             self.root_elem = XML(self.output)
         except Exception as e:
@@ -379,3 +382,9 @@ class _Page(object):
     def __repr__(self):
         args = self.__class__.__name__, self.input_dir, self.input_name
         return "{}({},{})".format(*args)
+
+def ascii(string):
+    if isinstance(string, unicode):
+        return string.encode("ascii", "xmlcharrefreplace")
+
+    return string

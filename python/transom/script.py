@@ -190,6 +190,7 @@ def make_user_temp_dir():
 
     return make_dirs(user_temp_dir)
 
+# XXX consider an exception on non-zero exit
 def call(command, *args):
     if args:
         command = command.format(*args)
