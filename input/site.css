@@ -381,7 +381,7 @@ table td:last-child, table th:last-child {
 table td em, table th em, table th {
     font-family: "Oswald", sans-serif;
     font-style: normal;
-    color: rgb(150, 150, 140);
+    color: rgb(80, 80, 75);
 }
 
 code, pre {
