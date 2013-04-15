@@ -72,6 +72,7 @@ svn dcommit` by following the instructions on the
 
 ## More information
 
+ - [Subscribe to commit notifications](@site-url@/resources.html#notifications)
  - [Subversion project](http://subversion.apache.org/)
  - [Subversion manual](http://svnbook.red-bean.com/)
  - [Subversion at Apache](http://www.apache.org/dev/version-control.html)

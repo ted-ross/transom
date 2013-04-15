@@ -24,11 +24,11 @@
 [Contact us](@site-url@/discussion.html) if you write about Qpid and
 would like your blog linked here.
 
- - [Dial M for Messaging](http://dialmformessaging.blogspot.com/), Mick Goulish
- - [IPBabble](http://www.ipbabble.com/), William Henry
- - [Rajith's Column](http://rajith.2rlabs.com/), Rajith Attapattu
- - [Sajini's Blog](http://sajinid.blogspot.com/), Sajini De Silva
- - [Steve Huston's Networked Programming Blog](http://stevehuston.wordpress.com/), Steve Huston
+ - [Dial M for Messaging](http://dialmformessaging.blogspot.com/) by Mick Goulish
+ - [IPBabble](http://www.ipbabble.com/) by William Henry
+ - [Rajith's Column](http://rajith.2rlabs.com/) by Rajith Attapattu
+ - [Sajini's Blog](http://sajinid.blogspot.com/) by Sajini De Silva
+ - [Steve Huston's Networked Programming Blog](http://stevehuston.wordpress.com/) by Steve Huston
 
 ## Code reviews
 

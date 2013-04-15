@@ -73,6 +73,7 @@ you give to make Qpid better.
 
 ## More information
 
+ - [Subscribe to issue notifications](@site-url@/resources.html#notifications)
  - [Qpid JIRA project page](https://issues.apache.org/jira/browse/qpid)
  - [JIRA product page](http://www.atlassian.com/software/jira/overview)
  - [JIRA documentation](http://www.atlassian.com/software/jira/docs/latest/)

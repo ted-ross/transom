@@ -19,14 +19,26 @@
 
 # Discussion
 
-Qpid contributors and users collaborate primarily via our mailing
-lists.  You can also catch us on [chat](#chat).
+Have a question or an idea?  We'd be pleased to talk about it.
 
 ## Mailing lists
+
+Mailing lists are the primary means of collaboration at Qpid.
 
  - *Users* - Raise general questions, find out how a feature works, or
    ask about any problems you encounter.
  - *Developers* - Discuss the ongoing development of Qpid.
+
+### Search messages
+
+<div class="indent">
+  <form action="http://qpid.2158936.n2.nabble.com/template/NamlServlet.jtp" method="get">
+    <input type="hidden" name="macro" value="search_page"/>
+    <input type="hidden" name="node" value="7106518"/>
+    <input type="text" name="query"/>
+    <button type="submit">Search</button>
+  </form>
+</div>
 
 ### Subscribe
 
@@ -43,17 +55,6 @@ unsubscribe address.
 
 || *Users* || [Information](http://mail-archives.apache.org/mod_mbox/qpid-users/) || [Archive](http://qpid.2158936.n2.nabble.com/Apache-Qpid-users-f2158936.html) || [News feed](http://mail-archives.apache.org/mod_mbox/qpid-users/?format=atom) ||
 || *Developers* || [Information](http://mail-archives.apache.org/mod_mbox/qpid-dev/) || [Archive](http://qpid.2158936.n2.nabble.com/Apache-Qpid-developers-f7254403.html) || [News feed](http://mail-archives.apache.org/mod_mbox/qpid-dev/?format=atom) ||
-
-### Search messages
-
-<div class="indent">
-  <form action="http://qpid.2158936.n2.nabble.com/template/NamlServlet.jtp" method="get">
-    <input type="hidden" name="macro" value="search_page"/>
-    <input type="hidden" name="node" value="7106518"/>
-    <input type="text" name="query"/>
-    <button type="submit">Search</button>
-  </form>
-</div>
 
 ## Chat
 
