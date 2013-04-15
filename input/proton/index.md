@@ -17,6 +17,8 @@
 ;; under the License.
 ;;
 
+<div id="left" markdown="1">
+
 # Qpid Proton
 
 <div id="welcome" markdown="1">
@@ -29,18 +31,11 @@ platform, environment, or language. More about
 [Qpid Proton](@site-url@/proton/overview.html).
 
 </div>
-<div class="two-column" markdown="1">
-<div class="column" markdown="1">
 
-## Releases
+## Messaging APIs
 
- - @current-proton-release-link@
- - [Past releases](@site-url@/releases/index.html#past-releases)
-
-## APIs
-
- - [AMQP Messenger](@site-url@/components/messenger/index.html)
- - [AMQP Protocol Engine](@site-url@/components/protocol-engine/index.html)
+ - [AMQP Messenger](messenger/index.html) - Forget plumbing and focus on your task
+ - [AMQP Protocol Engine](protocol-engine/index.html) - Fine-grained control over AMQP 1.0
 
 ## Mailing list
 
@@ -48,33 +43,35 @@ To subscribe, send an email with subject "subscribe" to the subscribe
 address.  To unsubscribe, send "unsubscribe" to the unsubscribe
 address.
 
- - <proton-subscribe@qpid.apache.org>
- - <proton-unsubscribe@qpid.apache.org>
+ - Send "subscribe" to <proton-subscribe@qpid.apache.org>
+ - Send "unsubscribe" to <proton-unsubscribe@qpid.apache.org>
  - [List information](http://mail-archives.apache.org/mod_mbox/qpid-proton/)
  - [List archive](http://qpid.2158936.n2.nabble.com/Apache-Qpid-Proton-f7580687.html)
  - [News feed](http://mail-archives.apache.org/mod_mbox/qpid-proton/?format=atom)
 
 </div>
-<div class="column" markdown="1">
+<div id="right" markdown="1">
+
+## Releases
+
+ - @current-proton-release-link@
+ - [Past releases](@site-url@/releases/index.html#past-releases)
 
 ## Issues
 
- - [Search issues](@site-url@/issues.html#search-issues)
  - [Report a bug](https://issues.apache.org/jira/secure/CreateIssue.jspa?pid=12313720&issuetype=1&priority=3)
- - [Create a new issue](https://issues.apache.org/jira/secure/CreateIssue.jspa?pid=12313720) of another type
  - <form id="jira-goto-form" action="?" method="get">Go to issue <input name="jira" value="PROTON-"/></form>
  - [Proton JIRA project page](https://issues.apache.org/jira/browse/PROTON)
 
 ## Source code
 
  - [Browse via ViewVC](http://svn.apache.org/viewvc/qpid/proton/trunk)
- - [Anonymous Subversion access](http://svn.apache.org/repos/asf/qpid/proton/trunk)
- - [Committer Subversion access](https://svn.apache.org/repos/asf/qpid/proton/trunk)
+ - [Anonymous Subversion](http://svn.apache.org/repos/asf/qpid/proton/trunk)
+ - [Committer Subversion](https://svn.apache.org/repos/asf/qpid/proton/trunk)
 
-## More information
+## Resources
 
  - [AMQP 1.0 roadmap](https://cwiki.apache.org/qpid/amqp-10-roadmap.html)
  - [Index of Proton wiki pages](https://cwiki.apache.org/confluence/display/qpid/Proton)
 
-</div>
 </div>
