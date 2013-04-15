@@ -18,9 +18,11 @@
  - gen release notes
  - there are some trunk doc links in the java broker page that should
    be converted to current version when 0.22 lands
+ - add more links into book content (qmf, for example)
 
 # Low
 
+ - set shorter timeout on link check
  - source modules
  - check dev env (python 2.7, for example)
  - news feed
