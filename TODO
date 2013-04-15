@@ -1,16 +1,14 @@
 # High
 
- - gen books
- - make the proton page look more like the front page
+ - isolate maven howto
+ - hilighted java examples
+ - host fonts locally
 
 # Medium
 
  - custom templates for api docs
    - nav from api ref back to site
  - tarballs of apidocs and examples
- - isolate maven howto
- - hilighted java examples
- - host fonts locally
  - fix output for IE8
  - doxygen for just the qmf api
  - qmf2 examples
@@ -18,8 +16,6 @@
  - keep old site at old-site
  - roadmap
  - gen release notes
- - qpid 0.20 optionally depends on proton 0.3
- - messenger feature
  - there are some trunk doc links in the java broker page that should
    be converted to current version when 0.22 lands
 
