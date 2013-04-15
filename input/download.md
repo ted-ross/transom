@@ -19,8 +19,8 @@
 
 # Download
 
-*In addition to the source artefacts below, there are
-[more ways to get Qpid](@site-url@/get-qpid.html).*
+*In addition to the source artefacts below, we offer
+[Qpid packages](packages.html) and [Qpid via Maven](maven.html).*
 
 Qpid's source artefacts are produced as part of our community release
 process.  The downloads on this page are from our current releases,
