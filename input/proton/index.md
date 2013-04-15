@@ -34,8 +34,8 @@ platform, environment, or language. More about
 
 ## Messaging APIs
 
- - [AMQP Messenger](messenger/index.html) - Forget plumbing and focus on your task
- - [AMQP Protocol Engine](protocol-engine/index.html) - Fine-grained control over AMQP 1.0
+ - [AMQP Messenger](@site-url@/components/messenger/index.html) - Forget plumbing and focus on your task
+ - [AMQP Protocol Engine](@site-url@/components/protocol-engine/index.html) - Fine-grained control over AMQP 1.0
 
 ## Mailing list
 
