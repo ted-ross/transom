@@ -39,7 +39,7 @@ This is the documentation for the current released version.  You can
 find previous versions with our
 [past releases](@site-url@/releases/index.html#past-releases).
 
- - [Introduction](tour.html)
+ - [Introduction](guide/index.html)
  - [API reference](http://qpid.apache.org/proton/api-doc/proton.Messenger-class.html)
  - [Examples](http://svn.apache.org/repos/asf/qpid/proton/tags/@current-proton-release@/examples/messenger/)
  - [Installing Qpid Proton](http://svn.apache.org/repos/asf/qpid/proton/tags/@current-proton-release@/README)
