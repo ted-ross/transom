@@ -26,8 +26,8 @@ Have a question or an idea?  We'd be pleased to talk about it.
 Mailing lists are the primary means of collaboration at Qpid.
 
  - *Users* - Raise general questions, find out how a feature works, or
-   ask about any problems you encounter.
- - *Developers* - Discuss the ongoing development of Qpid.
+   ask about any problems you encounter
+ - *Developers* - Discuss the ongoing development of Qpid
 
 ### Search messages
 

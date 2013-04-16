@@ -29,7 +29,6 @@
  - qips
  - fix smarty-pants to get the nice curly quotes back
  - spell check
- - colorize code snippets
  - add line numbers to code samples
  - sparklines for commits
  - code climate
