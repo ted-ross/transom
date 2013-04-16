@@ -40,7 +40,7 @@ find previous versions with our
 
  - [API reference](http://docs.oracle.com/javaee/1.4/api/javax/jms/package-summary.html)
  - [Examples](http://svn.apache.org/repos/asf/qpid/tags/@current-release@/qpid/java/client/example/src/main/java/org/apache/qpid/example/)
- - [Programming in Apache Qpid](http://qpid.apache.org/books/@current-release@/Programming-In-Apache-Qpid/html/index.html) ([PDF](http://qpid.apache.org/books/@current-release@/Programming-In-Apache-Qpid/pdf/Programming-In-Apache-Qpid.pdf))
+ - [Programming in Apache Qpid](@current-release-url@/prog-guide/book/html/index.html)
  - [How to build Qpid Java](https://cwiki.apache.org/qpid/qpid-java-build-how-to.html)
  - [Installing and Using Qpid Java](https://cwiki.apache.org/qpid/getting-started-guide.html)
  - [Connection URL format](https://cwiki.apache.org/qpid/connection-url-format.html)

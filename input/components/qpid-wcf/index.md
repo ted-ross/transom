@@ -1,5 +1,5 @@
 ;;
-;; Licensed to the Apache Software Foundation (ASF) under one
+n;; Licensed to the Apache Software Foundation (ASF) under one
 ;; or more contributor license agreements.  See the NOTICE file
 ;; distributed with this work for additional information
 ;; regarding copyright ownership.  The ASF licenses this file
@@ -37,5 +37,5 @@ find previous versions with our
 
  - [Examples](http://svn.apache.org/repos/asf/qpid/tags/@current-release@/qpid/wcf/samples)
  - [API reference](http://msdn.microsoft.com/en-us/library/vstudio/ms735119\(v=vs.90\).aspx)
- - [Programming in Apache Qpid](http://qpid.apache.org/books/@current-release@/Programming-In-Apache-Qpid/html/index.html) ([PDF](http://qpid.apache.org/books/@current-release@/Programming-In-Apache-Qpid/pdf/Programming-In-Apache-Qpid.pdf))
+ - [Programming in Apache Qpid](@current-release-url@/prog-guide/book/html/index.html)
  - [Installing Qpid WCF](http://svn.apache.org/repos/asf/qpid/tags/@current-release@/qpid/wcf/ReadMe.txt)

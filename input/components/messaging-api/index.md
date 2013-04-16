@@ -34,7 +34,7 @@ This is the documentation for the current released version.  You can
 find previous versions with our
 [past releases](@site-url@/releases/index.html#past-releases).
 
- - [Programming in Apache Qpid](http://qpid.apache.org/books/@current-release@/Programming-In-Apache-Qpid/html/index.html) ([PDF](http://qpid.apache.org/books/@current-release@/Programming-In-Apache-Qpid/pdf/Programming-In-Apache-Qpid.pdf))
+ - [Programming in Apache Qpid](@current-release-url@/prog-guide/book/html/index.html)
 
 ### Examples
 
