@@ -208,10 +208,6 @@ h1, h2, h3, h4, h5, h6 {
     color: black;
 }
 
-h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6 {
-    margin-bottom: 0;
-}
-
 h1 {
     font-size: 2em;
     margin: 0 0 0.3em 0;
@@ -432,6 +428,9 @@ div.docbook table {
     border: white;
 }
 
-div.docbook div.toc, div.docbook div.list-of-tables, div.docbook div.list-of-examples {
+div.docbook div.toc,
+div.docbook div.list-of-examples,
+div.docbook div.list-of-figures,
+div.docbook div.list-of-tables {
     margin: 0 0 0.8em 0;
 }
