@@ -42,5 +42,4 @@ Still older releases are available at
 
 ## More information
 
- - [More ways to get Qpid](@site-url@/get-qpid.html)
  - [Release pages on the wiki](https://cwiki.apache.org/qpid/qpid-release-page.html)

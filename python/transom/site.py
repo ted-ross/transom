@@ -104,10 +104,9 @@ class Site(object):
 
                 try:
                     file = urlopen(link)
+                    file.close()
                 except IOError:
                     errors_by_link[link].append("Link has no target")
-                finally:
-                    file.close()
 
         if external:
             for link in self.links:

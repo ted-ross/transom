@@ -32,29 +32,19 @@ messages using AMQP.
 <div class="two-column" markdown="1">
  - JMS 1.1 compliant
  - Speaks and translates among all versions of AMQP
- - [Management via JMX, REST, QMF, and web console](http://qpid.apache.org/books/trunk/AMQP-Messaging-Broker-Java-Book/html/Java-Broker-Configuring-And-Managing.html)
- - [Access control lists](http://qpid.apache.org/books/@current-release@/AMQP-Messaging-Broker-Java-Book/html/Java-Broker-Security-ACLs.html)
+ - Management via JMX, REST, QMF, and web console
+ - [Access control lists](@current-release-url@/java-broker/book/html/index.html#Java-Broker-Security-ACLs)
  - [Flexible logging](https://cwiki.apache.org/qpid/configure-operational-status-logging.html)
  - Flow to disk
  - Header-based routing
  - [Heartbeats](https://cwiki.apache.org/qpid/configure-broker-and-client-heartbeating.html)
- - [High availability](http://qpid.apache.org/books/@current-release@/AMQP-Messaging-Broker-Java-Book/html/Java-Broker-High-Availability.html)
- - Pluggable persistence
-   - [Derby store](http://qpid.apache.org/books/@current-release@/AMQP-Messaging-Broker-Java-Book/html/Java-Broker-Stores-Derby-Store.html)
-   - [BDB store](http://qpid.apache.org/books/@current-release@/AMQP-Messaging-Broker-Java-Book/html/Java-Broker-Stores-BDB-Store.html)
-   - [High-availability BDB store](http://qpid.apache.org/books/@current-release@/AMQP-Messaging-Broker-Java-Book/html/Java-Broker-Stores-HA-BDB-Store.html)
- - Pluggable authentication
-   - [LDAP](http://qpid.apache.org/books/@current-release@/AMQP-Messaging-Broker-Java-Book/html/Java-Broker-Security-Authentication-Providers.html#LDAPAuthManager)
-   - [Kerberos](http://qpid.apache.org/books/@current-release@/AMQP-Messaging-Broker-Java-Book/html/Java-Broker-Security-Authentication-Providers.html#id2497060)
-   - [SSL client certificates](http://qpid.apache.org/books/@current-release@/AMQP-Messaging-Broker-Java-Book/html/Java-Broker-Security-Authentication-Providers.html#ExternalAuthManager)
- - [Producer flow control](http://qpid.apache.org/books/@current-release@/AMQP-Messaging-Broker-Java-Book/html/Java-Broker-Runtime-Disk-Space-Management.html#Qpid-Producer-Flow-Control)
- - [Secure connection via SSL](http://qpid.apache.org/books/@current-release@/AMQP-Messaging-Broker-Java-Book/html/Java-Broker-Security-SSL.html)
+ - [High availability](@current-release-url@/java-broker/book/html/index.html#Java-Broker-High-Availability)
+ - [Pluggable persistence](@current-release-url@/java-broker/book/html/index.html#Java-Broker-Stores) supporting Derby, SQL, and BDB stores
+ - [Pluggable authentication](@current-release-url@/java-broker/book/html/index.html#Java-Broker-Security-Authentication-Providers) supporting LDAP, Kerberos, and SSL client certificates
+ - [Producer flow control](@current-release-url@/java-broker/book/html/index.html#Qpid-Producer-Flow-Control)
+ - [Secure connection via SSL](@current-release-url@/java-broker/book/html/index.html#Java-Broker-Security-SSL)
  - Server-side selectors
- - Specialized queuing
-   - [Last value queue](http://qpid.apache.org/books/@current-release@/AMQP-Messaging-Broker-Java-Book/html/Java-Broker-Queues-OtherTypes.html#Java-Broker-Queues-OtherTypes-LVQ)
-   - Message groups
-   - [Priority queue](http://qpid.apache.org/books/@current-release@/AMQP-Messaging-Broker-Java-Book/html/Java-Broker-Queues-OtherTypes.html#Java-Broker-Queues-OtherTypes-Priority)
-   - [Sorted queue](http://qpid.apache.org/books/@current-release@/AMQP-Messaging-Broker-Java-Book/html/Java-Broker-Queues-OtherTypes.html#Java-Broker-Queues-OtherTypes-Sorted)
+ - [Specialized queuing](@current-release-url@/java-broker/book/html/index.html#Java-Broker-Queues) with last value queue, message groups, priority queue, and sorted queue
  - Threshold alerts
  - Transactions
  - [Virtual hosts](https://cwiki.apache.org/qpid/configure-the-virtual-hosts-via-virtualhostsxml.html)
@@ -66,7 +56,7 @@ This is the documentation for the current released version.  You can
 find previous versions with our
 [past releases](@site-url@/releases/index.html#past-releases).
 
- - [Guide to the Java broker](http://qpid.apache.org/books/@current-release@/AMQP-Messaging-Broker-Java-Book/html/index.html) ([PDF](http://qpid.apache.org/books/@current-release@/AMQP-Messaging-Broker-Java-Book/pdf/AMQP-Messaging-Broker-Java-Book.pdf))
+ - [Java broker book](@current-release-url@/java-broker/book/html/index.html)
  - [How to build Qpid Java](https://cwiki.apache.org/qpid/qpid-java-build-how-to.html)
  - [Installing and Using Qpid Java](https://cwiki.apache.org/qpid/getting-started-guide.html)
  - [FAQ](https://cwiki.apache.org/qpid/qpid-java-faq.html)

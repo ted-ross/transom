@@ -30,24 +30,20 @@ messages using AMQP.
 ## Features
 
 <div class="two-column" markdown="1">
- - [Management](http://qpid.apache.org/books/0.20/AMQP-Messaging-Broker-CPP-Book/html/chapter-Managing-CPP-Broker.html#section-Managing-CPP-Broker) via [QMF](@site-url@/components/qmf/index.html)
- - [Access control lists](http://qpid.apache.org/books/0.20/AMQP-Messaging-Broker-CPP-Book/html/chap-Messaging_User_Guide-Security.html#sect-Messaging_User_Guide-Security-Authorization)
- - [Federation](http://qpid.apache.org/books/0.20/AMQP-Messaging-Broker-CPP-Book/html/chap-Messaging_User_Guide-Broker_Federation.html)
+ - [Management](@current-release-url@/cpp-broker/book/html/index.html#section-Managing-CPP-Broker) via [QMF](@site-url@/components/qmf/index.html)
+ - [Access control lists](@current-release-url@/cpp-broker/book/html/index.html#sect-Messaging_User_Guide-Security-Authorization)
+ - [Federation](@current-release-url@/cpp-broker/book/html/index.html#chap-Messaging_User_Guide-Broker_Federation)
  - Flexible logging
  - Header-based routing
  - Heartbeats
- - [High availability](http://qpid.apache.org/books/0.20/AMQP-Messaging-Broker-CPP-Book/html/chap-Messaging_User_Guide-Active_Passive_Cluster.html)
+ - [High availability](@current-release-url@/cpp-broker/book/html/index.html#chap-Messaging_User_Guide-Active_Passive_Cluster)
  - Pluggable persistence
- - [Pluggable authentication via SASL](http://qpid.apache.org/books/0.20/AMQP-Messaging-Broker-CPP-Book/html/chap-Messaging_User_Guide-Security.html)
- - [Producer flow control](http://qpid.apache.org/books/0.20/AMQP-Messaging-Broker-CPP-Book/html/producer-flow-control.html)
- - [Queue replication](http://qpid.apache.org/books/0.20/AMQP-Messaging-Broker-CPP-Book/html/ch01s14.html)
- - [Resource limits](http://qpid.apache.org/books/0.20/AMQP-Messaging-Broker-CPP-Book/html/chap-Messaging_User_Guide-Security.html#sect-Messaging_User_Guide-Authorization-Specifying_ACL_Quotas)
- - [Secure connection via SSL](http://qpid.apache.org/books/0.20/AMQP-Messaging-Broker-CPP-Book/html/chap-Messaging_User_Guide-Security.html#sect-Messaging_User_Guide-Security-Encryption_using_SSL)
- - Specialized queueing
-   - Last value queue
-   - [Message groups](http://qpid.apache.org/books/0.20/AMQP-Messaging-Broker-CPP-Book/html/Using-message-groups.html)
-   - Priority queue
-   - Ring queue
+ - [Pluggable authentication via SASL](@current-release-url@/cpp-broker/book/html/index.html#chap-Messaging_User_Guide-Security)
+ - [Producer flow control](@current-release-url@/cpp-broker/book/html/index.html#producer-flow-control)
+ - [Queue replication](@current-release-url@/cpp-broker/book/html/index.html#queue-state-replication)
+ - [Resource limits](@current-release-url@/cpp-broker/book/html/index.html#sect-Messaging_User_Guide-Authorization-Specifying_ACL_Quotas)
+ - [Secure connection via SSL](@current-release-url@/cpp-broker/book/html/index.html#sect-Messaging_User_Guide-Security-Encryption_using_SSL)
+ - Specialized queueing with [last value queue](@current-release-url@/cpp-broker/book/html/index.html#idp3648256), [message groups](@current-release-url@/cpp-broker/book/html/index.html#Using-message-groups), priority queue, and ring queue
  - [Threshold alerts](https://issues.apache.org/jira/browse/QPID-3002)
  - Transactions
 </div>
@@ -58,5 +54,5 @@ This is the documentation for the current released version.  You can
 find previous versions with our
 [past releases](@site-url@/releases/index.html#past-releases).
 
- - [Guide to the C++ broker](http://qpid.apache.org/books/@current-release@/AMQP-Messaging-Broker-CPP-Book/html/index.html) ([PDF](http://qpid.apache.org/books/@current-release@/AMQP-Messaging-Broker-CPP-Book/pdf/AMQP-Messaging-Broker-CPP-Book.pdf))
+ - [C++ broker book](@current-release-url@/cpp-broker/book/html/index.html)
  - [Installing Qpid C++](http://svn.apache.org/repos/asf/qpid/tags/@current-release@/qpid/cpp/INSTALL)
