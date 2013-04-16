@@ -57,6 +57,8 @@ function gotoJira() {
         return;
     }
 
+    form.jira.value = form.jira.value.trim();
+
     var jira = form.jira.value;
     var uri = "https://issues.apache.org/jira/browse/" + encodeURIComponent(jira);
 
@@ -77,9 +79,16 @@ function searchJiras() {
     form.action = uri;
 }
 
+function normalizeRevision() {
+    var form = document.getElementById("viewvc-goto-form");
+
+    form.revision.value = form.revision.value.trim();
+}
+
 function registerEventListeners() {
     var jiraGotoForm = document.getElementById("jira-goto-form");
     var jiraSearchForm = document.getElementById("jira-search-form");
+    var viewvcGotoForm = document.getElementById("viewvc-goto-form");
 
     if (jiraGotoForm) {
         jiraGotoForm.addEventListener("submit", gotoJira, false);
@@ -87,6 +96,10 @@ function registerEventListeners() {
 
     if (jiraSearchForm) {
         jiraSearchForm.addEventListener("submit", searchJiras, false);
+    }
+
+    if (viewvcGotoForm) {
+        viewvcGotoForm.addEventListener("submit", normalizeRevision, false);
     }
 }
 
