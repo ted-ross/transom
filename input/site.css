@@ -368,7 +368,6 @@ table {
     border: none;
     border-collapse: collapse;
     margin: 0 0.8em 0.8em 0.8em;
-    min-width: 90%;
 }
 
 table td, table th {
