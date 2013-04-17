@@ -132,9 +132,9 @@ available in the full source artefact.
 
 ### Books
 
- - [Programming in Apache Qpid](prog-guide/book/html/index.html)
- - [C++ broker book](cpp-broker/book/html/index.html)
- - [Java broker book](java-broker/book/html/index.html)
+ - [Programming in Apache Qpid](programming/book/index.html)
+ - [C++ broker book](cpp-broker/book/index.html)
+ - [Java broker book](java-broker/book/index.html)
 
 ### Installation guides
 

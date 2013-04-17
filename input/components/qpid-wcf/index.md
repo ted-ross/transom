@@ -37,5 +37,5 @@ find previous versions with our
 
  - [Examples](http://svn.apache.org/repos/asf/qpid/tags/@current-release@/qpid/wcf/samples)
  - [API reference](http://msdn.microsoft.com/en-us/library/vstudio/ms735119\(v=vs.90\).aspx)
- - [Programming in Apache Qpid](@current-release-url@/prog-guide/book/html/index.html)
+ - [Programming in Apache Qpid](@current-release-url@/programming/book/index.html)
  - [Installing Qpid WCF](http://svn.apache.org/repos/asf/qpid/tags/@current-release@/qpid/wcf/ReadMe.txt)

@@ -33,18 +33,18 @@ messages using AMQP.
  - JMS 1.1 compliant
  - Speaks and translates among all versions of AMQP
  - Management via JMX, REST, QMF, and web console
- - [Access control lists](@current-release-url@/java-broker/book/html/index.html#Java-Broker-Security-ACLs)
+ - [Access control lists](@current-release-url@/java-broker/book/index.html#Java-Broker-Security-ACLs)
  - [Flexible logging](https://cwiki.apache.org/qpid/configure-operational-status-logging.html)
  - Flow to disk
  - Header-based routing
  - [Heartbeats](https://cwiki.apache.org/qpid/configure-broker-and-client-heartbeating.html)
- - [High availability](@current-release-url@/java-broker/book/html/index.html#Java-Broker-High-Availability)
- - [Pluggable persistence](@current-release-url@/java-broker/book/html/index.html#Java-Broker-Stores) supporting Derby, SQL, and BDB stores
- - [Pluggable authentication](@current-release-url@/java-broker/book/html/index.html#Java-Broker-Security-Authentication-Providers) supporting LDAP, Kerberos, and SSL client certificates
- - [Producer flow control](@current-release-url@/java-broker/book/html/index.html#Qpid-Producer-Flow-Control)
- - [Secure connection via SSL](@current-release-url@/java-broker/book/html/index.html#Java-Broker-Security-SSL)
+ - [High availability](@current-release-url@/java-broker/book/index.html#Java-Broker-High-Availability)
+ - [Pluggable persistence](@current-release-url@/java-broker/book/index.html#Java-Broker-Stores) supporting Derby, SQL, and BDB stores
+ - [Pluggable authentication](@current-release-url@/java-broker/book/index.html#Java-Broker-Security-Authentication-Providers) supporting LDAP, Kerberos, and SSL client certificates
+ - [Producer flow control](@current-release-url@/java-broker/book/index.html#Qpid-Producer-Flow-Control)
+ - [Secure connection via SSL](@current-release-url@/java-broker/book/index.html#Java-Broker-Security-SSL)
  - Server-side selectors
- - [Specialized queuing](@current-release-url@/java-broker/book/html/index.html#Java-Broker-Queues) with last value queue, message groups, priority queue, and sorted queue
+ - [Specialized queuing](@current-release-url@/java-broker/book/index.html#Java-Broker-Queues) with last value queue, message groups, priority queue, and sorted queue
  - Threshold alerts
  - Transactions
  - [Virtual hosts](https://cwiki.apache.org/qpid/configure-the-virtual-hosts-via-virtualhostsxml.html)
@@ -56,7 +56,7 @@ This is the documentation for the current released version.  You can
 find previous versions with our
 [past releases](@site-url@/releases/index.html#past-releases).
 
- - [Java broker book](@current-release-url@/java-broker/book/html/index.html)
+ - [Java broker book](@current-release-url@/java-broker/book/index.html)
  - [How to build Qpid Java](https://cwiki.apache.org/qpid/qpid-java-build-how-to.html)
  - [Installing and Using Qpid Java](https://cwiki.apache.org/qpid/getting-started-guide.html)
  - [FAQ](https://cwiki.apache.org/qpid/qpid-java-faq.html)

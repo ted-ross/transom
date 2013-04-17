@@ -31,7 +31,8 @@ call("dot -V")
 call("doxygen --version")
 call("epydoc --version")
 call("rdoc --version")
-call("pandoc --version")
+call("xsltproc --version")
+#call("pandoc --version")
 
 ## API docs ##
 
@@ -426,112 +427,6 @@ def gen_jms(release, source_dir, output_dir):
                        readme_url=readme_url,
                        source_url=source_url)
 
-## Docbook ##
-
-def gen_books(release, source_dir, output_dir):
-    input_dir = join(source_dir, "doc", "book")
-
-    stylesheet = """<?xml version='1.0'?>
-    <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
-    <xsl:import href="http://docbook.sourceforge.net/release/xsl/current/xhtml/onechunk.xsl"/>
-    </xsl:stylesheet>"""
-
-    write(join(input_dir, "xsl", "html-custom.xsl"), stylesheet)
-
-    call("make -C {} clean html", input_dir)
-
-    cpp_broker_input_dir = join(input_dir, "build", "AMQP-Messaging-Broker-CPP-Book", "html")
-    java_broker_input_dir = join(input_dir, "build", "AMQP-Messaging-Broker-Java-Book", "html")
-    prog_guide_input_dir = join(input_dir, "build", "Programming-In-Apache-Qpid", "html")
-    cpp_broker_output_dir = join(output_dir, "cpp-broker", "book", "html")
-    java_broker_output_dir = join(output_dir, "java-broker", "book", "html")
-    prog_guide_output_dir = join(output_dir, "prog-guide", "book", "html")
-
-    remove(cpp_broker_output_dir)
-    remove(java_broker_output_dir)
-    remove(prog_guide_output_dir)
-
-    copy(cpp_broker_input_dir, cpp_broker_output_dir)
-    copy(java_broker_input_dir, java_broker_output_dir)
-    copy(prog_guide_input_dir, prog_guide_output_dir)
-
-    for dir in (cpp_broker_output_dir, java_broker_output_dir, prog_guide_output_dir):
-        for path in find(dir, "*.html"):
-            tree = ElementTree.parse(path)
-            elem = tree.find(".//{http://www.w3.org/1999/xhtml}body")
-
-            elem.tag = "div"
-            elem.set("class", "docbook")
-
-            remove_namespace(elem, "http://www.w3.org/1999/xhtml")
-
-            content = ElementTree.tostring(elem)
-            
-            write("{}.in".format(path), content)
-            remove(path)
-
-# From http://homework.nwsnet.de/releases/45be/
-def remove_namespace(doc, namespace):
-    """Remove namespace in the passed document in place."""
-    ns = u'{%s}' % namespace
-    nsl = len(ns)
-    for elem in doc.getiterator():
-        if elem.tag.startswith(ns):
-            elem.tag = elem.tag[nsl:]
-
-def alternate_gen_books(release, source_dir, output_dir):
-    input_dir = join(source_dir, "doc", "book")
-
-    cpp_broker_input_dir = join(input_dir, "src", "cpp-broker")
-    java_broker_input_dir = join(input_dir, "src", "java-broker")
-    programming_input_dir = join(input_dir, "src", "programming")
-
-    cpp_broker_output_dir = join(output_dir, "cpp-broker", "book")
-    java_broker_output_dir = join(output_dir, "java-broker", "book")
-    programming_output_dir = join(output_dir, "programming", "book")
-
-    convert_book(cpp_broker_input_dir, cpp_broker_output_dir, "C++ Broker Book")
-    convert_book(java_broker_input_dir, java_broker_output_dir, "Java Broker Book")
-    convert_book(programming_input_dir, programming_output_dir, "Programming in Apache Qpid")
-
-book_index_template = """
-# {title}
-
-{links}
-"""
-
-def convert_book(input_dir, output_dir, title):
-    remove(output_dir)
-
-    copy(join(input_dir, "images"), join(output_dir, "images"))
-
-    command = "pandoc --from docbook --to html"
-
-    links = list()
-
-    for input_name in list_dir(input_dir, "*.xml"):
-        input_path = join(input_dir, input_name)
-        output_name = "{}.html.in".format(input_name[:-4])
-        output_path = join(output_dir, output_name)
-
-        call("{} --output {} {}", command, output_path, input_path)
-
-        link_path = "{}.html".format(input_name[:-4])
-        link_title = link_path
-
-        #tree = ElementTree.parse(input_path)
-        #elem = tree.find(".//title")
-
-        #if elem is not None:
-        #    link_title = "".join(elem.itertext())
-
-        links.append(" - [{}]({})".format(link_title, link_path))
-
-    links = os.linesep.join(links)
-    index = book_index_template.format(**locals())
-
-    write(join(output_dir, "index.md"), index)
-
 ## Now do stuff ##
 
 if len(sys.argv) != 3:
@@ -550,4 +445,3 @@ export_release(release, source_dir)
 
 gen_messaging_api(release, source_dir, messaging_api_output_dir)
 gen_jms(release, source_dir, qpid_jms_output_dir)
-gen_books(release, source_dir, output_dir)

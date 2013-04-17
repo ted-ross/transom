@@ -190,14 +190,13 @@ def make_user_temp_dir():
 
     return make_dirs(user_temp_dir)
 
-# XXX consider an exception on non-zero exit
 def call(command, *args):
     if args:
         command = command.format(*args)
 
     notice("Calling '{}'", command)
 
-    return subprocess.call(command, shell=True)
+    subprocess.check_call(command, shell=True)
 
 def make_archive(input_dir, output_dir, output_name, format="gztar"):
     temp_dir = make_temp_dir()
