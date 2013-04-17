@@ -30,13 +30,14 @@ publish: render
 	rsync -av "${OUTPUT_DIR}/" "jross@people.apache.org:public_html/transom/${TAG}"
 	rm -rf ${OUTPUT_DIR}
 
-gen-release: RELEASE_INPUT_DIR := input/releases/qpid-${RELEASE}
+gen-release: RELEASE_DIR := input/releases/qpid-${RELEASE}
 gen-release:
 	test ! -z "${RELEASE}"
-	mkdir -p ${RELEASE_INPUT_DIR}
-	scripts/gen-release-page ${RELEASE} > ${RELEASE_INPUT_DIR}/index.md
-	scripts/gen-release-docs ${RELEASE} ${RELEASE_INPUT_DIR}
-	scripts/gen-release-books ${RELEASE} ${RELEASE_INPUT_DIR}
+	mkdir -p ${RELEASE_DIR}
+	scripts/gen-release-page ${RELEASE} > ${RELEASE_DIR}/index.md
+	scripts/gen-release-api-doc ${RELEASE} ${RELEASE_DIR}
+	scripts/gen-release-books ${RELEASE} ${RELEASE_DIR}
+	scripts/gen-release-examples ${RELEASE} ${RELEASE_DIR}
 
 gen-proton-release:
 	test ! -z "${RELEASE}"

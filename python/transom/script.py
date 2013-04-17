@@ -129,6 +129,11 @@ def get_entry_path(key):
     return join(_entry_dir, key)
 
 def copy(from_path, to_path):
+    to_dir = split(to_path)[0]
+
+    if to_dir:
+        make_dirs(to_dir)
+
     if is_dir(from_path):
         shutil.copytree(from_path, to_path)
     else:
@@ -213,10 +218,14 @@ def make_archive(input_dir, output_dir, output_name, format="gztar"):
 
 ### Less generic functions ###
 
-def export_release(release, output_dir):
+def export_release(release, output_dir=None):
+    if output_dir is None:
+        temp_dir = make_user_temp_dir()
+        output_dir = join(temp_dir, "qpid-{}".format(release))
+
     if exists(join(output_dir, "QPID_VERSION.txt")):
         debug("Export already exists")
-        return
+        return output_dir
 
     call("svn --version")
 
@@ -224,3 +233,5 @@ def export_release(release, output_dir):
 
     url = "http://svn.apache.org/repos/asf/qpid/tags/{}/qpid".format(release)
     call("svn export {} {}", url, output_dir)
+
+    return output_dir

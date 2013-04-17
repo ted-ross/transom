@@ -25,83 +25,6 @@ import re
 from pygments import highlight as _highlight
 from pygments.lexers import get_lexer_by_name
 from pygments.formatters import HtmlFormatter
-from xml.etree import ElementTree
-
-call("dot -V")
-call("doxygen --version")
-call("epydoc --version")
-call("rdoc --version")
-call("xsltproc --version")
-#call("pandoc --version")
-
-## API docs ##
-
-doxygen_conf_template = u"""
-DISABLE_INDEX = yes
-EXTRACT_ALL = yes
-GENERATE_LATEX = no
-GENERATE_TREEVIEW = yes
-HAVE_DOT = yes
-PROJECT_NUMBER = {release}
-QUIET = yes
-RECURSIVE = yes
-INPUT = {input_paths}
-PROJECT_NAME = "{title}"
-STRIP_FROM_PATH = {strip_paths}
-HTML_OUTPUT = {output_dir}
-"""
-
-def gen_doxygen(release, title, input_paths, strip_paths, output_dir):
-    input_paths = " ".join(input_paths)
-    strip_paths = " ".join(strip_paths)
-
-    conf = doxygen_conf_template.format(**locals())
-    path = write_entry("conf", conf)
-
-    call("doxygen {}", path)
-
-    touch(join(output_dir, ".transom-skip"))
-
-def gen_epydoc(release, title, input_paths, input_namespaces, output_dir):
-    # XXX programmatic instead?
-
-    input_paths = ":".join(input_paths)
-    input_namespaces = " ".join(input_namespaces)
-
-    options = list()
-    options.append("--graph all")
-    options.append("--html")
-    options.append("--name \"{}\"".format(title))
-    options.append("--no-private")
-    options.append("--output {}".format(output_dir))
-    options.append("--quiet")
-    options.append("--url \"@site-url@/index.html\"")
-    options = " ".join(options)
-
-    call("PYTHONPATH={} epydoc {} {}", input_paths, options, input_namespaces)
-
-    touch(join(output_dir, ".transom-skip"))
-
-def gen_rdoc(release, title, base_input_path, input_paths, output_dir):
-    output_dir = os.path.abspath(output_dir)
-
-    # rdoc wants to make this dir
-    remove(output_dir)
-
-    options = list()
-    options.append("--fmt html")
-    options.append("--op {}".format(output_dir))
-    options.append("--quiet")
-    options.append("--title \"{}\"".format(title))
-    options = " ".join(options)
-
-    input_paths = " ".join(input_paths)
-
-    call("cd {} && rdoc {} {}", base_input_path, options, input_paths)
-    
-    touch(join(output_dir, ".transom-skip"))
-
-## Examples ##
 
 def gen_examples(release, title, lang, input_dir, input_names, output_dir,
                  readme_url=None, source_url=None):
@@ -206,77 +129,41 @@ def gen_examples_index(release, input_names, output_dir, title,
 
 ## Messaging API ##
 
-def gen_messaging_api(release, source_dir, output_dir):
-    remove(output_dir)
+def gen_messaging_api(release, source_dir, release_dir):
+    component_dir = join(release_dir, "messaging-api")
+    remove(component_dir)
 
-    cpp_dir = join(output_dir, "cpp")
-    dotnet_dir = join(output_dir, "dotnet")
-    perl_dir = join(output_dir, "perl")
-    python_dir = join(output_dir, "python")
-    ruby_dir = join(output_dir, "ruby")
+    gen_cpp_messaging_api(release, source_dir, component_dir)
+    gen_dotnet_messaging_api(release, source_dir, component_dir)
+    gen_perl_messaging_api(release, source_dir, component_dir)
+    gen_python_messaging_api(release, source_dir, component_dir)
+    gen_ruby_messaging_api(release, source_dir, component_dir)
 
-    gen_cpp_messaging_api(release, source_dir, cpp_dir)
-    gen_dotnet_messaging_api(release, source_dir, dotnet_dir)
-    gen_perl_messaging_api(release, source_dir, perl_dir)
-    gen_python_messaging_api(release, source_dir, python_dir)
-    gen_ruby_messaging_api(release, source_dir, ruby_dir)
-
-def gen_cpp_messaging_api(release, source_dir, output_dir):
-    api_dir = make_dirs(join(output_dir, "api"))
-    examples_dir = make_dirs(join(output_dir, "examples"))
-
-    # API
-    
-    include_dir = join(source_dir, "cpp", "include")
-    input_paths = (
-        join(source_dir, "cpp", "docs", "api", "doxygen_mainpage.h"),
-        join(include_dir, "qpid", "messaging"),
-        join(include_dir, "qpid", "types"),
-        )
-
-    gen_doxygen(release=release,
-                title="Qpid C++ Messaging API",
-                input_paths=input_paths,
-                strip_paths=(include_dir,),
-                output_dir=api_dir)
-
-    # Examples
-
+def gen_cpp_messaging_api(release, source_dir, component_dir):
     input_dir = join(source_dir, "cpp", "examples", "messaging")
-    input_names = list_dir(input_dir, "*.cpp", "*.h")
+    output_dir = join(component_dir, "cpp", "examples")
 
     release_url = "http://svn.apache.org/repos/asf/qpid/tags/{}".format(release)
     readme_url = "{}/qpid/cpp/examples/README.txt".format(release_url)
     source_url = "{}/qpid/cpp/examples/messaging".format(release_url)
+
+    input_names = list_dir(input_dir, "*.cpp", "*.h")
 
     gen_examples(release=release,
                  lang="cpp",
                  title="C++ Messaging API Examples",
                  input_dir=input_dir,
                  input_names=input_names,
-                 output_dir=examples_dir,
+                 output_dir=output_dir,
                  readme_url=readme_url,
                  source_url=source_url)
 
-def gen_dotnet_messaging_api(release, source_dir, output_dir):
-    api_dir = make_dirs(join(output_dir, "api"))
-    examples_dir = make_dirs(join(output_dir, "examples"))
+def gen_dotnet_messaging_api(release, source_dir, component_dir):
+    input_dir = join(source_dir, "cpp", "bindings", "qpid", "dotnet", "examples")
+    output_dir = join(component_dir, "dotnet", "examples")
 
-    # API
-
-    include_dir = join(source_dir, "cpp", "bindings", "qpid", "dotnet", "src")
-    input_paths = (include_dir,)
-
-    gen_doxygen(release=release,
-                title="Qpid .NET Messaging API",
-                input_paths=input_paths,
-                strip_paths=(include_dir,),
-                output_dir=api_dir)
-
-    # Examples
-
-    input_dir = join(source_dir, "cpp", "bindings", "qpid", "dotnet",
-                     "examples")
+    release_url = "http://svn.apache.org/repos/asf/qpid/tags/{}".format(release)
+    source_url = "{}/qpid/cpp/bindings/qpid/dotnet/examples".format(release_url)
 
     # The layout of dotnet examples is funky, so some schlepping to
     # normalize it
@@ -295,118 +182,82 @@ def gen_dotnet_messaging_api(release, source_dir, output_dir):
 
     input_names = sorted(input_names)
 
-    release_url = "http://svn.apache.org/repos/asf/qpid/tags/{}".format(release)
-    source_url = "{}/qpid/cpp/bindings/qpid/dotnet/examples".format(release_url)
-
     gen_examples(release=release,
                  title=".NET Messaging API Examples",
                  lang="csharp",
                  input_dir=temp_dir,
                  input_names=input_names,
-                 output_dir=examples_dir,
+                 output_dir=output_dir,
                  source_url=source_url)
 
-def gen_perl_messaging_api(release, source_dir, output_dir):
-    api_dir = make_dirs(join(output_dir, "api"))
-    examples_dir = make_dirs(join(output_dir, "examples"))
-
-    # Examples
-
+def gen_perl_messaging_api(release, source_dir, component_dir):
     input_dir = join(source_dir, "cpp", "bindings", "qpid", "examples", "perl")
-    input_names = list_dir(input_dir, "*.pl")
+    output_dir = join(component_dir, "perl", "examples")
 
     release_url = "http://svn.apache.org/repos/asf/qpid/tags/{}".format(release)
     source_url = "{}/qpid/cpp/bindings/qpid/examples/perl".format(release_url)
+
+    input_names = list_dir(input_dir, "*.pl")
 
     gen_examples(release=release,
                  title="Perl Messaging API Examples",
                  lang="perl",
                  input_dir=input_dir,
                  input_names=input_names,
-                 output_dir=examples_dir,
+                 output_dir=output_dir,
                  source_url=source_url)
 
-def gen_python_messaging_api(release, source_dir, output_dir):
-    api_dir = make_dirs(join(output_dir, "api"))
-    examples_dir = make_dirs(join(output_dir, "examples"))
-
-    # API
-
-    input_path = join(source_dir, "python")
-    input_namespace = "qpid.messaging"
-
-    gen_epydoc(release=release,
-               title="Qpid Python Messaging API",
-               input_paths=(input_path,),
-               input_namespaces=(input_namespace,),
-               output_dir=api_dir)
-
-    # Examples
-
+def gen_python_messaging_api(release, source_dir, component_dir):
     input_dir = join(source_dir, "python", "examples", "api")
-    input_names = list_dir(input_dir)
+    output_dir = join(component_dir, "python", "examples")
 
     release_url = "http://svn.apache.org/repos/asf/qpid/tags/{}".format(release)
     readme_url = "{}/qpid/python/examples/README.txt".format(release_url)
     source_url = "{}/qpid/python/examples".format(release_url)
+
+    input_names = list_dir(input_dir)
 
     gen_examples(release=release,
                  title="Python Messaging API Examples",
                  lang="python",
                  input_dir=input_dir,
                  input_names=input_names,
-                 output_dir=examples_dir,
+                 output_dir=output_dir,
                  readme_url=readme_url,
                  source_url=source_url)
 
-def gen_ruby_messaging_api(release, source_dir, output_dir):
-    api_dir = make_dirs(join(output_dir, "api"))
-    examples_dir = make_dirs(join(output_dir, "examples"))
-
-    # API
-
-    base_input_path = join(source_dir, "cpp", "bindings")
-    input_path = join("qpid", "ruby", "lib")
-
-    gen_rdoc(release=release,
-             title="Qpid Ruby Messaging API",
-             base_input_path=base_input_path,
-             input_paths=(input_path,),
-             output_dir=api_dir)
-
-    #name = "qpid-{}-ruby-messaging-api-apiref".format(release)
-    #make_archive(api_dir, output_dir, name)
-
-    # Examples
-
+def gen_ruby_messaging_api(release, source_dir, component_dir):
     input_dir = join(source_dir, "cpp", "bindings", "qpid", "ruby", "examples")
-    input_names = list_dir(input_dir, "*.rb")
+    output_dir = join(component_dir, "ruby", "examples")
 
     release_url = "http://svn.apache.org/repos/asf/qpid/tags/{}".format(release)
     source_url = "{}/qpid/cpp/bindings/qpid/ruby/examples".format(release_url)
+
+    input_names = list_dir(input_dir, "*.rb")
 
     gen_examples(release=release,
                  title="Ruby Messaging API Examples",
                  lang="ruby",
                  input_dir=input_dir,
                  input_names=input_names,
-                 output_dir=examples_dir,
+                 output_dir=output_dir,
                  source_url=source_url)
 
 ## JMS ##
 
-def gen_jms(release, source_dir, output_dir):
-    examples_dir = make_dirs(join(output_dir, "examples"))
-
-    # Examples
+def gen_jms(release, source_dir, release_dir):
+    component_dir = join(release_dir, "qpid-jms")
+    remove(component_dir)
 
     input_dir = join(source_dir, "java", "client", "example", "src", "main",
                      "java", "org", "apache", "qpid", "example")
-    input_names = list_dir(input_dir, "*.java", "*.properties")
+    output_dir = join(component_dir, "examples")
 
     release_url = "http://svn.apache.org/repos/asf/qpid/tags/{}".format(release)
     readme_url = "{}/qpid/java/client/README.txt".format(release_url)
     source_url = "{}/qpid/java/client/example/src/main/java/org/apache/qpid/example".format(release_url)
+
+    input_names = list_dir(input_dir, "*.java", "*.properties")
 
     for name in input_names:
         lang = "java"
@@ -417,12 +268,12 @@ def gen_jms(release, source_dir, output_dir):
         gen_example_page(release=release,
                          input_dir=input_dir,
                          input_name=name,
-                         output_dir=examples_dir,
+                         output_dir=output_dir,
                          lang=lang)
 
     gen_examples_index(release=release,
                        input_names=input_names,
-                       output_dir=examples_dir,
+                       output_dir=output_dir,
                        title="Qpid JMS Examples",
                        readme_url=readme_url,
                        source_url=source_url)
@@ -430,18 +281,11 @@ def gen_jms(release, source_dir, output_dir):
 ## Now do stuff ##
 
 if len(sys.argv) != 3:
-    sys.exit("Usage: script RELEASE OUTPUT-DIR")
+    sys.exit("Usage: script RELEASE RELEASE-DIR")
 
 release = sys.argv[1]
-output_dir = sys.argv[2]
+release_dir = sys.argv[2]
+source_dir = export_release(release)
 
-temp_dir = make_user_temp_dir()
-source_dir = join(temp_dir, "qpid-{}".format(release))
-
-messaging_api_output_dir = join(output_dir, "messaging-api")
-qpid_jms_output_dir = join(output_dir, "qpid-jms")
-
-export_release(release, source_dir)
-
-gen_messaging_api(release, source_dir, messaging_api_output_dir)
-gen_jms(release, source_dir, qpid_jms_output_dir)
+gen_messaging_api(release, source_dir, release_dir)
+gen_jms(release, source_dir, release_dir)

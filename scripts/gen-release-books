@@ -22,9 +22,6 @@ from transom.script import *
 
 from xml.etree import ElementTree
 
-call("xsltproc --version")
-#call("pandoc --version")
-
 def gen_books(source_dir, output_dir):
     input_dir = join(source_dir, "doc", "book")
 
@@ -132,13 +129,14 @@ def convert_book(input_dir, output_dir, title):
 ## Now do stuff ##
 
 if len(sys.argv) != 3:
-    sys.exit("Usage: script RELEASE OUTPUT-DIR")
+    sys.exit("Usage: script RELEASE RELEASE-DIR")
+
+call("xsltproc --version")
+#call("pandoc --version")
 
 release = sys.argv[1]
-output_dir = sys.argv[2]
+release_dir = sys.argv[2]
 
-temp_dir = make_user_temp_dir()
-source_dir = join(temp_dir, "qpid-{}".format(release))
+source_dir = export_release(release)
 
-export_release(release, source_dir)
-gen_books(source_dir, output_dir)
+gen_books(source_dir, release_dir)
