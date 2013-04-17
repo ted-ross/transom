@@ -1,5 +1,5 @@
 .PHONY: default help render check-links clean publish \
-	gen-release x-release-pages
+	gen-release gen-proton-release x-release-pages
 
 OUTPUT_DIR := "output"
 SITE_URL := "file://$(shell readlink -f ${OUTPUT_DIR})"
@@ -50,4 +50,3 @@ x-release-pages:
 	scripts/gen-release-page-pre-0.20 0.16 > input/releases/qpid-0.16/index.md
 	scripts/gen-release-page-pre-0.20 0.14 > input/releases/qpid-0.14/index.md
 	scripts/gen-proton-release-page 0.4 > input/releases/qpid-proton-0.4/index.md
-
