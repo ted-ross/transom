@@ -106,18 +106,15 @@ def gen_examples(release, title, lang, input_dir, input_names, output_dir,
                  readme_url=None, source_url=None):
     for name in input_names:
         gen_example_page(release=release,
-                         index_title=title,
-                         title=name,
-                         lang=lang,
                          input_dir=input_dir,
                          input_name=name,
-                         output_dir=output_dir)
+                         output_dir=output_dir,
+                         lang=lang)
 
     gen_examples_index(release=release,
-                       title=title,
-                       lang=lang,
                        input_names=input_names,
                        output_dir=output_dir,
+                       title=title,
                        readme_url=readme_url,
                        source_url=source_url)
 
@@ -127,8 +124,7 @@ example_page_template = u"""
 <p><a href="{input_name}">Download this file</a></p>
 """
 
-def gen_example_page(release, index_title, title, lang, input_dir, input_name,
-                     output_dir):
+def gen_example_page(release, input_dir, input_name, output_dir, lang):
     input_path = join(input_dir, input_name)
     output_path = join(output_dir, input_name)
     html_output_path = join(output_dir, "{}.html.in".format(input_name))
@@ -138,6 +134,7 @@ def gen_example_page(release, index_title, title, lang, input_dir, input_name,
     content = content.strip()
     content = highlight(content, lang)
 
+    title = input_name
     html = example_page_template.format(**locals())
 
     copy(input_path, output_path)
@@ -152,13 +149,14 @@ def highlight(string, lang):
 license_header_regexes = {
     "cpp": re.compile(r"/\*.*?\*/", re.DOTALL),
     "csharp": re.compile(r"/\*.*?\*/", re.DOTALL),
+    "java": re.compile(r"/\*.*?\*/", re.DOTALL),
     }
 
 def strip_license_header(string, lang):
     if lang in license_header_regexes:
         regex = license_header_regexes[lang]
         return re.sub(regex, "", string)
-    elif lang in ("perl", "python", "ruby"):
+    elif lang in ("perl", "python", "ruby", "ini"):
         input_lines = string.split(os.linesep)
         output_lines = list()
 
@@ -183,7 +181,7 @@ examples_index_template = """
 {info_links}
 """
 
-def gen_examples_index(release, title, lang, input_names, output_dir,
+def gen_examples_index(release, input_names, output_dir, title,
                        readme_url=None, source_url=None):
     output_path = join(output_dir, "index.md")
     example_links = list()
@@ -394,6 +392,40 @@ def gen_ruby_messaging_api(release, source_dir, output_dir):
                  output_dir=examples_dir,
                  source_url=source_url)
 
+## JMS ##
+
+def gen_jms(release, source_dir, output_dir):
+    examples_dir = make_dirs(join(output_dir, "examples"))
+
+    # Examples
+
+    input_dir = join(source_dir, "java", "client", "example", "src", "main",
+                     "java", "org", "apache", "qpid", "example")
+    input_names = list_dir(input_dir, "*.java", "*.properties")
+
+    release_url = "http://svn.apache.org/repos/asf/qpid/tags/{}".format(release)
+    readme_url = "{}/qpid/java/client/README.txt".format(release_url)
+    source_url = "{}/qpid/java/client/example/src/main/java/org/apache/qpid/example".format(release_url)
+
+    for name in input_names:
+        lang = "java"
+
+        if name.endswith(".properties"):
+            lang = "ini"
+
+        gen_example_page(release=release,
+                         input_dir=input_dir,
+                         input_name=name,
+                         output_dir=examples_dir,
+                         lang=lang)
+
+    gen_examples_index(release=release,
+                       input_names=input_names,
+                       output_dir=examples_dir,
+                       title="Qpid JMS Examples",
+                       readme_url=readme_url,
+                       source_url=source_url)
+
 ## Docbook ##
 
 def gen_books(release, source_dir, output_dir):
@@ -512,8 +544,10 @@ temp_dir = make_user_temp_dir()
 source_dir = join(temp_dir, "qpid-{}".format(release))
 
 messaging_api_output_dir = join(output_dir, "messaging-api")
+qpid_jms_output_dir = join(output_dir, "qpid-jms")
 
 export_release(release, source_dir)
 
 gen_messaging_api(release, source_dir, messaging_api_output_dir)
+gen_jms(release, source_dir, qpid_jms_output_dir)
 gen_books(release, source_dir, output_dir)
