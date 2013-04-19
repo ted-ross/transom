@@ -113,14 +113,13 @@ class Site(object):
                 if link.startswith(self.url):
                     continue
 
-                if link.startswith("https://issues.apache.org/"):
-                    continue
-
                 code = None
-                sock = urlopen(link)
 
                 try:
+                    sock = urlopen(link)
                     code = sock.getcode()
+                except IOError as e:
+                    code = e.errno
                 finally:
                     sock.close()
 
@@ -330,12 +329,15 @@ class _Page(object):
         targets = self.gather_targets(root)
 
         for link in links:
-            scheme, netloc, path, query, fragment = urlsplit(link)
-
             if link == "?":
                 continue
 
-            if scheme in ("mailto", "irc"):
+            scheme, netloc, path, query, fragment = urlsplit(link)
+
+            if scheme and scheme not in ("http", "https", "ftp"):
+                continue
+
+            if netloc in ("issues.apache.org", "bugzilla.redhat.com"):
                 continue
 
             if (fragment and not path) or not path.startswith("/"):
