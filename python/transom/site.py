@@ -26,7 +26,7 @@ import tempfile
 
 from ConfigParser import SafeConfigParser
 from collections import defaultdict
-from urllib import urlopen
+from urllib2 import urlopen
 from urlparse import urlsplit, urljoin
 from xml.etree.ElementTree import XML
 
@@ -51,10 +51,11 @@ class Site(object):
         self.config = SafeConfigParser()
         self.template_content = None
 
-        self.pages = list()
-        self.pages_by_site_path = dict()
-
         self.files = list()
+        self.files_by_site_path = dict()
+
+        self.resources = list()
+        self.pages = list()
 
         self.links = defaultdict(set)
         self.targets = set()
@@ -67,8 +68,8 @@ class Site(object):
 
         self.traverse_inputs(self.input_dir, None, False)
 
-        for page in self.pages:
-            page.init()
+        for file in self.files:
+            file.init()
 
     def render(self):
         for page in self.pages:
@@ -82,8 +83,8 @@ class Site(object):
             page.render()
             page.write_output()
 
-        for file in self.files:
-            self.copy_file_to_output(file)
+        for resource in self.resources:
+            resource.copy_to_output()
 
     def check_links(self, internal=True, external=False):
         for page in self.pages:
@@ -94,52 +95,53 @@ class Site(object):
 
         errors_by_link = defaultdict(list)
 
-        if internal:
-            for link in self.links:
-                if not link.startswith(self.url):
+        for link in self.links:
+            if link.startswith(self.url):
+                if not internal:
+                    continue
+            else:
+                if not external:
                     continue
 
-                if link in self.targets:
-                    continue
+            sys.stdout.write(".")
+            sys.stdout.flush()
 
-                try:
-                    file = urlopen(link)
-                    file.close()
-                except IOError:
+            if link.startswith(self.url):
+                if link not in self.targets:
                     errors_by_link[link].append("Link has no target")
+            else:
+                code, error = self.check_external_link(link)
+            
+                if code >= 400:
+                    errors_by_link[link].append("HTTP error code {}".format(code))
 
-        if external:
-            for link in self.links:
-                if link.startswith(self.url):
-                    continue
+                if error:
+                    errors_by_link[link].append(error.message)
 
-                code = None
-
-                try:
-                    sock = urlopen(link)
-                    code = sock.getcode()
-                except IOError as e:
-                    code = e.errno
-                finally:
-                    sock.close()
-
-                sys.stdout.write(".")
-                sys.stdout.flush()
-
-                if code and code >= 400:
-                    error = "HTTP error code {}".format(code)
-                    errors_by_link[link].append(error)
-
-            print
+        print
 
         for link in errors_by_link:
             print "Link: {}".format(link)
 
             for error in errors_by_link[link]:
-                print "  Warning: {}".format(error)
+                print "  Error: {}".format(error)
 
             for source in self.links[link]:
                 print "  Source: {}".format(source)
+
+    def check_external_link(self, link):
+        code = None
+        error = None
+
+        try:
+            sock = urlopen(link, timeout=5)
+            code = sock.getcode()
+        except IOError as e:
+            error = e
+        finally:
+            sock.close()
+
+        return code, error
 
     def traverse_inputs(self, dir, page, skipped):
         names = set(os.listdir(dir))
@@ -147,28 +149,19 @@ class Site(object):
         if ".transom-skip" in names:
             skipped = True
 
-        for name in names:
+        for name in sorted(names):
             path = os.path.join(dir, name)
 
             if os.path.isfile(path):
                 for extension in (".md", ".html.in", ".html"):
                     if not skipped and name.endswith(extension):
-                        _Page(self, page, dir, name)
+                        _Page(self, dir, name, page)
                         break
                 else:
-                    self.files.append(os.path.join(dir, name))
+                    _Resource(self, dir, name)
             elif os.path.isdir(path):
                 if name not in (".svn"):
                     self.traverse_inputs(path, page, skipped)
-
-    def copy_file_to_output(self, input_path):
-        output_path = self.get_output_path(input_path)
-        output_dir = os.path.split(output_path)[0]
-
-        if not os.path.isdir(output_dir):
-            os.makedirs(output_dir)
-
-        shutil.copy(input_path, output_path)
 
     def get_output_path(self, input_path):
         path = input_path[len(self.input_dir) + 1:]
@@ -181,17 +174,46 @@ class Site(object):
     def get_url(self, site_path):
         return "{}/{}".format(self.url, site_path)
 
-class _Page(object):
-    def __init__(self, site, parent, input_dir, input_name):
+class _File(object):
+    def __init__(self, site, input_dir, input_name):
         self.site = site
-        self.parent = parent
         self.input_dir = input_dir
         self.input_name = input_name
-        self.input_path = os.path.join(self.input_dir, self.input_name)
 
-        self.output_path = None
-        self.site_path = None
-        self.url = None
+        self.input_path = os.path.join(self.input_dir, self.input_name)
+        self.output_path = self.site.get_output_path(self.input_path)
+        self.site_path = self.site.get_site_path(self.output_path)
+        self.url = self.site.get_url(self.site_path)
+
+        self.site.files.append(self)
+
+    def init(self):
+        self.site.files_by_site_path[self.site_path] = self
+        self.site.targets.add(self.url)
+
+    def __repr__(self):
+        args = self.__class__.__name__, self.input_dir, self.input_name
+        return "{}({},{})".format(*args)
+
+class _Resource(_File):
+    def __init__(self, site, input_dir, input_name):
+        super(_Resource, self).__init__(site, input_dir, input_name)
+
+        self.site.resources.append(self)
+
+    def copy_to_output(self):
+        output_dir = os.path.split(self.output_path)[0]
+
+        if not os.path.isdir(output_dir):
+            os.makedirs(output_dir)
+
+        shutil.copy(self.input_path, self.output_path)
+
+class _Page(_File):
+    def __init__(self, site, input_dir, input_name, parent):
+        super(_Page, self).__init__(site, input_dir, input_name)
+
+        self.parent = parent
 
         self.content = None
         self.title = None
@@ -199,19 +221,17 @@ class _Page(object):
         self.site.pages.append(self)
 
     def init(self):
-        self.output_path = self.site.get_output_path(self.input_path)
-
-        if self.input_path.endswith(".md"):
+        if self.output_path.endswith(".md"):
             self.output_path = "{}.html".format(self.output_path[:-3])
             self.convert = self.convert_from_markdown
-        elif self.input_path.endswith(".html.in"):
+        elif self.output_path.endswith(".html.in"):
             self.output_path = self.output_path[:-3]
             self.convert = self.convert_from_html_in
 
         self.site_path = self.site.get_site_path(self.output_path)
         self.url = self.site.get_url(self.site_path)
 
-        self.site.pages_by_site_path[self.site_path] = self
+        super(_Page, self).init()
 
     def read_input(self):
         with open(self.input_path, "r") as file:
@@ -305,7 +325,7 @@ class _Page(object):
             item_site_path = os.path.join(*item_names)
 
             try:
-                page = self.site.pages_by_site_path[item_site_path]
+                page = self.site.files_by_site_path[item_site_path]
             except KeyError:
                 continue
 
@@ -363,7 +383,6 @@ class _Page(object):
 
     def gather_targets(self, root_elem):
         targets = set()
-        targets.add(self.url)
 
         for elem in root_elem.iter("*"):
             try:
@@ -378,10 +397,6 @@ class _Page(object):
             targets.add(target)
 
         return targets
-
-    def __repr__(self):
-        args = self.__class__.__name__, self.input_dir, self.input_name
-        return "{}({},{})".format(*args)
 
 def _ascii(string):
     if isinstance(string, unicode):
