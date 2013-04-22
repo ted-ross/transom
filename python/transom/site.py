@@ -52,10 +52,9 @@ class Site(object):
         self.template_content = None
 
         self.files = list()
-        self.files_by_site_path = dict()
-
         self.resources = list()
         self.pages = list()
+        self.pages_by_url = dict()
 
         self.links = defaultdict(set)
         self.targets = set()
@@ -96,20 +95,11 @@ class Site(object):
         errors_by_link = defaultdict(list)
 
         for link in self.links:
-            if link.startswith(self.url):
-                if not internal:
-                    continue
-            else:
-                if not external:
-                    continue
-
-            sys.stdout.write(".")
-            sys.stdout.flush()
-
-            if link.startswith(self.url):
+            if internal and link.startswith(self.url):
                 if link not in self.targets:
                     errors_by_link[link].append("Link has no target")
-            else:
+
+            if external and not link.startswith(self.url):
                 code, error = self.check_external_link(link)
             
                 if code >= 400:
@@ -117,6 +107,9 @@ class Site(object):
 
                 if error:
                     errors_by_link[link].append(error.message)
+
+            sys.stdout.write(".")
+            sys.stdout.flush()
 
         print
 
@@ -130,8 +123,7 @@ class Site(object):
                 print "  Source: {}".format(source)
 
     def check_external_link(self, link):
-        code = None
-        error = None
+        code, error = None, None
 
         try:
             sock = urlopen(link, timeout=5)
@@ -155,10 +147,10 @@ class Site(object):
             if os.path.isfile(path):
                 for extension in (".md", ".html.in", ".html"):
                     if not skipped and name.endswith(extension):
-                        _Page(self, dir, name, page)
+                        _Page(self, path, page)
                         break
                 else:
-                    _Resource(self, dir, name)
+                    _Resource(self, path)
             elif os.path.isdir(path):
                 if name not in (".svn"):
                     self.traverse_inputs(path, page, skipped)
@@ -175,12 +167,9 @@ class Site(object):
         return "{}/{}".format(self.url, site_path)
 
 class _File(object):
-    def __init__(self, site, input_dir, input_name):
+    def __init__(self, site, input_path):
         self.site = site
-        self.input_dir = input_dir
-        self.input_name = input_name
-
-        self.input_path = os.path.join(self.input_dir, self.input_name)
+        self.input_path = input_path
         self.output_path = self.site.get_output_path(self.input_path)
         self.site_path = self.site.get_site_path(self.output_path)
         self.url = self.site.get_url(self.site_path)
@@ -188,30 +177,24 @@ class _File(object):
         self.site.files.append(self)
 
     def init(self):
-        self.site.files_by_site_path[self.site_path] = self
         self.site.targets.add(self.url)
 
     def __repr__(self):
-        args = self.__class__.__name__, self.input_dir, self.input_name
-        return "{}({},{})".format(*args)
+        return "{}({})".format(self.__class__.__name__, self.input_path)
 
 class _Resource(_File):
-    def __init__(self, site, input_dir, input_name):
-        super(_Resource, self).__init__(site, input_dir, input_name)
+    def __init__(self, site, input_path):
+        super(_Resource, self).__init__(site, input_path)
 
         self.site.resources.append(self)
 
     def copy_to_output(self):
-        output_dir = os.path.split(self.output_path)[0]
-
-        if not os.path.isdir(output_dir):
-            os.makedirs(output_dir)
-
+        _make_dirs(os.path.dirname(self.output_path))
         shutil.copy(self.input_path, self.output_path)
 
 class _Page(_File):
-    def __init__(self, site, input_dir, input_name, parent):
-        super(_Page, self).__init__(site, input_dir, input_name)
+    def __init__(self, site, input_path, parent):
+        super(_Page, self).__init__(site, input_path)
 
         self.parent = parent
 
@@ -231,6 +214,8 @@ class _Page(_File):
         self.site_path = self.site.get_site_path(self.output_path)
         self.url = self.site.get_url(self.site_path)
 
+        self.site.pages_by_url[self.url] = self
+
         super(_Page, self).init()
 
     def read_input(self):
@@ -241,10 +226,7 @@ class _Page(_File):
         if path is None:
             path = self.output_path
 
-        output_dir = os.path.dirname(path)
-
-        if not os.path.exists(output_dir):
-            os.makedirs(output_dir)
+        _make_dirs(os.path.dirname(path))
 
         with open(path, "w") as file:
             file.write(self.content)
@@ -315,6 +297,7 @@ class _Page(_File):
         return "<a href=\"{}\">{}</a>".format(self.url, self.title)
 
     def render_path_navigation(self):
+        # site_path = self.output_path[len(self.site.output_dir) + 1:]
         path_names = self.site_path.split("/")
         links = list()
 
@@ -323,9 +306,10 @@ class _Page(_File):
             item_names.append("index.html")
 
             item_site_path = os.path.join(*item_names)
+            item_url = self.site.get_url(item_site_path)
 
             try:
-                page = self.site.files_by_site_path[item_site_path]
+                page = self.site.pages_by_url[item_url]
             except KeyError:
                 continue
 
@@ -342,7 +326,6 @@ class _Page(_File):
         return "<ul id=\"path-navigation\">{}</ul>".format(links)
 
     def check_links(self):
-        # Reparse to pick up new attr values after substitutions
         root = self.parse_xml(self.content)
 
         links = self.gather_links(root)
@@ -403,3 +386,7 @@ def _ascii(string):
         return string.encode("ascii", "xmlcharrefreplace")
 
     return string
+
+def _make_dirs(dir):
+    if not os.path.exists(dir):
+        os.makedirs(dir)
