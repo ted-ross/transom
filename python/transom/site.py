@@ -159,20 +159,17 @@ class Site(object):
         path = input_path[len(self.input_dir) + 1:]
         return os.path.join(self.output_dir, path)
 
-    def get_site_path(self, output_path):
+    def get_url(self, output_path):
         path = output_path[len(self.output_dir) + 1:]
-        return "/".join(path.split(os.path.sep))
-
-    def get_url(self, site_path):
-        return "{}/{}".format(self.url, site_path)
+        path = "/".join(path.split(os.path.sep))
+        return "{}/{}".format(self.url, path)
 
 class _File(object):
     def __init__(self, site, input_path):
         self.site = site
         self.input_path = input_path
         self.output_path = self.site.get_output_path(self.input_path)
-        self.site_path = self.site.get_site_path(self.output_path)
-        self.url = self.site.get_url(self.site_path)
+        self.url = self.site.get_url(self.output_path)
 
         self.site.files.append(self)
 
@@ -211,8 +208,7 @@ class _Page(_File):
             self.output_path = self.output_path[:-3]
             self.convert = self.convert_from_html_in
 
-        self.site_path = self.site.get_site_path(self.output_path)
-        self.url = self.site.get_url(self.site_path)
+        self.url = self.site.get_url(self.output_path)
 
         self.site.pages_by_url[self.url] = self
 
@@ -297,16 +293,16 @@ class _Page(_File):
         return "<a href=\"{}\">{}</a>".format(self.url, self.title)
 
     def render_path_navigation(self):
-        # site_path = self.output_path[len(self.site.output_dir) + 1:]
-        path_names = self.site_path.split("/")
+        path = self.output_path[len(self.site.output_dir) + 1:]
+        path_names = path.split(os.path.sep)
         links = list()
 
-        for i in range(1, len(path_names)):
+        for i in range(1, len(self.output_path)):
             item_names = path_names[0:i]
             item_names.append("index.html")
 
-            item_site_path = os.path.join(*item_names)
-            item_url = self.site.get_url(item_site_path)
+            item_path = os.path.join(self.site.output_dir, *item_names)
+            item_url = self.site.get_url(item_path)
 
             try:
                 page = self.site.pages_by_url[item_url]
