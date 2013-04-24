@@ -36,20 +36,20 @@ def gen_books(source_dir, output_dir):
 
     cpp_broker_input_dir = join(input_dir, "build", "AMQP-Messaging-Broker-CPP-Book", "html")
     java_broker_input_dir = join(input_dir, "build", "AMQP-Messaging-Broker-Java-Book", "html")
-    prog_guide_input_dir = join(input_dir, "build", "Programming-In-Apache-Qpid", "html")
+    programming_input_dir = join(input_dir, "build", "Programming-In-Apache-Qpid", "html")
     cpp_broker_output_dir = join(output_dir, "cpp-broker", "book")
     java_broker_output_dir = join(output_dir, "java-broker", "book")
-    prog_guide_output_dir = join(output_dir, "programming", "book")
+    programming_output_dir = join(output_dir, "programming", "book")
 
     remove(cpp_broker_output_dir)
     remove(java_broker_output_dir)
-    remove(prog_guide_output_dir)
+    remove(programming_output_dir)
 
     copy(cpp_broker_input_dir, cpp_broker_output_dir)
     copy(java_broker_input_dir, java_broker_output_dir)
-    copy(prog_guide_input_dir, prog_guide_output_dir)
+    copy(programming_input_dir, programming_output_dir)
 
-    for dir in (cpp_broker_output_dir, java_broker_output_dir, prog_guide_output_dir):
+    for dir in (cpp_broker_output_dir, java_broker_output_dir, programming_output_dir):
         for path in find(dir, "*.html"):
             tree = ElementTree.parse(path)
             elem = tree.find(".//{http://www.w3.org/1999/xhtml}body")

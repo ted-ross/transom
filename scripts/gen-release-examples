@@ -28,6 +28,8 @@ from pygments.formatters import HtmlFormatter
 
 def gen_examples(release, title, lang, input_dir, input_names, output_dir,
                  readme_url=None, source_url=None):
+    remove(output_dir)
+
     for name in input_names:
         gen_example_page(release=release,
                          input_dir=input_dir,
@@ -131,7 +133,6 @@ def gen_examples_index(release, input_names, output_dir, title,
 
 def gen_messaging_api(release, source_dir, release_dir):
     component_dir = join(release_dir, "messaging-api")
-    remove(component_dir)
 
     gen_cpp_messaging_api(release, source_dir, component_dir)
     gen_dotnet_messaging_api(release, source_dir, component_dir)

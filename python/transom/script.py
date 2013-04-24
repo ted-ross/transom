@@ -231,7 +231,7 @@ def export_release(release, output_dir=None):
 
     assert not exists(output_dir)
 
-    url = "http://svn.apache.org/repos/asf/qpid/tags/{}/qpid".format(release)
+    url = "http://svn.apache.org/repos/asf/qpid/branches/{}/qpid".format(release)
     call("svn export {} {}", url, output_dir)
 
     return output_dir
