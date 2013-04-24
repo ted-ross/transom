@@ -1,13 +1,15 @@
 # Developer Central
 
 <div id="developer-goto-forms">
+  <span style="float: right; font-style: italic;">Alt-I and Alt-R to focus</span>
+
   <form id="jira-goto-form" action="?" method="get">
-    Go to issue <input name="jira" value="QPID-"/>
+    Go to issue <input name="jira" value="QPID-" accesskey="i"/>
   </form>
 
   <form id="viewvc-goto-form" action="http://svn.apache.org/viewvc" method="get">
     <input type="hidden" name="view" value="revision"/>
-    Go to revision <input type="text" name="revision"/>
+    Go to revision <input type="text" name="revision" accesskey="r"/>
   </form>
 </div>
 
