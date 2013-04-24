@@ -37,7 +37,7 @@ files you download.
   || Full source || [qpid-0.20.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.20/qpid-0.20.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.20/qpid-0.20.tar.gz.asc) ||
   || C++ broker, Qpid Messaging API (C++, bindings) || [qpid-cpp-0.20.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.20/qpid-cpp-0.20.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.20/qpid-cpp-0.20.tar.gz.asc) ||
   || C++ broker command-line tools || [qpid-tools-0.20.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.20/qpid-tools-0.20.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.20/qpid-tools-0.20.tar.gz.asc) ||
-  || Java broker || [qpid-java-broker-0.20.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.20/qpid-java-broker-0.20.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.20/qpid-java-broker-0.20.tar.gz.asc) ||
+  || Java broker, Qpid JCA || [qpid-java-broker-0.20.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.20/qpid-java-broker-0.20.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.20/qpid-java-broker-0.20.tar.gz.asc) ||
   || Qpid JMS (AMQP 0-10, 0-91, 0-9, 0-8) || [qpid-java-client-0.20.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.20/qpid-java-client-0.20.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.20/qpid-java-client-0.20.tar.gz.asc) ||
   || Qpid JMS (AMQP 1.0) || [qpid-java-amqp-1-0-client-jms-0.20.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.20/qpid-java-amqp-1-0-client-jms-0.20.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.20/qpid-java-amqp-1-0-client-jms-0.20.tar.gz.asc) ||
   || Qpid Messaging API (Python) || [qpid-python-0.20.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.20/qpid-python-0.20.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.20/qpid-python-0.20.tar.gz.asc) ||
@@ -53,6 +53,7 @@ available in the full source artefact.
   || [C++ broker](@site-url@/components/cpp-broker/index.html) || C++ || Linux, Windows || 1.0, 0-10 ||
   || [C++ broker command-line tools](@site-url@/components/cpp-broker-tools/index.html) || - || Linux || 0-10 ||
   || [Java broker](@site-url@/components/java-broker/index.html) || Java || JVM || 1.0, 0-10, 0-91, 0-9, 0-8 ||
+  || [Qpid JCA](@site-url@/components/qpid-jca/index.html) || Java || JVM || 0-10 ||
   || [Qpid JMS](@site-url@/components/qpid-jms/index.html) || Java || JVM || 1.0, 0-10, 0-91, 0-9, 0-8 ||
   || [Qpid Messaging API](@site-url@/components/messaging-api/index.html) || C++, Perl, Python, Ruby, .NET || Linux, Windows || 1.0, 0-10 ||
   || [Qpid WCF](@site-url@/components/qpid-wcf/index.html) || C# || Windows || 0-10 ||
@@ -73,6 +74,7 @@ available in the full source artefact.
 
  - [Installing and Using Qpid Java](https://cwiki.apache.org/qpid/getting-started-guide.html)
  - [Installing Qpid C++](http://svn.apache.org/repos/asf/qpid/tags/0.20/qpid/cpp/INSTALL)
+ - [Installing Qpid JCA](http://svn.apache.org/repos/asf/qpid/tags/0.20/qpid/java/jca/README.txt)
  - [Installing Qpid Python](http://svn.apache.org/repos/asf/qpid/tags/0.20/qpid/python/README.txt)
  - [Installing Qpid WCF](http://svn.apache.org/repos/asf/qpid/tags/0.20/qpid/wcf/ReadMe.txt)
 
@@ -88,6 +90,7 @@ available in the full source artefact.
 
 ### Examples
 
+ - [Qpid JCA](http://svn.apache.org/repos/asf/qpid/tags/0.20/qpid/java/jca/example/)
  - [Qpid JMS](qpid-jms/examples/index.html)
  - [C++ Messaging API](messaging-api/cpp/examples/index.html)
  - [Python Messaging API](messaging-api/python/examples/index.html)

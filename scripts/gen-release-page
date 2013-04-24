@@ -32,7 +32,7 @@ download_records = (
     ("qpid-{}.tar.gz", "Full source"),
     ("qpid-cpp-{}.tar.gz", "C++ broker, Qpid Messaging API (C++, bindings)"),
     ("qpid-tools-{}.tar.gz", "C++ broker command-line tools"),
-    ("qpid-java-broker-{}.tar.gz", "Java broker"),
+    ("qpid-java-broker-{}.tar.gz", "Java broker, Qpid JCA"),
     ("qpid-java-client-{}.tar.gz", "Qpid JMS (AMQP 0-10, 0-91, 0-9, 0-8)"),
     ("qpid-java-amqp-1-0-client-jms-{}.tar.gz", "Qpid JMS (AMQP 1.0)"),
     ("qpid-python-{}.tar.gz", "Qpid Messaging API (Python)"),
@@ -58,6 +58,7 @@ component_records = (
     ("cpp-broker", "C++ broker", "C++", "Linux, Windows", "1.0, 0-10"),
     ("cpp-broker-tools", "C++ broker command-line tools", "-", "Linux", "0-10"),
     ("java-broker", "Java broker", "Java", "JVM", "1.0, 0-10, 0-91, 0-9, 0-8"),
+    ("qpid-jca", "Qpid JCA", "Java", "JVM", "0-10"),
     ("qpid-jms", "Qpid JMS", "Java", "JVM", "1.0, 0-10, 0-91, 0-9, 0-8"),
     ("messaging-api", "Qpid Messaging API", "C++, Perl, Python, Ruby, .NET", "Linux, Windows", "1.0, 0-10"),
     ("qpid-wcf", "Qpid WCF", "C#", "Windows", "0-10"),
@@ -140,6 +141,7 @@ available in the full source artefact.
 
  - [Installing and Using Qpid Java](https://cwiki.apache.org/qpid/getting-started-guide.html)
  - [Installing Qpid C++](http://svn.apache.org/repos/asf/qpid/tags/{version}/qpid/cpp/INSTALL)
+ - [Installing Qpid JCA](http://svn.apache.org/repos/asf/qpid/tags/{version}/qpid/java/jca/README.txt)
  - [Installing Qpid Python](http://svn.apache.org/repos/asf/qpid/tags/{version}/qpid/python/README.txt)
  - [Installing Qpid WCF](http://svn.apache.org/repos/asf/qpid/tags/{version}/qpid/wcf/ReadMe.txt)
 
@@ -155,6 +157,7 @@ available in the full source artefact.
 
 ### Examples
 
+ - [Qpid JCA](http://svn.apache.org/repos/asf/qpid/tags/{version}/qpid/java/jca/example/)
  - [Qpid JMS](qpid-jms/examples/index.html)
  - [C++ Messaging API](messaging-api/cpp/examples/index.html)
  - [Python Messaging API](messaging-api/python/examples/index.html)
