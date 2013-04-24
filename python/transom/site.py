@@ -178,7 +178,6 @@ class Site(object):
     def get_url(self, output_path):
         path = output_path[len(self.output_dir) + 1:]
         path = path.replace(os.path.sep, "/")
-        #path = "/".join(path.split(os.path.sep))
         return "{}/{}".format(self.url, path)
 
 class _File(object):
