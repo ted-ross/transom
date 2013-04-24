@@ -141,6 +141,13 @@ class Site(object):
         if ".transom-skip" in names:
             skipped = True
 
+        for name in ("index.md", "index.html", "index.html.in"):
+            if not skipped and name in names:
+                names.remove(name)
+                path = os.path.join(dir, name)
+                page = _Page(self, path, page)
+                break
+
         for name in sorted(names):
             path = os.path.join(dir, name)
 
@@ -293,31 +300,16 @@ class _Page(_File):
         return "<a href=\"{}\">{}</a>".format(self.url, self.title)
 
     def render_path_navigation(self):
-        path = self.output_path[len(self.site.output_dir) + 1:]
-        path_names = path.split(os.path.sep)
         links = list()
+        page = self.parent
 
-        for i in range(1, len(self.output_path)):
-            item_names = path_names[0:i]
-            item_names.append("index.html")
+        links.append(self.title)
 
-            item_path = os.path.join(self.site.output_dir, *item_names)
-            item_url = self.site.get_url(item_path)
+        while page and page.parent:
+            links.append(page.render_link())
+            page = page.parent
 
-            try:
-                page = self.site.pages_by_url[item_url]
-            except KeyError:
-                continue
-
-            if page is self:
-                links.append(self.title)
-            else:
-                links.append(page.render_link())
-
-        if path_names[-1] != "index.html":
-            links.append(self.title)
-
-        links = "".join(("<li>{}</li>".format(x) for x in links))
+        links = "".join(("<li>{}</li>".format(x) for x in reversed(links)))
 
         return "<ul id=\"path-navigation\">{}</ul>".format(links)
 
