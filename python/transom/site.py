@@ -52,9 +52,10 @@ class Site(object):
         self.template_content = None
 
         self.files = list()
+        self.files_by_input_path = dict()
+
         self.resources = list()
         self.pages = list()
-        self.pages_by_url = dict()
 
         self.links = defaultdict(set)
         self.targets = set()
@@ -65,7 +66,8 @@ class Site(object):
         with open(self.template_path, "r") as file:
             self.template_content = file.read()
 
-        self.traverse_inputs(self.input_dir, None, False)
+        self.traverse_input_pages(self.input_dir, None)
+        self.traverse_input_resources(self.input_dir)
 
         for file in self.files:
             file.init()
@@ -135,17 +137,16 @@ class Site(object):
 
         return code, error
 
-    def traverse_inputs(self, dir, page, skipped):
+    def traverse_input_pages(self, dir, page):
         names = set(os.listdir(dir))
 
         if ".transom-skip" in names:
-            skipped = True
+            return
 
         for name in ("index.md", "index.html", "index.html.in"):
-            if not skipped and name in names:
+            if name in names:
                 names.remove(name)
-                path = os.path.join(dir, name)
-                page = _Page(self, path, page)
+                page = _Page(self, os.path.join(dir, name), page)
                 break
 
         for name in sorted(names):
@@ -153,14 +154,23 @@ class Site(object):
 
             if os.path.isfile(path):
                 for extension in (".md", ".html.in", ".html"):
-                    if not skipped and name.endswith(extension):
+                    if name.endswith(extension):
                         _Page(self, path, page)
                         break
-                else:
+            elif os.path.isdir(path) and name not in (".svn"):
+                self.traverse_input_pages(path, page)
+
+    def traverse_input_resources(self, dir):
+        names = set(os.listdir(dir))
+
+        for name in sorted(names):
+            path = os.path.join(dir, name)
+
+            if os.path.isfile(path):
+                if path not in self.files_by_input_path:
                     _Resource(self, path)
-            elif os.path.isdir(path):
-                if name not in (".svn"):
-                    self.traverse_inputs(path, page, skipped)
+            elif os.path.isdir(path) and name not in (".svn"):
+                self.traverse_input_resources(path)
 
     def get_output_path(self, input_path):
         path = input_path[len(self.input_dir) + 1:]
@@ -179,6 +189,7 @@ class _File(object):
         self.url = self.site.get_url(self.output_path)
 
         self.site.files.append(self)
+        self.site.files_by_input_path[self.input_path] = self
 
     def init(self):
         self.site.targets.add(self.url)
@@ -216,8 +227,6 @@ class _Page(_File):
             self.convert = self.convert_from_html_in
 
         self.url = self.site.get_url(self.output_path)
-
-        self.site.pages_by_url[self.url] = self
 
         super(_Page, self).init()
 
