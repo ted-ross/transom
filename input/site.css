@@ -457,7 +457,18 @@ div#developer-goto-forms {
     margin: 0 0 0.8em 0;
     background-color: #f7f7ef;
     padding: 0.8em 1em;
+
+/*
     border: 1px solid #d4d4ca;
+    border-radius: 0.3em;
+*/
+
+    border: 1px solid #ecece0;
+    border-radius: 0.3em;
+    margin: 0.2em 0 1em 0;
+    background: -webkit-linear-gradient(top, #fcfcfa 70%, #f7f7ef) no-repeat, #fcfcfa;
+    background: linear-gradient(to bottom, #fcfcfa 70%, #f7f7ef) no-repeat, #fcfcfa;
+    box-shadow: 0 0.1em 0.15em #d0c6e7;
 }
 
 div#developer-goto-forms form {
