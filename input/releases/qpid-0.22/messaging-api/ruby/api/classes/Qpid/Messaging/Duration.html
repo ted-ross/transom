@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Qpid::Messaging::Duration</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Qpid::Messaging::Duration</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../files/qpid/ruby/lib/qpid_messaging/duration_rb.html">
+                qpid/ruby/lib/qpid_messaging/duration.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+A <a href="Duration.html">Duration</a> represents a period of time in <a
+href="Duration.html#M000061">milliseconds</a>
+</p>
+<h2>Named Durations</h2>
+<p>
+The following named <tt>Durations</tt> are available as symbols:
+</p>
+<dl>
+<dt>FOREVER</dt><dd>The maximum integer value for the platform. Effectively this will wait
+forever.
+
+</dd>
+<dt>IMMEDIATE</dt><dd>An alias for 0 <a href="Duration.html#M000061">milliseconds</a>.
+
+</dd>
+<dt>SECOND</dt><dd>An alias for 1,000 <a href="Duration.html#M000061">milliseconds</a>.
+
+</dd>
+<dt>MINUTE</dt><dd>And alias for 60,000 millisecons.
+
+</dd>
+</dl>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000062">*</a>&nbsp;&nbsp;
+      <a href="#M000061">milliseconds</a>&nbsp;&nbsp;
+      <a href="#M000060">new</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000060" class="method-detail">
+        <a name="M000060"></a>
+
+        <div class="method-heading">
+          <a href="Duration.src/M000060.html" target="Code" class="method-signature"
+            onclick="popupCode('Duration.src/M000060.html');return false;">
+          <span class="method-name">new</span><span class="method-args">(length)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Creates a <a href="Duration.html">Duration</a> with the specified length,
+in <a href="Duration.html#M000061">milliseconds</a>.
+</p>
+<h4>Options</h4>
+<ul>
+<li><tt>length</tt> - The duration in <tt><a
+href="Duration.html#M000061">milliseconds</a></tt>.
+
+</li>
+</ul>
+<h4>Examples</h4>
+<pre>
+  # creates a duration of 15 seconds
+  # REMEMBER: Duration deals in milliseconds
+  delay = Qpid::Messaging::Duration.new 15000
+</pre>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000062" class="method-detail">
+        <a name="M000062"></a>
+
+        <div class="method-heading">
+          <a href="Duration.src/M000062.html" target="Code" class="method-signature"
+            onclick="popupCode('Duration.src/M000062.html');return false;">
+          <span class="method-name">*</span><span class="method-args">(factor)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Multiplies the duration of the <tt><a
+href="Duration.html">Duration</a></tt> and returns a <a
+href="Duration.html#M000060">new</a> instance.
+</p>
+<p>
+Raises exceptions on a negative factor. Returns
+Qpid::Messaging::Duration::IMMEDIATE when the factor is 0.
+</p>
+<h4>Examples</h4>
+<pre>
+  # return a duration that is 2 minutes (120,000 ms)
+  twominutes = Qpid::Messaging::Duration::MINUTE * 2
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000061" class="method-detail">
+        <a name="M000061"></a>
+
+        <div class="method-heading">
+          <a href="Duration.src/M000061.html" target="Code" class="method-signature"
+            onclick="popupCode('Duration.src/M000061.html');return false;">
+          <span class="method-name">milliseconds</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the period of time in <tt><a
+href="Duration.html#M000061">milliseconds</a></tt>.
+</p>
+<h4>Examples</h4>
+<pre>
+  # doubling growth in waiting for messages in a loop
+  do loop
+    set the base duration waiting length
+    timeout = Qpid::Messaging::Duration::SECOND
+    msg = nil
+    # loop until we receive a message
+    while msg.nil?
+      puts &quot;Waiting #{timeout.milliseconds}ms&quot;
+      msg = recv.get timeout
+      # if nothing was received, double the duration
+      if msg.nil?
+        # double out timeout
+        timeout = timeout * 2
+      else
+        # do something with the message
+        puts &quot;Received: #{msg.content}&quot;
+      end
+    end
+  end
+</pre>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Qpid::Messaging::Connection</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Qpid::Messaging::Connection</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../files/qpid/ruby/lib/qpid_messaging/connection_rb.html">
+                qpid/ruby/lib/qpid_messaging/connection.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+A <tt><a href="Connection.html">Connection</a></tt> represents a network
+connection to a remote endpoint.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000051">authenticated_username</a>&nbsp;&nbsp;
+      <a href="#M000048">close</a>&nbsp;&nbsp;
+      <a href="#M000049">create_session</a>&nbsp;&nbsp;
+      <a href="#M000045">new</a>&nbsp;&nbsp;
+      <a href="#M000046">open</a>&nbsp;&nbsp;
+      <a href="#M000047">open?</a>&nbsp;&nbsp;
+      <a href="#M000050">session</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000045" class="method-detail">
+        <a name="M000045"></a>
+
+        <div class="method-heading">
+          <a href="Connection.src/M000045.html" target="Code" class="method-signature"
+            onclick="popupCode('Connection.src/M000045.html');return false;">
+          <span class="method-name">new</span><span class="method-args">(opts = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Creates a connection object. Raises a MessagingError if an invalid
+connection option is used.
+</p>
+<h2>Options</h2>
+<ul>
+<li>+:url+ - the URL for the broker
+
+</li>
+<li>+:options+ - connection options
+
+</li>
+</ul>
+<h2>Controlling Reconnect Behavior</h2>
+<p>
+The following connection options can be used to configure the reconnection
+behavior for this connection.
+</p>
+<ul>
+<li>+:username+ - the authentication username
+
+</li>
+<li>+:password+ - the authentication password
+
+</li>
+<li>+:heartbeat+
+
+</li>
+<li>+:tcp_nodelay+
+
+</li>
+<li>+:sasl_mechanism+
+
+</li>
+<li>+:sasl_service+
+
+</li>
+<li>+:sasl_min_ssf+
+
+</li>
+<li>+:sasl_max_ssf+
+
+</li>
+<li>+:transport+
+
+</li>
+<li>+:reconnect+ - indicates whether to attempt reconnections
+
+</li>
+<li>+:reconnect_timeout+ - the number of seconds to attempt reconnecting
+
+</li>
+<li>+:reconnect_limit+ - the number of retries before reporting failure
+
+</li>
+<li>+:reconnect_interval_min+ - initial delay, in seconds, before attempting a
+reconnection
+
+</li>
+<li>+:reconnect_interval_max+ - number of seconds to wait before additional
+reconnect attempts
+
+</li>
+<li>+:reconnect_interval+ - shorthand for setting both min and max values
+
+</li>
+<li>+:reconnect_urls+ - a list of alternate URLs to use for reconnection
+attempts
+
+</li>
+</ul>
+<h2>Examples</h2>
+<pre>
+  # creates a connection to the broker running local *localhost*
+  conn = Qpid::Messaging::Connnection.new
+  # creates a connection to *broker1.domain.com* on port *5672*
+  conn = Qpid::Messaging::Connection.new :url =&gt; &quot;amqp:tcp:broker1.domain.com:5672&quot;
+  # creates a connection to localhost with the specified authentication credentials
+  conn = Qpid::Messaging::Connection.new :options =&gt; {:username =&gt; &quot;login&quot;, :password =&gt; &quot;password&quot;}
+</pre>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000051" class="method-detail">
+        <a name="M000051"></a>
+
+        <div class="method-heading">
+          <a href="Connection.src/M000051.html" target="Code" class="method-signature"
+            onclick="popupCode('Connection.src/M000051.html');return false;">
+          <span class="method-name">authenticated_username</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the username used to authenticate with the connection.
+</p>
+<p>
+If the connection did not user authentication credentials, then the
+username returned is &quot;anonymous&quot;.
+</p>
+<h2>Examples</h2>
+<pre>
+  # create a new connection for user &quot;qpiduser&quot;
+  conn = Qpid::Messaging::Connection.new :username =&gt; &quot;qpiduser&quot;
+  conn.open
+  # displays the authenticate username
+  puts &quot;Connected as #{conn.authenticated_username}&quot; # should say 'qpiduser'
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000048" class="method-detail">
+        <a name="M000048"></a>
+
+        <div class="method-heading">
+          <a href="Connection.src/M000048.html" target="Code" class="method-signature"
+            onclick="popupCode('Connection.src/M000048.html');return false;">
+          <span class="method-name">close</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Closes the connection.
+</p>
+<h2>Examples</h2>
+<pre>
+  # close a connection
+  conn.close
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000049" class="method-detail">
+        <a name="M000049"></a>
+
+        <div class="method-heading">
+          <a href="Connection.src/M000049.html" target="Code" class="method-signature"
+            onclick="popupCode('Connection.src/M000049.html');return false;">
+          <span class="method-name">create_session</span><span class="method-args">(args = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Creates a <a href="Connection.html#M000045">new</a> <a
+href="Connection.html#M000050">session</a>.
+</p>
+<h2>Arguments</h2>
+<ul>
+<li>+:name+ - specifies the name for this <a
+href="Connection.html#M000050">session</a>
+
+</li>
+<li>+:transactional+ - if <tt>true</tt> then a creates a transaction <a
+href="Connection.html#M000050">session</a> (def. <tt>false</tt>)
+
+</li>
+</ul>
+<h2>Examples</h2>
+<pre>
+  # create a session named 'session1'
+  session = conn.create_session :name =&gt; &quot;session1&quot;
+  # create a transactional session
+  session = conn.create_session :transaction =&gt; true
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000046" class="method-detail">
+        <a name="M000046"></a>
+
+        <div class="method-heading">
+          <a href="Connection.src/M000046.html" target="Code" class="method-signature"
+            onclick="popupCode('Connection.src/M000046.html');return false;">
+          <span class="method-name">open</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Establishes the connection.
+</p>
+<h2>Examples</h2>
+<pre>
+  # open a connection if it's not already open
+  conn.open unless conn.open?
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000047" class="method-detail">
+        <a name="M000047"></a>
+
+        <div class="method-heading">
+          <a href="Connection.src/M000047.html" target="Code" class="method-signature"
+            onclick="popupCode('Connection.src/M000047.html');return false;">
+          <span class="method-name">open?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Reports whether the connection is <a
+href="Connection.html#M000046">open</a>.
+</p>
+<h2>Examples</h2>
+<pre>
+  # close the connection if it's not already closed
+  conn.close if conn.open?
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000050" class="method-detail">
+        <a name="M000050"></a>
+
+        <div class="method-heading">
+          <a href="Connection.src/M000050.html" target="Code" class="method-signature"
+            onclick="popupCode('Connection.src/M000050.html');return false;">
+          <span class="method-name">session</span><span class="method-args">(name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns a <a href="Session.html">Session</a> with the given name. Raises an
+exception if no <a href="Connection.html#M000050">session</a> with the
+given name exists.
+</p>
+<h2>Options</h2>
+<ul>
+<li><tt>name</tt> - the existing <a
+href="Connection.html#M000050">session</a>&#8216;s name
+
+</li>
+</ul>
+<h2>Examples</h2>
+<pre>
+  # retrieve a session named 'mysession' from the current connection
+  name = &quot;my-session&quot;
+  # if no such session exists then catchh the exception raised
+  begin
+    session = conn.session name
+  rescue MessagingException =&gt; error
+     puts &quot;No such session: #{name}.&quot;
+  end
+</pre>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+<map id="G" name="G">
+<area shape="rect" id="node7" href="$structqpid_1_1messaging_1_1AddressError.html" title="qpid::messaging::AddressError" alt="" coords="745,56,956,83"/>
+<area shape="rect" id="node17" href="$structqpid_1_1messaging_1_1ReceiverError.html" title="qpid::messaging::ReceiverError" alt="" coords="744,107,957,133"/>
+<area shape="rect" id="node23" href="$structqpid_1_1messaging_1_1SenderError.html" title="qpid::messaging::SenderError" alt="" coords="749,157,952,184"/>
+<area shape="rect" id="node2" href="$structqpid_1_1messaging_1_1MessagingException.html" title="qpid::messaging::MessagingException" alt="" coords="208,107,464,133"/>
+<area shape="rect" id="node4" href="$classqpid_1_1types_1_1Exception.html" title="qpid::types::Exception" alt="" coords="5,107,160,133"/>
+<area shape="rect" id="node9" href="$structqpid_1_1messaging_1_1MalformedAddress.html" title="qpid::messaging::MalformedAddress" alt="" coords="1006,5,1253,32"/>
+<area shape="rect" id="node11" href="$structqpid_1_1messaging_1_1ResolutionError.html" title="qpid::messaging::ResolutionError" alt="" coords="1018,56,1241,83"/>
+<area shape="rect" id="node13" href="$structqpid_1_1messaging_1_1AssertionFailed.html" title="qpid::messaging::AssertionFailed" alt="" coords="1333,5,1558,32"/>
+<area shape="rect" id="node15" href="$structqpid_1_1messaging_1_1NotFound.html" title="qpid::messaging::NotFound" alt="" coords="1351,56,1540,83"/>
+<area shape="rect" id="node19" href="$structqpid_1_1messaging_1_1FetchError.html" title="qpid::messaging::FetchError" alt="" coords="1033,107,1225,133"/>
+<area shape="rect" id="node21" href="$structqpid_1_1messaging_1_1NoMessageAvailable.html" title="qpid::messaging::NoMessageAvailable" alt="" coords="1315,107,1576,133"/>
+<area shape="rect" id="node25" href="$structqpid_1_1messaging_1_1SendError.html" title="qpid::messaging::SendError" alt="" coords="1034,157,1225,184"/>
+<area shape="rect" id="node27" href="$structqpid_1_1messaging_1_1TargetCapacityExceeded.html" title="qpid::messaging::TargetCapacityExceeded" alt="" coords="1302,157,1589,184"/>
+</map>

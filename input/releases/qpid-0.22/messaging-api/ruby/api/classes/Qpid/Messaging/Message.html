@@ -1,0 +1,862 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Qpid::Messaging::Message</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Qpid::Messaging::Message</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../files/qpid/ruby/lib/qpid_messaging/message_rb.html">
+                qpid/ruby/lib/qpid_messaging/message.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+A <tt><a href="Message.html">Message</a></tt> represents an routable piece
+of information.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000040">[]</a>&nbsp;&nbsp;
+      <a href="#M000041">[]=</a>&nbsp;&nbsp;
+      <a href="#M000043">content</a>&nbsp;&nbsp;
+      <a href="#M000042">content=</a>&nbsp;&nbsp;
+      <a href="#M000044">content_size</a>&nbsp;&nbsp;
+      <a href="#M000024">content_type</a>&nbsp;&nbsp;
+      <a href="#M000023">content_type=</a>&nbsp;&nbsp;
+      <a href="#M000030">correlation_id</a>&nbsp;&nbsp;
+      <a href="#M000029">correlation_id=</a>&nbsp;&nbsp;
+      <a href="#M000036">durable</a>&nbsp;&nbsp;
+      <a href="#M000035">durable=</a>&nbsp;&nbsp;
+      <a href="#M000026">message_id</a>&nbsp;&nbsp;
+      <a href="#M000025">message_id=</a>&nbsp;&nbsp;
+      <a href="#M000018">new</a>&nbsp;&nbsp;
+      <a href="#M000032">priority</a>&nbsp;&nbsp;
+      <a href="#M000031">priority=</a>&nbsp;&nbsp;
+      <a href="#M000039">properties</a>&nbsp;&nbsp;
+      <a href="#M000038">redelivered</a>&nbsp;&nbsp;
+      <a href="#M000037">redelivered=</a>&nbsp;&nbsp;
+      <a href="#M000020">reply_to</a>&nbsp;&nbsp;
+      <a href="#M000019">reply_to=</a>&nbsp;&nbsp;
+      <a href="#M000022">subject</a>&nbsp;&nbsp;
+      <a href="#M000021">subject=</a>&nbsp;&nbsp;
+      <a href="#M000034">ttl</a>&nbsp;&nbsp;
+      <a href="#M000033">ttl=</a>&nbsp;&nbsp;
+      <a href="#M000028">user_id</a>&nbsp;&nbsp;
+      <a href="#M000027">user_id=</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000018" class="method-detail">
+        <a name="M000018"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000018.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000018.html');return false;">
+          <span class="method-name">new</span><span class="method-args">(args = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Creates a <tt><a href="Message.html">Message</a></tt>.
+</p>
+<h4>Options</h4>
+<ul>
+<li>+:<a href="Message.html#M000043">content</a>+ - the <a
+href="Message.html#M000043">content</a>
+
+</li>
+</ul>
+<h4>Examples</h4>
+<pre>
+  # create a simple message and sends it
+  message = Qpid::Messaging::Message.new :content =&gt; &quot;This is a message.&quot;
+  sender.send message
+</pre>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000040" class="method-detail">
+        <a name="M000040"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000040.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000040.html');return false;">
+          <span class="method-name">[]</span><span class="method-args">(key)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the value for the named property.
+</p>
+<h4>Options</h4>
+<ul>
+<li><tt>name</tt> - the property name
+
+</li>
+</ul>
+<h4>Examples</h4>
+<pre>
+  # use of message properties to mark a message as digitally signed
+  verify(msg) if msg[:signed]
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000041" class="method-detail">
+        <a name="M000041"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000041.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000041.html');return false;">
+          <span class="method-name">[]=</span><span class="method-args">(key, value)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Assigns a value to the named property.
+</p>
+<p>
+A property&#8216;s name or value, if a symbol, will be converted to a
+string representation. However, you will still be able to access them using
+a symbol for the name.
+</p>
+<h4>Options</h4>
+<ul>
+<li><tt>name</tt> - the property name
+
+</li>
+<li><tt>value</tt> - the property value
+
+</li>
+</ul>
+<h4>Examples</h4>
+<pre>
+  # set the signed attribute on a message and then retrieve it
+  msg[:signed] = true # sets &quot;signed&quot; =&gt; true
+  puts &quot;It's signed&quot; if msg[&quot;signed&quot;] # outputs &quot;It's signed&quot;
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000043" class="method-detail">
+        <a name="M000043"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000043.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000043.html');return false;">
+          <span class="method-name">content</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the <a href="Message.html#M000043">content</a> of the <tt><a
+href="Message.html">Message</a></tt>.
+</p>
+<p>
+Content is automatically decoded based on the specified <a
+href="Message.html#M000043">content</a> type. If the <a
+href="Message.html#M000043">content</a> type is application-specific, then
+no decoding is performed and the <a href="Message.html#M000043">content</a>
+is returnedas a <tt>String</tt> representation.
+</p>
+<p>
+For example, if an array of integers are sent, then the receiver will find
+the message <a href="Message.html#M000043">content</a> to be an array of
+String objects, where each String is a representation of the sent integer
+value.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000042" class="method-detail">
+        <a name="M000042"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000042.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000042.html');return false;">
+          <span class="method-name">content=</span><span class="method-args">(content)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Sets the <a href="Message.html#M000043">content</a> for the <tt><a
+href="Message.html">Message</a></tt>.
+</p>
+<p>
+Content is automatically encoded for Array and Hash types. Other types need
+to set their own <a href="Message.html#M000043">content</a> types (via <a
+href="Message.html#M000024">content_type</a>) in order to specify how
+recipients should process the <a href="Message.html#M000043">content</a>.
+</p>
+<h4>Options</h4>
+<ul>
+<li><tt><a href="Message.html#M000043">content</a></tt> - the <a
+href="Message.html#M000043">content</a>
+
+</li>
+</ul>
+<h4>Examples</h4>
+<pre>
+  # set a simple content for a message
+  msg.content = &quot;This is a simple message.&quot;
+  # sets content that is automatically encoded
+  msg.content = {:foo =&gt; :bar}
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000044" class="method-detail">
+        <a name="M000044"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000044.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000044.html');return false;">
+          <span class="method-name">content_size</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the <a href="Message.html#M000043">content</a>&#8216;s size in
+bytes.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000024" class="method-detail">
+        <a name="M000024"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000024.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000024.html');return false;">
+          <span class="method-name">content_type</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the <a href="Message.html#M000043">content</a> type for the <tt><a
+href="Message.html">Message</a></tt>.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000023" class="method-detail">
+        <a name="M000023"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000023.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000023.html');return false;">
+          <span class="method-name">content_type=</span><span class="method-args">(content_type)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Sets the <a href="Message.html#M000043">content</a> type for the <tt><a
+href="Message.html">Message</a></tt>.
+</p>
+<p>
+This should be set by the sending application and indicates to the
+recipients of the message how to interpret or decode the <a
+href="Message.html#M000043">content</a>.
+</p>
+<p>
+By default, only dictionaries and maps are automatically given a <a
+href="Message.html#M000043">content</a> type. If this <a
+href="Message.html#M000043">content</a> type is replaced then retrieving
+the <a href="Message.html#M000043">content</a> will not behave correctly.
+</p>
+<h4>Options</h4>
+<ul>
+<li><tt><a href="Message.html#M000024">content_type</a></tt> - the <a
+href="Message.html#M000043">content</a> type
+
+</li>
+</ul>
+<h4>Examples</h4>
+<pre>
+  # send base64 encoded data in a mesage
+  msg = Qpid::Messaging::Message.new :content = &quot;UXBpZCBSdWxlcyEK&quot;
+  msg.content_type = &quot;application/base64&quot;
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000030" class="method-detail">
+        <a name="M000030"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000030.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000030.html');return false;">
+          <span class="method-name">correlation_id</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the correlation id of the <tt><a
+href="Message.html">Message</a></tt>.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000029" class="method-detail">
+        <a name="M000029"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000029.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000029.html');return false;">
+          <span class="method-name">correlation_id=</span><span class="method-args">(correlation_id)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Sets the correlation id of the <tt><a href="Message.html">Message</a></tt>.
+</p>
+<p>
+The correlation id can be used as part of a protocol for message exchange
+patterns; e.g., a request-response pattern might require the correlation id
+of the request and the response to match, or it might use the message id of
+the request as the correlation id on the response.
+</p>
+<p>
+*NOTE:* If the id is not a <tt>String</tt> then the id is setup using the
+object&#8216;s string representation.
+</p>
+<h4>Options</h4>
+<ul>
+<li><tt>id</tt> - the id
+
+</li>
+</ul>
+        </div>
+      </div>
+
+      <div id="method-M000036" class="method-detail">
+        <a name="M000036"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000036.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000036.html');return false;">
+          <span class="method-name">durable</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the durability for the <tt><a href="Message.html">Message</a></tt>.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000035" class="method-detail">
+        <a name="M000035"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000035.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000035.html');return false;">
+          <span class="method-name">durable=</span><span class="method-args">(durable)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Sets the durability of the <tt><a href="Message.html">Message</a></tt>.
+</p>
+<p>
+This is a hint to the messaging infrastructure that the message should be
+persisted or otherwise stored. This helps to ensure that the message is not
+lost due to failures or a shutdown.
+</p>
+<h4>Options</h4>
+<ul>
+<li><tt><a href="Message.html#M000036">durable</a></tt> - the durability flag
+(def. false)
+
+</li>
+</ul>
+        </div>
+      </div>
+
+      <div id="method-M000026" class="method-detail">
+        <a name="M000026"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000026.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000026.html');return false;">
+          <span class="method-name">message_id</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the message id.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000025" class="method-detail">
+        <a name="M000025"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000025.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000025.html');return false;">
+          <span class="method-name">message_id=</span><span class="method-args">(message_id)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Sets the message id.
+</p>
+<p>
+*NOTE:* this field must be a UUID type currently. A non-UUID value will be
+converted to a zero UUID, though a blank ID will be left untouched.
+</p>
+<h4>Options</h4>
+<ul>
+<li><tt>id</tt> - the id
+
+</li>
+</ul>
+<h4>Examples</h4>
+<pre>
+  # this example only works in Ruby &gt;= 1.9, for 1.8 use a UUID library
+  require 'SecureRandom'
+  msg.message_id = SecureRandom.uuid
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000032" class="method-detail">
+        <a name="M000032"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000032.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000032.html');return false;">
+          <span class="method-name">priority</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the <a href="Message.html#M000032">priority</a> for the <tt><a
+href="Message.html">Message</a></tt>.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000031" class="method-detail">
+        <a name="M000031"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000031.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000031.html');return false;">
+          <span class="method-name">priority=</span><span class="method-args">(priority)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Sets the <a href="Message.html#M000032">priority</a> of the <tt><a
+href="Message.html">Message</a></tt>.
+</p>
+<p>
+This may be used by the messaging infrastructure to prioritize delivery of
+messages with higher <a href="Message.html#M000032">priority</a>.
+</p>
+<p>
+*NOTE:* If the <a href="Message.html#M000032">priority</a> is not an
+integer type then it is set using the object&#8216;s integer
+representation. If the integer value is greater than 8-bits then only the
+first 8-bits are used.
+</p>
+<h4>Options</h4>
+<ul>
+<li><tt><a href="Message.html#M000032">priority</a></tt> - the <a
+href="Message.html#M000032">priority</a>
+
+</li>
+</ul>
+        </div>
+      </div>
+
+      <div id="method-M000039" class="method-detail">
+        <a name="M000039"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000039.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000039.html');return false;">
+          <span class="method-name">properties</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns all named <a href="Message.html#M000039">properties</a>.
+</p>
+<p>
+*NOTE:* It is recommended to use the []= method for retrieving and setting
+<a href="Message.html#M000039">properties</a>. Using this method may result
+in non-deterministic behavior.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000038" class="method-detail">
+        <a name="M000038"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000038.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000038.html');return false;">
+          <span class="method-name">redelivered</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns whether the <tt><a href="Message.html">Message</a></tt> has been
+marked as <a href="Message.html#M000038">redelivered</a>.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000037" class="method-detail">
+        <a name="M000037"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000037.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000037.html');return false;">
+          <span class="method-name">redelivered=</span><span class="method-args">(redelivered)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This is a hint to the messaging infrastructure that if de-duplication is
+required, that this message should be examined to determine if it is a
+duplicate.
+</p>
+<h4>Options</h4>
+<ul>
+<li><tt><a href="Message.html#M000038">redelivered</a></tt> - sets the <a
+href="Message.html#M000038">redelivered</a> state (def. false)
+
+</li>
+</ul>
+<h4>Examples</h4>
+<pre>
+  # processed is a collection of messages already received
+  msg.redelivered = true if processed.include? msg.message_id
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000020" class="method-detail">
+        <a name="M000020"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000020.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000020.html');return false;">
+          <span class="method-name">reply_to</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the reply to address for the <tt><a
+href="Message.html">Message</a></tt>.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000019" class="method-detail">
+        <a name="M000019"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000019.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000019.html');return false;">
+          <span class="method-name">reply_to=</span><span class="method-args">(address)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Sets the reply-to address.
+</p>
+<p>
+The address can either be an instance of <a href="Address.html">Address</a>
+or else and address string.
+</p>
+<h4>Options</h4>
+<ul>
+<li><tt>address</tt> - the address
+
+</li>
+</ul>
+<h4>Examples</h4>
+<pre>
+  # set replies using an Address
+  msg.reply_to = Qpid:Messaging::Address.new &quot;my-responses&quot;
+  # set replies using an address string
+  msg.reply_to = &quot;my-feed/responses&quot;
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000022" class="method-detail">
+        <a name="M000022"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000022.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000022.html');return false;">
+          <span class="method-name">subject</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the <a href="Message.html#M000022">subject</a> of the <tt><a
+href="Message.html">Message</a></tt>.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000021" class="method-detail">
+        <a name="M000021"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000021.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000021.html');return false;">
+          <span class="method-name">subject=</span><span class="method-args">(subject)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Sets the <a href="Message.html#M000022">subject</a> for the <tt><a
+href="Message.html">Message</a></tt>.
+</p>
+<h4>Options</h4>
+<ul>
+<li><tt><a href="Message.html#M000022">subject</a></tt> - the <a
+href="Message.html#M000022">subject</a>
+
+</li>
+</ul>
+        </div>
+      </div>
+
+      <div id="method-M000034" class="method-detail">
+        <a name="M000034"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000034.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000034.html');return false;">
+          <span class="method-name">ttl</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the time-to-live in milliseconds.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000033" class="method-detail">
+        <a name="M000033"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000033.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000033.html');return false;">
+          <span class="method-name">ttl=</span><span class="method-args">(duration)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Sets the time-to-live in milliseconds.
+</p>
+<p>
+This can be used by the messaging infrastructure to discard messages that
+are no longer of relevance.
+</p>
+<h4>Options</h4>
+<ul>
+<li><tt>duration</tt> - the number of milliseconds
+
+</li>
+</ul>
+        </div>
+      </div>
+
+      <div id="method-M000028" class="method-detail">
+        <a name="M000028"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000028.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000028.html');return false;">
+          <span class="method-name">user_id</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the user id for the <tt><a href="Message.html">Message</a></tt>.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000027" class="method-detail">
+        <a name="M000027"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000027.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000027.html');return false;">
+          <span class="method-name">user_id=</span><span class="method-args">(user_id)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Sets the user id for the <tt><a href="Message.html">Message</a></tt>.
+</p>
+<p>
+This should in general be the user-id which was used when authenticating
+the connection itself, as the messaging infrastructure will verify this.
+</p>
+<p>
+See <a
+href="Connection.html#M000051">Qpid::Messaging::Connection.authenticated_username</a>
+</p>
+<p>
+*NOTE:* If the id is not a <tt>String</tt> then the id is set using the
+object&#8216;s string representation.
+</p>
+<h4>Options</h4>
+<ul>
+<li><tt>id</tt> - the id
+
+</li>
+</ul>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

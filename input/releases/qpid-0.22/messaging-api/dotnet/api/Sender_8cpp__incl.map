@@ -1,0 +1,10 @@
+<map id="G" name="G">
+<area shape="rect" id="node19" href="$Sender_8h.html" title="Sender.h" alt="" coords="579,80,655,107"/>
+<area shape="rect" id="node29" href="$Message_8h.html" title="Message.h" alt="" coords="991,80,1080,107"/>
+<area shape="rect" id="node74" href="$QpidException_8h.html" title="QpidException.h" alt="" coords="1965,80,2083,107"/>
+<area shape="rect" id="node37" href="$QpidMarshal_8h.html" title="QpidMarshal.h" alt="" coords="1426,229,1533,256"/>
+<area shape="rect" id="node39" href="$Address_8h.html" title="Address.h" alt="" coords="1073,155,1155,181"/>
+<area shape="rect" id="node56" href="$TypeTranslator_8h.html" title="TypeTranslator.h" alt="" coords="863,229,989,256"/>
+<area shape="rect" id="node66" href="$Duration_8h.html" title="Duration.h" alt="" coords="807,304,888,331"/>
+<area shape="rect" id="node49" href="$QpidTypeCheck_8h.html" title="QpidTypeCheck.h" alt="" coords="1129,304,1259,331"/>
+</map>

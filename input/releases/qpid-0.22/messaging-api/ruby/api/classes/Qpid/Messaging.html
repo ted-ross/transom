@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: Qpid::Messaging</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">Qpid::Messaging</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/qpid/ruby/lib/qpid_messaging_rb.html">
+                qpid/ruby/lib/qpid_messaging.rb
+                </a>
+        <br />
+                <a href="../../files/qpid/ruby/lib/qpid_messaging/message_rb.html">
+                qpid/ruby/lib/qpid_messaging/message.rb
+                </a>
+        <br />
+                <a href="../../files/qpid/ruby/lib/qpid_messaging/session_rb.html">
+                qpid/ruby/lib/qpid_messaging/session.rb
+                </a>
+        <br />
+                <a href="../../files/qpid/ruby/lib/qpid_messaging/sender_rb.html">
+                qpid/ruby/lib/qpid_messaging/sender.rb
+                </a>
+        <br />
+                <a href="../../files/qpid/ruby/lib/qpid_messaging/duration_rb.html">
+                qpid/ruby/lib/qpid_messaging/duration.rb
+                </a>
+        <br />
+                <a href="../../files/qpid/ruby/lib/qpid_messaging/connection_rb.html">
+                qpid/ruby/lib/qpid_messaging/connection.rb
+                </a>
+        <br />
+                <a href="../../files/qpid/ruby/lib/qpid_messaging/address_rb.html">
+                qpid/ruby/lib/qpid_messaging/address.rb
+                </a>
+        <br />
+                <a href="../../files/qpid/ruby/lib/qpid_messaging/receiver_rb.html">
+                qpid/ruby/lib/qpid_messaging/receiver.rb
+                </a>
+        <br />
+                <a href="../../files/qpid/ruby/lib/qpid_messaging/encoding_rb.html">
+                qpid/ruby/lib/qpid_messaging/encoding.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+The <a href="../Qpid.html">Qpid</a> <a href="Messaging.html">Messaging</a>
+framework is an enterprise messaging framework based on the open-source
+AMQP protocol.
+</p>
+<h4>Example Application</h4>
+<p>
+Here is a simple example application. It creates a link to a broker located
+on a system named *broker.myqpiddomain.com*. It then creates a new
+messaging queue named &quot;qpid-examples&quot; and publishes a message to
+it. It then consumes that same message and closes the connection.
+</p>
+<pre>
+  require 'rubygems'
+  gem 'qpid_messaging'
+  require 'qpid_messaging'
+
+  # create a connection, open it and then create a session named &quot;session1&quot;
+  conn = Qpid::Messaging::Connection.new :name =&gt; &quot;broker.myqpiddomain.com&quot;
+  conn.open
+  session = conn.create_session &quot;session1&quot;
+
+  # create a sender and a receiver
+  # the sender marks the queue as one that is deleted when trhe sender disconnects
+  send = session.create_sender &quot;qpid-examples;{create:always,delete:always}&quot;
+  recv = session.create_receiver &quot;qpid-examples&quot;
+
+  # create an outgoing message and send it
+  outgoing = Qpid::Messaging::Message.new :content =&gt; &quot;The time is #{Time.new}&quot;
+  sender.send outgoing
+
+  # set the receiver's capacity to 10 and then check out many messages are pending
+  recv.capacity = 10
+  puts &quot;There are #{recv.available} messages waiting.&quot; # should report 1 message
+
+  # get the nextwaiting  message, which should be in the local queue now,
+  # and output the contents
+  incoming = recv.get Qpid::Messaging::Duration::IMMEDIATE
+  puts &quot;Received the following message: #{incoming.content}&quot;
+  # the output should be the text that was sent earlier
+
+  # acknowledge the message, letting the sender know the message was received
+  puts &quot;The sender currently has #{send.unsettled} message(s) pending.&quot;
+  # should report 1 unsettled message
+  session.acknowledge incoming # acknowledge the received message
+  puts &quot;Now sender currently has #{send.unsettled} message(s) pending.&quot;
+  # should report 0 unsettled messages
+
+  # close the connection
+  conn.close
+</pre>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+    <div id="class-list">
+      <h3 class="section-bar">Classes and Modules</h3>
+
+      Class <a href="Messaging/Address.html" class="link">Qpid::Messaging::Address</a><br />
+Class <a href="Messaging/Connection.html" class="link">Qpid::Messaging::Connection</a><br />
+Class <a href="Messaging/Duration.html" class="link">Qpid::Messaging::Duration</a><br />
+Class <a href="Messaging/Message.html" class="link">Qpid::Messaging::Message</a><br />
+Class <a href="Messaging/Receiver.html" class="link">Qpid::Messaging::Receiver</a><br />
+Class <a href="Messaging/Sender.html" class="link">Qpid::Messaging::Sender</a><br />
+Class <a href="Messaging/Session.html" class="link">Qpid::Messaging::Session</a><br />
+
+    </div>
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

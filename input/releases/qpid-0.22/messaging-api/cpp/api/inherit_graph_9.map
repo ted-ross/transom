@@ -1,0 +1,26 @@
+<map id="G" name="G">
+<area shape="rect" id="node1" href="$classqpid_1_1types_1_1Exception.html" title="qpid::types::Exception" alt="" coords="5,132,160,159"/>
+<area shape="rect" id="node3" href="$structqpid_1_1messaging_1_1EncodingException.html" title="qpid::messaging::EncodingException" alt="" coords="213,81,459,108"/>
+<area shape="rect" id="node5" href="$structqpid_1_1messaging_1_1MessagingException.html" title="qpid::messaging::MessagingException" alt="" coords="208,132,464,159"/>
+<area shape="rect" id="node47" href="$structqpid_1_1types_1_1InvalidConversion.html" title="qpid::types::InvalidConversion" alt="" coords="234,183,438,209"/>
+<area shape="rect" id="node7" href="$structqpid_1_1messaging_1_1ConnectionError.html" title="qpid::messaging::ConnectionError" alt="" coords="520,5,747,32"/>
+<area shape="rect" id="node9" href="$structqpid_1_1messaging_1_1InvalidOptionString.html" title="qpid::messaging::InvalidOptionString" alt="" coords="512,56,755,83"/>
+<area shape="rect" id="node11" href="$structqpid_1_1messaging_1_1KeyError.html" title="qpid::messaging::KeyError" alt="" coords="542,107,725,133"/>
+<area shape="rect" id="node13" href="$structqpid_1_1messaging_1_1LinkError.html" title="qpid::messaging::LinkError" alt="" coords="542,157,725,184"/>
+<area shape="rect" id="node37" href="$structqpid_1_1messaging_1_1SessionError.html" title="qpid::messaging::SessionError" alt="" coords="529,208,737,235"/>
+<area shape="rect" id="node45" href="$structqpid_1_1messaging_1_1TransportFailure.html" title="qpid::messaging::TransportFailure" alt="" coords="518,259,749,285"/>
+<area shape="rect" id="node15" href="$structqpid_1_1messaging_1_1AddressError.html" title="qpid::messaging::AddressError" alt="" coords="825,56,1036,83"/>
+<area shape="rect" id="node25" href="$structqpid_1_1messaging_1_1ReceiverError.html" title="qpid::messaging::ReceiverError" alt="" coords="824,107,1037,133"/>
+<area shape="rect" id="node31" href="$structqpid_1_1messaging_1_1SenderError.html" title="qpid::messaging::SenderError" alt="" coords="829,157,1032,184"/>
+<area shape="rect" id="node17" href="$structqpid_1_1messaging_1_1MalformedAddress.html" title="qpid::messaging::MalformedAddress" alt="" coords="1109,5,1355,32"/>
+<area shape="rect" id="node19" href="$structqpid_1_1messaging_1_1ResolutionError.html" title="qpid::messaging::ResolutionError" alt="" coords="1121,56,1343,83"/>
+<area shape="rect" id="node21" href="$structqpid_1_1messaging_1_1AssertionFailed.html" title="qpid::messaging::AssertionFailed" alt="" coords="1437,5,1662,32"/>
+<area shape="rect" id="node23" href="$structqpid_1_1messaging_1_1NotFound.html" title="qpid::messaging::NotFound" alt="" coords="1455,56,1644,83"/>
+<area shape="rect" id="node27" href="$structqpid_1_1messaging_1_1FetchError.html" title="qpid::messaging::FetchError" alt="" coords="1136,107,1328,133"/>
+<area shape="rect" id="node29" href="$structqpid_1_1messaging_1_1NoMessageAvailable.html" title="qpid::messaging::NoMessageAvailable" alt="" coords="1419,107,1680,133"/>
+<area shape="rect" id="node33" href="$structqpid_1_1messaging_1_1SendError.html" title="qpid::messaging::SendError" alt="" coords="1137,157,1327,184"/>
+<area shape="rect" id="node35" href="$structqpid_1_1messaging_1_1TargetCapacityExceeded.html" title="qpid::messaging::TargetCapacityExceeded" alt="" coords="1406,157,1693,184"/>
+<area shape="rect" id="node39" href="$structqpid_1_1messaging_1_1TransactionError.html" title="qpid::messaging::TransactionError" alt="" coords="815,208,1046,235"/>
+<area shape="rect" id="node43" href="$structqpid_1_1messaging_1_1UnauthorizedAccess.html" title="qpid::messaging::UnauthorizedAccess" alt="" coords="803,259,1058,285"/>
+<area shape="rect" id="node41" href="$structqpid_1_1messaging_1_1TransactionAborted.html" title="qpid::messaging::TransactionAborted" alt="" coords="1107,208,1357,235"/>
+</map>
