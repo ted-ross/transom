@@ -24,7 +24,7 @@ applications.
 
 ## Messaging APIs
 
-All of Qpid's API libraries speak [AMQP](@site-url@/amqp.html).
+Qpid's messaging APIs can help you make your application speak AMQP.
 
  - [AMQP Messenger](messenger/index.html) - Forget plumbing and focus on your task
  - [AMQP Protocol Engine](protocol-engine/index.html) - Fine-grained control over AMQP 1.0
@@ -32,7 +32,10 @@ All of Qpid's API libraries speak [AMQP](@site-url@/amqp.html).
  - [Qpid Messaging API](messaging-api/index.html) - A JMS alternative that supports many languages
  - [Qpid WCF](qpid-wcf/index.html) - An AMQP [Windows Communication Foundation](http://msdn.microsoft.com/en-us/library/ms731082.aspx) implementation
 
-## Servers
+## Servers and tools
+
+Use these components to build a messaging fabric for any AMQP
+application.
 
 Qpid's message brokers are full-featured [message-oriented
 middleware](http://en.wikipedia.org/wiki/Message-oriented_middleware)
@@ -40,11 +43,8 @@ brokers.  They offer specialized queueing behaviors, message
 persistence, and manageability.
 
  - [C++ broker](cpp-broker/index.html) - A native-code AMQP message broker
- - [Java broker](java-broker/index.html) - A pure-Java AMQP message broker
-
-## Tools
-
  - [C++ broker command-line tools](cpp-broker-tools/index.html) - Manage the C++ broker
+ - [Java broker](java-broker/index.html) - A pure-Java AMQP message broker
  - [QMF](qmf/index.html) - Management built on Qpid messaging
  - [Qpid JCA](qpid-jca/index.html) - A JCA resource adapter for Qpid brokers
 
