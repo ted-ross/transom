@@ -453,6 +453,17 @@ div.color-block {
     width: 8em;
 }
 
+div#developer-goto-forms {
+    margin: 0 0 0.8em 0;
+    background-color: #f7f7ef;
+    padding: 0.8em 1em;
+    border: 1px solid #d4d4ca;
+}
+
+div#developer-goto-forms form {
+    margin: 0 1.6em 0 0;
+}
+
 /* Docbook xhtml output requires unpleasant style hacks */
 
 div.docbook div.navheader {

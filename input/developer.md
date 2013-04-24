@@ -1,5 +1,16 @@
 # Developer Central
 
+<div id="developer-goto-forms">
+  <form id="jira-goto-form" action="?" method="get">
+    Go to issue <input name="jira" value="QPID-"/>
+  </form>
+
+  <form id="viewvc-goto-form" action="http://svn.apache.org/viewvc" method="get">
+    <input type="hidden" name="view" value="revision"/>
+    Go to revision <input type="text" name="revision"/>
+  </form>
+</div>
+
 <div class="two-column" markdown="1">
 <div class="column" markdown="1">
 
@@ -12,15 +23,9 @@
 
 ## Issues
 
- - <form id="jira-goto-form" action="?" method="get">Go to issue <input name="jira" value="QPID-"/></form>
  - [Report a bug](https://issues.apache.org/jira/secure/CreateIssue.jspa?pid=12310520&amp;issuetype=1&amp;priority=3)
  - [Create a new issue](https://issues.apache.org/jira/secure/CreateIssue.jspa?pid=12310520) of another type
  - [Qpid JIRA project page](https://issues.apache.org/jira/browse/qpid)
-
-## Source code
-
- - <form id="viewvc-goto-form" action="http://svn.apache.org/viewvc" method="get"><input type="hidden" name="view" value="revision"/>Go to revision <input type="text" name="revision"/></form>
- - [Browse the code](http://svn.apache.org/viewvc/qpid/trunk/qpid)
 
 ## Mailing lists
 
