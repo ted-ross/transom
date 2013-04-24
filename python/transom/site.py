@@ -17,7 +17,6 @@
 # under the License.
 #
 
-import fnmatch
 import markdown2
 import os
 import shutil
@@ -157,7 +156,7 @@ class Site(object):
                     if name.endswith(extension):
                         _Page(self, path, page)
                         break
-            elif os.path.isdir(path) and name not in (".svn"):
+            elif os.path.isdir(path) and name != ".svn":
                 self.traverse_input_pages(path, page)
 
     def traverse_input_resources(self, dir):
@@ -169,7 +168,7 @@ class Site(object):
             if os.path.isfile(path):
                 if path not in self.files_by_input_path:
                     _Resource(self, path)
-            elif os.path.isdir(path) and name not in (".svn"):
+            elif os.path.isdir(path) and name != ".svn":
                 self.traverse_input_resources(path)
 
     def get_output_path(self, input_path):
@@ -178,7 +177,8 @@ class Site(object):
 
     def get_url(self, output_path):
         path = output_path[len(self.output_dir) + 1:]
-        path = "/".join(path.split(os.path.sep))
+        path = path.replace(os.path.sep, "/")
+        #path = "/".join(path.split(os.path.sep))
         return "{}/{}".format(self.url, path)
 
 class _File(object):
