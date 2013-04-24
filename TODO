@@ -1,18 +1,22 @@
 # High
 
+ - document release doc generation
+ - document publishing
+ - gen trunk docs
  - debian install directions
  - gen messenger and engine api doc
+ - eval content against fedora site
 
 # Medium
 
+ - related projects section
  - custom templates for api docs
    - nav from api ref back to site
  - tarballs of apidocs and examples
  - fix output for IE8
  - doxygen for just the qmf api
  - qmf2 examples
- - becoming a contributor, more detail
- - keep old site at old-site
+ - becoming a contributor, more detail, what to do with patches
  - roadmap
  - gen release notes
  - there are some trunk doc links in the java broker page that should
@@ -21,6 +25,8 @@
 
 # Low
 
+ - videos
+ - useful jira queries
  - set shorter timeout on link check
  - source modules
  - check dev env (python 2.7, for example)
