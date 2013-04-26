@@ -1,7 +1,6 @@
 # High
 
- - document release doc generation
- - document publishing
+ - document publishing (and figure out publishing)
  - gen trunk docs
  - debian install directions
  - gen messenger and engine api doc

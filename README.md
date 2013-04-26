@@ -77,6 +77,28 @@ To illustrate:
 
 You can see more definitions in `input/site.conf`.
 
+## Generating release content
+
+Most of the site content is written by human beings.  Release content,
+however, is automated.  Use the following commands to generate content
+for a new release.
+
+    # For new Qpid releases
+    transom$ make gen-release RELEASE=$VERSION
+    
+    # For new Qpid Proton releases    
+    transom$ make gen-proton-release RELEASE=$VERSION
+    
+These will produce a new tree of release content under
+`input/releases/`.  The content includes API docs, examples, and
+books.  Once generated, you can make any edits you'd like and check it
+in.
+
+The scripts depend on the availability of the following tools in your
+environment: dot, xsltproc, epydoc, rdoc, doxygen, and pygments.
+
 ## Publishing your work
 
-This remains to be documented!
+Qpid uses Subversion to update the public website from the content at
+https://svn.apache.org/repos/asf/qpid/site/docs/. Any changes
+committed there will be reflected on the Qpid website.
