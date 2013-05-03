@@ -132,7 +132,7 @@ function updateGlobalNavigation() {
             var desc = getDescendant(child, "a");
 
             if (getText(desc).trim() === pageTitle) {
-                desc.style.color = "black";
+                child.className = "selected";
                 break;
             }
         }
