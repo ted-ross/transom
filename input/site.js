@@ -50,10 +50,6 @@ function getText(elem) {
     }
 }
 
-function endsWith(string, ending) {
-    return string.substring(string.length - ending.length - 1) === ending;
-}
-
 function gotoJira() {
     var form = document.getElementById("jira-goto-form");
 
@@ -100,6 +96,7 @@ function registerEventListeners() {
 
     if (jiraSearchForm) {
         jiraSearchForm.addEventListener("submit", searchJiras, false);
+        window.addEventListener("hashchange", focusJiraSearchForm, false);
     }
 
     if (viewvcGotoForm) {
@@ -108,9 +105,9 @@ function registerEventListeners() {
 }
 
 function focusJiraSearchForm() {
-    var location = window.location.toString();
+    var hash = window.location.hash;
 
-    if (endsWith(location, "#search-issues")) {
+    if (hash === "#search-issues") {
         var searchForm = document.getElementById("jira-search-form");
 
         if (searchForm !== null) {

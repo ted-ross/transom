@@ -23,7 +23,7 @@
  - [Qpid 0.24](https://cwiki.apache.org/qpid/024-release.html) - Trunk
    opened 24 March
  - [Qpid 0.22](https://cwiki.apache.org/qpid/022-release.html) -
-   Preparing for release in April or May
+   Preparing for release in May
 
 ## Issues
 
