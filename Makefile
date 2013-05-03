@@ -1,8 +1,8 @@
 .PHONY: default help render check-links clean publish \
 	gen-release gen-proton-release regen-release-pages
 
-OUTPUT_DIR := "output"
-SITE_URL := "file://$(shell readlink -f ${OUTPUT_DIR})"
+OUTPUT_DIR := output
+SITE_URL := file://$(shell readlink -f ${OUTPUT_DIR})
 
 default: render
 
@@ -21,18 +21,27 @@ check-links: render
 	scripts/check-links ${SITE_URL} input ${OUTPUT_DIR} ${INTERNAL} ${EXTERNAL}
 
 clean:
+	test -n ${OUTPUT_DIR}
 	rm -rf ${OUTPUT_DIR}
 
-publish: TAG := "head"
 publish: OUTPUT_DIR := $(shell mktemp -d)
-publish: SITE_URL := "/~jross/transom/${TAG}"
+publish: SITE_URL := http://qpid.apache.org
+publish: PUBLISH_DIR := ""
 publish: render
-	rsync -av "${OUTPUT_DIR}/" "jross@people.apache.org:public_html/transom/${TAG}"
+	test -n ${PUBLISH_DIR} -a -d ${PUBLISH_DIR} -a -f ${PUBLISH_DIR}/index.html
+	cp -a ${OUTPUT_DIR}/* ${PUBLISH_DIR}
+	rm -rf ${OUTPUT_DIR}
+
+publish-devel: TAG := "head"
+publish-devel: OUTPUT_DIR := $(shell mktemp -d)
+publish-devel: SITE_URL := /~jross/transom/${TAG}
+publish-devel: render
+	rsync -av ${OUTPUT_DIR}/ jross@people.apache.org:public_html/transom/${TAG}
 	rm -rf ${OUTPUT_DIR}
 
 gen-release: RELEASE_DIR := input/releases/qpid-${RELEASE}
 gen-release:
-	test ! -z "${RELEASE}"
+	test -n ${RELEASE}
 	mkdir -p ${RELEASE_DIR}
 	scripts/gen-release-page ${RELEASE} > ${RELEASE_DIR}/index.md
 	scripts/gen-release-api-doc ${RELEASE} ${RELEASE_DIR}
@@ -40,7 +49,7 @@ gen-release:
 	scripts/gen-release-examples ${RELEASE} ${RELEASE_DIR}
 
 gen-proton-release:
-	test ! -z "${RELEASE}"
+	test -n ${RELEASE}
 	mkdir -p input/releases/qpid-proton-${RELEASE}
 	scripts/gen-proton-release-page ${RELEASE} > input/releases/qpid-proton-${RELEASE}/index.md
 

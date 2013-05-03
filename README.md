@@ -99,6 +99,28 @@ environment: dot, xsltproc, epydoc, rdoc, doxygen, and pygments.
 
 ## Publishing your work
 
+Once you're done making changes, commit your work.  There are still a
+few more steps, however, before the world can see it.
+
 Qpid uses Subversion to update the public website from the content at
 https://svn.apache.org/repos/asf/qpid/site/docs/. Any changes
 committed there will be reflected on the Qpid website.
+
+Make sure you have a local working copy of `qpid/site/docs` and run
+the following command.  For this example I'll assume `docs` is checked
+out to `$HOME/qpid-site/docs`.
+
+    transom$ make publish PUBLISH_DIR=$HOME/qpid-site/docs
+
+This will copy your new content to the website root.  The final step
+is to commit the changes there.
+
+    transom$ cd $HOME/qpid-site/docs
+
+    # Check that everything looks right; 'svn add' any new files
+    docs$ svn status
+    M       index.html
+    ?       somenewfile.html
+
+    # Last step! After this, the content is live
+    docs$ svn checkin -m "Here I make an account of what I changed"
