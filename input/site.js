@@ -50,6 +50,10 @@ function getText(elem) {
     }
 }
 
+function endsWith(string, ending) {
+    return string.substring(string.length - ending.length - 1) === ending;
+}
+
 function gotoJira() {
     var form = document.getElementById("jira-goto-form");
 
@@ -104,25 +108,13 @@ function registerEventListeners() {
 }
 
 function focusJiraSearchForm() {
-    var hash = window.location.hash;
+    var location = window.location.toString();
 
-    if (hash === "#search-issues") {
+    if (endsWith(location, "#search-issues")) {
         var searchForm = document.getElementById("jira-search-form");
 
         if (searchForm !== null) {
             searchForm.text.focus();
-        }
-    }
-}
-
-function focusSiteSearchForm() {
-    var pathname = window.location.pathname;
-
-    if (pathname.substring(pathname.length - 11) === "search.html") {
-        var searchForm = document.getElementById("site-search-form");
-
-        if (searchForm !== null) {
-            searchForm.q.focus();
         }
     }
 }
@@ -183,6 +175,5 @@ function updatePathNavigation() {
 
 window.addEventListener("load", registerEventListeners, false);
 window.addEventListener("load", focusJiraSearchForm, false);
-window.addEventListener("load", focusSiteSearchForm, false);
 window.addEventListener("load", updateGlobalNavigation, false);
 window.addEventListener("load", updatePathNavigation, false);

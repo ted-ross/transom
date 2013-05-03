@@ -400,6 +400,10 @@ span.date {
     font-style: italic;
 }
 
+span.accesskey {
+    text-decoration: underline;
+}
+
 table {
     border: none;
     border-collapse: collapse;
@@ -453,7 +457,7 @@ div.color-block {
     width: 8em;
 }
 
-div#developer-goto-forms {
+div#developer-forms {
     margin: 0 0 0.8em 0;
     background-color: #f7f7ef;
     padding: 0.8em 1em;
@@ -471,8 +475,13 @@ div#developer-goto-forms {
     box-shadow: 0 0.1em 0.15em #d0c6e7;
 }
 
-div#developer-goto-forms form {
+div#developer-forms form {
     margin: 0 1.6em 0 0;
+    display: inline;
+}
+
+div#developer-forms form#jira-search-form input {
+    width: 9em;
 }
 
 /* Docbook xhtml output requires unpleasant style hacks */

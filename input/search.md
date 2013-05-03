@@ -4,7 +4,7 @@
 
 <form id="site-search-form" action="http://www.google.com/search" method="get">
   <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
-  <input type="text" name="q" maxlength="255" value=""/>
+  <input type="text" name="q" maxlength="255" value="" autofocus="autofocus"/>
   <button type="submit">Search</button>
 </form>
 
