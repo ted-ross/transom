@@ -106,14 +106,14 @@ Qpid uses Subversion to update the public website from the content at
 https://svn.apache.org/repos/asf/qpid/site/docs/. Any changes
 committed there will be reflected on the Qpid website.
 
-Make sure you have a local working copy of `qpid/site/docs` and run
-the following command.  For this example I'll assume `docs` is checked
-out to `$HOME/qpid-site/docs`.
+First make sure you have a local checkout of `qpid/site/docs`, then
+run the following command.  For this example I'll assume
+`qpid/site/docs` is checked out to `$HOME/qpid-site/docs`.
 
     transom$ make publish PUBLISH_DIR=$HOME/qpid-site/docs
 
-This will copy your new content to the website root.  The final step
-is to commit the changes there.
+This will copy your new content to the publish directory.  The final
+step is to commit the changes there.
 
     transom$ cd $HOME/qpid-site/docs
 
