@@ -1,0 +1,211 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>2.9.  Qpid Java Build How To</title><link rel="stylesheet" href="css/style.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.73.2"><link rel="start" href="index.html" title="AMQP Messaging Broker (Implemented in Java)"><link rel="up" href="Qpid-Java-Broker-HowTos.html" title="Chapter 2. How Tos"><link rel="prev" href="How-to-Tune-M3-Java-Broker-Performance.html" title="2.8.  How to Tune M3 Java Broker Performance"><link rel="next" href="Priority-Queues.html" title="2.10.  Use Priority Queues"></head><body><div class="container" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><DIV class="header"><DIV class="logo"><H1>Apache Qpid™</H1><H2>Open Source AMQP Messaging</H2></DIV></DIV><DIV class="menu_box"><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Apache Qpid</H3><UL><LI><A href="http://qpid.apache.org/index.html">Home</A></LI><LI><A href="http://qpid.apache.org/download.html">Download</A></LI><LI><A href="http://qpid.apache.org/getting_started.html">Getting Started</A></LI><LI><A href="http://www.apache.org/licenses/">License</A></LI><LI><A href="https://cwiki.apache.org/qpid/faq.html">FAQ</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Documentation</H3><UL><LI><A href="http://qpid.apache.org/documentation.html#doc-release">Latest Release</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-trunk">Trunk</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-archives">Archive</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Community</H3><UL><LI><A href="http://qpid.apache.org/getting_involved.html">Getting Involved</A></LI><LI><A href="http://qpid.apache.org/source_repository.html">Source Repository</A></LI><LI><A href="http://qpid.apache.org/mailing_lists.html">Mailing Lists</A></LI><LI><A href="https://cwiki.apache.org/qpid/">Wiki</A></LI><LI><A href="https://issues.apache.org/jira/browse/qpid">Issue Reporting</A></LI><LI><A href="http://qpid.apache.org/people.html">People</A></LI><LI><A href="http://qpid.apache.org/acknowledgements.html">Acknowledgements</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Developers</H3><UL><LI><A href="https://cwiki.apache.org/qpid/building.html">Building Qpid</A></LI><LI><A href="https://cwiki.apache.org/qpid/developer-pages.html">Developer Pages</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About AMQP</H3><UL><LI><A href="http://qpid.apache.org/amqp.html">What is AMQP?</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About Apache</H3><UL><LI><A href="http://www.apache.org">Home</A></LI><LI><A href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</A></LI><LI><A href="http://www.apache.org/foundation/thanks.html">Thanks</A></LI><LI><A href="http://www.apache.org/security/">Security</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV></DIV><div class="main_text_area"><div class="main_text_area_top"></div><div class="main_text_area_body"><DIV class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">AMQP Messaging Broker (Implemented in Java)</a></span> &gt; <span class="breadcrumb-link"><a href="Qpid-Java-Broker-HowTos.html">How Tos</a></span> &gt; <span class="breadcrumb-node">
+      Qpid Java Build How To
+    </span></DIV><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="Qpid-Java-Build-HowTo"></a>2.9. 
+      Qpid Java Build How To
+    </h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="QpidJavaBuildHowTo-BuildInstructionsGeneral"></a>2.9.1. 
+            Build
+            Instructions - General
+          </h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="QpidJavaBuildHowTo-Checkoutthesource"></a>2.9.1.1. 
+            Check out the
+            source
+          </h4></div></div></div><p>
+            Firstly, check the source for Qpid out of our subversion
+            repository:
+          </p><p>
+            <a class="xref" href="">???</a>
+          </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="QpidJavaBuildHowTo-Prerequisites"></a>2.9.1.2. 
+            Prerequisites
+          </h4></div></div></div><p>
+            For the broker code you need JDK 1.5.0_15 or later. You should
+            set JAVA_HOME and include the bin directory in your PATH.
+          </p><p>
+            Check it's ok by executing java -v !
+          </p><p>
+            If you are wanting to run the python tests against the broker you
+            will of course need a version of python.
+          </p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="QpidJavaBuildHowTo-BuildInstructionsTrunk"></a>2.9.2. 
+            Build
+            Instructions - Trunk
+          </h3></div></div></div><p>
+            Our build system has reverted to ant as of May 2008.
+          </p><p>
+            The ant target 'help' will tell you what you need to know about
+            the build system.
+          </p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="QpidJavaBuildHowTo-AntBuildScripts"></a>2.9.2.1. 
+            Ant Build
+            Scripts
+          </h4></div></div></div><p>
+            Currently the Qpid java project builds using ant.
+          </p><p>
+            The ant build system is set up in a modular way, with a top level
+            build script and template for module builds and then a module
+            level build script which inherits from the template.
+          </p><p>
+            So, at the top level there are:
+          </p><div class="table"><a name="id2498632"></a><p class="title"><b>Table 2.8. </b></p><div class="table-contents"><table summary="" border="1"><colgroup><col><col></colgroup><tbody><tr><td>
+                  File
+                </td><td>
+                  Description
+                </td></tr><tr><td>
+                  build.xml
+                </td><td>
+                  Top level build file for the project which defines all the
+                  build targets
+                </td></tr><tr><td>
+                  common.xml
+                </td><td>
+                  Common properties used throughout the build system
+                </td></tr><tr><td>
+                  module.xml
+                </td><td>
+                  Template used by all modules which sets up properties for
+                  module builds
+                </td></tr></tbody></table></div></div><br class="table-break"><p>
+            Then, in each module subdirectory there is:
+          </p><div class="table"><a name="id2498702"></a><p class="title"><b>Table 2.9. </b></p><div class="table-contents"><table summary="" border="1"><colgroup><col><col></colgroup><tbody><tr><td>
+                  File
+                </td><td>
+                  Description
+                </td></tr><tr><td>
+                  build.xml
+                </td><td>
+                  Defines all the module values for template properties
+                </td></tr></tbody></table></div></div><br class="table-break"></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="QpidJavaBuildHowTo-Buildtargets"></a>2.9.2.2. 
+            Build targets
+          </h4></div></div></div><p>
+            The main build targets you are probably interested in are:
+          </p><div class="table"><a name="id2498757"></a><p class="title"><b>Table 2.10. </b></p><div class="table-contents"><table summary="" border="1"><colgroup><col><col></colgroup><tbody><tr><td>
+                  Target
+                </td><td>
+                  Description
+                </td></tr><tr><td>
+                  build
+                </td><td>
+                  Builds all source code for Qpid
+                </td></tr><tr><td>
+                  test
+                </td><td>
+                  Runs the testsuite for Qpid
+                </td></tr></tbody></table></div></div><br class="table-break"><p>
+            So, if you just want to compile everything you should run the
+            build target in the top level build.xml file.
+          </p><p>
+            If you want to build an installable version of Qpid, run the
+            archive task from the top level build.xml file.
+          </p><p>
+            If you want to compile an individual module, simply run the build
+            target from the appropriate module e.g. to compile the broker
+            source
+          </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="QpidJavaBuildHowTo-ConfiguringEclipse"></a>2.9.2.3. 
+            Configuring
+            Eclipse
+          </h4></div></div></div><p>
+            1. Run the ant build from the root directory of Java trunk.
+            2. New project -&gt; create from existing file system for broker,
+            common, client, junit-toolkit, perftests, systests and each
+            directory under management
+            4. Add the contents of lib/ to the build path
+            5. Setup Generated Code
+            6. Setup Dependencies
+          </p><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="QpidJavaBuildHowTo-GeneratedCode"></a>
+            Generated Code
+          </h5></div></div></div><p>
+            The Broker and Common packages both depend on generated code.
+            After running 'ant' the build/scratch directory will contain this
+            generated code.
+            For the broker module add build/scratch/broker/src
+            For the common module add build/scratch/common/src
+          </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="QpidJavaBuildHowTo-Dependencies"></a>
+            Dependencies
+          </h5></div></div></div><p>
+            These dependencies are correct at the time of writting however,
+            if things are not working you can check the dependencies by
+            looking in the modules build.xml file:
+          </p><pre class="programlisting">
+for i in `find . -name build.xml` ; do echo "$i:"; grep module.depends $i ; done
+</pre><p>
+            The <span class="emphasis"><em>module.depend</em></span> value will detail which other modules
+            are dependencies.
+          </p><p>
+            broker
+          </p><div class="itemizedlist"><ul><li><p>common
+            </p></li><li><p>management/common
+            </p></li></ul></div><p>
+            client
+          </p><div class="itemizedlist"><ul><li><p>Common
+            </p></li></ul></div><p>
+            systest
+          </p><div class="itemizedlist"><ul><li><p>client
+            </p></li><li><p>management/common
+            </p></li><li><p>broker
+            </p></li><li><p>broker/test
+            </p></li><li><p>common
+            </p></li><li><p>junit-toolkit
+            </p></li><li><p>management/tools/qpid-cli
+            </p></li></ul></div><p>
+            perftests
+          </p><div class="itemizedlist"><ul><li><p>systests
+            </p></li><li><p>client
+            </p></li><li><p>broker
+            </p></li><li><p>common
+            </p></li><li><p>junit-toolkit
+            </p></li></ul></div><p>
+            management/eclipse-plugin
+          </p><div class="itemizedlist"><ul><li><p>broker
+            </p></li><li><p>common
+            </p></li><li><p>management/common
+            </p></li></ul></div><p>
+            management/console
+          </p><div class="itemizedlist"><ul><li><p>common
+            </p></li><li><p>client
+            </p></li></ul></div><p>
+            management/agent
+          </p><div class="itemizedlist"><ul><li><p>common
+            </p></li><li><p>client
+            </p></li></ul></div><p>
+            management/tools/qpid-cli
+          </p><div class="itemizedlist"><ul><li><p>common
+            </p></li><li><p>management/common
+            </p></li></ul></div><p>
+            management/client
+          </p><div class="itemizedlist"><ul><li><p>common
+            </p></li><li><p>client
+            </p></li></ul></div><p>
+            integrationtests
+          </p><div class="itemizedlist"><ul><li><p>systests
+            </p></li><li><p>client
+            </p></li><li><p>common
+            </p></li><li><p>junit-toolkit
+            </p></li></ul></div><p>
+            testkit
+          </p><div class="itemizedlist"><ul><li><p>client
+            </p></li><li><p>broker
+            </p></li><li><p>common
+            </p></li></ul></div><p>
+            tools
+          </p><div class="itemizedlist"><ul><li><p>client
+            </p></li><li><p>common
+            </p></li></ul></div><p>
+            client/examples
+          </p><div class="itemizedlist"><ul><li><p>common
+            </p></li><li><p>client
+            </p></li></ul></div><p>
+            broker-plugins
+          </p><div class="itemizedlist"><ul><li><p>client
+            </p></li><li><p>management/common
+            </p></li><li><p>broker
+            </p></li><li><p>common
+            </p></li><li><p>junit-toolkit
+            </p></li></ul></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="QpidJavaBuildHowTo-Whatnext-3F"></a>2.9.2.4. 
+            What next ?
+          </h4></div></div></div><p>
+            If you want to run your built Qpid package, see our <a class="xref" href="">???</a> for details of
+            how to do that.
+          </p><p>
+            If you want to run our tests, you can use the ant test or
+            testreport (produces a useful report) targets.
+          </p></div></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="How-to-Tune-M3-Java-Broker-Performance.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="Qpid-Java-Broker-HowTos.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="Priority-Queues.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.8. 
+      How to Tune M3 Java Broker Performance
+     </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 2.10. 
+      Use Priority Queues
+    </td></tr></table></div><div class="main_text_area_bottom"></div></div></div></body></html>

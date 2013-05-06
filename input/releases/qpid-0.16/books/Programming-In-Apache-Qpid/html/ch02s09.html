@@ -1,0 +1,33 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>2.9. Transactions</title><link rel="stylesheet" type="text/css" href="css/style.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"><link rel="home" href="index.html" title="Programming in Apache Qpid"><link rel="up" href="ch02.html" title="Chapter 2. Using the Qpid Messaging API"><link rel="prev" href="ch02s08.html" title="2.8. Receiving Messages from Multiple Sources"><link rel="next" href="connection-options.html" title="2.10. Connection Options"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.9. Transactions</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02s08.html">Prev</a> </td><th width="60%" align="center">Chapter 2. Using the Qpid Messaging API</th><td width="20%" align="right"> <a accesskey="n" href="connection-options.html">Next</a></td></tr></table><hr></div><div class="section" title="2.9. Transactions"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="idp32544048"></a>2.9. Transactions</h2></div></div></div><p>Sometimes it is useful to be able to group messages
+      transfers - sent and/or received - on a session into atomic
+      grouping. This can be done be creating the session as
+      transactional. On a transactional session sent messages only
+      become available at the target address on commit. Likewise any
+      received and acknowledged messages are only discarded at their
+      source on commit
+
+      <sup>[<a name="idp32545376" href="#ftn.idp32545376" class="footnote">8</a>]</sup>
+
+      .</p><div class="example"><a name="idp32546288"></a><p class="title"><b>Example 2.13. Transactions</b></p><div class="example-contents"><p>C++:</p><pre class="programlisting">
+	Connection connection(broker);
+	Session session =  connection.createTransactionalSession();
+	...
+	if (smellsOk())
+	session.commit();
+	else
+	session.rollback();
+	</pre><p>
+	  .NET C#:
+	</p><pre class="programlisting">
+	  Connection connection = new Connection(broker);
+	  Session session =  connection.CreateTransactionalSession();
+	  ...
+	  if (smellsOk())
+	  session.Commit();
+	  else
+	  session.Rollback();
+	</pre></div></div><br class="example-break"><div class="footnotes"><br><hr width="100" align="left"><div class="footnote"><p><sup>[<a id="ftn.idp32545376" href="#idp32545376" class="para">8</a>] </sup>Note that this currently is only true for
+      messages received using a reliable mode
+      e.g. at-least-once. Messages sent by a broker to a receiver in
+      unreliable receiver will be discarded immediately regardless of
+      transctionality.</p></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s08.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="connection-options.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.8. Receiving Messages from Multiple Sources </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 2.10. Connection Options</td></tr></table></div></body></html>

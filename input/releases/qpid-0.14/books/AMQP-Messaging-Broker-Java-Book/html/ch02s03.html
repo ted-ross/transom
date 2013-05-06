@@ -1,0 +1,46 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>2.3.  Configure Java Qpid to use a SSL connection.</title><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"><link rel="home" href="index.html" title=""><link rel="up" href="ch02.html" title="Chapter 2. How Tos"><link rel="prev" href="ch02s02.html" title="2.2.  Configure ACLs"><link rel="next" href="ch02s04.html" title="2.4.  Configure Log4j CompositeRolling Appender"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.3. 
+      Configure Java Qpid to use a SSL connection.
+    </th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02s02.html">Prev</a> </td><th width="60%" align="center">Chapter 2. How Tos</th><td width="20%" align="right"> <a accesskey="n" href="ch02s04.html">Next</a></td></tr></table><hr></div><div class="section" title="2.3.  Configure Java Qpid to use a SSL connection."><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="id474453"></a>2.3. 
+      Configure Java Qpid to use a SSL connection.
+    </h2></div></div></div><div class="section" title="2.3.1.  Using SSL connection with Qpid Java."><div class="titlepage"><div><div><h3 class="title"><a name="ConfigureJavaQpidtouseaSSLconnection.-UsingSSLconnectionwithQpidJava."></a>2.3.1. 
+            Using SSL connection with Qpid Java.
+          </h3></div></div></div><p>
+            This section will show how to use SSL to enable secure
+            connections between a Java client and broker.
+          </p></div><div class="section" title="2.3.2.  Setup"><div class="titlepage"><div><div><h3 class="title"><a name="ConfigureJavaQpidtouseaSSLconnection.-Setup"></a>2.3.2. 
+            Setup
+          </h3></div></div></div><div class="section" title="2.3.2.1.  Broker Setup"><div class="titlepage"><div><div><h4 class="title"><a name="ConfigureJavaQpidtouseaSSLconnection.-BrokerSetup"></a>2.3.2.1. 
+            Broker
+            Setup
+          </h4></div></div></div><p>
+            The broker configuration file (config.xml) needs to be updated to
+            include the SSL keystore location details.
+          </p><pre class="programlisting">
+&lt;!-- Additions required to Connector Section --&gt;
+
+&lt;ssl&gt;
+    &lt;enabled&gt;true&lt;/enabled&gt;
+    &lt;sslOnly&gt;true&lt;/sslOnly&gt;
+    &lt;keyStorePath&gt;/path/to/keystore.ks&lt;/keyStorePath&gt;
+    &lt;keyStorePassword&gt;keystorepass&lt;/keyStorePassword&gt;
+&lt;/ssl&gt;
+</pre><p>
+            The sslOnly option is included here for completeness however this
+            will disable the unencrypted port and leave only the SSL port
+            listening for connections.
+          </p></div><div class="section" title="2.3.2.2.  Client Setup"><div class="titlepage"><div><div><h4 class="title"><a name="ConfigureJavaQpidtouseaSSLconnection.-ClientSetup"></a>2.3.2.2. 
+            Client
+            Setup
+          </h4></div></div></div><p>
+            The best place to start looking is class
+            <span class="emphasis"><em>SSLConfiguration</em></span> this is provided to the connection
+            during creation however there is currently no example that
+            demonstrates its use.
+          </p></div></div><div class="section" title="2.3.3.  Performing the connection."><div class="titlepage"><div><div><h3 class="title"><a name="ConfigureJavaQpidtouseaSSLconnection.-Performingtheconnection."></a>2.3.3. 
+            Performing
+            the connection.
+          </h3></div></div></div><p></p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch02s04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.2. 
+      Configure ACLs
+     </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 2.4. 
+      Configure Log4j CompositeRolling Appender
+    </td></tr></table></div></body></html>

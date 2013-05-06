@@ -1,0 +1,36 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>2.5.  Configure the Broker via config.xml</title><link rel="stylesheet" href="css/style.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.73.2"><link rel="start" href="index.html" title="AMQP Messaging Broker (Implemented in Java)"><link rel="up" href="Qpid-Java-Broker-HowTos.html" title="Chapter 2. How Tos"><link rel="prev" href="Qpid-Java-Log4j.html" title="2.4.  Configure Log4j CompositeRolling Appender"><link rel="next" href="Qpid-Java-Broker-Virtualhosts-Config.html" title="2.6.  Configure the Virtual Hosts via virtualhosts.xml"></head><body><div class="container" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><DIV class="header"><DIV class="logo"><H1>Apache Qpid™</H1><H2>Open Source AMQP Messaging</H2></DIV></DIV><DIV class="menu_box"><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Apache Qpid</H3><UL><LI><A href="http://qpid.apache.org/index.html">Home</A></LI><LI><A href="http://qpid.apache.org/download.html">Download</A></LI><LI><A href="http://qpid.apache.org/getting_started.html">Getting Started</A></LI><LI><A href="http://www.apache.org/licenses/">License</A></LI><LI><A href="https://cwiki.apache.org/qpid/faq.html">FAQ</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Documentation</H3><UL><LI><A href="http://qpid.apache.org/documentation.html#doc-release">Latest Release</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-trunk">Trunk</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-archives">Archive</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Community</H3><UL><LI><A href="http://qpid.apache.org/getting_involved.html">Getting Involved</A></LI><LI><A href="http://qpid.apache.org/source_repository.html">Source Repository</A></LI><LI><A href="http://qpid.apache.org/mailing_lists.html">Mailing Lists</A></LI><LI><A href="https://cwiki.apache.org/qpid/">Wiki</A></LI><LI><A href="https://issues.apache.org/jira/browse/qpid">Issue Reporting</A></LI><LI><A href="http://qpid.apache.org/people.html">People</A></LI><LI><A href="http://qpid.apache.org/acknowledgements.html">Acknowledgements</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Developers</H3><UL><LI><A href="https://cwiki.apache.org/qpid/building.html">Building Qpid</A></LI><LI><A href="https://cwiki.apache.org/qpid/developer-pages.html">Developer Pages</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About AMQP</H3><UL><LI><A href="http://qpid.apache.org/amqp.html">What is AMQP?</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About Apache</H3><UL><LI><A href="http://www.apache.org">Home</A></LI><LI><A href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</A></LI><LI><A href="http://www.apache.org/foundation/thanks.html">Thanks</A></LI><LI><A href="http://www.apache.org/security/">Security</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV></DIV><div class="main_text_area"><div class="main_text_area_top"></div><div class="main_text_area_body"><DIV class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">AMQP Messaging Broker (Implemented in Java)</a></span> &gt; <span class="breadcrumb-link"><a href="Qpid-Java-Broker-HowTos.html">How Tos</a></span> &gt; <span class="breadcrumb-node">
+      Configure the Broker via config.xml
+    </span></DIV><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="Qpid-Java-Broker-Config-File"></a>2.5. 
+      Configure the Broker via config.xml
+    </h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="ConfiguretheBrokerviaconfig.xml-Brokerconfig.xmlOverview"></a>2.5.1. 
+            Broker config.xml Overview
+          </h3></div></div></div><p>
+            The broker config.xml file which is shipped in the etc directory
+            of any Qpid binary distribution details various options and
+            configuration for the Java Qpid broker implementation.
+          </p><p>
+            In tandem with the virtualhosts.xml file, the config.xml file
+            allows you to control much of the deployment detail for your Qpid
+            broker in a flexible fashion.
+          </p><p>
+            Note that you can pass the config.xml you wish to use for your
+            broker instance to the broker using the -c command line option.
+            In turn, you can specify the paths for the broker password file
+            and virtualhosts.xml files in your config.xml for simplicity.
+          </p><p>
+            For more information about command line configuration options
+            please see <a class="xref" href="">???</a>.
+          </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="ConfiguretheBrokerviaconfig.xml-QpidVersion"></a>2.5.2. 
+            Qpid
+            Version
+          </h3></div></div></div><p>
+            The config format has changed between versions here you can find
+            the configuration details on a per version basis.
+          </p><p>
+            <a class="xref" href="">???</a>
+            <a class="xref" href="">???</a>
+          </p></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="Qpid-Java-Log4j.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="Qpid-Java-Broker-HowTos.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="Qpid-Java-Broker-Virtualhosts-Config.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.4. 
+      Configure Log4j CompositeRolling Appender
+     </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 2.6. 
+      Configure the Virtual Hosts via virtualhosts.xml
+    </td></tr></table></div><div class="main_text_area_bottom"></div></div></div></body></html>

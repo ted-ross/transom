@@ -1,0 +1,42 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>2.12. The Request / Response Pattern</title><link rel="stylesheet" href="css/style.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.73.2"><link rel="start" href="index.html" title="Programming in Apache Qpid"><link rel="up" href="ch02.html" title="Chapter 2. Using the Qpid Messaging API"><link rel="prev" href="section-Maps.html" title="2.11. Maps and Lists in Message Content"><link rel="next" href="ch02s13.html" title="2.13. Performance Tips"></head><body><div class="container" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><DIV class="header"><DIV class="logo"><H1>Apache Qpid™</H1><H2>Open Source AMQP Messaging</H2></DIV></DIV><DIV class="menu_box"><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Apache Qpid</H3><UL><LI><A href="http://qpid.apache.org/index.html">Home</A></LI><LI><A href="http://qpid.apache.org/download.html">Download</A></LI><LI><A href="http://qpid.apache.org/getting_started.html">Getting Started</A></LI><LI><A href="http://www.apache.org/licenses/">License</A></LI><LI><A href="https://cwiki.apache.org/qpid/faq.html">FAQ</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Documentation</H3><UL><LI><A href="http://qpid.apache.org/documentation.html#doc-release">Latest Release</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-trunk">Trunk</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-archives">Archive</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Community</H3><UL><LI><A href="http://qpid.apache.org/getting_involved.html">Getting Involved</A></LI><LI><A href="http://qpid.apache.org/source_repository.html">Source Repository</A></LI><LI><A href="http://qpid.apache.org/mailing_lists.html">Mailing Lists</A></LI><LI><A href="https://cwiki.apache.org/qpid/">Wiki</A></LI><LI><A href="https://issues.apache.org/jira/browse/qpid">Issue Reporting</A></LI><LI><A href="http://qpid.apache.org/people.html">People</A></LI><LI><A href="http://qpid.apache.org/acknowledgements.html">Acknowledgements</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Developers</H3><UL><LI><A href="https://cwiki.apache.org/qpid/building.html">Building Qpid</A></LI><LI><A href="https://cwiki.apache.org/qpid/developer-pages.html">Developer Pages</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About AMQP</H3><UL><LI><A href="http://qpid.apache.org/amqp.html">What is AMQP?</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About Apache</H3><UL><LI><A href="http://www.apache.org">Home</A></LI><LI><A href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</A></LI><LI><A href="http://www.apache.org/foundation/thanks.html">Thanks</A></LI><LI><A href="http://www.apache.org/security/">Security</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV></DIV><div class="main_text_area"><div class="main_text_area_top"></div><div class="main_text_area_body"><DIV class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Programming in Apache Qpid</a></span> &gt; <span class="breadcrumb-link"><a href="ch02.html">Using the Qpid Messaging API</a></span> &gt; <span class="breadcrumb-node">The Request / Response Pattern</span></DIV><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="id2552362"></a>2.12. The Request / Response Pattern</h2></div></div></div><p>Request / Response applications use the reply-to property,
+      described in <a class="xref" href="section-amqp0-10-mapping.html#table-amqp0-10-message-properties" title="Table 2.9. Mapping to AMQP 0-10 Message Properties">Table 2.9, “Mapping to AMQP 0-10 Message Properties”</a>, to allow a server
+      to respond to the client that sent a message. A server sets up a
+      service queue, with a name known to clients. A client creates a
+      private queue for the server's response, creates a message for a
+      request, sets the request's reply-to property to the address of
+      the client's response queue, and sends the request to the
+      service queue. The server sends the response to the address
+      specified in the request's reply-to property.
+      </p><div class="example"><a name="id2552385"></a><p class="title"><b>Example 2.18. Request / Response Applications in C++</b></p><div class="example-contents"><p>This example shows the C++ code for a client and server
+	that use the request / response pattern.</p><p>The server creates a service queue and waits for a
+	message to arrive. If it receives a message, it sends a
+	message back to the sender.</p><pre class="programlisting">Receiver receiver = session.createReceiver("service_queue; {create: always}");
+
+	Message request = receiver.fetch();
+	const Address&amp;amp; address = request.getReplyTo(); // Get "reply-to" from request ...
+	if (address) {
+	Sender sender = session.createSender(address); // ... send response to "reply-to"
+	Message response("pong!");
+	sender.send(response);
+	session.acknowledge();
+	}
+	</pre><p>The client creates a sender for the service queue, and
+	also creates a response queue that is deleted when the
+	client closes the receiver for the response queue. In the C++
+	client, if the address starts with the character
+	<code class="literal">#</code>, it is given a unique name.</p><pre class="programlisting">
+	Sender sender = session.createSender("service_queue");
+
+	Address responseQueue("#response-queue; {create:always, delete:always}");
+	Receiver receiver = session.createReceiver(responseQueue);
+
+	Message request;
+	request.setReplyTo(responseQueue);
+	request.setContent("ping");
+	sender.send(request);
+	Message response = receiver.fetch();
+	std::cout &lt;&lt; request.getContent() &lt;&lt; " -&gt; " &lt;&lt; response.getContent() &lt;&lt; std::endl;
+		  </pre><p>The client sends the string <code class="literal">ping</code> to
+	the server. The server sends the response
+	<code class="literal">pong</code> back to the same client, using the
+	<code class="varname">replyTo</code> property.</p></div></div><br class="example-break"></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="section-Maps.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch02s13.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.11. Maps and Lists in Message Content </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 2.13. Performance Tips</td></tr></table></div><div class="main_text_area_bottom"></div></div></div></body></html>

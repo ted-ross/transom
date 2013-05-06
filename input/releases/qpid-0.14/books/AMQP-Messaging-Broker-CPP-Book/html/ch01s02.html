@@ -1,0 +1,201 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>1.2.  Cheat Sheet for configuring Queue Options</title><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"><link rel="home" href="index.html" title="AMQP Messaging Broker (Implemented in C++)"><link rel="up" href="ch01.html" title="Chapter 1.  Running the AMQP Messaging Broker"><link rel="prev" href="ch01.html" title="Chapter 1.  Running the AMQP Messaging Broker"><link rel="next" href="ch01s03.html" title="1.3.  Cheat Sheet for configuring Exchange Options"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">1.2. 
+      Cheat Sheet for configuring Queue Options
+    </th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch01.html">Prev</a> </td><th width="60%" align="center">Chapter 1. 
+      Running the AMQP Messaging Broker
+    </th><td width="20%" align="right"> <a accesskey="n" href="ch01s03.html">Next</a></td></tr></table><hr></div><div class="section" title="1.2.  Cheat Sheet for configuring Queue Options"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="id426681"></a>1.2. 
+      Cheat Sheet for configuring Queue Options
+    </h2></div></div></div><div class="section" title="1.2.1.  Configuring Queue Options"><div class="titlepage"><div><div><h3 class="title"><a name="CheatSheetforconfiguringQueueOptions-ConfiguringQueueOptions"></a>1.2.1. 
+            Configuring
+            Queue Options
+          </h3></div></div></div><p>
+            The C++ Broker M4 or later supports the following additional
+            Queue constraints.
+          </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>
+                <a class="xref" href="ch01s02.html#CheatSheetforconfiguringQueueOptions-ConfiguringQueueOptions" title="1.2.1.  Configuring Queue Options">Section 1.2.1, &#8220;
+            Configuring
+            Queue Options
+          &#8221;</a>
+              </p></li><li class="listitem"><p>
+                </p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem"><p>
+                    <a class="xref" href="ch01s02.html#CheatSheetforconfiguringQueueOptions-ApplyingQueueSizingConstraints" title="1.2.1.1.  Applying Queue Sizing Constraints">Section 1.2.1.1, &#8220;
+            Applying Queue Sizing Constraints
+          &#8221;</a>
+                  </p></li><li class="listitem"><p>
+                    <a class="xref" href="ch01s02.html#CheatSheetforconfiguringQueueOptions-ChangingtheQueueorderingBehaviors-28FIFO-2FLVQ-29" title="1.2.1.2.  Changing the Queue ordering Behaviors (FIFO/LVQ)">Section 1.2.1.2, &#8220;
+            Changing the Queue ordering Behaviors (FIFO/LVQ)
+          &#8221;</a>
+                  </p></li><li class="listitem"><p>
+                    <a class="xref" href="ch01s02.html#CheatSheetforconfiguringQueueOptions-Settingadditionalbehaviors" title="1.2.1.3.  Setting additional behaviors">Section 1.2.1.3, &#8220;
+            Setting additional behaviors
+          &#8221;</a>
+                  </p></li><li class="listitem"><p>
+                    </p><div class="itemizedlist"><ul class="itemizedlist" type="square"><li class="listitem"><p>
+                        <a class="xref" href="ch01s02.html#CheatSheetforconfiguringQueueOptions-PersistLastNode" title="1.2.1.3.1.  Persist Last Node">Section 1.2.1.3.1, &#8220;
+            Persist
+            Last Node
+          &#8221;</a>
+                      </p></li><li class="listitem"><p>
+                        <a class="xref" href="ch01s02.html#CheatSheetforconfiguringQueueOptions-Queueeventgeneration" title="1.2.1.3.2.  Queue event generation">Section 1.2.1.3.2, &#8220;
+            Queue
+            event generation
+          &#8221;</a>
+                      </p></li></ul></div><p>
+                  </p></li><li class="listitem"><p>
+                    <a class="xref" href="ch01s02.html#CheatSheetforconfiguringQueueOptions-OtherClients" title="1.2.1.4.  Other Clients">Section 1.2.1.4, &#8220;
+            Other
+            Clients
+          &#8221;</a>
+                  </p></li></ul></div><p>
+              </p></li></ul></div><p>
+            The 0.10 C++ Broker supports the following additional Queue configuration options:
+          </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>
+              <a class="xref" href="ch01s09.html" title="1.9.  Producer Flow Control">Section 1.9, &#8220;
+    Producer Flow Control
+  &#8221;</a>
+            </p></li></ul></div><div class="section" title="1.2.1.1.  Applying Queue Sizing Constraints"><div class="titlepage"><div><div><h4 class="title"><a name="CheatSheetforconfiguringQueueOptions-ApplyingQueueSizingConstraints"></a>1.2.1.1. 
+            Applying Queue Sizing Constraints
+          </h4></div></div></div><p>
+            This allows to specify how to size a queue and what to do when
+            the sizing constraints have been reached. The queue size can be
+            limited by the number messages (message depth) or byte depth on
+            the queue.
+          </p><p>
+            Once the Queue meets/ exceeds these constraints the follow
+            policies can be applied
+          </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>REJECT - Reject the published message
+            </p></li><li class="listitem"><p>FLOW_TO_DISK - Flow the messages to disk, to preserve memory
+            </p></li><li class="listitem"><p>RING - start overwriting messages in a ring based on sizing.
+            If head meets tail, advance head
+            </p></li><li class="listitem"><p>RING_STRICT - start overwriting messages in a ring based on
+            sizing. If head meets tail, AND the consumer has the tail message
+            acquired it will reject
+            </p></li></ul></div><p>
+            Examples:
+          </p><p>
+            Create a queue an auto delete queue that will support 100 000
+            bytes, and then REJECT
+          </p><pre class="programlisting">
+#include "qpid/client/QueueOptions.h"
+
+    QueueOptions qo;
+    qo.setSizePolicy(REJECT,100000,0);
+
+    session.queueDeclare(arg::queue=queue, arg::autoDelete=true, arg::arguments=qo);
+</pre><p>
+            Create a queue that will support 1000 messages into a RING buffer
+          </p><pre class="programlisting">
+#include "qpid/client/QueueOptions.h"
+
+    QueueOptions qo;
+    qo.setSizePolicy(RING,0,1000);
+
+    session.queueDeclare(arg::queue=queue, arg::arguments=qo);
+</pre></div><div class="section" title="1.2.1.2.  Changing the Queue ordering Behaviors (FIFO/LVQ)"><div class="titlepage"><div><div><h4 class="title"><a name="CheatSheetforconfiguringQueueOptions-ChangingtheQueueorderingBehaviors-28FIFO-2FLVQ-29"></a>1.2.1.2. 
+            Changing the Queue ordering Behaviors (FIFO/LVQ)
+          </h4></div></div></div><p>
+            The default ordering in a queue in Qpid is FIFO. However
+            additional ordering semantics can be used namely LVQ (Last Value
+            Queue). Last Value Queue is define as follows.
+          </p><p>
+            If I publish symbols RHT, IBM, JAVA, MSFT, and then publish RHT
+            before the consumer is able to consume RHT, that message will be
+            over written in the queue and the consumer will receive the last
+            published value for RHT.
+          </p><p>
+            Example:
+          </p><pre class="programlisting">
+#include "qpid/client/QueueOptions.h"
+
+    QueueOptions qo;
+    qo.setOrdering(LVQ);
+
+    session.queueDeclare(arg::queue=queue, arg::arguments=qo);
+
+    .....
+    string key;
+    qo.getLVQKey(key);
+
+    ....
+    for each message, set the into application headers before transfer
+    message.getHeaders().setString(key,"RHT");
+    
+</pre><p>
+            Notes:
+          </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Messages that are dequeued and the re-queued will have the
+            following exceptions. a.) if a new message has been queued with
+            the same key, the re-queue from the consumer, will combine these
+            two messages. b.) If an update happens for a message of the same
+            key, after the re-queue, it will not update the re-queued
+            message. This is done to protect a client from being able to
+            adversely manipulate the queue.
+            </p></li><li class="listitem"><p>Acquire: When a message is acquired from the queue, no matter
+            it's position, it will behave the same as a dequeue
+            </p></li><li class="listitem"><p>LVQ does not support durable messages. If the queue or
+            messages are declared durable on an LVQ, the durability will be
+            ignored.
+            </p></li></ul></div><p>
+            A fully worked <a class="xref" href="ch01s06.html#LVQ-Examplesource" title="1.6.4.  LVQ Program Example">Section 1.6.4, &#8220;
+            LVQ Program Example
+          &#8221;</a> can be found here
+          </p></div><div class="section" title="1.2.1.3.  Setting additional behaviors"><div class="titlepage"><div><div><h4 class="title"><a name="CheatSheetforconfiguringQueueOptions-Settingadditionalbehaviors"></a>1.2.1.3. 
+            Setting additional behaviors
+          </h4></div></div></div><div class="section" title="1.2.1.3.1.  Persist Last Node"><div class="titlepage"><div><div><h5 class="title"><a name="CheatSheetforconfiguringQueueOptions-PersistLastNode"></a>1.2.1.3.1. 
+            Persist
+            Last Node
+          </h5></div></div></div><p>
+            This option is used in conjunction with clustering. It allows for
+            a queue configured with this option to persist transient messages
+            if the cluster fails down to the last node. If additional nodes
+            in the cluster are restored it will stop persisting transient
+            messages.
+          </p><p>
+            Note
+          </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>if a cluster is started with only one active node, this mode
+            will not be triggered. It is only triggered the first time the
+            cluster fails down to 1 node.
+            </p></li><li class="listitem"><p>The queue MUST be configured durable
+            </p></li></ul></div><p>
+            Example:
+          </p><pre class="programlisting">
+#include "qpid/client/QueueOptions.h"
+
+    QueueOptions qo;
+    qo.clearPersistLastNode();
+
+    session.queueDeclare(arg::queue=queue, arg::durable=true, arg::arguments=qo);
+</pre></div><div class="section" title="1.2.1.3.2.  Queue event generation"><div class="titlepage"><div><div><h5 class="title"><a name="CheatSheetforconfiguringQueueOptions-Queueeventgeneration"></a>1.2.1.3.2. 
+            Queue
+            event generation
+          </h5></div></div></div><p>
+            This option is used to determine whether enqueue/dequeue events
+            representing changes made to queue state are generated. These
+            events can then be processed by plugins such as that used for
+            <a class="xref" href="ch01s07.html" title="1.7.  Queue State Replication">Section 1.7, &#8220;
+    Queue State Replication
+  &#8221;</a>.
+          </p><p>
+            Example:
+          </p><pre class="programlisting">
+#include "qpid/client/QueueOptions.h"
+
+    QueueOptions options;
+    options.enableQueueEvents(1);
+    session.queueDeclare(arg::queue="my-queue", arg::arguments=options);
+</pre><p>
+            The boolean option indicates whether only enqueue events should
+            be generated. The key set by this is
+            'qpid.queue_event_generation' and the value is and integer value
+            of 1 (to replicate only enqueue events) or 2 (to replicate both
+            enqueue and dequeue events).
+          </p></div></div><div class="section" title="1.2.1.4.  Other Clients"><div class="titlepage"><div><div><h4 class="title"><a name="CheatSheetforconfiguringQueueOptions-OtherClients"></a>1.2.1.4. 
+            Other
+            Clients
+          </h4></div></div></div><p>
+            Note that these options can be set from any client. QueueOptions
+            just correctly formats the arguments passed to the QueueDeclare()
+            method.
+          </p></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch01.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch01.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch01s03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 1. 
+      Running the AMQP Messaging Broker
+     </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 1.3. 
+    Cheat Sheet for configuring Exchange Options
+  </td></tr></table></div></body></html>

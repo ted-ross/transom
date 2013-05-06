@@ -1,0 +1,104 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>2.8.  How to Tune M3 Java Broker Performance</title><link rel="stylesheet" href="css/style.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.73.2"><link rel="start" href="index.html" title="AMQP Messaging Broker (Implemented in Java)"><link rel="up" href="Qpid-Java-Broker-HowTos.html" title="Chapter 2. How Tos"><link rel="prev" href="Java-Broker-Debug-Logging.html" title="2.7.  Debug using log4j"><link rel="next" href="Qpid-Java-Build-HowTo.html" title="2.9.  Qpid Java Build How To"></head><body><div class="container" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><DIV class="header"><DIV class="logo"><H1>Apache Qpid™</H1><H2>Open Source AMQP Messaging</H2></DIV></DIV><DIV class="menu_box"><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Apache Qpid</H3><UL><LI><A href="http://qpid.apache.org/index.html">Home</A></LI><LI><A href="http://qpid.apache.org/download.html">Download</A></LI><LI><A href="http://qpid.apache.org/getting_started.html">Getting Started</A></LI><LI><A href="http://www.apache.org/licenses/">License</A></LI><LI><A href="https://cwiki.apache.org/qpid/faq.html">FAQ</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Documentation</H3><UL><LI><A href="http://qpid.apache.org/documentation.html#doc-release">Latest Release</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-trunk">Trunk</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-archives">Archive</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Community</H3><UL><LI><A href="http://qpid.apache.org/getting_involved.html">Getting Involved</A></LI><LI><A href="http://qpid.apache.org/source_repository.html">Source Repository</A></LI><LI><A href="http://qpid.apache.org/mailing_lists.html">Mailing Lists</A></LI><LI><A href="https://cwiki.apache.org/qpid/">Wiki</A></LI><LI><A href="https://issues.apache.org/jira/browse/qpid">Issue Reporting</A></LI><LI><A href="http://qpid.apache.org/people.html">People</A></LI><LI><A href="http://qpid.apache.org/acknowledgements.html">Acknowledgements</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Developers</H3><UL><LI><A href="https://cwiki.apache.org/qpid/building.html">Building Qpid</A></LI><LI><A href="https://cwiki.apache.org/qpid/developer-pages.html">Developer Pages</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About AMQP</H3><UL><LI><A href="http://qpid.apache.org/amqp.html">What is AMQP?</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About Apache</H3><UL><LI><A href="http://www.apache.org">Home</A></LI><LI><A href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</A></LI><LI><A href="http://www.apache.org/foundation/thanks.html">Thanks</A></LI><LI><A href="http://www.apache.org/security/">Security</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV></DIV><div class="main_text_area"><div class="main_text_area_top"></div><div class="main_text_area_body"><DIV class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">AMQP Messaging Broker (Implemented in Java)</a></span> &gt; <span class="breadcrumb-link"><a href="Qpid-Java-Broker-HowTos.html">How Tos</a></span> &gt; <span class="breadcrumb-node">
+      How to Tune M3 Java Broker Performance
+    </span></DIV><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="How-to-Tune-M3-Java-Broker-Performance"></a>2.8. 
+      How to Tune M3 Java Broker Performance
+    </h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="HowtoTuneM3JavaBrokerPerformance-ProblemStatement"></a>2.8.1. 
+            Problem
+            Statement
+          </h3></div></div></div><p>
+            During destructive testing of the Qpid M3 Java Broker, we tested
+            some tuning techniques and deployment changes to improve the Qpid
+            M3 Java Broker's capacity to maintain high levels of throughput,
+            particularly in the case of a slower consumer than produceer
+            (i.e. a growing backlog).
+          </p><p>
+            The focus of this page is to detail the results of tuning &amp;
+            deployment changes trialled.
+          </p><p>
+            The successful tuning changes are applicable for any deployment
+            expecting to see bursts of high volume throughput (1000s of
+            persistent messages in large batches). Any user wishing to use
+            these options <span class="emphasis"><em>must test them thoroughly in their own
+            environment with representative volumes</em></span>.
+          </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="HowtoTuneM3JavaBrokerPerformance-SuccessfulTuningOptions"></a>2.8.2. 
+            Successful
+            Tuning Options
+          </h3></div></div></div><p>
+            The key scenario being taregetted by these changes is a broker
+            under heavy load (processing a large batch of persistent
+            messages)can be seen to perform slowly when filling up with an
+            influx of high volume transient messages which are queued behind
+            the persistent backlog. However, the changes suggested will be
+            equally applicable to general heavy load scenarios.
+          </p><p>
+            The easiest way to address this is to separate streams of
+            messages. Thus allowing the separate streams of messages to be
+            processed, and preventing a backlog behind a particular slow
+            consumer.
+          </p><p>
+            These strategies have been successfully tested to mitigate this
+            problem:
+          </p><div class="table"><a name="id2496802"></a><p class="title"><b>Table 2.7. </b></p><div class="table-contents"><table summary="" border="1"><colgroup><col><col></colgroup><tbody><tr><td>
+                  Strategy
+                </td><td>
+                  Result
+                </td></tr><tr><td>
+                  Seperate connections to one broker for separate streams of
+                  messages.
+                </td><td>
+                  Messages processed successfully, no problems experienced
+                </td></tr><tr><td>
+                  Seperate brokers for transient and persistent messages.
+                </td><td>
+                  Messages processed successfully, no problems experienced
+                </td></tr></tbody></table></div></div><br class="table-break"><p>
+            <span class="emphasis"><em>Separate Connections</em></span>
+            Using separate connections effectively means that the two streams
+            of data are not being processed via the same buffer, and thus the
+            broker gets &amp; processes the transient messages while
+            processing the persistent messages. Thus any build up of
+            unprocessed data is minimal and transitory.
+          </p><p>
+            <span class="emphasis"><em>Separate Brokers</em></span>
+            Using separate brokers may mean more work in terms of client
+            connection details being changed, and from an operational
+            perspective. However, it is certainly the most clear cut way of
+            isolating the two streams of messages and the heaps impacted.
+          </p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="HowtoTuneM3JavaBrokerPerformance-Additionaltuning"></a>2.8.2.1. 
+            Additional
+            tuning
+          </h4></div></div></div><p>
+            It is worth testing if changing the size of the Qpid read/write
+            thread pool improves performance (eg. by setting
+            JAVA_OPTS="-Damqj.read_write_pool_size=32" before running
+            qpid-server). By default this is equal to the number of CPU
+            cores, but a higher number may show better performance with some
+            work loads.
+          </p><p>
+            It is also important to note that you should give the Qpid broker
+            plenty of memory - for any serious application at least a -Xmx of
+            3Gb. If you are deploying on a 64 bit platform, a larger heap is
+            definitely worth testing with. We will be testing tuning options
+            around a larger heap shortly.
+          </p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="HowtoTuneM3JavaBrokerPerformance-NextSteps"></a>2.8.3. 
+            Next
+            Steps
+          </h3></div></div></div><p>
+            These two options have been testing using a Qpid test case, and
+            demonstrated that for a test case with a profile of persistent
+            heavy load following by constant transient high load traffic they
+            provide significant improvment.
+          </p><p>
+            However, the deploying project <span class="emphasis"><em>must</em></span> complete their own
+            testing, using the same destructive test cases, representative
+            message paradigms &amp; volumes, in order to verify the proposed
+            mitigation options.
+          </p><p>
+            The using programme should then choose the option most applicable
+            for their deployment and perform BAU testing before any
+            implementation into a production or pilot environment.
+          </p></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="Java-Broker-Debug-Logging.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="Qpid-Java-Broker-HowTos.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="Qpid-Java-Build-HowTo.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.7. 
+      Debug using log4j
+     </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 2.9. 
+      Qpid Java Build How To
+    </td></tr></table></div><div class="main_text_area_bottom"></div></div></div></body></html>

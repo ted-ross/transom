@@ -1,0 +1,104 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>2.8.  How to Tune M3 Java Broker Performance</title><link rel="stylesheet" type="text/css" href="css/style.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"><link rel="home" href="index.html" title="AMQP Messaging Broker (Implemented in Java)"><link rel="up" href="Qpid-Java-Broker-HowTos.html" title="Chapter 2. How Tos"><link rel="prev" href="Java-Broker-Debug-Logging.html" title="2.7.  Debug using log4j"><link rel="next" href="Qpid-Java-Build-HowTo.html" title="2.9.  Qpid Java Build How To"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.8. 
+      How to Tune M3 Java Broker Performance
+    </th></tr><tr><td width="20%" align="left"><a accesskey="p" href="Java-Broker-Debug-Logging.html">Prev</a> </td><th width="60%" align="center">Chapter 2. How Tos</th><td width="20%" align="right"> <a accesskey="n" href="Qpid-Java-Build-HowTo.html">Next</a></td></tr></table><hr></div><div class="section" title="2.8.  How to Tune M3 Java Broker Performance"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="How-to-Tune-M3-Java-Broker-Performance"></a>2.8. 
+      How to Tune M3 Java Broker Performance
+    </h2></div></div></div><div class="section" title="2.8.1.  Problem Statement"><div class="titlepage"><div><div><h3 class="title"><a name="HowtoTuneM3JavaBrokerPerformance-ProblemStatement"></a>2.8.1. 
+            Problem
+            Statement
+          </h3></div></div></div><p>
+            During destructive testing of the Qpid M3 Java Broker, we tested
+            some tuning techniques and deployment changes to improve the Qpid
+            M3 Java Broker's capacity to maintain high levels of throughput,
+            particularly in the case of a slower consumer than produceer
+            (i.e. a growing backlog).
+          </p><p>
+            The focus of this page is to detail the results of tuning &amp;
+            deployment changes trialled.
+          </p><p>
+            The successful tuning changes are applicable for any deployment
+            expecting to see bursts of high volume throughput (1000s of
+            persistent messages in large batches). Any user wishing to use
+            these options <span class="emphasis"><em>must test them thoroughly in their own
+            environment with representative volumes</em></span>.
+          </p></div><div class="section" title="2.8.2.  Successful Tuning Options"><div class="titlepage"><div><div><h3 class="title"><a name="HowtoTuneM3JavaBrokerPerformance-SuccessfulTuningOptions"></a>2.8.2. 
+            Successful
+            Tuning Options
+          </h3></div></div></div><p>
+            The key scenario being taregetted by these changes is a broker
+            under heavy load (processing a large batch of persistent
+            messages)can be seen to perform slowly when filling up with an
+            influx of high volume transient messages which are queued behind
+            the persistent backlog. However, the changes suggested will be
+            equally applicable to general heavy load scenarios.
+          </p><p>
+            The easiest way to address this is to separate streams of
+            messages. Thus allowing the separate streams of messages to be
+            processed, and preventing a backlog behind a particular slow
+            consumer.
+          </p><p>
+            These strategies have been successfully tested to mitigate this
+            problem:
+          </p><div class="table"><a name="idp571856"></a><p class="title"><b>Table 2.7. </b></p><div class="table-contents"><table summary="" border="1"><colgroup><col><col></colgroup><tbody><tr><td>
+                  Strategy
+                </td><td>
+                  Result
+                </td></tr><tr><td>
+                  Seperate connections to one broker for separate streams of
+                  messages.
+                </td><td>
+                  Messages processed successfully, no problems experienced
+                </td></tr><tr><td>
+                  Seperate brokers for transient and persistent messages.
+                </td><td>
+                  Messages processed successfully, no problems experienced
+                </td></tr></tbody></table></div></div><br class="table-break"><p>
+            <span class="emphasis"><em>Separate Connections</em></span>
+            Using separate connections effectively means that the two streams
+            of data are not being processed via the same buffer, and thus the
+            broker gets &amp; processes the transient messages while
+            processing the persistent messages. Thus any build up of
+            unprocessed data is minimal and transitory.
+          </p><p>
+            <span class="emphasis"><em>Separate Brokers</em></span>
+            Using separate brokers may mean more work in terms of client
+            connection details being changed, and from an operational
+            perspective. However, it is certainly the most clear cut way of
+            isolating the two streams of messages and the heaps impacted.
+          </p><div class="section" title="2.8.2.1.  Additional tuning"><div class="titlepage"><div><div><h4 class="title"><a name="HowtoTuneM3JavaBrokerPerformance-Additionaltuning"></a>2.8.2.1. 
+            Additional
+            tuning
+          </h4></div></div></div><p>
+            It is worth testing if changing the size of the Qpid read/write
+            thread pool improves performance (eg. by setting
+            JAVA_OPTS="-Damqj.read_write_pool_size=32" before running
+            qpid-server). By default this is equal to the number of CPU
+            cores, but a higher number may show better performance with some
+            work loads.
+          </p><p>
+            It is also important to note that you should give the Qpid broker
+            plenty of memory - for any serious application at least a -Xmx of
+            3Gb. If you are deploying on a 64 bit platform, a larger heap is
+            definitely worth testing with. We will be testing tuning options
+            around a larger heap shortly.
+          </p></div></div><div class="section" title="2.8.3.  Next Steps"><div class="titlepage"><div><div><h3 class="title"><a name="HowtoTuneM3JavaBrokerPerformance-NextSteps"></a>2.8.3. 
+            Next
+            Steps
+          </h3></div></div></div><p>
+            These two options have been testing using a Qpid test case, and
+            demonstrated that for a test case with a profile of persistent
+            heavy load following by constant transient high load traffic they
+            provide significant improvment.
+          </p><p>
+            However, the deploying project <span class="emphasis"><em>must</em></span> complete their own
+            testing, using the same destructive test cases, representative
+            message paradigms &amp; volumes, in order to verify the proposed
+            mitigation options.
+          </p><p>
+            The using programme should then choose the option most applicable
+            for their deployment and perform BAU testing before any
+            implementation into a production or pilot environment.
+          </p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="Java-Broker-Debug-Logging.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="Qpid-Java-Broker-HowTos.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="Qpid-Java-Build-HowTo.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.7. 
+      Debug using log4j
+     </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 2.9. 
+      Qpid Java Build How To
+    </td></tr></table></div></body></html>

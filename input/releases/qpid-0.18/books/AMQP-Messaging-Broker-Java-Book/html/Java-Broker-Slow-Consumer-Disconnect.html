@@ -1,0 +1,116 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>2.11. Slow Consumer Disconnect - User Guide</title><link rel="stylesheet" href="css/style.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.73.2"><link rel="start" href="index.html" title="AMQP Messaging Broker (Implemented in Java)"><link rel="up" href="Qpid-Java-Broker-HowTos.html" title="Chapter 2. How Tos"><link rel="prev" href="Priority-Queues.html" title="2.10.  Use Priority Queues"><link rel="next" href="Qpid-JMX-Management-Console.html" title="Chapter 3.  Qpid JMX Management Console"></head><body><div class="container" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><DIV class="header"><DIV class="logo"><H1>Apache Qpid™</H1><H2>Open Source AMQP Messaging</H2></DIV></DIV><DIV class="menu_box"><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Apache Qpid</H3><UL><LI><A href="http://qpid.apache.org/index.html">Home</A></LI><LI><A href="http://qpid.apache.org/download.html">Download</A></LI><LI><A href="http://qpid.apache.org/getting_started.html">Getting Started</A></LI><LI><A href="http://www.apache.org/licenses/">License</A></LI><LI><A href="https://cwiki.apache.org/qpid/faq.html">FAQ</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Documentation</H3><UL><LI><A href="http://qpid.apache.org/documentation.html#doc-release">Latest Release</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-trunk">Trunk</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-archives">Archive</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Community</H3><UL><LI><A href="http://qpid.apache.org/getting_involved.html">Getting Involved</A></LI><LI><A href="http://qpid.apache.org/source_repository.html">Source Repository</A></LI><LI><A href="http://qpid.apache.org/mailing_lists.html">Mailing Lists</A></LI><LI><A href="https://cwiki.apache.org/qpid/">Wiki</A></LI><LI><A href="https://issues.apache.org/jira/browse/qpid">Issue Reporting</A></LI><LI><A href="http://qpid.apache.org/people.html">People</A></LI><LI><A href="http://qpid.apache.org/acknowledgements.html">Acknowledgements</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Developers</H3><UL><LI><A href="https://cwiki.apache.org/qpid/building.html">Building Qpid</A></LI><LI><A href="https://cwiki.apache.org/qpid/developer-pages.html">Developer Pages</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About AMQP</H3><UL><LI><A href="http://qpid.apache.org/amqp.html">What is AMQP?</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About Apache</H3><UL><LI><A href="http://www.apache.org">Home</A></LI><LI><A href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</A></LI><LI><A href="http://www.apache.org/foundation/thanks.html">Thanks</A></LI><LI><A href="http://www.apache.org/security/">Security</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV></DIV><div class="main_text_area"><div class="main_text_area_top"></div><div class="main_text_area_body"><DIV class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">AMQP Messaging Broker (Implemented in Java)</a></span> &gt; <span class="breadcrumb-link"><a href="Qpid-Java-Broker-HowTos.html">How Tos</a></span> &gt; <span class="breadcrumb-node">Slow Consumer Disconnect - User Guide</span></DIV><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="Java-Broker-Slow-Consumer-Disconnect"></a>2.11. Slow Consumer Disconnect - User Guide</h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="id2526439"></a>2.11.1. Introduction</h3></div></div></div><p>Slow Consumer Disconnect (SCD) is a new feature in Qpid that provides a configurable
+        mechanism to prevent a single slow consumer from causing a back up of unconsumed messages on
+        the broker. </p><p>This is most relevant where Topics are in use, since a published message is not removed
+        from the broker's memory until all subscribers have acknowledged that message. </p><p>Cases where a consumer is 'slow' can arise due to one of the following: poor network
+        connectivity exists; a transient system issue affects a single client; a single subscriber
+        written by a client team is behaving incorrectly and not acknowledging messages; a
+        downstream resource such as a database is non-responsive. </p><p>SCD will enable the application owner to configure limits for a given consumer's queue and
+        the behaviour to execute when those limits are reached. </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="id2526474"></a>2.11.2. What can it do?</h3></div></div></div><p>SCD is only applicable to topics or durable subscriptions and can be configured on either
+        a topic or a subscription name. </p><p>On triggering of a specified threshold the offending client will be disconnected from the
+        broker with a 506 error code wrapped in a JMSException returned to the client via the
+        ExceptionListener registered on the Connection object. </p><p>Note that it is essential that an ExceptionListener be specified by the client on
+        creation of the connection and that exceptions coming back on that listener are handled
+        correctly. </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="id2526500"></a>2.11.3. Frequency of SCD Checking</h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="id2526505"></a>2.11.3.1. <span class="bold"><strong>Configuring Frequency</strong></span></h4></div></div></div><p>You can configure the frequency with which the SCD process will check for slow consumers,
+          along with the unit of time used to specify that frequency. </p><p>The <span class="italic">virtualhosts.virtualhost.hostname.slow-consumer-detection</span>
+          elements <span class="italic">delay</span> and <span class="italic">timeunit</span>
+          are used to specify the frequency and timeunit respectively in the virtualhosts.xml
+          file e.g. </p><pre class="programlisting">
+&lt;virtualhosts&gt;
+	&lt;default&gt;test&lt;/default&gt;
+	&lt;virtualhost&gt;
+		&lt;name&gt;test&lt;/name&gt;
+		&lt;test&gt;
+		   &lt;slow-consumer-detection&gt;
+			&lt;delay&gt;60&lt;delay/&gt;
+			&lt;timeunit&gt;seconds&lt;timeunit/&gt;
+		&lt;slow-consumer-detection/&gt;
+		&lt;/test&gt;
+	&lt;/virtualhost&gt;
+&lt;/virtualhosts&gt;
+</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="id2526555"></a>2.11.3.2. <span class="bold"><strong>SCD Log output</strong></span></h4></div></div></div><p>When the SCD component finds a queue with a configured threshold to check, the operational
+          logging component (if enabled) will output the following line:</p><pre class="programlisting">
+    SCD-1003 : Checking Status of Queue
+    </pre></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="id2526581"></a>2.11.4. Client Exception<span class="bold"><strong>s</strong></span></h3></div></div></div><p>When a Slow Consumer is disconnected, the client receives a 506 error from the broker
+        wrapped in a JMSException and the Session and Connection are closed:</p><pre class="programlisting">
+Dispatcher-Channel-1 2010-09-01 16:23:34,206 INFO [qpid.client.AMQSession.Dispatcher]
+    Dispatcher-Channel-1 thread terminating for channel 1:org.apache.qpid.client.AMQSession_0_8@1de8aa8
+pool-2-thread-3 2010-09-01 16:23:34,238 INFO [apache.qpid.client.AMQConnection] Closing AMQConnection due to
+    :org.apache.qpid.AMQChannelClosedException: Error: Consuming to slow. [error code 506: resource error]
+javax.jms.JMSException: 506
+at org.apache.qpid.client.AMQConnection.exceptionReceived(AMQConnection.java:1396)
+at org.apache.qpid.client.protocol.AMQProtocolHandler.exception(AMQProtocolHandler.java:329)
+at org.apache.qpid.client.protocol.AMQProtocolHandler.methodBodyReceived(AMQProtocolHandler.java:536)
+at org.apache.qpid.client.protocol.AMQProtocolSession.methodFrameReceived(AMQProtocolSession.java:453)
+at org.apache.qpid.framing.AMQMethodBodyImpl.handle(AMQMethodBodyImpl.java:93)
+at org.apache.qpid.client.protocol.AMQProtocolHandler$1.run(AMQProtocolHandler.java:462)
+at org.apache.qpid.pool.Job.processAll(Job.java:110)
+at org.apache.qpid.pool.Job.run(Job.java:149)
+at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:885)
+at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+at java.lang.Thread.run(Thread.java:619)
+Caused by: org.apache.qpid.AMQChannelClosedException: Error: Consuming to slow. [error code 506: resource error]
+at org.apache.qpid.client.handler.ChannelCloseMethodHandler.methodReceived(ChannelCloseMethodHandler.java:96)
+at org.apache.qpid.client.handler.ClientMethodDispatcherImpl.dispatchChannelClose(ClientMethodDispatcherImpl.java:163)
+at org.apache.qpid.framing.amqp_8_0.ChannelCloseBodyImpl.execute(ChannelCloseBodyImpl.java:140)
+at org.apache.qpid.client.state.AMQStateManager.methodReceived(AMQStateManager.java:112)
+at org.apache.qpid.client.protocol.AMQProtocolHandler.methodBodyReceived(AMQProtocolHandler.java:511)
+... 8 more
+main 2010-09-01 16:23:34,316 INFO [apache.qpid.client.AMQSession] Closing session:
+    org.apache.qpid.client.AMQSession_0_8@ffeef1
+</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="id2526640"></a>2.11.5. Disconnection Thresholds</h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="id2526646"></a>2.11.5.1. Topic Subscriptions</h4></div></div></div><p>One key feature of SCD is the disconnection of a consuming client when a specified
+          threshold is exceeded. For a pub-sub model using topics, this means that messages will no
+          longer be delivered to the private queue which was associated with that consuming client,
+          thus reducing any associated backlog in the broker. </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="id2526662"></a>2.11.5.2. Durable Topic Subscriptions</h4></div></div></div><p>For durable subscriptions, simply disconnecting the consuming client will not suffice
+          since the associated queue is by definition durable and messages would continue to flow to
+          it after disconnection, potentially worsening any backing up of data on the broker. </p><p>The solution is to configure durable subscriptions to delete the underlying queue on
+          disconnection. This means that messages will no longer be delivered to the private queue
+          associated with the subscription, thus preventing any backlog. </p><p>Full details of how to configure the thresholds are provided below. </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="id2526691"></a>2.11.5.3. Message Age Threshold</h4></div></div></div><p>You can configure SCD to be triggered on a topic or subscription when the oldest message
+          in the associated private queue for the consumer ages beyond the specified value, in
+          milliseconds. </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="id2526705"></a>2.11.5.4. Queue Depth Threshold</h4></div></div></div><p>You can opt to use the depth of the queue in bytes as a threshold. SCD will be triggered
+          by a queue depth greater than the threshold specified i.e. when a broker receives a
+          message that takes the queue depth over the threshold. </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="id2526720"></a>2.11.5.5. Message Count Threshold</h4></div></div></div><p>You can use the message count for the consumer's queue as the trigger, where a count
+          higher than that specified will trigger disconnection. </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="id2526733"></a>2.11.5.6. <span class="bold"><strong>Delete Policy</strong></span></h4></div></div></div><p>You can configure the policy you wish to apply in your broker configuration. There are
+          currently 2 policies available: </p><p>
+<span class="bold"><strong>Delete Temporary Queues Only</strong></span>
+    </p><p>If you do not specify a &lt;topicDelete/&gt; element in your configuration, then only temporary
+          queues associated with a topic subscription will be deleted on client disconnect. This is
+          the default behaviour. </p><p></p><p>
+<span class="bold"><strong>Delete Durable Subscription Queues</strong></span>
+    </p><p>If you add the &lt;topicDelete/&gt; element with the sub-element
+          &lt;delete-persistent/&gt; to your config, then the persistent queue which is associated
+          with durable subscriptions to a topic will also be deleted. This is an important
+          consideration since without deleting the underlying queue the client's unconsumed data
+          will grow indefinitely while they will be unable to reconnect to that queue due to the SCD
+          threshold configured, potentially having an adverse effect on the application or broker in
+          use.</p><p></p><p><span class="bold"><strong> Example Topic Configuration </strong></span></p><p></p><p>
+The following steps are required to configure SCD:
+    </p><div class="itemizedlist"><ul><li><p>Enable SCD checking for your virtual host</p></li><li><p>Specify frequency for SCD checking</p></li><li><p>Define thresholds for the topic</p></li><li><p>Define the policy to apply on trigger </p></li></ul></div><p>The example below shows a simple definition, with all three thresholds specified and a
+          simple disconnection, with deletion of any temporary queue, defined. </p><p>For a durable subscription to this topic, no queue deletion would be applied on disconnect
+          - which is likely to be undesirable (see section above). </p><pre class="programlisting">
+&lt;topics&gt;
+	 &lt;topic&gt;
+	 &lt;name&gt;stocks.us.*&lt;/name&gt;
+		 &lt;slow-consumer-detection&gt;
+			 &lt;!-- The maximum depth before which --&gt;
+			 &lt;!-- the policy will be applied--&gt;
+			 &lt;depth&gt;4235264&lt;/depth&gt;
+			 &lt;!-- The maximum message age before which --&gt;
+			 &lt;!-- the policy will be applied--&gt;
+			 &lt;messageAge&gt;600000&lt;/messageAge&gt;
+			 &lt;!-- The maximum number of message before --&gt;
+			 &lt;!-- which the policy will be applied--&gt;
+			 &lt;messageCount&gt;50&lt;/messageCount&gt;
+			 &lt;!-- Policy Selection --&gt;
+			 &lt;policy name="TopicDelete"/&gt;
+		 &lt;/slow-consumer-detection&gt;
+	 &lt;/topic&gt;
+&lt;/topics&gt;
+</pre></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="id2526871"></a>2.11.6. Important Points To Note</h3></div></div></div><p> Client application developers should be educated about how to correctly handle being
+        disconnected with a 506 error code, to avoid them getting into a thrashing state where they
+        continually attempt to connect, fail to consume fast enough and are disconnected again. </p><p>Clients affected by slow consumer disconnect configuration should always use transactions
+        where duplicate processing of an incoming message would have adverse affects, since they may
+        receive a message more than once if disconnected before acknowledging a message in flight. </p></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="Priority-Queues.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="Qpid-Java-Broker-HowTos.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="Qpid-JMX-Management-Console.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.10. 
+      Use Priority Queues
+     </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Chapter 3. 
+    Qpid JMX Management Console
+  </td></tr></table></div><div class="main_text_area_bottom"></div></div></div></body></html>

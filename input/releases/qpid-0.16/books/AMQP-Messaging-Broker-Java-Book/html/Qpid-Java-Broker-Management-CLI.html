@@ -1,0 +1,68 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>4.2.  Qpid Java Broker Management CLI</title><link rel="stylesheet" type="text/css" href="css/style.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"><link rel="home" href="index.html" title="AMQP Messaging Broker (Implemented in Java)"><link rel="up" href="QpidJavaBroker-ManagementTools.html" title="Chapter 4. Management Tools"><link rel="prev" href="QpidJavaBroker-ManagementTools.html" title="Chapter 4. Management Tools"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">4.2. 
+      Qpid Java Broker Management CLI
+    </th></tr><tr><td width="20%" align="left"><a accesskey="p" href="QpidJavaBroker-ManagementTools.html">Prev</a> </td><th width="60%" align="center">Chapter 4. Management Tools</th><td width="20%" align="right"> </td></tr></table><hr></div><div class="section" title="4.2.  Qpid Java Broker Management CLI"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="Qpid-Java-Broker-Management-CLI"></a>4.2. 
+      Qpid Java Broker Management CLI
+    </h2></div></div></div><div class="section" title="4.2.1.  How to build Apache Qpid CLI"><div class="titlepage"><div><div><h3 class="title"><a name="QpidJavaBrokerManagementCLI-HowtobuildApacheQpidCLI"></a>4.2.1. 
+            How to
+            build Apache Qpid CLI
+          </h3></div></div></div><div class="section" title="4.2.1.1.  Build Instructions - General"><div class="titlepage"><div><div><h4 class="title"><a name="QpidJavaBrokerManagementCLI-BuildInstructionsGeneral"></a>4.2.1.1. 
+            Build
+            Instructions - General
+          </h4></div></div></div><p>
+            At the very beginning please build Apache Qpid by refering this
+            installation guide from here <a class="xref" href="">???</a>.
+          </p><p>
+            After successfully build Apache Qpid you'll be able to start
+            Apache Qpid Java broker,then only you are in a position to use
+            Qpid CLI.
+          </p></div><div class="section" title="4.2.1.2.  Check out the Source"><div class="titlepage"><div><div><h4 class="title"><a name="QpidJavaBrokerManagementCLI-CheckouttheSource"></a>4.2.1.2. 
+            Check
+            out the Source
+          </h4></div></div></div><p>
+            First check out the source from subversion repository. Please
+            visit the following link for more information about different
+            versions of Qpid CLI.
+          </p><p>
+            <a class="xref" href="">???</a>
+          </p></div><div class="section" title="4.2.1.3.  Prerequisites"><div class="titlepage"><div><div><h4 class="title"><a name="QpidJavaBrokerManagementCLI-Prerequisites"></a>4.2.1.3. 
+            Prerequisites
+          </h4></div></div></div><p>
+            For the broker code you need JDK 1.5.0_15 or later. You should
+            set JAVA_HOME and include the bin directory in your PATH.
+          </p><p>
+            Check it's ok by executing java -v !
+          </p></div><div class="section" title="4.2.1.4.  Building Apache Qpid CLI"><div class="titlepage"><div><div><h4 class="title"><a name="QpidJavaBrokerManagementCLI-BuildingApacheQpidCLI"></a>4.2.1.4. 
+            Building
+            Apache Qpid CLI
+          </h4></div></div></div><p>
+            This project is currently having only an ant build system.Please
+            install ant build system before trying to install Qpid CLI.
+          </p></div><div class="section" title="4.2.1.5.  Compiling"><div class="titlepage"><div><div><h4 class="title"><a name="QpidJavaBrokerManagementCLI-Compiling"></a>4.2.1.5. 
+            Compiling
+          </h4></div></div></div><p>
+            To compile the source please run following command
+          </p><pre class="programlisting">
+ant compile 
+</pre><p>
+            To compile the test source run the following command
+          </p><pre class="programlisting">
+ant compile-tests 
+</pre></div><div class="section" title="4.2.1.6.  Running CLI"><div class="titlepage"><div><div><h4 class="title"><a name="QpidJavaBrokerManagementCLI-RunningCLI"></a>4.2.1.6. 
+            Running CLI
+          </h4></div></div></div><p>
+            After successful compilation set QPID_CLI environment variable to
+            the main source directory.(set the environment variable to the
+            directory where ant build script stored in the SVN
+            checkout).Please check whether the Qpid Java broker is up an
+            running in the appropriate location and run the following command
+            to start the Qpid CLI by running the qpid-cli script in the bin
+            directory.
+          </p><p>
+            $QPID_CLI/bin/qpid-cli -h &lt;hostname of the broker&gt; -p
+            &lt;broker running port&gt;
+            For more details please have a look in to README file which ships
+            with source package of Qpid CLI.
+          </p></div><div class="section" title="4.2.1.7.  Other ant targets"><div class="titlepage"><div><div><h4 class="title"><a name="QpidJavaBrokerManagementCLI-Otheranttargets"></a>4.2.1.7. 
+            Other
+            ant targets
+          </h4></div></div></div><p>For now we are supporting those ant targets.</p><div class="variablelist"><dl><dt><span class="term">ant clean</span></dt><dd><p>Clean the complete build including CLI build and test build.</p></dd><dt><span class="term">ant jar</span></dt><dd><p>Create the jar file for the project without test cases.</p></dd><dt><span class="term">ant init</span></dt><dd><p>Create the directory structure for build.</p></dd><dt><span class="term">ant compile-tests </span></dt><dd><p>This compiles all the test source.</p></dd><dt><span class="term">ant test </span></dt><dd><p>Run all the test cases.</p></dd></dl></div></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="QpidJavaBroker-ManagementTools.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="QpidJavaBroker-ManagementTools.html">Up</a></td><td width="40%" align="right"> </td></tr><tr><td width="40%" align="left" valign="top">Chapter 4. Management Tools </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>

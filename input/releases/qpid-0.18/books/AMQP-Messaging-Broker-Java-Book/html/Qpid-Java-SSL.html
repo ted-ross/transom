@@ -1,0 +1,46 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>2.3.  Configure Java Qpid to use a SSL connection.</title><link rel="stylesheet" href="css/style.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.73.2"><link rel="start" href="index.html" title="AMQP Messaging Broker (Implemented in Java)"><link rel="up" href="Qpid-Java-Broker-HowTos.html" title="Chapter 2. How Tos"><link rel="prev" href="Configuring-ACLS.html" title="2.2.  Configuring ACLs"><link rel="next" href="Qpid-Java-Log4j.html" title="2.4.  Configure Log4j CompositeRolling Appender"></head><body><div class="container" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><DIV class="header"><DIV class="logo"><H1>Apache Qpid™</H1><H2>Open Source AMQP Messaging</H2></DIV></DIV><DIV class="menu_box"><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Apache Qpid</H3><UL><LI><A href="http://qpid.apache.org/index.html">Home</A></LI><LI><A href="http://qpid.apache.org/download.html">Download</A></LI><LI><A href="http://qpid.apache.org/getting_started.html">Getting Started</A></LI><LI><A href="http://www.apache.org/licenses/">License</A></LI><LI><A href="https://cwiki.apache.org/qpid/faq.html">FAQ</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Documentation</H3><UL><LI><A href="http://qpid.apache.org/documentation.html#doc-release">Latest Release</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-trunk">Trunk</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-archives">Archive</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Community</H3><UL><LI><A href="http://qpid.apache.org/getting_involved.html">Getting Involved</A></LI><LI><A href="http://qpid.apache.org/source_repository.html">Source Repository</A></LI><LI><A href="http://qpid.apache.org/mailing_lists.html">Mailing Lists</A></LI><LI><A href="https://cwiki.apache.org/qpid/">Wiki</A></LI><LI><A href="https://issues.apache.org/jira/browse/qpid">Issue Reporting</A></LI><LI><A href="http://qpid.apache.org/people.html">People</A></LI><LI><A href="http://qpid.apache.org/acknowledgements.html">Acknowledgements</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Developers</H3><UL><LI><A href="https://cwiki.apache.org/qpid/building.html">Building Qpid</A></LI><LI><A href="https://cwiki.apache.org/qpid/developer-pages.html">Developer Pages</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About AMQP</H3><UL><LI><A href="http://qpid.apache.org/amqp.html">What is AMQP?</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About Apache</H3><UL><LI><A href="http://www.apache.org">Home</A></LI><LI><A href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</A></LI><LI><A href="http://www.apache.org/foundation/thanks.html">Thanks</A></LI><LI><A href="http://www.apache.org/security/">Security</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV></DIV><div class="main_text_area"><div class="main_text_area_top"></div><div class="main_text_area_body"><DIV class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">AMQP Messaging Broker (Implemented in Java)</a></span> &gt; <span class="breadcrumb-link"><a href="Qpid-Java-Broker-HowTos.html">How Tos</a></span> &gt; <span class="breadcrumb-node">
+      Configure Java Qpid to use a SSL connection.
+    </span></DIV><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="Qpid-Java-SSL"></a>2.3. 
+      Configure Java Qpid to use a SSL connection.
+    </h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="ConfigureJavaQpidtouseaSSLconnection.-UsingSSLconnectionwithQpidJava."></a>2.3.1. 
+            Using SSL connection with Qpid Java.
+          </h3></div></div></div><p>
+            This section will show how to use SSL to enable secure
+            connections between a Java client and broker.
+          </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="ConfigureJavaQpidtouseaSSLconnection.-Setup"></a>2.3.2. 
+            Setup
+          </h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="ConfigureJavaQpidtouseaSSLconnection.-BrokerSetup"></a>2.3.2.1. 
+            Broker
+            Setup
+          </h4></div></div></div><p>
+            The broker configuration file (config.xml) needs to be updated to
+            include the SSL keystore location details.
+          </p><pre class="programlisting">
+&lt;!-- Additions required to Connector Section --&gt;
+
+&lt;ssl&gt;
+    &lt;enabled&gt;true&lt;/enabled&gt;
+    &lt;sslOnly&gt;true&lt;/sslOnly&gt;
+    &lt;keyStorePath&gt;/path/to/keystore.ks&lt;/keyStorePath&gt;
+    &lt;keyStorePassword&gt;keystorepass&lt;/keyStorePassword&gt;
+&lt;/ssl&gt;
+</pre><p>
+            The sslOnly option is included here for completeness however this
+            will disable the unencrypted port and leave only the SSL port
+            listening for connections.
+          </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="ConfigureJavaQpidtouseaSSLconnection.-ClientSetup"></a>2.3.2.2. 
+            Client
+            Setup
+          </h4></div></div></div><p>
+            The best place to start looking is class
+            <span class="emphasis"><em>SSLConfiguration</em></span> this is provided to the connection
+            during creation however there is currently no example that
+            demonstrates its use.
+          </p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="ConfigureJavaQpidtouseaSSLconnection.-Performingtheconnection."></a>2.3.3. 
+            Performing
+            the connection.
+          </h3></div></div></div><p></p></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="Configuring-ACLS.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="Qpid-Java-Broker-HowTos.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="Qpid-Java-Log4j.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.2. 
+      Configuring ACLs
+   </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 2.4. 
+      Configure Log4j CompositeRolling Appender
+    </td></tr></table></div><div class="main_text_area_bottom"></div></div></div></body></html>

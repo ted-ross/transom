@@ -1,0 +1,30 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>1.14. Queue Replication with the HA module</title><link rel="stylesheet" type="text/css" href="css/style.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"><link rel="home" href="index.html" title="AMQP Messaging Broker (Implemented in C++)"><link rel="up" href="ch01.html" title="Chapter 1.  Running the AMQP Messaging Broker"><link rel="prev" href="chap-Messaging_User_Guide-Active_Passive_Cluster.html" title="1.13. Active-passive Messaging Clusters (Preview)"><link rel="next" href="chapter-Managing-CPP-Broker.html" title="Chapter 2.  Managing the AMQP Messaging Broker"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">1.14. Queue Replication with the HA module</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="chap-Messaging_User_Guide-Active_Passive_Cluster.html">Prev</a> </td><th width="60%" align="center">Chapter 1. 
+      Running the AMQP Messaging Broker
+    </th><td width="20%" align="right"> <a accesskey="n" href="chapter-Managing-CPP-Broker.html">Next</a></td></tr></table><hr></div><div class="section" title="1.14. Queue Replication with the HA module"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="id409694"></a>1.14. Queue Replication with the HA module</h2></div></div></div><p>
+    As well as support for an active-passive cluster, the <code class="filename">ha</code> module
+    also allows you to replicate individual queues. The <em class="firstterm">original</em>
+    queue is used as normal.  The <em class="firstterm">replica</em> queue is updated
+    automatically as messages are added to or removed from the original queue.
+  </p><p>
+    To create a replica you need the HA module to be loaded on both the orignal and replica
+    brokers. Note that it is not safe to modify the replica queue other than via the
+    automatic updates from the original. Adding or removing messages on the replica queue
+    will make replication inconsistent and may cause message loss. The HA module does
+    <span class="emphasis"><em>not</em></span> enforce restricted access to the replica queue (as it does in
+    the case of a cluster) so it is up to the application to ensure the replca is not used
+    until it has been disconnected from the original.
+  </p><p>
+    Suppose that <span class="command"><strong>myqueue</strong></span> is a queue on <span class="command"><strong>node1</strong></span> and
+    we want to create a replica of <span class="command"><strong>myqueue</strong></span> on <span class="command"><strong>node2</strong></span>
+    (where both brokers are using the default AMQP port.) This is accomplished by the command:
+    </p><pre class="programlisting">
+      qpid-config --broker=node2 add queue --start-replica node1 myqueue
+    </pre><p>
+  </p><p>
+    If <span class="command"><strong>myqueue</strong></span> already exists on the replica broker you  can start replication from the original queue like this:
+    </p><pre class="programlisting">
+      qpid-ha replicate -b node2 node1 myqueue
+    </pre><p>
+  </p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="chap-Messaging_User_Guide-Active_Passive_Cluster.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch01.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="chapter-Managing-CPP-Broker.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">1.13. Active-passive Messaging Clusters (Preview) </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Chapter 2. 
+      Managing the AMQP Messaging Broker
+    </td></tr></table></div></body></html>

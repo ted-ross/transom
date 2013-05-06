@@ -1,0 +1,393 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>1.10.  AMQP compatibility</title><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"><link rel="home" href="index.html" title="AMQP Messaging Broker (Implemented in C++)"><link rel="up" href="ch01.html" title="Chapter 1.  Running the AMQP Messaging Broker"><link rel="prev" href="ch01s09.html" title="1.9.  Producer Flow Control"><link rel="next" href="ch01s11.html" title="1.11. Qpid Interoperability Documentation"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">1.10. 
+      AMQP compatibility
+    </th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch01s09.html">Prev</a> </td><th width="60%" align="center">Chapter 1. 
+      Running the AMQP Messaging Broker
+    </th><td width="20%" align="right"> <a accesskey="n" href="ch01s11.html">Next</a></td></tr></table><hr></div><div class="section" title="1.10.  AMQP compatibility"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="AMQP-Compatibility"></a>1.10. 
+      AMQP compatibility
+    </h2></div></div></div><p>
+            Qpid provides the most complete and compatible implementation
+            of AMQP. And is the most aggressive in implementing the latest
+            version of the specification.
+          </p><p>
+            There are two brokers:
+          </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>C++ with support for AMQP 0-10</p></li><li class="listitem"><p>Java with support for AMQP 0-8 and 0-9 (0-10 planned)</p></li></ul></div><p>
+            There are client libraries for C++, Java (JMS), .Net (written in
+            C#), python and ruby.
+          </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>All clients support 0-10 and interoperate with the C++
+            broker.
+            </p></li></ul></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>The JMS client supports 0-8, 0-9 and 0-10 and interoperates
+            with both brokers.
+            </p></li></ul></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>The python and ruby clients will also support all versions,
+            but the API is dynamically driven by the specification used and
+            so differs between versions. To work with the Java broker you
+            must use 0-8 or 0-9, to work with the C++ broker you must use
+            0-10.
+            </p></li></ul></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>There are two separate C# clients, one for 0-8 that
+            interoperates with the Java broker, one for 0-10 that
+            inteoperates with the C++ broker.
+            </p></li></ul></div><p>
+            QMF Management is supported in Ruby, Python, C++, and via QMan
+            for Java JMX &amp; WS-DM.
+          </p><div class="section" title="1.10.1.  AMQP Compatibility of Qpid releases:"><div class="titlepage"><div><div><h3 class="title"><a name="AMQPcompatibility-AMQPCompatibilityofQpidreleases-3A"></a>1.10.1. 
+            AMQP
+            Compatibility of Qpid releases:
+          </h3></div></div></div><p>
+            Qpid implements the AMQP Specification, and as the specification
+            has progressed Qpid is keeping up with the updates. This means
+            that different Qpid versions support different versions of AMQP.
+            Here is a simple guide on what use.
+          </p><p>
+            Here is a matrix that describes the different versions supported
+            by each release. The status symbols are interpreted as follows:
+          </p><div class="variablelist"><dl><dt><span class="term">Y</span></dt><dd><p>supported</p></dd><dt><span class="term">N</span></dt><dd><p>unsupported</p></dd><dt><span class="term">IP</span></dt><dd><p>in progress</p></dd><dt><span class="term">P</span></dt><dd><p>planned</p></dd></dl></div><div class="table"><a name="id465025"></a><p class="title"><b>Table 1.11. AMQP Version Support by Qpid Release</b></p><div class="table-contents"><table summary="AMQP Version Support by Qpid Release" border="1"><colgroup><col><col><col><col><col><col></colgroup><tbody><tr><td>
+                  Component
+                </td><td>
+                  Spec
+                </td><td>
+                   
+                </td><td>
+                   
+                </td><td>
+                   
+                </td><td>
+                   
+                </td></tr><tr><td>
+                   
+                </td><td>
+                   
+                </td><td>
+                  M2.1
+                </td><td>
+                  M3
+                </td><td>
+                  M4
+                </td><td>
+                  0.5
+                </td></tr><tr><td>
+                  java client
+                </td><td>
+                  0-10
+                </td><td>
+                   
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td></tr><tr><td>
+                   
+                </td><td>
+                  0-9
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td></tr><tr><td>
+                   
+                </td><td>
+                  0-8
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td></tr><tr><td>
+                  java broker
+                </td><td>
+                  0-10
+                </td><td>
+                   
+                </td><td>
+                   
+                </td><td>
+                   
+                </td><td>
+                  P
+                </td></tr><tr><td>
+                   
+                </td><td>
+                  0-9
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td></tr><tr><td>
+                   
+                </td><td>
+                  0-8
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td></tr><tr><td>
+                  c++ client/broker
+                </td><td>
+                  0-10
+                </td><td>
+                   
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td></tr><tr><td>
+                   
+                </td><td>
+                  0-9
+                </td><td>
+                  Y
+                </td><td>
+                   
+                </td><td>
+                   
+                </td><td>
+                   
+                </td></tr><tr><td>
+                  python client
+                </td><td>
+                  0-10
+                </td><td>
+                   
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td></tr><tr><td>
+                   
+                </td><td>
+                  0-9
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td></tr><tr><td>
+                   
+                </td><td>
+                  0-8
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td></tr><tr><td>
+                  ruby client
+                </td><td>
+                  0-10
+                </td><td>
+                   
+                </td><td>
+                   
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td></tr><tr><td>
+                   
+                </td><td>
+                  0-8
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td></tr><tr><td>
+                  C# client
+                </td><td>
+                  0-10
+                </td><td>
+                   
+                </td><td>
+                   
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td></tr><tr><td>
+                   
+                </td><td>
+                  0-8
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td></tr></tbody></table></div></div><br class="table-break"></div><div class="section" title="1.10.2.  Interop table by AMQP specification version"><div class="titlepage"><div><div><h3 class="title"><a name="AMQPcompatibility-InteroptablebyAMQPspecificationversion"></a>1.10.2. 
+            Interop
+            table by AMQP specification version
+          </h3></div></div></div><p>
+            Above table represented in another format.
+          </p><div class="table"><a name="id471642"></a><p class="title"><b>Table 1.12. AMQP Version Support - alternate format</b></p><div class="table-contents"><table summary="AMQP Version Support - alternate format" border="1"><colgroup><col><col><col><col><col></colgroup><tbody><tr><td>
+                   
+                </td><td>
+                  release
+                </td><td>
+                  0-8
+                </td><td>
+                  0-9
+                </td><td>
+                  0-10
+                </td></tr><tr><td>
+                  java client
+                </td><td>
+                  M3 M4 0.5
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td></tr><tr><td>
+                  java client
+                </td><td>
+                  M2.1
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td><td>
+                  N
+                </td></tr><tr><td>
+                  java broker
+                </td><td>
+                  M3 M4 0.5
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td><td>
+                  N
+                </td></tr><tr><td>
+                  java broker
+                </td><td>
+                  trunk
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td><td>
+                  P
+                </td></tr><tr><td>
+                  java broker
+                </td><td>
+                  M2.1
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td><td>
+                  N
+                </td></tr><tr><td>
+                  c++ client/broker
+                </td><td>
+                  M3 M4 0.5
+                </td><td>
+                  N
+                </td><td>
+                  N
+                </td><td>
+                  Y
+                </td></tr><tr><td>
+                  c++ client/broker
+                </td><td>
+                  M2.1
+                </td><td>
+                  N
+                </td><td>
+                  Y
+                </td><td>
+                  N
+                </td></tr><tr><td>
+                  python client
+                </td><td>
+                  M3 M4 0.5
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td></tr><tr><td>
+                  python client
+                </td><td>
+                  M2.1
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td><td>
+                  N
+                </td></tr><tr><td>
+                  ruby client
+                </td><td>
+                  M3 M4 0.5
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td><td>
+                  N
+                </td></tr><tr><td>
+                  ruby client
+                </td><td>
+                  trunk
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td><td>
+                  P
+                </td></tr><tr><td>
+                  C# client
+                </td><td>
+                  M3 M4 0.5
+                </td><td>
+                  Y
+                </td><td>
+                  N
+                </td><td>
+                  N
+                </td></tr><tr><td>
+                  C# client
+                </td><td>
+                  trunk
+                </td><td>
+                  Y
+                </td><td>
+                  N
+                </td><td>
+                  Y
+                </td></tr></tbody></table></div></div><br class="table-break"></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch01s09.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch01.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch01s11.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">1.9. 
+    Producer Flow Control
+   </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 1.11. Qpid Interoperability Documentation</td></tr></table></div></body></html>

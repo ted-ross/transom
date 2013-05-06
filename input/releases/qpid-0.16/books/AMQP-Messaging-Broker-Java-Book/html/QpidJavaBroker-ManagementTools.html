@@ -1,0 +1,101 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Chapter 4. Management Tools</title><link rel="stylesheet" type="text/css" href="css/style.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"><link rel="home" href="index.html" title="AMQP Messaging Broker (Implemented in Java)"><link rel="up" href="index.html" title="AMQP Messaging Broker (Implemented in Java)"><link rel="prev" href="Qpid-JMX-Management-Console.html" title="Chapter 3.  Qpid JMX Management Console"><link rel="next" href="Qpid-Java-Broker-Management-CLI.html" title="4.2.  Qpid Java Broker Management CLI"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 4. Management Tools</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="Qpid-JMX-Management-Console.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="Qpid-Java-Broker-Management-CLI.html">Next</a></td></tr></table><hr></div><div class="chapter" title="Chapter 4. Management Tools"><div class="titlepage"><div><div><h2 class="title"><a name="QpidJavaBroker-ManagementTools"></a>Chapter 4. Management Tools</h2></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="section"><a href="QpidJavaBroker-ManagementTools.html#idp5080928">4.1. 
+      MessageStore Tool
+    </a></span></dt><dd><dl><dt><span class="section"><a href="QpidJavaBroker-ManagementTools.html#MessageStoreTool-MessageStoreTool">4.1.1. 
+            MessageStore Tool
+          </a></span></dt></dl></dd><dt><span class="section"><a href="Qpid-Java-Broker-Management-CLI.html">4.2. 
+      Qpid Java Broker Management CLI
+    </a></span></dt><dd><dl><dt><span class="section"><a href="Qpid-Java-Broker-Management-CLI.html#QpidJavaBrokerManagementCLI-HowtobuildApacheQpidCLI">4.2.1. 
+            How to
+            build Apache Qpid CLI
+          </a></span></dt></dl></dd></dl></div><div class="section" title="4.1.  MessageStore Tool"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="idp5080928"></a>4.1. 
+      MessageStore Tool
+    </h2></div></div></div><div class="section" title="4.1.1.  MessageStore Tool"><div class="titlepage"><div><div><h3 class="title"><a name="MessageStoreTool-MessageStoreTool"></a>4.1.1. 
+            MessageStore Tool
+          </h3></div></div></div><p>
+            We have a number of implementations of the Qpid MessageStore
+            interface. This tool allows the interrogation of these stores
+            while the broker is offline.
+          </p><div class="section" title="4.1.1.1.  MessageStore Implementations"><div class="titlepage"><div><div><h4 class="title"><a name="MessageStoreTool-MessageStoreImplementations"></a>4.1.1.1. 
+            MessageStore
+            Implementations
+          </h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>
+              <a class="xref" href="">???</a>
+            </p></li><li class="listitem"><p>
+              <a class="xref" href="">???</a>
+            </p></li><li class="listitem"><p>
+              <a class="xref" href="">???</a>
+            </p></li></ul></div></div><div class="section" title="4.1.1.2.  Introduction"><div class="titlepage"><div><div><h4 class="title"><a name="MessageStoreTool-Introduction"></a>4.1.1.2. 
+            Introduction
+          </h4></div></div></div><p>
+            Each of the MessageStore implementations provide different back
+            end storage for their messages and so would need a different tool
+            to be able to interrogate their contents at the back end.
+          </p><p>
+            What this tool does is to utilise the Java broker code base to
+            access the contents of the storage providing the user with a
+            consistent means to inspect the storage contents in broker
+            memory. The tool allows the current messages in the store to be
+            inspected and copied/moved between queues. The tool uses the
+            message instance in memory for all its access paths, but changes
+            made will be reflected in the physical store (if one exists).
+          </p></div><div class="section" title="4.1.1.3.  Usage"><div class="titlepage"><div><div><h4 class="title"><a name="MessageStoreTool-Usage"></a>4.1.1.3. 
+            Usage
+          </h4></div></div></div><p>
+            The tools-distribution currently includes a unix shell command
+            'msTool.sh' this script will launch the java tool.
+          </p><p>
+            The tool loads $QPID_HOME/etc/config.xml by default. If an
+            alternative broker configuration is required this should be
+            provided on the command line as would be done for the broker.
+          </p><pre class="programlisting">
+msTool.sh -c &lt;path to different config.xml&gt;
+</pre><p>
+            On startup the user is present with a command prompt
+          </p><pre class="programlisting">
+$ msTool.sh
+MessageStoreTool - for examining Persistent Qpid Broker MessageStore instances
+bdb$ 
+</pre></div><div class="section" title="4.1.1.4.  Available Commands"><div class="titlepage"><div><div><h4 class="title"><a name="MessageStoreTool-AvailableCommands"></a>4.1.1.4. 
+            Available
+            Commands
+          </h4></div></div></div><p>
+            The available commands in the tool can be seen through the use of
+            the 'help' command.
+          </p><pre class="programlisting">
+bdb$ help
++----------------------------------------------------------------+
+|                       Available Commands                       |
++----------------------------------------------------------------+
+| Command | Description                                          |
++----------------------------------------------------------------+
+| quit    | Quit the tool.                                       |
+| list    | list available items.                                |
+| dump    | Dump selected message content. Default: show=content |
+| load    | Loads specified broker configuration file.           |
+| clear   | Clears any selection.                                |
+| show    | Shows the messages headers.                          |
+| select  | Perform a selection.                                 |
+| help    | Provides detailed help on commands.                  |
++----------------------------------------------------------------+
+bdb$
+</pre><p>
+            A brief description is displayed and further usage information is
+            shown with 'help &lt;command&gt;'
+          </p><pre class="programlisting">
+bdb$ help list
+list availble items.
+Usage:list queues [&lt;exchange&gt;] | exchanges | bindings [&lt;exchange&gt;] | all
+bdb$
+</pre></div><div class="section" title="4.1.1.5.  Future Work"><div class="titlepage"><div><div><h4 class="title"><a name="MessageStoreTool-FutureWork"></a>4.1.1.5. 
+            Future Work
+          </h4></div></div></div><p>
+            Currently the tool only works whilst the broker is offline i.e.
+            it is up, but not accepting AMQP connections. This requires a
+            stop/start of the broker. If this functionality was incorporated
+            into the broker then a telnet functionality could be provided
+            allowing online management.
+          </p></div></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="Qpid-JMX-Management-Console.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="Qpid-Java-Broker-Management-CLI.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 3. 
+    Qpid JMX Management Console
+   </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 4.2. 
+      Qpid Java Broker Management CLI
+    </td></tr></table></div></body></html>

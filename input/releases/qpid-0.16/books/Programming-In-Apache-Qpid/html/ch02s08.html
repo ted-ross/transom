@@ -1,0 +1,37 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>2.8. Receiving Messages from Multiple Sources</title><link rel="stylesheet" type="text/css" href="css/style.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"><link rel="home" href="index.html" title="Programming in Apache Qpid"><link rel="up" href="ch02.html" title="Chapter 2. Using the Qpid Messaging API"><link rel="prev" href="acknowledgements.html" title="2.7. Acknowledging Received Messages"><link rel="next" href="ch02s09.html" title="2.9. Transactions"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.8. Receiving Messages from Multiple Sources</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="acknowledgements.html">Prev</a> </td><th width="60%" align="center">Chapter 2. Using the Qpid Messaging API</th><td width="20%" align="right"> <a accesskey="n" href="ch02s09.html">Next</a></td></tr></table><hr></div><div class="section" title="2.8. Receiving Messages from Multiple Sources"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="idp32535360"></a>2.8. Receiving Messages from Multiple Sources</h2></div></div></div><p>A receiver can only read from one source, but many
+      programs need to be able to read messages from many sources. In
+      the Qpid Messaging API, a program can ask a session for
+      the <span class="quote">“<span class="quote">next receiver</span>”</span>; that is, the receiver that is
+      responsible for the next available message. The following
+      examples show how this is done in C++, Python, and .NET C#.
+      </p><p>Note that to use this pattern you must enable prefetching
+      for each receiver of interest so that the broker will send
+      messages before a fetch call is made. See
+      <a class="xref" href="prefetch.html" title="2.6. Receiver Capacity (Prefetch)">Section 2.6, “Receiver Capacity (Prefetch)”</a> for more on this.</p><div class="example"><a name="idp32538240"></a><p class="title"><b>Example 2.12. Receiving Messages from Multiple Sources</b></p><div class="example-contents"><p>C++:</p><pre class="programlisting">
+	Receiver receiver1 = session.createReceiver(address1);
+	receiver1.setCapacity(10);
+	Receiver receiver2 = session.createReceiver(address2);
+	receiver2.setCapacity(10);
+
+	Message message =  session.nextReceiver().fetch();
+	std::cout &lt;&lt; message.getContent() &lt;&lt; std::endl;
+	session.acknowledge(); // acknowledge message receipt
+		  </pre><p>Python:</p><pre class="programlisting">
+	receiver1 = session.receiver(address1)
+	receiver1.capacity = 10
+	receiver2 = session.receiver(address)
+	receiver2.capacity = 10
+	message = session.next_receiver().fetch()
+	print message.content
+	session.acknowledge()
+		  </pre><p>.NET C#:</p><pre class="programlisting">
+	Receiver receiver1 = session.CreateReceiver(address1);
+	receiver1.Capacity = 10;
+	Receiver receiver2 = session.CreateReceiver(address2);
+	receiver2.Capacity = 10;
+
+	Message message = new Message();
+	message =  session.NextReceiver().Fetch();
+	Console.WriteLine("{0}", message.GetContent());
+	session.Acknowledge();
+		  </pre></div></div><br class="example-break"></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="acknowledgements.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch02s09.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.7. Acknowledging Received Messages </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 2.9. Transactions</td></tr></table></div></body></html>

@@ -1,0 +1,21 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>4.4. Security</title><link rel="stylesheet" type="text/css" href="css/style.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"><link rel="home" href="index.html" title="Programming in Apache Qpid"><link rel="up" href="QpidWCF.html" title="Chapter 4. Using the Qpid WCF client"><link rel="prev" href="ch04s03.html" title="4.3. Message Headers"><link rel="next" href="ch04s05.html" title="4.5. Transactions"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">4.4. Security</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch04s03.html">Prev</a> </td><th width="60%" align="center">Chapter 4. Using the Qpid WCF client</th><td width="20%" align="right"> <a accesskey="n" href="ch04s05.html">Next</a></td></tr></table><hr></div><div class="section" title="4.4. Security"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="idp33143760"></a>4.4. Security</h2></div></div></div><p>To engage TLS/SSL:</p><pre class="programlisting">
+binding.Security.Mode = AmqpSecurityMode.Transport;
+binding.Security.Transport.UseSSL = true;
+binding.BrokerPort = 5671;
+</pre><p>Currently the WCF client only provides SASL PLAIN (i.e. username and
+      password) authentication.  To provide a username and password, you can
+      set the DefaultAmqpCredential value in the binding.  This value can be
+      overridden or set for a binding's channel factories and listeners,
+      either by setting the ClientCredentials as a binding parameter, or by
+      using an AmqpCredential as a binding parameter.  The search order for
+      credentials is the AmqpCredential binding parameter, followed by the
+      ClientCredentials (unless IgnoreEndpointClientCredentials has been
+      set), and finally defaulting to the DefaultAmqpCredential of the
+      binding itself.  Here is a sample using ClientCredentials:</p><pre class="programlisting">
+ClientCredentials credentials = new ClientCredentials();
+credentials.UserName.UserName = "guest";
+credentials.UserName.Password = "guest";
+bindingParameters = new BindingParameterCollection();
+bindingParameters.Add(credentials);
+readerFactory = binding.BuildChannelFactory&lt;IInputChannel&gt;(bindingParameters);
+</pre></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch04s03.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="QpidWCF.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch04s05.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">4.3. Message Headers </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 4.5. Transactions</td></tr></table></div></body></html>

@@ -1,0 +1,21 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>2.7. Acknowledging Received Messages</title><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"><link rel="home" href="index.html" title="Programming in Apache Qpid"><link rel="up" href="ch02.html" title="Chapter 2. Using the Qpid Messaging API"><link rel="prev" href="ch02s06.html" title="2.6. Receiver Capacity (Prefetch)"><link rel="next" href="ch02s08.html" title="2.8. Receiving Messages from Multiple Sources"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.7. Acknowledging Received Messages</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02s06.html">Prev</a> </td><th width="60%" align="center">Chapter 2. Using the Qpid Messaging API</th><td width="20%" align="right"> <a accesskey="n" href="ch02s08.html">Next</a></td></tr></table><hr></div><div class="section" title="2.7. Acknowledging Received Messages"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="acknowledgements"></a>2.7. Acknowledging Received Messages</h2></div></div></div><p>Applications that receive messages should acknowledge their
+    receipt by calling the session's acknowledge method. As in the
+    case of sending messages, acknowledged transfer of messages to
+    receivers provides at-least-once reliability, which means that the
+    loss of the connection or a client crash does not result in lost
+    messages; durable messages are not lost even if the broker is
+    restarted.
+
+    Some cases may not require this however and the reliability can be
+    controlled through a link property in the address options (see
+    <a class="xref" href="ch02s04.html#table-link-properties" title="Table 2.3. Link Properties">Table 2.3, &#8220;Link Properties&#8221;</a>).</p><p>The acknowledge call acknowledges all messages received on
+    the session (i.e. all message that have been returned from a fetch
+    call on a receiver created on that session).</p><p>The acknowledge call also support an optional parameter
+    controlling whether the call is synchronous or not. A synchronous
+    acknowledge will block until the server has confirmed that it has
+    received the acknowledgement. In the asynchronous case, when the
+    call returns there is not yet any guarantee that the server has
+    received and processed the acknowledgement. The session may be
+    queried for the number of unsettled acknowledgements; when that
+    count is zero all acknowledgements made for received messages have
+    been successful.</p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s06.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch02s08.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.6. Receiver Capacity (Prefetch) </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 2.8. Receiving Messages from Multiple Sources</td></tr></table></div></body></html>

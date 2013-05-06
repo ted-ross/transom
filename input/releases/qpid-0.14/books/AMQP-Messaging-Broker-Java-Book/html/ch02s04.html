@@ -1,0 +1,109 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>2.4.  Configure Log4j CompositeRolling Appender</title><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"><link rel="home" href="index.html" title=""><link rel="up" href="ch02.html" title="Chapter 2. How Tos"><link rel="prev" href="ch02s03.html" title="2.3.  Configure Java Qpid to use a SSL connection."><link rel="next" href="ch02s05.html" title="2.5.  Configure the Broker via config.xml"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.4. 
+      Configure Log4j CompositeRolling Appender
+    </th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02s03.html">Prev</a> </td><th width="60%" align="center">Chapter 2. How Tos</th><td width="20%" align="right"> <a accesskey="n" href="ch02s05.html">Next</a></td></tr></table><hr></div><div class="section" title="2.4.  Configure Log4j CompositeRolling Appender"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="id469617"></a>2.4. 
+      Configure Log4j CompositeRolling Appender
+    </h2></div></div></div><div class="section" title="2.4.1.  How to configure the CompositeRolling log4j Appender"><div class="titlepage"><div><div><h3 class="title"><a name="ConfigureLog4jCompositeRollingAppender-HowtoconfiguretheCompositeRollinglog4jAppender"></a>2.4.1. 
+            How to configure the CompositeRolling log4j Appender
+          </h3></div></div></div><p>
+            There are several sections of our default log4j file that will
+            need your attention if you wish to fully use this Appender.
+          </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>Enable the Appender</p><p>
+            The default log4j.xml file uses the FileAppender, swap this for
+            the ArchivingFileAppender as follows:
+          </p><pre class="programlisting">
+    &lt;!-- Log all info events to file --&gt;
+    &lt;root&gt;
+        &lt;priority value="info"/&gt;
+
+        &lt;appender-ref ref="ArchivingFileAppender"/&gt;
+    &lt;/root&gt;
+</pre></li><li class="listitem"><p>
+            Configure the Appender
+          </p><p>
+            The Appender has a number of parameters that can be adjusted
+            depending on what you are trying to achieve. For clarity lets
+            take a quick look at the complete default appender:
+          </p><pre class="programlisting">
+  &lt;appender name="ArchivingFileAppender" class="org.apache.log4j.QpidCompositeRollingAppender"&gt;
+        &lt;!-- Ensure that logs allways have the dateFormat set--&gt;
+        &lt;param name="StaticLogFileName" value="false"/&gt;
+        &lt;param name="File" value="${QPID_WORK}/log/${logprefix}qpid${logsuffix}.log"/&gt;
+        &lt;param name="Append" value="false"/&gt;
+        &lt;!-- Change the direction so newer files have bigger numbers --&gt;
+        &lt;!-- So log.1 is written then log.2 etc This prevents a lot of file renames at log rollover --&gt;
+        &lt;param name="CountDirection" value="1"/&gt;
+        &lt;!-- Use default 10MB --&gt;
+        &lt;!--param name="MaxFileSize" value="100000"/--&gt;
+        &lt;param name="DatePattern" value="'.'yyyy-MM-dd-HH-mm"/&gt;
+        &lt;!-- Unlimited number of backups --&gt;
+        &lt;param name="MaxSizeRollBackups" value="-1"/&gt;
+        &lt;!-- Compress(gzip) the backup files--&gt;
+        &lt;param name="CompressBackupFiles" value="true"/&gt;
+        &lt;!-- Compress the backup files using a second thread --&gt;
+        &lt;param name="CompressAsync" value="true"/&gt;
+        &lt;!-- Start at zero numbered files--&gt;
+        &lt;param name="ZeroBased" value="true"/&gt;
+        &lt;!-- Backup Location --&gt;
+        &lt;param name="backupFilesToPath" value="${QPID_WORK}/backup/log"/&gt;
+
+        &lt;layout class="org.apache.log4j.PatternLayout"&gt;
+            &lt;param name="ConversionPattern" value="%d %-5p [%t] %C{2} (%F:%L) - %m%n"/&gt;
+        &lt;/layout&gt;
+    &lt;/appender&gt;
+</pre><p>
+            The appender configuration has three groups of parameter
+            configuration.
+          </p><p>
+            The first group is for configuration of the file name. The
+            default is to write a log file to QPID_WORK/log/qpid.log
+            (Remembering you can use the logprefix and logsuffix values to
+            modify the file name, see Property Config).
+          </p><pre class="programlisting">
+        &lt;!-- Ensure that logs always have the dateFormat set--&gt;
+        &lt;param name="StaticLogFileName" value="false"/&gt;
+        &lt;param name="File" value="${QPID_WORK}/log/${logprefix}qpid${logsuffix}.log"/&gt;
+        &lt;param name="Append" value="false"/&gt;
+</pre><p>
+            The second section allows the specification of a Maximum File
+            Size and a DatePattern that will be used to move on to the next
+            file.
+          </p><p>
+            When MaxFileSize is reached a new log file will be created
+            The DataPattern is used to decide when to create a new log file,
+            so here a new file will be created for every minute and every
+            10Meg of data. So if 15MB of data is made every minute then there
+            will be two log files created each minute. One at the start of
+            the minute and a second when the file hit 10MB. When the next
+            minute arrives a new file will be made even though it only has
+            5MB of content. For a production system it would be expected to
+            be changed to something like 'yyyy-MM-dd' which would make a new
+            log file each day and keep the files to a max of 10MB.
+          </p><p>
+            The final MaxSizeRollBackups allows you to limit the amount of
+            disk you are using by only keeping the last n backups.
+          </p><pre class="programlisting">
+        &lt;!-- Change the direction so newer files have bigger numbers --&gt;
+        &lt;!-- So log.1 is written then log.2 etc This prevents a lot of file renames at log rollover --&gt;
+        &lt;param name="CountDirection" value="1"/&gt;
+        &lt;!-- Use default 10MB --&gt;
+        &lt;!--param name="MaxFileSize" value="100000"/--&gt;
+        &lt;param name="DatePattern" value="'.'yyyy-MM-dd-HH-mm"/&gt;
+        &lt;!-- Unlimited number of backups --&gt;
+        &lt;param name="MaxSizeRollBackups" value="-1"/&gt;
+</pre><p>
+            The final section allows the old log files to be compressed and
+            copied to a new location.
+          </p><pre class="programlisting">
+        &lt;!-- Compress(gzip) the backup files--&gt;
+        &lt;param name="CompressBackupFiles" value="true"/&gt;
+        &lt;!-- Compress the backup files using a second thread --&gt;
+        &lt;param name="CompressAsync" value="true"/&gt;
+        &lt;!-- Start at zero numbered files--&gt;
+        &lt;param name="ZeroBased" value="true"/&gt;
+        &lt;!-- Backup Location --&gt;
+        &lt;param name="backupFilesToPath" value="${QPID_WORK}/backup/log"/&gt;
+</pre></li></ol></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s03.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch02s05.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.3. 
+      Configure Java Qpid to use a SSL connection.
+     </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 2.5. 
+      Configure the Broker via config.xml
+    </td></tr></table></div></body></html>

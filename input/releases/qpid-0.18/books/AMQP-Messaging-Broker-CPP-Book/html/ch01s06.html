@@ -1,0 +1,107 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>1.6. LVQ - Last Value Queue</title><link rel="stylesheet" href="css/style.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.73.2"><link rel="start" href="index.html" title="AMQP Messaging Broker (Implemented in C++)"><link rel="up" href="ch01.html" title="Chapter 1.  Running the AMQP Messaging Broker"><link rel="prev" href="chap-Messaging_User_Guide-Security.html" title="1.5. Security"><link rel="next" href="queue-state-replication.html" title="1.7.  Queue State Replication"></head><body><div class="container" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><DIV class="header"><DIV class="logo"><H1>Apache Qpid™</H1><H2>Open Source AMQP Messaging</H2></DIV></DIV><DIV class="menu_box"><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Apache Qpid</H3><UL><LI><A href="http://qpid.apache.org/index.html">Home</A></LI><LI><A href="http://qpid.apache.org/download.html">Download</A></LI><LI><A href="http://qpid.apache.org/getting_started.html">Getting Started</A></LI><LI><A href="http://www.apache.org/licenses/">License</A></LI><LI><A href="https://cwiki.apache.org/qpid/faq.html">FAQ</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Documentation</H3><UL><LI><A href="http://qpid.apache.org/documentation.html#doc-release">Latest Release</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-trunk">Trunk</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-archives">Archive</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Community</H3><UL><LI><A href="http://qpid.apache.org/getting_involved.html">Getting Involved</A></LI><LI><A href="http://qpid.apache.org/source_repository.html">Source Repository</A></LI><LI><A href="http://qpid.apache.org/mailing_lists.html">Mailing Lists</A></LI><LI><A href="https://cwiki.apache.org/qpid/">Wiki</A></LI><LI><A href="https://issues.apache.org/jira/browse/qpid">Issue Reporting</A></LI><LI><A href="http://qpid.apache.org/people.html">People</A></LI><LI><A href="http://qpid.apache.org/acknowledgements.html">Acknowledgements</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Developers</H3><UL><LI><A href="https://cwiki.apache.org/qpid/building.html">Building Qpid</A></LI><LI><A href="https://cwiki.apache.org/qpid/developer-pages.html">Developer Pages</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About AMQP</H3><UL><LI><A href="http://qpid.apache.org/amqp.html">What is AMQP?</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About Apache</H3><UL><LI><A href="http://www.apache.org">Home</A></LI><LI><A href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</A></LI><LI><A href="http://www.apache.org/foundation/thanks.html">Thanks</A></LI><LI><A href="http://www.apache.org/security/">Security</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV></DIV><div class="main_text_area"><div class="main_text_area_top"></div><div class="main_text_area_body"><DIV class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">AMQP Messaging Broker (Implemented in C++)</a></span> &gt; <span class="breadcrumb-link"><a href="ch01.html">
+      Running the AMQP Messaging Broker
+    </a></span> &gt; <span class="breadcrumb-node">LVQ - Last Value Queue</span></DIV><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="id2544937"></a>1.6. LVQ - Last Value Queue</h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="LVQ-UnderstandingLVQ"></a>1.6.1. Understanding LVQ</h3></div></div></div><p>
+      A Last Value Queue is configured with the name of a message header that
+      is used as a key.  The queue behaves as a normal FIFO queue with the
+      exception that when a message is enqueued, any other message in the
+      queue with the same value in the key header is removed and discarded.
+      Thus, for any given key value, the queue holds only the most recent
+      message.
+    </p><p>
+      The following example illustrates the operation of a Last Value Queue.
+      The example shows an empty queue with no consumers and a sequence of
+      produced messages.  The numbers represent the key for each message.
+    </p><pre class="programlisting">
+           &lt;empty queue&gt;
+      1 =&gt;
+           1
+      2 =&gt;
+           1 2
+      3 =&gt;
+           1 2 3
+      4 =&gt;
+           1 2 3 4
+      2 =&gt;
+           1 3 4 2
+      1 =&gt;
+           3 4 2 1
+    </pre><p>
+      Note that the first four messages are enqueued normally in FIFO order.
+      The fifth message has key '2' and is also enqueued on the tail of the
+      queue.  However the message already in the queue with the same key is
+      discarded.
+      </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
+          If the set of keys used in the messages in a LVQ is constrained, the
+          number of messages in the queue shall not exceed the number of
+          distinct keys in use.
+        </p></div><p>
+    </p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="LVQ-UnderstandingLVQ-UseCases"></a>1.6.1.1. Common Use-Cases</h4></div></div></div><div class="itemizedlist"><ul><li><p>
+            LVQ with zero or one consuming subscriptions - In this case, if
+            the consumer drops momentarily or is slower than the producer(s),
+            it will only receive current information relative to the message
+            keys.
+          </p></li><li><p>
+            LVQ with zero or more browsing subscriptions - A browsing consumer
+            can subscribe to the LVQ and get an immediate dump of all of the
+            "current" messages and track updates thereafter.  Any number of
+            independent browsers can subscribe to the same LVQ with the same
+            effect.  Since messages are never consumed, they only disappear
+            when replaced with a newer message with the same key or when their
+            TTL expires.
+          </p></li></ul></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="LVQ-Creating"></a>1.6.2. Creating a Last Value Queue</h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="LVQ-Creating-Address"></a>1.6.2.1. Using Addressing Syntax</h4></div></div></div><p>
+        A LVQ may be created using directives in the API's address syntax.
+        The important argument is "qpid.last_value_queue_key".  The following
+        Python example shows how a producer of stock price updates can create
+        a LVQ to hold the latest stock prices for each ticker symbol.  The
+        message header used to hold the ticker symbol is called "ticker".
+      </p><pre class="programlisting">
+    conn = Connection(url)
+    conn.open()
+    sess = conn.session()
+    tx = sess.sender("prices;{create:always, node:{type:queue, x-declare:{arguments:{'qpid.last_value_queue_key':'ticker'}}}}")
+      </pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="LVQ-Creating-Tool"></a>1.6.2.2. Using qpid-config</h4></div></div></div><p>
+        The same LVQ as shown in the previous example can be created using the
+        qpid-config utility:
+      </p><pre class="programlisting">
+    $ qpid-config add queue prices --lvq-key ticker
+      </pre></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="LVQ-Example"></a>1.6.3. LVQ Example</h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="LVQ-Example-Sender"></a>1.6.3.1. LVQ Sender</h4></div></div></div><pre class="programlisting">
+    from qpid.messaging import Connection, Message
+
+    def send(sender, key, message):
+      message.properties["ticker"] = key
+      sender.send(message)
+
+    conn = Connection("localhost")
+    conn.open()
+    sess = conn.session()
+    tx = sess.sender("prices;{create:always, node:{type:queue,x-declare:{arguments:{'qpid.last_value_queue_key':ticker}}}}")
+
+    msg = Message("Content")
+    send(tx, "key1", msg);
+    send(tx, "key2", msg);
+    send(tx, "key3", msg);
+    send(tx, "key4", msg);
+    send(tx, "key2", msg);
+    send(tx, "key1", msg);
+
+    conn.close()
+      </pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="LVQ-Example-Receiver"></a>1.6.3.2. LVQ Browsing Receiver</h4></div></div></div><pre class="programlisting">
+    from qpid.messaging import Connection, Message
+
+    conn = Connection("localhost")
+    conn.open()
+    sess = conn.session()
+    rx = sess.receiver("prices;{mode:browse}")
+
+    while True:
+      msg = rx.fetch()
+      sess.acknowledge()
+      print msg
+      </pre></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="LVQ-Deprecated"></a>1.6.4. Deprecated LVQ Modes</h3></div></div></div><p>
+      There are two legacy modes (still implemented as of Qpid 0.14)
+      controlled by the qpid.last_value_queue and
+      qpid.last_value_queue_no_browse argument values.  These modes are
+      deprecated and should not be used.
+    </p></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="chap-Messaging_User_Guide-Security.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch01.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="queue-state-replication.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">1.5. Security </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 1.7. 
+    Queue State Replication
+  </td></tr></table></div><div class="main_text_area_bottom"></div></div></div></body></html>

@@ -1,0 +1,112 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>1.4.  Qpid Troubleshooting Guide</title><link rel="stylesheet" href="css/style.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.73.2"><link rel="start" href="index.html" title="AMQP Messaging Broker (Implemented in Java)"><link rel="up" href="Java-General-User-Guides.html" title="Chapter 1. General User Guides"><link rel="prev" href="Java-Environment-Variables.html" title="1.3.  Java Environment Variables"><link rel="next" href="Java-Broker-Configuration-Guide.html" title="1.5. Broker Configuration Guide"></head><body><div class="container" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><DIV class="header"><DIV class="logo"><H1>Apache Qpid™</H1><H2>Open Source AMQP Messaging</H2></DIV></DIV><DIV class="menu_box"><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Apache Qpid</H3><UL><LI><A href="http://qpid.apache.org/index.html">Home</A></LI><LI><A href="http://qpid.apache.org/download.html">Download</A></LI><LI><A href="http://qpid.apache.org/getting_started.html">Getting Started</A></LI><LI><A href="http://www.apache.org/licenses/">License</A></LI><LI><A href="https://cwiki.apache.org/qpid/faq.html">FAQ</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Documentation</H3><UL><LI><A href="http://qpid.apache.org/documentation.html#doc-release">Latest Release</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-trunk">Trunk</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-archives">Archive</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Community</H3><UL><LI><A href="http://qpid.apache.org/getting_involved.html">Getting Involved</A></LI><LI><A href="http://qpid.apache.org/source_repository.html">Source Repository</A></LI><LI><A href="http://qpid.apache.org/mailing_lists.html">Mailing Lists</A></LI><LI><A href="https://cwiki.apache.org/qpid/">Wiki</A></LI><LI><A href="https://issues.apache.org/jira/browse/qpid">Issue Reporting</A></LI><LI><A href="http://qpid.apache.org/people.html">People</A></LI><LI><A href="http://qpid.apache.org/acknowledgements.html">Acknowledgements</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Developers</H3><UL><LI><A href="https://cwiki.apache.org/qpid/building.html">Building Qpid</A></LI><LI><A href="https://cwiki.apache.org/qpid/developer-pages.html">Developer Pages</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About AMQP</H3><UL><LI><A href="http://qpid.apache.org/amqp.html">What is AMQP?</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About Apache</H3><UL><LI><A href="http://www.apache.org">Home</A></LI><LI><A href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</A></LI><LI><A href="http://www.apache.org/foundation/thanks.html">Thanks</A></LI><LI><A href="http://www.apache.org/security/">Security</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV></DIV><div class="main_text_area"><div class="main_text_area_top"></div><div class="main_text_area_body"><DIV class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">AMQP Messaging Broker (Implemented in Java)</a></span> &gt; <span class="breadcrumb-link"><a href="Java-General-User-Guides.html">General User Guides</a></span> &gt; <span class="breadcrumb-node">
+      Qpid Troubleshooting Guide
+    </span></DIV><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="Qpid-Troubleshooting-Guide"></a>1.4. 
+      Qpid Troubleshooting Guide
+    </h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="QpidTroubleshootingGuide-I-27mgettingajava.lang.UnsupportedClassVersionErrorwhenItrytostartthebroker.Whatdoesthismean-3F"></a>1.4.1. 
+            I'm getting a java.lang.UnsupportedClassVersionError when I
+            try to start the broker. What does this mean ?
+          </h3></div></div></div><p>
+            The QPID broker requires JDK 1.5 or later. If you're seeing this
+            exception you don't have that version in your path. Set JAVA_HOME
+            to the correct version and ensure the bin directory is on your
+            path.
+          </p><p>
+            java.lang.UnsupportedClassVersionError:
+            org/apache/qpid/server/Main (Unsupported major.minor version
+            49.0)
+            at
+            java.lang.ClassLoader.defineClass(Ljava.lang.String;[BIILjava.security.ProtectionDomain;)Ljava.lang.Class;(Unknown
+            Source)
+            at
+            java.security.SecureClassLoader.defineClass(Ljava.lang.String;[BIILjava.security.CodeSource;)Ljava.lang.Class;(SecureClassLoader.java:123)
+
+            at
+            java.net.URLClassLoader.defineClass(Ljava.lang.String;Lsun.misc.Resource;)Ljava.lang.Class;(URLClassLoader.java:251)
+
+            at
+            java.net.URLClassLoader.access$100(Ljava.net.URLClassLoader;Ljava.lang.String;Lsun.misc.Resource;)Ljava.lang.Class;(URLClassLoader.java:55)
+
+            at java.net.URLClassLoader$1.run()Ljava.lang.Object;
+            (URLClassLoader.java:194)
+            at
+            jrockit.vm.AccessController.do_privileged_exc(Ljava.security.PrivilegedExceptionAction;Ljava.security.AccessControlContext;I)Ljava.lang.Object;(Unknown
+            Source)
+            at
+            jrockit.vm.AccessController.doPrivileged(Ljava.security.PrivilegedExceptionAction;Ljava.security.AccessControlContext;)Ljava.lang.Object;(Unknown
+            Source)
+            at
+            java.net.URLClassLoader.findClass(Ljava.lang.String;)Ljava.lang.Class;(URLClassLoader.java:187)
+
+            at
+            java.lang.ClassLoader.loadClass(Ljava.lang.String;Z)Ljava.lang.Class;
+            (Unknown Source)
+            at
+            sun.misc.Launcher$AppClassLoader.loadClass(Ljava.lang.String;Z)Ljava.lang.Class;(Launcher.java:274)
+
+            at
+            java.lang.ClassLoader.loadClass(Ljava.lang.String;)Ljava.lang.Class;
+
+            (Unknown Source)
+            at
+            java.lang.ClassLoader.loadClassFromNative(II)Ljava.lang.Class;
+
+            (Unknown Source)
+          </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="QpidTroubleshootingGuide-I-27mhavingaproblembindingtotherequiredhost-3Aportatbrokerstartup-3F"></a>1.4.2. 
+            I'm having a problem binding to the required host:port at
+            broker startup ?
+          </h3></div></div></div><p>
+            This error probably indicates that another process is using the
+            port you the broker is trying to listen on. If you haven't
+            amended the default configuration this will be 5672. To check
+            what process is using the port you can use 'netstat -an |grep
+            5672'.
+          </p><p>
+            To change the port your broker uses, either edit the config.xml
+            you are using. You can specify an alternative config.xml from the
+            one provided in /etc by using the -c flag i.e. qpid-server -c
+            &lt;my config file path&gt;.
+          </p><p>
+            You can also amend the port more simply using the -p option to
+            qpid-server i.e. qpid-server -p &lt;my port number'
+          </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="QpidTroubleshootingGuide-I-27mhavingproblemswithmyclasspath.HowcanIensurethatmyclasspathisok-3F"></a>1.4.3. 
+            I'm having problems with my classpath. How can I ensure that
+            my classpath is ok ?
+          </h3></div></div></div><p>
+            When you are running the broker the classpath is taken care of
+            for you, via the manifest entries in the launch jars that the
+            qpid-server configuration file adds to the classpath.
+          </p><p>
+            However, if you are running your own client code and experiencing
+            classspath errors you need to ensure that the client-launch.jar
+            from the installed Qpid lib directory is on your classpath. The
+            manifest for this jar includes the common-launch.jar, and thus
+            all the code you need to run a client application.
+          </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="QpidTroubleshootingGuide-Ican-27tgetthebrokertostart.HowcanIdiagnosetheproblem-3F"></a>1.4.4. 
+            I can't get the broker to start. How can I diagnose the
+            problem ?
+          </h3></div></div></div><p>
+            Firstly have a look at the broker log file - either on stdout or
+            in $QPID_WORK/log/qpid.log or in $HOME/log/qpid.log if you
+            haven't set QPID_WORK.
+          </p><p>
+            You should see the problem logged in here via log4j and a stack
+            trace. Have a look at the other entries on this page for common
+            problems. If the log file includes a line like:
+          </p><p>
+            "2006-10-13 09:58:14,672 INFO [main] server.Main (Main.java:343)
+            - Qpid.AMQP listening on non-SSL address 0.0.0.0/0.0.0.0:5672"
+          </p><p>
+            ... then you know the broker started up. If not, then it didn't.
+          </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="QpidTroubleshootingGuide-WhenItrytosendmessagestoaqueueI-27mgettingaerrorasthequeuedoesnotexist.WhatcanIdo-3F"></a>1.4.5. 
+            When I try to send messages to a queue I'm getting a error as
+            the queue does not exist. What can I do ?
+          </h3></div></div></div><p>
+            In Qpid queues need a consumer before they really exist, unless
+            you have used the virtualhosts.xml file to specify queues which
+            should always be created at broker startup. If you don't want to
+            use this config, then simply ensure that you consume first from
+            queue before staring to publish to it. See the entry on our
+            <a class="xref" href="">???</a> for more details of using the virtualhosts.xml route.
+          </p></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="Java-Environment-Variables.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="Java-General-User-Guides.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="Java-Broker-Configuration-Guide.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">1.3. 
+      Java Environment Variables
+     </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 1.5. Broker Configuration Guide </td></tr></table></div><div class="main_text_area_bottom"></div></div></div></body></html>

@@ -1,0 +1,25 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>2.5. Sender Capacity and Replay</title><link rel="stylesheet" type="text/css" href="css/style.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"><link rel="home" href="index.html" title="Programming in Apache Qpid"><link rel="up" href="ch02.html" title="Chapter 2. Using the Qpid Messaging API"><link rel="prev" href="section-addresses.html" title="2.4. Addresses"><link rel="next" href="prefetch.html" title="2.6. Receiver Capacity (Prefetch)"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.5. Sender Capacity and Replay</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="section-addresses.html">Prev</a> </td><th width="60%" align="center">Chapter 2. Using the Qpid Messaging API</th><td width="20%" align="right"> <a accesskey="n" href="prefetch.html">Next</a></td></tr></table><hr></div><div class="section" title="2.5. Sender Capacity and Replay"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="replay"></a>2.5. Sender Capacity and Replay</h2></div></div></div><p>The send method of a sender has an optional second parameter
+      that controls whether the send call is synchronous or not. A
+      synchronous send call will block until the broker has confirmed
+      receipt of the message. An asynchronous send call will return
+      before the broker confirms receipt of the message, allowing for
+      example further send calls to be made without waiting for a
+      roundtrip to the broker for each message. This is desirable where
+      increased throughput is important.</p><p>The sender maintains a list of sent messages whose receipt
+      has yet to be confirmed by the broker. The maximum number of such
+      messages that it will hold is defined by the capacity of the
+      sender, which can be set by the application. If an application
+      tries to send with a sender whose capacity is already fully used
+      up, the send call will block waiting for capacity regardless of
+      the value of the sync flag.</p><p>The sender can be queried for the available space (i.e. the
+      unused capacity), and for the current count of unsettled messages
+      (i.e. those held in the replay list pending confirmation by the
+      server). When the unsettled count is zero, all messages on that
+      sender have been successfully sent.</p><p>If the connection fails and is transparently reconnected
+      (see <a class="xref" href="connection-options.html" title="2.10. Connection Options">Section 2.10, “Connection Options”</a> for details on how to control
+      this feature), the unsettled messages for each sender over that
+      connection will be re-transmitted. This provides a transparent
+      level of reliability. This feature can be controlled through the
+      link's reliability as defined in the address (see
+      <a class="xref" href="section-addresses.html#table-link-properties" title="Table 2.3. Link Properties">Table 2.3, “Link Properties”</a>). At present only
+      at-least-once guarantees are offered. </p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="section-addresses.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="prefetch.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.4. Addresses </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 2.6. Receiver Capacity (Prefetch)</td></tr></table></div></body></html>

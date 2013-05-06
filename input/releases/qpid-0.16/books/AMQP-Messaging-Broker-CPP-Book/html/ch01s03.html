@@ -1,0 +1,98 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>1.3.  Cheat Sheet for configuring Exchange Options</title><link rel="stylesheet" type="text/css" href="css/style.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"><link rel="home" href="index.html" title="AMQP Messaging Broker (Implemented in C++)"><link rel="up" href="ch01.html" title="Chapter 1.  Running the AMQP Messaging Broker"><link rel="prev" href="ch01s02.html" title="1.2.  Cheat Sheet for configuring Queue Options"><link rel="next" href="chap-Messaging_User_Guide-Broker_Federation.html" title="1.4. Broker Federation"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">1.3. 
+    Cheat Sheet for configuring Exchange Options
+  </th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch01s02.html">Prev</a> </td><th width="60%" align="center">Chapter 1. 
+      Running the AMQP Messaging Broker
+    </th><td width="20%" align="right"> <a accesskey="n" href="chap-Messaging_User_Guide-Broker_Federation.html">Next</a></td></tr></table><hr></div><div class="section" title="1.3.  Cheat Sheet for configuring Exchange Options"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="id367642"></a>1.3. 
+    Cheat Sheet for configuring Exchange Options
+  </h2></div></div></div><div class="section" title="1.3.1.  Configuring Exchange Options"><div class="titlepage"><div><div><h3 class="title"><a name="CheatSheetforconfiguringExchangeOptions-ConfiguringExchangeOptions"></a>1.3.1. 
+      Configuring Exchange Options
+    </h3></div></div></div><p>
+            The C++ Broker M4 or later supports the following additional
+            Exchange options in addition to the standard AMQP define options
+          </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Exchange Level Message sequencing
+            </p></li><li class="listitem"><p>Initial Value Exchange
+            </p></li></ul></div><p>
+            Note that these features can be used on any exchange type, that
+            has been declared with the options set.
+          </p><p>
+            It also supports an additional option to the bind operation on a
+            direct exchange
+          </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Exclusive binding for key
+            </p></li></ul></div><div class="section" title="1.3.1.1.  Exchange Level Message sequencing"><div class="titlepage"><div><div><h4 class="title"><a name="CheatSheetforconfiguringExchangeOptions-ExchangeLevelMessagesequencing"></a>1.3.1.1. 
+            Exchange Level Message sequencing
+          </h4></div></div></div><p>
+            This feature can be used to place a sequence number into each
+            message's headers, based on the order they pass through an
+            exchange. The sequencing starts at 0 and then wraps in an AMQP
+            int64 type.
+          </p><p>
+            The field name used is "qpid.msg_sequence"
+          </p><p>
+            To use this feature an exchange needs to be declared specifying
+            this option in the declare
+          </p><pre class="programlisting">
+....
+    FieldTable args;
+    args.setInt("qpid.msg_sequence",1);
+
+...
+    // now declare the exchange
+    session.exchangeDeclare(arg::exchange="direct", arg::arguments=args);
+</pre><p>
+            Then each message passing through that exchange will be numbers
+            in the application headers.
+          </p><pre class="programlisting">
+    unit64_t seqNo;
+    //after message transfer
+    seqNo = message.getHeaders().getAsInt64("qpid.msg_sequence");
+</pre></div><div class="section" title="1.3.1.2.  Initial Value Exchange"><div class="titlepage"><div><div><h4 class="title"><a name="CheatSheetforconfiguringExchangeOptions-InitialValueExchange"></a>1.3.1.2. 
+            Initial
+            Value Exchange
+          </h4></div></div></div><p>
+            This feature caches a last message sent to an exchange. When a
+            new binding is created onto the exchange it will then attempt to
+            route this cached messaged to the queue, based on the binding.
+            This allows for topics or the creation of configurations where a
+            new consumer can receive the last message sent to the broker,
+            with matching routing.
+          </p><p>
+            To use this feature an exchange needs to be declared specifying
+            this option in the declare
+          </p><pre class="programlisting">
+....
+    FieldTable args;
+    args.setInt("qpid.ive",1);
+
+...
+    // now declare the exchange
+    session.exchangeDeclare(arg::exchange="direct", arg::arguments=args);
+</pre><p>
+            now use the exchange in the same way you would use any other
+            exchange.
+          </p></div><div class="section" title="1.3.1.3.  Exclusive binding for key"><div class="titlepage"><div><div><h4 class="title"><a name="CheatSheetforconfiguringExchangeOptions-Exclusivebindingforkey"></a>1.3.1.3. 
+            Exclusive
+            binding for key
+          </h4></div></div></div><p>
+            Direct exchanges in qpidd support a qpid.exclusive-binding option
+            on the bind operation that causes the binding specified to be the
+            only one for the given key. I.e. if there is already a binding at
+            this exchange with this key it will be atomically updated to bind
+            the new queue. This means that the binding can be changed
+            concurrently with an incoming stream of messages and each message
+            will be routed to exactly one queue.
+          </p><pre class="programlisting">
+....
+    FieldTable args;
+    args.setInt("qpid.exclusive-binding",1);
+
+    //the following will cause the only binding from amq.direct with 'my-key' 
+    //to be the one to 'my-queue'; if there were any previous bindings for that
+    //key they will be removed. This is atomic w.r.t message routing through the
+    //exchange.
+    session.exchangeBind(arg::exchange="amq.direct", arg::queue="my-queue",
+                         arg::bindingKey="my-key", arg::arguments=args);
+
+...
+</pre></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch01s02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch01.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="chap-Messaging_User_Guide-Broker_Federation.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">1.2. 
+      Cheat Sheet for configuring Queue Options
+     </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 1.4. Broker Federation</td></tr></table></div></body></html>

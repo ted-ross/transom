@@ -1,0 +1,48 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>3.4. JMS MapMessage Types</title><link rel="stylesheet" href="css/style.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.73.2"><link rel="start" href="index.html" title="Programming in Apache Qpid"><link rel="up" href="QpidJMS.html" title="Chapter 3. Using the Qpid JMS client"><link rel="prev" href="ch03s03.html" title="3.3. Java JMS Message Properties"><link rel="next" href="section-JMS-Logging.html" title="3.5. JMS Client Logging"></head><body><div class="container" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><DIV class="header"><DIV class="logo"><H1>Apache Qpid™</H1><H2>Open Source AMQP Messaging</H2></DIV></DIV><DIV class="menu_box"><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Apache Qpid</H3><UL><LI><A href="http://qpid.apache.org/index.html">Home</A></LI><LI><A href="http://qpid.apache.org/download.html">Download</A></LI><LI><A href="http://qpid.apache.org/getting_started.html">Getting Started</A></LI><LI><A href="http://www.apache.org/licenses/">License</A></LI><LI><A href="https://cwiki.apache.org/qpid/faq.html">FAQ</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Documentation</H3><UL><LI><A href="http://qpid.apache.org/documentation.html#doc-release">Latest Release</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-trunk">Trunk</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-archives">Archive</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Community</H3><UL><LI><A href="http://qpid.apache.org/getting_involved.html">Getting Involved</A></LI><LI><A href="http://qpid.apache.org/source_repository.html">Source Repository</A></LI><LI><A href="http://qpid.apache.org/mailing_lists.html">Mailing Lists</A></LI><LI><A href="https://cwiki.apache.org/qpid/">Wiki</A></LI><LI><A href="https://issues.apache.org/jira/browse/qpid">Issue Reporting</A></LI><LI><A href="http://qpid.apache.org/people.html">People</A></LI><LI><A href="http://qpid.apache.org/acknowledgements.html">Acknowledgements</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Developers</H3><UL><LI><A href="https://cwiki.apache.org/qpid/building.html">Building Qpid</A></LI><LI><A href="https://cwiki.apache.org/qpid/developer-pages.html">Developer Pages</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About AMQP</H3><UL><LI><A href="http://qpid.apache.org/amqp.html">What is AMQP?</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About Apache</H3><UL><LI><A href="http://www.apache.org">Home</A></LI><LI><A href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</A></LI><LI><A href="http://www.apache.org/foundation/thanks.html">Thanks</A></LI><LI><A href="http://www.apache.org/security/">Security</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV></DIV><div class="main_text_area"><div class="main_text_area_top"></div><div class="main_text_area_body"><DIV class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Programming in Apache Qpid</a></span> &gt; <span class="breadcrumb-link"><a href="QpidJMS.html">Using the Qpid JMS client</a></span> &gt; <span class="breadcrumb-node">JMS MapMessage Types</span></DIV><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="section-JMS-MapMessage"></a>3.4. JMS MapMessage Types</h2></div></div></div><p>Qpid supports the Java JMS <code class="classname">MapMessage</code> interface, which provides support for maps in messages. The following code shows how to send a <code class="classname">MapMessage</code> in Java JMS.</p><div class="example"><a name="id2554787"></a><p class="title"><b>Example 3.5. Sending a Java JMS MapMessage</b></p><div class="example-contents"><pre class="programlisting">
+	import java.util.ArrayList;
+	import java.util.HashMap;
+	import java.util.List;
+	import java.util.Map;
+
+	import javax.jms.Connection;
+	import javax.jms.Destination;
+	import javax.jms.MapMessage;
+	import javax.jms.MessageProducer;
+	import javax.jms.Session;
+
+	import java.util.Arrays;
+
+	// !!! SNIP !!!
+
+	MessageProducer producer = session.createProducer(queue);
+
+	MapMessage m = session.createMapMessage();
+	m.setIntProperty("Id", 987654321);
+	m.setStringProperty("name", "Widget");
+	m.setDoubleProperty("price", 0.99);
+
+	List&lt;String&gt; colors = new ArrayList&lt;String&gt;();
+	colors.add("red");
+	colors.add("green");
+	colors.add("white");
+	m.setObject("colours", colors);
+
+	Map&lt;String,Double&gt; dimensions = new HashMap&lt;String,Double&gt;();
+	dimensions.put("length",10.2);
+	dimensions.put("width",5.1);
+	dimensions.put("depth",2.0);
+	m.setObject("dimensions",dimensions);
+
+	List&lt;List&lt;Integer&gt;&gt; parts = new ArrayList&lt;List&lt;Integer&gt;&gt;();
+	parts.add(Arrays.asList(new Integer[] {1,2,5}));
+	parts.add(Arrays.asList(new Integer[] {8,2,5}));
+	m.setObject("parts", parts);
+
+	Map&lt;String,Object&gt; specs = new HashMap&lt;String,Object&gt;();
+	specs.put("colours", colors);
+	specs.put("dimensions", dimensions);
+	specs.put("parts", parts);
+	m.setObject("specs",specs);
+
+	producer.send(m);
+	</pre></div></div><br class="example-break"><p>The following table shows the datatypes that can be sent in a <code class="classname">MapMessage</code>, and the corresponding datatypes that will be received by clients in Python or C++.</p><div class="table"><a name="table-Java-Maps"></a><p class="title"><b>Table 3.5. Java Datatypes in Maps</b></p><div class="table-contents"><table summary="Java Datatypes in Maps" border="1"><colgroup><col><col><col></colgroup><thead><tr><th>Java Datatype</th><th>→ Python</th><th>→ C++</th></tr></thead><tbody><tr><td>boolean</td><td>bool</td><td>bool</td></tr><tr><td>short</td><td>int | long</td><td>int16</td></tr><tr><td>int</td><td>int | long</td><td>int32</td></tr><tr><td>long</td><td>int | long</td><td>int64</td></tr><tr><td>float</td><td>float</td><td>float</td></tr><tr><td>double</td><td>float</td><td>double</td></tr><tr><td>java.lang.String</td><td>unicode</td><td>std::string</td></tr><tr><td>java.util.UUID</td><td>uuid</td><td>qpid::types::Uuid</td></tr><tr><td>java.util.Map<sup>[<a name="id2554933" href="#ftn.id2554933" class="footnote">a</a>]</sup></td><td>dict</td><td>Variant::Map</td></tr><tr><td>java.util.List</td><td>list</td><td>Variant::List</td></tr></tbody><tbody class="footnotes"><tr><td colspan="3"><div class="footnote"><p><sup>[<a name="ftn.id2554933" href="#id2554933" class="para">a</a>] </sup>In Qpid, maps can nest. This goes beyond the functionality required by the JMS specification.</p></div></td></tr></tbody></table></div></div><br class="table-break"></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03s03.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="QpidJMS.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="section-JMS-Logging.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">3.3. Java JMS Message Properties </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 3.5. JMS Client Logging</td></tr></table></div><div class="main_text_area_bottom"></div></div></div></body></html>

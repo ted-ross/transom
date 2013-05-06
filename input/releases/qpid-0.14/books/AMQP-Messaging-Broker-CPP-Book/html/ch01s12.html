@@ -1,0 +1,158 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>1.12.  Using Message Groups</title><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"><link rel="home" href="index.html" title="AMQP Messaging Broker (Implemented in C++)"><link rel="up" href="ch01.html" title="Chapter 1.  Running the AMQP Messaging Broker"><link rel="prev" href="ch01s11.html" title="1.11. Qpid Interoperability Documentation"><link rel="next" href="ch02.html" title="Chapter 2.  Managing the AMQP Messaging Broker"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">1.12. 
+    Using Message Groups
+  </th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch01s11.html">Prev</a> </td><th width="60%" align="center">Chapter 1. 
+      Running the AMQP Messaging Broker
+    </th><td width="20%" align="right"> <a accesskey="n" href="ch02.html">Next</a></td></tr></table><hr></div><div class="section" title="1.12.  Using Message Groups"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="Using-message-groups"></a>1.12. 
+    Using Message Groups
+  </h2></div></div></div><div class="section" title="1.12.1.  Overview"><div class="titlepage"><div><div><h3 class="title"><a name="usingmessagegroups-Overview"></a>1.12.1. 
+      Overview
+    </h3></div></div></div><p>
+        The broker allows messaging applications to classify a set of related messages as
+        belonging to a group.  This allows a message producer to indicate to the consumer
+        that a group of messages should be considered a single logical operation with
+        respect to the application.
+      </p><p>
+        The broker can use this group identification to enforce policies controlling how
+        messages from a given group can be distributed to consumers.  For instance, the
+        broker can be configured to guarantee all the messages from a particular group are
+        processed in order across multiple consumers.
+      </p><p>
+        For example, assume we have a shopping application that manages items in a virtual
+        shopping cart.  A user may add an item to their shopping cart, then change their
+        mind and remove it.  If the application sends an <span class="emphasis"><em>add</em></span> message to the broker,
+        immediately followed by a <span class="emphasis"><em>remove</em></span> message, they will be queued in the proper
+        order - <span class="emphasis"><em>add</em></span>, followed by <span class="emphasis"><em>remove</em></span>.
+      </p><p>
+        However, if there are multiple consumers, it is possible that once a consumer
+        acquires the <span class="emphasis"><em>add</em></span> message, a different consumer may acquire the
+        <span class="emphasis"><em>remove</em></span> message.  This allows both messages to be processed in parallel,
+        which could result in a "race" where the <span class="emphasis"><em>remove</em></span> operation is incorrectly
+        performed before the <span class="emphasis"><em>add</em></span> operation.
+      </p></div><div class="section" title="1.12.2.  Grouping Messages"><div class="titlepage"><div><div><h3 class="title"><a name="usingmessagegroups-GroupingMessages"></a>1.12.2. 
+        Grouping Messages
+      </h3></div></div></div><p>
+        In order to group messages, the application would designate a particular
+        message header as containing a message's <span class="emphasis"><em>group identifier</em></span>.  The group
+        identifier stored in that header field would be a string value set by the message
+        producer.  Messages from the same group would have the same group identifier
+        value. The key that identifies the header must also be known to the message
+        consumers.  This allows the consumers to determine a message's assigned group.
+      </p><p>
+        The header that is used to hold the group identifier, as well as the values used
+        as group identifiers, are totally under control of the application.
+      </p></div><div class="section" title="1.12.3.  The Role of the Broker"><div class="titlepage"><div><div><h3 class="title"><a name="usingmessagegroups-BrokerRole"></a>1.12.3. 
+        The Role of the Broker
+      </h3></div></div></div><p>
+        The broker will apply the following processing on each grouped message:
+        </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">Enqueue a received message on the destination queue.</li><li class="listitem">Determine the message's group by examining the message's group identifier header.</li><li class="listitem">Enforce <span class="emphasis"><em>consumption ordering</em></span> among messages belonging to the same group.</li></ul></div><p>
+        <span class="emphasis"><em>Consumption ordering</em></span> means that the broker will not allow outstanding
+        unacknowledged messages to <span class="emphasis"><em>more than one consumer for a given group</em></span>.
+      </p><p>
+        This means that only one consumer can be processing messages from a particular
+        group at a given time.  When the consumer acknowledges all of its acquired
+        messages, then the broker <span class="emphasis"><em>may</em></span> pass the next pending message
+        from that group to a different consumer.
+      </p><p>
+        Specifically, for any given group the broker allows only the first N messages in
+        the group to be delivered to a consumer.  The value of N would be determined by
+        the selected consumer's configured prefetch capacity.  The broker blocks access by
+        any other consumer to any remaining undelivered messages in that group.  Once the
+        receiving consumer has:
+        </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">acknowledged,</li><li class="listitem">released, or</li><li class="listitem">rejected</li></ul></div><p>
+        all the delivered messages, the broker allows the next messages in the group to be
+        delivered.  The next messages <span class="emphasis"><em>may</em></span> be delivered to a different
+        consumer.
+      </p><p>
+        Note well that distinct message groups would not block each other from delivery.
+        For example, assume a queue contains messages from two different message groups -
+        say group "A" and group "B" - and they are enqueued such that "A"'s messages are
+        in front of "B". If the first message of group "A" is in the process of being
+        consumed by a client, then the remaining "A" messages are blocked, but the
+        messages of the "B" group are available for consumption by other consumers - even
+        though it is "behind" group "A" in the queue.
+      </p></div><div class="section" title="1.12.4.  Well Behaved Consumers"><div class="titlepage"><div><div><h3 class="title"><a name="usingmessagegroups-ConsumerGuide"></a>1.12.4. 
+        Well Behaved Consumers
+      </h3></div></div></div><p>
+        The broker can only enforce policy when delivering messages. To guarantee that
+        strict message ordering is preserved, the consuming application must adhere to the
+        following rules:
+        </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">completely process the data in a received message before accepting
+          that message</li><li class="listitem">acknowledge (or reject) messages in the same order as they are
+          received</li><li class="listitem">avoid releasing messages (see below)</li></ul></div><p>
+        The term <span class="emphasis"><em>processed</em></span> means that the consumer has finished
+        updating all application state affected by the message that has been received.
+        See section 2.6.2. Transfer of Responsibility, of the AMQP-0.10 specification for
+        more detail.
+      </p><div class="note" title="Be Advised" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Be Advised</h3><p>
+          If a consumer does not adhere to the above rules, it may affect the ordering of
+          grouped messages even when the broker is enforcing consumption order.  This can
+          be done by selectively acknowledging and releasing messages from the same group.
+        </p><p>
+          Assume a consumer has received two messages from group "A", "A-1" and "A-2", in
+          that order.  If the consumer releases "A-1" then acknowledges "A-2", "A-1" will
+          be put back onto the queue and "A-2" will be removed from the queue.  This
+          allows another consumer to acquire and process "A-1" <span class="emphasis"><em>after</em></span>
+          "A-2" has been processed.
+        </p><p>
+          Under some application-defined circumstances, this may be acceptable behavior.
+          However, if order must be preserved, the client should either release
+          <span class="emphasis"><em>all</em></span> currently held messages, or discard the target message
+          using reject.
+        </p></div></div><div class="section" title="1.12.5.  Broker Configuration"><div class="titlepage"><div><div><h3 class="title"><a name="usingmessagegroups-BrokerConfig"></a>1.12.5. 
+        Broker Configuration
+      </h3></div></div></div><p>
+        In order for the broker to determine a message's group, the key for the header
+        that contains the group identifier must be provided to the broker via
+        configuration.  This is done on a per-queue basis, when the queue is first
+        configured.
+      </p><p>
+        This means that message group classification is determined by the message's destination
+        queue.
+      </p><p>
+        Specifically, the queue "holds" the header key that is used to find the message's
+        group identifier.  All messages arriving at the queue are expected to use the same
+        header key for holding the identifer.  Once the message is enqueued, the broker
+        looks up the group identifier in the message's header, and classifies the message
+        by its group.
+      </p><p>
+        Message group support can be enabled on a queue using the
+        <span class="command"><strong>qpid-config</strong></span> command line tool.  The following options should be
+        provided when adding a new queue:
+        </p><pre class="programlisting">
+          --group-header=<em class="replaceable"><code>header-name</code></em>  Enable message group support for this queue. Specify name of application header that holds the group identifier.
+          --shared-groups  Enforce ordered message group consumption across multiple consumers.
+        </pre><p>
+      </p><p>
+        Message group support may also be specified in the
+        <span class="command"><strong>queue.declare</strong></span> method via the <span class="command"><strong>arguments</strong></span>
+        parameter map, or using the messaging address syntax.  The following keys must be
+        provided in the arguments map to enable message group support on a queue:
+      </p><div class="table"><a name="id451025"></a><p class="title"><b>Table 1.15. Queue Declare/Addres Syntax Message Group Configuration Arguments</b></p><div class="table-contents"><table summary="Queue Declare/Addres Syntax Message Group Configuration Arguments" border="1"><colgroup><col><col></colgroup><thead><tr><th>Key</th><th>Value</th></tr></thead><tbody><tr><td>qpid.group_header_key</td><td>string - key for message header that holds the group identifier value</td></tr><tr><td>qpid.shared_msg_group</td><td>1 - enforce ordering across multiple consumers</td></tr></tbody></table></div></div><br class="table-break"><p>
+        It is important to note that there is no need to provide the actual group
+        identifer values that will be used. The broker learns this values as messages are
+        recieved.  Also, there is no practical limit - aside from resource limitations -
+        to the number of different groups that the broker can track at run time.
+      </p><div class="note" title="Restrictions" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Restrictions</h3><p>
+          Message grouping is not supported on LVQ or Priority queues.
+        </p></div><div class="example"><a name="id452271"></a><p class="title"><b>Example 1.1. Creating a message group queue via qpid-config</b></p><div class="example-contents"><p>
+          This example uses the qpid-config tool to create a message group queue called
+          "MyMsgQueue".  The message header that contains the group identifier will use
+          the key "GROUP_KEY".
+        </p><pre class="programlisting">
+          qpid-config add queue MyMsgQueue --group-header="GROUP_KEY" --shared-groups"
+        </pre></div></div><br class="example-break"><div class="example"><a name="id431662"></a><p class="title"><b>Example 1.2. Creating a message group queue using address syntax (C++)</b></p><div class="example-contents"><p>
+          This example uses the messaging address syntax to create a message group queue
+          with the same configuration as the previous example.
+        </p><pre class="programlisting">
+          sender = session.createSender("MyMsgQueue; {create:always, delete:receiver, node: {x-declare: {arguments:"
+                                        " {'qpid.group_header_key':'GROUP_KEY', 'qpid.shared_msg_group':1}}}}")
+        </pre></div></div><br class="example-break"><div class="section" title="1.12.5.1.  Default Group"><div class="titlepage"><div><div><h4 class="title"><a name="usingmessagegroups-DefaultGroup"></a>1.12.5.1. 
+          Default Group
+        </h4></div></div></div><p>
+          Should a message without a group identifier arrive at a queue configured for message grouping, the broker assigns the message to the default group.  Therefore, all such "unidentified" messages are considered by the broker as part of the same group.  The name of the default group is <span class="command"><strong>"qpid.no-group"</strong></span>.  This default can be overridden by suppling a different value to the broker configuration item <span class="command"><strong>"default-message-group"</strong></span>:
+          </p><div class="example"><a name="id435320"></a><p class="title"><b>Example 1.3. Overriding the default message group identifier for the broker</b></p><div class="example-contents"><pre class="programlisting">
+              qpidd --default-msg-group "EMPTY-GROUP"
+            </pre></div></div><p><br class="example-break">
+        </p></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch01s11.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch01.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch02.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">1.11. Qpid Interoperability Documentation </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Chapter 2. 
+      Managing the AMQP Messaging Broker
+    </td></tr></table></div></body></html>

@@ -1,0 +1,96 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>2.10.  Use Priority Queues</title><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"><link rel="home" href="index.html" title=""><link rel="up" href="ch02.html" title="Chapter 2. How Tos"><link rel="prev" href="ch02s09.html" title="2.9.  Qpid Java Build How To"><link rel="next" href="ch02s11.html" title="2.11. Slow Consumer Disconnect - User Guide"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.10. 
+      Use Priority Queues
+    </th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02s09.html">Prev</a> </td><th width="60%" align="center">Chapter 2. How Tos</th><td width="20%" align="right"> <a accesskey="n" href="ch02s11.html">Next</a></td></tr></table><hr></div><div class="section" title="2.10.  Use Priority Queues"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="id440553"></a>2.10. 
+      Use Priority Queues
+    </h2></div></div></div><div class="section" title="2.10.1.  General Information"><div class="titlepage"><div><div><h3 class="title"><a name="UsePriorityQueues-GeneralInformation"></a>2.10.1. 
+            General
+            Information
+          </h3></div></div></div><p>
+            The Qpid M3 release introduces priority queues into the Java
+            Messaging Broker, supporting JMS clients who wish to make use of
+            priorities in their messaging implementation.
+          </p><p>
+            There are some key points around the use of priority queues in
+            Qpid, discussed in the sections below.
+          </p></div><div class="section" title="2.10.2.  Defining Priority Queues"><div class="titlepage"><div><div><h3 class="title"><a name="UsePriorityQueues-DefiningPriorityQueues"></a>2.10.2. 
+            Defining
+            Priority Queues
+          </h3></div></div></div><p>
+            You must define a priority queue specifically before you start to
+            use it. You cannot subsequently change a queue to/from a priority
+            queue (without deleting it and re-creating).
+          </p><p>
+            You define a queue as a priority queue in the virtualhost
+            configuration file, which the broker loads at startup. When
+            defining the queue, add a &lt;priority&gt;true&lt;/priority&gt;
+            element. This will ensure that the queue has 10 distinct
+            priorities, which is the number supported by JMS.
+          </p><p>
+            If you require fewer priorities, it is possible to specify a
+            &lt;priorities&gt;int&lt;/priorities&gt; element (where int is a
+            valid integer value between 2 and 10 inclusive) which will give
+            the queue that number of distinct priorities. When messages are
+            sent to that queue, their effective priority will be calculated
+            by partitioning the priority space. If the number of effective
+            priorities is 2, then messages with priority 0-4 are treated the
+            same as "lower priority" and messages with priority 5-9 are
+            treated equivalently as "higher priority".
+          </p><pre class="programlisting">
+&lt;queue&gt;
+    &lt;name&gt;test&lt;/name&gt;
+    &lt;test&gt;
+        &lt;exchange&gt;amq.direct&lt;/exchange&gt;
+        &lt;priority&gt;true&lt;/priority&gt;
+    &lt;/test&gt;
+&lt;/queue&gt;
+</pre></div><div class="section" title="2.10.3.  Client configuration/messaging model for priority queues"><div class="titlepage"><div><div><h3 class="title"><a name="UsePriorityQueues-Clientconfiguration-2Fmessagingmodelforpriorityqueues"></a>2.10.3. 
+            Client configuration/messaging model for priority queues
+          </h3></div></div></div><p>
+            There are some other configuration &amp; paradigm changes which
+            are required in order that priority queues work as expected.
+          </p><div class="section" title="2.10.3.1.  Set low pre-fetch"><div class="titlepage"><div><div><h4 class="title"><a name="UsePriorityQueues-Setlowprefetch"></a>2.10.3.1. 
+            Set low pre-fetch
+          </h4></div></div></div><p>
+            Qpid clients receive buffered messages in batches, sized
+            according to the pre-fetch value. The current default is 5000.
+          </p><p>
+            However, if you use the default value you will probably
+            <span class="emphasis"><em>not</em></span> see desirable behaviour with messages of different
+            priority. This is because a message arriving after the pre-fetch
+            buffer has filled will not leap frog messages of lower priority.
+            It will be delivered at the front of the next batch of buffered
+            messages (if that is appropriate), but this is most likely NOT
+            what you need.
+          </p><p>
+            So, you need to set the prefetch values for your client
+            (consumer) to make this sensible. To do this set the java system
+            property max_prefetch on the client environment (using -D) before
+            creating your consumer.
+          </p><p>
+            Setting the Qpid pre-fetch to 1 for your client means that
+            message priority will be honoured by the Qpid broker as it
+            dispatches messages to your client. A default for all client
+            connections can be set via a system property:
+          </p><pre class="programlisting">
+-Dmax_prefetch=1
+</pre><p>
+            The prefetch can be also be adjusted on a per connection basis by
+            adding a 'maxprefetch' value to the <a class="xref" href="">???</a>
+          </p><pre class="programlisting">
+amqp://guest:guest@client1/development?maxprefetch='1'&amp;brokerlist='tcp://localhost:5672'
+</pre><p>
+            There is a slight performance cost here if using the receive()
+            method and you could test with a slightly higher pre-fetch (up to
+            10) if the trade-off between throughput and prioritisation is
+            weighted towards the former for your application. (If you're
+            using OnMessage() then this is not a concern.)
+          </p></div><div class="section" title="2.10.3.2.  Single consumer per session"><div class="titlepage"><div><div><h4 class="title"><a name="UsePriorityQueues-Singleconsumerpersession"></a>2.10.3.2. 
+            Single
+            consumer per session
+          </h4></div></div></div><p>
+            If you are using the receive() method to consume messages then
+            you should also only use one consumer per session with priority
+            queues. If you're using OnMessage() then this is not a concern.
+          </p></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s09.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch02s11.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.9. 
+      Qpid Java Build How To
+     </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 2.11. Slow Consumer Disconnect - User Guide</td></tr></table></div></body></html>

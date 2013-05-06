@@ -1,0 +1,1133 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Chapter 3.  Qpid JMX Management Console</title><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"><link rel="home" href="index.html" title=""><link rel="up" href="pt01.html" title="Part I. AMQP Messaging Broker (Implemented in Java)"><link rel="prev" href="ch02s11.html" title="2.11. Slow Consumer Disconnect - User Guide"><link rel="next" href="ch04.html" title="Chapter 4. Management Tools"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 3. 
+    Qpid JMX Management Console
+  </th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02s11.html">Prev</a> </td><th width="60%" align="center">Part I. AMQP Messaging Broker (Implemented in Java)</th><td width="20%" align="right"> <a accesskey="n" href="ch04.html">Next</a></td></tr></table><hr></div><div class="chapter" title="Chapter 3.  Qpid JMX Management Console"><div class="titlepage"><div><div><h2 class="title"><a name="Qpid-JMX-Management-Console"></a>Chapter 3. 
+    Qpid JMX Management Console
+  </h2></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="section"><a href="ch03.html#QpidJMXManagementConsole-QpidJMXManagementConsole">3.1.  Qpid JMX Management Console </a></span></dt><dd><dl><dt><span class="section"><a href="ch03.html#QpidJMXManagementConsole-Overview">3.1.1. 
+	Overview
+      </a></span></dt></dl></dd></dl></div><div class="section" title="3.1.  Qpid JMX Management Console"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="QpidJMXManagementConsole-QpidJMXManagementConsole"></a>3.1.  Qpid JMX Management Console </h2></div></div></div><div class="section" title="3.1.1.  Overview"><div class="titlepage"><div><div><h3 class="title"><a name="QpidJMXManagementConsole-Overview"></a>3.1.1. 
+	Overview
+      </h3></div></div></div><p>
+	The Qpid JMX Management Console is a standalone Eclipse
+	RCP application that communicates with the broker using
+	JMX.
+      </p><div class="section" title="3.1.1.1.  Configuring Management Users"><div class="titlepage"><div><div><h4 class="title"><a name="id442060"></a>3.1.1.1. 
+      Configuring Management Users
+    </h4></div></div></div><p>
+            The Qpid Java broker has a single source of users for the system.
+            So a user can connect to the broker to send messages and via the
+            JMX console to check the state of the broker.
+          </p><p>
+            
+          </p><div class="section" title="3.1.1.1.1.  Adding a new management user"><div class="titlepage"><div><div><h5 class="title"><a name="ConfiguringManagementUsers-Addinganewmanagementuser"></a>3.1.1.1.1. 
+            Adding
+            a new management user
+          </h5></div></div></div><p>
+            The broker does have some minimal configuration available to
+            limit which users can connect to the JMX console and what they
+            can do when they are there.
+          </p><p>
+            There are two steps required to add a new user with rights for
+            the JMX console.
+          </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>Create a new user login, see HowTo:<a class="xref" href="">???</a>
+            </p></li><li class="listitem"><p>Grant the new user permission to the JMX Console
+            </p></li></ol></div><div class="section" title="3.1.1.1.1.1.  Granting JMX Console Permissions"><div class="titlepage"><div><div><h6 class="title"><a name="ConfiguringManagementUsers-GrantingJMXConsolePermissions"></a>3.1.1.1.1.1. 
+            Granting
+            JMX Console Permissions
+          </h6></div></div></div><p>
+            By default new users do not have access to the JMX console. The
+            access to the console is controlled via the file
+            <span class="emphasis"><em>jmxremote.access</em></span>.
+          </p><p>
+            This file contains a mapping from user to privilege.
+          </p><p>
+            There are three privileges available:
+          </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>readonly - The user is able to log in and view queues but not
+            make any changes.
+            </p></li><li class="listitem"><p>readwrite - Grants user ability to read and write queue
+            attributes such as alerting values.
+            </p></li><li class="listitem"><p>admin - Grants the user full access including ability to edit
+            Users and JMX Permissions in addition to readwrite access.
+            </p></li></ol></div><p>
+            This file is read at start up and can forcibly be reloaded by an
+            admin user through the management console.
+          </p></div><div class="section" title="3.1.1.1.1.2.  Access File Format"><div class="titlepage"><div><div><h6 class="title"><a name="ConfiguringManagementUsers-AccessFileFormat"></a>3.1.1.1.1.2. 
+            Access
+            File Format
+          </h6></div></div></div><p>
+            The file is a standard Java properties file and has the following
+            format
+          </p><pre class="programlisting">
+&lt;username&gt;=&lt;privilege&gt;
+</pre><p>
+            If the username value is not a valid user (list in the specified
+            PrincipalDatabase) then the broker will print a warning when it
+            reads the file as that entry will have no meaning.
+          </p><p>
+            Only when the the username exists in both the access file and the
+            PrincipalDatabase password file will the user be able to login
+            via the JMX Console.
+          </p><div class="section" title="3.1.1.1.1.2.1.  Example File"><div class="titlepage"><div><div><h6 class="title"><a name="ConfiguringManagementUsers-ExampleFile"></a>3.1.1.1.1.2.1. 
+            Example File
+          </h6></div></div></div><p>
+            The file will be timestamped by the management console if edited
+            through the console.
+          </p><pre class="programlisting">
+#Generated by JMX Console : Last edited by user:admin
+#Tue Jun 12 16:46:39 BST 2007
+admin=admin
+guest=readonly
+user=readwrite
+</pre></div></div></div></div><div class="section" title="3.1.1.2.  Configuring Qpid JMX Management Console"><div class="titlepage"><div><div><h4 class="title"><a name="id456064"></a>3.1.1.2. 
+      Configuring Qpid JMX Management Console
+    </h4></div></div></div><div class="section" title="3.1.1.2.1.  Configuring Qpid JMX Management Console"><div class="titlepage"><div><div><h5 class="title"><a name="ConfiguringQpidJMXManagementConsole-ConfiguringQpidJMXManagementConsole"></a>3.1.1.2.1. 
+            Configuring Qpid JMX Management Console
+          </h5></div></div></div><p>
+            Qpid has a JMX management interface that exposes a number of
+            components of the running broker.
+            You can find out more about the features exposed by the JMX
+            interfaces <a class="xref" href="">???</a>.
+          </p><p>
+            
+          </p><div class="section" title="3.1.1.2.1.1.  Installing the Qpid JMX Management Console"><div class="titlepage"><div><div><h6 class="title"><a name="ConfiguringQpidJMXManagementConsole-InstallingtheQpidJMXManagementConsole"></a>3.1.1.2.1.1. 
+            Installing the Qpid JMX Management Console
+          </h6></div></div></div><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>Unzip the archive to a suitable location.</p><div class="note" title="SSL encrypted connections" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">SSL encrypted connections</h3><p>
+                        Recent versions of the broker can make use of SSL to
+                        encrypt their RMI based JMX connections. If a broker
+                        being connected to is making use of this ability then
+                        additional console configuration may be required,
+                        particularly when using self-signed certificates. See
+                        <a class="xref" href="">???</a> for details.
+                      </p></div></li></ol></div><div class="note" title="JMXMP based connections" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">JMXMP based connections</h3><p>
+	      In previous releases of Qpid (M4 and below) the broker
+	      JMX connections could make use of the JMXMPConnector for
+	      additional security over its default RMI based JMX
+	      configuration. This is no longer the case, with SSL
+	      encrypted RMI being the favored approach going forward.
+	      However, if you wish to connect to an older broker using
+	      JMXMP the console will support this so long as the
+	      <span class="emphasis"><em>jmxremote_optional.jar</em></span> file is provided to it.
+	      For details see <a class="xref" href="">???</a>.
+	    </p></div></div><div class="section" title="3.1.1.2.1.2.  Running the Qpid JMX Management Console"><div class="titlepage"><div><div><h6 class="title"><a name="ConfiguringQpidJMXManagementConsole-RunningtheQpidJMXManagementConsole"></a>3.1.1.2.1.2. 
+            Running the Qpid JMX Management Console
+          </h6></div></div></div><p>
+            The console can be started in the following way, depending on
+            platform:
+          </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Windows: by running the 'qpidmc.exe' executable file.
+            </p></li></ul></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Linux: by running the 'qpidmc' executable.
+            </p></li></ul></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Mac OS X: by launching the consoles application bundle (.app
+            file).
+            </p></li></ul></div></div><div class="section" title="3.1.1.2.1.3.  Using the Qpid JMX Management Console"><div class="titlepage"><div><div><h6 class="title"><a name="ConfiguringQpidJMXManagementConsole-UsingtheQpidJMXManagementConsole"></a>3.1.1.2.1.3. 
+            Using the Qpid JMX Management Console
+          </h6></div></div></div><p>
+            Please see <a class="xref" href="ch03.html#Qpid-JMX-Management-Console-User-Guide" title="3.1.1.5.  Qpid JMX Management Console User Guide">Section 3.1.1.5, &#8220;
+      Qpid JMX Management Console User Guide
+    &#8221;</a> for details on using this Eclipse RCP
+            application.
+          </p></div></div><div class="section" title="3.1.1.2.2.  Using JConsole"><div class="titlepage"><div><div><h5 class="title"><a name="ConfiguringQpidJMXManagementConsole-UsingJConsole"></a>3.1.1.2.2. 
+            Using
+            JConsole
+          </h5></div></div></div><p>
+            See <a class="xref" href="">???</a>
+          </p></div><div class="section" title="3.1.1.2.3.  Using HermesJMS"><div class="titlepage"><div><div><h5 class="title"><a name="ConfiguringQpidJMXManagementConsole-UsingHermesJMS"></a>3.1.1.2.3. 
+            Using
+            HermesJMS
+          </h5></div></div></div><p>
+            HermesJMS also offers integration with the Qpid management
+            interfaces. You can get instructions and more information from
+	    <a class="ulink" href="http://cwiki.apache.org/confluence/display/qpid/HermesJMS" target="_top">HermesJMS</a>.
+          </p></div><div class="section" title="3.1.1.2.4.  Using MC4J"><div class="titlepage"><div><div><h5 class="title"><a name="ConfiguringQpidJMXManagementConsole-UsingMC4J"></a>3.1.1.2.4. 
+            Using
+            MC4J
+          </h5></div></div></div><p>
+            <a class="ulink" href="qpid_www.mc4j.org" target="_top">MC4J</a> is an alternative
+            management tool. It provide a richer "dashboard" that can
+            customise the raw MBeans.
+          </p><div class="section" title="3.1.1.2.4.1.  Installation"><div class="titlepage"><div><div><h6 class="title"><a name="ConfiguringQpidJMXManagementConsole-Installation"></a>3.1.1.2.4.1. 
+            Installation
+          </h6></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>First download and install MC4J for your platform. Version
+            1.2 beta 9 is the latest version that has been tested.
+            </p></li><li class="listitem"><p>Copy the directory blaze/java/management/mc4j into
+            the directory &lt;MC4J-Installation&gt;/dashboards
+            </p></li></ul></div></div><div class="section" title="3.1.1.2.4.2.  Configuration"><div class="titlepage"><div><div><h6 class="title"><a name="ConfiguringQpidJMXManagementConsole-Configuration"></a>3.1.1.2.4.2. 
+            Configuration
+          </h6></div></div></div><p>
+            You should create a connection the JVM to be managed. Using the
+            Management-&gt;Create Server Connection menu option. The
+            connection URL should be of the form:
+            service:jmx:rmi:///jndi/rmi://localhost:8999/jmxrmi
+            making the appropriate host and post changes.
+          </p></div><div class="section" title="3.1.1.2.4.3.  Operation"><div class="titlepage"><div><div><h6 class="title"><a name="ConfiguringQpidJMXManagementConsole-Operation"></a>3.1.1.2.4.3. 
+            Operation
+          </h6></div></div></div><p>
+            You can view tabular summaries of the queues, exchanges and
+            connections using the Global Dashboards-&gt;QPID tree view. To
+            drill down on individual beans you can right click on the bean.
+            This will show any available graphs too.
+          </p></div></div></div><div class="section" title="3.1.1.3.  Management Console Security"><div class="titlepage"><div><div><h4 class="title"><a name="id456079"></a>3.1.1.3. 
+      Management Console Security
+    </h4></div></div></div><div class="section" title="3.1.1.3.1.  Management Console Security"><div class="titlepage"><div><div><h5 class="title"><a name="ManagementConsoleSecurity-ManagementConsoleSecurity"></a>3.1.1.3.1. 
+            Management
+            Console Security
+          </h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>
+                <a class="xref" href="ch03.html#ManagementConsoleSecurity-SSLencryptedRMI-280.5andabove-29" title="3.1.1.3.1.1.  SSL encrypted RMI (0.5 and above)">Section 3.1.1.3.1.1, &#8220;
+            SSL
+            encrypted RMI (0.5 and above)
+          &#8221;</a>
+              </p></li><li class="listitem"><p>
+                <a class="xref" href="ch03.html#ManagementConsoleSecurity-JMXMP-28M4andprevious-29" title="3.1.1.3.1.2.  JMXMP (M4 and previous)">Section 3.1.1.3.1.2, &#8220;
+            JMXMP
+            (M4 and previous)
+          &#8221;</a>
+              </p></li><li class="listitem"><p>
+                <a class="xref" href="ch03.html#ManagementConsoleSecurity-UserAccounts-26AccessRights" title="3.1.1.3.1.3.  User Accounts &amp; Access Rights">Section 3.1.1.3.1.3, &#8220;
+            User
+            Accounts &amp; Access Rights
+          &#8221;</a>
+              </p></li></ul></div><div class="section" title="3.1.1.3.1.1.  SSL encrypted RMI (0.5 and above)"><div class="titlepage"><div><div><h6 class="title"><a name="ManagementConsoleSecurity-SSLencryptedRMI-280.5andabove-29"></a>3.1.1.3.1.1. 
+            SSL
+            encrypted RMI (0.5 and above)
+          </h6></div></div></div><p>
+            Current versions of the broker make use of SSL encryption to
+            secure their RMI based JMX ConnectorServer for security purposes.
+            This ships enabled by default, although the test SSL keystore
+            used during development is not provided for security reasons
+            (using this would provide no security as anyone could have access
+            to it).
+          </p><div class="section" title="3.1.1.3.1.1.1.  Broker Configuration"><div class="titlepage"><div><div><h6 class="title"><a name="ManagementConsoleSecurity-BrokerConfiguration"></a>3.1.1.3.1.1.1. 
+            Broker
+            Configuration
+          </h6></div></div></div><p>
+            The broker configuration must be updated before the broker will
+            start. This can be done either by disabling the SSL support,
+            utilizing a purchased SSL certificate to create a keystore of
+            your own, or using the example 'create-example-ssl-stores' script
+            in the brokers bin/ directory to generate a self-signed keystore.
+          </p><p>
+            The broker must be configured with a keystore containing the
+            private and public keys associated with its SSL certificate. This
+            is accomplished by setting the Java environment properties
+            <span class="emphasis"><em>javax.net.ssl.keyStore</em></span> and
+            <span class="emphasis"><em>javax.net.ssl.keyStorePassword</em></span> respectively with the
+            location and password of an appropriate SSL keystore. Entries for
+            these properties exist in the brokers main configuration file
+            alongside the other management settings (see below), although the
+            command line options will still work and take precedence over the
+            configuration file.
+          </p><pre class="programlisting">
+&lt;management&gt;
+    &lt;ssl&gt;
+        &lt;enabled&gt;true&lt;/enabled&gt;
+        &lt;!-- Update below path to your keystore location, eg ${conf}/qpid.keystore  --&gt;
+        &lt;keyStorePath&gt;${prefix}/../test_resources/ssl/keystore.jks&lt;/keyStorePath&gt;
+        &lt;keyStorePassword&gt;password&lt;/keyStorePassword&gt;
+    &lt;/ssl&gt;
+&lt;/management&gt;
+</pre></div><div class="section" title="3.1.1.3.1.1.2.  JMX Management Console Configuration"><div class="titlepage"><div><div><h6 class="title"><a name="ManagementConsoleSecurity-JMXManagementConsoleConfiguration"></a>3.1.1.3.1.1.2. 
+            JMX
+            Management Console Configuration
+          </h6></div></div></div><p>
+            If the broker makes use of an SSL certificate signed by a known
+            signing CA (Certification Authority), the management console
+            needs no extra configuration, and will make use of Java's
+            built-in CA
+            truststore for certificate verification (you may however have to
+            update the system-wide default truststore if your CA is not
+            already present in it).
+          </p><p>
+            If however you wish to use a self-signed SSL certificate, then
+            the management console must be provided with an SSL truststore
+            containing a record for the SSL certificate so that it is able to
+            validate it when presented by the broker. This is performed by
+            setting the <span class="emphasis"><em>javax.net.ssl.trustStore</em></span> and
+            <span class="emphasis"><em>javax.net.ssl.trustStorePassword</em></span> environment variables
+            when starting the console. This can be done at the command line,
+            or alternatively an example configuration has been made within
+            the console's qpidmc.ini launcher configuration file that may
+            pre-configured in advance for repeated usage. See the <a class="xref" href="ch03.html#Qpid-JMX-Management-Console-User-Guide" title="3.1.1.5.  Qpid JMX Management Console User Guide">Section 3.1.1.5, &#8220;
+      Qpid JMX Management Console User Guide
+    &#8221;</a> for more
+            information on this configuration process.
+          </p></div><div class="section" title="3.1.1.3.1.1.3.  JConsole Configuration"><div class="titlepage"><div><div><h6 class="title"><a name="ManagementConsoleSecurity-JConsoleConfiguration"></a>3.1.1.3.1.1.3. 
+            JConsole
+            Configuration
+          </h6></div></div></div><p>
+            As with the JMX Management Console above, if the broker is using
+            a self-signed SSL certificate then in order to connect remotely
+            using JConsole, an appropriate trust store must be provided at
+            startup. See <a class="xref" href="">???</a> for further details on configuration.
+          </p></div><div class="section" title="3.1.1.3.1.1.4.  Additional Information"><div class="titlepage"><div><div><h6 class="title"><a name="ManagementConsoleSecurity-AdditionalInformation"></a>3.1.1.3.1.1.4. 
+            Additional
+            Information
+          </h6></div></div></div><p>
+            More information on Java's handling of SSL certificate
+            verification and customizing the keystores can be found in the
+	    <a class="ulink" href="http://java.sun.com/javase/6/docs/technotes/guides/security/jsse/JSSERefGuide.html#CustomizingStores" target="_top">http://java.sun.com/javase/6/docs/technotes/guides/security/jsse/JSSERefGuide.html#CustomizingStores</a>.
+          </p></div></div><div class="section" title="3.1.1.3.1.2.  JMXMP (M4 and previous)"><div class="titlepage"><div><div><h6 class="title"><a name="ManagementConsoleSecurity-JMXMP-28M4andprevious-29"></a>3.1.1.3.1.2. 
+            JMXMP
+            (M4 and previous)
+          </h6></div></div></div><p>
+            In previous releases of Qpid (M4 and below) the broker, can make
+            use of Sun's Java Management Extensions Messaging Protocol
+            (JMXMP) to provide encryption of the JMX connection, offering
+            increased security over the default unencrypted RMI based JMX
+            connection.
+          </p><div class="section" title="3.1.1.3.1.2.1.  Download and Install"><div class="titlepage"><div><div><h6 class="title"><a name="ManagementConsoleSecurity-DownloadandInstall"></a>3.1.1.3.1.2.1. 
+            Download and
+            Install
+          </h6></div></div></div><p>
+            This is possible by adding the jmxremote_optional.jar as provided
+            by Sun. This jar is covered by the Sun Binary Code License and is
+            not compatible with the Apache License which is why this
+            component is not bundled with Qpid.
+          </p><p>
+            Download the JMX Remote API 1.0.1_04 Reference Implementation
+            from <a class="xref" href="">???</a>. The included
+            'jmxremote-1_0_1-bin\lib\jmxremote_optional.jar' file must be
+            added to the broker classpath:
+          </p><p>
+            First set your classpath to something like this:
+          </p><pre class="programlisting">
+CLASSPATH=jmxremote_optional.jar
+</pre><p>
+            Then, run qpid-server passing the following additional flag:
+          </p><pre class="programlisting">
+qpid-server -run:external-classpath=first
+</pre><p>
+            Following this the configuration option can be updated to enabled
+            use of the JMXMP based JMXConnectorServer.
+          </p></div><div class="section" title="3.1.1.3.1.2.2.  Broker Configuration"><div class="titlepage"><div><div><h6 class="title"><a name="ManagementConsoleSecurity-BrokerConfiguration2"></a>3.1.1.3.1.2.2. 
+            Broker
+            Configuration
+          </h6></div></div></div><p>
+            To enabled this security option change the
+            <span class="emphasis"><em>security-enabled</em></span> value in your broker configuration
+            file.
+          </p><pre class="programlisting">
+    &lt;management&gt;
+        &lt;security-enabled&gt;true&lt;/security-enabled&gt;
+    &lt;/management&gt;
+</pre><p>
+            You may also (for M2 and earlier) need to set the following
+            system properties using the environment variable QPID_OPTS:
+          </p><p>
+            QPID_OPTS="-Dcom.sun.management.jmxremote
+            -Dcom.sun.management.jmxremote.port=8999
+            -Dcom.sun.management.jmxremote.authenticate=false
+            -Dcom.sun.management.jmxremote.ssl=false"
+          </p></div><div class="section" title="3.1.1.3.1.2.3.  JMX Management Console Configuration"><div class="titlepage"><div><div><h6 class="title"><a name="ManagementConsoleSecurity-JMXManagementConsoleConfiguration-2"></a>3.1.1.3.1.2.3. 
+            JMX
+            Management Console Configuration
+          </h6></div></div></div><p>
+            If you wish to connect to a broker configured to use JMXMP then
+            the console also requires provision of the Optional sections of
+            the JMX Remote API that are not included within the JavaSE
+            platform.
+          </p><p>
+            In order to make it available to the console, place the
+            'jmxremote_optional.jar' (rename the file if any additional
+            information is present in the file name) jar file within the
+            'plugins/jmxremote.sasl_1.0.1/' folder of the console release (on
+            Mac OS X you will need to select 'Show package contents' from the
+            context menu whilst selecting the management console bundle in
+            order to reveal the inner file tree).
+          </p><p>
+            Following the the console will automatically load the JMX Remote
+            Optional classes and attempt the JMXMP connection when connecting
+            to a JMXMP enabled broker.
+          </p></div></div><div class="section" title="3.1.1.3.1.3.  User Accounts &amp; Access Rights"><div class="titlepage"><div><div><h6 class="title"><a name="ManagementConsoleSecurity-UserAccounts-26AccessRights"></a>3.1.1.3.1.3. 
+            User
+            Accounts &amp; Access Rights
+          </h6></div></div></div><p>
+            In order to access the management operations via JMX, users must
+            have an account and have been assigned appropriate access rights.
+            See <a class="xref" href="">???</a>
+          </p></div></div></div><div class="section" title="3.1.1.4.  Qpid JMX Management Console FAQ"><div class="titlepage"><div><div><h4 class="title"><a name="id464990"></a>3.1.1.4. 
+      Qpid JMX Management Console FAQ
+    </h4></div></div></div><div class="section" title="3.1.1.4.1.  Errors"><div class="titlepage"><div><div><h5 class="title"><a name="QpidJMXManagementConsoleFAQ-Errors"></a>3.1.1.4.1. 
+            Errors
+          </h5></div></div></div><div class="section" title="3.1.1.4.1.1.  How do I connect the management console to my broker using security ?"><div class="titlepage"><div><div><h6 class="title"><a name="QpidJMXManagementConsoleFAQ-HowdoIconnectthemanagementconsoletomybrokerusingsecurity-3F"></a>3.1.1.4.1.1. 
+             How do I connect the management console to
+            my broker using security ?
+          </h6></div></div></div><p>
+            The <a class="xref" href="">???</a> page will give you the instructions that you should
+            use to set this up.
+          </p></div><div class="section" title="3.1.1.4.1.2.  I am unable to connect Qpid JMX MC/JConsole to a remote broker running on Linux, but connecting to localhost on that machine works ?"><div class="titlepage"><div><div><h6 class="title"><a name="QpidJMXManagementConsoleFAQ-IamunabletoconnectQpidJMXMC-2FJConsoletoaremotebrokerrunningonLinux-2Cbutconnectingtolocalhostonthatmachineworks-3F"></a>3.1.1.4.1.2. 
+             I am unable to connect Qpid JMX MC/JConsole
+            to a remote broker running on Linux, but connecting to localhost
+            on that machine works ?
+          </h6></div></div></div><p>
+            The RMI
+            based JMX ConnectorServer used by the broker requries two ports
+            to operate. The console connects to an RMI Registry running on
+            the primary (default 8999) port and retrieves the information
+            actually needed to connect to the JMX Server. This information
+            embeds the hostname of the remote machine, and if this is
+            incorrect or unreachable by the connecting client the connection
+            will fail.
+          </p><p>
+            This
+            situation arises due to the hostname configuration on Linux and
+            is generally encountered when the remote machine does not have a
+            DNS hostname entry on the local network, causing the hostname
+            command to return a loopback IP instead of a fully qualified
+            domain name or IP address accessible by remote client machines.
+            It is described in further detail at: <a class="xref" href="">???</a>
+          </p><p>
+            To
+            remedy this issue you can set the
+            <span class="emphasis"><em>java.rmi.server.hostname</em></span> system property to control the
+            hostname/ip reported to the RMI runtime when advertising the JMX
+            ConnectorServer. This can also be used to dictate the address
+            returned on a computer with multiple network interfaces to
+            control reachability. To do so, add the value
+            <span class="emphasis"><em>-Djava.rmi.server.hostname=&lt;desired hostname/ip&gt;</em></span>
+            to the QPID_OPTS environment variable before starting the
+            <span class="emphasis"><em>qpid-server</em></span> script.
+          </p></div></div></div><div class="section" title="3.1.1.5.  Qpid JMX Management Console User Guide"><div class="titlepage"><div><div><h4 class="title"><a name="Qpid-JMX-Management-Console-User-Guide"></a>3.1.1.5. 
+      Qpid JMX Management Console User Guide
+    </h4></div></div></div><div class="section" title="3.1.1.5.1.  Qpid JMX Management Console User Guide"><div class="titlepage"><div><div><h5 class="title"><a name="QpidJMXManagementConsoleUserGuide-QpidJMXManagementConsoleUserGuide"></a>3.1.1.5.1. 
+            Qpid JMX Management Console User Guide
+          </h5></div></div></div><p>
+            
+            The Qpid JMX Management Console is a standalone Eclipse RCP
+            application for managing and monitoring the Qpid Java server
+            utilising its JMX management interfaces.
+          </p><p>
+            This guide will give an overview of configuring the console, the
+            features supported by it, and how to make use of the console in
+            managing the various JMX Management Beans (MBeans) offered by the
+            Qpid Java server.
+          </p></div><div class="section" title="3.1.1.5.2.  Startup &amp; Configuration"><div class="titlepage"><div><div><h5 class="title"><a name="QpidJMXManagementConsoleUserGuide-Startup-26Configuration"></a>3.1.1.5.2. 
+            
+            Startup &amp; Configuration
+          </h5></div></div></div><p>
+            
+          </p><div class="section" title="3.1.1.5.2.1.  Startup"><div class="titlepage"><div><div><h6 class="title"><a name="QpidJMXManagementConsoleUserGuide-Startup"></a>3.1.1.5.2.1. 
+            Startup
+          </h6></div></div></div><p>
+            
+            The console can be started in the following way, depending on
+            platform:
+          </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>
+              <span class="emphasis"><em>Windows:</em></span> by running the <span class="emphasis"><em>qpidmc.exe</em></span> executable
+              file.
+            </p></li><li class="listitem"><p>
+              <span class="emphasis"><em>Linux:</em></span> by running the <span class="emphasis"><em>qpidmc</em></span> executable.
+            </p></li><li class="listitem"><p>
+              <span class="emphasis"><em>Mac OS X:</em></span> by launching the <span class="emphasis"><em>Qpid Management
+              Console.app</em></span> application bundle.
+            </p></li></ul></div><p>
+            
+          </p></div><div class="section" title="3.1.1.5.2.2.  SSL configuration"><div class="titlepage"><div><div><h6 class="title"><a name="QpidJMXManagementConsoleUserGuide-SSLconfiguration"></a>3.1.1.5.2.2. 
+            SSL
+            configuration
+          </h6></div></div></div><p>
+            
+            Newer Qpid Java servers can protect their JMX connections with
+            SSL, and this is enabled by default. When attempting to connect
+            to a server with this enabled, the console must be able to verify
+            the SSL certificate presented to it by the server or the
+            connection will fail.
+          </p><p>
+            If the server makes use of an SSL certificate signed by a known
+            Signing CA (Certification Authority) then the console needs no
+            extra configuration, and will make use of Java's default
+            system-wide CA TrustStore for certificate verification (you may
+            however have to update the system-wide default CA TrustStore if
+            your certified is signed by a less common CA that is not already
+            present in it).
+          </p><p>
+            If however the server is equipped with a self-signed SSL
+            certificate, then the management console must be provided with an
+            appropriate SSL TrustStore containing the public key for the SSL
+            certificate, so that it is able to validate it when presented by
+            the server. The server ships with a script to create an example
+            self-signed SSL certificate, and store the relevant entries in a
+            KeyStore and matching TrustStore. This script can serve as a
+            guide on how to use the Java Keytool security utility to
+            manipulate your own stores, and more information can be found in
+            the JSSE Reference Guide: 
+	    <a class="ulink" href="http://java.sun.com/javase/6/docs/technotes/guides/security/jsse/JSSERefGuide.html#CustomizingStores" target="_top">http://java.sun.com/javase/6/docs/technotes/guides/security/jsse/JSSERefGuide.html#CustomizingStores</a>.
+          </p><p>
+            Supplying the necessary details to the console is performed by
+            setting the <span class="emphasis"><em>javax.net.ssl.trustStore</em></span> and
+            <span class="emphasis"><em>javax.net.ssl.trustStorePassword</em></span> environment variables
+            when starting it. This can be done at the command line, but the
+            preferred option is to set the configuration within the
+            <span class="emphasis"><em>qpidmc.ini</em></span> launcher configuration file for repeated
+            usage. This file is equipped with a template to ease
+            configuration, this should be uncommented and edited to suit your
+            needs. It can be found in the root of the console releases for
+            Windows, and Linux. For Mac OS X the file is located within the
+            consoles <span class="emphasis"><em>.app</em></span> application bundle, and to locate and edit
+            it you must select <span class="emphasis"><em>'Show Package Contents'</em></span> when
+            accessing the context menu of the application, then browse to the
+            <span class="emphasis"><em>Contents/MacOS</em></span> sub folder to locate the file.
+          </p></div><div class="section" title="3.1.1.5.2.3.  JMXMP configuration"><div class="titlepage"><div><div><h6 class="title"><a name="QpidJMXManagementConsoleUserGuide-JMXMPconfiguration"></a>3.1.1.5.2.3. 
+            JMXMP
+            configuration
+          </h6></div></div></div><p>
+            
+            Older releases of the Qpid Java server can make use of the Java
+            Management Extensions Messaging Protocol (JMXMP) to provide
+            protection for their JMX connections. This occurs when the server
+            has its main configuration set with the management
+            <span class="emphasis"><em>'security-enabled'</em></span> property set to true.
+          </p><p>
+            In order to connect to this configuration of server, the console
+            needs an additional library that is not included within the Java
+            SE platform and cannot be distributed with the console due to
+            licensing restrictions.
+          </p><p>
+            You can download the JMX Remote API 1.0.1_04 Reference
+            Implementation from the Sun website <a class="xref" href="">???</a>. The included
+            <span class="emphasis"><em>jmxremote-1_0_1-bin/lib/jmxremote_optional.jar</em></span> file must
+            be added to the <span class="emphasis"><em>plugins/jmxremote.sasl_1.0.1</em></span> folder of
+            the console release (again, in Mac OS X you will need to select
+            <span class="emphasis"><em>'Show package contents'</em></span> from the context menu whilst
+            selecting the management console bundle in order to reveal the
+            inner file tree).
+          </p><p>
+            Following this the console will automatically load the JMX Remote
+            Optional classes and negotiate the SASL authentication profile
+            type when encountering a JMXMP enabled Qpid Java server.
+          </p></div></div><div class="section" title="3.1.1.5.3.  Managing Server Connections"><div class="titlepage"><div><div><h5 class="title"><a name="QpidJMXManagementConsoleUserGuide-ManagingServerConnections"></a>3.1.1.5.3. 
+            
+            Managing Server Connections
+          </h5></div></div></div><p>
+            
+          </p><div class="section" title="3.1.1.5.3.1.  Main Toolbar"><div class="titlepage"><div><div><h6 class="title"><a name="QpidJMXManagementConsoleUserGuide-MainToolbar"></a>3.1.1.5.3.1. 
+            Main Toolbar
+          </h6></div></div></div><p>
+            
+            The main toolbar of the console can be seen in the image below.
+            The left most buttons respectively allow for adding a new server
+            connection, reconnecting to an existing server selected in the
+            connection tree, disconnecting the selected server connection,
+            and removing the server from the connection tree.
+          </p><p>
+            </p><div class="mediaobject"><img src="images/jmx_console/3113098.png"><div class="caption"><p></p></div></div><p>
+            
+            
+            Beside these buttons is a combo for selecting the refresh
+            interval; that is, how often the console requests updated
+            information to display for the currently open area in the main
+            view. Finally, the right-most button enables an immediate update.
+          </p></div><div class="section" title="3.1.1.5.3.2.  Connecting to a new server"><div class="titlepage"><div><div><h6 class="title"><a name="QpidJMXManagementConsoleUserGuide-Connectingtoanewserver"></a>3.1.1.5.3.2. 
+            Connecting
+            to a new server
+          </h6></div></div></div><p>
+            
+            To connect to a new server, press the <span class="emphasis"><em>Add New Server</em></span>
+            toolbar button, or select the <span class="emphasis"><em>Qpid Manager -&gt; Add New
+            Connection</em></span> menu item. At this point a dialog box will be
+            displayed requesting the server details, namely the server
+            hostname, management port, and a username and password. An
+            example is shown below:
+          </p><p>
+            </p><div class="mediaobject"><img src="images/jmx_console/3113099.png"><div class="caption"><p></p></div></div><p>
+          </p><p>
+            
+            Once all the required details are entered, pressing Connect will
+            initiate a connection attempt to the server. It the attempt fails
+            a reason will be shown and the server will not be added to the
+            connection tree. If the attempt is successful the server will be
+            added to the connections list and the entry expanded to show the
+            initial administration MBeans the user has access to and any
+            VirtualHosts present on the server, as can be seen in the figure
+            below.
+          </p><p>
+            </p><div class="mediaobject"><img src="images/jmx_console/3113100.png"><div class="caption"><p></p></div></div><p>
+          </p><p>
+            
+            If the server supports a newer management API than the console in
+            use, once connected this initial screen will contain a message on
+            the right, indicating an upgraded console should be sought by the
+            user to ensure all management functionality supported by the
+            server is being utilised.
+          </p></div><div class="section" title="3.1.1.5.3.3.  Reconnecting to a server"><div class="titlepage"><div><div><h6 class="title"><a name="QpidJMXManagementConsoleUserGuide-Reconnectingtoaserver"></a>3.1.1.5.3.3. 
+            Reconnecting
+            to a server
+          </h6></div></div></div><p>
+            
+            If a server has been connected to previously, it will be saved as
+            an entry in the connection tree for further use. On subsequent
+            connections the server can simply be selected from the tree and
+            using the <span class="emphasis"><em>Reconnect</em></span> toolbar button or <span class="emphasis"><em>Qpid Manager
+            -&gt; Reconnect</em></span> menu item. At this stage the console will
+            prompt simply for the username and password with which the user
+            wishes to connect, and following a successful connection the
+            screen will appear as shown previously above.
+          </p></div><div class="section" title="3.1.1.5.3.4.  Disconnecting from a server"><div class="titlepage"><div><div><h6 class="title"><a name="QpidJMXManagementConsoleUserGuide-Disconnectingfromaserver"></a>3.1.1.5.3.4. 
+            Disconnecting
+            from a server
+          </h6></div></div></div><p>
+            
+            To disconnect from a server, select the connection tree node for
+            the server and press the <span class="emphasis"><em>Disconnect</em></span> toolbar button, or
+            use the <span class="emphasis"><em>Qpid Manager -&gt; Disconnect</em></span> menu option.
+          </p></div><div class="section" title="3.1.1.5.3.5.  Removing a server"><div class="titlepage"><div><div><h6 class="title"><a name="QpidJMXManagementConsoleUserGuide-Removingaserver"></a>3.1.1.5.3.5. 
+            Removing a
+            server
+          </h6></div></div></div><p>
+            
+            To remove a server from the connection list, select the
+            connection tree node for the server and press the <span class="emphasis"><em>Remove</em></span>
+            toolbar button, or use the <span class="emphasis"><em>Qpid Manager -&gt; Remove
+            Connection</em></span> menu option.
+          </p></div></div><div class="section" title="3.1.1.5.4.  Navigating a connected server"><div class="titlepage"><div><div><h5 class="title"><a name="QpidJMXManagementConsoleUserGuide-Navigatingaconnectedserver"></a>3.1.1.5.4. 
+            Navigating a connected server
+          </h5></div></div></div><p>
+            
+            Once connected to a server, the various areas available for
+            administration are accessed using the Qpid Connections tree at
+            the left side of the application. To open a particular MBean from
+            the tree for viewing, simply select it in the tree and it will be
+            opened in the main view.
+            </p><div class="mediaobject"><img src="images/jmx_console/3113101.png"><div class="caption"><p></p></div></div><p>
+          </p><p>
+            As there may be vast numbers of Queues, Connections, and
+            Exchanges on the server these MBeans are not automatically added
+            to the tree along with the general administration MBeans.
+            Instead, dedicated selection areas are provided to allow users to
+            select which Queue/Connection/Exchange they wish to view or add
+            to the tree. These areas can be found by clicking on the
+            Connections, Exchanges, and Queues nodes in the tree under each
+            VirtualHost, as shown in the figure above. One or more MBeans may
+            be selected and added to the tree as Favourites using the button
+            provided. These settings are saved for future use, and each time
+            the console connects to the server it will check for the presence
+            of the MBean previously in the tree and add them if they are
+            still present. Queue/Connection/Exchange MBeans can be removed
+            from the tree by right clicking on them to expose a context menu
+            allowing deletion.
+          </p><p>
+            </p><div class="mediaobject"><img src="images/jmx_console/3113102.png"><div class="caption"><p></p></div></div><p>
+          </p><p>
+            As an alternative way to open a particular MBean for viewing,
+            without first adding it to the tree, you can simply double click
+            an entry in the table within the Queue/Connection/Exchange
+            selection areas to open it immediately. It is also possible to
+            open some MBeans like this whilst viewing certain other MBeans.
+            When opening an MBean in either of these ways, a Back button is
+            enabled in the top right corner of the main view. Using this
+            button will return you to the selection area or MBean you were
+            previously viewing. The history resets each time the tree is used
+            to open a new area or MBean.
+          </p></div><div class="section" title="3.1.1.5.5.  ConfigurationManagement MBean"><div class="titlepage"><div><div><h5 class="title"><a name="QpidJMXManagementConsoleUserGuide-ConfigurationManagementMBean"></a>3.1.1.5.5. 
+            
+            ConfigurationManagement MBean
+          </h5></div></div></div><p>
+            
+            The ConfigurationManagement MBean is available on newer servers,
+            to users with admin level management rights. It offers the
+            ability to perform a live reload of the <span class="emphasis"><em>Security</em></span>
+            sections defined in the main server configuration file (e.g.
+            defaults to: <span class="emphasis"><em>etc/config.xml</em></span>). This is mainly to allow
+            updating the server Firewall configuration to new settings
+            without a restart, and can be performed by clicking the Execute
+            button and confirming the prompt which follows.
+          </p><p>
+            </p><div class="mediaobject"><img src="images/jmx_console/3113103.png"><div class="caption"><p></p></div></div><p>
+          </p></div><div class="section" title="3.1.1.5.6.  LoggingManagement MBean"><div class="titlepage"><div><div><h5 class="title"><a name="QpidJMXManagementConsoleUserGuide-LoggingManagementMBean"></a>3.1.1.5.6. 
+            
+            LoggingManagement MBean
+          </h5></div></div></div><p>
+            
+            The LoggingManagement MBean is available on newer servers, and
+            accessible by admin level users. It allows live alteration of the
+            logging behaviour, both at a Runtime-only level and at the
+            configuration file level. The latter can optionally affect the
+            Runtime configuration, either through use of the servers
+            automated LogWatch ability which detects changes to the
+            configuration file and reloads it, or by manually requesting a
+            reload. This functionality is split across two management tabs,
+            Runtime Options and ConfigurationFile Options.
+          </p><div class="section" title="3.1.1.5.6.1.  Runtime Options"><div class="titlepage"><div><div><h6 class="title"><a name="QpidJMXManagementConsoleUserGuide-RuntimeOptions"></a>3.1.1.5.6.1. 
+            Runtime
+            Options
+          </h6></div></div></div><p>
+            
+            </p><div class="mediaobject"><img src="images/jmx_console/3113104.png"><div class="caption"><p></p></div></div><p>
+          </p><p>
+            The Runtime Options tab allows manipulation of the logging
+            settings without affecting the configuration files (this means
+            the changes will be lost when the server restarts), and gives
+            individual access to every Logger active within the server.
+          </p><p>
+            As shown in the figure above, the table in this tab presents the
+            Effective Level of each Logger. This is because the Loggers form
+            a hierarchy in which those without an explicitly defined (in the
+            logging configuration file) Level will inherit the Level of their
+            immediate parent; that is, the Logger whose full name is a prefix
+            of their own, or if none satisfy that condition then the
+            RootLogger is their parent. As example, take the
+            <span class="emphasis"><em>org.apache.qpid</em></span> Logger. It is parent to all those below
+            it which begin with <span class="emphasis"><em>org.apache.qpid</em></span> and unless they have
+            a specific Level of their own, they will inherit its Level. This
+            can be seen in the figure, whereby all the children Loggers
+            visible have a level of WARN just like their parent, but the
+            RootLogger Level is INFO; the children have inherited the WARN
+            level from <span class="emphasis"><em>org.apache.qpid</em></span> rather than INFO from the
+            RootLogger.
+          </p><p>
+            To aid with this distinction, the Logger Levels that are
+            currently defined in the configuration file are highlighted in
+            the List. Changing these levels at runtime will also change the
+            Level of all their children which haven't been set their own
+            Level using the runtime options. In the latest versions of the
+            LoggingManagement MBean, it is possible to restore a child logger
+            that has had an explicit level se, to inheriting that of its
+            parent by setting it to an INHERITED level that removes any
+            previously set Level of its own.
+          </p><p>
+            </p><div class="mediaobject"><img src="images/jmx_console/3113105.png"><div class="caption"><p></p></div></div><p>
+          </p><p>
+            In order to set one of more Loggers to a new Level, they should
+            be selected in the table (or double click an individual Logger to
+            modify it) and the <span class="emphasis"><em>Edit Selected Logger(s)</em></span> button
+            pressed to load the dialog shown above. At this point, any of the
+            available Levels supported by the server can be applied to the
+            Loggers selected and they will immediately update, as will any
+            child Loggers without their own specific Level.
+          </p><p>
+            The RootLogger can be similarly edited using the button at the
+            bottom left of the window.
+          </p></div><div class="section" title="3.1.1.5.6.2.  ConfigurationFile Options"><div class="titlepage"><div><div><h6 class="title"><a name="QpidJMXManagementConsoleUserGuide-ConfigurationFileOptions"></a>3.1.1.5.6.2. 
+            ConfigurationFile
+            Options
+          </h6></div></div></div><p>
+            
+            The ConfigurationFile Options tab allows alteration of the Level
+            settings for the Loggers defined in the configuration file,
+            allowing changes to persist following a restart of the server.
+            Changes made to the configuration file are only applied
+            automatically while the sever is running if it was configured to
+            enable the LogWatch capability, meaning it will monitor the
+            configuration file for changes and apply the new configuration
+            when the change is detected. If this was not enabled, the changes
+            will be picked up when the server is restarted. The status of the
+            LogWatch feature is shown at the bottom of the tab.
+            Alternatively, in the latest versions of the LoggingManagement
+            MBean it is possible to reload the logging configuration file on
+            demand.
+          </p><p>
+            Manipulating the Levels is as on the Runtime Options tab, either
+            double-click an individual Logger entry or select multiple
+            Loggers and use the button to load the dialog to set the new
+            Level.
+          </p><p>
+            </p><div class="mediaobject"><img src="images/jmx_console/3113106.png"><div class="caption"><p></p></div></div><p>
+          </p><p>
+            One issue to note of when reloading the configuration file
+            settings, either automatically using LogWatch or manually, is
+            that any Logger set to a specific Level using the Runtime Options
+            tab that is not defined in the configuration file will maintain
+            that Level when the configuration file is reloaded. In other
+            words, if a Logger is defined in the configuration file, then the
+            configuration file will take precedence at reload, otherwise the
+            Runtime options take precedence.
+          </p><p>
+            This situation will be immediately obvious by examining the
+            Runtime Options tab to see the effective Level of each Logger
+            &#8211; unless it has been altered with the RuntimeOptions or
+            specifically set in the configuration file, a Logger Level should
+            match that of its parent. In the latest versions of the
+            LoggingManagement MBean, it is possible to use the RuntimeOptions
+            to restore a child logger to inheriting from its parent by
+            setting it with an INHERITED level that removes any previously
+            set Level of its own.
+            
+          </p></div></div><div class="section" title="3.1.1.5.7.  ServerInformation MBean"><div class="titlepage"><div><div><h5 class="title"><a name="QpidJMXManagementConsoleUserGuide-ServerInformationMBean"></a>3.1.1.5.7.             
+            ServerInformation MBean
+          </h5></div></div></div><p>
+            
+            </p><div class="mediaobject"><img src="images/jmx_console/3113107.png"><div class="caption"><p></p></div></div><p>
+          </p><p>
+            The ServerInformation MBean currently only conveys various pieces
+            of version information to allow precise identification of the
+            server version and its management capabilities. In future it is
+            likely to convey additional server-wide details and/or
+            functionality.
+          </p></div><div class="section" title="3.1.1.5.8.  UserManagement MBean"><div class="titlepage"><div><div><h5 class="title"><a name="QpidJMXManagementConsoleUserGuide-UserManagementMBean"></a>3.1.1.5.8. 
+            
+            UserManagement MBean
+          </h5></div></div></div><p>
+            
+            The UserManagement MBean is accessible by admin level users, and
+            allows manipulation of existing user accounts and creation of new
+            user accounts.
+          </p><p>
+            </p><div class="mediaobject"><img src="images/jmx_console/3113108.png"><div class="caption"><p></p></div></div><p>
+          </p><p>
+            
+            To add a new user, press the <span class="emphasis"><em>Add New User</em></span> button, which
+            will load the dialog shown below.
+          </p><p>
+            </p><div class="mediaobject"><img src="images/jmx_console/3113109.png"><div class="caption"><p></p></div></div><p>
+          </p><p>
+            Here you may enter the new users Username, Password, and select
+            their JMX Management Rights. This controls whether or not they
+            have access to the management interface, and if so what
+            capabilities are accessible. <span class="emphasis"><em>Read Only</em></span> access allows
+            undertaking any operations that do not alter the server state,
+            such as viewing messages. <span class="emphasis"><em>Read + Write</em></span> access allows use
+            of all operations which are not deemed admin-only (such as those
+            in the UserManagement MBean itself). <span class="emphasis"><em>Admin</em></span> access allows
+            a user to utilize any operation, and view the admin-only MBeans
+            (currently these are ConfigurationManagement, LoggingManagement,
+            and UserManagement).
+          </p><p>
+            One or more users at a time may be deleted by selecting them in
+            the table and clicking the <span class="emphasis"><em>Delete User(s)</em></span> button. The
+            console will then prompt for confirmation before undertaking the
+            removals. Similarly, the access rights for one or more users may
+            be updated by selecting them in the table and clicking the
+            <span class="emphasis"><em>Set Rights</em></span> button. The console will then display a
+            dialog enabling selection of the new access level and
+            confirmation to undertake the update.
+          </p><p>
+            An individual user password may be updated by selecting the user
+            in the table in and clicking the <span class="emphasis"><em>Set Password</em></span> button.
+            The console will then display a dialog enabling input of the new
+            password and confirmation to undertake the update.
+          </p><p>
+            
+            The server caches the user details in memory to aid performance.
+            If may sometimes be necessary to externally modify the password
+            and access right files on disk. In order for these changes to be
+            known to the server without a restart, it must be instructed to
+            reload the file contents. This can be done using the provided
+            <span class="emphasis"><em>Reload User Details</em></span> button (on older servers, only the
+            management rights file is reloaded, on newer servers both files
+            are. The description on screen will indicate the behaviour).
+            After pressing this button the console will seek confirmation
+            before proceeding.
+          </p></div><div class="section" title="3.1.1.5.9.  VirtualHostManager MBean"><div class="titlepage"><div><div><h5 class="title"><a name="QpidJMXManagementConsoleUserGuide-VirtualHostManagerMBean"></a>3.1.1.5.9. 
+            
+            VirtualHostManager MBean
+          </h5></div></div></div><p>
+            
+            Each VirtualHost in the server has an associated
+            VirtualHostManager MBean. This allows viewing, creation, and
+            deletion of Queues and Exchanges within the VirtualHost.
+          </p><p>
+            Clicking the <span class="emphasis"><em>Create</em></span> button in the Queue section will
+            open a dialog allowing specification of the Name, Owner
+            (optional), and durability properties of the new Queue, and
+            confirmation of the operation.
+          </p><p>
+            One or more Queues may be deleted by selecting them in the table
+            and clicking the <span class="emphasis"><em>Delete</em></span> button. This will unregister the
+            Queue bindings, remove the subscriptions and delete the Queue(s).
+            The console will prompt for confirmation before undertaking the
+            operation.
+          </p><p>
+            </p><div class="mediaobject"><img src="images/jmx_console/3113110.png"><div class="caption"><p></p></div></div><p>
+          </p><p>
+            Clicking the <span class="emphasis"><em>Create</em></span> button in the Exchange section will
+            open a dialog allowing specification of the Name, Type, and
+            Durable attributes of the new Exchange, and confirmation of the
+            operation.
+          </p><p>
+            One or more Exchanges may be deleted by selecting them in the
+            table and clicking the <span class="emphasis"><em>Delete</em></span> button. This will
+            unregister all the related channels and Queue bindings then
+            delete the Exchange(s). The console will prompt for confirmation
+            before undertaking the operation.
+          </p><p>
+            
+            Double-clicking on a particular Queue or Exchange name in the
+            tables will open the MBean representing it.
+          </p></div><div class="section" title="3.1.1.5.10.  Notifications"><div class="titlepage"><div><div><h5 class="title"><a name="QpidJMXManagementConsoleUserGuide-Notifications"></a>3.1.1.5.10. 
+            
+            Notifications
+          </h5></div></div></div><p>
+            
+            MBeans on the server can potentially send Notifications that
+            users may subscribe to. When managing an individual MBean that
+            offers Notifications types for subscription, the console supplies
+            a Notifications tab to allow (un)subscription to the
+            Notifications if desired and viewing any that are received
+            following subscription.
+          </p><p>
+            In order to provide quicker access to/awareness of any received
+            Notifications, each VirtualHost area in the connection tree has a
+            Notifications area that aggregates all received Notifications for
+            MBeans in that VirtualHost. An example of this can be seen in the
+            figure below.
+          </p><p>
+            </p><div class="mediaobject"><img src="images/jmx_console/3113111.png"><div class="caption"><p></p></div></div><p>
+          </p><p>
+            All received Notifications will be displayed until such time as
+            the user removes them, either in this aggregated view, or in the
+            Notifications area of the individual MBean that generated the
+            Notification.
+          </p><p>
+            They may be cleared selectively or all at once. To clear
+            particular Notifications, they should be selected in the table
+            before pressing the <span class="emphasis"><em>Clear</em></span> button. To clear all
+            Notifications, simply press the <span class="emphasis"><em>Clear</em></span> button without
+            anything selected in the table, at which point the console will
+            request confirmation of this clear-all action.
+          </p></div><div class="section" title="3.1.1.5.11.  Managing Queues"><div class="titlepage"><div><div><h5 class="title"><a name="QpidJMXManagementConsoleUserGuide-ManagingQueues"></a>3.1.1.5.11. 
+             Managing
+            Queues
+          </h5></div></div></div><p>
+            
+            As mentioned in earlier discussion of Navigation, Queue MBeans
+            can be opened either by double clicking an entry in the Queues
+            selection area, or adding a queue to the tree as a favourite and
+            clicking on its tree node. Unique to the Queue selection screen
+            is the ability to view additional attributes beyond just that of
+            the Queue Name. This is helpful for determining which Queues
+            satisfy a particular condition, e.g. having &lt;X&gt; messages on
+            the queue. The example below shows the selection view with
+            additional attributes <span class="emphasis"><em>Consumer Count, Durable, MessageCount,
+            and QueueDepth</em></span> (selected using the <span class="emphasis"><em>Select
+            Attributes</em></span> button at the bottom right corner of the
+            table)<span class="emphasis"><em>.</em></span>
+          </p><p>
+            </p><div class="mediaobject"><img src="images/jmx_console/3113112.png"><div class="caption"><p></p></div></div><p>
+          </p><p>
+            Upon opening a Queue MBean, the Attributes tab is displayed, as
+            shown below. This allows viewing the value all attributes,
+            editing those which are writable values (highlighted in blue) if
+            the users management permissions allow, viewing descriptions of
+            their purpose, and graphing certain numerical attribute values as
+            they change over time.
+          </p><p>
+            </p><div class="mediaobject"><img src="images/jmx_console/3113113.png"><div class="caption"><p></p></div></div><p>
+          </p><p>
+            The next tab contains the operations that can be performed on the
+            queue. The main table serves as a means of viewing the messages
+            on the queue, and later for selecting specific messages to
+            operate upon. It is possible to view any desired range of
+            messages on the queue by specifying the visible range using the
+            fields at the top and pressing the <span class="emphasis"><em>Set</em></span> button. Next to
+            this there are helper buttons to enable faster browsing through
+            the messages on the queue; these allow moving forward and back by
+            whatever number of messages is made visible by the viewing range
+            set. The Queue Position column indicates the position of each
+            message on the queue, but is only present when connected to newer
+            servers as older versions cannot provide the necessary
+            information to show this (unless only a single message position
+            is requested).
+          </p><p>
+            </p><div class="mediaobject"><img src="images/jmx_console/3113114.png"><div class="caption"><p></p></div></div><p>
+          </p><p>
+            Upon selecting a message in the table, its header properties and
+            redelivery status are updated in the area below the table. Double
+            clicking a message in the table (or using the <span class="emphasis"><em>View Message
+            Content</em></span> button to its right) will open a dialog window
+            displaying the contents of the message.
+          </p><p>
+            One or more messages can be selected in the table and moved to
+            another queue in the VirtualHost by using the <span class="emphasis"><em>Move
+            Message(s)</em></span> button, which opens a dialog to enable selection
+            of the destination and confirmation of the operation. Newer
+            servers support the ability to similarly copy the selected
+            messages to another queue in a similar fashion, or delete the
+            selected messages from the queue after prompting for
+            confirmation.
+          </p><p>
+            Finally, all messages (that have not been acquired by consumers)
+            on the queue can be deleted using the <span class="emphasis"><em>Clear Queue</em></span>
+            button, which will generate a prompt for confirmation. On newer
+            servers, the status bar at the lower left of the application will
+            report the number of messages actually removed.
+          </p></div><div class="section" title="3.1.1.5.12.  Managing Exchanges"><div class="titlepage"><div><div><h5 class="title"><a name="QpidJMXManagementConsoleUserGuide-ManagingExchanges"></a>3.1.1.5.12. 
+            
+            Managing Exchanges
+          </h5></div></div></div><p>
+            Exchange MBeans are opened for management operations in similar
+            fashion as described for Queues, again showing an Attributes tab
+            initially, with the Operations tab next:
+          </p><p>
+            </p><div class="mediaobject"><img src="images/jmx_console/3113115.png"><div class="caption"><p></p></div></div><p>
+          </p><p>
+            Of the four default Exchange Types <span class="emphasis"><em>(direct, fanout, headers,
+            and topic)</em></span> all but <span class="emphasis"><em>headers</em></span> have their bindings
+            presented in the format shown above. The left table provides the
+            binding/routing keys present in the exchange. Selecting one of
+            these entries in the table prompts the right table to display all
+            the queues associated with this key. Pressing the <span class="emphasis"><em>Create</em></span>
+            button opens a dialog allowing association of an existing queue
+            with the entered Binding.
+          </p><p>
+            </p><div class="mediaobject"><img src="images/jmx_console/3113116.png"><div class="caption"><p></p></div></div><p>
+          </p><p>
+            The <span class="emphasis"><em>headers</em></span> Exchange type (default instantiation
+            <span class="emphasis"><em>amq.match or amq.headers</em></span>) is presented as below:
+          </p><p>
+            </p><div class="mediaobject"><img src="images/jmx_console/3113117.png"><div class="caption"><p></p></div></div><p>
+          </p><p>
+            In the previous figure, the left table indicates the binding
+            number, and the Queue associated with the binding. Selecting one
+            of these entries in the table prompts the right table to display
+            the header values that control when the binding matches an
+            incoming message.
+          </p><p>
+            </p><div class="mediaobject"><img src="images/jmx_console/3113118.png"><div class="caption"><p></p></div></div><p>
+          </p><p>
+            Pressing the <span class="emphasis"><em>Create</em></span> button when managing a
+            <span class="emphasis"><em>headers</em></span> Exchange opens a dialog allowing creation of a
+            new binding, associating an existing Queue with a particular set
+            of header keys and values. The <span class="emphasis"><em>x-match</em></span> key is required,
+            and instructs the server whether to match the binding with
+            incoming messages based on ANY or ALL of the further key-value
+            pairs entered. If it is desired to enter more than 4 pairs, you
+            may press the <span class="emphasis"><em>Add additional field</em></span> button to create a
+            new row as many times as is required.
+            
+            When managing a <span class="emphasis"><em>headers</em></span> Exchange, double clicking an
+            entry in the left-hand table will open the MBean for the Queue
+            specified in the binding properties.
+          </p><p>
+            When managing another Exchange Type, double clicking the Queue
+            Name in the right-hand table will open the MBean of the Queue
+            specified.
+          </p></div><div class="section" title="3.1.1.5.13.  Managing Connections"><div class="titlepage"><div><div><h5 class="title"><a name="QpidJMXManagementConsoleUserGuide-ManagingConnections"></a>3.1.1.5.13. 
+            
+            Managing Connections
+          </h5></div></div></div><p>
+            
+            Exchange MBeans are opened for management operations in similar
+            fashion as described for Queues, again showing an Attributes tab
+            initially, with the Operations tab next, and finally a
+            Notifications tab allowing subscription and viewing of
+            Notifications. The Operations tab can be seen in the figure
+            below.
+          </p><p>
+            </p><div class="mediaobject"><img src="images/jmx_console/3113119.png"><div class="caption"><p></p></div></div><p>
+            The main table shows the properties of all the Channels that are
+            present on the Connection, including whether they are
+            <span class="emphasis"><em>Transactional</em></span>, the <span class="emphasis"><em>Number of Unacked Messages</em></span>
+            on them, and the <span class="emphasis"><em>Default Queue</em></span> if there is one (or
+            <span class="emphasis"><em>null</em></span> if there is not).
+          </p><p>
+            The main operations supported on a connection are Commiting and
+            Rolling Back of Transactions on a particular Channel, if the
+            Channel is Transactional. This can be done by selecting a
+            particular Channel in the table and pressing the <span class="emphasis"><em>Commit
+            Transactions</em></span> or <span class="emphasis"><em>Rollback Transactions</em></span> buttons at
+            the lower right corner of the table, at which point the console
+            will prompt for confirmation of the action. These buttons are
+            only active when the selected Channel in the table is
+            Transactional.
+          </p><p>
+            The final operation supported is closing the Connection. After
+            pressing the <span class="emphasis"><em>Close Connection</em></span> button, the console will
+            prompt for confirmation of the action. If this is carried out,
+            the MBean for the Connection being managed will be removed from
+            the server. The console will be notified of this by the server
+            and display an information dialog to that effect, as it would if
+            any other MBean were to be unregistered whilst being viewed.
+          </p><p>
+            Double clicking a row in the table will open the MBean of the
+            associated <span class="emphasis"><em>Default Queue</em></span> if there is one.
+          </p></div></div><div class="section" title="3.1.1.6.  Qpid Management Features"><div class="titlepage"><div><div><h4 class="title"><a name="id471718"></a>3.1.1.6. 
+      Qpid Management Features
+    </h4></div></div></div><p>
+            <span class="emphasis"><em>Management tool:</em></span> See our <a class="xref" href="">???</a> for
+            details of how to use various console options with the Qpid
+            management features.
+          </p><p>
+            The management of QPID is categorised into following types-
+          </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>Exchange
+            </p></li><li class="listitem"><p>Queue
+            </p></li><li class="listitem"><p>Connection
+            </p></li><li class="listitem"><p>Broker
+            </p></li></ol></div><p>
+             <span class="emphasis"><em>1) Managing and Monitoring Exchanges</em></span>: Following is
+            the list of features, which we can have available for managing
+            and monitoring an Exchange running on a Qpid Server Domain-
+          </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>Displaying the following information for monitoring purpose-
+              </p><div class="orderedlist"><ol class="orderedlist" type="a"><li class="listitem"><p>The list of queues bound to the exchange along with the
+                routing keys.
+                </p></li><li class="listitem"><p>
+                  General Exchange properties(like name,
+                  durable etc).
+                </p></li></ol></div><p>
+            </p></li><li class="listitem"><p>
+              Binding an existing queue with the
+              exchange.
+            </p></li></ol></div><p>
+            <span class="emphasis"><em>2) Managing and Monitoring
+            Queues</em></span>:  Following are the
+            features, which we can have for a Queue on a Qpid Server
+            Domain-
+          </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+              Displaying the following information about
+              the queue for monitoring purpose-
+              </p><div class="orderedlist"><ol class="orderedlist" type="a"><li class="listitem"><p>
+                  General Queue properties(like name,
+                  durable, etc.)
+                </p></li><li class="listitem"><p>
+                  The maximum size of a message that can
+                  be accepted from the message producer.
+                </p></li><li class="listitem"><p>
+                  The number of the active consumers
+                  accessing the Queue.
+                </p></li><li class="listitem"><p>
+                  The total number of
+                  consumers (Active and Suspended).
+                </p></li><li class="listitem"><p>
+                  The number of undelivered messages
+                  in the Queue.
+                </p></li><li class="listitem"><p>
+                  The total number of messages received
+                  on the Queue since startup.
+                </p></li><li class="listitem"><p>
+                  The maximum number of bytes for
+                  the Queue that can be stored on the Server.
+                </p></li><li class="listitem"><p>The maximum number of messages for the Queue that can be
+                stored on the Server.
+                </p></li></ol></div><p>
+            </p></li><li class="listitem"><p>
+              Viewing the messages on the Queue.
+            </p></li><li class="listitem"><p>
+              Deleting message from top of the
+              Queue.
+            </p></li><li class="listitem"><p>
+              Clearing the Queue.
+            </p></li><li class="listitem"><p>
+              Browsing the DeadMessageQueue - Messages
+              which are expired or undelivered because of some reason are
+              routed to the DeadMessageQueue.  This queue can not be
+              deleted.  [Note: The is open because it depends on how
+              these kind of messages will be handeled?]
+            </p></li></ol></div><p>
+            <span class="emphasis"><em>3) Managing and Monitoring
+            Connections</em></span>: Following are the
+            features, which we can have for a connection on a QPID
+            Server Domain-
+          </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+              Displaying general connection
+              properties(like remote address, etc.).
+            </p></li><li class="listitem"><p>Setting maximum number of channels allowed for a
+            connection.
+            </p></li><li class="listitem"><p>View all related channels and channel properties.
+            </p></li><li class="listitem"><p>Closing a channel.
+            </p></li><li class="listitem"><p>Commit or Rollback transactions of a channel, if the channel
+            is transactional.
+            </p></li><li class="listitem"><p>Notification for exceeding the maximum number of
+            channels.
+            </p></li><li class="listitem"><p>Dropping a connection.
+            </p></li><li class="listitem"><p>The work for <a class="xref" href="">???</a> implies that
+            there are potentially some additional requirements
+              </p><div class="orderedlist"><ol class="orderedlist" type="a"><li class="listitem"><p>Alert when tcp flow control kicks in
+                </p></li><li class="listitem"><p>Information available about current memory usage
+                available through JMX interface
+                </p></li><li class="listitem"><p>Dynamic removal of buffer bounds? (fundamentally not
+                possible with TransportIO)
+                </p></li><li class="listitem"><p>Management functionality added to JMX interface - UI
+                changes?
+                </p></li></ol></div><p>
+            </p></li></ol></div><p>
+            <span class="emphasis"><em>4) Managing the Broker</em></span>: Features for the Broker-
+          </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>Creating an Exchange.
+            </p></li><li class="listitem"><p>Unregistering an Exchange.
+            </p></li><li class="listitem"><p>Creating a Queue.
+            </p></li><li class="listitem"><p>Deleting a Queue.
+            </p></li></ol></div></div></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s11.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="pt01.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.11. Slow Consumer Disconnect - User Guide </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Chapter 4. Management Tools</td></tr></table></div></body></html>

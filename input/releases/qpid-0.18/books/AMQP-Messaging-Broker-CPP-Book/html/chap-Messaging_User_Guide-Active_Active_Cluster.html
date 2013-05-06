@@ -1,0 +1,248 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>1.8. Active-active Messaging Clusters</title><link rel="stylesheet" href="css/style.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.73.2"><link rel="start" href="index.html" title="AMQP Messaging Broker (Implemented in C++)"><link rel="up" href="ch01.html" title="Chapter 1.  Running the AMQP Messaging Broker"><link rel="prev" href="queue-state-replication.html" title="1.7.  Queue State Replication"><link rel="next" href="producer-flow-control.html" title="1.9.  Producer Flow Control"></head><body><div class="container" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><DIV class="header"><DIV class="logo"><H1>Apache Qpid™</H1><H2>Open Source AMQP Messaging</H2></DIV></DIV><DIV class="menu_box"><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Apache Qpid</H3><UL><LI><A href="http://qpid.apache.org/index.html">Home</A></LI><LI><A href="http://qpid.apache.org/download.html">Download</A></LI><LI><A href="http://qpid.apache.org/getting_started.html">Getting Started</A></LI><LI><A href="http://www.apache.org/licenses/">License</A></LI><LI><A href="https://cwiki.apache.org/qpid/faq.html">FAQ</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Documentation</H3><UL><LI><A href="http://qpid.apache.org/documentation.html#doc-release">Latest Release</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-trunk">Trunk</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-archives">Archive</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Community</H3><UL><LI><A href="http://qpid.apache.org/getting_involved.html">Getting Involved</A></LI><LI><A href="http://qpid.apache.org/source_repository.html">Source Repository</A></LI><LI><A href="http://qpid.apache.org/mailing_lists.html">Mailing Lists</A></LI><LI><A href="https://cwiki.apache.org/qpid/">Wiki</A></LI><LI><A href="https://issues.apache.org/jira/browse/qpid">Issue Reporting</A></LI><LI><A href="http://qpid.apache.org/people.html">People</A></LI><LI><A href="http://qpid.apache.org/acknowledgements.html">Acknowledgements</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Developers</H3><UL><LI><A href="https://cwiki.apache.org/qpid/building.html">Building Qpid</A></LI><LI><A href="https://cwiki.apache.org/qpid/developer-pages.html">Developer Pages</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About AMQP</H3><UL><LI><A href="http://qpid.apache.org/amqp.html">What is AMQP?</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About Apache</H3><UL><LI><A href="http://www.apache.org">Home</A></LI><LI><A href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</A></LI><LI><A href="http://www.apache.org/foundation/thanks.html">Thanks</A></LI><LI><A href="http://www.apache.org/security/">Security</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV></DIV><div class="main_text_area"><div class="main_text_area_top"></div><div class="main_text_area_body"><DIV class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">AMQP Messaging Broker (Implemented in C++)</a></span> &gt; <span class="breadcrumb-link"><a href="ch01.html">
+      Running the AMQP Messaging Broker
+    </a></span> &gt; <span class="breadcrumb-node">Active-active Messaging Clusters</span></DIV><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="chap-Messaging_User_Guide-Active_Active_Cluster"></a>1.8. Active-active Messaging Clusters</h2></div></div></div><p>
+    Active-active Messaging Clusters provide fault tolerance by ensuring that every broker in a <em class="firstterm">cluster</em> has the same queues, exchanges, messages, and bindings, and allowing a client to <em class="firstterm">fail over</em> to a new broker and continue without any loss of messages if the current broker fails or becomes unavailable. <em class="firstterm">Active-active</em> refers to the fact that all brokers in the cluster can actively serve clients.  Because all brokers are automatically kept in a consistent state, clients can connect to and use any broker in a cluster. Any number of messaging brokers can be run as one <em class="firstterm">cluster</em>, and brokers can be added to or removed from a cluster while it is in use.
+  </p><p>
+    High Availability Messaging Clusters are implemented using using the <a class="ulink" href="http://www.openais.org/" target="_top">OpenAIS Cluster Framework</a>.
+  </p><p>
+    An OpenAIS daemon runs on every machine in the cluster, and these daemons communicate using multicast on a particular address. Every qpidd process in a cluster joins a named group that is automatically synchronized using OpenAIS Closed Process Groups (CPG) — the qpidd processes multicast events to the named group, and CPG ensures that each qpidd process receives all the events in the same sequence. All members get an identical sequence of events, so they can all update their state consistently.
+  </p><p>
+    Two messaging brokers are in the same cluster if
+    </p><div class="orderedlist"><ol type="1"><li><p>
+	  They run on hosts in the same OpenAIS cluster; that is, OpenAIS is configured with the same mcastaddr, mcastport and bindnetaddr, and
+	</p></li><li><p>
+	  They use the same cluster name.
+	</p></li></ol></div><p>
+
+  </p><p>
+    High Availability Clustering has a cost: in order to allow each broker in a cluster to continue the work of any other broker, a cluster must replicate state for all brokers in the cluster. Because of this, the brokers in a cluster should normally be on a LAN; there should be fast and reliable connections between brokers. Even on a LAN, using multiple brokers in a cluster is somewhat slower than using a single broker without clustering. This may be counter-intuitive for people who are used to clustering in the context of High Performance Computing or High Throughput Computing, where clustering increases performance or throughput.
+  </p><p>
+    High Availability Messaging Clusters should be used together with Red Hat Clustering Services (RHCS); without RHCS, clusters are vulnerable to the "split-brain" condition, in which a network failure splits the cluster into two sub-clusters that cannot communicate with each other. See the documentation on the <span class="command"><strong>--cluster-cman</strong></span> option for details on running using RHCS with High Availability Messaging Clusters. See the <a class="ulink" href="http://sources.redhat.com/cluster/wiki" target="_top">CMAN Wiki</a> for more detail on CMAN and split-brain conditions. Use the <span class="command"><strong>--cluster-cman</strong></span> option to enable RHCS when starting the broker.
+  </p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="sect-Messaging_User_Guide-High_Availability_Messaging_Clusters-Starting_a_Broker_in_a_Cluster"></a>1.8.1. Starting a Broker in a Cluster</h3></div></div></div><p>
+      Clustering is implemented using the <code class="filename">cluster.so</code> module, which is loaded by default when you start a broker. To run brokers in a cluster, make sure they all use the same OpenAIS mcastaddr, mcastport, and bindnetaddr. All brokers in a cluster must also have the same cluster name — specify the cluster name in <code class="filename">qpidd.conf</code>:
+    </p><pre class="screen">cluster-name="local_test_cluster"
+    </pre><p>
+      On RHEL6, you must create the file <code class="filename">/etc/corosync/uidgid.d/qpidd</code> to tell Corosync the name of the user running the broker.By default, the user is qpidd:
+    </p><pre class="programlisting">
+      uidgid {
+      uid: qpidd
+      gid: qpidd
+      }
+    </pre><p>
+      On RHEL5, the primary group for the process running qpidd must be the ais group. If you are running qpidd as a service, it is run as the <span class="command"><strong>qpidd</strong></span> user, which is already in the ais group. If you are running the broker from the command line, you must ensure that the primary group for the user running qpidd is ais. You can set the primary group using <span class="command"><strong>newgrp</strong></span>:
+    </p><pre class="screen">$ newgrp ais
+    </pre><p>
+      You can then run the broker from the command line, specifying the cluster name as an option.
+    </p><pre class="screen">[jonathan@localhost]$ qpidd --cluster-name="local_test_cluster"
+    </pre><p>
+      All brokers in a cluster must have identical configuration, with a few exceptions noted below. They must load the same set of plug-ins, and have matching configuration files and command line arguments. The should also have identical ACL files and SASL databases if these are used. If one broker uses persistence, all must use persistence — a mix of transient and persistent brokers is not allowed. Differences in configuration can cause brokers to exit the cluster. For instance, if different ACL settings allow a client to access a queue on broker A but not on broker B, then publishing to the queue will succeed on A and fail on B, so B will exit the cluster to prevent inconsistency.
+    </p><p>
+      The following settings can differ for brokers on a given cluster:
+    </p><div class="itemizedlist"><ul><li><p>
+	  logging options
+	</p></li><li><p>
+	  cluster-url — if set, it will be different for each broker.
+	</p></li><li><p>
+	  port — brokers can listen on different ports.
+	</p></li></ul></div><p>
+      The qpid log contains entries that record significant clustering events, e.g. when a broker becomes a member of a cluster, the membership of a cluster is changed, or an old journal is moved out of the way. For instance, the following message states that a broker has been added to a cluster as the first node:
+    </p><pre class="screen">
+      2009-07-09 18:13:41 info 127.0.0.1:1410(READY) member update: 127.0.0.1:1410(member)
+      2009-07-09 18:13:41 notice 127.0.0.1:1410(READY) first in cluster
+    </pre><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
+	If you are using SELinux, the qpidd process and OpenAIS must have the same SELinux context, or else SELinux must be set to permissive mode. If both qpidd and OpenAIS are run as services, they have the same SELinux context. If both OpenAIS and qpidd are run as user processes, they have the same SELinux context. If one is run as a service, and the other is run as a user process, they have different SELinux contexts.
+      </p></div><p>
+      The following options are available for clustering:
+    </p><div class="table"><a name="tabl-Messaging_User_Guide-Starting_a_Broker_in_a_Cluster-Options_for_High_Availability_Messaging_Cluster"></a><p class="title"><b>Table 1.9. Options for High Availability Messaging Cluster</b></p><div class="table-contents"><table summary="Options for High Availability Messaging Cluster" border="1"><colgroup><col align="left"><col align="left"></colgroup><thead><tr><th colspan="2" align="center">
+	      Options for High Availability Messaging Cluster
+	    </th></tr></thead><tbody><tr><td align="left">
+	      <span class="command"><strong>--cluster-name <em class="replaceable"><code>NAME</code></em></strong></span>
+	    </td><td align="left">
+	      Name of the Messaging Cluster to join. A Messaging Cluster consists of all brokers started with the same cluster-name and openais configuration.
+	    </td></tr><tr><td align="left">
+	      <span class="command"><strong>--cluster-size <em class="replaceable"><code>N</code></em></strong></span>
+	    </td><td align="left">
+	      Wait for at least N initial members before completing cluster initialization and serving clients. Use this option in a persistent cluster so all brokers in a persistent cluster can exchange the status of their persistent store and do consistency checks before serving clients.
+	    </td></tr><tr><td align="left">
+	      <span class="command"><strong>--cluster-url <em class="replaceable"><code>URL</code></em></strong></span>
+	    </td><td align="left">
+	      An AMQP URL containing the local address that the broker advertizes to clients for fail-over connections. This is different for each host. By default, all local addresses for the broker are advertized. You only need to set this if
+	      <div class="orderedlist"><ol type="1"><li><p>
+		    Your host has more than one active network interface, and
+		  </p></li><li><p>
+		    You want to restrict client fail-over to a specific interface or interfaces.
+		  </p></li></ol></div>
+	      <p>Each broker in the cluster is specified using the following form:</p>
+
+	      <pre class="programlisting">url = ["amqp:"][ user ["/" password] "@" ] protocol_addr
+	      ("," protocol_addr)*
+	      protocol_addr = tcp_addr / rmda_addr / ssl_addr / ...
+	      tcp_addr = ["tcp:"] host [":" port]
+	      rdma_addr = "rdma:" host [":" port]
+	      ssl_addr = "ssl:" host [":" port]</pre>
+
+	      <p>In most cases, only one address is advertized, but more than one address can be specified in if the machine running the broker has more than one network interface card, and you want to allow clients to connect using multiple network interfaces. Use a comma delimiter (",") to separate brokers in the URL. Examples:</p>
+	      <div class="itemizedlist"><ul><li><p>
+		    <span class="command"><strong>amqp:tcp:192.168.1.103:5672</strong></span> advertizes a single address to the broker for failover.
+		  </p></li><li><p>
+		    <span class="command"><strong>amqp:tcp:192.168.1.103:5672,tcp:192.168.1.105:5672</strong></span> advertizes two different addresses to the broker for failover, on two different network interfaces.
+		  </p></li></ul></div>
+
+	    </td></tr><tr><td align="left">
+	      <span class="command"><strong>--cluster-cman</strong></span>
+	    </td><td align="left">
+	      <p>
+		CMAN protects against the "split-brain" condition, in which a network failure splits the cluster into two sub-clusters that cannot communicate with each other. When "split-brain" occurs, each of the sub-clusters can access shared resources without knowledge of the other sub-cluster, resulting in corrupted cluster integrity.
+	      </p>
+	      <p>
+		To avoid "split-brain", CMAN uses the notion of a "quorum". If more than half the cluster nodes are active, the cluster has quorum and can act. If half (or fewer) nodes are active, the cluster does not have quorum, and all cluster activity is stopped. There are other ways to define the quorum for particular use cases (e.g. a cluster of only 2 members), see the <a class="ulink" href="http://sources.redhat.com/cluster/wiki" target="_top">CMAN Wiki</a>
+		for more detail.
+	      </p>
+	      <p>
+		When enabled, the broker will wait until it belongs to a quorate cluster before accepting client connections. It continually monitors the quorum status and shuts down immediately if the node it runs on loses touch with the quorum.
+	      </p>
+
+	    </td></tr><tr><td align="left">
+	      --cluster-username
+	    </td><td align="left">
+	      SASL username for connections between brokers.
+	    </td></tr><tr><td align="left">
+	      --cluster-password
+	    </td><td align="left">
+	      SASL password for connections between brokers.
+	    </td></tr><tr><td align="left">
+	      --cluster-mechanism
+	    </td><td align="left">
+	      SASL authentication mechanism for connections between brokers
+	    </td></tr></tbody></table></div></div><br class="table-break"><p>
+      If a broker is unable to establish a connection to another broker in the cluster, the log will contain SASL errors, e.g:
+    </p><pre class="screen">2009-aug-04 10:17:37 info SASL: Authentication failed: SASL(-13): user not found: Password verification failed
+    </pre><p>
+      You can set the SASL user name and password used to connect to other brokers using the <span class="command"><strong>cluster-username</strong></span> and <span class="command"><strong>cluster-password</strong></span> properties when you start the broker. In most environment, it is easiest to create an account with the same user name and password on each broker in the cluster, and use these as the <span class="command"><strong>cluster-username</strong></span> and <span class="command"><strong>cluster-password</strong></span>. You can also set the SASL mode using <span class="command"><strong>cluster-mechanism</strong></span>. Remember that any mechanism you enable for broker-to-broker communication can also be used by a client, so do not enable <span class="command"><strong>cluster-mechanism=ANONYMOUS</strong></span> in a secure environment.
+    </p><p>
+      Once the cluster is running, run <span class="command"><strong>qpid-cluster</strong></span> to make sure that the brokers are running as one cluster. See the following section for details.
+    </p><p>
+      If the cluster is correctly configured, queues and messages are replicated to all brokers in the cluster, so an easy way to test the cluster is to run a program that routes messages to a queue on one broker, then to a different broker in the same cluster and read the messages to make sure they have been replicated. The <span class="command"><strong>drain</strong></span> and <span class="command"><strong>spout</strong></span> programs can be used for this test.
+    </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="sect-Messaging_User_Guide-High_Availability_Messaging_Clusters-qpid_cluster"></a>1.8.2. qpid-cluster</h3></div></div></div><p>
+      <span class="command"><strong>qpid-cluster</strong></span> is a command-line utility that allows you to view information on a cluster and its brokers, disconnect a client connection, shut down a broker in a cluster, or shut down the entire cluster. You can see the options using the <span class="command"><strong>--help</strong></span> option:
+    </p><pre class="screen">$ ./qpid-cluster --help
+    </pre><pre class="screen">Usage:  qpid-cluster [OPTIONS] [broker-addr]
+
+    broker-addr is in the form:   [username/password@] hostname | ip-address [:&lt;port&gt;]
+    ex:  localhost, 10.1.1.7:10000, broker-host:10000, guest/guest@localhost
+
+    Options:
+    -C [--all-connections]  View client connections to all cluster members
+    -c [--connections] ID   View client connections to specified member
+    -d [--del-connection] HOST:PORT
+    Disconnect a client connection
+    -s [--stop] ID          Stop one member of the cluster by its ID
+    -k [--all-stop]         Shut down the whole cluster
+    -f [--force]            Suppress the 'are-you-sure?' prompt
+    -n [--numeric]          Don't resolve names
+    </pre><p>
+      Let's connect to a cluster and display basic information about the cluser and its brokers. When you connect to the cluster using <span class="command"><strong>qpid-tool</strong></span>, you can use the host and port for any broker in the cluster. For instance, if a broker in the cluster is running on <code class="filename">localhost</code> on port 6664, you can start <span class="command"><strong>qpid-tool</strong></span> like this:
+    </p><pre class="screen">
+      $ qpid-cluster localhost:6664
+    </pre><p>
+      Here is the output:
+    </p><pre class="screen">
+      Cluster Name: local_test_cluster
+      Cluster Status: ACTIVE
+      Cluster Size: 3
+      Members: ID=127.0.0.1:13143 URL=amqp:tcp:192.168.1.101:6664,tcp:192.168.122.1:6664,tcp:10.16.10.62:6664
+      : ID=127.0.0.1:13167 URL=amqp:tcp:192.168.1.101:6665,tcp:192.168.122.1:6665,tcp:10.16.10.62:6665
+      : ID=127.0.0.1:13192 URL=amqp:tcp:192.168.1.101:6666,tcp:192.168.122.1:6666,tcp:10.16.10.62:6666
+    </pre><p>
+      The ID for each broker in cluster is given on the left. For instance, the ID for the first broker in the cluster is <span class="command"><strong>127.0.0.1:13143</strong></span>. The URL in the output is the broker's advertized address. Let's use the ID to shut the broker down using the <span class="command"><strong>--stop</strong></span> command:
+    </p><pre class="screen">$ ./qpid-cluster localhost:6664 --stop 127.0.0.1:13143
+    </pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="sect-Messaging_User_Guide-High_Availability_Messaging_Clusters-Failover_in_Clients"></a>1.8.3. Failover in Clients</h3></div></div></div><p>
+      If a client is connected to a broker, the connection fails if the broker crashes or is killed. If heartbeat is enabled for the connection, a connection also fails if the broker hangs, the machine the broker is running on fails, or the network connection to the broker is lost — the connection fails no later than twice the heartbeat interval.
+    </p><p>
+      When a client's connection to a broker fails, any sent messages that have been acknowledged to the sender will have been replicated to all brokers in the cluster, any received messages that have not yet been acknowledged by the receiving client requeued to all brokers, and the client API notifies the application of the failure by throwing an exception.
+    </p><p>
+      Clients can be configured to automatically reconnect to another broker when it receives such an exception. Any messages that have been sent by the client, but not yet acknowledged as delivered, are resent. Any messages that have been read by the client, but not acknowledged, are delivered to the client.
+    </p><p>
+      TCP is slow to detect connection failures. A client can configure a connection to use a heartbeat to detect connection failure, and can specify a time interval for the heartbeat. If heartbeats are in use, failures will be detected no later than twice the heartbeat interval. The Java JMS client enables hearbeat by default. See the sections on Failover in Java JMS Clients and Failover in C++ Clients for the code to enable heartbeat.
+    </p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="sect-Messaging_User_Guide-Failover_in_Clients-Failover_in_Java_JMS_Clients"></a>1.8.3.1. Failover in Java JMS Clients</h4></div></div></div><p>
+	In Java JMS clients, client failover is handled automatically if it is enabled in the connection. Any messages that have been sent by the client, but not yet acknowledged as delivered, are resent. Any messages that have been read by the client, but not acknowledged, are sent to the client.
+      </p><p>
+	You can configure a connection to use failover using the <span class="command"><strong>failover</strong></span> property:
+      </p><pre class="screen">
+	connectionfactory.qpidConnectionfactory = amqp://guest:guest@clientid/test?brokerlist='tcp://localhost:5672'&amp;failover='failover_exchange'
+      </pre><p>
+	This property can take three values:
+      </p><div class="variablelist"><a name="vari-Messaging_User_Guide-Failover_in_Java_JMS_Clients-Failover_Modes"></a><p class="title"><b>Failover Modes</b></p><dl><dt><span class="term">failover_exchange</span></dt><dd><p>
+	      If the connection fails, fail over to any other broker in the cluster.
+	    </p></dd><dt><span class="term">roundrobin</span></dt><dd><p>
+	      If the connection fails, fail over to one of the brokers specified in the <span class="command"><strong>brokerlist</strong></span>.
+	    </p></dd><dt><span class="term">singlebroker</span></dt><dd><p>
+	      Failover is not supported; the connection is to a single broker only.
+	    </p></dd></dl></div><p>
+	In a Connection URL, heartbeat is set using the <span class="command"><strong>idle_timeout</strong></span> property, which is an integer corresponding to the heartbeat period in seconds. For instance, the following line from a JNDI properties file sets the heartbeat time out to 3 seconds:
+      </p><pre class="screen">
+	connectionfactory.qpidConnectionfactory = amqp://guest:guest@clientid/test?brokerlist='tcp://localhost:5672',idle_timeout=3
+      </pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="sect-Messaging_User_Guide-Failover_in_Clients-Failover_and_the_Qpid_Messaging_API"></a>1.8.3.2. Failover and the Qpid Messaging API</h4></div></div></div><p>
+	The Qpid Messaging API also supports automatic reconnection in the event a connection fails. . Senders can also be configured to replay any in-doubt messages (i.e. messages whice were sent but not acknowleged by the broker. See "Connection Options" and "Sender Capacity and Replay" in <em class="citetitle">Programming in Apache Qpid</em> for details.
+      </p><p>
+	In C++ and python clients, heartbeats are disabled by default. You can enable them by specifying a heartbeat interval (in seconds) for the connection via the 'heartbeat' option.
+      </p><p>
+	See "Cluster Failover" in <em class="citetitle">Programming in Apache Qpid</em> for details on how to keep the client aware of cluster membership.
+      </p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="sect-Messaging_User_Guide-High_Availability_Messaging_Clusters-Error_handling_in_Clusters"></a>1.8.4. Error handling in Clusters</h3></div></div></div><p>
+      If a broker crashes or is killed, or a broker machine failure, broker connection failure, or a broker hang is detected, the other brokers in the cluster are notified that it is no longer a member of the cluster. If a new broker is joined to the cluster, it synchronizes with an active broker to obtain the current cluster state; if this synchronization fails, the new broker exit the cluster and aborts.
+    </p><p>
+      If a broker becomes extremely busy and stops responding, it stops accepting incoming work. All other brokers continue processing, and the non-responsive node caches all AIS traffic. When it resumes, the broker completes processes all cached AIS events, then accepts further incoming work. 
+    </p><p>
+      Broker hangs are only detected if the watchdog plugin is loaded and the <span class="command"><strong>--watchdog-interval</strong></span> option is set. The watchdog plug-in kills the qpidd broker process if it becomes stuck for longer than the watchdog interval. In some cases, e.g. certain phases of error resolution, it is possible for a stuck process to hang other cluster members that are waiting for it to send a message. Using the watchdog, the stuck process is terminated and removed from the cluster, allowing other members to continue and clients of the stuck process to fail over to other members.
+    </p><p>
+      Redundancy can also be achieved directly in the AIS network by specifying more than one network interface in the AIS configuration file. This causes Totem to use a redundant ring protocol, which makes failure of a single network transparent.
+    </p><p>
+      Redundancy can be achieved at the operating system level by using NIC bonding, which combines multiple network ports into a single group, effectively aggregating the bandwidth of multiple interfaces into a single connection. This provides both network load balancing and fault tolerance.
+    </p><p>
+      If any broker encounters an error, the brokers compare notes to see if they all received the same error. If not, the broker removes itself from the cluster and shuts itself down to ensure that all brokers in the cluster have consistent state. For instance, a broker may run out of disk space; if this happens, the broker shuts itself down. Examining the broker's log can help determine the error and suggest ways to prevent it from occuring in the future.
+    </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="sect-Messaging_User_Guide-High_Availability_Messaging_Clusters-Persistence_in_High_Availability_Message_Clusters"></a>1.8.5. Persistence in High Availability Message Clusters</h3></div></div></div><p>
+      Persistence and clustering are two different ways to provide reliability. Most systems that use a cluster do not enable persistence, but you can do so if you want to ensure that messages are not lost even if the last broker in a cluster fails. A cluster must have all transient or all persistent members, mixed clusters are not allowed. Each broker in a persistent cluster has it's own independent replica of the cluster's state it its store.
+    </p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="sect-Messaging_User_Guide-Persistence_in_High_Availability_Message_Clusters-Clean_and_Dirty_Stores"></a>1.8.5.1. Clean and Dirty Stores</h4></div></div></div><p>
+	When a broker is an active member of a cluster, its store is marked "dirty" because it may be out of date compared to other brokers in the cluster. If a broker leaves a running cluster because it is stopped, it crashes or the host crashes, its store continues to be marked "dirty".
+      </p><p>
+	If the cluster is reduced to a single broker, its store is marked "clean" since it is the only broker making updates. If the cluster is shut down with the command <code class="literal">qpid-cluster -k</code> then all the stores are marked clean.
+      </p><p>
+	When a cluster is initially formed, brokers with clean stores read from their stores. Brokers with dirty stores, or brokers that join after the cluster is running, discard their old stores and initialize a new store with an update from one of the running brokers. The <span class="command"><strong>--truncate</strong></span> option can be used to force a broker to discard all existing stores even if they are clean. (A dirty store is discarded regardless.)
+      </p><p>
+	Discarded stores are copied to a back up directory. The active store is in &lt;data-dir&gt;/rhm. Back-up stores are in &lt;data-dir&gt;/_cluster.bak.&lt;nnnn&gt;/rhm, where &lt;nnnn&gt; is a 4 digit number. A higher number means a more recent backup.
+      </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="sect-Messaging_User_Guide-Persistence_in_High_Availability_Message_Clusters-Starting_a_persistent_cluster"></a>1.8.5.2. Starting a persistent cluster</h4></div></div></div><p>
+	When starting a persistent cluster broker, set the cluster-size option to the number of brokers in the cluster. This allows the brokers to wait until the entire cluster is running so that they can synchronize their stored state.
+      </p><p>
+	The cluster can start if:
+      </p><p>
+	</p><div class="itemizedlist"><ul><li><p>
+	      all members have empty stores, or
+	    </p></li><li><p>
+	      at least one member has a clean store
+	    </p></li></ul></div><p>
+
+      </p><p>
+	All members of the new cluster will be initialized with the state from a clean store.
+      </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="sect-Messaging_User_Guide-Persistence_in_High_Availability_Message_Clusters-Stopping_a_persistent_cluster"></a>1.8.5.3. Stopping a persistent cluster</h4></div></div></div><p>
+	To cleanly shut down a persistent cluster use the command <span class="command"><strong>qpid-cluster -k</strong></span>. This causes all brokers to synchronize their state and mark their stores as "clean" so they can be used when the cluster restarts.
+      </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="sect-Messaging_User_Guide-Persistence_in_High_Availability_Message_Clusters-Starting_a_persistent_cluster_with_no_clean_store"></a>1.8.5.4. Starting a persistent cluster with no clean store</h4></div></div></div><p>
+	If the cluster has previously had a total failure and there are no clean stores then the brokers will fail to start with the log message <code class="literal">Cannot recover, no clean store.</code> If this happens you can start the cluster by marking one of the stores "clean" as follows:
+      </p><div class="procedure"><ol type="1"><li><p>
+	    Move the latest store backup into place in the brokers data-directory. The backups end in a 4 digit number, the latest backup is the highest number.
+	  </p><pre class="screen">
+	    cd &lt;data-dir&gt;
+	    mv rhm rhm.bak
+	    cp -a _cluster.bak.&lt;nnnn&gt;/rhm .
+	  </pre></li><li><p>
+	    Mark the store as clean:
+	    </p><pre class="screen">qpid-cluster-store -c &lt;data-dir&gt;</pre><p>
+
+	  </p></li></ol></div><p>
+	Now you can start the cluster, all members will be initialized from the store you marked as clean.
+      </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="sect-Messaging_User_Guide-Persistence_in_High_Availability_Message_Clusters-Isolated_failures_in_a_persistent_cluster"></a>1.8.5.5. Isolated failures in a persistent cluster</h4></div></div></div><p>
+	A broker in a persistent cluster may encounter errors that other brokers in the cluster do not; if this happens, the broker shuts itself down to avoid making the cluster state inconsistent. For example a disk failure on one node will result in that node shutting down. Running out of storage capacity can also cause a node to shut down because because the brokers may not run out of storage at exactly the same point, even if they have similar storage configuration. To avoid unnecessary broker shutdowns, make sure the queue policy size of each durable queue is less than the capacity of the journal for the queue.
+      </p></div></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="queue-state-replication.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch01.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="producer-flow-control.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">1.7. 
+    Queue State Replication
+   </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 1.9. 
+    Producer Flow Control
+  </td></tr></table></div><div class="main_text_area_bottom"></div></div></div></body></html>

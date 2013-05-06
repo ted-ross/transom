@@ -56,15 +56,15 @@ files you download.
 
 ## Documentation
 
- - [Programming in Apache Qpid](http://qpid.apache.org/books/0.18/Programming-In-Apache-Qpid/html/index.html) ([PDF](http://qpid.apache.org/books/0.18/Programming-In-Apache-Qpid/pdf/Programming-In-Apache-Qpid.pdf))
- - [Guide to the C++ broker](http://qpid.apache.org/books/0.18/AMQP-Messaging-Broker-CPP-Book/html/index.html) ([PDF](http://qpid.apache.org/books/0.18/AMQP-Messaging-Broker-CPP-Book/pdf/AMQP-Messaging-Broker-CPP-Book.pdf))
- - [Guide to the Java broker](http://qpid.apache.org/books/0.18/AMQP-Messaging-Broker-Java-Book/html/index.html) ([PDF](http://qpid.apache.org/books/0.18/AMQP-Messaging-Broker-Java-Book/pdf/AMQP-Messaging-Broker-Java-Book.pdf))
+ - [Programming in Apache Qpid](books/Programming-In-Apache-Qpid/html/index.html)
+ - [C++ broker book](books/AMQP-Messaging-Broker-CPP-Book/html/index.html)
+ - [Java broker book](books/AMQP-Messaging-Broker-Java-Book/html/index.html)
  - [Installing and Using Qpid Java](https://cwiki.apache.org/qpid/getting-started-guide.html)
  - [Installing Qpid C++](http://svn.apache.org/repos/asf/qpid/tags/0.18/qpid/cpp/INSTALL)
  - [Installing Qpid Python](http://svn.apache.org/repos/asf/qpid/tags/0.18/qpid/python/README.txt)
  - [Installing Qpid WCF](http://svn.apache.org/repos/asf/qpid/tags/0.18/qpid/wcf/ReadMe.txt)
- - [C++ Messaging API reference](http://qpid.apache.org/apis/0.18/cpp/html/index.html) ([qpid-cpp-doxygen-0.18.html.tar.gz](http://qpid.apache.org/apis/0.18/cpp/qpid-cpp-doxygen-0.18.html.tar.gz))
- - [Python Messaging API reference](http://qpid.apache.org/apis/0.18/python/html/index.html) ([qpid-python-epydoc-0.18.html.tar.gz](http://qpid.apache.org/apis/0.18/python/qpid-python-epydoc-0.18.html.tar.gz))
+ - [C++ Messaging API reference](apis/cpp/html/index.html)
+ - [Python Messaging API reference](apis/python/html/index.html)
 
 ## More information
 

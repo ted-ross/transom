@@ -1,0 +1,44 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>1.3.  Java Environment Variables</title><link rel="stylesheet" href="css/style.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.73.2"><link rel="start" href="index.html" title="AMQP Messaging Broker (Implemented in Java)"><link rel="up" href="Java-General-User-Guides.html" title="Chapter 1. General User Guides"><link rel="prev" href="Qpid-Java-FAQ.html" title="1.2.  Qpid Java FAQ"><link rel="next" href="Qpid-Troubleshooting-Guide.html" title="1.4.  Qpid Troubleshooting Guide"></head><body><div class="container" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><DIV class="header"><DIV class="logo"><H1>Apache Qpid™</H1><H2>Open Source AMQP Messaging</H2></DIV></DIV><DIV class="menu_box"><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Apache Qpid</H3><UL><LI><A href="http://qpid.apache.org/index.html">Home</A></LI><LI><A href="http://qpid.apache.org/download.html">Download</A></LI><LI><A href="http://qpid.apache.org/getting_started.html">Getting Started</A></LI><LI><A href="http://www.apache.org/licenses/">License</A></LI><LI><A href="https://cwiki.apache.org/qpid/faq.html">FAQ</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Documentation</H3><UL><LI><A href="http://qpid.apache.org/documentation.html#doc-release">Latest Release</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-trunk">Trunk</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-archives">Archive</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Community</H3><UL><LI><A href="http://qpid.apache.org/getting_involved.html">Getting Involved</A></LI><LI><A href="http://qpid.apache.org/source_repository.html">Source Repository</A></LI><LI><A href="http://qpid.apache.org/mailing_lists.html">Mailing Lists</A></LI><LI><A href="https://cwiki.apache.org/qpid/">Wiki</A></LI><LI><A href="https://issues.apache.org/jira/browse/qpid">Issue Reporting</A></LI><LI><A href="http://qpid.apache.org/people.html">People</A></LI><LI><A href="http://qpid.apache.org/acknowledgements.html">Acknowledgements</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Developers</H3><UL><LI><A href="https://cwiki.apache.org/qpid/building.html">Building Qpid</A></LI><LI><A href="https://cwiki.apache.org/qpid/developer-pages.html">Developer Pages</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About AMQP</H3><UL><LI><A href="http://qpid.apache.org/amqp.html">What is AMQP?</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About Apache</H3><UL><LI><A href="http://www.apache.org">Home</A></LI><LI><A href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</A></LI><LI><A href="http://www.apache.org/foundation/thanks.html">Thanks</A></LI><LI><A href="http://www.apache.org/security/">Security</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV></DIV><div class="main_text_area"><div class="main_text_area_top"></div><div class="main_text_area_body"><DIV class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">AMQP Messaging Broker (Implemented in Java)</a></span> &gt; <span class="breadcrumb-link"><a href="Java-General-User-Guides.html">General User Guides</a></span> &gt; <span class="breadcrumb-node">
+      Java Environment Variables
+    </span></DIV><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="Java-Environment-Variables"></a>1.3. 
+      Java Environment Variables
+    </h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="JavaEnvironmentVariables-SettingQpidEnvironmentVariables"></a>1.3.1. 
+            Setting
+            Qpid Environment Variables
+          </h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="JavaEnvironmentVariables-QpidDeploymentPathVariables"></a>1.3.1.1. 
+            Qpid
+            Deployment Path Variables
+          </h4></div></div></div><p>
+            There are two main Qpid environment variables which are required
+            to be set for Qpid deployments, QPID_HOME and QPID_WORK.
+          </p><p>
+            QPID_HOME - This variable is used to tell the Qpid broker where
+            it's installed home is, which is in turn used to find dependency
+            JARs which Qpid uses.
+          </p><p>
+            QPID_WORK - This variable is used by Qpid when creating all
+            'writeable' directories that it uses. This includes the log
+            directory and the storage location for any BDB instances in use
+            by your deployment (if you're using persistence with BDB). If you
+            do not set this variable, then the broker will default (in the
+            qpid-server script) to use the current user's homedir as the root
+            directory for creating the writeable locations that it uses.
+          </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="JavaEnvironmentVariables-SettingMaxMemoryforthebroker"></a>1.3.1.2. 
+            Setting
+            Max Memory for the broker
+          </h4></div></div></div><p>
+            If you simply start the Qpid broker, it will default to use a
+            -Xmx setting of 1024M for the broker JVM. However, we would
+            recommend that you make the maximum -Xmx heap size available, if
+            possible, of 3Gb (for 32-bit platforms).
+          </p><p>
+            You can control the memory setting for your broker by setting the
+            QPID_JAVA_MEM variable before starting the broker e.g. -Xmx3668m
+            . Enclose your value within quotes if you also specify a -Xms
+            value. The value in use is echo'd by the qpid-server script on
+            startup.
+          </p></div></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="Qpid-Java-FAQ.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="Java-General-User-Guides.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="Qpid-Troubleshooting-Guide.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">1.2. 
+      Qpid Java FAQ
+     </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 1.4. 
+      Qpid Troubleshooting Guide
+    </td></tr></table></div><div class="main_text_area_bottom"></div></div></div></body></html>

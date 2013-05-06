@@ -1,0 +1,243 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Chapter 2. How Tos</title><link rel="stylesheet" href="css/style.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.73.2"><link rel="start" href="index.html" title="AMQP Messaging Broker (Implemented in Java)"><link rel="up" href="index.html" title="AMQP Messaging Broker (Implemented in Java)"><link rel="prev" href="High-Availability.html" title="1.6. High Availability"><link rel="next" href="Configuring-ACLS.html" title="2.2.  Configuring ACLs"></head><body><div class="container" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><DIV class="header"><DIV class="logo"><H1>Apache Qpid™</H1><H2>Open Source AMQP Messaging</H2></DIV></DIV><DIV class="menu_box"><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Apache Qpid</H3><UL><LI><A href="http://qpid.apache.org/index.html">Home</A></LI><LI><A href="http://qpid.apache.org/download.html">Download</A></LI><LI><A href="http://qpid.apache.org/getting_started.html">Getting Started</A></LI><LI><A href="http://www.apache.org/licenses/">License</A></LI><LI><A href="https://cwiki.apache.org/qpid/faq.html">FAQ</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Documentation</H3><UL><LI><A href="http://qpid.apache.org/documentation.html#doc-release">Latest Release</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-trunk">Trunk</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-archives">Archive</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Community</H3><UL><LI><A href="http://qpid.apache.org/getting_involved.html">Getting Involved</A></LI><LI><A href="http://qpid.apache.org/source_repository.html">Source Repository</A></LI><LI><A href="http://qpid.apache.org/mailing_lists.html">Mailing Lists</A></LI><LI><A href="https://cwiki.apache.org/qpid/">Wiki</A></LI><LI><A href="https://issues.apache.org/jira/browse/qpid">Issue Reporting</A></LI><LI><A href="http://qpid.apache.org/people.html">People</A></LI><LI><A href="http://qpid.apache.org/acknowledgements.html">Acknowledgements</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Developers</H3><UL><LI><A href="https://cwiki.apache.org/qpid/building.html">Building Qpid</A></LI><LI><A href="https://cwiki.apache.org/qpid/developer-pages.html">Developer Pages</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About AMQP</H3><UL><LI><A href="http://qpid.apache.org/amqp.html">What is AMQP?</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About Apache</H3><UL><LI><A href="http://www.apache.org">Home</A></LI><LI><A href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</A></LI><LI><A href="http://www.apache.org/foundation/thanks.html">Thanks</A></LI><LI><A href="http://www.apache.org/security/">Security</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV></DIV><div class="main_text_area"><div class="main_text_area_top"></div><div class="main_text_area_body"><DIV class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">AMQP Messaging Broker (Implemented in Java)</a></span> &gt; <span class="breadcrumb-node">How Tos</span></DIV><div class="chapter" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="Qpid-Java-Broker-HowTos"></a>Chapter 2. How Tos</h2></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="section"><a href="Qpid-Java-Broker-HowTos.html#id2493330">2.1. 
+      Add New Users
+    </a></span></dt><dd><dl><dt><span class="section"><a href="Qpid-Java-Broker-HowTos.html#AddNewUsers-AvailablePasswordfileformats">2.1.1. 
+            Available
+            Password file formats
+          </a></span></dt><dt><span class="section"><a href="Qpid-Java-Broker-HowTos.html#AddNewUsers-Dynamicchangestopasswordfiles.">2.1.2. 
+            Dynamic
+            changes to password files.
+          </a></span></dt><dt><span class="section"><a href="Qpid-Java-Broker-HowTos.html#AddNewUsers-HowpasswordfilesandPrincipalDatabasesrelatetoauthenticationmechanisms">2.1.3. 
+            How password files and PrincipalDatabases relate to
+            authentication mechanisms
+          </a></span></dt></dl></dd><dt><span class="section"><a href="Configuring-ACLS.html">2.2. 
+      Configuring ACLs
+  </a></span></dt><dd><dl><dt><span class="section"><a href="Configuring-ACLS.html#ConfigureACLs-EnablingACL">2.2.1. 
+       Enabling ACLs
+    </a></span></dt><dt><span class="section"><a href="Configuring-ACLS.html#ConfigureACLs-WriteACL">2.2.2. 
+       Writing .acl files
+    </a></span></dt><dt><span class="section"><a href="Configuring-ACLS.html#ConfigureACLs-Syntax">2.2.3. 
+       Syntax
+    </a></span></dt><dt><span class="section"><a href="Configuring-ACLS.html#ConfigureACLs-WorkedExamples">2.2.4. 
+      Worked Examples
+    </a></span></dt></dl></dd><dt><span class="section"><a href="Qpid-Java-SSL.html">2.3. 
+      Configure Java Qpid to use a SSL connection.
+    </a></span></dt><dd><dl><dt><span class="section"><a href="Qpid-Java-SSL.html#ConfigureJavaQpidtouseaSSLconnection.-UsingSSLconnectionwithQpidJava.">2.3.1. 
+            Using SSL connection with Qpid Java.
+          </a></span></dt><dt><span class="section"><a href="Qpid-Java-SSL.html#ConfigureJavaQpidtouseaSSLconnection.-Setup">2.3.2. 
+            Setup
+          </a></span></dt><dt><span class="section"><a href="Qpid-Java-SSL.html#ConfigureJavaQpidtouseaSSLconnection.-Performingtheconnection.">2.3.3. 
+            Performing
+            the connection.
+          </a></span></dt></dl></dd><dt><span class="section"><a href="Qpid-Java-Log4j.html">2.4. 
+      Configure Log4j CompositeRolling Appender
+    </a></span></dt><dd><dl><dt><span class="section"><a href="Qpid-Java-Log4j.html#ConfigureLog4jCompositeRollingAppender-HowtoconfiguretheCompositeRollinglog4jAppender">2.4.1. 
+            How to configure the CompositeRolling log4j Appender
+          </a></span></dt></dl></dd><dt><span class="section"><a href="Qpid-Java-Broker-Config-File.html">2.5. 
+      Configure the Broker via config.xml
+    </a></span></dt><dd><dl><dt><span class="section"><a href="Qpid-Java-Broker-Config-File.html#ConfiguretheBrokerviaconfig.xml-Brokerconfig.xmlOverview">2.5.1. 
+            Broker config.xml Overview
+          </a></span></dt><dt><span class="section"><a href="Qpid-Java-Broker-Config-File.html#ConfiguretheBrokerviaconfig.xml-QpidVersion">2.5.2. 
+            Qpid
+            Version
+          </a></span></dt></dl></dd><dt><span class="section"><a href="Qpid-Java-Broker-Virtualhosts-Config.html">2.6. 
+      Configure the Virtual Hosts via virtualhosts.xml
+    </a></span></dt><dd><dl><dt><span class="section"><a href="Qpid-Java-Broker-Virtualhosts-Config.html#ConfiguretheVirtualHostsviavirtualhosts.xml-virtualhosts.xmlOverview">2.6.1. 
+            virtualhosts.xml Overview
+          </a></span></dt></dl></dd><dt><span class="section"><a href="Java-Broker-Debug-Logging.html">2.7. 
+      Debug using log4j
+    </a></span></dt><dd><dl><dt><span class="section"><a href="Java-Broker-Debug-Logging.html#Debugusinglog4j-Debuggingwithlog4jconfigurations">2.7.1. 
+            Debugging
+            with log4j configurations
+          </a></span></dt></dl></dd><dt><span class="section"><a href="How-to-Tune-M3-Java-Broker-Performance.html">2.8. 
+      How to Tune M3 Java Broker Performance
+    </a></span></dt><dd><dl><dt><span class="section"><a href="How-to-Tune-M3-Java-Broker-Performance.html#HowtoTuneM3JavaBrokerPerformance-ProblemStatement">2.8.1. 
+            Problem
+            Statement
+          </a></span></dt><dt><span class="section"><a href="How-to-Tune-M3-Java-Broker-Performance.html#HowtoTuneM3JavaBrokerPerformance-SuccessfulTuningOptions">2.8.2. 
+            Successful
+            Tuning Options
+          </a></span></dt><dt><span class="section"><a href="How-to-Tune-M3-Java-Broker-Performance.html#HowtoTuneM3JavaBrokerPerformance-NextSteps">2.8.3. 
+            Next
+            Steps
+          </a></span></dt></dl></dd><dt><span class="section"><a href="Qpid-Java-Build-HowTo.html">2.9. 
+      Qpid Java Build How To
+    </a></span></dt><dd><dl><dt><span class="section"><a href="Qpid-Java-Build-HowTo.html#QpidJavaBuildHowTo-BuildInstructionsGeneral">2.9.1. 
+            Build
+            Instructions - General
+          </a></span></dt><dt><span class="section"><a href="Qpid-Java-Build-HowTo.html#QpidJavaBuildHowTo-BuildInstructionsTrunk">2.9.2. 
+            Build
+            Instructions - Trunk
+          </a></span></dt></dl></dd><dt><span class="section"><a href="Priority-Queues.html">2.10. 
+      Use Priority Queues
+    </a></span></dt><dd><dl><dt><span class="section"><a href="Priority-Queues.html#UsePriorityQueues-GeneralInformation">2.10.1. 
+            General
+            Information
+          </a></span></dt><dt><span class="section"><a href="Priority-Queues.html#UsePriorityQueues-DefiningPriorityQueues">2.10.2. 
+            Defining
+            Priority Queues
+          </a></span></dt><dt><span class="section"><a href="Priority-Queues.html#UsePriorityQueues-Clientconfiguration-2Fmessagingmodelforpriorityqueues">2.10.3. 
+            Client configuration/messaging model for priority queues
+          </a></span></dt></dl></dd><dt><span class="section"><a href="Java-Broker-Slow-Consumer-Disconnect.html">2.11. Slow Consumer Disconnect - User Guide</a></span></dt><dd><dl><dt><span class="section"><a href="Java-Broker-Slow-Consumer-Disconnect.html#id2526439">2.11.1. Introduction</a></span></dt><dt><span class="section"><a href="Java-Broker-Slow-Consumer-Disconnect.html#id2526474">2.11.2. What can it do?</a></span></dt><dt><span class="section"><a href="Java-Broker-Slow-Consumer-Disconnect.html#id2526500">2.11.3. Frequency of SCD Checking</a></span></dt><dt><span class="section"><a href="Java-Broker-Slow-Consumer-Disconnect.html#id2526581">2.11.4. Client Exception<span class="bold"><strong>s</strong></span></a></span></dt><dt><span class="section"><a href="Java-Broker-Slow-Consumer-Disconnect.html#id2526640">2.11.5. Disconnection Thresholds</a></span></dt><dt><span class="section"><a href="Java-Broker-Slow-Consumer-Disconnect.html#id2526871">2.11.6. Important Points To Note</a></span></dt></dl></dd></dl></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="id2493330"></a>2.1. 
+      Add New Users
+    </h2></div></div></div><p>
+            The Qpid Java Broker has a single reference source (<a class="xref" href="">???</a>) that
+            defines all the users in the system.
+          </p><p>
+            To add a new user to the broker the password file must be
+            updated. The details about adding entries and when these updates
+            take effect are dependent on the file format each of which are
+            described below.
+          </p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="AddNewUsers-AvailablePasswordfileformats"></a>2.1.1. 
+            Available
+            Password file formats
+          </h3></div></div></div><p>
+            There are currently two different file formats available for use
+            depending on the PrincipalDatabase that is desired. In all cases
+            the clients need not be aware of the type of PrincipalDatabase in
+            use they only need support the SASL mechanisms they provide.
+          </p><div class="itemizedlist"><ul><li><p>
+              <a class="xref" href="Qpid-Java-Broker-HowTos.html#AddNewUsers-Plain" title="2.1.1.1.  Plain">Section 2.1.1.1, “
+            Plain
+          ”</a>
+            </p></li><li><p>
+              <a class="xref" href="Qpid-Java-Broker-HowTos.html#AddNewUsers-Base64MD5PasswordFileFormat" title="2.1.1.3.  Base64MD5 Password File Format">Section 2.1.1.3, “
+            Base64MD5
+            Password File Format
+          ”</a>
+            </p></li></ul></div><p>
+            
+          </p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="AddNewUsers-Plain"></a>2.1.1.1. 
+            Plain
+          </h4></div></div></div><p>
+            The plain file has the following format:
+          </p><pre class="programlisting">
+# Plain password authentication file.
+# default name : passwd
+# Format &lt;username&gt;:&lt;password&gt;
+#e.g.
+martin:password
+</pre><p>
+            As the contents of the file are plain text and the password is
+            taken to be everything to the right of the ':'(colon). The
+            password, therefore, cannot contain a ':' colon, but this can be
+            used to delimit the password.
+          </p><p>
+            Lines starting with a '#' are treated as comments.
+          </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="AddNewUsers-Whereisthepasswordfileformybroker-3F"></a>2.1.1.2. 
+            Where is
+            the password file for my broker ?
+          </h4></div></div></div><p>
+            The location of the password file in use for your broker is as
+            configured in your config.xml file.
+          </p><pre class="programlisting">
+&lt;principal-databases&gt;
+            &lt;principal-database&gt;
+                &lt;name&gt;passwordfile&lt;/name&gt;
+                &lt;class&gt;org.apache.qpid.server.security.auth.database.PlainPasswordFilePrincipalDatabase&lt;/class&gt;
+                &lt;attributes&gt;
+                    &lt;attribute&gt;
+                        &lt;name&gt;passwordFile&lt;/name&gt;
+                        &lt;value&gt;${conf}/passwd&lt;/value&gt;
+                    &lt;/attribute&gt;
+                &lt;/attributes&gt;
+            &lt;/principal-database&gt;
+        &lt;/principal-databases&gt;
+</pre><p>
+            So in the example config.xml file this password file lives in the
+            directory specified as the conf directory (at the top of your
+            config.xml file).
+          </p><p>
+            If you wish to use Base64 encoding for your password file, then
+            in the &lt;class&gt; element above you should specify
+            org.apache.qpid.server.security.auth.database.Base64MD5PasswordFilePrincipalDatabase
+          </p><p>
+            The default is:
+          </p><pre class="programlisting">
+ &lt;conf&gt;${prefix}/etc&lt;/conf&gt;
+</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="AddNewUsers-Base64MD5PasswordFileFormat"></a>2.1.1.3. 
+            Base64MD5
+            Password File Format
+          </h4></div></div></div><p>
+            This format can be used to ensure that SAs cannot read the plain
+            text password values from your password file on disk.
+          </p><p>
+            The Base64MD5 file uses the following format:
+          </p><pre class="programlisting">
+# Base64MD5 password authentication file
+# default name : qpid.passwd
+# Format &lt;username&gt;:&lt;Base64 Encoded MD5 hash of the users password&gt;
+#e.g.
+martin:X03MO1qnZdYdgyfeuILPmQ==
+</pre><p>
+            As with the Plain format the line is delimited by a ':'(colon).
+            The password field contains the MD5 Hash of the users password
+            encoded in Base64.
+          </p><p>
+            This file is read on broker start-up and is not re-read.
+          </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="AddNewUsers-HowcanIupdateaBase64MD5passwordfile-3F"></a>2.1.1.4. 
+            How can
+            I update a Base64MD5 password file ?
+          </h4></div></div></div><p>
+            To update the file there are two options:
+          </p><div class="orderedlist"><ol type="1"><li><p>Edit the file by hand using the <span class="emphasis"><em>qpid-passwd</em></span> tool
+            that will generate the required lines. The output from the tool
+            is the text that needs to be copied in to your active password
+            file. This tool is located in the broker bin directory.
+              Eventually it is planned for this tool to emulate the
+              functionality of <a class="xref" href="">???</a>
+              for qpid passwd files.
+              <span class="emphasis"><em>NOTE:</em></span> For the changes to be seen by the broker you must
+              either restart the broker or reload the data with the
+              management tools (see <a class="xref" href="Qpid-JMX-Management-Console.html#Qpid-JMX-Management-Console-User-Guide" title="3.1.1.5.  Qpid JMX Management Console User Guide">Section 3.1.1.5, “
+      Qpid JMX Management Console User Guide
+    ”</a>)
+            </p></li><li><p>Use the management tools to create a new user. The changes
+            will be made by the broker to the password file and the new user
+            will be immediately available to the system (see <a class="xref" href="Qpid-JMX-Management-Console.html#Qpid-JMX-Management-Console-User-Guide" title="3.1.1.5.  Qpid JMX Management Console User Guide">Section 3.1.1.5, “
+      Qpid JMX Management Console User Guide
+    ”</a>).
+            </p></li></ol></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="AddNewUsers-Dynamicchangestopasswordfiles."></a>2.1.2. 
+            Dynamic
+            changes to password files.
+          </h3></div></div></div><p>
+            The Plain password file and the Base64MD5 format file are both
+            only read once on start up.
+          </p><p>
+            To make changes dynamically there are two options, both require
+            administrator access via the Management Console (see <a class="xref" href="Qpid-JMX-Management-Console.html#Qpid-JMX-Management-Console-User-Guide" title="3.1.1.5.  Qpid JMX Management Console User Guide">Section 3.1.1.5, “
+      Qpid JMX Management Console User Guide
+    ”</a>)
+          </p><div class="orderedlist"><ol type="1"><li><p>You can replace the file and use the console to reload its
+            contents.
+            </p></li><li><p>The management console provides an interface to create,
+            delete and amend the users. These changes are written back to the
+            active password file.
+            </p></li></ol></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="AddNewUsers-HowpasswordfilesandPrincipalDatabasesrelatetoauthenticationmechanisms"></a>2.1.3. 
+            How password files and PrincipalDatabases relate to
+            authentication mechanisms
+          </h3></div></div></div><p>
+            For each type of password file a PrincipalDatabase exists that
+            parses the contents. These PrincipalDatabases load various SASL
+            mechanism based on their supportability. e.g. the Base64MD5 file
+            format can't support Plain authentication as the plain password
+            is not available. Any client connecting need only be concerned
+            about the SASL module they support and not the type of
+            PrincipalDatabase. So I client that understands CRAM-MD5 will
+            work correctly with a Plain and Base64MD5 PrincipalDatabase.
+          </p><div class="table"><a name="id2494689"></a><p class="title"><b>Table 2.1. File Format and Principal Database</b></p><div class="table-contents"><table summary="File Format and Principal Database" border="1"><colgroup><col><col></colgroup><tbody><tr><td>
+                  FileFormat/PrincipalDatabase
+                </td><td>
+                  SASL
+                </td></tr><tr><td>
+                  Plain
+                </td><td>
+                  AMQPLAIN PLAIN CRAM-MD5
+                </td></tr><tr><td>
+                  Base64MD5
+                </td><td>
+                  CRAM-MD5 CRAM-MD5-HASHED
+                </td></tr></tbody></table></div></div><br class="table-break"><p>
+            For details of SASL support see <a class="xref" href="">???</a>
+          </p></div></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="High-Availability.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="Configuring-ACLS.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">1.6. High Availability </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 2.2. 
+      Configuring ACLs
+  </td></tr></table></div><div class="main_text_area_bottom"></div></div></div></body></html>

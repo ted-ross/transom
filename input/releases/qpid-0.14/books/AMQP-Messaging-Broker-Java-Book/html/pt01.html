@@ -1,0 +1,116 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Part I. AMQP Messaging Broker (Implemented in Java)</title><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"><link rel="home" href="index.html" title=""><link rel="up" href="index.html" title=""><link rel="prev" href="index.html" title=""><link rel="next" href="ch01.html" title="Chapter 1. General User Guides"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Part I. AMQP Messaging Broker (Implemented in Java)</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="index.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="ch01.html">Next</a></td></tr></table><hr></div><div class="part" title="Part I. AMQP Messaging Broker (Implemented in Java)"><div class="titlepage"><div><div><h1 class="title"><a name="id456484"></a>Part I. AMQP Messaging Broker (Implemented in Java)</h1></div></div></div><div class="partintro" title="AMQP Messaging Broker (Implemented in Java)"><div></div><p>Qpid provides two AMQP messaging brokers:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Implemented in C++ - high performance, low latency, and RDMA support.</p></li><li class="listitem"><p>Implemented in Java - Fully JMS compliant, runs on any Java platform.</p></li></ul></div><p>Both AMQP messaging brokers support clients in multiple languages, as long as the messaging client and the messaging broker use the same version of AMQP. See <a class="link" href="">???</a> to see which messaging clients work with each broker.</p><p>This section contains information specific to the broker that is implemented in Java.</p><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="chapter"><a href="ch01.html">1. General User Guides</a></span></dt><dd><dl><dt><span class="section"><a href="ch01.html#id460215">1.1. 
+      Java Broker Feature Guide
+    </a></span></dt><dd><dl><dt><span class="section"><a href="ch01.html#JavaBrokerFeatureGuide-TheQpidpureJavabrokercurrentlysupportsthefollowingfeatures-3A">1.1.1. 
+            The Qpid pure Java broker currently supports the following
+            features:
+          </a></span></dt></dl></dd><dt><span class="section"><a href="ch01s02.html">1.2. 
+      Qpid Java FAQ
+    </a></span></dt><dd><dl><dt><span class="section"><a href="ch01s02.html#QpidJavaFAQ-Purpose">1.2.1. Purpose</a></span></dt></dl></dd><dt><span class="section"><a href="ch01s03.html">1.3. 
+      Java Environment Variables
+    </a></span></dt><dd><dl><dt><span class="section"><a href="ch01s03.html#JavaEnvironmentVariables-SettingQpidEnvironmentVariables">1.3.1. 
+            Setting
+            Qpid Environment Variables
+          </a></span></dt></dl></dd><dt><span class="section"><a href="ch01s04.html">1.4. 
+      Qpid Troubleshooting Guide
+    </a></span></dt><dd><dl><dt><span class="section"><a href="ch01s04.html#QpidTroubleshootingGuide-I-27mgettingajava.lang.UnsupportedClassVersionErrorwhenItrytostartthebroker.Whatdoesthismean-3F">1.4.1. 
+            I'm getting a java.lang.UnsupportedClassVersionError when I
+            try to start the broker. What does this mean ?
+          </a></span></dt><dt><span class="section"><a href="ch01s04.html#QpidTroubleshootingGuide-I-27mhavingaproblembindingtotherequiredhost-3Aportatbrokerstartup-3F">1.4.2. 
+            I'm having a problem binding to the required host:port at
+            broker startup ?
+          </a></span></dt><dt><span class="section"><a href="ch01s04.html#QpidTroubleshootingGuide-I-27mhavingproblemswithmyclasspath.HowcanIensurethatmyclasspathisok-3F">1.4.3. 
+            I'm having problems with my classpath. How can I ensure that
+            my classpath is ok ?
+          </a></span></dt><dt><span class="section"><a href="ch01s04.html#QpidTroubleshootingGuide-Ican-27tgetthebrokertostart.HowcanIdiagnosetheproblem-3F">1.4.4. 
+            I can't get the broker to start. How can I diagnose the
+            problem ?
+          </a></span></dt><dt><span class="section"><a href="ch01s04.html#QpidTroubleshootingGuide-WhenItrytosendmessagestoaqueueI-27mgettingaerrorasthequeuedoesnotexist.WhatcanIdo-3F">1.4.5. 
+            When I try to send messages to a queue I'm getting a error as
+            the queue does not exist. What can I do ?
+          </a></span></dt></dl></dd><dt><span class="section"><a href="ch01s05.html">1.5. Broker Configuration Guide </a></span></dt><dd><dl><dt><span class="section"><a href="ch01s05.html#id441889">1.5.1. Topic Configuration on Java Broker</a></span></dt></dl></dd></dl></dd><dt><span class="chapter"><a href="ch02.html">2. How Tos</a></span></dt><dd><dl><dt><span class="section"><a href="ch02.html#id456709">2.1. 
+      Add New Users
+    </a></span></dt><dd><dl><dt><span class="section"><a href="ch02.html#AddNewUsers-AvailablePasswordfileformats">2.1.1. 
+            Available
+            Password file formats
+          </a></span></dt><dt><span class="section"><a href="ch02.html#AddNewUsers-Dynamicchangestopasswordfiles.">2.1.2. 
+            Dynamic
+            changes to password files.
+          </a></span></dt><dt><span class="section"><a href="ch02.html#AddNewUsers-HowpasswordfilesandPrincipalDatabasesrelatetoauthenticationmechanisms">2.1.3. 
+            How password files and PrincipalDatabases relate to
+            authentication mechanisms
+          </a></span></dt></dl></dd><dt><span class="section"><a href="ch02s02.html">2.2. 
+      Configure ACLs
+    </a></span></dt><dd><dl><dt><span class="section"><a href="ch02s02.html#ConfigureACLs-ConfigureACLs">2.2.1. 
+            Configure ACLs
+          </a></span></dt></dl></dd><dt><span class="section"><a href="ch02s03.html">2.3. 
+      Configure Java Qpid to use a SSL connection.
+    </a></span></dt><dd><dl><dt><span class="section"><a href="ch02s03.html#ConfigureJavaQpidtouseaSSLconnection.-UsingSSLconnectionwithQpidJava.">2.3.1. 
+            Using SSL connection with Qpid Java.
+          </a></span></dt><dt><span class="section"><a href="ch02s03.html#ConfigureJavaQpidtouseaSSLconnection.-Setup">2.3.2. 
+            Setup
+          </a></span></dt><dt><span class="section"><a href="ch02s03.html#ConfigureJavaQpidtouseaSSLconnection.-Performingtheconnection.">2.3.3. 
+            Performing
+            the connection.
+          </a></span></dt></dl></dd><dt><span class="section"><a href="ch02s04.html">2.4. 
+      Configure Log4j CompositeRolling Appender
+    </a></span></dt><dd><dl><dt><span class="section"><a href="ch02s04.html#ConfigureLog4jCompositeRollingAppender-HowtoconfiguretheCompositeRollinglog4jAppender">2.4.1. 
+            How to configure the CompositeRolling log4j Appender
+          </a></span></dt></dl></dd><dt><span class="section"><a href="ch02s05.html">2.5. 
+      Configure the Broker via config.xml
+    </a></span></dt><dd><dl><dt><span class="section"><a href="ch02s05.html#ConfiguretheBrokerviaconfig.xml-Brokerconfig.xmlOverview">2.5.1. 
+            Broker config.xml Overview
+          </a></span></dt><dt><span class="section"><a href="ch02s05.html#ConfiguretheBrokerviaconfig.xml-QpidVersion">2.5.2. 
+            Qpid
+            Version
+          </a></span></dt></dl></dd><dt><span class="section"><a href="ch02s06.html">2.6. 
+      Configure the Virtual Hosts via virtualhosts.xml
+    </a></span></dt><dd><dl><dt><span class="section"><a href="ch02s06.html#ConfiguretheVirtualHostsviavirtualhosts.xml-virtualhosts.xmlOverview">2.6.1. 
+            virtualhosts.xml Overview
+          </a></span></dt></dl></dd><dt><span class="section"><a href="ch02s07.html">2.7. 
+      Debug using log4j
+    </a></span></dt><dd><dl><dt><span class="section"><a href="ch02s07.html#Debugusinglog4j-Debuggingwithlog4jconfigurations">2.7.1. 
+            Debugging
+            with log4j configurations
+          </a></span></dt></dl></dd><dt><span class="section"><a href="ch02s08.html">2.8. 
+      How to Tune M3 Java Broker Performance
+    </a></span></dt><dd><dl><dt><span class="section"><a href="ch02s08.html#HowtoTuneM3JavaBrokerPerformance-ProblemStatement">2.8.1. 
+            Problem
+            Statement
+          </a></span></dt><dt><span class="section"><a href="ch02s08.html#HowtoTuneM3JavaBrokerPerformance-SuccessfulTuningOptions">2.8.2. 
+            Successful
+            Tuning Options
+          </a></span></dt><dt><span class="section"><a href="ch02s08.html#HowtoTuneM3JavaBrokerPerformance-NextSteps">2.8.3. 
+            Next
+            Steps
+          </a></span></dt></dl></dd><dt><span class="section"><a href="ch02s09.html">2.9. 
+      Qpid Java Build How To
+    </a></span></dt><dd><dl><dt><span class="section"><a href="ch02s09.html#QpidJavaBuildHowTo-BuildInstructionsGeneral">2.9.1. 
+            Build
+            Instructions - General
+          </a></span></dt><dt><span class="section"><a href="ch02s09.html#QpidJavaBuildHowTo-BuildInstructionsTrunk">2.9.2. 
+            Build
+            Instructions - Trunk
+          </a></span></dt></dl></dd><dt><span class="section"><a href="ch02s10.html">2.10. 
+      Use Priority Queues
+    </a></span></dt><dd><dl><dt><span class="section"><a href="ch02s10.html#UsePriorityQueues-GeneralInformation">2.10.1. 
+            General
+            Information
+          </a></span></dt><dt><span class="section"><a href="ch02s10.html#UsePriorityQueues-DefiningPriorityQueues">2.10.2. 
+            Defining
+            Priority Queues
+          </a></span></dt><dt><span class="section"><a href="ch02s10.html#UsePriorityQueues-Clientconfiguration-2Fmessagingmodelforpriorityqueues">2.10.3. 
+            Client configuration/messaging model for priority queues
+          </a></span></dt></dl></dd><dt><span class="section"><a href="ch02s11.html">2.11. Slow Consumer Disconnect - User Guide</a></span></dt><dd><dl><dt><span class="section"><a href="ch02s11.html#id460181">2.11.1. Introduction</a></span></dt><dt><span class="section"><a href="ch02s11.html#id460746">2.11.2. What can it do?</a></span></dt><dt><span class="section"><a href="ch02s11.html#id456827">2.11.3. Frequency of SCD Checking</a></span></dt><dt><span class="section"><a href="ch02s11.html#id446658">2.11.4. Client Exception<span class="bold"><strong>s</strong></span></a></span></dt><dt><span class="section"><a href="ch02s11.html#id441462">2.11.5. Disconnection Thresholds</a></span></dt><dt><span class="section"><a href="ch02s11.html#id474896">2.11.6. Important Points To Note</a></span></dt></dl></dd></dl></dd><dt><span class="chapter"><a href="ch03.html">3. 
+    Qpid JMX Management Console
+  </a></span></dt><dd><dl><dt><span class="section"><a href="ch03.html#QpidJMXManagementConsole-QpidJMXManagementConsole">3.1.  Qpid JMX Management Console </a></span></dt><dd><dl><dt><span class="section"><a href="ch03.html#QpidJMXManagementConsole-Overview">3.1.1. 
+	Overview
+      </a></span></dt></dl></dd></dl></dd><dt><span class="chapter"><a href="ch04.html">4. Management Tools</a></span></dt><dd><dl><dt><span class="section"><a href="ch04.html#id438796">4.1. 
+      MessageStore Tool
+    </a></span></dt><dd><dl><dt><span class="section"><a href="ch04.html#MessageStoreTool-MessageStoreTool">4.1.1. 
+            MessageStore Tool
+          </a></span></dt></dl></dd><dt><span class="section"><a href="ch04s02.html">4.2. 
+      Qpid Java Broker Management CLI
+    </a></span></dt><dd><dl><dt><span class="section"><a href="ch04s02.html#QpidJavaBrokerManagementCLI-HowtobuildApacheQpidCLI">4.2.1. 
+            How to
+            build Apache Qpid CLI
+          </a></span></dt></dl></dd></dl></dd></dl></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="index.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="ch01.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Chapter 1. General User Guides</td></tr></table></div></body></html>

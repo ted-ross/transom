@@ -1,0 +1,34 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>2.14. Cluster Failover</title><link rel="stylesheet" type="text/css" href="css/style.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"><link rel="home" href="index.html" title="Programming in Apache Qpid"><link rel="up" href="ch02.html" title="Chapter 2. Using the Qpid Messaging API"><link rel="prev" href="ch02s13.html" title="2.13. Performance Tips"><link rel="next" href="ch02s15.html" title="2.15. Logging"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.14. Cluster Failover</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02s13.html">Prev</a> </td><th width="60%" align="center">Chapter 2. Using the Qpid Messaging API</th><td width="20%" align="right"> <a accesskey="n" href="ch02s15.html">Next</a></td></tr></table><hr></div><div class="section" title="2.14. Cluster Failover"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="idp32703488"></a>2.14. Cluster Failover</h2></div></div></div><p>The messaging broker can be run in clustering mode, which provides high reliability through replicating state between brokers in the cluster. If one broker in a cluster fails, clients can choose another broker in the cluster and continue their work. Each broker in the cluster also advertises the addresses of all known brokers
+
+      <sup>[<a name="idp32704736" href="#ftn.idp32704736" class="footnote">11</a>]</sup>
+
+      . A client can use this information to dynamically keep the list of reconnection urls up to date.</p><p>In C++, the <code class="classname">FailoverUpdates</code> class provides this functionality:</p><div class="example"><a name="idp32706272"></a><p class="title"><b>Example 2.19. Tracking cluster membership</b></p><div class="example-contents"><p>In C++:</p><pre class="programlisting">
+	#include &lt;qpid/messaging/FailoverUpdates.h&gt;
+	...
+	Connection connection("localhost:5672");
+	connection.setOption("reconnect", true);
+	try {
+	connection.open();
+	std::auto_ptr&lt;FailoverUpdates&gt; updates(new FailoverUpdates(connection));
+	
+	</pre><p>In python:</p><pre class="programlisting">
+	import qpid.messaging.util
+	...
+	connection = Connection("localhost:5672")
+	connection.reconnect = True
+	try:
+	connection.open()
+	auto_fetch_reconnect_urls(connection)
+	
+	</pre><p>
+	  In .NET C#:
+	</p><pre class="programlisting">
+	  using Org.Apache.Qpid.Messaging;
+	  ...
+	  connection = new Connection("localhost:5672");
+	  connection.SetOption("reconnect", true);
+	  try {
+	  connection.Open();
+	  FailoverUpdates failover = new FailoverUpdates(connection);
+
+	</pre></div></div><br class="example-break"><div class="footnotes"><br><hr width="100" align="left"><div class="footnote"><p><sup>[<a id="ftn.idp32704736" href="#idp32704736" class="para">11</a>] </sup>This is done via the amq.failover exchange in AMQP 0-10</p></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s13.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch02s15.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.13. Performance Tips </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 2.15. Logging</td></tr></table></div></body></html>

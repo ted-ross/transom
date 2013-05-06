@@ -1,0 +1,220 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>1.13. Active-passive Messaging Clusters (Preview)</title><link rel="stylesheet" type="text/css" href="css/style.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"><link rel="home" href="index.html" title="AMQP Messaging Broker (Implemented in C++)"><link rel="up" href="ch01.html" title="Chapter 1.  Running the AMQP Messaging Broker"><link rel="prev" href="Using-message-groups.html" title="1.12.  Using Message Groups"><link rel="next" href="ch01s14.html" title="1.14. Queue Replication with the HA module"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">1.13. Active-passive Messaging Clusters (Preview)</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="Using-message-groups.html">Prev</a> </td><th width="60%" align="center">Chapter 1. 
+      Running the AMQP Messaging Broker
+    </th><td width="20%" align="right"> <a accesskey="n" href="ch01s14.html">Next</a></td></tr></table><hr></div><div class="section" title="1.13. Active-passive Messaging Clusters (Preview)"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="chap-Messaging_User_Guide-Active_Passive_Cluster"></a>1.13. Active-passive Messaging Clusters (Preview)</h2></div></div></div><div class="section" title="1.13.1. Overview"><div class="titlepage"><div><div><h3 class="title"><a name="id372527"></a>1.13.1. Overview</h3></div></div></div><p>
+      This release provides a preview of a new module for High Availability (HA). The new
+      module is not yet complete or ready for production use, it being made available so
+      that users can experiment with the new approach and provide feedback early in the
+      development process.  Feedback should go to <a class="ulink" href="mailto:user@qpid.apache.org" target="_top">user@qpid.apache.org</a>.
+    </p><p>
+      The old cluster module takes an <em class="firstterm">active-active</em> approach,
+      i.e. all the brokers in a cluster are able to handle client requests
+      simultaneously. The new HA module takes an <em class="firstterm">active-passive</em>,
+      <em class="firstterm">hot-standby</em> approach.
+    </p><p>
+      In an active-passive cluster, only one broker, known as the
+      <em class="firstterm">primary</em>, is active and serving clients at a time. The other
+      brokers are standing by as <em class="firstterm">backups</em>. Changes on the primary
+      are immediately replicated to all the backups so they are always up-to-date or
+      "hot".  If the primary fails, one of the backups is promoted to be the new
+      primary. Clients fail-over to the new primary automatically. If there are multiple
+      backups, the backups also fail-over to become backups of the new primary.
+    </p><p>
+      The new approach depends on an external <em class="firstterm">cluster resource
+      manager</em> to detect failure of the primary and choose the new primary. The
+      first supported resource manager will be <a class="ulink" href="https://fedorahosted.org/cluster/wiki/RGManager" target="_top">rgmanager</a>, but it will
+      be possible to add integration with other resource managers in the future. The
+      preview version is not integrated with any resource manager, you can use the
+      <span class="command"><strong>qpid-ha</strong></span> tool to simulate the actions of a resource manager or do
+      your own integration.
+    </p><div class="section" title="1.13.1.1. Why the new approach?"><div class="titlepage"><div><div><h4 class="title"><a name="id407302"></a>1.13.1.1. Why the new approach?</h4></div></div></div>
+      The new active-passive approach has several advantages compared to the
+      existing active-active cluster module.
+      <div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+	  It does not depend directly on openais or corosync. It does not use multicast
+	  which simplifies deployment.
+	</li><li class="listitem">
+	  It is more portable: in environments that don't support corosync, it can be
+	  integrated with a resource manager available in that environment.
+	</li><li class="listitem">
+	  Replication to a <em class="firstterm">disaster recovery</em> site can be handled as
+	  simply another node in the cluster, it does not require a separate replication
+	  mechanism.
+	</li><li class="listitem">
+	  It can take advantage of features provided by the resource manager, for example
+	  virtual IP addresses.
+	</li><li class="listitem">
+	  Improved performance and scalability due to better use of multiple CPU s
+	</li></ul></div></div><div class="section" title="1.13.1.2. Limitations"><div class="titlepage"><div><div><h4 class="title"><a name="id391127"></a>1.13.1.2. Limitations</h4></div></div></div><p>
+	There are a number of known limitations in the current preview implementation. These
+	will be fixed in the production versions.
+      </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+	  Transactional changes to queue state are not replicated atomically. If the
+	  primary crashes during a transaction, it is possible that the backup could
+	  contain only part of the changes introduced by a transaction.
+	</li><li class="listitem">
+	  During a fail-over one backup is promoted to primary and any other backups switch to
+	  the new primary. Messages sent to the new primary before all the backups have
+	  switched could be lost if the new primary itself fails before all the backups have
+	  switched.
+	</li><li class="listitem">
+	  When used with a persistent store: if the entire cluster fails, there are no tools
+	  to help identify the most recent store.
+	</li><li class="listitem">
+	  Acknowledgments are confirmed to clients before the message has been dequeued
+	  from replicas or indeed from the local store if that is asynchronous.
+	</li><li class="listitem">
+	  A persistent broker must have its store erased before joining an existing cluster.
+	  In the production version a persistent broker will be able to load its store and
+	  avoid downloading messages that are in the store from the primary.
+	</li><li class="listitem">
+	  Configuration changes (creating or deleting queues, exchanges and bindings) are
+	  replicated asynchronously. Management tools used to make changes will consider the
+	  change complete when it is complete on the primary, it may not yet be replicated
+	  to all the backups.
+	</li><li class="listitem">
+	  Deletions made immediately after a failure (before all the backups are ready) may
+	  be lost on a backup. Queues, exchange or bindings that were deleted on the primary could
+	  re-appear if that backup is promoted to primary on a subsequent failure.
+	</li><li class="listitem">
+	  Better control is needed over which queues/exchanges are replicated and which are not.
+	</li><li class="listitem">
+	  There are some known issues affecting performance, both the throughput of
+	  replication and the time taken for backups to fail-over. Performance will improve
+	  in the production version.
+	</li><li class="listitem">
+	  Federated links from the primary will be lost in fail over, they will not be
+	  re-connected on the new primary. Federation links to the primary can fail over.
+	</li><li class="listitem">
+	  Only plain FIFO queues can be replicated. LVQ and ring queues are not yet supported.
+	</li></ul></div></div></div><div class="section" title="1.13.2. Configuring the Brokers"><div class="titlepage"><div><div><h3 class="title"><a name="id387016"></a>1.13.2. Configuring the Brokers</h3></div></div></div><p>
+      The broker must load the <code class="filename">ha</code> module, it is loaded by default
+      when you start a broker. The following broker options are available for the HA module.
+    </p><div class="table"><a name="ha-broker-options"></a><p class="title"><b>Table 1.18. Options for High Availability Messaging Cluster</b></p><div class="table-contents"><table summary="Options for High Availability Messaging Cluster" border="1"><colgroup><col align="left" class="c1"><col align="left" class="c2"></colgroup><thead><tr><th colspan="2" align="center">
+	      Options for High Availability Messaging Cluster
+	    </th></tr></thead><tbody><tr><td align="left">
+	      <span class="command"><strong>--ha-cluster <em class="replaceable"><code>yes|no</code></em></strong></span>
+	    </td><td align="left">
+	      Set to "yes" to have the broker join a cluster.
+	    </td></tr><tr><td align="left">
+	      <span class="command"><strong>--ha-brokers <em class="replaceable"><code>URL</code></em></strong></span>
+	    </td><td align="left">
+	      URL use by brokers to connect to each other. The URL lists the addresses of
+	      all the brokers in the cluster
+	      <sup>[<a name="id375801" href="#ftn.id375801" class="footnote">a</a>]</sup>
+	      in the following form:
+	      <pre class="programlisting">
+		url = ["amqp:"][ user ["/" password] "@" ] addr ("," addr)*
+		addr = tcp_addr / rmda_addr / ssl_addr / ...
+		tcp_addr = ["tcp:"] host [":" port]
+		rdma_addr = "rdma:" host [":" port]
+		ssl_addr = "ssl:" host [":" port]'
+	      </pre>
+	    </td></tr><tr><td align="left"> <span class="command"><strong>--ha-public-brokers <em class="replaceable"><code>URL</code></em></strong></span> </td><td align="left">
+	      URL used by clients to connect to the brokers in the same format as
+	      <span class="command"><strong>--ha-brokers</strong></span> above. Use this option if you want client
+	      traffic on a different network from broker replication traffic. If this
+	      option is not set, clients will use the same URL as brokers.
+	    </td></tr><tr><td align="left">
+	      <p><span class="command"><strong>--ha-username <em class="replaceable"><code>USER</code></em></strong></span></p>
+	      <p><span class="command"><strong>--ha-password <em class="replaceable"><code>PASS</code></em></strong></span></p>
+	      <p><span class="command"><strong>--ha-mechanism <em class="replaceable"><code>MECH</code></em></strong></span></p>
+	    </td><td align="left">
+	      Brokers use <em class="replaceable"><code>USER</code></em>,
+	      <em class="replaceable"><code>PASS</code></em>, <em class="replaceable"><code>MECH</code></em> to
+	      authenticate when connecting to each other.
+	    </td></tr></tbody><tbody class="footnotes"><tr><td colspan="2"><div class="footnote"><p><sup>[<a id="ftn.id375801" href="#id375801" class="para">a</a>] </sup>
+		  If the resource manager supports virtual IP addresses then the URL can
+		  contain just the single virtual IP.
+		</p></div></td></tr></tbody></table></div></div><br class="table-break"><p>
+      To configure a cluster you must set at least <span class="command"><strong>ha-cluster</strong></span> and <span class="command"><strong>ha-brokers</strong></span>
+    </p></div><div class="section" title="1.13.3. Creating replicated queues and exchanges"><div class="titlepage"><div><div><h3 class="title"><a name="id375144"></a>1.13.3. Creating replicated queues and exchanges</h3></div></div></div><p>
+      To create a replicated queue or exchange, pass the argument
+      <span class="command"><strong>qpid.replicate</strong></span> when creating the queue or exchange. It should
+      have one of the following three values:
+      </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><em class="firstterm">all</em>: Replicate the queue or exchange, messages and bindings.
+	</li><li class="listitem"><em class="firstterm">configuration</em>: Replicate the existence of the queue or
+	  exchange and bindings but don't replicate messages.
+	</li><li class="listitem"><em class="firstterm">none</em>: Don't replicate, this is the default.
+	</li></ul></div><p>
+    </p>
+    Bindings are automatically replicated if the queue and exchange being bound both have
+    replication argument of <span class="command"><strong>all</strong></span> or <span class="command"><strong>confguration</strong></span>, they are
+    not replicated otherwise.
+
+    You can create replicated queues and exchanges with the <span class="command"><strong>qpid-config</strong></span>
+    management tool like this:
+    <pre class="programlisting">
+      qpid-config add queue myqueue --replicate all
+    </pre>
+
+    To create replicated queues and exchangs via the client API, add a <span class="command"><strong>node</strong></span> entry to the address like this:
+    <pre class="programlisting">
+      "myqueue;{create:always,node:{x-declare:{arguments:{'qpid.replicate':all}}}}"
+    </pre></div><div class="section" title="1.13.4. Client Fail-over"><div class="titlepage"><div><div><h3 class="title"><a name="id406706"></a>1.13.4. Client Fail-over</h3></div></div></div><p>
+      Clients can only connect to the single primary broker. All other brokers in the
+      cluster are backups, and they automatically reject any attempt by a client to
+      connect.
+    </p><p>
+      Clients are configured with the addreses of all of the brokers in the cluster.
+      <sup>[<a name="id409105" href="#ftn.id409105" class="footnote">1</a>]</sup>
+      When the client tries to connect initially, it will try all of its addresses until it
+      successfully connects to the primary. If the primary fails, clients will try to
+      try to re-connect to all the known brokers until they find the new primary.
+    </p><p>
+      Suppose your cluster has 3 nodes: <span class="command"><strong>node1</strong></span>, <span class="command"><strong>node2</strong></span> and <span class="command"><strong>node3</strong></span> all using the default AMQP port.
+    </p><p>
+      With the C++ client, you specify all the cluster addresses in a single URL, for example:
+      </p><pre class="programlisting">
+	qpid::messaging::Connection c("node1:node2:node3");
+      </pre><p>
+    </p><p>
+      With the python client, you specify <span class="command"><strong>reconnect=True</strong></span> and a list of <em class="replaceable"><code>host:port</code></em> addresses as <span class="command"><strong>reconnect_urls</strong></span> when calling <span class="command"><strong>establish</strong></span> or <span class="command"><strong>open</strong></span>
+      </p><pre class="programlisting">
+	connection = qpid.messaging.Connection.establish("node1", reconnect=True, "reconnect_urls=["node1", "node2", "node3"])
+      </pre><p>
+    </p></div><div class="section" title="1.13.5. Broker fail-over"><div class="titlepage"><div><div><h3 class="title"><a name="id412414"></a>1.13.5. Broker fail-over</h3></div></div></div><p>
+      Broker fail-over is managed by a <em class="firstterm">cluster resource
+      manager</em>. The initial preview version of HA is not integrated with a
+      resource manager, the production version will be integrated with <a class="ulink" href="https://fedorahosted.org/cluster/wiki/RGManager" target="_top">rgmanager</a> and it may
+      be integrated with other resource managers in the future.
+    </p><p>
+      The resource manager is responsible for ensuring that there is exactly one broker
+      is acting as primary at all times. It selects the initial primary broker when the
+      cluster is started, detects failure of the primary, and chooses the backup to
+      promote as the new primary.
+    </p><p>
+      You can simulate the actions of a resource manager, or indeed do your own
+      integration with a resource manager using the <span class="command"><strong>qpid-ha</strong></span> tool.  The
+      command
+      </p><pre class="programlisting">
+	qpid-ha promote -b <em class="replaceable"><code>host</code></em>:<em class="replaceable"><code>port</code></em>
+      </pre><p>
+      will promote the broker listening on
+      <em class="replaceable"><code>host</code></em>:<em class="replaceable"><code>port</code></em> to be the primary.
+      You should only promote a broker to primary when there is no other primary in the
+      cluster. The brokers will not detect multiple primaries, they rely on the resource
+      manager to do that.
+    </p><p>
+      A clustered broker always starts initially in <em class="firstterm">discovery</em>
+      mode. It uses the addresses configured in the <span class="command"><strong>ha-brokers</strong></span>
+      configuration option and tries to connect to each in turn until it finds to the
+      primary. The resource manager is responsible for choosing on of the backups to
+      promote as the initial primary.
+    </p><p>
+      If the primary fails, all the backups are disconnected and return to discovery mode.
+      The resource manager chooses one to promote as the new primary. The other backups
+      will eventually discover the new primary and reconnect.
+    </p></div><div class="section" title="1.13.6. Broker Administration"><div class="titlepage"><div><div><h3 class="title"><a name="id404704"></a>1.13.6. Broker Administration</h3></div></div></div><p>
+      You can connect to a backup broker with the administrative tool
+      <span class="command"><strong>qpid-ha</strong></span>. You can also connect with the tools
+      <span class="command"><strong>qpid-config</strong></span>, <span class="command"><strong>qpid-route</strong></span> and
+      <span class="command"><strong>qpid-stat</strong></span> if you pass the flag <span class="command"><strong>--ha-admin</strong></span> on the
+      command line.  If you do connect to a backup you should not modify any of the
+      replicated queues, as this will disrupt the replication and may result in
+      message loss.
+    </p></div><div class="footnotes"><br><hr width="100" align="left"><div class="footnote"><p><sup>[<a id="ftn.id409105" href="#id409105" class="para">1</a>] </sup>
+	  If the resource manager supports virtual IP addresses then the clients
+	  can be configured with a single virtual IP address.
+	</p></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="Using-message-groups.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch01.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch01s14.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">1.12. 
+    Using Message Groups
+   </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 1.14. Queue Replication with the HA module</td></tr></table></div></body></html>

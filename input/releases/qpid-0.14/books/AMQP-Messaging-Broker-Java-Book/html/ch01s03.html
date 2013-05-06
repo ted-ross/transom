@@ -1,0 +1,44 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>1.3.  Java Environment Variables</title><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"><link rel="home" href="index.html" title=""><link rel="up" href="ch01.html" title="Chapter 1. General User Guides"><link rel="prev" href="ch01s02.html" title="1.2.  Qpid Java FAQ"><link rel="next" href="ch01s04.html" title="1.4.  Qpid Troubleshooting Guide"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">1.3. 
+      Java Environment Variables
+    </th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch01s02.html">Prev</a> </td><th width="60%" align="center">Chapter 1. General User Guides</th><td width="20%" align="right"> <a accesskey="n" href="ch01s04.html">Next</a></td></tr></table><hr></div><div class="section" title="1.3.  Java Environment Variables"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="id440803"></a>1.3. 
+      Java Environment Variables
+    </h2></div></div></div><div class="section" title="1.3.1.  Setting Qpid Environment Variables"><div class="titlepage"><div><div><h3 class="title"><a name="JavaEnvironmentVariables-SettingQpidEnvironmentVariables"></a>1.3.1. 
+            Setting
+            Qpid Environment Variables
+          </h3></div></div></div><div class="section" title="1.3.1.1.  Qpid Deployment Path Variables"><div class="titlepage"><div><div><h4 class="title"><a name="JavaEnvironmentVariables-QpidDeploymentPathVariables"></a>1.3.1.1. 
+            Qpid
+            Deployment Path Variables
+          </h4></div></div></div><p>
+            There are two main Qpid environment variables which are required
+            to be set for Qpid deployments, QPID_HOME and QPID_WORK.
+          </p><p>
+            QPID_HOME - This variable is used to tell the Qpid broker where
+            it's installed home is, which is in turn used to find dependency
+            JARs which Qpid uses.
+          </p><p>
+            QPID_WORK - This variable is used by Qpid when creating all
+            'writeable' directories that it uses. This includes the log
+            directory and the storage location for any BDB instances in use
+            by your deployment (if you're using persistence with BDB). If you
+            do not set this variable, then the broker will default (in the
+            qpid-server script) to use the current user's homedir as the root
+            directory for creating the writeable locations that it uses.
+          </p></div><div class="section" title="1.3.1.2.  Setting Max Memory for the broker"><div class="titlepage"><div><div><h4 class="title"><a name="JavaEnvironmentVariables-SettingMaxMemoryforthebroker"></a>1.3.1.2. 
+            Setting
+            Max Memory for the broker
+          </h4></div></div></div><p>
+            If you simply start the Qpid broker, it will default to use a
+            -Xmx setting of 1024M for the broker JVM. However, we would
+            recommend that you make the maximum -Xmx heap size available, if
+            possible, of 3Gb (for 32-bit platforms).
+          </p><p>
+            You can control the memory setting for your broker by setting the
+            QPID_JAVA_MEM variable before starting the broker e.g. -Xmx3668m
+            . Enclose your value within quotes if you also specify a -Xms
+            value. The value in use is echo'd by the qpid-server script on
+            startup.
+          </p></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch01s02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch01.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch01s04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">1.2. 
+      Qpid Java FAQ
+     </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 1.4. 
+      Qpid Troubleshooting Guide
+    </td></tr></table></div></body></html>

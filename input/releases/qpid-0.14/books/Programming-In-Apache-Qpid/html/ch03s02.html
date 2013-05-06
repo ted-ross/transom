@@ -1,0 +1,212 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>3.2. Apache Qpid JNDI Properties for AMQP Messaging</title><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"><link rel="home" href="index.html" title="Programming in Apache Qpid"><link rel="up" href="ch03.html" title="Chapter 3. Using the Qpid JMS client"><link rel="prev" href="ch03.html" title="Chapter 3. Using the Qpid JMS client"><link rel="next" href="ch03s03.html" title="3.3. Java JMS Message Properties"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">3.2. Apache Qpid JNDI Properties for AMQP Messaging</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch03.html">Prev</a> </td><th width="60%" align="center">Chapter 3. Using the Qpid JMS client</th><td width="20%" align="right"> <a accesskey="n" href="ch03s03.html">Next</a></td></tr></table><hr></div><div class="section" title="3.2. Apache Qpid JNDI Properties for AMQP Messaging"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="QpidJNDI"></a>3.2. Apache Qpid JNDI Properties for AMQP Messaging</h2></div></div></div><p>
+	Apache Qpid defines JNDI properties that can be used to specify JMS Connections and Destinations. Here is a typical JNDI properties file:
+      </p><div class="example"><a name="id551502"></a><p class="title"><b>Example 3.3. JNDI Properties File</b></p><div class="example-contents"><pre class="programlisting">
+java.naming.factory.initial
+  = org.apache.qpid.jndi.PropertiesFileInitialContextFactory
+
+# connectionfactory.[jndiname] = [ConnectionURL]
+connectionfactory.qpidConnectionfactory
+  = amqp://guest:guest@clientid/test?brokerlist='tcp://localhost:5672'
+# destination.[jndiname] = [address_string]
+destination.topicExchange = amq.topic
+</pre></div></div><br class="example-break"><p>The following sections describe the JNDI properties that Qpid uses.</p><div class="section" title="3.2.1. JNDI Properties for Apache Qpid"><div class="titlepage"><div><div><h3 class="title"><a name="id551521"></a>3.2.1. JNDI Properties for Apache Qpid</h3></div></div></div><p>
+	  Apache Qpid supports the properties shown in the following table:
+        </p><div class="table"><a name="id551530"></a><p class="title"><b>Table 3.1. JNDI Properties supported by Apache Qpid</b></p><div class="table-contents"><table summary="JNDI Properties supported by Apache Qpid" border="1"><colgroup><col><col></colgroup><thead><tr><th>
+		  Property
+	        </th><th>
+		  Purpose
+	        </th></tr></thead><tbody><tr><td>
+		  connectionfactory.&lt;jndiname&gt;
+	        </td><td>
+		  <p>
+		    The Connection URL that the connection factory uses to perform connections.
+		  </p>
+	        </td></tr><tr><td>
+		  queue.&lt;jndiname&gt;
+	        </td><td>
+		  <p>
+		    A JMS queue, which is implemented as an amq.direct exchange in Apache Qpid.
+		  </p>
+	        </td></tr><tr><td>
+		  topic.&lt;jndiname&gt;
+	        </td><td>
+		  <p>
+		    A JMS topic, which is implemented as an amq.topic exchange in Apache Qpid.
+		  </p>
+	        </td></tr><tr><td>
+		  destination.&lt;jndiname&gt;
+	        </td><td>
+		  <p>
+		    Can be used for defining all amq destinations,
+		    queues, topics and header matching, using an
+		    address string.
+
+		    <sup>[<a name="id551607" href="#ftn.id551607" class="footnote">a</a>]</sup>
+		  </p>
+	        </td></tr></tbody><tbody class="footnotes"><tr><td colspan="2"><div class="footnote"><p><sup>[<a id="ftn.id551607" href="#id551607" class="para">a</a>] </sup>Binding URLs, which were used in
+		    earlier versions of the Qpid Java JMS client, can
+		    still be used instead of address
+		    strings.</p></div></td></tr></tbody></table></div></div><br class="table-break"></div><div class="section" title="3.2.2. Connection URLs"><div class="titlepage"><div><div><h3 class="title"><a name="section-jms-connection-url"></a>3.2.2. Connection URLs</h3></div></div></div><p>
+	  In JNDI properties, a Connection URL specifies properties for a connection. The format for a Connection URL is:
+        </p><pre class="programlisting">amqp://[&lt;user&gt;:&lt;pass&gt;@][&lt;clientid&gt;]&lt;virtualhost&gt;[?&lt;option&gt;='&lt;value&gt;'[&amp;&lt;option&gt;='&lt;value&gt;']]
+        </pre><p>
+	  For instance, the following Connection URL specifies a user name, a password, a client ID, a virtual host ("test"), a broker list with a single broker, and a TCP host with the host name <span class="quote">&#8220;<span class="quote">localhost</span>&#8221;</span> using port 5672:
+        </p><pre class="programlisting">amqp://username:password@clientid/test?brokerlist='tcp://localhost:5672'
+        </pre><p>
+	  Apache Qpid supports the following properties in Connection URLs:
+        </p><div class="table"><a name="id551658"></a><p class="title"><b>Table 3.2. Connection URL Properties</b></p><div class="table-contents"><table summary="Connection URL Properties" width="100%" border="1"><colgroup><col><col><col></colgroup><thead><tr><th>
+		  Option
+	        </th><th>
+		  Type
+	        </th><th>
+		  Description
+	        </th></tr></thead><tbody><tr><td>
+		  brokerlist
+	        </td><td>
+		  see below
+	        </td><td>
+		  The broker to use for this connection. In the current release, precisely one broker must be specified.
+	        </td></tr><tr><td>
+		  maxprefetch
+	        </td><td>
+		  --
+	        </td><td>
+		  The maximum number of pre-fetched messages per destination.
+	        </td></tr><tr><td>
+		  sync_publish
+	        </td><td>
+           {'persistent' | 'all'}
+	        </td><td>
+          A sync command is sent after every persistent message to guarantee that it has been received; if the value is 'persistent', this is done only for persistent messages.
+	        </td></tr><tr><td>
+		  sync_ack
+	        </td><td>
+           Boolean
+	        </td><td>
+          A sync command is sent after every acknowledgement to guarantee that it has been received.
+	        </td></tr><tr><td>
+		  use_legacy_map_msg_format
+	        </td><td>
+          Boolean
+	        </td><td>
+          If you are using JMS Map messages and deploying a new client with any JMS client older than 0.8 release, you must set this to true to ensure the older clients can understand the map message encoding.
+	        </td></tr><tr><td>
+		  failover
+	        </td><td>
+           {'roundrobin' | 'failover_exchange'}
+	        </td><td>
+          If roundrobin is selected it will try each broker given in the broker list.
+          If failover_exchange is selected it connects to the initial broker given in the broker URL and will receive membership updates via the failover exchange.
+	        </td></tr></tbody></table></div></div><br class="table-break"><p>
+	  Broker lists are specified using a URL in this format:
+        </p><pre class="programlisting">brokerlist=&lt;transport&gt;://&lt;host&gt;[:&lt;port&gt;](?&lt;param&gt;=&lt;value&gt;)?(&amp;&lt;param&gt;=&lt;value&gt;)*</pre><p>
+	  For instance, this is a typical broker list:
+        </p><pre class="programlisting">brokerlist='tcp://localhost:5672'
+        </pre><p>
+	  A broker list can contain more than one broker address; if so, the connection is made to the first broker in the list that is available. In general, it is better to use the failover exchange when using multiple brokers, since it allows applications to fail over if a broker goes down.
+	</p><div class="example"><a name="id551803"></a><p class="title"><b>Example 3.4. Broker Lists</b></p><div class="example-contents"><p>A broker list can specify properties to be used when connecting to the broker, such as security options. This broker list specifies options for a Kerberos connection using GSSAPI:</p><pre class="programlisting">
+amqp://guest:guest@test/test?sync_ack='true'
+    &amp;brokerlist='tcp://ip1:5672?sasl_mechs='GSSAPI'
+	</pre><p>This broker list specifies SSL options:</p><pre class="programlisting">
+amqp://guest:guest@test/test?sync_ack='true'
+   &amp;brokerlist='tcp://ip1:5672?ssl='true'&amp;ssl_cert_alias='cert1'
+	</pre></div></div><br class="example-break"><p>The following broker list options are supported.</p><div class="table"><a name="id551834"></a><p class="title"><b>Table 3.3. Broker List Options</b></p><div class="table-contents"><table summary="Broker List Options" width="100%" border="1"><colgroup><col><col><col></colgroup><thead><tr><th>
+		  Option
+	        </th><th>
+		  Type
+	        </th><th>
+		  Description
+	        </th></tr></thead><tbody><tr><td>
+		  heartbeat
+	        </td><td>
+		  integer
+	        </td><td>
+		  frequency of heartbeat messages (in seconds)
+	        </td></tr><tr><td>
+		  sasl_mechs
+	        </td><td>
+		  --
+	        </td><td>
+		  For secure applications, we suggest CRAM-MD5,
+		  DIGEST-MD5, or GSSAPI. The ANONYMOUS method is not
+		  secure. The PLAIN method is secure only when used
+		  together with SSL. For Kerberos, sasl_mechs must be
+		  set to GSSAPI, sasl_protocol must be set to the
+		  principal for the qpidd broker, e.g. qpidd/, and
+		  sasl_server must be set to the host for the SASL
+		  server, e.g. sasl.com.  SASL External is supported
+		  using SSL certification, e.g.
+		  <code class="literal">ssl='true'&amp;sasl_mechs='EXTERNAL'</code>
+	        </td></tr><tr><td>
+		  sasl_encryption
+	        </td><td>
+          Boolean
+	        </td><td>
+          If <code class="literal">sasl_encryption='true'</code>, the JMS client attempts to negotiate a security layer with the broker using GSSAPI to encrypt the connection. Note that for this to happen, GSSAPI must be selected as the sasl_mech.
+	        </td></tr><tr><td>
+		  ssl
+	        </td><td>
+		  Boolean
+	        </td><td>
+		  If <code class="literal">ssl='true'</code>, the JMS client will encrypt the connection using SSL.
+	        </td></tr><tr><td>
+		  tcp_nodelay
+	        </td><td>
+		  Boolean
+	        </td><td>
+		  If <code class="literal">tcp_nodelay='true'</code>, TCP packet
+		  batching is disabled.
+	        </td></tr><tr><td>
+		  sasl_protocol
+	        </td><td>
+		  --
+	        </td><td>
+		  Used only for
+		  Kerberos. <code class="literal">sasl_protocol</code> must be
+		  set to the principal for the qpidd broker,
+		  e.g. <code class="literal">qpidd/</code>
+	        </td></tr><tr><td>
+		  sasl_server
+	        </td><td>
+		  --
+	        </td><td>
+		  For Kerberos, sasl_mechs must be set to GSSAPI,
+		  sasl_server must be set to the host for the SASL
+		  server, e.g. <code class="literal">sasl.com</code>.
+	        </td></tr><tr><td>
+		  trust_store
+	        </td><td>
+		  --
+	        </td><td>
+		  path to Keberos trust store
+	        </td></tr><tr><td>
+		  trust_store_password
+	        </td><td>
+	        </td><td>
+		  Kerberos trust store password
+	        </td></tr><tr><td>
+		  key_store
+	        </td><td>
+	        </td><td>
+		  path to Kerberos key store
+	        </td></tr><tr><td>
+		  key_store_password
+	        </td><td>
+		  --
+	        </td><td>
+		  Kerberos key store password
+	        </td></tr><tr><td>
+		  ssl_verify_hostname
+	        </td><td>
+		  Boolean
+	        </td><td>
+		  When using SSL you can enable hostname verification
+		  by using "ssl_verify_hostname=true" in the broker
+		  URL.
+	        </td></tr><tr><td>
+		  ssl_cert_alias
+	        </td><td>
+
+	        </td><td>
+          If multiple certificates are present in the keystore, the alias will be used to extract the correct certificate.
+	        </td></tr></tbody></table></div></div><br class="table-break"></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch03.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch03s03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 3. Using the Qpid JMS client </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 3.3. Java JMS Message Properties</td></tr></table></div></body></html>
