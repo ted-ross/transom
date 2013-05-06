@@ -62,6 +62,11 @@ them.
 || *Commits* || <commits-subscribe@qpid.apache.org> || <commits-unsubscribe@qpid.apache.org> ||
 || *Notifications* || <notifications-subscribe@qpid.apache.org> || <notifications-unsubscribe@qpid.apache.org> ||
 
+## Trunk documentation
+
+ - [Java broker manual](@site-url@/components/java-broker/book/index.html)
+ - [Programming in Apache Qpid](@site-url@/components/programming/book/index.html)
+
 ## Wiki
 
  - [Wiki home](https://cwiki.apache.org/qpid/)

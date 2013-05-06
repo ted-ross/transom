@@ -1,0 +1,78 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Chapter 3. Using the Qpid JMS client</title><link rel="stylesheet" href="css/style.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.73.2"><link rel="start" href="index.html" title="Programming in Apache Qpid"><link rel="up" href="index.html" title="Programming in Apache Qpid"><link rel="prev" href="Message-Groups-Guide.html" title="2.17. Using Message Groups"><link rel="next" href="QpidJNDI.html" title="3.2. Apache Qpid JNDI Properties for AMQP Messaging"></head><body><div class="container" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><DIV class="header"><DIV class="logo"><H1>Apache Qpid™</H1><H2>Open Source AMQP Messaging</H2></DIV></DIV><DIV class="menu_box"><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Apache Qpid</H3><UL><LI><A href="http://qpid.apache.org/index.html">Home</A></LI><LI><A href="http://qpid.apache.org/download.html">Download</A></LI><LI><A href="http://qpid.apache.org/getting_started.html">Getting Started</A></LI><LI><A href="http://www.apache.org/licenses/">License</A></LI><LI><A href="https://cwiki.apache.org/qpid/faq.html">FAQ</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Documentation</H3><UL><LI><A href="http://qpid.apache.org/documentation.html#doc-release">Latest Release</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-trunk">Trunk</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-archives">Archive</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Community</H3><UL><LI><A href="http://qpid.apache.org/getting_involved.html">Getting Involved</A></LI><LI><A href="http://qpid.apache.org/source_repository.html">Source Repository</A></LI><LI><A href="http://qpid.apache.org/mailing_lists.html">Mailing Lists</A></LI><LI><A href="https://cwiki.apache.org/qpid/">Wiki</A></LI><LI><A href="https://issues.apache.org/jira/browse/qpid">Issue Reporting</A></LI><LI><A href="http://qpid.apache.org/people.html">People</A></LI><LI><A href="http://qpid.apache.org/acknowledgements.html">Acknowledgements</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Developers</H3><UL><LI><A href="https://cwiki.apache.org/qpid/building.html">Building Qpid</A></LI><LI><A href="https://cwiki.apache.org/qpid/developer-pages.html">Developer Pages</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About AMQP</H3><UL><LI><A href="http://qpid.apache.org/amqp.html">What is AMQP?</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About Apache</H3><UL><LI><A href="http://www.apache.org">Home</A></LI><LI><A href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</A></LI><LI><A href="http://www.apache.org/foundation/thanks.html">Thanks</A></LI><LI><A href="http://www.apache.org/security/">Security</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV></DIV><div class="main_text_area"><div class="main_text_area_top"></div><div class="main_text_area_body"><DIV class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Programming in Apache Qpid</a></span> &gt; <span class="breadcrumb-node">Using the Qpid JMS client</span></DIV><div class="chapter" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="QpidJMS"></a>Chapter 3. Using the Qpid JMS client</h2></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="section"><a href="QpidJMS.html#id2553404">3.1. A Simple Messaging Program in Java JMS</a></span></dt><dt><span class="section"><a href="QpidJNDI.html">3.2. Apache Qpid JNDI Properties for AMQP Messaging</a></span></dt><dd><dl><dt><span class="section"><a href="QpidJNDI.html#id2553816">3.2.1. JNDI Properties for Apache Qpid</a></span></dt><dt><span class="section"><a href="QpidJNDI.html#section-jms-connection-url">3.2.2. Connection URLs</a></span></dt></dl></dd><dt><span class="section"><a href="ch03s03.html">3.3. Java JMS Message Properties</a></span></dt><dt><span class="section"><a href="section-JMS-MapMessage.html">3.4. JMS MapMessage Types</a></span></dt><dt><span class="section"><a href="section-JMS-Logging.html">3.5. JMS Client Logging</a></span></dt><dt><span class="section"><a href="ch03s06.html">3.6. Configuring the JMS Client</a></span></dt><dd><dl><dt><span class="section"><a href="ch03s06.html#client-jvm-properties">3.6.1. Qpid JVM Arguments</a></span></dt></dl></dd></dl></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="id2553404"></a>3.1. A Simple Messaging Program in Java JMS</h2></div></div></div><p>The following program shows how to send and receive a
+      message using the Qpid JMS client. JMS programs typically use
+      JNDI to obtain connection factory and destination objects which
+      the application needs. In this way the configuration is kept
+      separate from the application code itself.</p><p>In this example, we create a JNDI context using a
+      properties file, use the context to lookup a connection factory,
+      create and start a connection, create a session, and lookup a
+      destination from the JNDI context. Then we create a producer and
+      a consumer, send a message with the producer and receive it with
+      the consumer. This code should be straightforward for anyone
+      familiar with Java JMS.</p><div class="example"><a name="id2553429"></a><p class="title"><b>Example 3.1. "Hello world!" in Java</b></p><div class="example-contents"><pre class="programlisting">
+	  package org.apache.qpid.example.jmsexample.hello;
+
+	  import javax.jms.*;
+	  import javax.naming.Context;
+	  import javax.naming.InitialContext;
+	  import java.util.Properties;
+
+	  public class Hello {
+
+	  public Hello() {
+	  }
+
+	  public static void main(String[] args) {
+	  Hello producer = new Hello();
+	  producer.runTest();
+	  }
+
+	  private void runTest() {
+	  try {
+	  Properties properties = new Properties();
+	  properties.load(this.getClass().getResourceAsStream("hello.properties"));  <a class="co" name="hello-java-properties" href="QpidJMS.html#callout-java-properties">(1)</a>
+	  Context context = new InitialContext(properties);   <a class="co" name="hello-java-context" href="QpidJMS.html#callout-java-context">(2)</a>
+
+	  ConnectionFactory connectionFactory
+          = (ConnectionFactory) context.lookup("qpidConnectionfactory"); <a class="co" name="hello-java-connection-factory" href="QpidJMS.html#callout-java-connection-factory">(3)</a>
+	  Connection connection = connectionFactory.createConnection();  <a class="co" name="hello-java-connection" href="QpidJMS.html#callout-java-connection">(4)</a>
+	  connection.start();  <a class="co" name="hello-java-start" href="QpidJMS.html#callout-java-start">(5)</a>
+
+	  Session session=connection.createSession(false,Session.AUTO_ACKNOWLEDGE);<a class="co" name="hello-java-session" href="QpidJMS.html#callout-java-session">(6)</a>
+	  Destination destination = (Destination) context.lookup("topicExchange");  <a class="co" name="hello-java-destination" href="QpidJMS.html#callout-java-destination">(7)</a>
+
+	  MessageProducer messageProducer = session.createProducer(destination);  <a class="co" name="hello-java-producer" href="QpidJMS.html#callout-java-producer">(8)</a>
+	  MessageConsumer messageConsumer = session.createConsumer(destination);  <a class="co" name="hello-java-consumer" href="QpidJMS.html#callout-java-consumer">(9)</a>
+
+	  TextMessage message = session.createTextMessage("Hello world!");
+	  messageProducer.send(message);
+
+	  message = (TextMessage)messageConsumer.receive();    <a class="co" name="hello-java-receive" href="QpidJMS.html#callout-java-receive">(10)</a>
+	  System.out.println(message.getText());
+
+	  connection.close();  <a class="co" name="hello-java-close" href="QpidJMS.html#callout-java-close">(11)</a>
+	  context.close();   <a class="co" name="hello-java-jndi-close" href="QpidJMS.html#callout-java-jndi-close">(12)</a>
+	  }
+	  catch (Exception exp) {
+	  exp.printStackTrace();
+	  }
+	  }
+	  }
+	</pre></div></div><br class="example-break"><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a name="callout-java-properties"></a><a href="#hello-java-properties">(1)</a> </p></td><td valign="top" align="left"><p>Loads the JNDI properties file, which specifies connection properties, queues, topics, and addressing options. See <a class="xref" href="QpidJNDI.html" title="3.2. Apache Qpid JNDI Properties for AMQP Messaging">Section 3.2, “Apache Qpid JNDI Properties for AMQP Messaging”</a> for details.</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a name="callout-java-context"></a><a href="#hello-java-context">(2)</a> </p></td><td valign="top" align="left"><p>Creates the JNDI initial context.</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a name="callout-java-connection-factory"></a><a href="#hello-java-connection-factory">(3)</a> </p></td><td valign="top" align="left"><p>Creates a JMS connection factory for Qpid.</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a name="callout-java-connection"></a><a href="#hello-java-connection">(4)</a> </p></td><td valign="top" align="left"><p>Creates a JMS connection.</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a name="callout-java-start"></a><a href="#hello-java-start">(5)</a> </p></td><td valign="top" align="left"><p>Activates the connection.</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a name="callout-java-session"></a><a href="#hello-java-session">(6)</a> </p></td><td valign="top" align="left"><p>Creates a session. This session is not transactional (transactions='false'), and messages are automatically acknowledged.</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a name="callout-java-destination"></a><a href="#hello-java-destination">(7)</a> </p></td><td valign="top" align="left"><p>Creates a destination for the topic exchange, so senders and receivers can use it.</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a name="callout-java-producer"></a><a href="#hello-java-producer">(8)</a> </p></td><td valign="top" align="left"><p>Creates a producer that sends messages to the topic exchange.</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a name="callout-java-consumer"></a><a href="#hello-java-consumer">(9)</a> </p></td><td valign="top" align="left"><p>Creates a consumer that reads messages from the topic exchange.</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a name="callout-java-receive"></a><a href="#hello-java-receive">(10)</a> </p></td><td valign="top" align="left"><p>Reads the next available message.</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a name="callout-java-close"></a><a href="#hello-java-close">(11)</a> </p></td><td valign="top" align="left"><p>Closes the connection, all sessions managed by the connection, and all senders and receivers managed by each session.</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a name="callout-java-jndi-close"></a><a href="#hello-java-jndi-close">(12)</a> </p></td><td valign="top" align="left"><p>Closes the JNDI context.</p></td></tr></table></div><p>The contents of the hello.properties file are shown below.</p><div class="example"><a name="id2553694"></a><p class="title"><b>Example 3.2. JNDI Properties File for "Hello world!" example</b></p><div class="example-contents"><pre class="programlisting">
+	  java.naming.factory.initial
+	  = org.apache.qpid.jndi.PropertiesFileInitialContextFactory
+
+	  # connectionfactory.[jndiname] = [ConnectionURL]
+	  connectionfactory.qpidConnectionfactory
+	  = amqp://guest:guest@clientid/test?brokerlist='tcp://localhost:5672' <a class="co" name="hello-properties-connectionfactory" href="QpidJMS.html#callout-hello-properties-connectionfactory">(1)</a>
+	  # destination.[jndiname] = [address_string]
+	  destination.topicExchange = amq.topic <a class="co" name="hello-properties-destination" href="QpidJMS.html#callout-hello-properties-destination">(2)</a>
+	</pre></div></div><br class="example-break"><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a name="callout-hello-properties-connectionfactory"></a><a href="#hello-properties-connectionfactory">(1)</a> </p></td><td valign="top" align="left"><p>Defines a connection factory from which connections
+	  can be created. The syntax of a ConnectionURL is given in
+	  <a class="xref" href="QpidJNDI.html" title="3.2. Apache Qpid JNDI Properties for AMQP Messaging">Section 3.2, “Apache Qpid JNDI Properties for AMQP Messaging”</a>.</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a name="callout-hello-properties-destination"></a><a href="#hello-properties-destination">(2)</a> </p></td><td valign="top" align="left"><p>Defines a destination for which MessageProducers
+	  and/or MessageConsumers can be created to send and receive
+	  messages. The value for the destination in the properties
+	  file is an address string as described in
+	  <a class="xref" href="section-addresses.html" title="2.4. Addresses">Section 2.4, “Addresses”</a>. In the JMS
+	  implementation MessageProducers are analogous to senders in
+	  the Qpid Message API, and MessageConsumers are analogous to
+	  receivers.</p></td></tr></table></div></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="Message-Groups-Guide.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="QpidJNDI.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.17. Using Message Groups </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 3.2. Apache Qpid JNDI Properties for AMQP Messaging</td></tr></table></div><div class="main_text_area_bottom"></div></div></div></body></html>

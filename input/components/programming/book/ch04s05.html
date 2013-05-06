@@ -1,0 +1,43 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>4.5. Transactions</title><link rel="stylesheet" href="css/style.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.73.2"><link rel="start" href="index.html" title="Programming in Apache Qpid"><link rel="up" href="QpidWCF.html" title="Chapter 4. Using the Qpid WCF client"><link rel="prev" href="ch04s04.html" title="4.4. Security"><link rel="next" href="ch05.html" title="Chapter 5. The .NET Binding for the C++ Messaging Client"></head><body><div class="container" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><DIV class="header"><DIV class="logo"><H1>Apache Qpid™</H1><H2>Open Source AMQP Messaging</H2></DIV></DIV><DIV class="menu_box"><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Apache Qpid</H3><UL><LI><A href="http://qpid.apache.org/index.html">Home</A></LI><LI><A href="http://qpid.apache.org/download.html">Download</A></LI><LI><A href="http://qpid.apache.org/getting_started.html">Getting Started</A></LI><LI><A href="http://www.apache.org/licenses/">License</A></LI><LI><A href="https://cwiki.apache.org/qpid/faq.html">FAQ</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Documentation</H3><UL><LI><A href="http://qpid.apache.org/documentation.html#doc-release">Latest Release</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-trunk">Trunk</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-archives">Archive</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Community</H3><UL><LI><A href="http://qpid.apache.org/getting_involved.html">Getting Involved</A></LI><LI><A href="http://qpid.apache.org/source_repository.html">Source Repository</A></LI><LI><A href="http://qpid.apache.org/mailing_lists.html">Mailing Lists</A></LI><LI><A href="https://cwiki.apache.org/qpid/">Wiki</A></LI><LI><A href="https://issues.apache.org/jira/browse/qpid">Issue Reporting</A></LI><LI><A href="http://qpid.apache.org/people.html">People</A></LI><LI><A href="http://qpid.apache.org/acknowledgements.html">Acknowledgements</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Developers</H3><UL><LI><A href="https://cwiki.apache.org/qpid/building.html">Building Qpid</A></LI><LI><A href="https://cwiki.apache.org/qpid/developer-pages.html">Developer Pages</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About AMQP</H3><UL><LI><A href="http://qpid.apache.org/amqp.html">What is AMQP?</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About Apache</H3><UL><LI><A href="http://www.apache.org">Home</A></LI><LI><A href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</A></LI><LI><A href="http://www.apache.org/foundation/thanks.html">Thanks</A></LI><LI><A href="http://www.apache.org/security/">Security</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV></DIV><div class="main_text_area"><div class="main_text_area_top"></div><div class="main_text_area_body"><DIV class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Programming in Apache Qpid</a></span> &gt; <span class="breadcrumb-link"><a href="QpidWCF.html">Using the Qpid WCF client</a></span> &gt; <span class="breadcrumb-node">Transactions</span></DIV><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="id2556820"></a>4.5. Transactions</h2></div></div></div><p>The WCF channel provides a transaction resource manager
+      module and a recovery module that together provide distributed
+      transaction support with one-phase optimization.  Some
+      configuration is required on Windows machines to enable
+      transaction support (see your installation notes or top level
+      ReadMe.txt file for instructions).  Once properly configured,
+      the Qpid WCF channel acts as any other System.Transactions aware
+      resource, capable of participating in explicit or implicit
+      transactions.</p><p>Server code:</p><pre class="programlisting">
+[OperationBehavior(TransactionScopeRequired = true,
+                   TransactionAutoComplete = true)]
+
+public void SayHello(string greeting)
+{
+  // increment ExactlyOnceReceived counter on DB
+
+  // Success: transaction auto completes:
+}
+</pre><p>Because this operation involves two transaction resources, the
+      database and the AMQP message broker, this operates as a full two
+      phase commit transaction managed by the Distributed Transaction
+      Coordinator service.  If the transaction proceeds without error,
+      both ExactlyOnceReceived is incremented in the database and the AMQP
+      message is consumed from the broker.  Otherwise, ExactlyOnceReceived is
+      unchanged and AMQP message is returned to its queue on the broker.</p><p>For the client code a few changes are made to the non-transacted
+      example.  For "exactly once" semantics, we set the AMQP "Durable"
+      message property and enclose the transacted activities in a
+      TransactionScope:</p><pre class="programlisting">
+AmqpProperties myDefaults = new AmqpProperties();
+myDefaults.Durable = true;
+amqpBinding.DefaultMessageProperties = myDefaults;
+ChannelFactory&lt;IHelloService&gt; channelFactory =
+new ChannelFactory&lt;IHelloService&gt;(amqpBinding, clientEndpoint);
+IHelloService clientProxy = channelFactory.CreateChannel();
+
+using (TransactionScope ts = new TransactionScope())
+{
+   AmqpProperties amqpProperties = new AmqpProperties();
+   clientProxy.SayHello("Greetings from WCF client");
+   // increment ExactlyOnceSent counter on DB
+   ts.Complete();
+}
+</pre></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch04s04.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="QpidWCF.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch05.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">4.4. Security </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Chapter 5. The .NET Binding for the C++ Messaging Client</td></tr></table></div><div class="main_text_area_bottom"></div></div></div></body></html>

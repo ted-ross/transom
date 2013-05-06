@@ -1,0 +1,100 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>2.17. Using Message Groups</title><link rel="stylesheet" href="css/style.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.73.2"><link rel="start" href="index.html" title="Programming in Apache Qpid"><link rel="up" href="ch02.html" title="Chapter 2. Using the Qpid Messaging API"><link rel="prev" href="section-amqp0-10-mapping.html" title="2.16. The AMQP 0-10 mapping"><link rel="next" href="QpidJMS.html" title="Chapter 3. Using the Qpid JMS client"></head><body><div class="container" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><DIV class="header"><DIV class="logo"><H1>Apache Qpid™</H1><H2>Open Source AMQP Messaging</H2></DIV></DIV><DIV class="menu_box"><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Apache Qpid</H3><UL><LI><A href="http://qpid.apache.org/index.html">Home</A></LI><LI><A href="http://qpid.apache.org/download.html">Download</A></LI><LI><A href="http://qpid.apache.org/getting_started.html">Getting Started</A></LI><LI><A href="http://www.apache.org/licenses/">License</A></LI><LI><A href="https://cwiki.apache.org/qpid/faq.html">FAQ</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Documentation</H3><UL><LI><A href="http://qpid.apache.org/documentation.html#doc-release">Latest Release</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-trunk">Trunk</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-archives">Archive</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Community</H3><UL><LI><A href="http://qpid.apache.org/getting_involved.html">Getting Involved</A></LI><LI><A href="http://qpid.apache.org/source_repository.html">Source Repository</A></LI><LI><A href="http://qpid.apache.org/mailing_lists.html">Mailing Lists</A></LI><LI><A href="https://cwiki.apache.org/qpid/">Wiki</A></LI><LI><A href="https://issues.apache.org/jira/browse/qpid">Issue Reporting</A></LI><LI><A href="http://qpid.apache.org/people.html">People</A></LI><LI><A href="http://qpid.apache.org/acknowledgements.html">Acknowledgements</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Developers</H3><UL><LI><A href="https://cwiki.apache.org/qpid/building.html">Building Qpid</A></LI><LI><A href="https://cwiki.apache.org/qpid/developer-pages.html">Developer Pages</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About AMQP</H3><UL><LI><A href="http://qpid.apache.org/amqp.html">What is AMQP?</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About Apache</H3><UL><LI><A href="http://www.apache.org">Home</A></LI><LI><A href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</A></LI><LI><A href="http://www.apache.org/foundation/thanks.html">Thanks</A></LI><LI><A href="http://www.apache.org/security/">Security</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV></DIV><div class="main_text_area"><div class="main_text_area_top"></div><div class="main_text_area_body"><DIV class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Programming in Apache Qpid</a></span> &gt; <span class="breadcrumb-link"><a href="ch02.html">Using the Qpid Messaging API</a></span> &gt; <span class="breadcrumb-node">Using Message Groups</span></DIV><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="Message-Groups-Guide"></a>2.17. Using Message Groups</h2></div></div></div><p>
+    This section describes how messaging applications can use the Message Group feature
+    provided by the C++ Broker.
+  </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+    The content of this section assumes the reader is familiar with the Message Group
+    feature as described in the AMQP Messaging Broker (C++) user's guide.  Please read the
+    section <span class="emphasis"><em>Using Message Groups</em></span> in the user's guide before using the
+    examples given in this section.
+  </div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="messagegroups-setup"></a>2.17.1. Creating Message Group Queues</h3></div></div></div><p>
+      The following examples show how to create a message group queue that enforces
+      ordered group consumption across multiple consumers.
+    </p><div class="example"><a name="id2515678"></a><p class="title"><b>Example 2.22. Message Group Queue Creation - Python</b></p><div class="example-contents"><pre class="programlisting">
+sender = connection.session().sender("msg-group-q;" +
+                                     " {create:always, delete:receiver," +
+                                     " node: {x-declare: {arguments:" +
+                                     " {'qpid.group_header_key':'THE-GROUP'," +
+                                     " 'qpid.shared_msg_group':1}}}}")
+      </pre></div></div><br class="example-break"><div class="example"><a name="id2514805"></a><p class="title"><b>Example 2.23. Message Group Queue Creation - C++</b></p><div class="example-contents"><pre class="programlisting">
+std::string addr("msg-group-q; "
+                 " {create:always, delete:receiver,"
+                 " node: {x-declare: {arguments:"
+                 " {qpid.group_header_key:'THE-GROUP',"
+                 " qpid.shared_msg_group:1}}}}");
+Sender sender = session.createSender(addr);
+      </pre></div></div><br class="example-break"><div class="example"><a name="id2492372"></a><p class="title"><b>Example 2.24. Message Group Queue Creation - Java</b></p><div class="example-contents"><pre class="programlisting">
+Session s = c.createSession(false, Session.CLIENT_ACKNOWLEDGE);
+String addr = "msg-group-q; {create:always, delete:receiver," +
+                             " node: {x-declare: {arguments:" +
+                             " {'qpid.group_header_key':'THE-GROUP'," +
+                             " 'qpid.shared_msg_group':1}}}}";
+Destination d = (Destination) new AMQAnyDestination(addr);
+MessageProducer sender = s.createProducer(d);
+      </pre></div></div><br class="example-break"><p>
+      The example code uses the x-declare map to specify the message group configuration
+      that should be used for the queue.  See the AMQP Messaging Broker (C++) user's guide
+      for a detailed description of these arguments.  Note that the
+      qpid.group_header_key's value MUST be a string type.
+    </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="messagegroups-sending"></a>2.17.2. Sending Grouped Messages</h3></div></div></div><p>
+      When sending grouped messages, the client must add a message property containing the
+      group identifier to the outgoing message.  The group identifier must be a string
+      type.  The key used for the property must exactly match the value passed in the
+      'qpid.group_header_key' configuration argument.
+    </p><div class="example"><a name="id2508856"></a><p class="title"><b>Example 2.25. Sending Grouped Messages - Python</b></p><div class="example-contents"><pre class="programlisting">
+group = "A"
+m = Message(content="some data", properties={"THE-GROUP": group})
+sender.send(m)
+
+group = "B"
+m = Message(content="some other group's data", properties={"THE-GROUP": group})
+sender.send(m)
+
+group = "A"
+m = Message(content="more data for group 'A'", properties={"THE-GROUP": group})
+sender.send(m)
+      </pre></div></div><br class="example-break"><div class="example"><a name="id2508875"></a><p class="title"><b>Example 2.26. Sending Grouped Messages - C++</b></p><div class="example-contents"><pre class="programlisting">
+
+const std::string groupKey("THE-GROUP");
+{
+    Message msg("some data");
+    msg.getProperties()[groupKey] = std::string("A");
+    sender.send(msg);
+}
+{
+    Message msg("some other group's data");
+    msg.getProperties()[groupKey] = std::string("B");
+    sender.send(msg);
+}
+{
+    Message msg("more data for group 'A'");
+    msg.getProperties()[groupKey] = std::string("A");
+    sender.send(msg);
+}
+      </pre></div></div><br class="example-break"><div class="example"><a name="id2508895"></a><p class="title"><b>Example 2.27. Sending Grouped Messages - Java</b></p><div class="example-contents"><pre class="programlisting">
+String groupKey = "THE-GROUP";
+
+TextMessage tmsg1 = s.createTextMessage("some data");
+tmsg1.setStringProperty(groupKey, "A");
+sender.send(tmsg1);
+
+TextMessage tmsg2 = s.createTextMessage("some other group's data");
+tmsg2.setStringProperty(groupKey, "B");
+sender.send(tmsg2);
+
+TextMessage tmsg3 = s.createTextMessage("more data for group 'A'");
+tmsg3.setStringProperty(groupKey, "A");
+sender.send(tmsg3);
+      </pre></div></div><br class="example-break"><p>
+      The examples above send two groups worth of messages to the queue created in the
+      previous example.  Two messages belong to group "A", and one belongs to group
+      "B". Note that it is not necessary to complete sending one group's messages before
+      starting another.  Also note that there is no need to indicate to the broker when a
+      new group is created or an existing group retired - the broker tracks group state
+      automatically.
+    </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="messagegroups-receiving"></a>2.17.3. Receiving Grouped Messages</h3></div></div></div><p>
+      Since the broker enforces group policy when delivering messages, no special actions
+      are necessary for receiving grouped messages from the broker.  However, applications
+      must adhere to the rules for message group consumption as described in the AMQP
+      Messaging Broker (C++) user's guide.  Refer to the section <span class="emphasis"><em>Well Behaved
+      Consumers</em></span> for details.
+    </p></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="section-amqp0-10-mapping.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="QpidJMS.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.16. The AMQP 0-10 mapping </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Chapter 3. Using the Qpid JMS client</td></tr></table></div><div class="main_text_area_bottom"></div></div></div></body></html>

@@ -1,0 +1,85 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>12.8. Qpid JMX API for HA</title><link rel="stylesheet" type="text/css" href="css/style.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"><link rel="home" href="index.html" title="AMQP Messaging Broker (Java)"><link rel="up" href="Java-Broker-High-Availability.html" title="Chapter 12. High Availability"><link rel="prev" href="Java-Broker-High-Availability-ClientFailover.html" title="12.7. Client failover configuration"><link rel="next" href="Java-Broker-High-Availability-Monitoring-cluster.html" title="12.9. Monitoring cluster"></head><body><div class="container" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><DIV class="header"><DIV class="logo"><H1>Apache Qpid™</H1><H2>Open Source AMQP Messaging</H2></DIV></DIV><DIV class="menu_box"><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Apache Qpid</H3><UL><LI><A href="http://qpid.apache.org/index.html">Home</A></LI><LI><A href="http://qpid.apache.org/download.html">Download</A></LI><LI><A href="http://qpid.apache.org/getting_started.html">Getting Started</A></LI><LI><A href="http://www.apache.org/licenses/">License</A></LI><LI><A href="https://cwiki.apache.org/qpid/faq.html">FAQ</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Documentation</H3><UL><LI><A href="http://qpid.apache.org/documentation.html#doc-release">Latest Release</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-trunk">Trunk</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-archives">Archive</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Community</H3><UL><LI><A href="http://qpid.apache.org/getting_involved.html">Getting Involved</A></LI><LI><A href="http://qpid.apache.org/source_repository.html">Source Repository</A></LI><LI><A href="http://qpid.apache.org/mailing_lists.html">Mailing Lists</A></LI><LI><A href="https://cwiki.apache.org/qpid/">Wiki</A></LI><LI><A href="https://issues.apache.org/jira/browse/qpid">Issue Reporting</A></LI><LI><A href="http://qpid.apache.org/people.html">People</A></LI><LI><A href="http://qpid.apache.org/acknowledgements.html">Acknowledgements</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Developers</H3><UL><LI><A href="https://cwiki.apache.org/qpid/building.html">Building Qpid</A></LI><LI><A href="https://cwiki.apache.org/qpid/developer-pages.html">Developer Pages</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About AMQP</H3><UL><LI><A href="http://qpid.apache.org/amqp.html">What is AMQP?</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About Apache</H3><UL><LI><A href="http://www.apache.org">Home</A></LI><LI><A href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</A></LI><LI><A href="http://www.apache.org/foundation/thanks.html">Thanks</A></LI><LI><A href="http://www.apache.org/security/">Security</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV></DIV><div class="main_text_area"><div class="main_text_area_top"></div><div class="main_text_area_body"><DIV class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">AMQP Messaging Broker (Java)</a></span> &gt; <span class="breadcrumb-link"><a href="Java-Broker-High-Availability.html">High Availability</a></span> &gt; <span class="breadcrumb-node">Qpid JMX API for HA</span></DIV><div class="section" title="12.8. Qpid JMX API for HA"><div class="titlepage"><div><div><h2 class="title"><a name="Java-Broker-High-Availability-JMXAPI"></a>12.8. Qpid JMX API for HA</h2></div></div></div><p>Qpid exposes the BDB HA store information via its JMX interface and provides APIs to remove a Node from
+     the group, update a Node IP address, and assign a Node as the designated primary.</p><p>An instance of the <code class="classname">BDBHAMessageStore</code> MBean is instantiated by the broker for the each virtualhost using the HA store.</p><p>The reference to this MBean can be obtained via JMX API using an ObjectName like <span class="emphasis"><em>org.apache.qpid:type=BDBHAMessageStore,name="&lt;virtualhost name&gt;"</em></span>
+                 where &lt;virtualhost name&gt; is the name of a specific virtualhost on the broker.</p><table border="1" id="idp1400704">Mbean BDBHAMessageStore attributes<thead><tr>
+          <td>Name</td>
+          <td>Type</td>
+          <td>Accessibility</td>
+          <td>Description</td>
+        </tr></thead><tbody><tr>
+          <td>GroupName</td>
+          <td>String</td>
+          <td>Read only</td>
+          <td>Name identifying the group</td>
+        </tr><tr>
+          <td>NodeName</td>
+          <td>String</td>
+          <td>Read only</td>
+          <td>Unique name identifying the node within the group</td>
+        </tr><tr>
+          <td>NodeHostPort</td>
+          <td>String</td>
+          <td>Read only</td>
+          <td>Host/port used to replicate data between this node and others in the group</td>
+        </tr><tr>
+          <td>HelperHostPort</td>
+          <td>String</td>
+          <td>Read only</td>
+          <td>Host/port used to allow a new node to discover other group members</td>
+        </tr><tr>
+          <td>NodeState</td>
+          <td>String</td>
+          <td>Read only</td>
+          <td>Current state of the node</td>
+        </tr><tr>
+          <td>ReplicationPolicy</td>
+          <td>String</td>
+          <td>Read only</td>
+          <td>Node replication durability</td>
+        </tr><tr>
+          <td>DesignatedPrimary</td>
+          <td>boolean</td>
+          <td>Read/Write</td>
+          <td>Designated primary flag. Applicable to the two node case.</td>
+        </tr><tr>
+          <td>CoalescingSync</td>
+          <td>boolean</td>
+          <td>Read only</td>
+          <td>Coalescing sync flag. Applicable to the master sync policies NO_SYNC and WRITE_NO_SYNC only.</td>
+        </tr><tr>
+          <td>getAllNodesInGroup</td>
+          <td>TabularData</td>
+          <td>Read only</td>
+          <td>Get all nodes within the group, regardless of whether currently attached or not</td>
+        </tr></tbody></table><table border="1" id="idp1426272">Mbean BDBHAMessageStore operations<thead><tr>
+          <td>Operation</td>
+          <td>Parameters</td>
+          <td>Returns</td>
+          <td>Description</td>
+        </tr></thead><tbody><tr>
+          <td>removeNodeFromGroup</td>
+          <td>
+            <p><span class="emphasis"><em>nodeName</em></span>, name of node, string</p>
+          </td>
+          <td>void</td>
+          <td>Remove an existing node from the group</td>
+        </tr><tr>
+          <td>updateAddress</td>
+          <td>
+            <div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p><span class="emphasis"><em>nodeName</em></span>, name of node, string</p></li><li class="listitem"><p><span class="emphasis"><em>newHostName</em></span>, new host name, string</p></li><li class="listitem"><p><span class="emphasis"><em>newPort</em></span>, new port number, int</p></li></ul></div>
+          </td>
+          <td>void</td>
+          <td>Update the address of another node. The node must be in a STOPPED state.</td>
+        </tr></tbody></table><div class="figure"><a name="idp1440320"></a><p class="title"><b>Figure 12.7. BDBHAMessageStore view from jconsole.</b></p><div class="figure-contents"><div><img src="images/HA-BDBHAMessageStore-MBean-jconsole.png" alt="BDBHAMessageStore view from jconsole."></div></div></div><br class="figure-break"><div class="example"><a name="idp1441824"></a><p class="title"><b>Example 12.3. Example of java code to get the node state value</b></p><div class="example-contents"><pre class="programlisting">
+Map&lt;String, Object&gt; environment = new HashMap&lt;String, Object&gt;();
+
+// credentials: user name and password
+environment.put(JMXConnector.CREDENTIALS, new String[] {"admin","admin"});
+JMXServiceURL url =  new JMXServiceURL("service:jmx:rmi:///jndi/rmi://localhost:9001/jmxrmi");
+JMXConnector jmxConnector = JMXConnectorFactory.connect(url, environment);
+MBeanServerConnection mbsc =  jmxConnector.getMBeanServerConnection();
+
+ObjectName queueObjectName = new ObjectName("org.apache.qpid:type=BDBHAMessageStore,name=\"test\"");
+String state = (String)mbsc.getAttribute(queueObjectName, "NodeState");
+
+System.out.println("Node state:" + state);
+        </pre><p>Example system output:</p><pre class="screen">Node state:MASTER</pre></div></div><br class="example-break"></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="Java-Broker-High-Availability-ClientFailover.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="Java-Broker-High-Availability.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="Java-Broker-High-Availability-Monitoring-cluster.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">12.7. Client failover configuration </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 12.9. Monitoring cluster</td></tr></table></div><div class="main_text_area_bottom"></div></div></div></body></html>

@@ -1,0 +1,48 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>2.3. A Simple Messaging Program in .NET C#</title><link rel="stylesheet" href="css/style.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.73.2"><link rel="start" href="index.html" title="Programming in Apache Qpid"><link rel="up" href="ch02.html" title="Chapter 2. Using the Qpid Messaging API"><link rel="prev" href="ch02s02.html" title="2.2. A Simple Messaging Program in Python"><link rel="next" href="section-addresses.html" title="2.4. Addresses"></head><body><div class="container" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><DIV class="header"><DIV class="logo"><H1>Apache Qpid™</H1><H2>Open Source AMQP Messaging</H2></DIV></DIV><DIV class="menu_box"><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Apache Qpid</H3><UL><LI><A href="http://qpid.apache.org/index.html">Home</A></LI><LI><A href="http://qpid.apache.org/download.html">Download</A></LI><LI><A href="http://qpid.apache.org/getting_started.html">Getting Started</A></LI><LI><A href="http://www.apache.org/licenses/">License</A></LI><LI><A href="https://cwiki.apache.org/qpid/faq.html">FAQ</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Documentation</H3><UL><LI><A href="http://qpid.apache.org/documentation.html#doc-release">Latest Release</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-trunk">Trunk</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-archives">Archive</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Community</H3><UL><LI><A href="http://qpid.apache.org/getting_involved.html">Getting Involved</A></LI><LI><A href="http://qpid.apache.org/source_repository.html">Source Repository</A></LI><LI><A href="http://qpid.apache.org/mailing_lists.html">Mailing Lists</A></LI><LI><A href="https://cwiki.apache.org/qpid/">Wiki</A></LI><LI><A href="https://issues.apache.org/jira/browse/qpid">Issue Reporting</A></LI><LI><A href="http://qpid.apache.org/people.html">People</A></LI><LI><A href="http://qpid.apache.org/acknowledgements.html">Acknowledgements</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Developers</H3><UL><LI><A href="https://cwiki.apache.org/qpid/building.html">Building Qpid</A></LI><LI><A href="https://cwiki.apache.org/qpid/developer-pages.html">Developer Pages</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About AMQP</H3><UL><LI><A href="http://qpid.apache.org/amqp.html">What is AMQP?</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About Apache</H3><UL><LI><A href="http://www.apache.org">Home</A></LI><LI><A href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</A></LI><LI><A href="http://www.apache.org/foundation/thanks.html">Thanks</A></LI><LI><A href="http://www.apache.org/security/">Security</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV></DIV><div class="main_text_area"><div class="main_text_area_top"></div><div class="main_text_area_body"><DIV class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Programming in Apache Qpid</a></span> &gt; <span class="breadcrumb-link"><a href="ch02.html">Using the Qpid Messaging API</a></span> &gt; <span class="breadcrumb-node">A Simple Messaging Program in .NET C#</span></DIV><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="id2546970"></a>2.3. A Simple Messaging Program in .NET C#</h2></div></div></div><p>The following .NET C#
+      <sup>[<a name="id2526726" href="#ftn.id2526726" class="footnote">1</a>]</sup>
+      program shows how to create a connection,
+      create a session, send messages using a sender, and receive
+      messages using a receiver.
+      </p><div class="example"><a name="id2529879"></a><p class="title"><b>Example 2.3. "Hello world!" in .NET C#</b></p><div class="example-contents"><pre class="programlisting">
+	  using System;
+	  using Org.Apache.Qpid.Messaging;  <a class="co" name="hello-csharp-using" href="ch02s03.html#callout-csharp-using">(1)</a>
+
+	  namespace Org.Apache.Qpid.Messaging {
+	  class Program {
+	  static void Main(string[] args) {
+	  String broker = args.Length &gt; 0 ? args[0] : "localhost:5672";
+	  String address = args.Length &gt; 1 ? args[1] : "amq.topic";
+
+	  Connection connection = null;
+	  try {
+	  connection = new Connection(broker);
+	  connection.Open();   <a class="co" name="hello-csharp-open" href="ch02s03.html#callout-csharp-open">(2)</a>
+	  Session session = connection.CreateSession();   <a class="co" name="hello-csharp-session" href="ch02s03.html#callout-csharp-session">(3)</a>
+
+	  Receiver receiver = session.CreateReceiver(address);   <a class="co" name="hello-csharp-receiver" href="ch02s03.html#callout-csharp-receiver">(4)</a>
+	  Sender sender = session.CreateSender(address);   <a class="co" name="hello-csharp-sender" href="ch02s03.html#callout-csharp-sender">(5)</a>
+
+	  sender.Send(new Message("Hello world!"));
+
+	  Message message = new Message();
+	  message = receiver.Fetch(DurationConstants.SECOND * 1);   <a class="co" name="hello-csharp-fetch" href="ch02s03.html#callout-csharp-fetch">(6)</a>
+	  Console.WriteLine("{0}", message.GetContent());
+	  session.Acknowledge();   <a class="co" name="hello-csharp-acknowledge" href="ch02s03.html#callout-csharp-acknowledge">(7)</a>
+
+	  connection.Close();   <a class="co" name="hello-csharp-close" href="ch02s03.html#callout-csharp-close">(8)</a>
+	  } catch (Exception e) {
+	  Console.WriteLine("Exception {0}.", e);
+	  if (null != connection)
+	  connection.Close();
+	  }
+	  }
+	  }
+	  }
+
+	</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a name="callout-csharp-using"></a><a href="#hello-csharp-using">(1)</a> </p></td><td valign="top" align="left"><p> Permits use of Org.Apache.Qpid.Messaging types and methods without explicit namespace qualification. Any .NET project must have a project reference to the assembly file <code class="literal">Org.Apache.Qpid.Messaging.dll</code> in order to obtain the definitions of the .NET Binding for Qpid Messaging namespace.</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a name="callout-csharp-open"></a><a href="#hello-csharp-open">(2)</a> </p></td><td valign="top" align="left"><p>Establishes the connection with the messaging broker.</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a name="callout-csharp-session"></a><a href="#hello-csharp-session">(3)</a> </p></td><td valign="top" align="left"><p>Creates a session object on which messages will be sent and received.</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a name="callout-csharp-receiver"></a><a href="#hello-csharp-receiver">(4)</a> </p></td><td valign="top" align="left"><p>Creates a receiver that receives messages from the given address.</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a name="callout-csharp-sender"></a><a href="#hello-csharp-sender">(5)</a> </p></td><td valign="top" align="left"><p>Creates a sender that sends to the given address.</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a name="callout-csharp-fetch"></a><a href="#hello-csharp-fetch">(6)</a> </p></td><td valign="top" align="left"><p>Receives the next message. The duration is optional, if omitted, will wait indefinitely for the next message.</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a name="callout-csharp-acknowledge"></a><a href="#hello-csharp-acknowledge">(7)</a> </p></td><td valign="top" align="left"><p>Acknowledges receipt of all fetched messages on the
+	    session. This informs the broker that the messages were
+	    transfered and processed by the client successfully.</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a name="callout-csharp-close"></a><a href="#hello-csharp-close">(8)</a> </p></td><td valign="top" align="left"><p>Closes the connection, all sessions managed by the connection, and all senders and receivers managed by each session.</p></td></tr></table></div></div></div><br class="example-break"><div class="footnotes"><br><hr width="100" align="left"><div class="footnote"><p><sup>[<a name="ftn.id2526726" href="#id2526726" class="para">1</a>] </sup>
+	  The .NET binding for the Qpid C++ Messaging API
+	  applies to all .NET Framework managed code languages. C# was chosen
+	  for illustration purposes only.
+	</p></div></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="section-addresses.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.2. A Simple Messaging Program in Python </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 2.4. Addresses</td></tr></table></div><div class="main_text_area_bottom"></div></div></div></body></html>

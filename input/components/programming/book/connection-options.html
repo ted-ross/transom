@@ -1,0 +1,120 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>2.10. Connection Options</title><link rel="stylesheet" href="css/style.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.73.2"><link rel="start" href="index.html" title="Programming in Apache Qpid"><link rel="up" href="ch02.html" title="Chapter 2. Using the Qpid Messaging API"><link rel="prev" href="ch02s09.html" title="2.9. Transactions"><link rel="next" href="section-Maps.html" title="2.11. Maps and Lists in Message Content"></head><body><div class="container" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><DIV class="header"><DIV class="logo"><H1>Apache Qpid™</H1><H2>Open Source AMQP Messaging</H2></DIV></DIV><DIV class="menu_box"><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Apache Qpid</H3><UL><LI><A href="http://qpid.apache.org/index.html">Home</A></LI><LI><A href="http://qpid.apache.org/download.html">Download</A></LI><LI><A href="http://qpid.apache.org/getting_started.html">Getting Started</A></LI><LI><A href="http://www.apache.org/licenses/">License</A></LI><LI><A href="https://cwiki.apache.org/qpid/faq.html">FAQ</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Documentation</H3><UL><LI><A href="http://qpid.apache.org/documentation.html#doc-release">Latest Release</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-trunk">Trunk</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-archives">Archive</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Community</H3><UL><LI><A href="http://qpid.apache.org/getting_involved.html">Getting Involved</A></LI><LI><A href="http://qpid.apache.org/source_repository.html">Source Repository</A></LI><LI><A href="http://qpid.apache.org/mailing_lists.html">Mailing Lists</A></LI><LI><A href="https://cwiki.apache.org/qpid/">Wiki</A></LI><LI><A href="https://issues.apache.org/jira/browse/qpid">Issue Reporting</A></LI><LI><A href="http://qpid.apache.org/people.html">People</A></LI><LI><A href="http://qpid.apache.org/acknowledgements.html">Acknowledgements</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Developers</H3><UL><LI><A href="https://cwiki.apache.org/qpid/building.html">Building Qpid</A></LI><LI><A href="https://cwiki.apache.org/qpid/developer-pages.html">Developer Pages</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About AMQP</H3><UL><LI><A href="http://qpid.apache.org/amqp.html">What is AMQP?</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About Apache</H3><UL><LI><A href="http://www.apache.org">Home</A></LI><LI><A href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</A></LI><LI><A href="http://www.apache.org/foundation/thanks.html">Thanks</A></LI><LI><A href="http://www.apache.org/security/">Security</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV></DIV><div class="main_text_area"><div class="main_text_area_top"></div><div class="main_text_area_body"><DIV class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Programming in Apache Qpid</a></span> &gt; <span class="breadcrumb-link"><a href="ch02.html">Using the Qpid Messaging API</a></span> &gt; <span class="breadcrumb-node">Connection Options</span></DIV><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="connection-options"></a>2.10. Connection Options</h2></div></div></div><p>
+        Aspects of the connections behaviour can be controlled through
+        specifying connection options. For example, connections can be
+        configured to automatically reconnect if the connection to a
+        broker is lost.
+      </p><div class="example"><a name="id2509332"></a><p class="title"><b>Example 2.14. Specifying Connection Options in C++, Python, and .NET</b></p><div class="example-contents"><p>In C++, these options can be set using <code class="function">Connection::setOption()</code> or by passing in a set of options to the constructor. The options can be passed in as a map or in string form:</p><pre class="programlisting">
+	Connection connection("localhost:5672", "{reconnect: true}");
+	try {
+	connection.open();
+	!!! SNIP !!!
+	</pre><p>or</p><pre class="programlisting">
+	Connection connection("localhost:5672");
+	connection.setOption("reconnect", true);
+	try {
+	connection.open();
+	!!! SNIP !!!
+	</pre><p>In Python, these options can be set as attributes of the connection or using named arguments in
+	the <code class="function">Connection</code> constructor:</p><pre class="programlisting">
+	connection = Connection("localhost:5672", reconnect=True)
+	try:
+	connection.open()
+	!!! SNIP !!!
+	</pre><p>or</p><pre class="programlisting">
+	connection = Connection("localhost:5672")
+	connection.reconnect = True
+	try:
+	connection.open()
+	!!! SNIP !!!
+	</pre><p>
+	  In .NET, these options can be set using <code class="function">Connection.SetOption()</code> or by passing in a set of options to the constructor. The options can be passed in as a map or in string form:
+	</p><pre class="programlisting">
+	  Connection connection= new Connection("localhost:5672", "{reconnect: true}");
+	  try {
+	  connection.Open();
+	  !!! SNIP !!!
+	</pre><p>
+	  or
+	</p><pre class="programlisting">
+	  Connection connection = new Connection("localhost:5672");
+	  connection.SetOption("reconnect", true);
+	  try {
+	  connection.Open();
+	  !!! SNIP !!!
+	</pre><p>See the reference documentation for details in each language.</p></div></div><br class="example-break"><p>The following table lists the supported connection options.</p><div class="table"><a name="id2509442"></a><p class="title"><b>Table 2.4. Connection Options</b></p><div class="table-contents"><table summary="Connection Options" width="100%" border="1"><colgroup><col><col><col></colgroup><thead><tr><th>option name</th><th>value type</th><th>semantics</th></tr></thead><tbody><tr><td>
+		<code class="literal">username</code>
+	      </td><td>
+		string
+	      </td><td>
+		The username to use when authenticating to the broker.
+	      </td></tr><tr><td>
+		<code class="literal">password</code>
+	      </td><td>
+		string
+	      </td><td>
+		The password to use when authenticating to the broker.
+	      </td></tr><tr><td>
+		<code class="literal">sasl_mechanisms</code>
+	      </td><td>
+		string
+	      </td><td>
+		The specific SASL mechanisms to use with the python
+		client when authenticating to the broker. The value
+		is a space separated list.
+	      </td></tr><tr><td>
+		<code class="literal">reconnect</code>
+	      </td><td>
+		boolean
+	      </td><td>
+		Transparently reconnect if the connection is lost.
+	      </td></tr><tr><td>
+		<code class="literal">reconnect_timeout</code>
+	      </td><td>
+		integer
+	      </td><td>
+		Total number of seconds to continue reconnection attempts before giving up and raising an exception.
+	      </td></tr><tr><td>
+		<code class="literal">reconnect_limit</code>
+	      </td><td>
+		integer
+	      </td><td>
+		Maximum number of reconnection attempts before giving up and raising an exception.
+	      </td></tr><tr><td>
+		<code class="literal">reconnect_interval_min</code>
+	      </td><td>
+		integer representing time in seconds
+	      </td><td>
+		Minimum number of seconds between reconnection attempts. The first reconnection attempt is made immediately; if that fails, the first reconnection delay is set to the value of <code class="literal">reconnect_interval_min</code>; if that attempt fails, the reconnect interval increases exponentially until a reconnection attempt succeeds or <code class="literal">reconnect_interval_max</code> is reached.
+	      </td></tr><tr><td>
+		<code class="literal">reconnect_interval_max</code>
+	      </td><td>
+		integer representing time in seconds
+	      </td><td>
+		Maximum reconnect interval.
+	      </td></tr><tr><td>
+		<code class="literal">reconnect_interval</code>
+	      </td><td>
+		integer representing time in seconds
+	      </td><td>
+		Sets both <code class="literal">reconnection_interval_min</code> and <code class="literal">reconnection_interval_max</code> to the same value.
+	      </td></tr><tr><td>
+		<code class="literal">heartbeat</code>
+	      </td><td>
+		integer representing time in seconds
+	      </td><td>
+		Requests that heartbeats be sent every N seconds. If two
+		successive heartbeats are missed the connection is
+		considered to be lost.
+	      </td></tr><tr><td>
+		<code class="literal">protocol</code>
+	      </td><td>
+		string
+	      </td><td>
+		Sets the underlying protocol used. The default option is 'tcp'. To enable ssl, set to 'ssl'. The C++ client additionally supports 'rdma'.
+	      </td></tr><tr><td>
+		<code class="literal">tcp-nodelay</code>
+	      </td><td>
+		boolean
+	      </td><td>
+		Set tcp no-delay, i.e. disable Nagle algorithm. [C++ only]
+	      </td></tr></tbody></table></div></div><br class="table-break"></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s09.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="section-Maps.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.9. Transactions </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 2.11. Maps and Lists in Message Content</td></tr></table></div><div class="main_text_area_bottom"></div></div></div></body></html>

@@ -1,0 +1,57 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>10.5. SSL</title><link rel="stylesheet" type="text/css" href="css/style.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"><link rel="home" href="index.html" title="AMQP Messaging Broker (Java)"><link rel="up" href="Java-Broker-Security.html" title="Chapter 10. Security"><link rel="prev" href="Java-Broker-Security-ACLs.html" title="10.4. Access Control Lists"><link rel="next" href="Java-Broker-Runtime.html" title="Chapter 11. Runtime"></head><body><div class="container" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><DIV class="header"><DIV class="logo"><H1>Apache Qpid™</H1><H2>Open Source AMQP Messaging</H2></DIV></DIV><DIV class="menu_box"><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Apache Qpid</H3><UL><LI><A href="http://qpid.apache.org/index.html">Home</A></LI><LI><A href="http://qpid.apache.org/download.html">Download</A></LI><LI><A href="http://qpid.apache.org/getting_started.html">Getting Started</A></LI><LI><A href="http://www.apache.org/licenses/">License</A></LI><LI><A href="https://cwiki.apache.org/qpid/faq.html">FAQ</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Documentation</H3><UL><LI><A href="http://qpid.apache.org/documentation.html#doc-release">Latest Release</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-trunk">Trunk</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-archives">Archive</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Community</H3><UL><LI><A href="http://qpid.apache.org/getting_involved.html">Getting Involved</A></LI><LI><A href="http://qpid.apache.org/source_repository.html">Source Repository</A></LI><LI><A href="http://qpid.apache.org/mailing_lists.html">Mailing Lists</A></LI><LI><A href="https://cwiki.apache.org/qpid/">Wiki</A></LI><LI><A href="https://issues.apache.org/jira/browse/qpid">Issue Reporting</A></LI><LI><A href="http://qpid.apache.org/people.html">People</A></LI><LI><A href="http://qpid.apache.org/acknowledgements.html">Acknowledgements</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Developers</H3><UL><LI><A href="https://cwiki.apache.org/qpid/building.html">Building Qpid</A></LI><LI><A href="https://cwiki.apache.org/qpid/developer-pages.html">Developer Pages</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About AMQP</H3><UL><LI><A href="http://qpid.apache.org/amqp.html">What is AMQP?</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About Apache</H3><UL><LI><A href="http://www.apache.org">Home</A></LI><LI><A href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</A></LI><LI><A href="http://www.apache.org/foundation/thanks.html">Thanks</A></LI><LI><A href="http://www.apache.org/security/">Security</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV></DIV><div class="main_text_area"><div class="main_text_area_top"></div><div class="main_text_area_body"><DIV class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">AMQP Messaging Broker (Java)</a></span> &gt; <span class="breadcrumb-link"><a href="Java-Broker-Security.html">Security</a></span> &gt; <span class="breadcrumb-node">SSL</span></DIV><div class="section" title="10.5. SSL"><div class="titlepage"><div><div><h2 class="title"><a name="Java-Broker-Security-SSL"></a>10.5. SSL</h2></div></div></div><p>
+        This section will show how to use SSL to enable secure
+        connections between an AMQP message client and the broker.
+    </p><div class="section" title="10.5.1. Keystore Configuration"><div class="titlepage"><div><div><h3 class="title"><a name="SSL-Keystore"></a>10.5.1. Keystore Configuration</h3></div></div></div><p>
+            The broker configuration file (config.xml) needs to be updated to include the required SSL keystore
+            configuration, an example of which can be found below.
+        </p><div class="example"><a name="idp957712"></a><p class="title"><b>Example 10.6. Configuring an SSL Keystore</b></p><div class="example-contents"><pre class="programlisting">
+&lt;connector&gt;
+  ...
+  &lt;ssl&gt;
+    &lt;enabled&gt;true&lt;/enabled&gt;
+    &lt;port&gt;5671&lt;/port&gt;
+    &lt;sslOnly&gt;false&lt;/sslOnly&gt;
+    &lt;keyStorePath&gt;/path/to/keystore.ks&lt;/keyStorePath&gt;
+    &lt;keyStorePassword&gt;keystorepass&lt;/keyStorePassword&gt;
+    &lt;certAlias&gt;alias&lt;certAlias&gt;
+  &lt;/ssl&gt;
+  ...
+&lt;connector&gt;</pre></div></div><br class="example-break"><p>
+            The certAlias element is an optional way of specifying which certificate the broker should use
+            if the keystore contains multiple entries.
+        </p><p>
+            The sslOnly element controls whether the broker will <span class="bold"><strong>only</strong></span> bind
+            the configured SSL port(s) or will also bind the non-SSL port(s). Setting sslOnly to true will
+            disable the non-SSL ports.
+        </p><div class="important" title="Important" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Important</h3><p>
+                The password of the certificate used by the Broker <span class="bold"><strong>must</strong></span>
+                match the password of the keystore itself. This is a restriction of the Qpid Broker
+                implementation.  If using the <a class="ulink" href="http://docs.oracle.com/javase/6/docs/technotes/tools/solaris/keytool.html" target="_top">keytool</a> utility,
+                note that this means the argument to the <code class="option">-keypass</code> option must match
+                the <code class="option">-storepass</code> option.
+            </p></div></div><div class="section" title="10.5.2. Truststore / Client Certificate Authentication"><div class="titlepage"><div><div><h3 class="title"><a name="SSL-Truststore-ClientCertificate"></a>10.5.2. Truststore / Client Certificate Authentication</h3></div></div></div><p>
+            The SSL trustore and related Client Certificate Authentication behaviour can be configured with
+            additional configuration as shown in the example below, in which the broker requires client
+            certificate authentication.
+        </p><div class="example"><a name="idp967008"></a><p class="title"><b>Example 10.7. Configuring an SSL Truststore and client auth</b></p><div class="example-contents"><pre class="programlisting">
+&lt;connector&gt;
+  ...
+  &lt;ssl&gt;
+    ...
+    &lt;trustStorePath&gt;/path/to/truststore.ks&lt;/trustStorePath&gt;
+    &lt;trustStorePassword&gt;truststorepass&lt;/trustStorePassword&gt;
+    &lt;needClientAuth&gt;true&lt;/needClientAuth&gt;
+    &lt;wantClientAuth&gt;false&lt;/wantClientAuth&gt;
+    ...
+  &lt;/ssl&gt;
+  ...
+&lt;connector&gt;</pre></div></div><br class="example-break"><p>
+            The needClientAuth and wantClientAuth elements allow control of whether the client must present an
+            SSL certificate. Only one of these elements is needed but both may be used at the same time.
+            A socket's client authentication setting is one of three states: required (needClientAuth = true),
+            requested (wantClientAuth = true), or none desired (both false, the default). If both elements are
+            set to true, needClientAuth takes precedence.
+        </p><p>
+            When using Client Certificate Authentication it may be desirable to use the External Authentication
+            Manager, for details see <a class="xref" href="Java-Broker-Security-Authentication-Providers.html#ExternalAuthManager" title="10.3.4. External (SSL Client Certificates)">Section 10.3.4, “External (SSL Client Certificates)”</a>
+        </p></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="Java-Broker-Security-ACLs.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="Java-Broker-Security.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="Java-Broker-Runtime.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">10.4. Access Control Lists </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Chapter 11. Runtime</td></tr></table></div><div class="main_text_area_bottom"></div></div></div></body></html>

@@ -56,7 +56,7 @@ This is the documentation for the current released version.  You can
 find previous versions with our
 [past releases](@site-url@/releases/index.html#past-releases).
 
- - [Java broker book](@current-release-url@/java-broker/book/index.html)
+ - [Java broker book](@current-release-url@/java-broker/book/index.html) ([trunk snapshot](book/index.html))
  - [How to build Qpid Java](https://cwiki.apache.org/qpid/qpid-java-build-how-to.html)
  - [Installing and Using Qpid Java](https://cwiki.apache.org/qpid/getting-started-guide.html)
  - [FAQ](https://cwiki.apache.org/qpid/qpid-java-faq.html)

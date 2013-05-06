@@ -36,22 +36,14 @@
  - Qpid [trunk](https://svn.apache.org/repos/asf/qpid/trunk/qpid), [branches](https://svn.apache.org/repos/asf/qpid/branches)
  - Qpid Proton [trunk](https://svn.apache.org/repos/asf/qpid/proton/trunk), [branches](https://svn.apache.org/repos/asf/qpid/proton/branches)
 
+</div>
+<div class="column" markdown="1">
+
 ## Mailing lists
 
  - [Developer list archive](http://qpid.2158936.n2.nabble.com/Apache-Qpid-developers-f7254403.html)
  - [User list archive](http://qpid.2158936.n2.nabble.com/Apache-Qpid-users-f2158936.html)
  - [Commits list archive](http://qpid.2158936.n2.nabble.com/Apache-Qpid-commits-f7106555.html)
-
-</div>
-<div class="column" markdown="1">
-
-## Trunk documentation
-
- - [C++ API reference](http://qpid.apache.org/apis/trunk/cpp/html/)
- - [C++ broker manual](http://qpid.apache.org/books/trunk/AMQP-Messaging-Broker-CPP-Book/html/)
- - [Java broker manual](http://qpid.apache.org/books/trunk/AMQP-Messaging-Broker-Java-Book/html/)
- - [Programming in Apache Qpid](http://qpid.apache.org/books/trunk/Programming-In-Apache-Qpid/html/)
- - [Python API reference](http://qpid.apache.org/apis/trunk/python/html/)
 
 ## Resources
 

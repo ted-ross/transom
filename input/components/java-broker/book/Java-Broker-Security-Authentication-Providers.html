@@ -1,0 +1,200 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>10.3. Authentication Providers</title><link rel="stylesheet" type="text/css" href="css/style.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"><link rel="home" href="index.html" title="AMQP Messaging Broker (Java)"><link rel="up" href="Java-Broker-Security.html" title="Chapter 10. Security"><link rel="prev" href="Java-Broker-Security-Group-Providers.html" title="10.2. Configuring Group Providers"><link rel="next" href="Java-Broker-Security-ACLs.html" title="10.4. Access Control Lists"></head><body><div class="container" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><DIV class="header"><DIV class="logo"><H1>Apache Qpid™</H1><H2>Open Source AMQP Messaging</H2></DIV></DIV><DIV class="menu_box"><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Apache Qpid</H3><UL><LI><A href="http://qpid.apache.org/index.html">Home</A></LI><LI><A href="http://qpid.apache.org/download.html">Download</A></LI><LI><A href="http://qpid.apache.org/getting_started.html">Getting Started</A></LI><LI><A href="http://www.apache.org/licenses/">License</A></LI><LI><A href="https://cwiki.apache.org/qpid/faq.html">FAQ</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Documentation</H3><UL><LI><A href="http://qpid.apache.org/documentation.html#doc-release">Latest Release</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-trunk">Trunk</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-archives">Archive</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Community</H3><UL><LI><A href="http://qpid.apache.org/getting_involved.html">Getting Involved</A></LI><LI><A href="http://qpid.apache.org/source_repository.html">Source Repository</A></LI><LI><A href="http://qpid.apache.org/mailing_lists.html">Mailing Lists</A></LI><LI><A href="https://cwiki.apache.org/qpid/">Wiki</A></LI><LI><A href="https://issues.apache.org/jira/browse/qpid">Issue Reporting</A></LI><LI><A href="http://qpid.apache.org/people.html">People</A></LI><LI><A href="http://qpid.apache.org/acknowledgements.html">Acknowledgements</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Developers</H3><UL><LI><A href="https://cwiki.apache.org/qpid/building.html">Building Qpid</A></LI><LI><A href="https://cwiki.apache.org/qpid/developer-pages.html">Developer Pages</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About AMQP</H3><UL><LI><A href="http://qpid.apache.org/amqp.html">What is AMQP?</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About Apache</H3><UL><LI><A href="http://www.apache.org">Home</A></LI><LI><A href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</A></LI><LI><A href="http://www.apache.org/foundation/thanks.html">Thanks</A></LI><LI><A href="http://www.apache.org/security/">Security</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV></DIV><div class="main_text_area"><div class="main_text_area_top"></div><div class="main_text_area_body"><DIV class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">AMQP Messaging Broker (Java)</a></span> &gt; <span class="breadcrumb-link"><a href="Java-Broker-Security.html">Security</a></span> &gt; <span class="breadcrumb-node">Authentication Providers</span></DIV><div class="section" title="10.3. Authentication Providers"><div class="titlepage"><div><div><h2 class="title"><a name="Java-Broker-Security-Authentication-Providers"></a>10.3. Authentication Providers</h2></div></div></div><p>
+    In order to successfully establish a connection to the Java Broker, the connection must be
+    authenticated. The Java Broker supports a number of different authentication schemes, each
+    with its own "authentication manager". Each of these are outlined below, along with details
+    of <a class="link" href="Java-Broker-Security-Authentication-Providers.html#MultipleAuthProviders" title="10.3.6. Configuring multiple Authentication Providers"> using more than one at a time</a>.
+  </p><div class="section" title="10.3.1. Password File"><div class="titlepage"><div><div><h3 class="title"><a name="idp666320"></a>10.3.1. Password File</h3></div></div></div><p>
+      TODO
+    </p></div><div class="section" title="10.3.2. LDAP"><div class="titlepage"><div><div><h3 class="title"><a name="LDAPAuthManager"></a>10.3.2. LDAP</h3></div></div></div><p>
+    LDAP authentication can be configured using the &lt;simple-ldap-auth-manager&gt; element
+    within the &lt;security&gt; section. An example of how to configure this is shown below.
+    Please note this example also configures an unused &lt;pd-auth-manager&gt; to use an empty
+    password file, this is a workaround for an issue relating to registration of security providers.
+  </p><p>
+    <span class="emphasis"><em>NOTE: When using LDAP authentication, you must also use SSL on the brokers AMQP messaging and
+    JMX/HTTP management ports in order to protect passwords during transmission to the broker.</em></span>
+  </p><div class="example"><a name="idp670432"></a><p class="title"><b>Example 10.1. Configuring LDAP authentication</b></p><div class="example-contents"><pre class="programlisting">
+&lt;security&gt;
+  &lt;default-auth-manager&gt;SimpleLDAPAuthenticationManager&lt;/default-auth-manager&gt;
+  &lt;simple-ldap-auth-manager&gt;
+    &lt;provider-url&gt;ldaps://example.com:636/&lt;/provider-url&gt;
+    &lt;search-context&gt;dc=example\,dc=com&lt;/search-context&gt;
+    &lt;search-filter&gt;(uid={0})&lt;/search-filter&gt;
+  &lt;/simple-ldap-auth-manager&gt;
+
+  &lt;!-- Unused pd-auth-manager, a workaround to register the necessary security providers --&gt;
+  &lt;pd-auth-manager&gt;
+    &lt;principal-database&gt;
+      &lt;class&gt;org.apache.qpid.server.security.auth.database.PlainPasswordFilePrincipalDatabase&lt;/class&gt;
+      &lt;attributes&gt;
+        &lt;attribute&gt;
+          &lt;name&gt;passwordFile&lt;/name&gt;
+          &lt;value&gt;${conf}/emptyPasswdFile&lt;/value&gt;
+        &lt;/attribute&gt;
+      &lt;/attributes&gt;
+    &lt;/principal-database&gt;
+  &lt;pd-auth-manager&gt;
+  ...
+&lt;/security&gt;</pre></div></div><br class="example-break"><p>
+    The authentication manager first connects to the ldap server anonymously and searches for the
+    ldap entity which is identified by the username provided over SASL. Essentially the
+    authentication manager calls
+    DirContext.search(Name name, String filterExpr, Object[] filterArgs, SearchControls cons)
+    with the values of search-context and search-filter as the first two arguments, and the username
+    as the only element in the array which is the third argument.
+  </p><p>
+    If the search returns a name from the LDAP server, the AuthenticationManager then attempts to
+    login to the ldap server with the given name and the password.
+  </p><p>
+    If the URL to open for authentication is different to that for the search, then the
+    authentication url can be overridden using &lt;provider-auth-url&gt; in addition to providing a
+    &lt;provider-url&gt;. Note that the URL used for authentication should use ldaps:// since
+    passwords will be being sent over it.
+  </p><p>
+    By default com.sun.jndi.ldap.LdapCtxFactory is used to create the context, however this can be
+    overridden by specifying &lt;ldap-context-factory&gt; in the configuration.
+  </p></div><div class="section" title="10.3.3. Kerberos"><div class="titlepage"><div><div><h3 class="title"><a name="idp687008"></a>10.3.3. Kerberos</h3></div></div></div><p>
+    Kereberos Authentication is configured using the &lt;kerberos-auth-manager&gt; element within
+    the &lt;security&gt; section. When referencing from the default-auth-manager or port-mapping
+    sections, its name is KerberosAuthenticationManager.
+  </p><p>
+    Since Kerberos support only works where SASL authentication is available (e.g. not for JMX
+    authentication) you may wish to also include an alternative Authentication Manager
+    configuration, and use this for other ports:
+  </p><div class="example"><a name="idp689088"></a><p class="title"><b>Example 10.2. Configuring Kerberos authentication</b></p><div class="example-contents"><pre class="programlisting">
+&lt;security&gt;
+  &lt;pd-auth-manager&gt;
+    &lt;principal-database&gt;
+      &lt;class&gt;org.apache.qpid.server.security.auth.database.PlainPasswordFilePrincipalDatabase&lt;/class&gt;
+      &lt;attributes&gt;
+        &lt;attribute&gt;
+          &lt;name&gt;passwordFile&lt;/name&gt;
+          &lt;value&gt;${conf}/passwd&lt;/value&gt;
+        &lt;/attribute&gt;
+      &lt;/attributes&gt;
+    &lt;/principal-database&gt;
+  &lt;/pd-auth-manager&gt;
+  &lt;kerberos-auth-manager/&gt;
+  &lt;default-auth-manager&gt;PrincipalDatabaseAuthenticationManager&lt;/default-auth-manager&gt;
+  &lt;port-mappings&gt;
+    &lt;port-mapping&gt;
+      &lt;port&gt;5672&lt;/port&gt;
+      &lt;auth-manager&gt;KerberosAuthenticationManager&lt;/auth-manager&gt;
+    &lt;/port-mapping&gt;
+  &lt;/port-mappings&gt;
+  ...
+&lt;/security&gt;</pre></div></div><br class="example-break"><p>
+    Configuration of kerberos is done through system properties (there doesn't seem to be a way
+    around this unfortunately).
+  </p><pre class="programlisting">
+    export QPID_OPTS=-Djavax.security.auth.useSubjectCredsOnly=false -Djava.security.auth.login.config=qpid.conf
+    ${QPID_HOME}/bin/qpid-server
+  </pre><p>Where qpid.conf would look something like this:</p><pre class="programlisting">
+com.sun.security.jgss.accept {
+    com.sun.security.auth.module.Krb5LoginModule required
+    useKeyTab=true
+    storeKey=true
+    doNotPrompt=true
+    realm="EXAMPLE.COM"
+    useSubjectCredsOnly=false
+    kdc="kerberos.example.com"
+    keyTab="/path/to/keytab-file"
+    principal="&lt;name&gt;/&lt;host&gt;";
+};</pre><p>
+    Where realm, kdc, keyTab and principal should obviously be set correctly for the environment
+    where you are running (see the existing documentation for the C++ broker about creating a keytab
+    file).
+  </p><p>
+    Note: You may need to install the "Java Cryptography Extension (JCE) Unlimited Strength
+    Jurisdiction Policy Files" appropriate for your JDK in order to get Kerberos support working.
+  </p></div><div class="section" title="10.3.4. External (SSL Client Certificates)"><div class="titlepage"><div><div><h3 class="title"><a name="ExternalAuthManager"></a>10.3.4. External (SSL Client Certificates)</h3></div></div></div><p>
+      When <a class="link" href="Java-Broker-Security-SSL.html#SSL-Truststore-ClientCertificate" title="10.5.2. Truststore / Client Certificate Authentication"> requiring SSL Client Certificates</a> be
+      presented the ExternalAuthenticationManager can be used, such that the user is authenticated based on
+      trust of their certificate alone, and the X500Principal from the SSL session is then used as the username
+      for the connection, instead of also requiring the user to present a valid username and password.
+    </p><p>
+      The ExternalAuthenticationManager may be enabled by adding an empty &lt;external-auth-manager&gt; element to
+      the &lt;security&gt; section, as shown below. When referencing it from the default-auth-manager or port-mapping
+      sections, its name is ExternalAuthenticationManager.
+    </p><p>
+      <span class="bold"><strong>Note:</strong></span> The ExternalAuthenticationManager should typically only be used on the
+      AMQP ports, in conjunction with <a class="link" href="Java-Broker-Security-SSL.html#SSL-Truststore-ClientCertificate" title="10.5.2. Truststore / Client Certificate Authentication">SSL client certificate
+      authentication</a>. It is not intended for other uses such as the JMX management port and will treat any
+      non-sasl authentication processes on these ports as successfull with the given username. As such you should
+      <a class="link" href="Java-Broker-Security-Authentication-Providers.html#MultipleAuthProviders" title="10.3.6. Configuring multiple Authentication Providers">include another Authentication Manager for use on non-AMQP ports</a>,
+      as is done in the example below. Perhaps the only exception to this would be where the broker is embedded in a
+      container that is itself externally protecting the HTTP interface and then providing the remote users name.
+    </p><div class="example"><a name="idp700144"></a><p class="title"><b>Example 10.3. Configuring external authentication (SSL client auth)</b></p><div class="example-contents"><pre class="programlisting">
+&lt;security&gt;
+  &lt;pd-auth-manager&gt;
+    &lt;principal-database&gt;
+      &lt;class&gt;org.apache.qpid.server.security.auth.database.PlainPasswordFilePrincipalDatabase&lt;/class&gt;
+      &lt;attributes&gt;
+        &lt;attribute&gt;
+          &lt;name&gt;passwordFile&lt;/name&gt;
+          &lt;value&gt;${conf}/passwd&lt;/value&gt;
+        &lt;/attribute&gt;
+      &lt;/attributes&gt;
+    &lt;/principal-database&gt;
+  &lt;/pd-auth-manager&gt;
+  &lt;external-auth-manager/&gt;
+  &lt;default-auth-manager&gt;PrincipalDatabaseAuthenticationManager&lt;/default-auth-manager&gt;
+  &lt;port-mappings&gt;
+    &lt;port-mapping&gt;
+      &lt;port&gt;5672&lt;/port&gt;
+      &lt;auth-manager&gt;ExternalAuthenticationManager&lt;/auth-manager&gt;
+    &lt;/port-mapping&gt;
+  &lt;/port-mappings&gt;
+  ...
+&lt;/security&gt;</pre></div></div><br class="example-break"></div><div class="section" title="10.3.5. Anonymous"><div class="titlepage"><div><div><h3 class="title"><a name="AnonymousAuthManager"></a>10.3.5. Anonymous</h3></div></div></div><p>
+      The AnonymousAuthenticationManager will allow users to connect with or without credentials and result
+      in their identification on the broker as the user ANONYMOUS. It may be enabled by adding an empty
+      anonymous-auth-manager element to the security configuration section, as shown below.
+    </p><div class="example"><a name="idp704064"></a><p class="title"><b>Example 10.4. Configuring anonymous authentication</b></p><div class="example-contents"><pre class="programlisting">
+&lt;security&gt;
+  &lt;anonymous-auth-manager/&gt;
+  ...
+&lt;/security&gt;</pre></div></div><br class="example-break"><p>
+      When referencing it from the default-auth-manager or port-mapping sections, its name is
+      AnonymousAuthenticationManager.
+    </p></div><div class="section" title="10.3.6. Configuring multiple Authentication Providers"><div class="titlepage"><div><div><h3 class="title"><a name="MultipleAuthProviders"></a>10.3.6. Configuring multiple Authentication Providers</h3></div></div></div><p>
+      Different managers may be used on different ports. Each manager has its own configuration element,
+      the presence of which within the &lt;security&gt; section denotes the use of that authentication
+      provider. Where only one such manager is configured, it will be used on all ports (including JMX
+      and HTTP). Where more than one authentication manager is configured the configuration must define
+      which is the "default", and (if required) the mapping of non-default authentication managers to
+      other ports.
+    </p><p>
+      The following configuration sets up three authentication managers, using a password file as the
+      default (e.g. for the JMX and HTTP ports), Kerberos on port 5672 (the regular AMQP port) and Anonymous
+      on port 5673 (e.g a second AMQP port the broker could have been configured with).
+    </p><div class="example"><a name="idp708704"></a><p class="title"><b>Example 10.5. Configuring multiple (per-port) authentication schemes</b></p><div class="example-contents"><pre class="programlisting">
+&lt;security&gt;
+  &lt;pd-auth-manager&gt;
+    &lt;principal-database&gt;
+      &lt;class&gt;org.apache.qpid.server.security.auth.database.PlainPasswordFilePrincipalDatabase&lt;/class&gt;
+      &lt;attributes&gt;
+        &lt;attribute&gt;
+          &lt;name&gt;passwordFile&lt;/name&gt;
+          &lt;value&gt;${conf}/passwd&lt;/value&gt;
+        &lt;/attribute&gt;
+      &lt;/attributes&gt;
+    &lt;/principal-database&gt;
+  &lt;/pd-auth-manager&gt;
+  &lt;kerberos-auth-manager&gt;
+    &lt;auth-name&gt;sib&lt;/auth-name&gt;
+  &lt;/kerberos-auth-manager&gt;
+  &lt;anonymous-auth-manager/&gt;
+  &lt;default-auth-manager&gt;PrincipalDatabaseAuthenticationManager&lt;/default-auth-manager&gt;
+  &lt;port-mappings&gt;
+    &lt;port-mapping&gt;
+      &lt;port&gt;5672&lt;/port&gt;
+        &lt;auth-manager&gt;KerberosAuthenticationManager&lt;/auth-manager&gt;
+      &lt;/port-mapping&gt;
+    &lt;port-mapping&gt;
+      &lt;port&gt;5673&lt;/port&gt;
+        &lt;auth-manager&gt;AnonymousAuthenticationManager&lt;/auth-manager&gt;
+    &lt;/port-mapping&gt;
+  &lt;/port-mappings&gt;
+  ...
+&lt;/security&gt;</pre></div></div><br class="example-break"></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="Java-Broker-Security-Group-Providers.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="Java-Broker-Security.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="Java-Broker-Security-ACLs.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">10.2. Configuring Group Providers </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 10.4. Access Control Lists</td></tr></table></div><div class="main_text_area_bottom"></div></div></div></body></html>

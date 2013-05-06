@@ -1,0 +1,164 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>2.16. The AMQP 0-10 mapping</title><link rel="stylesheet" href="css/style.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.73.2"><link rel="start" href="index.html" title="Programming in Apache Qpid"><link rel="up" href="ch02.html" title="Chapter 2. Using the Qpid Messaging API"><link rel="prev" href="ch02s15.html" title="2.15. Logging"><link rel="next" href="Message-Groups-Guide.html" title="2.17. Using Message Groups"></head><body><div class="container" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><DIV class="header"><DIV class="logo"><H1>Apache Qpid™</H1><H2>Open Source AMQP Messaging</H2></DIV></DIV><DIV class="menu_box"><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Apache Qpid</H3><UL><LI><A href="http://qpid.apache.org/index.html">Home</A></LI><LI><A href="http://qpid.apache.org/download.html">Download</A></LI><LI><A href="http://qpid.apache.org/getting_started.html">Getting Started</A></LI><LI><A href="http://www.apache.org/licenses/">License</A></LI><LI><A href="https://cwiki.apache.org/qpid/faq.html">FAQ</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Documentation</H3><UL><LI><A href="http://qpid.apache.org/documentation.html#doc-release">Latest Release</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-trunk">Trunk</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-archives">Archive</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Community</H3><UL><LI><A href="http://qpid.apache.org/getting_involved.html">Getting Involved</A></LI><LI><A href="http://qpid.apache.org/source_repository.html">Source Repository</A></LI><LI><A href="http://qpid.apache.org/mailing_lists.html">Mailing Lists</A></LI><LI><A href="https://cwiki.apache.org/qpid/">Wiki</A></LI><LI><A href="https://issues.apache.org/jira/browse/qpid">Issue Reporting</A></LI><LI><A href="http://qpid.apache.org/people.html">People</A></LI><LI><A href="http://qpid.apache.org/acknowledgements.html">Acknowledgements</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Developers</H3><UL><LI><A href="https://cwiki.apache.org/qpid/building.html">Building Qpid</A></LI><LI><A href="https://cwiki.apache.org/qpid/developer-pages.html">Developer Pages</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About AMQP</H3><UL><LI><A href="http://qpid.apache.org/amqp.html">What is AMQP?</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About Apache</H3><UL><LI><A href="http://www.apache.org">Home</A></LI><LI><A href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</A></LI><LI><A href="http://www.apache.org/foundation/thanks.html">Thanks</A></LI><LI><A href="http://www.apache.org/security/">Security</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV></DIV><div class="main_text_area"><div class="main_text_area_top"></div><div class="main_text_area_body"><DIV class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Programming in Apache Qpid</a></span> &gt; <span class="breadcrumb-link"><a href="ch02.html">Using the Qpid Messaging API</a></span> &gt; <span class="breadcrumb-node">The AMQP 0-10 mapping</span></DIV><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="section-amqp0-10-mapping"></a>2.16. The AMQP 0-10 mapping</h2></div></div></div><p>
+	This section describes the AMQP 0-10 mapping for the Qpid
+	Messaging API.
+      </p><p>
+        The interaction with the broker triggered by creating a sender
+        or receiver depends on what the specified address resolves
+        to. Where the node type is not specified in the address, the
+        client queries the broker to determine whether it refers to a
+        queue or an exchange.
+      </p><p>
+        When sending to a queue, the queue's name is set as the
+        routing key and the message is transfered to the default (or
+        nameless) exchange. When sending to an exchange, the message
+        is transfered to that exchange and the routing key is set to
+        the message subject if one is specified. A default subject may
+        be specified in the target address. The subject may also be
+        set on each message individually to override the default if
+        required. In each case any specified subject is also added as
+        a qpid.subject entry in the application-headers field of the
+        message-properties.
+      </p><p>
+        When receiving from a queue, any subject in the source address
+        is currently ignored. The client sends a message-subscribe
+        request for the queue in question. The accept-mode is
+        determined by the reliability option in the link properties;
+        for unreliable links the accept-mode is none, for reliable
+        links it is explicit. The default for a queue is reliable. The
+        acquire-mode is determined by the value of the mode option. If
+        the mode is set to browse the acquire mode is not-acquired,
+        otherwise it is set to pre-acquired. The exclusive and
+        arguments fields in the message-subscribe command can be
+        controlled using the x-subscribe map.
+      </p><p>
+        When receiving from an exchange, the client creates a
+        subscription queue and binds that to the exchange. The
+        subscription queue's arguments can be specified using the
+        x-declare map within the link properties. The reliability
+        option determines most of the other parameters. If the
+        reliability is set to unreliable then an auto-deleted,
+        exclusive queue is used meaning that if the client or
+        connection fails messages may be lost. For exactly-once the
+        queue is not set to be auto-deleted. The durability of the
+        subscription queue is determined by the durable option in the
+        link properties. The binding process depends on the type of
+        the exchange the source address resolves to.
+      </p><div class="itemizedlist"><ul><li><p>
+            For a topic exchange, if no subject is specified and no
+            x-bindings are defined for the link, the subscription
+            queue is bound using a wildcard matching any routing key
+            (thus satisfying the expectation that any message sent to
+            that address will be received from it). If a subject is
+            specified in the source address however, it is used for
+            the binding key (this means that the subject in the source
+            address may be a binding pattern including wildcards).
+          </p></li><li><p>
+            For a fanout exchange the binding key is irrelevant to
+            matching. A receiver created from a source address that
+            resolves to a fanout exchange receives all messages
+            sent to that exchange regardless of any subject the source
+            address may contain. An x-bindings element in the link
+            properties should be used if there is any need to set the
+            arguments to the bind.
+          </p></li><li><p>
+            For a direct exchange, the subject is used as the binding
+            key. If no subject is specified an empty string is used as
+            the binding key.
+          </p></li><li><p>
+            For a headers exchange, if no subject is specified the
+            binding arguments simply contain an x-match entry and no
+            other entries, causing all messages to match. If a subject
+            is specified then the binding arguments contain an x-match
+            entry set to all and an entry for qpid.subject whose value
+            is the subject in the source address (this means the
+            subject in the source address must match the message
+            subject exactly). For more control the x-bindings element
+            in the link properties must be used.
+          </p></li><li><p>
+            For the XML exchange,<sup>[<a name="id2552907" href="#ftn.id2552907" class="footnote">12</a>]</sup> if a subject is specified it is
+            used as the binding key and an XQuery is defined that
+            matches any message with that value for
+            qpid.subject. Again this means that only messages whose
+            subject exactly match that specified in the source address
+            are received. If no subject is specified then the empty
+            string is used as the binding key with an xquery that will
+            match any message (this means that only messages with an
+            empty string as the routing key will be received). For more
+            control the x-bindings element in the link properties must
+            be used. A source address that resolves to the XML
+            exchange must contain either a subject or an x-bindings
+            element in the link properties as there is no way at
+            present to receive any message regardless of routing key.
+          </p></li></ul></div><p>
+        If an x-bindings list is present in the link options a binding
+        is created for each element within that list. Each element is
+        a nested map that may contain values named queue, exchange,
+        key or arguments. If the queue value is absent the queue name
+        the address resolves to is implied. If the exchange value is
+        absent the exchange name the address resolves to is implied.
+      </p><p>The following table shows how Qpid Messaging API message
+      properties are mapped to AMQP 0-10 message properties and
+      delivery properties. In this table <code class="varname">msg</code>
+      refers to the Message class defined in the Qpid Messaging API,
+      <code class="varname">mp</code> refers to an AMQP 0-10
+      <code class="varname">message-properties</code> struct, and
+      <code class="varname">dp</code> refers to an AMQP 0-10
+      <code class="varname">delivery-properties</code> struct.</p><div class="table"><a name="table-amqp0-10-message-properties"></a><p class="title"><b>Table 2.9. Mapping to AMQP 0-10 Message Properties</b></p><div class="table-contents"><table summary="Mapping to AMQP 0-10 Message Properties" width="100%" border="1"><colgroup><col><col><col></colgroup><thead><tr><th>Python API</th><th>C++ API
+	      <sup>[<a name="id2553025" href="#ftn.id2553025" class="footnote">a</a>]</sup>
+	      </th><th>AMQP 0-10 Property<sup>[<a name="id2553042" href="#ftn.id2553042" class="footnote">b</a>]</sup></th></tr></thead><tbody><tr><td>msg.id</td><td>msg.{get,set}MessageId()</td><td>mp.message_id</td></tr><tr><td>msg.subject</td><td>msg.{get,set}Subject()</td><td>mp.application_headers["qpid.subject"]</td></tr><tr><td>msg.user_id</td><td>msg.{get,set}UserId()</td><td>mp.user_id</td></tr><tr><td>msg.reply_to</td><td>msg.{get,set}ReplyTo()</td><td>mp.reply_to<sup>[<a name="id2553104" href="#ftn.id2553104" class="footnote">c</a>]</sup></td></tr><tr><td>msg.correlation_id</td><td>msg.{get,set}CorrelationId()</td><td>mp.correlation_id</td></tr><tr><td>msg.durable</td><td>msg.{get,set}Durable()</td><td>dp.delivery_mode == delivery_mode.persistent<sup>[<a name="id2553131" href="#ftn.id2553131" class="footnote">d</a>]</sup></td></tr><tr><td>msg.priority</td><td>msg.{get,set}Priority()</td><td>dp.priority</td></tr><tr><td>msg.ttl</td><td>msg.{get,set}Ttl()</td><td>dp.ttl</td></tr><tr><td>msg.redelivered</td><td>msg.{get,set}Redelivered()</td><td>dp.redelivered</td></tr><tr><td>msg.properties</td><td>msg.getProperties()/msg.setProperty()</td><td>mp.application_headers</td></tr><tr><td>msg.content_type</td><td>msg.{get,set}ContentType()</td><td>mp.content_type</td></tr></tbody><tbody class="footnotes"><tr><td colspan="3"><div class="footnote"><p><sup>[<a name="ftn.id2553025" href="#id2553025" class="para">a</a>] </sup>
+		  The .NET Binding for C++ Messaging provides all the
+		  message and delivery properties described in the C++ API.
+		  See  <a class="xref" href="ch05s03.html#table-Dotnet-Binding-Message" title="Table 5.13. .NET Binding for the C++ Messaging API Class: Message">Table 5.13, “.NET Binding for the C++ Messaging API Class: Message”</a> .
+		</p></div><div class="footnote"><p><sup>[<a name="ftn.id2553042" href="#id2553042" class="para">b</a>] </sup>In these entries, <code class="literal">mp</code> refers to an AMQP message property, and <code class="literal">dp</code> refers to an AMQP delivery property.</p></div><div class="footnote"><p><sup>[<a name="ftn.id2553104" href="#id2553104" class="para">c</a>] </sup>The reply_to is converted from the protocol representation into an address.</p></div><div class="footnote"><p><sup>[<a name="ftn.id2553131" href="#id2553131" class="para">d</a>] </sup>Note that msg.durable is a boolean, not an enum.</p></div></td></tr></tbody></table></div></div><br class="table-break"><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="section-amqp0-10-message-props"></a>2.16.1. 0-10 Message Property Keys</h3></div></div></div><p>
+          The QPID Messaging API also recognises special message property keys and
+          automatically provides a mapping to their corresponding AMQP 0-10 definitions.
+        </p><div class="itemizedlist"><ul><li><p>
+              When sending a message, if the properties contain an entry for
+              <code class="literal">x-amqp-0-10.app-id</code>, its value will be used to set the
+              <code class="literal">message-properties.app-id</code> property in the outgoing
+              message.  Likewise, if an incoming message has
+              <code class="literal">message-properties.app-id</code> set, its value can be accessed
+              via the <code class="literal">x-amqp-0-10.app-id</code> message property key.
+            </p></li><li><p>
+              When sending a message, if the properties contain an entry for
+              <code class="literal">x-amqp-0-10.content-encoding</code>, its value will be used to
+              set the <code class="literal">message-properties.content-encoding</code> property in
+              the outgoing message.  Likewise, if an incoming message has
+              <code class="literal">message-properties.content-encoding</code> set, its value can be
+              accessed via the <code class="literal">x-amqp-0-10.content-encoding</code> message
+              property key.
+            </p></li><li><p>
+              The routing key (<code class="literal">delivery-properties.routing-key</code>) in an
+              incoming messages can be accessed via the
+              <code class="literal">x-amqp-0-10.routing-key</code> message property.
+            </p></li><li><p>
+              If the timestamp delivery property is set in an incoming message
+              (<code class="literal">delivery-properties.timestamp</code>), the timestamp value will
+              be made available via the <code class="literal">x-amqp-0-10.timestamp</code> message
+              property.
+              <sup>[<a name="id2553322" href="#ftn.id2553322" class="footnote">13</a>]</sup>
+            </p></li></ul></div><div class="example"><a name="id2553334"></a><p class="title"><b>Example 2.20. Accessing the AMQP 0-10 Message Timestamp in Python</b></p><div class="example-contents"><p>
+            The following code fragment checks for and extracts the message timestamp from
+            a received message.
+          </p><pre class="programlisting">
+	    try:
+	    msg = receiver.fetch(timeout=1)
+	    if "x-amqp-0-10.timestamp" in msg.properties:
+	    print("Timestamp=%s" % str(msg.properties["x-amqp-0-10.timestamp"]))
+	    except Empty:
+	    pass
+          </pre></div></div><br class="example-break"><div class="example"><a name="id2553358"></a><p class="title"><b>Example 2.21. Accessing the AMQP 0-10 Message Timestamp in C++</b></p><div class="example-contents"><p>
+            The same example, except in C++.
+          </p><pre class="programlisting">
+	    messaging::Message msg;
+	    if (receiver.fetch(msg, messaging::Duration::SECOND*1)) {
+	    if (msg.getProperties().find("x-amqp-0-10.timestamp") != msg.getProperties().end()) {
+	    std::cout &lt;&lt; "Timestamp=" &lt;&lt; msg.getProperties()["x-amqp-0-10.timestamp"].asString() &lt;&lt; std::endl;
+	    }
+	    }
+          </pre></div></div><br class="example-break"></div><div class="footnotes"><br><hr width="100" align="left"><div class="footnote"><p><sup>[<a name="ftn.id2552907" href="#id2552907" class="para">12</a>] </sup>Note that the XML
+            exchange is not a standard AMQP exchange type. It is a
+            Qpid extension and is currently only supported by the C++
+            broker.</p></div><div class="footnote"><p><sup>[<a name="ftn.id2553322" href="#id2553322" class="para">13</a>] </sup>
+                  This special property is currently not supported by the Qpid JMS client.
+                </p></div></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s15.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="Message-Groups-Guide.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.15. Logging </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 2.17. Using Message Groups</td></tr></table></div><div class="main_text_area_bottom"></div></div></div></body></html>

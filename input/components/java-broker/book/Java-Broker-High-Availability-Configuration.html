@@ -1,0 +1,73 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>12.5. Configuring a Virtual Host to be a node</title><link rel="stylesheet" type="text/css" href="css/style.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"><link rel="home" href="index.html" title="AMQP Messaging Broker (Java)"><link rel="up" href="Java-Broker-High-Availability.html" title="Chapter 12. High Availability"><link rel="prev" href="Java-Broker-High-Availability-MultiNodeCluster.html" title="12.4. Multi Node Cluster"><link rel="next" href="Java-Broker-High-Availability-DurabilityGuarantee.html" title="12.6. Durability Guarantees"></head><body><div class="container" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><DIV class="header"><DIV class="logo"><H1>Apache Qpid™</H1><H2>Open Source AMQP Messaging</H2></DIV></DIV><DIV class="menu_box"><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Apache Qpid</H3><UL><LI><A href="http://qpid.apache.org/index.html">Home</A></LI><LI><A href="http://qpid.apache.org/download.html">Download</A></LI><LI><A href="http://qpid.apache.org/getting_started.html">Getting Started</A></LI><LI><A href="http://www.apache.org/licenses/">License</A></LI><LI><A href="https://cwiki.apache.org/qpid/faq.html">FAQ</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Documentation</H3><UL><LI><A href="http://qpid.apache.org/documentation.html#doc-release">Latest Release</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-trunk">Trunk</A></LI><LI><A href="http://qpid.apache.org/documentation.html#doc-archives">Archive</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Community</H3><UL><LI><A href="http://qpid.apache.org/getting_involved.html">Getting Involved</A></LI><LI><A href="http://qpid.apache.org/source_repository.html">Source Repository</A></LI><LI><A href="http://qpid.apache.org/mailing_lists.html">Mailing Lists</A></LI><LI><A href="https://cwiki.apache.org/qpid/">Wiki</A></LI><LI><A href="https://issues.apache.org/jira/browse/qpid">Issue Reporting</A></LI><LI><A href="http://qpid.apache.org/people.html">People</A></LI><LI><A href="http://qpid.apache.org/acknowledgements.html">Acknowledgements</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>Developers</H3><UL><LI><A href="https://cwiki.apache.org/qpid/building.html">Building Qpid</A></LI><LI><A href="https://cwiki.apache.org/qpid/developer-pages.html">Developer Pages</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About AMQP</H3><UL><LI><A href="http://qpid.apache.org/amqp.html">What is AMQP?</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV><DIV class="menu_box_top"></DIV><DIV class="menu_box_body"><H3>About Apache</H3><UL><LI><A href="http://www.apache.org">Home</A></LI><LI><A href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</A></LI><LI><A href="http://www.apache.org/foundation/thanks.html">Thanks</A></LI><LI><A href="http://www.apache.org/security/">Security</A></LI></UL></DIV><DIV class="menu_box_bottom"></DIV></DIV><div class="main_text_area"><div class="main_text_area_top"></div><div class="main_text_area_body"><DIV class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">AMQP Messaging Broker (Java)</a></span> &gt; <span class="breadcrumb-link"><a href="Java-Broker-High-Availability.html">High Availability</a></span> &gt; <span class="breadcrumb-node">Configuring a Virtual Host to be a node</span></DIV><div class="section" title="12.5. Configuring a Virtual Host to be a node"><div class="titlepage"><div><div><h2 class="title"><a name="Java-Broker-High-Availability-Configuration"></a>12.5. Configuring a Virtual Host to be a node</h2></div></div></div><p>To configure a virtualhost as a cluster node, configure the virtualhost.xml in the following manner:</p><p>
+
+    </p><div class="example"><a name="idp1322512"></a><p class="title"><b>Example 12.1. Configuring a VirtualHost to use the BDBHAMessageStore</b></p><div class="example-contents"><pre class="programlisting">
+&lt;virtualhost&gt;
+  &lt;name&gt;myhost&lt;/name&gt;
+  &lt;myvhost&gt;
+    &lt;store&gt;
+      &lt;class&gt;org.apache.qpid.server.store.berkeleydb.BDBHAMessageStore&lt;/class&gt;
+      &lt;environment-path&gt;${work}/bdbhastore&lt;/environment-path&gt;
+      &lt;highAvailability&gt;
+        &lt;groupName&gt;myclustername&lt;/groupName&gt;
+        &lt;nodeName&gt;mynode1&lt;/nodeName&gt;
+        &lt;nodeHostPort&gt;node1host:port&lt;/nodeHostPort&gt;
+        &lt;helperHostPort&gt;node1host:port&lt;/helperHostPort&gt;
+        &lt;durability&gt;NO_SYNC\,NO_SYNC\,SIMPLE_MAJORITY&lt;/durability&gt;
+        &lt;coalescingSync&gt;true|false&lt;/coalescingSync&gt;
+        &lt;designatedPrimary&gt;true|false&lt;/designatedPrimary&gt;
+      &lt;/highAvailability&gt;
+    &lt;/store&gt;
+    ...
+ &lt;/myvhost&gt;
+&lt;/virtualhost&gt;</pre></div></div><p><br class="example-break">
+    </p><p>The <code class="varname">groupName</code> is the name of logical name of the cluster.  All nodes within the
+      cluster must use the same <code class="varname">groupName</code> in order to be considered part of the cluster.</p><p>The <code class="varname">nodeName</code> is the logical name of the node.  All nodes within the cluster must have a
+      unique name.  It is recommended that the node name should be chosen from a different nomenclature from that of
+      the servers on which they are hosted, in case the need arises to move node to a new server in the future.</p><p>The <code class="varname">nodeHostPort</code> is the hostname and port number used by this node to communicate with the
+      the other nodes in the cluster. For the hostname, an IP address, hostname or fully qualified hostname may be used.
+      For the port number, any free port can be used.  It is important that this address is stable over time, as BDB
+      records and uses this address internally.</p><p>The <code class="varname">helperHostPort</code> is the hostname and port number that new nodes use to discover other
+      nodes within the cluster when they are newly introduced to the cluster.  When configuring the first node, set the
+      <code class="varname">helperHostPort</code> to its own <code class="varname">nodeHostPort</code>.  For the second and subsequent nodes,
+      set their <code class="varname">helperHostPort</code> to that of the first node.</p><p><code class="varname">durability</code> controls the <a class="link" href="Java-Broker-High-Availability-DurabilityGuarantee.html" title="12.6. Durability Guarantees">durability</a>
+      guarantees made by the cluster. It is important that all nodes use the same value for this property. The default value is
+      NO_SYNC\,NO_SYNC\,SIMPLE_MAJORITY. Owing to the internal use of Apache Commons Config, it is currently necessary
+      to escape the commas within the durability string.</p><p><code class="varname">coalescingSync</code> controls the <a class="link" href="Java-Broker-High-Availability-DurabilityGuarantee.html#Java-Broker-High-Availability-DurabilityGuarantee_CoalescingSync" title="12.6.2. Coalescing-sync">coalescing-sync</a>
+      mode of Qpid. It is important that all nodes use the same value. If omitted, it defaults to true.</p><p>The <code class="varname">designatedPrimary</code> is applicable only to the <a class="link" href="Java-Broker-High-Availability-TwoNodeCluster.html" title="12.3. Two Node Cluster">two-node
+     case.</a>  It governs the behaviour of a node when the other node fails or becomes uncontactable.  If true,
+     the node will be designated as primary at startup and will be able to continue operating as a single node master.
+     If false, the node will transition to an unavailable state until a third-party manually designates the node as
+     primary or the other node is restored. It is suggested that the node that normally fulfils the role of master is
+     set true in config file and the node that is normally replica is set false.  Be aware that setting both nodes to
+     true will lead to a failure to start up, as both cannot be designated at the point of contact. Designating both
+     nodes as primary at runtime (using the JMX interface) will lead to a <a class="link" href="Java-Broker-High-Availability-TwoNodeCluster.html#Java-Broker-High-Availability-TwoNodeSplitBrain" title="12.3.2.5. Split Brain">split-brain</a>
+     in the case of network partition and must be avoided.</p><div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>Usage of domain names in  <code class="varname">helperHostPort</code> and <code class="varname">nodeHostPort</code> is more preferebale
+     over IP addresses due to the tendency of more frequent changes of the last over the former.
+     If server IP address changes but domain name remains the same the HA cluster can continue working as normal
+     in case when domain names are used in cluster configuration. In case when IP addresses are used and they are changed with the time
+     than Qpid <a class="link" href="Java-Broker-High-Availability-JMXAPI.html" title="12.8. Qpid JMX API for HA">JMX API for HA</a> can be used to change the addresses or remove the nodes from the cluster.</p></div><div class="section" title="12.5.1. Passing BDB environment and replication configuration options"><div class="titlepage"><div><div><h3 class="title"><a name="Java-Broker-High-Availability-Configuration_BDBEnvVars"></a>12.5.1. Passing BDB environment and replication configuration options</h3></div></div></div><p>It is possible to pass BDB <a class="ulink" href="http://docs.oracle.com/cd/E17277_02/html/java/com/sleepycat/je/EnvironmentConfig.html" target="_top">
+         environment</a> and <a class="ulink" href="http://docs.oracle.com/cd/E17277_02/html/java/com/sleepycat/je/rep/ReplicationConfig.html" target="_top">
+         replication</a> configuration options from the virtualhost.xml. Environment configuration options are passed using
+         the <code class="varname">envConfig</code> element, and replication config using <code class="varname">repConfig</code>.</p><p>For example, to override the BDB environment configuration options <code class="varname">je.cleaner.threads</code> and
+        <code class="varname">je.txn.timeout</code></p><pre class="programlisting">
+         ...
+      &lt;/highAvailability&gt;
+      &lt;envConfig&gt;
+        &lt;name&gt;je.cleaner.threads&lt;/name&gt;
+        &lt;value&gt;2&lt;/value&gt;
+      &lt;/envConfig&gt;
+      &lt;envConfig&gt;
+        &lt;name&gt;je.txn.timeout&lt;/name&gt;
+        &lt;value&gt;15 min&lt;/value&gt;
+      &lt;/envConfig&gt;
+      ...
+    &lt;/store&gt;</pre><p>And to override the BDB replication configuration options <code class="varname">je.rep.electionsPrimaryRetries</code>.</p><pre class="programlisting">
+         ...
+      &lt;/highAvailability&gt;
+      ...
+      &lt;repConfig&gt;
+        &lt;name&gt;je.rep.electionsPrimaryRetries&lt;/name&gt;
+        &lt;value&gt;3&lt;/value&gt;
+      &lt;/repConfig&gt;
+      ...
+    &lt;/store&gt;</pre></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="Java-Broker-High-Availability-MultiNodeCluster.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="Java-Broker-High-Availability.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="Java-Broker-High-Availability-DurabilityGuarantee.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">12.4. Multi Node Cluster </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 12.6. Durability Guarantees</td></tr></table></div><div class="main_text_area_bottom"></div></div></div></body></html>
