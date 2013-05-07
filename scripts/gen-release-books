@@ -18,7 +18,7 @@
 # under the License.
 #
 
-from transom.script import *
+from transom.generate import *
 
 from xml.etree import ElementTree
 
@@ -32,22 +32,29 @@ def gen_books(source_dir, output_dir):
 
     write(join(input_dir, "xsl", "html-custom.xsl"), stylesheet)
 
-    call("make -C {} clean html", input_dir)
+    call("make -C {} clean all", input_dir)
 
-    cpp_broker_input_dir = join(input_dir, "build", "AMQP-Messaging-Broker-CPP-Book", "html")
-    java_broker_input_dir = join(input_dir, "build", "AMQP-Messaging-Broker-Java-Book", "html")
-    programming_input_dir = join(input_dir, "build", "Programming-In-Apache-Qpid", "html")
-    cpp_broker_output_dir = join(output_dir, "cpp-broker", "book")
-    java_broker_output_dir = join(output_dir, "java-broker", "book")
-    programming_output_dir = join(output_dir, "programming", "book")
+    cpp_broker_input_dir = join(input_dir, "build", "AMQP-Messaging-Broker-CPP-Book")
+    java_broker_input_dir = join(input_dir, "build", "AMQP-Messaging-Broker-Java-Book")
+    programming_input_dir = join(input_dir, "build", "Programming-In-Apache-Qpid")
+    cpp_broker_output_dir = join(output_dir, "cpp-broker")
+    java_broker_output_dir = join(output_dir, "java-broker")
+    programming_output_dir = join(output_dir, "programming")
 
     remove(cpp_broker_output_dir)
     remove(java_broker_output_dir)
     remove(programming_output_dir)
 
-    copy(cpp_broker_input_dir, cpp_broker_output_dir)
-    copy(java_broker_input_dir, java_broker_output_dir)
-    copy(programming_input_dir, programming_output_dir)
+    copy(join(cpp_broker_input_dir, "html"), join(cpp_broker_output_dir, "book"))
+    copy(join(java_broker_input_dir, "html"), join(java_broker_output_dir, "book"))
+    copy(join(programming_input_dir, "html"), join(programming_output_dir, "book"))
+
+    copy(join(cpp_broker_input_dir, "pdf", "AMQP-Messaging-Broker-CPP-Book.pdf"),
+         join(cpp_broker_output_dir, "cpp-broker-book.pdf"))
+    copy(join(java_broker_input_dir, "pdf", "AMQP-Messaging-Broker-Java-Book.pdf"),
+         join(java_broker_output_dir, "java-broker-book.pdf"))
+    copy(join(programming_input_dir, "pdf", "Programming-In-Apache-Qpid.pdf"),
+         join(programming_output_dir, "programming-book.pdf"))
 
     for dir in (cpp_broker_output_dir, java_broker_output_dir, programming_output_dir):
         for path in find(dir, "*.html"):

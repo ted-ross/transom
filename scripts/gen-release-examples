@@ -18,7 +18,7 @@
 # under the License.
 #
 
-from transom.script import *
+from transom.generate import *
 
 import re
 
