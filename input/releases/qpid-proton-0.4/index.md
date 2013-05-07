@@ -43,6 +43,7 @@ files you download.
 ## Documentation
 
  - [Installing Qpid Proton](http://svn.apache.org/repos/asf/qpid/proton/tags/0.4/README)
+ - [API reference](messenger/python/api/index.html)
 
 ## More information
 
