@@ -18,76 +18,7 @@
 # under the License.
 #
 
-from transom.script import *
-
-doxygen_conf_template = u"""
-DISABLE_INDEX = yes
-EXTRACT_ALL = yes
-GENERATE_LATEX = no
-GENERATE_TREEVIEW = yes
-HAVE_DOT = yes
-PROJECT_NUMBER = {release}
-QUIET = yes
-RECURSIVE = yes
-INPUT = {input_paths}
-PROJECT_NAME = "{title}"
-STRIP_FROM_PATH = {strip_paths}
-HTML_OUTPUT = {output_dir}
-"""
-
-def gen_doxygen(release, title, input_paths, strip_paths, output_dir):
-    input_paths = " ".join(input_paths)
-    strip_paths = " ".join(strip_paths)
-
-    make_dirs(output_dir)
-
-    conf = doxygen_conf_template.format(**locals())
-    path = write_entry("conf", conf)
-
-    call("doxygen {}", path)
-
-    touch(join(output_dir, ".transom-skip"))
-
-def gen_epydoc(release, title, input_paths, input_namespaces, output_dir):
-    # XXX programmatic instead?
-
-    input_paths = ":".join(input_paths)
-    input_namespaces = " ".join(input_namespaces)
-
-    make_dirs(output_dir)
-
-    options = list()
-    options.append("--graph all")
-    options.append("--html")
-    options.append("--name \"{}\"".format(title))
-    options.append("--no-private")
-    options.append("--output {}".format(output_dir))
-    options.append("--quiet")
-    options.append("--url \"@site-url@/index.html\"")
-    options = " ".join(options)
-
-    call("PYTHONPATH={} epydoc {} {}", input_paths, options, input_namespaces)
-
-    touch(join(output_dir, ".transom-skip"))
-
-def gen_rdoc(release, title, base_input_path, input_paths, output_dir):
-    output_dir = os.path.abspath(output_dir)
-
-    # rdoc really wants to make the last dir
-    make_dirs(split(output_dir)[0])
-
-    options = list()
-    options.append("--fmt html")
-    options.append("--op {}".format(output_dir))
-    options.append("--quiet")
-    options.append("--title \"{}\"".format(title))
-    options = " ".join(options)
-
-    input_paths = " ".join(input_paths)
-
-    call("cd {} && rdoc {} {}", base_input_path, options, input_paths)
-    
-    touch(join(output_dir, ".transom-skip"))
+from transom.generate import *
 
 def gen_messaging_api(release, source_dir, release_dir):
     component_dir = join(release_dir, "messaging-api")

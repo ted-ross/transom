@@ -48,10 +48,12 @@ gen-release:
 	scripts/gen-release-books ${RELEASE} ${RELEASE_DIR}
 	scripts/gen-release-examples ${RELEASE} ${RELEASE_DIR}
 
+gen-proton-release: RELEASE_DIR := input/releases/qpid-proton-${RELEASE}
 gen-proton-release:
 	test -n ${RELEASE}
-	mkdir -p input/releases/qpid-proton-${RELEASE}
-	scripts/gen-proton-release-page ${RELEASE} > input/releases/qpid-proton-${RELEASE}/index.md
+	mkdir -p ${RELEASE_DIR}
+	scripts/gen-proton-release-page ${RELEASE} > ${RELEASE_DIR}/index.md
+	scripts/gen-proton-release-api-doc ${RELEASE} ${RELEASE_DIR}
 
 regen-release-pages:
 	scripts/gen-release-page 0.22 > input/releases/qpid-0.22/index.md

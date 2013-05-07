@@ -166,6 +166,12 @@ def find(dir, *patterns):
 
     return sorted(matched_paths)
 
+# Returns the current working directory so you can change it back
+def change_dir(dir):
+    cwd = os.getcwd()
+    os.chdir(dir)
+    return cwd
+
 def list_dir(dir, *patterns):
     names = os.listdir(dir)
 
@@ -215,23 +221,3 @@ def make_archive(input_dir, output_dir, output_name, format="gztar"):
                                format=format,
                                root_dir=temp_dir,
                                base_dir=output_name)
-
-### Less generic functions ###
-
-def export_release(release, output_dir=None):
-    if output_dir is None:
-        temp_dir = make_user_temp_dir()
-        output_dir = join(temp_dir, "qpid-{}".format(release))
-
-    if exists(join(output_dir, "QPID_VERSION.txt")):
-        debug("Export already exists")
-        return output_dir
-
-    call("svn --version")
-
-    assert not exists(output_dir)
-
-    url = "http://svn.apache.org/repos/asf/qpid/branches/{}/qpid".format(release)
-    call("svn export {} {}", url, output_dir)
-
-    return output_dir
