@@ -123,4 +123,4 @@ step is to commit the changes there.
     ?       somenewfile.html
 
     # Last step! After this, the content is live
-    docs$ svn checkin -m "Here I make an account of what I changed"
+    docs$ svn commit -m "Here I make an account of what I changed"
