@@ -123,6 +123,10 @@ class Site(object):
             for source in self.links[link]:
                 print "  Source: {}".format(source)
 
+        for link in sorted(self.links):
+            if not link.startswith(self.url):
+                print "0.0", link
+
     def check_external_link(self, link):
         code, error = None, None
 

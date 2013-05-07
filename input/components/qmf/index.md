@@ -36,7 +36,7 @@ This is the documentation for the current released version.  You can
 find previous versions with our
 [past releases](@site-url@/releases/index.html#past-releases).
 
- - [API reference](http://qpid.apache.org/apis/@current-release@/cpp/html/index.html) ([qpid-cpp-doxygen-@current-release@.html.tar.gz](http://qpid.apache.org/apis/@current-release@/cpp/qpid-cpp-doxygen-@current-release@.html.tar.gz))
+ - [API reference](@current-release-url@/qmf/cpp/api/index.html)
  - [Installing Qpid C++](http://svn.apache.org/repos/asf/qpid/tags/@current-release@/qpid/cpp/INSTALL)
  - [Map message protocol](https://cwiki.apache.org/qpid/qmf-map-message-protocol.html)
 

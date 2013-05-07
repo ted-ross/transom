@@ -149,6 +149,20 @@ def gen_ruby_messaging_api(release, source_dir, component_dir):
     #name = "qpid-{}-ruby-messaging-api-apiref".format(release)
     #make_archive(api_dir, output_dir, name)
 
+def gen_qmf_api(release, source_dir, release_dir):
+    component_dir = join(release_dir, "qmf")
+    remove(component_dir)
+
+    include_dir = join(source_dir, "cpp", "include")
+    input_paths = (join(include_dir, "qmf"),)
+    output_dir = join(component_dir, "cpp", "api")
+
+    gen_doxygen(release=release,
+                title="Qpid Management Framework",
+                input_paths=input_paths,
+                strip_paths=(include_dir,),
+                output_dir=output_dir)
+
 ## Now do stuff ##
 
 if len(sys.argv) != 3:
@@ -164,3 +178,4 @@ release_dir = sys.argv[2]
 source_dir = export_release(release)
 
 gen_messaging_api(release, source_dir, release_dir)
+gen_qmf_api(release, source_dir, release_dir)
