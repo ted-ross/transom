@@ -66,9 +66,9 @@ available in the full source artefact.
 
 ### Books
 
- - [Programming in Apache Qpid](programming/book/index.html)
- - [C++ broker book](cpp-broker/book/index.html)
- - [Java broker book](java-broker/book/index.html)
+ - [Programming in Apache Qpid](programming/book/index.html) ([PDF](programming/programming-book.pdf))
+ - [C++ broker book](cpp-broker/book/index.html) ([PDF](cpp-broker/cpp-broker-book.pdf))
+ - [Java broker book](java-broker/book/index.html) ([PDF](java-broker/java-broker-book.pdf))
 
 ### Installation guides
 

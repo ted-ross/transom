@@ -22,7 +22,7 @@ from transom.generate import *
 
 from xml.etree import ElementTree
 
-def gen_books(source_dir, output_dir):
+def gen_books(release, source_dir, output_dir):
     input_dir = join(source_dir, "doc", "book")
 
     stylesheet = """<?xml version='1.0'?>
@@ -67,6 +67,16 @@ def gen_books(source_dir, output_dir):
             remove_namespace(elem, "http://www.w3.org/1999/xhtml")
 
             content = ElementTree.tostring(elem)
+
+            # Repair links
+            content = content.replace("../../Programming-In-Apache-Qpid/html/QpidJNDI.html#section-jms-connection-url",
+                                      "@site-url@/releases/qpid-{}/programming/book/index.html#section-jms-connection-url".format(release))
+            content = content.replace("../../Programming-In-Apache-Qpid/html/QpidJNDI.html",
+                                      "@site-url@/releases/qpid-{}/programming/book/index.html#QpidJNDI".format(release))
+            content = content.replace("../../Programming-In-Apache-Qpid/html/",
+                                      "@site-url@/releases/qpid-{}/programming/book/index.html".format(release))
+            content = content.replace("../../AMQP-Messaging-Broker-CPP-Book/html/",
+                                      "@site-url@/releases/qpid-{}/cpp-broker/book/index.html".format(release))
             
             write("{}.in".format(path), content)
             remove(path)
@@ -146,4 +156,4 @@ release_dir = sys.argv[2]
 
 source_dir = export_release(release)
 
-gen_books(source_dir, release_dir)
+gen_books(release, source_dir, release_dir)

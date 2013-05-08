@@ -1,4 +1,4 @@
-<div class="docbook"><div class="book" title="AMQP Messaging Broker (Implemented in C++)"><div class="titlepage"><div><div><h1 class="title"><a id="idp19249600" />AMQP Messaging Broker (Implemented in C++)</h1></div></div><hr /></div><div class="toc"><p><strong>Table of Contents</strong></p><dl><dt><span class="preface"><a href="#idp19249072">Introduction</a></span></dt><dt><span class="chapter"><a href="#idp26750624">1. 
+<div class="docbook"><div class="book" title="AMQP Messaging Broker (Implemented in C++)"><div class="titlepage"><div><div><h1 class="title"><a id="idm7454768" />AMQP Messaging Broker (Implemented in C++)</h1></div></div><hr /></div><div class="toc"><p><strong>Table of Contents</strong></p><dl><dt><span class="preface"><a href="#idm7453584">Introduction</a></span></dt><dt><span class="chapter"><a href="#idp53664">1. 
       Running the AMQP Messaging Broker
     </a></span></dt><dd><dl><dt><span class="section"><a href="#section-Running-a-Qpid-CPP-Broker">1.1. 
     Running a Qpid C++ Broker
@@ -17,16 +17,16 @@
             complex configuration
           </a></span></dt><dt><span class="section"><a href="#RASC-Loadingextramodules">1.1.6. 
             Loading extra modules
-          </a></span></dt><dt><span class="section"><a href="#RASC-message-timestamps">1.1.7. Timestamping Received Messages</a></span></dt></dl></dd><dt><span class="section"><a href="#idp26767520">1.2. 
+          </a></span></dt><dt><span class="section"><a href="#RASC-message-timestamps">1.1.7. Timestamping Received Messages</a></span></dt></dl></dd><dt><span class="section"><a href="#idp71440">1.2. 
       Cheat Sheet for configuring Queue Options
     </a></span></dt><dd><dl><dt><span class="section"><a href="#CheatSheetforconfiguringQueueOptions-ConfiguringQueueOptions">1.2.1. 
             Configuring
             Queue Options
-          </a></span></dt></dl></dd><dt><span class="section"><a href="#idp26745808">1.3. 
+          </a></span></dt></dl></dd><dt><span class="section"><a href="#idp113296">1.3. 
     Cheat Sheet for configuring Exchange Options
   </a></span></dt><dd><dl><dt><span class="section"><a href="#CheatSheetforconfiguringExchangeOptions-ConfiguringExchangeOptions">1.3.1. 
       Configuring Exchange Options
-    </a></span></dt></dl></dd><dt><span class="section"><a href="#chap-Messaging_User_Guide-Broker_Federation">1.4. Broker Federation</a></span></dt><dd><dl><dt><span class="section"><a href="#sect-Messaging_User_Guide-Broker_Federation-Message_Routes">1.4.1. Message Routes</a></span></dt><dt><span class="section"><a href="#sect-Messaging_User_Guide-Broker_Federation-Federation_Topologies">1.4.2. Federation Topologies</a></span></dt><dt><span class="section"><a href="#sect-Messaging_User_Guide-Broker_Federation-Federation_among_High_Availability_Message_Clusters">1.4.3. Federation among High Availability Message Clusters</a></span></dt><dt><span class="section"><a href="#sect-Messaging_User_Guide-Broker_Federation-The_qpid_route_Utility">1.4.4. The qpid-route Utility</a></span></dt></dl></dd><dt><span class="section"><a href="#chap-Messaging_User_Guide-Security">1.5. Security</a></span></dt><dd><dl><dt><span class="section"><a href="#sect-Messaging_User_Guide-Security-User_Authentication">1.5.1. User Authentication</a></span></dt><dt><span class="section"><a href="#sect-Messaging_User_Guide-Security-Authorization">1.5.2. Authorization</a></span></dt><dt><span class="section"><a href="#sect-Messaging_User_Guide-Authorization-Specifying_ACL_Quotas">1.5.3. User Connection and Queue Quotas</a></span></dt><dt><span class="section"><a href="#sect-Messaging_User_Guide-Security-Encryption_using_SSL">1.5.4. Encryption using SSL</a></span></dt></dl></dd><dt><span class="section"><a href="#idp29424512">1.6. LVQ - Last Value Queue</a></span></dt><dd><dl><dt><span class="section"><a href="#LVQ-UnderstandingLVQ">1.6.1. Understanding LVQ</a></span></dt><dt><span class="section"><a href="#LVQ-Creating">1.6.2. Creating a Last Value Queue</a></span></dt><dt><span class="section"><a href="#LVQ-Example">1.6.3. LVQ Example</a></span></dt><dt><span class="section"><a href="#LVQ-Deprecated">1.6.4. Deprecated LVQ Modes</a></span></dt></dl></dd><dt><span class="section"><a href="#queue-state-replication">1.7. 
+    </a></span></dt></dl></dd><dt><span class="section"><a href="#chap-Messaging_User_Guide-Broker_Federation">1.4. Broker Federation</a></span></dt><dd><dl><dt><span class="section"><a href="#sect-Messaging_User_Guide-Broker_Federation-Message_Routes">1.4.1. Message Routes</a></span></dt><dt><span class="section"><a href="#sect-Messaging_User_Guide-Broker_Federation-Federation_Topologies">1.4.2. Federation Topologies</a></span></dt><dt><span class="section"><a href="#sect-Messaging_User_Guide-Broker_Federation-Federation_among_High_Availability_Message_Clusters">1.4.3. Federation among High Availability Message Clusters</a></span></dt><dt><span class="section"><a href="#sect-Messaging_User_Guide-Broker_Federation-The_qpid_route_Utility">1.4.4. The qpid-route Utility</a></span></dt></dl></dd><dt><span class="section"><a href="#chap-Messaging_User_Guide-Security">1.5. Security</a></span></dt><dd><dl><dt><span class="section"><a href="#sect-Messaging_User_Guide-Security-User_Authentication">1.5.1. User Authentication</a></span></dt><dt><span class="section"><a href="#sect-Messaging_User_Guide-Security-Authorization">1.5.2. Authorization</a></span></dt><dt><span class="section"><a href="#sect-Messaging_User_Guide-Authorization-Specifying_ACL_Quotas">1.5.3. User Connection and Queue Quotas</a></span></dt><dt><span class="section"><a href="#sect-Messaging_User_Guide-Security-Encryption_using_SSL">1.5.4. Encryption using SSL</a></span></dt></dl></dd><dt><span class="section"><a href="#idp1498032">1.6. LVQ - Last Value Queue</a></span></dt><dd><dl><dt><span class="section"><a href="#LVQ-UnderstandingLVQ">1.6.1. Understanding LVQ</a></span></dt><dt><span class="section"><a href="#LVQ-Creating">1.6.2. Creating a Last Value Queue</a></span></dt><dt><span class="section"><a href="#LVQ-Example">1.6.3. LVQ Example</a></span></dt><dt><span class="section"><a href="#LVQ-Deprecated">1.6.4. Deprecated LVQ Modes</a></span></dt></dl></dd><dt><span class="section"><a href="#queue-state-replication">1.7. 
     Queue State Replication
   </a></span></dt><dd><dl><dt><span class="section"><a href="#queuestatereplication-AsynchronousReplicationofQueueState">1.7.1. 
       Asynchronous
@@ -59,7 +59,7 @@
         Well Behaved Consumers
       </a></span></dt><dt><span class="section"><a href="#usingmessagegroups-BrokerConfig">1.11.5. 
         Broker Configuration
-      </a></span></dt></dl></dd><dt><span class="section"><a href="#chapter-ha">1.12. Active-Passive Messaging Clusters</a></span></dt><dd><dl><dt><span class="section"><a href="#ha-overview">1.12.1. Overview</a></span></dt><dt><span class="section"><a href="#ha-virtual-ip">1.12.2. Virtual IP Addresses</a></span></dt><dt><span class="section"><a href="#ha-broker-config">1.12.3. Configuring the Brokers</a></span></dt><dt><span class="section"><a href="#ha-rm">1.12.4. The Cluster Resource Manager</a></span></dt><dt><span class="section"><a href="#ha-rm-config">1.12.5. Configuring <span class="command"><strong>rgmanager</strong></span> as resource manager</a></span></dt><dt><span class="section"><a href="#ha-broker-admin">1.12.6. Broker Administration Tools</a></span></dt><dt><span class="section"><a href="#ha-replicate-values">1.12.7. Controlling replication of queues and exchanges</a></span></dt><dt><span class="section"><a href="#ha-failover">1.12.8. Client Connection and Fail-over</a></span></dt><dt><span class="section"><a href="#ha-security">1.12.9. Security.</a></span></dt><dt><span class="section"><a href="#ha-other-rm">1.12.10. Integrating with other Cluster Resource Managers</a></span></dt><dt><span class="section"><a href="#ha-queue-replication">1.12.11. Replicating specific queues</a></span></dt><dt><span class="section"><a href="#ha-store">1.12.12. Using a message store in a cluster</a></span></dt></dl></dd><dt><span class="section"><a href="#idp30497168">1.13. Queue Replication with the HA module</a></span></dt></dl></dd><dt><span class="chapter"><a href="#chapter-Managing-CPP-Broker">2. 
+      </a></span></dt></dl></dd><dt><span class="section"><a href="#chapter-ha">1.12. Active-Passive Messaging Clusters</a></span></dt><dd><dl><dt><span class="section"><a href="#ha-overview">1.12.1. Overview</a></span></dt><dt><span class="section"><a href="#ha-virtual-ip">1.12.2. Virtual IP Addresses</a></span></dt><dt><span class="section"><a href="#ha-broker-config">1.12.3. Configuring the Brokers</a></span></dt><dt><span class="section"><a href="#ha-rm">1.12.4. The Cluster Resource Manager</a></span></dt><dt><span class="section"><a href="#ha-rm-config">1.12.5. Configuring <span class="command"><strong>rgmanager</strong></span> as resource manager</a></span></dt><dt><span class="section"><a href="#ha-broker-admin">1.12.6. Broker Administration Tools</a></span></dt><dt><span class="section"><a href="#ha-replicate-values">1.12.7. Controlling replication of queues and exchanges</a></span></dt><dt><span class="section"><a href="#ha-failover">1.12.8. Client Connection and Fail-over</a></span></dt><dt><span class="section"><a href="#ha-security">1.12.9. Security.</a></span></dt><dt><span class="section"><a href="#ha-other-rm">1.12.10. Integrating with other Cluster Resource Managers</a></span></dt><dt><span class="section"><a href="#ha-queue-replication">1.12.11. Replicating specific queues</a></span></dt><dt><span class="section"><a href="#ha-store">1.12.12. Using a message store in a cluster</a></span></dt></dl></dd><dt><span class="section"><a href="#idp5657888">1.13. Queue Replication with the HA module</a></span></dt></dl></dd><dt><span class="chapter"><a href="#chapter-Managing-CPP-Broker">2. 
       Managing the AMQP Messaging Broker
     </a></span></dt><dd><dl><dt><span class="section"><a href="#section-Managing-CPP-Broker">2.1.  Managing the C++ Broker </a></span></dt><dd><dl><dt><span class="section"><a href="#MgmtC-2B-2B-Usingqpidconfig">2.1.1. 
             Using qpid-config
@@ -70,7 +70,7 @@
           </a></span></dt><dt><span class="section"><a href="#MgmtC-2B-2B-Usingqpidprintevents">2.1.4. 
             Using
             qpid-printevents
-          </a></span></dt><dt><span class="section"><a href="#idp27654976">2.1.5. Using qpid-ha</a></span></dt></dl></dd><dt><span class="section"><a href="#idp29386832">2.2. 
+          </a></span></dt><dt><span class="section"><a href="#idp2398464">2.1.5. Using qpid-ha</a></span></dt></dl></dd><dt><span class="section"><a href="#idp874672">2.2. 
       Qpid Management Framework
     </a></span></dt><dd><dl><dt><span class="section"><a href="#QpidManagementFramework-WhatIsQMF">2.2.1. 
             What Is QMF
@@ -88,7 +88,7 @@
           </a></span></dt><dt><span class="section"><a href="#QpidManagementFramework-HowtoWriteaQMFAgent">2.2.6. 
             How to
             Write a QMF Agent
-          </a></span></dt></dl></dd><dt><span class="section"><a href="#idp30998832">2.3. 
+          </a></span></dt></dl></dd><dt><span class="section"><a href="#idp1241632">2.3. 
       QMF Python Console Tutorial
     </a></span></dt><dd><dl><dt><span class="section"><a href="#QMFPythonConsoleTutorial-PrerequisiteInstallQpidMessaging">2.3.1. 
             Prerequisite
@@ -101,10 +101,10 @@
             Console Operations
           </a></span></dt><dt><span class="section"><a href="#QMFPythonConsoleTutorial-DiscoveringwhatKindsofObjectsareAvailable">2.3.4. 
             Discovering what Kinds of Objects are Available
-          </a></span></dt></dl></dd></dl></dd></dl></div><div class="list-of-tables"><p><strong>List of Tables</strong></p><dl><dt>1.1. <a href="#idp26828544">QMF Management - Broker Methods for Managing the Timestamp Configuration</a></dt><dt>1.2. <a href="#tabl-Messaging_User_Guide-The_qpid_route_Utility-qpid_route_options"><span class="command">qpid-route</span> options</a></dt><dt>1.3. <a href="#tabl-Messaging_User_Guide-Resilient_Connections-State_values_in_qpid_route_list_connections">State values in <span class="command">$ qpid-route list connections</span></a></dt><dt>1.4. <a href="#tabl-Messaging_User_Guide-ACL_Syntax-ACL_Rules_permission">ACL Rules: permission</a></dt><dt>1.5. <a href="#tabl-Messaging_User_Guide-ACL_Syntax-ACL_Rulesaction">ACL Rules:action</a></dt><dt>1.6. <a href="#tabl-Messaging_User_Guide-ACL_Syntax-ACL_Rulesobject">ACL Rules:object</a></dt><dt>1.7. <a href="#tabl-Messaging_User_Guide-ACL_Syntax-ACL_Rulesproperty">ACL Rules:property</a></dt><dt>1.8. <a href="#tabl-Messaging_User_Guide-ACL_Syntax-ACL_ActionObject_properties">ACL Properties Allowed for each Action and Object</a></dt><dt>1.9. <a href="#tabl-Messaging_User_Guide-ACL_Syntax-ACL_UsernameSubstitution">ACL User Name and Domain Name Substitution Keywords</a></dt><dt>1.10. <a href="#tabl-Messaging_User_Guide-ACL_Syntax-ACL_TopicExchangeMatch">Topic Exchange Wildcard Match Examples</a></dt><dt>1.11. <a href="#tabl-Messaging_User_Guide-Enabling_SSL_in_Clients-SSL_Client_Environment_Variables_for_C_clients">SSL Client Environment Variables for C++ clients</a></dt><dt>1.12. <a href="#idp31134576">Queue Declare Method Flow Control Arguments</a></dt><dt>1.13. <a href="#idp32099808">Flow Control Statistics available in Queue's QMF Class</a></dt><dt>1.14. <a href="#idp27396656">AMQP Version Support by Qpid Release</a></dt><dt>1.15. <a href="#idp30294160">AMQP Version Support - alternate format</a></dt><dt>1.16. <a href="#idp27690240">SASL Mechanism Support</a></dt><dt>1.17. <a href="#idp30531280">SASL Custom Mechanisms</a></dt><dt>1.18. <a href="#idp29354752">qpid-config options for creating message group queues</a></dt><dt>1.19. <a href="#idp27709280">Queue Declare/Address Syntax Message Group Configuration Arguments</a></dt><dt>1.20. <a href="#ha-broker-options">Broker Options for High Availability Messaging Cluster</a></dt><dt>1.21. <a href="#ha-broker-security-options">Security options for High Availability Messaging Cluster</a></dt><dt>2.1. <a href="#idp30994960">XML Attributes for QMF Properties and Statistics</a></dt><dt>2.2. <a href="#idp27876336">QMF Datatypes</a></dt><dt>2.3. <a href="#idp32052304">XML Schema Mapping for QMF Types</a></dt><dt>2.4. <a href="#idp27374880">QMF Python Console Class Methods</a></dt></dl></div><div class="list-of-examples"><p><strong>List of Examples</strong></p><dl><dt>1.1. <a href="#idp26835344">Enabling Message Timestamping via QMF - Python</a></dt><dt>1.2. <a href="#idp30717904">Creating a message group queue via qpid-config</a></dt><dt>1.3. <a href="#idp29249200">Creating a message group queue using address syntax (C++)</a></dt><dt>1.4. <a href="#idp31950672">Overriding the default message group identifier for the broker</a></dt></dl></div><div class="preface" title="Introduction"><div class="titlepage"><div><div><h2 class="title"><a id="idp19249072" />Introduction</h2></div></div></div><p>Qpid provides two AMQP messaging brokers:</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>Implemented in C++ - high performance, low latency, and RDMA support.</p></li><li class="listitem"><p>Implemented in Java - Fully JMS compliant, runs on any Java platform.</p></li></ul></div><p>Both AMQP messaging brokers support clients in multiple
+          </a></span></dt></dl></dd></dl></dd></dl></div><div class="list-of-tables"><p><strong>List of Tables</strong></p><dl><dt>1.1. <a href="#idp131488">QMF Management - Broker Methods for Managing the Timestamp Configuration</a></dt><dt>1.2. <a href="#tabl-Messaging_User_Guide-The_qpid_route_Utility-qpid_route_options"><span class="command">qpid-route</span> options</a></dt><dt>1.3. <a href="#tabl-Messaging_User_Guide-Resilient_Connections-State_values_in_qpid_route_list_connections">State values in <span class="command">$ qpid-route list connections</span></a></dt><dt>1.4. <a href="#tabl-Messaging_User_Guide-ACL_Syntax-ACL_Rules_permission">ACL Rules: permission</a></dt><dt>1.5. <a href="#tabl-Messaging_User_Guide-ACL_Syntax-ACL_Rulesaction">ACL Rules:action</a></dt><dt>1.6. <a href="#tabl-Messaging_User_Guide-ACL_Syntax-ACL_Rulesobject">ACL Rules:object</a></dt><dt>1.7. <a href="#tabl-Messaging_User_Guide-ACL_Syntax-ACL_Rulesproperty">ACL Rules:property</a></dt><dt>1.8. <a href="#tabl-Messaging_User_Guide-ACL_Syntax-ACL_ActionObject_properties">ACL Properties Allowed for each Action and Object</a></dt><dt>1.9. <a href="#tabl-Messaging_User_Guide-ACL_Syntax-ACL_UsernameSubstitution">ACL User Name and Domain Name Substitution Keywords</a></dt><dt>1.10. <a href="#tabl-Messaging_User_Guide-ACL_Syntax-ACL_TopicExchangeMatch">Topic Exchange Wildcard Match Examples</a></dt><dt>1.11. <a href="#tabl-Messaging_User_Guide-Enabling_SSL_in_Clients-SSL_Client_Environment_Variables_for_C_clients">SSL Client Environment Variables for C++ clients</a></dt><dt>1.12. <a href="#idp4832608">Queue Declare Method Flow Control Arguments</a></dt><dt>1.13. <a href="#idp2844944">Flow Control Statistics available in Queue's QMF Class</a></dt><dt>1.14. <a href="#idp774848">AMQP Version Support by Qpid Release</a></dt><dt>1.15. <a href="#idp5397584">AMQP Version Support - alternate format</a></dt><dt>1.16. <a href="#idp3593024">SASL Mechanism Support</a></dt><dt>1.17. <a href="#idp3007952">SASL Custom Mechanisms</a></dt><dt>1.18. <a href="#idp5044288">qpid-config options for creating message group queues</a></dt><dt>1.19. <a href="#idp2988160">Queue Declare/Address Syntax Message Group Configuration Arguments</a></dt><dt>1.20. <a href="#ha-broker-options">Broker Options for High Availability Messaging Cluster</a></dt><dt>1.21. <a href="#ha-broker-security-options">Security options for High Availability Messaging Cluster</a></dt><dt>2.1. <a href="#idp1055744">XML Attributes for QMF Properties and Statistics</a></dt><dt>2.2. <a href="#idp1397984">QMF Datatypes</a></dt><dt>2.3. <a href="#idp4303344">XML Schema Mapping for QMF Types</a></dt><dt>2.4. <a href="#idp2997280">QMF Python Console Class Methods</a></dt></dl></div><div class="list-of-examples"><p><strong>List of Examples</strong></p><dl><dt>1.1. <a href="#idp138288">Enabling Message Timestamping via QMF - Python</a></dt><dt>1.2. <a href="#idp3140048">Creating a message group queue via qpid-config</a></dt><dt>1.3. <a href="#idp4925632">Creating a message group queue using address syntax (C++)</a></dt><dt>1.4. <a href="#idp3906912">Overriding the default message group identifier for the broker</a></dt></dl></div><div class="preface" title="Introduction"><div class="titlepage"><div><div><h2 class="title"><a id="idm7453584" />Introduction</h2></div></div></div><p>Qpid provides two AMQP messaging brokers:</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>Implemented in C++ - high performance, low latency, and RDMA support.</p></li><li class="listitem"><p>Implemented in Java - Fully JMS compliant, runs on any Java platform.</p></li></ul></div><p>Both AMQP messaging brokers support clients in multiple
     languages, as long as the messaging client and the messaging
     broker use the same version of AMQP. See <a class="link" href="#AMQP-Compatibility" title="1.9.&#160; AMQP compatibility">AMQP Compatibility</a> to see
-    which messaging clients work with each broker.</p><p>This manual contains information specific to the broker that is implemented in C++.</p></div><div class="chapter" title="Chapter&#160;1.&#160; Running the AMQP Messaging Broker"><div class="titlepage"><div><div><h2 class="title"><a id="idp26750624" />Chapter&#160;1.&#160;
+    which messaging clients work with each broker.</p><p>This manual contains information specific to the broker that is implemented in C++.</p></div><div class="chapter" title="Chapter&#160;1.&#160; Running the AMQP Messaging Broker"><div class="titlepage"><div><div><h2 class="title"><a id="idp53664" />Chapter&#160;1.&#160;
       Running the AMQP Messaging Broker
     </h2></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl><dt><span class="section"><a href="#section-Running-a-Qpid-CPP-Broker">1.1. 
     Running a Qpid C++ Broker
@@ -123,16 +123,16 @@
             complex configuration
           </a></span></dt><dt><span class="section"><a href="#RASC-Loadingextramodules">1.1.6. 
             Loading extra modules
-          </a></span></dt><dt><span class="section"><a href="#RASC-message-timestamps">1.1.7. Timestamping Received Messages</a></span></dt></dl></dd><dt><span class="section"><a href="#idp26767520">1.2. 
+          </a></span></dt><dt><span class="section"><a href="#RASC-message-timestamps">1.1.7. Timestamping Received Messages</a></span></dt></dl></dd><dt><span class="section"><a href="#idp71440">1.2. 
       Cheat Sheet for configuring Queue Options
     </a></span></dt><dd><dl><dt><span class="section"><a href="#CheatSheetforconfiguringQueueOptions-ConfiguringQueueOptions">1.2.1. 
             Configuring
             Queue Options
-          </a></span></dt></dl></dd><dt><span class="section"><a href="#idp26745808">1.3. 
+          </a></span></dt></dl></dd><dt><span class="section"><a href="#idp113296">1.3. 
     Cheat Sheet for configuring Exchange Options
   </a></span></dt><dd><dl><dt><span class="section"><a href="#CheatSheetforconfiguringExchangeOptions-ConfiguringExchangeOptions">1.3.1. 
       Configuring Exchange Options
-    </a></span></dt></dl></dd><dt><span class="section"><a href="#chap-Messaging_User_Guide-Broker_Federation">1.4. Broker Federation</a></span></dt><dd><dl><dt><span class="section"><a href="#sect-Messaging_User_Guide-Broker_Federation-Message_Routes">1.4.1. Message Routes</a></span></dt><dt><span class="section"><a href="#sect-Messaging_User_Guide-Broker_Federation-Federation_Topologies">1.4.2. Federation Topologies</a></span></dt><dt><span class="section"><a href="#sect-Messaging_User_Guide-Broker_Federation-Federation_among_High_Availability_Message_Clusters">1.4.3. Federation among High Availability Message Clusters</a></span></dt><dt><span class="section"><a href="#sect-Messaging_User_Guide-Broker_Federation-The_qpid_route_Utility">1.4.4. The qpid-route Utility</a></span></dt></dl></dd><dt><span class="section"><a href="#chap-Messaging_User_Guide-Security">1.5. Security</a></span></dt><dd><dl><dt><span class="section"><a href="#sect-Messaging_User_Guide-Security-User_Authentication">1.5.1. User Authentication</a></span></dt><dt><span class="section"><a href="#sect-Messaging_User_Guide-Security-Authorization">1.5.2. Authorization</a></span></dt><dt><span class="section"><a href="#sect-Messaging_User_Guide-Authorization-Specifying_ACL_Quotas">1.5.3. User Connection and Queue Quotas</a></span></dt><dt><span class="section"><a href="#sect-Messaging_User_Guide-Security-Encryption_using_SSL">1.5.4. Encryption using SSL</a></span></dt></dl></dd><dt><span class="section"><a href="#idp29424512">1.6. LVQ - Last Value Queue</a></span></dt><dd><dl><dt><span class="section"><a href="#LVQ-UnderstandingLVQ">1.6.1. Understanding LVQ</a></span></dt><dt><span class="section"><a href="#LVQ-Creating">1.6.2. Creating a Last Value Queue</a></span></dt><dt><span class="section"><a href="#LVQ-Example">1.6.3. LVQ Example</a></span></dt><dt><span class="section"><a href="#LVQ-Deprecated">1.6.4. Deprecated LVQ Modes</a></span></dt></dl></dd><dt><span class="section"><a href="#queue-state-replication">1.7. 
+    </a></span></dt></dl></dd><dt><span class="section"><a href="#chap-Messaging_User_Guide-Broker_Federation">1.4. Broker Federation</a></span></dt><dd><dl><dt><span class="section"><a href="#sect-Messaging_User_Guide-Broker_Federation-Message_Routes">1.4.1. Message Routes</a></span></dt><dt><span class="section"><a href="#sect-Messaging_User_Guide-Broker_Federation-Federation_Topologies">1.4.2. Federation Topologies</a></span></dt><dt><span class="section"><a href="#sect-Messaging_User_Guide-Broker_Federation-Federation_among_High_Availability_Message_Clusters">1.4.3. Federation among High Availability Message Clusters</a></span></dt><dt><span class="section"><a href="#sect-Messaging_User_Guide-Broker_Federation-The_qpid_route_Utility">1.4.4. The qpid-route Utility</a></span></dt></dl></dd><dt><span class="section"><a href="#chap-Messaging_User_Guide-Security">1.5. Security</a></span></dt><dd><dl><dt><span class="section"><a href="#sect-Messaging_User_Guide-Security-User_Authentication">1.5.1. User Authentication</a></span></dt><dt><span class="section"><a href="#sect-Messaging_User_Guide-Security-Authorization">1.5.2. Authorization</a></span></dt><dt><span class="section"><a href="#sect-Messaging_User_Guide-Authorization-Specifying_ACL_Quotas">1.5.3. User Connection and Queue Quotas</a></span></dt><dt><span class="section"><a href="#sect-Messaging_User_Guide-Security-Encryption_using_SSL">1.5.4. Encryption using SSL</a></span></dt></dl></dd><dt><span class="section"><a href="#idp1498032">1.6. LVQ - Last Value Queue</a></span></dt><dd><dl><dt><span class="section"><a href="#LVQ-UnderstandingLVQ">1.6.1. Understanding LVQ</a></span></dt><dt><span class="section"><a href="#LVQ-Creating">1.6.2. Creating a Last Value Queue</a></span></dt><dt><span class="section"><a href="#LVQ-Example">1.6.3. LVQ Example</a></span></dt><dt><span class="section"><a href="#LVQ-Deprecated">1.6.4. Deprecated LVQ Modes</a></span></dt></dl></dd><dt><span class="section"><a href="#queue-state-replication">1.7. 
     Queue State Replication
   </a></span></dt><dd><dl><dt><span class="section"><a href="#queuestatereplication-AsynchronousReplicationofQueueState">1.7.1. 
       Asynchronous
@@ -165,7 +165,7 @@
         Well Behaved Consumers
       </a></span></dt><dt><span class="section"><a href="#usingmessagegroups-BrokerConfig">1.11.5. 
         Broker Configuration
-      </a></span></dt></dl></dd><dt><span class="section"><a href="#chapter-ha">1.12. Active-Passive Messaging Clusters</a></span></dt><dd><dl><dt><span class="section"><a href="#ha-overview">1.12.1. Overview</a></span></dt><dt><span class="section"><a href="#ha-virtual-ip">1.12.2. Virtual IP Addresses</a></span></dt><dt><span class="section"><a href="#ha-broker-config">1.12.3. Configuring the Brokers</a></span></dt><dt><span class="section"><a href="#ha-rm">1.12.4. The Cluster Resource Manager</a></span></dt><dt><span class="section"><a href="#ha-rm-config">1.12.5. Configuring <span class="command"><strong>rgmanager</strong></span> as resource manager</a></span></dt><dt><span class="section"><a href="#ha-broker-admin">1.12.6. Broker Administration Tools</a></span></dt><dt><span class="section"><a href="#ha-replicate-values">1.12.7. Controlling replication of queues and exchanges</a></span></dt><dt><span class="section"><a href="#ha-failover">1.12.8. Client Connection and Fail-over</a></span></dt><dt><span class="section"><a href="#ha-security">1.12.9. Security.</a></span></dt><dt><span class="section"><a href="#ha-other-rm">1.12.10. Integrating with other Cluster Resource Managers</a></span></dt><dt><span class="section"><a href="#ha-queue-replication">1.12.11. Replicating specific queues</a></span></dt><dt><span class="section"><a href="#ha-store">1.12.12. Using a message store in a cluster</a></span></dt></dl></dd><dt><span class="section"><a href="#idp30497168">1.13. Queue Replication with the HA module</a></span></dt></dl></div><div class="section" title="1.1.&#160; Running a Qpid C++ Broker"><div class="titlepage"><div><div><h2 class="title"><a id="section-Running-a-Qpid-CPP-Broker" />1.1.&#160;
+      </a></span></dt></dl></dd><dt><span class="section"><a href="#chapter-ha">1.12. Active-Passive Messaging Clusters</a></span></dt><dd><dl><dt><span class="section"><a href="#ha-overview">1.12.1. Overview</a></span></dt><dt><span class="section"><a href="#ha-virtual-ip">1.12.2. Virtual IP Addresses</a></span></dt><dt><span class="section"><a href="#ha-broker-config">1.12.3. Configuring the Brokers</a></span></dt><dt><span class="section"><a href="#ha-rm">1.12.4. The Cluster Resource Manager</a></span></dt><dt><span class="section"><a href="#ha-rm-config">1.12.5. Configuring <span class="command"><strong>rgmanager</strong></span> as resource manager</a></span></dt><dt><span class="section"><a href="#ha-broker-admin">1.12.6. Broker Administration Tools</a></span></dt><dt><span class="section"><a href="#ha-replicate-values">1.12.7. Controlling replication of queues and exchanges</a></span></dt><dt><span class="section"><a href="#ha-failover">1.12.8. Client Connection and Fail-over</a></span></dt><dt><span class="section"><a href="#ha-security">1.12.9. Security.</a></span></dt><dt><span class="section"><a href="#ha-other-rm">1.12.10. Integrating with other Cluster Resource Managers</a></span></dt><dt><span class="section"><a href="#ha-queue-replication">1.12.11. Replicating specific queues</a></span></dt><dt><span class="section"><a href="#ha-store">1.12.12. Using a message store in a cluster</a></span></dt></dl></dd><dt><span class="section"><a href="#idp5657888">1.13. Queue Replication with the HA module</a></span></dt></dl></div><div class="section" title="1.1.&#160; Running a Qpid C++ Broker"><div class="titlepage"><div><div><h2 class="title"><a id="section-Running-a-Qpid-CPP-Broker" />1.1.&#160;
     Running a Qpid C++ Broker
   </h2></div></div></div><div class="section" title="1.1.1.&#160; Building the C++ Broker and Client Libraries"><div class="titlepage"><div><div><h3 class="title"><a id="RASC-BuildingtheCppBrokerandClientLibraries" />1.1.1.&#160;
             Building the
@@ -420,7 +420,7 @@ Store Options:
     Message timestamping can also be enabled (and disabled) without restarting the broker.
     The QMF Broker management object defines two methods for accessing the timestamp
     configuration:
-  </p><div class="table"><a id="idp26828544" /><p class="title"><strong>Table&#160;1.1.&#160;QMF Management - Broker Methods for Managing the Timestamp Configuration</strong></p><div class="table-contents"><table border="1" summary="QMF Management - Broker Methods for Managing the Timestamp Configuration"><colgroup><col /><col /></colgroup><thead><tr><th>Method</th><th>Description</th></tr></thead><tbody><tr><td>getTimestampConfig</td><td>Get the message timestamping configuration.  Returns True if received messages are timestamped.</td></tr><tr><td>setTimestampConfig</td><td>Set the message timestamping configuration. Set True to enable timestamping received messages, False to disable timestamping.</td></tr></tbody></table></div></div><br class="table-break" /><div class="example"><a id="idp26835344" /><p class="title"><strong>Example&#160;1.1.&#160;Enabling Message Timestamping via QMF - Python</strong></p><div class="example-contents"><p>
+  </p><div class="table"><a id="idp131488" /><p class="title"><strong>Table&#160;1.1.&#160;QMF Management - Broker Methods for Managing the Timestamp Configuration</strong></p><div class="table-contents"><table border="1" summary="QMF Management - Broker Methods for Managing the Timestamp Configuration"><colgroup><col /><col /></colgroup><thead><tr><th>Method</th><th>Description</th></tr></thead><tbody><tr><td>getTimestampConfig</td><td>Get the message timestamping configuration.  Returns True if received messages are timestamped.</td></tr><tr><td>setTimestampConfig</td><td>Set the message timestamping configuration. Set True to enable timestamping received messages, False to disable timestamping.</td></tr></tbody></table></div></div><br class="table-break" /><div class="example"><a id="idp138288" /><p class="title"><strong>Example&#160;1.1.&#160;Enabling Message Timestamping via QMF - Python</strong></p><div class="example-contents"><p>
       The following code fragment uses these QMF method calls to enable message timestamping.
     </p><pre class="programlisting" lang="python" xml:lang="python">
 # get the state of the timestamp configuration
@@ -434,7 +434,7 @@ print("The timestamp setting is %s" % str(rc.receive))
 rc = broker.setTimestampConfig(True)
 self.assertEqual(rc.status, 0)
 self.assertEqual(rc.text, "OK")
-    </pre></div></div><br class="example-break" /></div></div><div class="section" title="1.2.&#160; Cheat Sheet for configuring Queue Options"><div class="titlepage"><div><div><h2 class="title"><a id="idp26767520" />1.2.&#160;
+    </pre></div></div><br class="example-break" /></div></div><div class="section" title="1.2.&#160; Cheat Sheet for configuring Queue Options"><div class="titlepage"><div><div><h2 class="title"><a id="idp71440" />1.2.&#160;
       Cheat Sheet for configuring Queue Options
     </h2></div></div></div><div class="section" title="1.2.1.&#160; Configuring Queue Options"><div class="titlepage"><div><div><h3 class="title"><a id="CheatSheetforconfiguringQueueOptions-ConfiguringQueueOptions" />1.2.1.&#160;
             Configuring
@@ -624,7 +624,7 @@ self.assertEqual(rc.text, "OK")
             Note that these options can be set from any client. QueueOptions
             just correctly formats the arguments passed to the QueueDeclare()
             method.
-          </p></div></div></div><div class="section" title="1.3.&#160; Cheat Sheet for configuring Exchange Options"><div class="titlepage"><div><div><h2 class="title"><a id="idp26745808" />1.3.&#160;
+          </p></div></div></div><div class="section" title="1.3.&#160; Cheat Sheet for configuring Exchange Options"><div class="titlepage"><div><div><h2 class="title"><a id="idp113296" />1.3.&#160;
     Cheat Sheet for configuring Exchange Options
   </h2></div></div></div><div class="section" title="1.3.1.&#160; Configuring Exchange Options"><div class="titlepage"><div><div><h3 class="title"><a id="CheatSheetforconfiguringExchangeOptions-ConfiguringExchangeOptions" />1.3.1.&#160;
       Configuring Exchange Options
@@ -1815,7 +1815,7 @@ certutil -S -d ${CERT_DIR} -n ${NICKNAME} -s "CN=${NICKNAME}" -t "CT,," -x -f ${
 									If you need to debug problems in an SSL connection, enable Java's SSL debugging by passing the argument <code class="literal">-Djavax.net.debug=ssl</code> to the Java JVM when starting your client.
 								</p></li></ol></div><p>
 
-					</p></dd></dl></div></div></div><div class="section" title="1.6.&#160;LVQ - Last Value Queue"><div class="titlepage"><div><div><h2 class="title"><a id="idp29424512" />1.6.&#160;LVQ - Last Value Queue</h2></div></div></div><div class="section" title="1.6.1.&#160;Understanding LVQ"><div class="titlepage"><div><div><h3 class="title"><a id="LVQ-UnderstandingLVQ" />1.6.1.&#160;Understanding LVQ</h3></div></div></div><p>
+					</p></dd></dl></div></div></div><div class="section" title="1.6.&#160;LVQ - Last Value Queue"><div class="titlepage"><div><div><h2 class="title"><a id="idp1498032" />1.6.&#160;LVQ - Last Value Queue</h2></div></div></div><div class="section" title="1.6.1.&#160;Understanding LVQ"><div class="titlepage"><div><div><h3 class="title"><a id="LVQ-UnderstandingLVQ" />1.6.1.&#160;Understanding LVQ</h3></div></div></div><p>
       A Last Value Queue is configured with the name of a message header that
       is used as a key.  The queue behaves as a normal FIFO queue with the
       exception that when a message is enqueued, any other message in the
@@ -2305,7 +2305,7 @@ Queue Replication Options:
         <span class="command"><strong>queue.declare</strong></span> method, via the
         <span class="command"><strong>arguments</strong></span> parameter map.  The following keys can be
         provided in the arguments map for setting flow thresholds:
-      </p><div class="table"><a id="idp31134576" /><p class="title"><strong>Table&#160;1.12.&#160;Queue Declare Method Flow Control Arguments</strong></p><div class="table-contents"><table border="1" summary="Queue Declare Method Flow Control Arguments"><colgroup><col /><col /></colgroup><thead><tr><th>Key</th><th>Value</th></tr></thead><tbody><tr><td>qpid.flow_stop_size</td><td>integer - queue's flow stop threshold value in bytes</td></tr><tr><td>qpid.flow_resume_size</td><td>integer - queue's flow resume threshold value in bytes</td></tr><tr><td>qpid.flow_stop_count</td><td>integer - queue's flow stop threshold value as a message count</td></tr><tr><td>qpid.flow_resume_count</td><td>integer - queue's flow resume threshold value as a message count</td></tr></tbody></table></div></div><br class="table-break" /><p>
+      </p><div class="table"><a id="idp4832608" /><p class="title"><strong>Table&#160;1.12.&#160;Queue Declare Method Flow Control Arguments</strong></p><div class="table-contents"><table border="1" summary="Queue Declare Method Flow Control Arguments"><colgroup><col /><col /></colgroup><thead><tr><th>Key</th><th>Value</th></tr></thead><tbody><tr><td>qpid.flow_stop_size</td><td>integer - queue's flow stop threshold value in bytes</td></tr><tr><td>qpid.flow_resume_size</td><td>integer - queue's flow resume threshold value in bytes</td></tr><tr><td>qpid.flow_stop_count</td><td>integer - queue's flow stop threshold value as a message count</td></tr><tr><td>qpid.flow_resume_count</td><td>integer - queue's flow resume threshold value as a message count</td></tr></tbody></table></div></div><br class="table-break" /><p>
         The user may disable flow control on a per queue basis by setting
         the flow-stop-size and flow-stop-count to zero for the queue.
       </p><p>
@@ -2321,7 +2321,7 @@ Queue Replication Options:
         the queue's capacity exceeds a flow stop threshold.  This statistic can
         be used to monitor the activity of flow control for any given queue
         over time.
-      </p><div class="table"><a id="idp32099808" /><p class="title"><strong>Table&#160;1.13.&#160;Flow Control Statistics available in Queue's QMF Class</strong></p><div class="table-contents"><table border="1" summary="Flow Control Statistics available in Queue's QMF Class"><colgroup><col /><col /><col /></colgroup><thead><tr><th>Statistic Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>flowStopped</td><td>Boolean</td><td>If true, producers are blocked by flow control.</td></tr><tr><td>flowStoppedCount</td><td>count32</td><td>Number of times flow control was activated for this queue</td></tr></tbody></table></div></div><br class="table-break" /></div></div><div class="section" title="1.9.&#160; AMQP compatibility"><div class="titlepage"><div><div><h2 class="title"><a id="AMQP-Compatibility" />1.9.&#160;
+      </p><div class="table"><a id="idp2844944" /><p class="title"><strong>Table&#160;1.13.&#160;Flow Control Statistics available in Queue's QMF Class</strong></p><div class="table-contents"><table border="1" summary="Flow Control Statistics available in Queue's QMF Class"><colgroup><col /><col /><col /></colgroup><thead><tr><th>Statistic Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>flowStopped</td><td>Boolean</td><td>If true, producers are blocked by flow control.</td></tr><tr><td>flowStoppedCount</td><td>count32</td><td>Number of times flow control was activated for this queue</td></tr></tbody></table></div></div><br class="table-break" /></div></div><div class="section" title="1.9.&#160; AMQP compatibility"><div class="titlepage"><div><div><h2 class="title"><a id="AMQP-Compatibility" />1.9.&#160;
       AMQP compatibility
     </h2></div></div></div><p>
             Qpid provides the most complete and compatible implementation
@@ -2358,7 +2358,7 @@ Queue Replication Options:
           </p><p>
             Here is a matrix that describes the different versions supported
             by each release. The status symbols are interpreted as follows:
-          </p><div class="variablelist"><dl><dt><span class="term">Y</span></dt><dd><p>supported</p></dd><dt><span class="term">N</span></dt><dd><p>unsupported</p></dd><dt><span class="term">IP</span></dt><dd><p>in progress</p></dd><dt><span class="term">P</span></dt><dd><p>planned</p></dd></dl></div><div class="table"><a id="idp27396656" /><p class="title"><strong>Table&#160;1.14.&#160;AMQP Version Support by Qpid Release</strong></p><div class="table-contents"><table border="1" summary="AMQP Version Support by Qpid Release"><colgroup><col /><col /><col /><col /><col /><col /></colgroup><tbody><tr><td>
+          </p><div class="variablelist"><dl><dt><span class="term">Y</span></dt><dd><p>supported</p></dd><dt><span class="term">N</span></dt><dd><p>unsupported</p></dd><dt><span class="term">IP</span></dt><dd><p>in progress</p></dd><dt><span class="term">P</span></dt><dd><p>planned</p></dd></dl></div><div class="table"><a id="idp774848" /><p class="title"><strong>Table&#160;1.14.&#160;AMQP Version Support by Qpid Release</strong></p><div class="table-contents"><table border="1" summary="AMQP Version Support by Qpid Release"><colgroup><col /><col /><col /><col /><col /><col /></colgroup><tbody><tr><td>
                   Component
                 </td><td>
                   Spec
@@ -2567,7 +2567,7 @@ Queue Replication Options:
             table by AMQP specification version
           </h3></div></div></div><p>
             Above table represented in another format.
-          </p><div class="table"><a id="idp30294160" /><p class="title"><strong>Table&#160;1.15.&#160;AMQP Version Support - alternate format</strong></p><div class="table-contents"><table border="1" summary="AMQP Version Support - alternate format"><colgroup><col /><col /><col /><col /><col /></colgroup><tbody><tr><td>
+          </p><div class="table"><a id="idp5397584" /><p class="title"><strong>Table&#160;1.15.&#160;AMQP Version Support - alternate format</strong></p><div class="table-contents"><table border="1" summary="AMQP Version Support - alternate format"><colgroup><col /><col /><col /><col /><col /></colgroup><tbody><tr><td>
                   &#160;
                 </td><td>
                   release
@@ -2723,7 +2723,7 @@ Queue Replication Options:
             This table list the various SASL mechanisms that each component
             supports. The version listed shows when this
             functionality was added to the product.
-          </p><div class="table"><a id="idp27690240" /><p class="title"><strong>Table&#160;1.16.&#160;SASL Mechanism Support</strong></p><div class="table-contents"><table border="1" summary="SASL Mechanism Support"><colgroup><col /><col /><col /><col /><col /><col /><col /></colgroup><tbody><tr><td>
+          </p><div class="table"><a id="idp3593024" /><p class="title"><strong>Table&#160;1.16.&#160;SASL Mechanism Support</strong></p><div class="table-contents"><table border="1" summary="SASL Mechanism Support"><colgroup><col /><col /><col /><col /><col /><col /><col /></colgroup><tbody><tr><td>
                   Component
                 </td><td>
                   ANONYMOUS
@@ -2864,7 +2864,7 @@ Queue Replication Options:
           </h4></div></div></div><p>
             There have been some custom mechanisms added to our
             implementations.
-          </p><div class="table"><a id="idp30531280" /><p class="title"><strong>Table&#160;1.17.&#160;SASL Custom Mechanisms</strong></p><div class="table-contents"><table border="1" summary="SASL Custom Mechanisms"><colgroup><col /><col /><col /></colgroup><tbody><tr><td>
+          </p><div class="table"><a id="idp3007952" /><p class="title"><strong>Table&#160;1.17.&#160;SASL Custom Mechanisms</strong></p><div class="table-contents"><table border="1" summary="SASL Custom Mechanisms"><colgroup><col /><col /><col /></colgroup><tbody><tr><td>
                   Component
                 </td><td>
                   AMQPLAIN
@@ -2912,7 +2912,7 @@ Queue Replication Options:
                   M2
                 </td><td>
                   &#160;
-                </td></tr></tbody></table></div></div><br class="table-break" /><div class="section" title="AMQPLAIN"><div class="titlepage"><div><div><h5 class="title"><a id="idp28187792" />AMQPLAIN</h5></div></div></div><p /></div><div class="section" title="CRAM-MD5-HASHED"><div class="titlepage"><div><div><h5 class="title"><a id="idp27840464" />CRAM-MD5-HASHED</h5></div></div></div><p>
+                </td></tr></tbody></table></div></div><br class="table-break" /><div class="section" title="AMQPLAIN"><div class="titlepage"><div><div><h5 class="title"><a id="idp1351040" />AMQPLAIN</h5></div></div></div><p /></div><div class="section" title="CRAM-MD5-HASHED"><div class="titlepage"><div><div><h5 class="title"><a id="idp5151664" />CRAM-MD5-HASHED</h5></div></div></div><p>
             The Java SASL implementations require that you have the password
             of the user to validate the incoming request. This then means
             that the user's password must be stored on disk. For this to be
@@ -3048,26 +3048,26 @@ Queue Replication Options:
         Message group support can be enabled on a queue using the
         <span class="command"><strong>qpid-config</strong></span> command line tool.  The following options should be
         provided when adding a new queue:
-        </p><div class="table"><a id="idp29354752" /><p class="title"><strong>Table&#160;1.18.&#160;qpid-config options for creating message group queues</strong></p><div class="table-contents"><table border="1" summary="qpid-config options for creating message group queues"><colgroup><col /><col /></colgroup><thead><tr><th>Option</th><th>Description</th></tr></thead><tbody><tr><td>--group-header=<em class="replaceable"><code>header-name</code></em></td><td>Enable message group support for this queue. Specify name of application header that holds the group identifier.</td></tr><tr><td>--shared-groups</td><td>Enforce ordered message group consumption across multiple consumers.</td></tr></tbody></table></div></div><p><br class="table-break" />
+        </p><div class="table"><a id="idp5044288" /><p class="title"><strong>Table&#160;1.18.&#160;qpid-config options for creating message group queues</strong></p><div class="table-contents"><table border="1" summary="qpid-config options for creating message group queues"><colgroup><col /><col /></colgroup><thead><tr><th>Option</th><th>Description</th></tr></thead><tbody><tr><td>--group-header=<em class="replaceable"><code>header-name</code></em></td><td>Enable message group support for this queue. Specify name of application header that holds the group identifier.</td></tr><tr><td>--shared-groups</td><td>Enforce ordered message group consumption across multiple consumers.</td></tr></tbody></table></div></div><p><br class="table-break" />
       </p><p>
         Message group support may also be specified in the
         <span class="command"><strong>queue.declare</strong></span> method via the <span class="command"><strong>arguments</strong></span>
         parameter map, or using the messaging address syntax.  The following keys must be
         provided in the arguments map to enable message group support on a queue:
-      </p><div class="table"><a id="idp27709280" /><p class="title"><strong>Table&#160;1.19.&#160;Queue Declare/Address Syntax Message Group Configuration Arguments</strong></p><div class="table-contents"><table border="1" summary="Queue Declare/Address Syntax Message Group Configuration Arguments"><colgroup><col /><col /></colgroup><thead><tr><th>Key</th><th>Value</th></tr></thead><tbody><tr><td>qpid.group_header_key</td><td>string - key for message header that holds the group identifier value</td></tr><tr><td>qpid.shared_msg_group</td><td>1 - enforce ordering across multiple consumers</td></tr></tbody></table></div></div><br class="table-break" /><p>
+      </p><div class="table"><a id="idp2988160" /><p class="title"><strong>Table&#160;1.19.&#160;Queue Declare/Address Syntax Message Group Configuration Arguments</strong></p><div class="table-contents"><table border="1" summary="Queue Declare/Address Syntax Message Group Configuration Arguments"><colgroup><col /><col /></colgroup><thead><tr><th>Key</th><th>Value</th></tr></thead><tbody><tr><td>qpid.group_header_key</td><td>string - key for message header that holds the group identifier value</td></tr><tr><td>qpid.shared_msg_group</td><td>1 - enforce ordering across multiple consumers</td></tr></tbody></table></div></div><br class="table-break" /><p>
         It is important to note that there is no need to provide the actual group
         identifer values that will be used. The broker learns this values as messages are
         recieved.  Also, there is no practical limit - aside from resource limitations -
         to the number of different groups that the broker can track at run time.
       </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;" title="Restrictions"><h3 class="title">Restrictions</h3><p>
           Message grouping is not supported on LVQ or Priority queues.
-        </p></div><div class="example"><a id="idp30717904" /><p class="title"><strong>Example&#160;1.2.&#160;Creating a message group queue via qpid-config</strong></p><div class="example-contents"><p>
+        </p></div><div class="example"><a id="idp3140048" /><p class="title"><strong>Example&#160;1.2.&#160;Creating a message group queue via qpid-config</strong></p><div class="example-contents"><p>
           This example uses the qpid-config tool to create a message group queue called
           "MyMsgQueue".  The message header that contains the group identifier will use
           the key "GROUP_KEY".
         </p><pre class="programlisting">
 qpid-config add queue MyMsgQueue --group-header="GROUP_KEY" --shared-groups
-        </pre></div></div><br class="example-break" /><div class="example"><a id="idp29249200" /><p class="title"><strong>Example&#160;1.3.&#160;Creating a message group queue using address syntax (C++)</strong></p><div class="example-contents"><p>
+        </pre></div></div><br class="example-break" /><div class="example"><a id="idp4925632" /><p class="title"><strong>Example&#160;1.3.&#160;Creating a message group queue using address syntax (C++)</strong></p><div class="example-contents"><p>
           This example uses the messaging address syntax to create a message group queue
           with the same configuration as the previous example.
         </p><pre class="programlisting">
@@ -3080,7 +3080,7 @@ sender = session.createSender("MyMsgQueue;"
           Default Group
         </h4></div></div></div><p>
           Should a message without a group identifier arrive at a queue configured for message grouping, the broker assigns the message to the default group.  Therefore, all such "unidentified" messages are considered by the broker as part of the same group.  The name of the default group is <span class="command"><strong>"qpid.no-group"</strong></span>.  This default can be overridden by suppling a different value to the broker configuration item <span class="command"><strong>"default-message-group"</strong></span>:
-          </p><div class="example"><a id="idp31950672" /><p class="title"><strong>Example&#160;1.4.&#160;Overriding the default message group identifier for the broker</strong></p><div class="example-contents"><pre class="programlisting">
+          </p><div class="example"><a id="idp3906912" /><p class="title"><strong>Example&#160;1.4.&#160;Overriding the default message group identifier for the broker</strong></p><div class="example-contents"><pre class="programlisting">
 qpidd --default-msg-group "EMPTY-GROUP"
             </pre></div></div><p><br class="example-break" />
         </p></div></div></div><div class="section" title="1.12.&#160;Active-Passive Messaging Clusters"><div class="titlepage"><div><div><h2 class="title"><a id="chapter-ha" />1.12.&#160;Active-Passive Messaging Clusters</h2></div></div></div><div class="section" title="1.12.1.&#160;Overview"><div class="titlepage"><div><div><h3 class="title"><a id="ha-overview" />1.12.1.&#160;Overview</h3></div></div></div><p>
@@ -3116,11 +3116,11 @@ qpidd --default-msg-group "EMPTY-GROUP"
 	active consumers.
       </p><p>
 	Clients keep <span class="emphasis"><em>unacknowledged</em></span> messages in a buffer
-	<sup>[<a class="footnote" href="#ftn.idp27743488" id="idp27743488">1</a>]</sup>
+	<sup>[<a class="footnote" href="#ftn.idp2587776" id="idp2587776">1</a>]</sup>
 	until they are acknowledged by the primary. If the primary fails, clients will
 	fail-over to the new primary and <span class="emphasis"><em>re-send</em></span> all their
 	unacknowledged messages.
-	<sup>[<a class="footnote" href="#ftn.idp27699536" id="idp27699536">2</a>]</sup>
+	<sup>[<a class="footnote" href="#ftn.idp4045488" id="idp4045488">2</a>]</sup>
       </p><p>
 	If the primary crashes, all the <span class="emphasis"><em>acknowledged</em></span>
 	messages will be available on the backup that takes over as the new
@@ -3513,7 +3513,7 @@ NOTE: fencing is not shown, you must configure fencing appropriately for your cl
       following sub-sections show how to connect each type of client.
     </p><div class="section" title="1.12.8.1.&#160;C++ clients"><div class="titlepage"><div><div><h4 class="title"><a id="ha-clients" />1.12.8.1.&#160;C++ clients</h4></div></div></div><p>
 	With the C++ client, you specify multiple cluster addresses in a single URL
-	<sup>[<a class="footnote" href="#ftn.idp32116272" id="idp32116272">3</a>]</sup>
+	<sup>[<a class="footnote" href="#ftn.idp3956208" id="idp3956208">3</a>]</sup>
 	You also need to specify the connection option
 	<code class="literal">reconnect</code> to be true.  For example:
       </p><pre class="programlisting">
@@ -3623,17 +3623,17 @@ NOTE: fencing is not shown, you must configure fencing appropriately for your cl
       restarted, the *first* broker that becomes primary will recover from its
       store. All the other brokers will clear their stores and get an update
       from the primary to ensure consistency.
-    </p></div><div class="footnotes"><br /><hr align="left" width="100" /><div class="footnote"><p><sup>[<a class="para" href="#idp27743488" id="ftn.idp27743488">1</a>] </sup>
+    </p></div><div class="footnotes"><br /><hr align="left" width="100" /><div class="footnote"><p><sup>[<a class="para" href="#idp2587776" id="ftn.idp2587776">1</a>] </sup>
 	    You can control the maximum number of messages in the buffer by setting the
 	    client's <code class="literal">capacity</code>. For details of how to set the capacity
 	    in client code see "Using the Qpid Messaging API" in
 	    <em class="citetitle">Programming in Apache Qpid</em>.
-	  </p></div><div class="footnote"><p><sup>[<a class="para" href="#idp27699536" id="ftn.idp27699536">2</a>] </sup>
+	  </p></div><div class="footnote"><p><sup>[<a class="para" href="#idp4045488" id="ftn.idp4045488">2</a>] </sup>
 	  Clients must use "at-least-once" reliability to enable re-send of unacknowledged
 	  messages. This is the default behavior, no options need be set to enable it. For
 	  details of client addressing options see "Using the Qpid Messaging API"
 	  in <em class="citetitle">Programming in Apache Qpid</em>.
-	  </p></div><div class="footnote"><p><sup>[<a class="para" href="#idp32116272" id="ftn.idp32116272">3</a>] </sup>
+	  </p></div><div class="footnote"><p><sup>[<a class="para" href="#idp3956208" id="ftn.idp3956208">3</a>] </sup>
 	    The full grammar for the URL is:
 	  </p><pre class="programlisting">
 	    url = ["amqp:"][ user ["/" password] "@" ] addr ("," addr)*
@@ -3641,7 +3641,7 @@ NOTE: fencing is not shown, you must configure fencing appropriately for your cl
 	    tcp_addr = ["tcp:"] host [":" port]
 	    rdma_addr = "rdma:" host [":" port]
 	    ssl_addr = "ssl:" host [":" port]'
-	  </pre></div></div></div><div class="section" title="1.13.&#160;Queue Replication with the HA module"><div class="titlepage"><div><div><h2 class="title"><a id="idp30497168" />1.13.&#160;Queue Replication with the HA module</h2></div></div></div><p>
+	  </pre></div></div></div><div class="section" title="1.13.&#160;Queue Replication with the HA module"><div class="titlepage"><div><div><h2 class="title"><a id="idp5657888" />1.13.&#160;Queue Replication with the HA module</h2></div></div></div><p>
     As well as support for an active-passive cluster, the <code class="filename">ha</code> module
     also allows you to replicate individual queues. The <em class="firstterm">original</em>
     queue is used as normal.  The <em class="firstterm">replica</em> queue is updated
@@ -3677,7 +3677,7 @@ NOTE: fencing is not shown, you must configure fencing appropriately for your cl
           </a></span></dt><dt><span class="section"><a href="#MgmtC-2B-2B-Usingqpidprintevents">2.1.4. 
             Using
             qpid-printevents
-          </a></span></dt><dt><span class="section"><a href="#idp27654976">2.1.5. Using qpid-ha</a></span></dt></dl></dd><dt><span class="section"><a href="#idp29386832">2.2. 
+          </a></span></dt><dt><span class="section"><a href="#idp2398464">2.1.5. Using qpid-ha</a></span></dt></dl></dd><dt><span class="section"><a href="#idp874672">2.2. 
       Qpid Management Framework
     </a></span></dt><dd><dl><dt><span class="section"><a href="#QpidManagementFramework-WhatIsQMF">2.2.1. 
             What Is QMF
@@ -3695,7 +3695,7 @@ NOTE: fencing is not shown, you must configure fencing appropriately for your cl
           </a></span></dt><dt><span class="section"><a href="#QpidManagementFramework-HowtoWriteaQMFAgent">2.2.6. 
             How to
             Write a QMF Agent
-          </a></span></dt></dl></dd><dt><span class="section"><a href="#idp30998832">2.3. 
+          </a></span></dt></dl></dd><dt><span class="section"><a href="#idp1241632">2.3. 
       QMF Python Console Tutorial
     </a></span></dt><dd><dl><dt><span class="section"><a href="#QMFPythonConsoleTutorial-PrerequisiteInstallQpidMessaging">2.3.1. 
             Prerequisite
@@ -4109,7 +4109,7 @@ Options:
   -h, --help  show this help message and exit
 </pre><p>
             You get the idea... have fun!
-          </p></div><div class="section" title="2.1.5.&#160;Using qpid-ha"><div class="titlepage"><div><div><h3 class="title"><a id="idp27654976" />2.1.5.&#160;Using qpid-ha</h3></div></div></div><p>This utility lets you monitor and control the activity of the clustering behavior provided by the HA module.
+          </p></div><div class="section" title="2.1.5.&#160;Using qpid-ha"><div class="titlepage"><div><div><h3 class="title"><a id="idp2398464" />2.1.5.&#160;Using qpid-ha</h3></div></div></div><p>This utility lets you monitor and control the activity of the clustering behavior provided by the HA module.
   </p><pre class="programlisting">
     
 qpid-ha --help
@@ -4125,7 +4125,7 @@ Commands are:
 
 For help with a command type: qpid-ha &lt;command&gt; --help
 
-  </pre></div></div><div class="section" title="2.2.&#160; Qpid Management Framework"><div class="titlepage"><div><div><h2 class="title"><a id="idp29386832" />2.2.&#160;
+  </pre></div></div><div class="section" title="2.2.&#160; Qpid Management Framework"><div class="titlepage"><div><div><h2 class="title"><a id="idp874672" />2.2.&#160;
       Qpid Management Framework
     </h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
                 <a class="xref" href="#QpidManagementFramework-WhatIsQMF" title="2.2.1.&#160; What Is QMF">Section&#160;2.2.1, &#8220;
@@ -4316,7 +4316,7 @@ For help with a command type: qpid-ha &lt;command&gt; --help
           </p><p>
             The XML syntax for &lt;property&gt; and &lt;statistic&gt; have
             the following XML-attributes:
-          </p><div class="table"><a id="idp30994960" /><p class="title"><strong>Table&#160;2.1.&#160;XML Attributes for QMF Properties and Statistics</strong></p><div class="table-contents"><table border="1" summary="XML Attributes for QMF Properties and Statistics"><colgroup><col /><col /><col /><col /></colgroup><tbody><tr><td>
+          </p><div class="table"><a id="idp1055744" /><p class="title"><strong>Table&#160;2.1.&#160;XML Attributes for QMF Properties and Statistics</strong></p><div class="table-contents"><table border="1" summary="XML Attributes for QMF Properties and Statistics"><colgroup><col /><col /><col /><col /></colgroup><tbody><tr><td>
                   Attribute
                 </td><td>
                   &lt;property&gt;
@@ -4452,7 +4452,7 @@ For help with a command type: qpid-ha &lt;command&gt; --help
             data types. The data types are based on the rich data typing
             system provided by the AMQP messaging protocol. The following
             table describes the data types available for QMF:
-          </p><div class="table"><a id="idp27876336" /><p class="title"><strong>Table&#160;2.2.&#160;QMF Datatypes</strong></p><div class="table-contents"><table border="1" summary="QMF Datatypes"><colgroup><col /><col /></colgroup><tbody><tr><td>
+          </p><div class="table"><a id="idp1397984" /><p class="title"><strong>Table&#160;2.2.&#160;QMF Datatypes</strong></p><div class="table-contents"><table border="1" summary="QMF Datatypes"><colgroup><col /><col /></colgroup><tbody><tr><td>
                   QMF Type
                 </td><td>
                   Description
@@ -4536,7 +4536,7 @@ For help with a command type: qpid-ha &lt;command&gt; --help
             attributes of different types. The following table enumerates the
             types available in the XML format, which QMF types they map to,
             and other special handling that occurs.
-          </p><div class="table"><a id="idp32052304" /><p class="title"><strong>Table&#160;2.3.&#160;XML Schema Mapping for QMF Types</strong></p><div class="table-contents"><table border="1" summary="XML Schema Mapping for QMF Types"><colgroup><col /><col /><col /><col /></colgroup><tbody><tr><td>
+          </p><div class="table"><a id="idp4303344" /><p class="title"><strong>Table&#160;2.3.&#160;XML Schema Mapping for QMF Types</strong></p><div class="table-contents"><table border="1" summary="XML Schema Mapping for QMF Types"><colgroup><col /><col /><col /><col /></colgroup><tbody><tr><td>
                   XML Type
                 </td><td>
                   QMF Type
@@ -4702,7 +4702,7 @@ For help with a command type: qpid-ha &lt;command&gt; --help
           </p></div><div class="section" title="2.2.6.&#160; How to Write a QMF Agent"><div class="titlepage"><div><div><h3 class="title"><a id="QpidManagementFramework-HowtoWriteaQMFAgent" />2.2.6.&#160;
             How to
             Write a QMF Agent
-          </h3></div></div></div><p /></div></div><div class="section" title="2.3.&#160; QMF Python Console Tutorial"><div class="titlepage"><div><div><h2 class="title"><a id="idp30998832" />2.3.&#160;
+          </h3></div></div></div><p /></div></div><div class="section" title="2.3.&#160; QMF Python Console Tutorial"><div class="titlepage"><div><div><h2 class="title"><a id="idp1241632" />2.3.&#160;
       QMF Python Console Tutorial
     </h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
                 <a class="xref" href="#QMFPythonConsoleTutorial-PrerequisiteInstallQpidMessaging" title="2.3.1.&#160; Prerequisite - Install Qpid Messaging">Section&#160;2.3.1, &#8220;
@@ -5104,7 +5104,7 @@ OK
             methods. Any number of these methods may be overridden by the
             console application. Any method that is not overridden defaults
             to a null handler which takes no action when invoked.
-          </p><div class="table"><a id="idp27374880" /><p class="title"><strong>Table&#160;2.4.&#160;QMF Python Console Class Methods</strong></p><div class="table-contents"><table border="1" summary="QMF Python Console Class Methods"><colgroup><col /><col /><col /></colgroup><tbody><tr><td>
+          </p><div class="table"><a id="idp2997280" /><p class="title"><strong>Table&#160;2.4.&#160;QMF Python Console Class Methods</strong></p><div class="table-contents"><table border="1" summary="QMF Python Console Class Methods"><colgroup><col /><col /><col /></colgroup><tbody><tr><td>
                   Method
                 </td><td>
                   Arguments
