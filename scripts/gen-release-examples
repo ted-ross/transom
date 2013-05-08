@@ -248,8 +248,6 @@ def gen_ruby_messaging_api(release, source_dir, component_dir):
 
 def gen_jms(release, source_dir, release_dir):
     component_dir = join(release_dir, "qpid-jms")
-    remove(component_dir)
-
     input_dir = join(source_dir, "java", "client", "example", "src", "main",
                      "java", "org", "apache", "qpid", "example")
     output_dir = join(component_dir, "examples")
@@ -279,6 +277,66 @@ def gen_jms(release, source_dir, release_dir):
                        readme_url=readme_url,
                        source_url=source_url)
 
+## QMF ##
+
+def gen_qmf(release, source_dir, release_dir):
+    component_dir = join(release_dir, "qmf")
+
+    gen_cpp_qmf(release, source_dir, component_dir)
+    gen_python_qmf(release, source_dir, component_dir)
+    gen_ruby_qmf(release, source_dir, component_dir)
+
+def gen_cpp_qmf(release, source_dir, component_dir):
+    input_dir = join(source_dir, "cpp", "bindings", "qmf2", "examples", "cpp")
+    output_dir = join(component_dir, "cpp", "examples")
+
+    release_url = "http://svn.apache.org/repos/asf/qpid/tags/{}".format(release)
+    source_url = "{}/qpid/cpp/bindings/qmf2/examples/cpp".format(release_url)
+
+    input_names = list_dir(input_dir, "*.cpp", "*.h")
+
+    gen_examples(release=release,
+                 lang="cpp",
+                 title="C++ QMF Examples",
+                 input_dir=input_dir,
+                 input_names=input_names,
+                 output_dir=output_dir,
+                 source_url=source_url)
+
+def gen_python_qmf(release, source_dir, component_dir):
+    input_dir = join(source_dir, "cpp", "bindings", "qmf2", "examples", "python")
+    output_dir = join(component_dir, "python", "examples")
+
+    release_url = "http://svn.apache.org/repos/asf/qpid/tags/{}".format(release)
+    source_url = "{}/qpid/cpp/bindings/qmf2/examples/python".format(release_url)
+
+    input_names = list_dir(input_dir, "*.py")
+
+    gen_examples(release=release,
+                 title="Python QMF Examples",
+                 lang="python",
+                 input_dir=input_dir,
+                 input_names=input_names,
+                 output_dir=output_dir,
+                 source_url=source_url)
+
+def gen_ruby_qmf(release, source_dir, component_dir):
+    input_dir = join(source_dir, "cpp", "bindings", "qmf2", "examples", "ruby")
+    output_dir = join(component_dir, "ruby", "examples")
+
+    release_url = "http://svn.apache.org/repos/asf/qpid/tags/{}".format(release)
+    source_url = "{}/qpid/cpp/bindings/qmf2/ruby/examples".format(release_url)
+
+    input_names = list_dir(input_dir, "*.rb")
+
+    gen_examples(release=release,
+                 title="Ruby QMF Examples",
+                 lang="ruby",
+                 input_dir=input_dir,
+                 input_names=input_names,
+                 output_dir=output_dir,
+                 source_url=source_url)
+
 ## Now do stuff ##
 
 if len(sys.argv) != 3:
@@ -288,5 +346,6 @@ release = sys.argv[1]
 release_dir = sys.argv[2]
 source_dir = export_release(release)
 
-gen_messaging_api(release, source_dir, release_dir)
 gen_jms(release, source_dir, release_dir)
+gen_messaging_api(release, source_dir, release_dir)
+gen_qmf(release, source_dir, release_dir)

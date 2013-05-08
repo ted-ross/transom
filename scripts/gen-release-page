@@ -131,38 +131,59 @@ available in the full source artefact.
 <div class="two-column" markdown="1">
 <div class="column" markdown="1">
 
-### Books
-
- - [Programming in Apache Qpid](programming/book/index.html) ([PDF](programming/programming-book.pdf))
- - [C++ broker book](cpp-broker/book/index.html) ([PDF](cpp-broker/cpp-broker-book.pdf))
- - [Java broker book](java-broker/book/index.html) ([PDF](java-broker/java-broker-book.pdf))
-
-### Installation guides
+### Installation
 
  - [Installing and Using Qpid Java](https://cwiki.apache.org/qpid/getting-started-guide.html)
  - [Installing Qpid C++](http://svn.apache.org/repos/asf/qpid/tags/{version}/qpid/cpp/INSTALL)
- - [Installing Qpid JCA](http://svn.apache.org/repos/asf/qpid/tags/{version}/qpid/java/jca/README.txt)
  - [Installing Qpid Python](http://svn.apache.org/repos/asf/qpid/tags/{version}/qpid/python/README.txt)
- - [Installing Qpid WCF](http://svn.apache.org/repos/asf/qpid/tags/{version}/qpid/wcf/ReadMe.txt)
+
+### C++ Broker
+
+ - [C++ broker book](cpp-broker/book/index.html) ([PDF](cpp-broker/cpp-broker-book.pdf))
+
+### Java Broker
+
+ - [Java broker book](java-broker/book/index.html) ([PDF](java-broker/java-broker-book.pdf))
+
+### QMF
+ 
+ - [C++ API reference](qmf/cpp/api/index.html)
+ - [C++ examples](qmf/cpp/examples/index.html)
+ - [Python examples](qmf/python/examples/index.html)
+ - [Ruby examples](qmf/ruby/examples/index.html)
+
+### Qpid JCA
+
+ - [README](http://svn.apache.org/repos/asf/qpid/tags/{version}/qpid/java/jca/README.txt)
+ - [Examples](http://svn.apache.org/repos/asf/qpid/tags/{version}/qpid/java/jca/example/)
 
 </div>
 <div class="column" markdown="1">
 
-### API reference
+### Qpid JMS
 
- - [C++ Messaging API](messaging-api/cpp/api/index.html)
- - [Python Messaging API](messaging-api/python/api/index.html)
- - [Ruby Messaging API](messaging-api/ruby/api/index.html)
- - [.NET Messaging API](messaging-api/dotnet/api/index.html)
+ - [Programming in Apache Qpid](programming/book/index.html#QpidJMS) ([PDF](programming/programming-book.pdf))
+ - [API reference](http://docs.oracle.com/javaee/1.4/api/javax/jms/package-summary.html)
+ - [Examples](qpid-jms/examples/index.html)
 
-### Examples
+### Qpid Messaging API
 
- - [Qpid JCA](http://svn.apache.org/repos/asf/qpid/tags/{version}/qpid/java/jca/example/)
- - [Qpid JMS](qpid-jms/examples/index.html)
- - [C++ Messaging API](messaging-api/cpp/examples/index.html)
- - [Python Messaging API](messaging-api/python/examples/index.html)
- - [Ruby Messaging API](messaging-api/ruby/examples/index.html)
- - [.NET Messaging API](messaging-api/dotnet/examples/index.html)
+ - [Programming in Apache Qpid](programming/book/index.html) ([PDF](programming/programming-book.pdf))
+ - [.NET API reference](messaging-api/dotnet/api/index.html)
+ - [.NET examples](messaging-api/dotnet/examples/index.html)
+ - [C++ API reference](messaging-api/cpp/api/index.html)
+ - [C++ examples](messaging-api/cpp/examples/index.html)
+ - [Python API reference](messaging-api/python/api/index.html)
+ - [Python examples](messaging-api/python/examples/index.html)
+ - [Ruby API reference](messaging-api/ruby/api/index.html)
+ - [Ruby examples](messaging-api/ruby/examples/index.html)
+
+### Qpid WCF
+
+ - [README](http://svn.apache.org/repos/asf/qpid/tags/{version}/qpid/wcf/ReadMe.txt)
+ - [Programming in Apache Qpid](programming/book/index.html#QpidWCF) ([PDF](programming/programming-book.pdf))
+ - [API reference](http://msdn.microsoft.com/en-us/library/vstudio/ms735119\(v=vs.90\).aspx)
+ - [Examples](http://svn.apache.org/repos/asf/qpid/tags/{version}/qpid/wcf/samples)
 
 </div>
 </div>

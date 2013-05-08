@@ -3,6 +3,8 @@
  - gen messenger book
  - debian install directions
  - eval content against fedora site
+ - anon jira filing form
+ - gen release notes
 
 # Medium
 
@@ -10,18 +12,14 @@
  - custom templates for api docs
    - nav from api ref back to site
  - tarballs of apidocs and examples
- - fix output for IE8
- - doxygen for just the qmf api
  - qmf2 examples
  - becoming a contributor, more detail, what to do with patches
- - roadmap
- - gen release notes
  - there are some trunk doc links in the java broker page that should
    be converted to current version when 0.22 lands
- - add more links into book content (qmf, for example)
 
 # Low
 
+ - add more links into book content (qmf, for example)
  - videos
  - useful jira queries
  - set shorter timeout on link check

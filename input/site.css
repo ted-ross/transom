@@ -315,7 +315,11 @@ ul ul, ol ol {
 }
 
 dd > dl {
-    margin: 0 0 0 1em;
+    margin: 0 0 0 0.8em;
+}
+
+div.two-column, div.four-column {
+    margin: 0 0 0.8em 0;
 }
 
 div.two-column {
