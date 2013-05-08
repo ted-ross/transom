@@ -113,6 +113,22 @@ def gen_epydoc(release, title, input_paths, input_namespaces, output_dir):
 
     touch(join(output_dir, ".transom-skip"))
 
+def gen_javadoc(release, title, input_paths, input_namespaces, output_dir):
+    input_paths = ":".join(input_paths)
+    input_namespaces = ":".join(input_namespaces)
+
+    make_dirs(output_dir)
+
+    options = list()
+    options.append("-d {}".format(output_dir))
+    options.append("-sourcepath {}".format(input_paths))
+    options.append("-subpackages {}".format(input_namespaces))
+    options = " ".join(options)
+
+    call("javadoc {}", options)
+
+    touch(join(output_dir, ".transom-skip"))
+
 def gen_rdoc(release, title, base_input_path, input_paths, output_dir):
     output_dir = os.path.abspath(output_dir)
 

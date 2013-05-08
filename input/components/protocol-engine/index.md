@@ -39,5 +39,6 @@ find previous versions with our
 [past releases](@site-url@/releases/index.html#past-releases).
 
  - [Overview](https://cwiki.apache.org/qpid/protocol-engines.html)
+ - [Java API reference](@current-proton-release-url@/protocol-engine/java/api/index.html)
  - [Python API reference](@current-proton-release-url@/protocol-engine/python/api/index.html)
  - [Installing Qpid Proton](http://svn.apache.org/repos/asf/qpid/proton/tags/@current-proton-release@/README)

@@ -47,6 +47,10 @@ find previous versions with our
 ### C
 
  - [Examples](@current-proton-release-url@/messenger/c/examples/index.html)
+ 
+### Java
+
+ - [API reference](@current-proton-release-url@/protocol-engine/java/api/org/apache/qpid/proton/messenger/Messenger.html)
 
 ### Perl
 
