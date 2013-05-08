@@ -35,7 +35,7 @@ This is the documentation for the current released version.  You can
 find previous versions with our
 [past releases](@site-url@/releases/index.html#past-releases).
 
- - [Examples](http://svn.apache.org/repos/asf/qpid/tags/@current-release@/qpid/wcf/samples)
+ - [README](http://svn.apache.org/repos/asf/qpid/tags/@current-release@/qpid/wcf/ReadMe.txt)
+ - [Programming in Apache Qpid](@current-release-url@/programming/book/index.html#QpidWCF)
  - [API reference](http://msdn.microsoft.com/en-us/library/vstudio/ms735119\(v=vs.90\).aspx)
- - [Programming in Apache Qpid](@current-release-url@/programming/book/index.html)
- - [Installing Qpid WCF](http://svn.apache.org/repos/asf/qpid/tags/@current-release@/qpid/wcf/ReadMe.txt)
+ - [Examples](http://svn.apache.org/repos/asf/qpid/tags/@current-release@/qpid/wcf/samples)

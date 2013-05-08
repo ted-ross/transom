@@ -36,7 +36,10 @@ This is the documentation for the current released version.  You can
 find previous versions with our
 [past releases](@site-url@/releases/index.html#past-releases).
 
- - [API reference](@current-release-url@/qmf/cpp/api/index.html)
+ - [C++ API reference](@current-release-url@/qmf/cpp/api/index.html)
+ - [C++ examples](@current-release-url@/qmf/cpp/examples/index.html)
+ - [Python examples](@current-release-url@/qmf/python/examples/index.html)
+ - [Ruby examples](@current-release-url@/qmf/ruby/examples/index.html)
  - [Installing Qpid C++](http://svn.apache.org/repos/asf/qpid/tags/@current-release@/qpid/cpp/INSTALL)
  - [Map message protocol](https://cwiki.apache.org/qpid/qmf-map-message-protocol.html)
 
