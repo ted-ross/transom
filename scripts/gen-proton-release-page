@@ -30,7 +30,7 @@ download_rows = list()
 
 for artifact, summary in download_records:
     artifact = artifact.format(version)
-    artifact_url = "http://www.apache.org/dyn/closer.cgi/qpid/proton/{}/{}".format(version, artifact)
+    artifact_url = "http://www.apache.org/dist/qpid/proton/{}/{}".format(version, artifact)
     sig_url = "http://www.apache.org/dist/qpid/proton/{}/{}.asc".format(version, artifact)
 
     args = summary, artifact, artifact_url, sig_url
@@ -121,7 +121,7 @@ files you download.
 
 ## More information
 
- - [All release artefacts](http://www.apache.org/dyn/closer.cgi/qpid/proton/{version})
+ - [All release artefacts](http://www.apache.org/dist/qpid/proton/{version})
  - [Resolved issues in JIRA]({issues_url})
  - [Source repository branch](http://svn.apache.org/repos/asf/qpid/proton/branches/{version})
  - [Source repository tag](http://svn.apache.org/repos/asf/qpid/proton/tags/{version})

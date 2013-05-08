@@ -34,15 +34,15 @@ integrity](@site-url@/download.html#verify-what-you-download) of the
 files you download.
 
   || *Content* || *Download* || *Signature* ||
-  || Full source || [qpid-0.20.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.20/qpid-0.20.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.20/qpid-0.20.tar.gz.asc) ||
-  || C++ broker, Qpid Messaging API (C++, bindings) || [qpid-cpp-0.20.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.20/qpid-cpp-0.20.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.20/qpid-cpp-0.20.tar.gz.asc) ||
-  || C++ broker command-line tools || [qpid-tools-0.20.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.20/qpid-tools-0.20.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.20/qpid-tools-0.20.tar.gz.asc) ||
-  || Java broker, Qpid JCA || [qpid-java-broker-0.20.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.20/qpid-java-broker-0.20.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.20/qpid-java-broker-0.20.tar.gz.asc) ||
-  || Qpid JMS (AMQP 0-10, 0-91, 0-9, 0-8) || [qpid-java-client-0.20.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.20/qpid-java-client-0.20.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.20/qpid-java-client-0.20.tar.gz.asc) ||
-  || Qpid JMS (AMQP 1.0) || [qpid-java-amqp-1-0-client-jms-0.20.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.20/qpid-java-amqp-1-0-client-jms-0.20.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.20/qpid-java-amqp-1-0-client-jms-0.20.tar.gz.asc) ||
-  || Qpid Messaging API (Python) || [qpid-python-0.20.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.20/qpid-python-0.20.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.20/qpid-python-0.20.tar.gz.asc) ||
-  || Qpid WCF || [qpid-wcf-0.20.zip](http://www.apache.org/dyn/closer.cgi/qpid/0.20/qpid-wcf-0.20.zip) || [PGP](http://www.apache.org/dist/qpid/0.20/qpid-wcf-0.20.zip.asc) ||
-  || QMF || [qpid-qmf-0.20.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.20/qpid-qmf-0.20.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.20/qpid-qmf-0.20.tar.gz.asc) ||
+  || Full source || [qpid-0.20.tar.gz](http://www.apache.org/dist/qpid/0.20/qpid-0.20.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.20/qpid-0.20.tar.gz.asc) ||
+  || C++ broker, Qpid Messaging API (C++, bindings) || [qpid-cpp-0.20.tar.gz](http://www.apache.org/dist/qpid/0.20/qpid-cpp-0.20.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.20/qpid-cpp-0.20.tar.gz.asc) ||
+  || C++ broker command-line tools || [qpid-tools-0.20.tar.gz](http://www.apache.org/dist/qpid/0.20/qpid-tools-0.20.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.20/qpid-tools-0.20.tar.gz.asc) ||
+  || Java broker, Qpid JCA || [qpid-java-broker-0.20.tar.gz](http://www.apache.org/dist/qpid/0.20/qpid-java-broker-0.20.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.20/qpid-java-broker-0.20.tar.gz.asc) ||
+  || Qpid JMS (AMQP 0-10, 0-91, 0-9, 0-8) || [qpid-java-client-0.20.tar.gz](http://www.apache.org/dist/qpid/0.20/qpid-java-client-0.20.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.20/qpid-java-client-0.20.tar.gz.asc) ||
+  || Qpid JMS (AMQP 1.0) || [qpid-java-amqp-1-0-client-jms-0.20.tar.gz](http://www.apache.org/dist/qpid/0.20/qpid-java-amqp-1-0-client-jms-0.20.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.20/qpid-java-amqp-1-0-client-jms-0.20.tar.gz.asc) ||
+  || Qpid Messaging API (Python) || [qpid-python-0.20.tar.gz](http://www.apache.org/dist/qpid/0.20/qpid-python-0.20.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.20/qpid-python-0.20.tar.gz.asc) ||
+  || Qpid WCF || [qpid-wcf-0.20.zip](http://www.apache.org/dist/qpid/0.20/qpid-wcf-0.20.zip) || [PGP](http://www.apache.org/dist/qpid/0.20/qpid-wcf-0.20.zip.asc) ||
+  || QMF || [qpid-qmf-0.20.tar.gz](http://www.apache.org/dist/qpid/0.20/qpid-qmf-0.20.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.20/qpid-qmf-0.20.tar.gz.asc) ||
 
 Java artefacts are released as compiled bytecode.  Source code is
 available in the full source artefact.
@@ -64,7 +64,7 @@ available in the full source artefact.
 <div class="two-column" markdown="1">
 <div class="column" markdown="1">
 
-### Install guides
+### Installation
 
  - [Installing and Using Qpid Java](https://cwiki.apache.org/qpid/getting-started-guide.html)
  - [Installing Qpid C++](http://svn.apache.org/repos/asf/qpid/tags/0.20/qpid/cpp/INSTALL)
@@ -123,7 +123,7 @@ available in the full source artefact.
 
 ## More information
 
- - [All release artefacts](http://www.apache.org/dyn/closer.cgi/qpid/0.20)
+ - [All release artefacts](http://www.apache.org/dist/qpid/0.20)
  - [Resolved issues in JIRA](https://issues.apache.org/jira/issues/?jql=project+%3D+QPID+AND+fixVersion+in+%28%270.19%27%2C+%270.20%27%29+ORDER+BY+priority+DESC)
  - [Source repository branch](http://svn.apache.org/repos/asf/qpid/branches/0.20)
  - [Source repository tag](http://svn.apache.org/repos/asf/qpid/tags/0.20)

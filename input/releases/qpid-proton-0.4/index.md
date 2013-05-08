@@ -32,7 +32,7 @@ integrity](@site-url@/download.html#verify-what-you-download) of the
 files you download.
 
   || *Content* || *Download* || *Signature* ||
-  || AMQP Messenger, AMQP Protocol Engine || [qpid-proton-0.4.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/proton/0.4/qpid-proton-0.4.tar.gz) || [PGP](http://www.apache.org/dist/qpid/proton/0.4/qpid-proton-0.4.tar.gz.asc) ||
+  || AMQP Messenger, AMQP Protocol Engine || [qpid-proton-0.4.tar.gz](http://www.apache.org/dist/qpid/proton/0.4/qpid-proton-0.4.tar.gz) || [PGP](http://www.apache.org/dist/qpid/proton/0.4/qpid-proton-0.4.tar.gz.asc) ||
 
 ## Components
 
@@ -61,7 +61,7 @@ files you download.
 
 ## More information
 
- - [All release artefacts](http://www.apache.org/dyn/closer.cgi/qpid/proton/0.4)
+ - [All release artefacts](http://www.apache.org/dist/qpid/proton/0.4)
  - [Resolved issues in JIRA](https://issues.apache.org/jira/issues/?jql=project+%3D+PROTON+AND+fixVersion+%3D+%270.4%27+ORDER+BY+priority+DESC)
  - [Source repository branch](http://svn.apache.org/repos/asf/qpid/proton/branches/0.4)
  - [Source repository tag](http://svn.apache.org/repos/asf/qpid/proton/tags/0.4)

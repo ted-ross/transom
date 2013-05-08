@@ -44,7 +44,7 @@ download_rows = list()
 
 for artifact, summary in download_records:
     artifact = artifact.format(version)
-    artifact_url = "http://www.apache.org/dyn/closer.cgi/qpid/{}/{}".format(version, artifact)
+    artifact_url = "http://www.apache.org/dist/qpid/{}/{}".format(version, artifact)
     sig_url = "http://www.apache.org/dist/qpid/{}/{}.asc".format(version, artifact)
 
     args = summary, artifact, artifact_url, sig_url
@@ -190,7 +190,7 @@ available in the full source artefact.
 
 ## More information
 
- - [All release artefacts](http://www.apache.org/dyn/closer.cgi/qpid/{version})
+ - [All release artefacts](http://www.apache.org/dist/qpid/{version})
  - [Resolved issues in JIRA]({issues_url})
  - [Source repository branch](http://svn.apache.org/repos/asf/qpid/branches/{version})
  - [Source repository tag](http://svn.apache.org/repos/asf/qpid/tags/{version})
