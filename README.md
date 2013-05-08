@@ -95,7 +95,14 @@ books.  Once generated, you can make any edits you'd like and check it
 in.
 
 The scripts depend on the availability of the following tools in your
-environment: dot, xsltproc, epydoc, rdoc, doxygen, and pygments.
+environment: dot, doxygen, epydoc, javadoc, epydoc, pygments, rdoc,
+and xsltproc.
+
+When you add release content, you should also update the following
+files.
+
+    input/site.conf            # Update the current release pointer
+    input/releases/index.md    # Add current release, move the previous
 
 ## Publishing your work
 
