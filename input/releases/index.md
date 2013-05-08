@@ -21,22 +21,22 @@
 
 Qpid produces three releases a year on a time-based schedule.  They
 usually drop in January, April, and August.  New releases are
-announced on the [Qpid mailing lists](@site-url@/discussion.html)
+announced on the [Qpid mailing lists](@site-url@/discussion.html#mailing-lists)
 and the
 [Apache announce list](http://mail-archives.apache.org/mod_mbox/www-announce/).
 
 ## Current releases
 
- - @current-release-link@
- - @current-proton-release-link@
+ - @current-release-link@, May 2013
+ - @current-proton-release-link@, February 2013
 
 ## Past releases
 
- - [Qpid Proton 0.3](qpid-proton-0.3/index.html)
- - [Qpid 0.20](qpid-0.20/index.html)
- - [Qpid 0.18](qpid-0.18/index.html)
- - [Qpid 0.16](qpid-0.16/index.html)
- - [Qpid 0.14](qpid-0.14/index.html)
+ - [Qpid Proton 0.3](qpid-proton-0.3/index.html), January 2013
+ - [Qpid 0.20](qpid-0.20/index.html), January 2013
+ - [Qpid 0.18](qpid-0.18/index.html), August 2012
+ - [Qpid 0.16](qpid-0.16/index.html), May 2012
+ - [Qpid 0.14](qpid-0.14/index.html), January 2012
 
 Still older releases are available at
 <http://archive.apache.org/dist/qpid/>.
