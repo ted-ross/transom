@@ -20,23 +20,23 @@
 
 from transom.generate import *
 
-def gen_messenger(release, source_dir, release_dir):
-    component_dir = join(release_dir, "messenger")
+def gen_protocol_engine(release, source_dir, release_dir):
+    component_dir = join(release_dir, "protocol-engine")
     remove(component_dir)
 
     dir = change_dir(source_dir)
     call("cmake .; make")
     change_dir(dir)
 
-    gen_python_messenger(release, source_dir, component_dir)
+    gen_python_protocol_engine(release, source_dir, component_dir)
 
-def gen_python_messenger(release, source_dir, component_dir):
+def gen_python_protocol_engine(release, source_dir, component_dir):
     input_path = join(source_dir, "proton-c", "bindings", "python")
     input_namespace = "proton"
     output_dir = join(component_dir, "python", "api")
 
     gen_epydoc(release=release,
-               title="AMQP Messenger API",
+               title="AMQP Protocol Engine API",
                input_paths=(input_path,),
                input_namespaces=(input_namespace,),
                output_dir=output_dir)
@@ -46,13 +46,15 @@ def gen_python_messenger(release, source_dir, component_dir):
 if len(sys.argv) != 3:
     sys.exit("Usage: script RELEASE RELEASE-DIR")
 
+call("cmake --version")
 call("dot -V")
 #call("doxygen --version")
 call("epydoc --version")
+call("make --version")
 #call("rdoc --version")
 
 release = sys.argv[1]
 release_dir = sys.argv[2]
 source_dir = export_proton_release(release)
 
-gen_messenger(release, source_dir, release_dir)
+gen_protocol_engine(release, source_dir, release_dir)

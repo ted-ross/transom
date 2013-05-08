@@ -58,7 +58,7 @@ find previous versions with our
 
 ### Python
 
- - [API reference](@current-proton-release-url@/messenger/python/api/proton.Messenger-class.html)
+ - [API reference](@current-proton-release-url@/protocol-engine/python/api/proton.Messenger-class.html)
  - [Examples](@current-proton-release-url@/messenger/python/examples/index.html)
 
 ### Ruby

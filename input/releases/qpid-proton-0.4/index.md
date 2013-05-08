@@ -51,13 +51,13 @@ files you download.
  - [C examples](messenger/c/examples/index.html)
  - [Perl examples](messenger/perl/examples/index.html)
  - [PHP examples](messenger/php/examples/index.html)
- - [Python API reference](messenger/python/api/proton.Messenger-class.html)
+ - [Python API reference](protocol-engine/python/api/proton.Messenger-class.html)
  - [Python examples](messenger/python/examples/index.html)
  - [Ruby examples](messenger/ruby/examples/index.html)
 
 ### AMQP Protocol Engine
 
- - [Python API reference](messenger/python/api/index.html)
+ - [Python API reference](protocol-engine/python/api/index.html)
 
 ## More information
 
