@@ -29,7 +29,7 @@ implementation that speaks all versions of AMQP.
   || *Downloads* || AMQP 0-10, 0-91, 0-9, 0-8: [qpid-java-client-@current-release@.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/@current-release@/qpid-java-client-@current-release@.tar.gz) \[[PGP](http://www.apache.org/dist/qpid/@current-release@/qpid-java-client-@current-release@.tar.gz.asc)],<br/>AMQP 1.0: [qpid-java-amqp-1-0-client-jms-@current-release@.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/@current-release@/qpid-java-amqp-1-0-client-jms-@current-release@.tar.gz) \[[PGP](http://www.apache.org/dist/qpid/@current-release@/qpid-java-amqp-1-0-client-jms-@current-release@.tar.gz.asc)] ||
   || *Source location* ||  <http://svn.apache.org/repos/asf/qpid/trunk/qpid/java/> ||
 
-\*1.0 support is offered in a distinct implementation from that of
+\*1.0 support is offered in an implementation distinct from that of
 older protocol versions.
 
 ## Documentation
