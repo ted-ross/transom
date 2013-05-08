@@ -40,6 +40,29 @@ find previous versions with our
 [past releases](@site-url@/releases/index.html#past-releases).
 
  - [Introduction](book/index.html)
- - [API reference](@current-proton-release-url@/messenger/python/api/index.html)
- - [Examples](http://svn.apache.org/repos/asf/qpid/proton/tags/@current-proton-release@/examples/messenger/)
  - [Installing Qpid Proton](http://svn.apache.org/repos/asf/qpid/proton/tags/@current-proton-release@/README)
+
+<div class="two-column" markdown="1">
+
+### C
+
+ - [Examples](@current-proton-release-url@/messenger/c/examples/index.html)
+
+### Perl
+
+ - [Examples](@current-proton-release-url@/messenger/perl/examples/index.html)
+
+### PHP
+
+ - [Examples](@current-proton-release-url@/messenger/php/examples/index.html)
+
+### Python
+
+ - [API reference](@current-proton-release-url@/messenger/python/api/proton.Messenger-class.html)
+ - [Examples](@current-proton-release-url@/messenger/python/examples/index.html)
+
+### Ruby
+
+ - [Examples](@current-proton-release-url@/messenger/ruby/examples/index.html)
+
+</div>

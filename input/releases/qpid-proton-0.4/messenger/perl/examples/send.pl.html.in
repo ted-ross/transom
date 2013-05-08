@@ -1,0 +1,42 @@
+
+<h1>send.pl</h1>
+<div class="highlight"><pre><span class="k">use</span> <span class="n">strict</span><span class="p">;</span>
+<span class="k">use</span> <span class="n">warnings</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">Getopt::</span><span class="n">Std</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="n">qpid_proton</span><span class="p">;</span>
+
+<span class="k">sub </span><span class="nf">usage</span> <span class="p">{</span>
+    <span class="nb">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">my</span> <span class="nv">$address</span> <span class="o">=</span> <span class="s">&quot;0.0.0.0&quot;</span><span class="p">;</span>
+
+<span class="k">my</span> <span class="nv">%options</span> <span class="o">=</span> <span class="p">();</span>
+<span class="n">getopts</span><span class="p">(</span><span class="s">&quot;ha:&quot;</span><span class="p">,</span> <span class="o">\</span><span class="nv">%options</span><span class="p">)</span> <span class="ow">or</span> <span class="n">usage</span><span class="p">();</span>
+<span class="n">usage</span> <span class="k">if</span> <span class="nv">$options</span><span class="p">{</span><span class="n">h</span><span class="p">};</span>
+
+<span class="nv">$address</span> <span class="o">=</span> <span class="nv">$options</span><span class="p">{</span><span class="n">a</span><span class="p">}</span> <span class="k">if</span> <span class="nb">defined</span> <span class="nv">$options</span><span class="p">{</span><span class="n">a</span><span class="p">};</span>
+
+<span class="k">my</span> <span class="nv">$msg</span>  <span class="o">=</span> <span class="k">new</span> <span class="nn">qpid::proton::</span><span class="n">Message</span><span class="p">();</span>
+<span class="k">my</span> <span class="nv">$messenger</span> <span class="o">=</span> <span class="k">new</span> <span class="nn">qpid::proton::</span><span class="n">Messenger</span><span class="p">();</span>
+
+<span class="nv">$messenger</span><span class="o">-&gt;</span><span class="n">start</span><span class="p">();</span>
+
+<span class="k">my</span> <span class="nv">@messages</span> <span class="o">=</span> <span class="nv">@ARGV</span><span class="p">;</span>
+<span class="nv">@messages</span> <span class="o">=</span> <span class="p">(</span><span class="s">&quot;This is a test. &quot;</span> <span class="o">.</span> <span class="nb">localtime</span><span class="p">(</span><span class="nb">time</span><span class="p">))</span> <span class="k">unless</span> <span class="nv">$messages</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">@messages</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nv">$msg</span><span class="o">-&gt;</span><span class="n">set_address</span><span class="p">(</span><span class="nv">$address</span><span class="p">);</span>
+    <span class="nv">$msg</span><span class="o">-&gt;</span><span class="n">set_content</span><span class="p">(</span><span class="nv">$_</span><span class="p">);</span>
+    <span class="nv">$messenger</span><span class="o">-&gt;</span><span class="n">put</span><span class="p">(</span><span class="nv">$msg</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nv">$messenger</span><span class="o">-&gt;</span><span class="nb">send</span><span class="p">();</span>
+<span class="nv">$messenger</span><span class="o">-&gt;</span><span class="n">stop</span><span class="p">();</span>
+
+<span class="nb">die</span> <span class="vg">$@</span> <span class="k">if</span> <span class="p">(</span><span class="vg">$@</span><span class="p">);</span>
+</pre></div>
+
+<p><a href="send.pl">Download this file</a></p>

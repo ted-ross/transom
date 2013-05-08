@@ -64,7 +64,7 @@ available in the full source artefact.
 <div class="two-column" markdown="1">
 <div class="column" markdown="1">
 
-### Install guides
+### Installation
 
  - [Installing and Using Qpid Java](https://cwiki.apache.org/qpid/getting-started-guide.html)
  - [Installing Qpid C++](http://svn.apache.org/repos/asf/qpid/tags/0.22/qpid/cpp/INSTALL)

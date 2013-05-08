@@ -36,14 +36,6 @@ find previous versions with our
 
  - [Programming in Apache Qpid](@current-release-url@/programming/book/index.html)
 
-### Examples
-
-  || *C++* || [hello_world.cpp](@current-release-url@/messaging-api/cpp/examples/hello_world.cpp.html) || [client.cpp](@current-release-url@/messaging-api/cpp/examples/client.cpp.html) || [server.cpp](@current-release-url@/messaging-api/cpp/examples/server.cpp.html) || [spout.cpp](@current-release-url@/messaging-api/cpp/examples/spout.cpp.html) || [drain.cpp](@current-release-url@/messaging-api/cpp/examples/drain.cpp.html) || [More](@current-release-url@/messaging-api/cpp/examples/index.html) ||
-  || *Perl* || [hello_world.pl](@current-release-url@/messaging-api/perl/examples/hello_world.pl.html) || [client.pl](@current-release-url@/messaging-api/perl/examples/client.pl.html) || [server.pl](@current-release-url@/messaging-api/perl/examples/server.pl.html) || [spout.pl](@current-release-url@/messaging-api/perl/examples/spout.pl.html) || [drain.pl](@current-release-url@/messaging-api/perl/examples/drain.pl.html) || [More](@current-release-url@/messaging-api/perl/examples/index.html) ||
-  || *Python* || [hello](@current-release-url@/messaging-api/python/examples/hello.html) ||  ||  || [spout](@current-release-url@/messaging-api/python/examples/spout.html) || [drain](@current-release-url@/messaging-api/python/examples/drain.html) || [More](@current-release-url@/messaging-api/python/examples/index.html) ||
-  || *Ruby* || [hello_world.rb](@current-release-url@/messaging-api/ruby/examples/hello_world.rb.html) || [client.rb](@current-release-url@/messaging-api/ruby/examples/client.rb.html) || [server.rb](@current-release-url@/messaging-api/ruby/examples/server.rb.html) || [spout.rb](@current-release-url@/messaging-api/ruby/examples/spout.rb.html) || [drain.rb](@current-release-url@/messaging-api/ruby/examples/drain.rb.html) || [More](@current-release-url@/messaging-api/ruby/examples/index.html) ||
-  || *.NET* || [helloworld.cs](@current-release-url@/messaging-api/dotnet/examples/csharp.example.helloworld.cs.html) || [client.cs](@current-release-url@/messaging-api/dotnet/examples/csharp.example.client.cs.html) || [server.cs](@current-release-url@/messaging-api/dotnet/examples/csharp.example.server.cs.html) || [spout.cs](@current-release-url@/messaging-api/dotnet/examples/csharp.example.spout.cs.html) || [drain.cs](@current-release-url@/messaging-api/dotnet/examples/csharp.example.drain.cs.html) || [More](@current-release-url@/messaging-api/dotnet/examples/index.html) ||
-
 <div class="two-column" markdown="1">
 <div class="column" markdown="1">
 
@@ -80,3 +72,11 @@ find previous versions with our
 
 </div>
 </div>
+
+### Examples
+
+  || *C++* || [hello_world.cpp](@current-release-url@/messaging-api/cpp/examples/hello_world.cpp.html) || [client.cpp](@current-release-url@/messaging-api/cpp/examples/client.cpp.html) || [server.cpp](@current-release-url@/messaging-api/cpp/examples/server.cpp.html) || [spout.cpp](@current-release-url@/messaging-api/cpp/examples/spout.cpp.html) || [drain.cpp](@current-release-url@/messaging-api/cpp/examples/drain.cpp.html) ||
+  || *Perl* || [hello_world.pl](@current-release-url@/messaging-api/perl/examples/hello_world.pl.html) || [client.pl](@current-release-url@/messaging-api/perl/examples/client.pl.html) || [server.pl](@current-release-url@/messaging-api/perl/examples/server.pl.html) || [spout.pl](@current-release-url@/messaging-api/perl/examples/spout.pl.html) || [drain.pl](@current-release-url@/messaging-api/perl/examples/drain.pl.html) ||
+  || *Python* || [hello](@current-release-url@/messaging-api/python/examples/hello.html) ||  ||  || [spout](@current-release-url@/messaging-api/python/examples/spout.html) || [drain](@current-release-url@/messaging-api/python/examples/drain.html) ||
+  || *Ruby* || [hello_world.rb](@current-release-url@/messaging-api/ruby/examples/hello_world.rb.html) || [client.rb](@current-release-url@/messaging-api/ruby/examples/client.rb.html) || [server.rb](@current-release-url@/messaging-api/ruby/examples/server.rb.html) || [spout.rb](@current-release-url@/messaging-api/ruby/examples/spout.rb.html) || [drain.rb](@current-release-url@/messaging-api/ruby/examples/drain.rb.html) ||
+  || *.NET* || [helloworld.cs](@current-release-url@/messaging-api/dotnet/examples/csharp.example.helloworld.cs.html) || [client.cs](@current-release-url@/messaging-api/dotnet/examples/csharp.example.client.cs.html) || [server.cs](@current-release-url@/messaging-api/dotnet/examples/csharp.example.server.cs.html) || [spout.cs](@current-release-url@/messaging-api/dotnet/examples/csharp.example.spout.cs.html) || [drain.cs](@current-release-url@/messaging-api/dotnet/examples/csharp.example.drain.cs.html) ||
