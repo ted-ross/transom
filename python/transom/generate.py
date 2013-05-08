@@ -94,8 +94,6 @@ def gen_doxygen(release, title, input_paths, strip_paths, output_dir):
     touch(join(output_dir, ".transom-skip"))
 
 def gen_epydoc(release, title, input_paths, input_namespaces, output_dir):
-    # XXX programmatic instead?
-
     input_paths = ":".join(input_paths)
     input_namespaces = " ".join(input_namespaces)
 
@@ -108,7 +106,7 @@ def gen_epydoc(release, title, input_paths, input_namespaces, output_dir):
     options.append("--no-private")
     options.append("--output {}".format(output_dir))
     options.append("--quiet")
-    options.append("--url \"@site-url@/index.html\"")
+    options.append("--url \"http://qpid.apache.org/index.html\"")
     options = " ".join(options)
 
     call("PYTHONPATH={} epydoc {} {}", input_paths, options, input_namespaces)
