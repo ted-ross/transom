@@ -95,7 +95,7 @@ available in the full source artefact.
 
 ### Qpid JMS
 
- - [Programming in Apache Qpid](programming/book/index.html#QpidJMS) ([PDF](programming/programming-book.pdf))
+ - [Using the Qpid JMS client](programming/book/index.html#QpidJMS) ([PDF](programming/programming-book.pdf))
  - [API reference](http://docs.oracle.com/javaee/1.4/api/javax/jms/package-summary.html)
  - [Examples](qpid-jms/examples/index.html)
 
@@ -114,7 +114,7 @@ available in the full source artefact.
 ### Qpid WCF
 
  - [README](http://svn.apache.org/repos/asf/qpid/tags/0.20/qpid/wcf/ReadMe.txt)
- - [Programming in Apache Qpid](programming/book/index.html#QpidWCF) ([PDF](programming/programming-book.pdf))
+ - [Using the Qpid WCF client](programming/book/index.html#QpidWCF) ([PDF](programming/programming-book.pdf))
  - [API reference](http://msdn.microsoft.com/en-us/library/vstudio/ms735119\(v=vs.90\).aspx)
  - [Examples](http://svn.apache.org/repos/asf/qpid/tags/0.20/qpid/wcf/samples)
 
