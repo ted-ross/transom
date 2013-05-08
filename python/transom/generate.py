@@ -120,9 +120,12 @@ def gen_javadoc(release, title, input_paths, input_namespaces, output_dir):
     make_dirs(output_dir)
 
     options = list()
-    options.append("-d {}".format(output_dir))
+    options.append("-windowtitle \"{}\"".format(title))
+    options.append("-doctitle \"{}\"".format(title))
     options.append("-sourcepath {}".format(input_paths))
     options.append("-subpackages {}".format(input_namespaces))
+    options.append("-d {}".format(output_dir))
+    options.append("-notimestamp")
     options = " ".join(options)
 
     call("javadoc {}", options)

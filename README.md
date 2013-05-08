@@ -94,15 +94,18 @@ These will produce a new tree of release content under
 books.  Once generated, you can make any edits you'd like and check it
 in.
 
-The scripts depend on the availability of the following tools in your
-environment: dot, doxygen, epydoc, javadoc, epydoc, pygments, rdoc,
-and xsltproc.
-
 When you add release content, you should also update the following
 files.
 
     input/site.conf            # Update the current release pointer
     input/releases/index.md    # Add current release, move the previous
+
+The scripts depend on the availability of the following tools in your
+environment: cmake, dot, doxygen, epydoc, gcc, javadoc, make,
+pygments, rdoc, and xsltproc.  The following yum command works to
+install all the required dependencies on Fedora or RHEL.
+
+    $ sudo yum install cmake doxygen epydoc graphviz java-devel make python-pigments rubygem-rdoc libxslt
 
 ## Publishing your work
 
