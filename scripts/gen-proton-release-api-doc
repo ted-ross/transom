@@ -28,8 +28,20 @@ def gen_protocol_engine(release, source_dir, release_dir):
     call("cmake .; make")
     change_dir(dir)
 
+    gen_c_protocol_engine(release, source_dir, component_dir)
     gen_java_protocol_engine(release, source_dir, component_dir)
     gen_python_protocol_engine(release, source_dir, component_dir)
+
+def gen_c_protocol_engine(release, source_dir, component_dir):
+    include_dir = join(source_dir, "proton-c", "include")
+    input_path = join(include_dir, "proton")
+    output_dir = join(component_dir, "c", "api")
+
+    gen_doxygen(release=release,
+                title="C AMQP Protocol Engine API",
+                input_paths=(input_path,),
+                strip_paths=(include_dir,),
+                output_dir=output_dir)
 
 def gen_java_protocol_engine(release, source_dir, component_dir):
     input_path = join(source_dir, "proton-j", "proton-api", "src", "main", "java")
@@ -60,7 +72,7 @@ if len(sys.argv) != 3:
 
 call("cmake --version")
 call("dot -V")
-#call("doxygen --version")
+call("doxygen --version")
 call("epydoc --version")
 call("which javadoc")
 call("make --version")
