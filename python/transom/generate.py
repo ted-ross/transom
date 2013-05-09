@@ -17,12 +17,14 @@
 # under the License.
 #
 
-import re
+import re, urllib
 
 from pygments import highlight as pygments_highlight
 from pygments.lexers import get_lexer_by_name
 from pygments.formatters import HtmlFormatter
+from xml.sax.saxutils import escape as escape_html
 
+from jira import *
 from script import *
 
 ## General ##
@@ -257,3 +259,71 @@ def gen_examples_index(release, input_names, output_dir, title,
     index = _examples_index_template.format(**locals())
 
     write(output_path, index)
+
+## Release notes ##
+
+def render_release_notes(project, release):
+    db = _import_issues(project, release)
+
+    lines = list()
+    conn = sqlite3.connect(db.path)
+
+    try:
+        lines.append("\n## New features and improvements\n")
+        lines.append(_render_issues(conn, "New Feature", "Improvement"))
+
+        lines.append("\n## Bugs fixed\n")
+        lines.append(_render_issues(conn, "Bug"))
+
+        lines.append("\n## Tasks\n")
+        lines.append(_render_issues(conn, "Task"))
+    finally:
+        conn.close()
+
+    return "\n".join(lines)
+
+def _import_issues(project, release):
+    xml_path = get_entry_path("issues.xml")
+    db_path = get_entry_path("issues.db")
+
+    query = list()
+    query.append("project = '{}'".format(project))
+    query.append("fixVersion = '{}'".format(release)) # XXX
+    query = " and ".join(query)
+
+    params = urllib.urlencode({"jqlQuery": query})
+    url = "https://issues.apache.org/jira/sr/jira.issueviews:searchrequest-xml/temp/SearchRequest.xml?{}".format(params)
+
+    urllib.urlretrieve(url, xml_path)
+
+    db = IssueDatabase(db_path)
+    db.clear()
+    db.init()
+    db.update(xml_path)
+
+    return db
+
+_issues_sql = """
+select link, key, summary
+from issues
+where type in ({}) and resolution = 'Fixed'
+order by key
+"""
+
+def _render_issues(conn, *types):
+    cursor = conn.cursor()
+    types_sql = ", ".join(["'{}'".format(x) for x in types])
+    cursor.execute(_issues_sql.format(types_sql))
+
+    records = cursor.fetchall()
+
+    if not records:
+        return "<div class=\"none\">None</div>"
+
+    lines = list()
+
+    for record in records:
+        args = escape_html(record[1]), record[0], escape_html(record[2])
+        lines.append(" - [{}]({}) - {}".format(*args))
+
+    return "\n".join(lines)

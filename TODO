@@ -1,13 +1,12 @@
 # High
 
- - gen messenger book
- - debian install directions
  - eval content against fedora site
  - anon jira filing form
- - gen release notes
 
 # Medium
 
+ - debian install directions
+ - gen messenger book - when a tagged release has it
  - related projects section
  - custom templates for api docs
    - nav from api ref back to site

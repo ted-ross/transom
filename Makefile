@@ -21,14 +21,14 @@ check-links: render
 	scripts/check-links ${SITE_URL} input ${OUTPUT_DIR} ${INTERNAL} ${EXTERNAL}
 
 clean:
-	test -n ${OUTPUT_DIR}
+	test -n "${OUTPUT_DIR}"
 	rm -rf ${OUTPUT_DIR}
 
 publish: OUTPUT_DIR := $(shell mktemp -d)
 publish: SITE_URL := http://qpid.apache.org
 publish: PUBLISH_DIR := ""
 publish: render
-	test -n ${PUBLISH_DIR} -a -d ${PUBLISH_DIR} -a -f ${PUBLISH_DIR}/index.html
+	test -n "${PUBLISH_DIR}" -a -d ${PUBLISH_DIR} -a -f ${PUBLISH_DIR}/index.html
 	cp -a ${OUTPUT_DIR}/* ${PUBLISH_DIR}
 	rm -rf ${OUTPUT_DIR}
 
@@ -41,7 +41,7 @@ publish-devel: render
 
 gen-release: RELEASE_DIR := input/releases/qpid-${RELEASE}
 gen-release:
-	test -n ${RELEASE}
+	test -n "${RELEASE}"
 	mkdir -p ${RELEASE_DIR}
 	scripts/gen-release-page ${RELEASE} > ${RELEASE_DIR}/index.md
 	scripts/gen-release-api-doc ${RELEASE} ${RELEASE_DIR}
@@ -50,11 +50,17 @@ gen-release:
 
 gen-proton-release: RELEASE_DIR := input/releases/qpid-proton-${RELEASE}
 gen-proton-release:
-	test -n ${RELEASE}
+	test -n "${RELEASE}"
 	mkdir -p ${RELEASE_DIR}
 	scripts/gen-proton-release-page ${RELEASE} > ${RELEASE_DIR}/index.md
 	scripts/gen-proton-release-api-doc ${RELEASE} ${RELEASE_DIR}
 	scripts/gen-proton-release-examples ${RELEASE} ${RELEASE_DIR}
+
+gen-proton-release-notes: RELEASE_DIR := input/releases/qpid-proton-${RELEASE}
+gen-proton-release-notes:
+	test -n "${RELEASE}"
+	mkdir -p ${RELEASE_DIR}
+	scripts/gen-proton-release-notes ${RELEASE} ${RELEASE_DIR}
 
 regen-release-pages:
 	scripts/gen-release-page 0.22 > input/releases/qpid-0.22/index.md
