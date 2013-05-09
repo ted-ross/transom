@@ -46,6 +46,7 @@ find previous versions with our
 
 ### C
 
+ - [API reference](@current-proton-release-url@/protocol-engine/c/api/messenger_8h.html)
  - [Examples](@current-proton-release-url@/messenger/c/examples/index.html)
  
 ### Java

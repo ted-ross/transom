@@ -51,6 +51,7 @@ files you download.
 
 ### AMQP Protocol Engine
 
+ - [C API reference](protocol-engine/c/api/index.html)
  - [Java API reference](protocol-engine/java/api/index.html)
  - [Python API reference](protocol-engine/python/api/index.html)
 
@@ -59,6 +60,7 @@ files you download.
 
 ### AMQP Messenger
 
+ - [C API reference](protocol-engine/c/api/messenger_8h.html)
  - [C examples](messenger/c/examples/index.html)
  - [Java API reference](protocol-engine/java/api/org/apache/qpid/proton/messenger/Messenger.html)
  - [Perl examples](messenger/perl/examples/index.html)
