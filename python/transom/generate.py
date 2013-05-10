@@ -288,7 +288,20 @@ def _import_issues(project, release):
 
     query = list()
     query.append("project = '{}'".format(project))
-    query.append("fixVersion = '{}'".format(release)) # XXX
+
+    if project == "qpid":
+        version = float(release)
+        devel_version = version - 0.01
+        prev_version = version - 0.02
+        devel_version = "{:0.2f}".format(devel_version)
+        prev_version = "{:0.2f}".format(prev_version)
+        
+        args = devel_version, release
+        query.append("fixVersion in ('{}', '{}')".format(*args))
+        query.append("fixVersion != '{}'".format(prev_version))
+    else:
+        query.append("fixVersion = '{}'".format(release))
+
     query = " and ".join(query)
 
     params = urllib.urlencode({"jqlQuery": query})
