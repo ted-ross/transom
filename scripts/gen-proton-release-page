@@ -18,44 +18,16 @@
 # under the License.
 #
 
-import sys, os, urllib, string
-
-version = sys.argv[1]
+from transom.generate import *
 
 download_records = (
     ("qpid-proton-{}.tar.gz", "AMQP Messenger, AMQP Protocol Engine"),
     )
 
-download_rows = list()
-
-for artifact, summary in download_records:
-    artifact = artifact.format(version)
-    artifact_url = "http://www.apache.org/dist/qpid/proton/{}/{}".format(version, artifact)
-    sig_url = "http://www.apache.org/dist/qpid/proton/{}/{}.asc".format(version, artifact)
-
-    args = summary, artifact, artifact_url, sig_url
-    row = "|| {} || [{}]({}) || [PGP]({}) ||".format(*args)
-
-    download_rows.append(row)
-
-downloads = "\n  ".join(download_rows)
-
 component_records = (
     ("messenger", "AMQP Messenger", "C, Java, Perl, PHP, Python, Ruby", "Linux, OS X, JVM", "1.0"),
     ("protocol-engine", "AMQP Protocol Engine", "C, Java, Perl, PHP, Python, Ruby", "Linux, OS X, JVM", "1.0"),
     )
-
-component_rows = list()
-
-for key, name, languages, platforms, amqp_versions in component_records:
-    link = "[{}](@site-url@/components/{}/index.html)".format(name, key)
-    args = link, languages, platforms, amqp_versions
-    component_rows.append("|| {} || {} || {} || {} ||".format(*args))
-
-components = "\n  ".join(component_rows)
-
-jql = "project = PROTON AND fixVersion = '{}' ORDER BY priority DESC".format(version)
-issues_url = "https://issues.apache.org/jira/issues/?jql={}".format(urllib.quote_plus(jql))
 
 template = \
 """
@@ -78,15 +50,14 @@ template = \
 ;; under the License.
 ;;
 
-# Qpid Proton {version}
+# Qpid Proton {release}
 
 Proton is a high-performance, lightweight messaging library. More
 about [Qpid
 Proton](file:///home/jross/transom/output/proton/index.html).
 
-## Changes
-
- - [Release notes](release-notes.html)
+For a detailed list of the changes in this release, see the [release
+notes](release-notes.html).
 
 ## Downloads
 
@@ -109,7 +80,7 @@ files you download.
 
 ### Installation
 
- - [Installing Qpid Proton](http://svn.apache.org/repos/asf/qpid/proton/tags/{version}/README)
+ - [Installing Qpid Proton](http://svn.apache.org/repos/asf/qpid/proton/tags/{release}/README)
 
 ### AMQP Protocol Engine
 
@@ -136,13 +107,46 @@ files you download.
 
 ## More information
 
- - [All release artefacts](http://www.apache.org/dist/qpid/proton/{version})
+ - [All release artefacts](http://www.apache.org/dist/qpid/proton/{release})
  - [Resolved issues in JIRA]({issues_url})
- - [Source repository branch](http://svn.apache.org/repos/asf/qpid/proton/branches/{version})
- - [Source repository tag](http://svn.apache.org/repos/asf/qpid/proton/tags/{version})
+ - [Source repository branch](http://svn.apache.org/repos/asf/qpid/proton/branches/{release})
+ - [Source repository tag](http://svn.apache.org/repos/asf/qpid/proton/tags/{release})
 """
 
-output = template.format(**locals())
-output = output.strip()
+def gen_release_page(release, release_dir):
+    output_path = join(release_dir, "index.md")
 
-print output
+    downloads = list()
+    components = list()
+
+    for artifact, summary in download_records:
+        artifact = artifact.format(release)
+        artifact_url = "http://www.apache.org/dist/qpid/proton/{}/{}".format(release, artifact)
+        sig_url = "http://www.apache.org/dist/qpid/proton/{}/{}.asc".format(release, artifact)
+
+        args = summary, artifact, artifact_url, sig_url
+        downloads.append("|| {} || [{}]({}) || [PGP]({}) ||".format(*args))
+
+    for key, name, languages, platforms, amqp_versions in component_records:
+        link = "[{}](@site-url@/components/{}/index.html)".format(name, key)
+        args = link, languages, platforms, amqp_versions
+        components.append("|| {} || {} || {} || {} ||".format(*args))
+
+    downloads = "\n  ".join(downloads)
+    components = "\n  ".join(components)
+
+    jql = "project = PROTON AND fixVersion = '{}' ORDER BY priority DESC".format(release)
+    issues_url = "https://issues.apache.org/jira/issues/?jql={}".format(urllib.quote_plus(jql))
+
+    output = template.format(**locals())
+    output = output.strip()
+
+    write(output_path, output)
+
+if len(sys.argv) != 3:
+    sys.exit("Usage: script RELEASE RELEASE-DIR")
+
+release = sys.argv[1]
+release_dir = sys.argv[2]
+
+gen_release_page(release, release_dir)

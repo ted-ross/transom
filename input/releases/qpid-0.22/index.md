@@ -20,12 +20,11 @@
 # Qpid 0.22
 
 Qpid is a cross-platform AMQP messaging system.  It provides message
-brokers written in C++ and Java, and clients for C++, C#, JMS, Perl,
-Python, and Ruby.  More about [Qpid](@site-url@/index.html).
+brokers written in C++ and Java, and clients for C++, Java, Perl,
+Python, Ruby, and .NET.  More about [Qpid](@site-url@/index.html).
 
-## Changes
-
- - [Release notes](release-notes.html)
+For a detailed list of the changes in this release, see the [release
+notes](release-notes.html).
 
 ## Downloads
 
@@ -56,7 +55,7 @@ available in the full source artefact.
   || [Qpid JCA](@site-url@/components/qpid-jca/index.html) || Java || JVM || 0-10 ||
   || [Qpid JMS](@site-url@/components/qpid-jms/index.html) || Java || JVM || 1.0, 0-10, 0-91, 0-9, 0-8 ||
   || [Qpid Messaging API](@site-url@/components/messaging-api/index.html) || C++, Perl, Python, Ruby, .NET || Linux, Windows || 1.0, 0-10 ||
-  || [Qpid WCF](@site-url@/components/qpid-wcf/index.html) || C# || Windows || 0-10 ||
+  || [Qpid WCF](@site-url@/components/qpid-wcf/index.html) || .NET || Windows || 0-10 ||
   || [QMF](@site-url@/components/qmf/index.html) || C++, Python || Linux || 0-10 ||
 
 ## Documentation

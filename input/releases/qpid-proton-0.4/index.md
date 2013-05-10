@@ -23,9 +23,8 @@ Proton is a high-performance, lightweight messaging library. More
 about [Qpid
 Proton](file:///home/jross/transom/output/proton/index.html).
 
-## Changes
-
- - [Release notes](release-notes.html)
+For a detailed list of the changes in this release, see the [release
+notes](release-notes.html).
 
 ## Downloads
 

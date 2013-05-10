@@ -290,9 +290,8 @@ def _import_issues(project, release):
     query.append("project = '{}'".format(project))
 
     if project == "qpid":
-        version = float(release)
-        devel_version = version - 0.01
-        prev_version = version - 0.02
+        devel_version = float(release) - 0.01
+        prev_version = devel_version - 0.01
         devel_version = "{:0.2f}".format(devel_version)
         prev_version = "{:0.2f}".format(prev_version)
         

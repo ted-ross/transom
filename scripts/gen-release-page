@@ -18,15 +18,7 @@
 # under the License.
 #
 
-import os, string, sys, urllib
-
-version = sys.argv[1]
-version = float(version)
-
-devel_version = version - 0.01
-
-version = "{:0.2f}".format(version)
-devel_version = "{:0.2f}".format(devel_version)
+from transom.generate import *
 
 download_records = (
     ("qpid-{}.tar.gz", "Full source"),
@@ -40,20 +32,6 @@ download_records = (
     ("qpid-qmf-{}.tar.gz", "QMF"),
     )
 
-download_rows = list()
-
-for artifact, summary in download_records:
-    artifact = artifact.format(version)
-    artifact_url = "http://www.apache.org/dist/qpid/{}/{}".format(version, artifact)
-    sig_url = "http://www.apache.org/dist/qpid/{}/{}.asc".format(version, artifact)
-
-    args = summary, artifact, artifact_url, sig_url
-    row = "|| {} || [{}]({}) || [PGP]({}) ||".format(*args)
-
-    download_rows.append(row)
-
-downloads = "\n  ".join(download_rows)
-
 component_records = (
     ("cpp-broker", "C++ broker", "C++", "Linux, Windows", "1.0, 0-10"),
     ("cpp-broker-tools", "C++ broker command-line tools", "-", "Linux", "0-10"),
@@ -61,22 +39,9 @@ component_records = (
     ("qpid-jca", "Qpid JCA", "Java", "JVM", "0-10"),
     ("qpid-jms", "Qpid JMS", "Java", "JVM", "1.0, 0-10, 0-91, 0-9, 0-8"),
     ("messaging-api", "Qpid Messaging API", "C++, Perl, Python, Ruby, .NET", "Linux, Windows", "1.0, 0-10"),
-    ("qpid-wcf", "Qpid WCF", "C#", "Windows", "0-10"),
+    ("qpid-wcf", "Qpid WCF", ".NET", "Windows", "0-10"),
     ("qmf", "QMF", "C++, Python", "Linux", "0-10"),
     )
-
-component_rows = list()
-
-for key, name, languages, platforms, amqp_versions in component_records:
-    link = "[{}](@site-url@/components/{}/index.html)".format(name, key)
-    args = link, languages, platforms, amqp_versions
-    component_rows.append("|| {} || {} || {} || {} ||".format(*args))
-
-components = "\n  ".join(component_rows)
-
-args = devel_version, version
-jql = "project = QPID AND fixVersion in ('{}', '{}') ORDER BY priority DESC".format(*args)
-issues_url = "https://issues.apache.org/jira/issues/?jql={}".format(urllib.quote_plus(jql))
 
 template = \
 """
@@ -99,15 +64,14 @@ template = \
 ;; under the License.
 ;;
 
-# Qpid {version}
+# Qpid {release}
 
 Qpid is a cross-platform AMQP messaging system.  It provides message
-brokers written in C++ and Java, and clients for C++, C#, JMS, Perl,
-Python, and Ruby.  More about [Qpid](@site-url@/index.html).
+brokers written in C++ and Java, and clients for C++, Java, Perl,
+Python, Ruby, and .NET.  More about [Qpid](@site-url@/index.html).
 
-## Changes
-
- - [Release notes](release-notes.html)
+For a detailed list of the changes in this release, see the [release
+notes](release-notes.html).
 
 ## Downloads
 
@@ -134,8 +98,8 @@ available in the full source artefact.
 ### Installation
 
  - [Installing and Using Qpid Java](https://cwiki.apache.org/qpid/getting-started-guide.html)
- - [Installing Qpid C++](http://svn.apache.org/repos/asf/qpid/tags/{version}/qpid/cpp/INSTALL)
- - [Installing Qpid Python](http://svn.apache.org/repos/asf/qpid/tags/{version}/qpid/python/README.txt)
+ - [Installing Qpid C++](http://svn.apache.org/repos/asf/qpid/tags/{release}/qpid/cpp/INSTALL)
+ - [Installing Qpid Python](http://svn.apache.org/repos/asf/qpid/tags/{release}/qpid/python/README.txt)
 
 ### C++ Broker
 
@@ -154,8 +118,8 @@ available in the full source artefact.
 
 ### Qpid JCA
 
- - [README](http://svn.apache.org/repos/asf/qpid/tags/{version}/qpid/java/jca/README.txt)
- - [Examples](http://svn.apache.org/repos/asf/qpid/tags/{version}/qpid/java/jca/example/)
+ - [README](http://svn.apache.org/repos/asf/qpid/tags/{release}/qpid/java/jca/README.txt)
+ - [Examples](http://svn.apache.org/repos/asf/qpid/tags/{release}/qpid/java/jca/example/)
 
 </div>
 <div class="column" markdown="1">
@@ -180,23 +144,62 @@ available in the full source artefact.
 
 ### Qpid WCF
 
- - [README](http://svn.apache.org/repos/asf/qpid/tags/{version}/qpid/wcf/ReadMe.txt)
+ - [README](http://svn.apache.org/repos/asf/qpid/tags/{release}/qpid/wcf/ReadMe.txt)
  - [Using the Qpid WCF client](programming/book/index.html#QpidWCF) ([PDF](programming/programming-book.pdf))
  - [API reference](http://msdn.microsoft.com/en-us/library/vstudio/ms735119\(v=vs.90\).aspx)
- - [Examples](http://svn.apache.org/repos/asf/qpid/tags/{version}/qpid/wcf/samples)
+ - [Examples](http://svn.apache.org/repos/asf/qpid/tags/{release}/qpid/wcf/samples)
 
 </div>
 </div>
 
 ## More information
 
- - [All release artefacts](http://www.apache.org/dist/qpid/{version})
+ - [All release artefacts](http://www.apache.org/dist/qpid/{release})
  - [Resolved issues in JIRA]({issues_url})
- - [Source repository branch](http://svn.apache.org/repos/asf/qpid/branches/{version})
- - [Source repository tag](http://svn.apache.org/repos/asf/qpid/tags/{version})
+ - [Source repository branch](http://svn.apache.org/repos/asf/qpid/branches/{release})
+ - [Source repository tag](http://svn.apache.org/repos/asf/qpid/tags/{release})
 """
 
-output = template.format(**locals())
-output = output.strip()
+def gen_release_page(release, release_dir):
+    output_path = join(release_dir, "index.md")
 
-print output
+    devel_version = float(release) - 0.01
+    devel_version = "{:0.2f}".format(devel_version)
+
+    downloads = list()
+    components = list()
+
+    for artifact, summary in download_records:
+        artifact = artifact.format(release)
+        artifact_url = "http://www.apache.org/dist/qpid/{}/{}".format(release, artifact)
+        sig_url = "http://www.apache.org/dist/qpid/{}/{}.asc".format(release, artifact)
+
+        args = summary, artifact, artifact_url, sig_url
+        row = "|| {} || [{}]({}) || [PGP]({}) ||".format(*args)
+
+        downloads.append(row)
+
+    for key, name, languages, platforms, amqp_versions in component_records:
+        link = "[{}](@site-url@/components/{}/index.html)".format(name, key)
+        args = link, languages, platforms, amqp_versions
+        components.append("|| {} || {} || {} || {} ||".format(*args))
+
+    downloads = "\n  ".join(downloads)
+    components = "\n  ".join(components)
+
+    args = devel_version, release
+    jql = "project = QPID AND fixVersion in ('{}', '{}') ORDER BY priority DESC".format(*args)
+    issues_url = "https://issues.apache.org/jira/issues/?jql={}".format(urllib.quote_plus(jql))
+
+    output = template.format(**locals())
+    output = output.strip()
+
+    write(output_path, output)
+
+if len(sys.argv) != 3:
+    sys.exit("Usage: script RELEASE RELEASE-DIR")
+
+release = sys.argv[1]
+release_dir = sys.argv[2]
+
+gen_release_page(release, release_dir)

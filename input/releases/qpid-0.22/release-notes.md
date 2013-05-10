@@ -20,13 +20,16 @@
 # Qpid 0.22 Release Notes
 
 Qpid is a cross-platform AMQP messaging system.  It provides message
-brokers written in C++ and Java, and clients for C++, C#, JMS, Perl,
-Python, and Ruby.  More about [Qpid](@site-url@/index.html).
+brokers written in C++ and Java, and clients for C++, Java, Perl,
+Python, Ruby, and .NET.  More about [Qpid](@site-url@/index.html).
 
 The full list of changes in the Qpid 0.22 release incorporates
 both the issues worked on during the 0.21 development
 stream and any final touches made during the 0.22 release
 process. A list of these JIRA issues can be found below.
+
+For more information about this release, including download links and
+documentation, see the [release overview](index.html).
 
 
 ## New features and improvements

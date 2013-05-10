@@ -1,5 +1,9 @@
-.PHONY: default help render check-links clean publish \
-	gen-release gen-proton-release regen-release-pages
+gen-targets := gen-release gen-release-page gen-release-notes \
+	gen-release-api-doc gen-release-examples gen-release-books
+proton-gen-targets := gen-proton-release gen-proton-release-page \
+	gen-proton-release-notes gen-proton-release-api-doc gen-proton-release-examples
+
+.PHONY: default help render check-links clean publish ${gen-targets} ${proton-gen-targets}
 
 OUTPUT_DIR := output
 SITE_URL := file://$(shell readlink -f ${OUTPUT_DIR})
@@ -8,8 +12,11 @@ default: render
 
 help:
 	@echo "render (the default)"
+	@echo "check-links"
 	@echo "clean"
 	@echo "publish"
+	@echo "gen-release RELEASE=\$VERSION"
+	@echo "gen-proton-release RELEASE=\$VERSION"
 
 render: clean
 	mkdir -p ${OUTPUT_DIR}
@@ -39,29 +46,25 @@ publish-devel: render
 	rsync -av ${OUTPUT_DIR}/ jross@people.apache.org:public_html/transom/${TAG}
 	rm -rf ${OUTPUT_DIR}
 
-gen-release: RELEASE_DIR := input/releases/qpid-${RELEASE}
 gen-release:
-	test -n "${RELEASE}"
-	mkdir -p ${RELEASE_DIR}
-	scripts/gen-release-page ${RELEASE} > ${RELEASE_DIR}/index.md
-	scripts/gen-release-notes ${RELEASE} ${RELEASE_DIR}
-	scripts/gen-release-api-doc ${RELEASE} ${RELEASE_DIR}
-	scripts/gen-release-books ${RELEASE} ${RELEASE_DIR}
-	scripts/gen-release-examples ${RELEASE} ${RELEASE_DIR}
+	gen-release-page
+	gen-release-notes
+	gen-release-api-doc
+	gen-release-examples
+	gen-release-books
 
-gen-proton-release: RELEASE_DIR := input/releases/qpid-proton-${RELEASE}
-gen-proton-release:
-	test -n "${RELEASE}"
-	mkdir -p ${RELEASE_DIR}
-	scripts/gen-proton-release-page ${RELEASE} > ${RELEASE_DIR}/index.md
-	scripts/gen-proton-release-notes ${RELEASE} ${RELEASE_DIR}
-	scripts/gen-proton-release-api-doc ${RELEASE} ${RELEASE_DIR}
-	scripts/gen-proton-release-examples ${RELEASE} ${RELEASE_DIR}
+gen-proton-release: 
+	gen-proton-release-page
+	gen-proton-release-notes
+	gen-proton-release-api-doc
+	gen-proton-release-examples
 
-regen-release-pages:
-	scripts/gen-release-page 0.22 > input/releases/qpid-0.22/index.md
-	scripts/gen-release-page 0.20 > input/releases/qpid-0.20/index.md
-	scripts/gen-release-page-pre-0.20 0.18 > input/releases/qpid-0.18/index.md
-	scripts/gen-release-page-pre-0.20 0.16 > input/releases/qpid-0.16/index.md
-	scripts/gen-release-page-pre-0.20 0.14 > input/releases/qpid-0.14/index.md
-	scripts/gen-proton-release-page 0.4 > input/releases/qpid-proton-0.4/index.md
+gen-release-%: RELEASE_DIR := input/releases/qpid-${RELEASE}
+gen-release-%:
+	test -n "${RELEASE}" && mkdir -p ${RELEASE_DIR}
+	scripts/gen-release-$* ${RELEASE} ${RELEASE_DIR}
+
+gen-proton-release-%: RELEASE_DIR := input/releases/qpid-proton-${RELEASE}
+gen-proton-release-%:
+	test -n "${RELEASE}" && mkdir -p ${RELEASE_DIR}
+	scripts/gen-proton-release-$* ${RELEASE} ${RELEASE_DIR}
