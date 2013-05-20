@@ -74,7 +74,7 @@ body {
     margin: 0 auto;
     font-family: "Roboto Condensed", sans-serif;
     font-weight: 300;
-    font-size: 13pt;
+    font-size: 13.5pt;
     background: -webkit-linear-gradient(top, #fcfcfa, #f7f7ef 100%) no-repeat, #f7f7ef;
     background: linear-gradient(to bottom, #fcfcfa, #f7f7ef 100%) no-repeat, #f7f7ef;
 }
@@ -119,6 +119,7 @@ a#developer-link:hover {
 }
 
 ul#global-navigation {
+    font-size: 0.95em;
     margin: 0;
     padding: 0;
 }
@@ -191,7 +192,6 @@ div#left {
 }
 
 div#welcome {
-    font-size: 1.1em;
     padding: 0.8em 1em;
     border: 1px solid #ecece0;
     border-radius: 0.3em;
@@ -229,7 +229,7 @@ div#download h2 {
     display: inline;
     font-weight: 400;
     color: #0d6dad;
-    border: 0.15em solid #0d6dad;
+    border: 0.1em solid #0d6dad;
     border-radius: 0.3em;
     background: -webkit-linear-gradient(top, white, #f7f7ef 10%, #f7f7ef 95%, #d4d4ca) no-repeat, #f7f7ef;
     background: linear-gradient(to bottom, white, #f7f7ef 10%, #f7f7ef 95%, #d4d4ca) no-repeat, #f7f7ef;
@@ -238,7 +238,7 @@ div#download h2 {
 
 div#download h2:hover {
     color: rgb(63, 159, 255);
-    border: 0.15em solid rgb(63, 159, 255);
+    border: 0.1em solid rgb(63, 159, 255);
 }
 
 div#bottom {
@@ -264,7 +264,7 @@ h1 {
 
 h1.nameplate {
     color: black;
-    font-size: 3em;
+    font-size: 2.9em;
     margin: 0.2em 0 0.5em 0;
 }
 
@@ -386,7 +386,7 @@ form button {
     background: linear-gradient(to bottom, white, #f7f7ef 10%, #f7f7ef 98%, #d4d4ca) no-repeat, #f7f7ef;
     padding: 0 0.4em 0.1em 0.4em;
     font-size: 0.95em;
-    vertical-align: 0.1em;
+    vertical-align: 0.05em;
 }
 
 form#jira-goto-form {
