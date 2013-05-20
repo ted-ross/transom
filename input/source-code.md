@@ -51,11 +51,12 @@ the contents of
 
 Consult the install documentation below.
 
- - [Installing Qpid C++](http://svn.apache.org/repos/asf/qpid/trunk/qpid/cpp/INSTALL)
- - [Installing Qpid Proton](http://svn.apache.org/repos/asf/qpid/proton/trunk/README)
- - [Installing Qpid WCF](http://svn.apache.org/repos/asf/qpid/trunk/qpid/wcf/ReadMe.txt)
  - [How to build Qpid Java](https://cwiki.apache.org/qpid/qpid-java-build-how-to.html)
  - [Installing and Using Qpid Java](https://cwiki.apache.org/qpid/getting-started-guide.html)
+ - [Installing Qpid C++](http://svn.apache.org/repos/asf/qpid/trunk/qpid/cpp/INSTALL)
+ - [Installing Qpid Proton](http://svn.apache.org/repos/asf/qpid/proton/trunk/README)
+ - [Installing Qpid Python](http://svn.apache.org/repos/asf/qpid/trunk/qpid/python/README.txt)
+ - [Installing Qpid WCF](http://svn.apache.org/repos/asf/qpid/trunk/qpid/wcf/ReadMe.txt)
 
 ## Git
 
