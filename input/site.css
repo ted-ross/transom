@@ -219,7 +219,6 @@ div#right h2 {
 
 div#download {
     margin: 0 0 1.6em 0;
-    font-size: 0.9em;
     position: relative;
     top: 0.35em;
 }
@@ -229,7 +228,7 @@ div#download h2 {
     display: inline;
     font-weight: 400;
     color: #0d6dad;
-    border: 0.1em solid #0d6dad;
+    border: 0.15em solid #0d6dad;
     border-radius: 0.3em;
     background: -webkit-linear-gradient(top, white, #f7f7ef 10%, #f7f7ef 95%, #d4d4ca) no-repeat, #f7f7ef;
     background: linear-gradient(to bottom, white, #f7f7ef 10%, #f7f7ef 95%, #d4d4ca) no-repeat, #f7f7ef;
@@ -238,7 +237,7 @@ div#download h2 {
 
 div#download h2:hover {
     color: rgb(63, 159, 255);
-    border: 0.1em solid rgb(63, 159, 255);
+    border: 0.15em solid rgb(63, 159, 255);
 }
 
 div#bottom {
@@ -258,7 +257,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font-size: 2em;
+    font-size: 1.8em;
     margin: 0 0 0.3em 0;
 }
 
@@ -294,7 +293,7 @@ h1.logotype a {
 }
 
 h2 {
-    font-size: 1.25em;
+    font-size: 1.1em;
 }
 
 h3 {
@@ -302,7 +301,8 @@ h3 {
 }
 
 h4 {
-    font-size: 0.85em;
+    font-size: 0.95em;
+    font-weight: 300;
 }
 
 ol, ul {
