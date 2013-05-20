@@ -25,23 +25,24 @@ contributions.  If you'd like to become a contributor, learn how to
 
 ## Current committers
 
-As of 1 February 2013, the following committers have been active since
-1 January 2012.
+;; Use the output of scripts/list-current-committers to refresh this list
+
+As of 20 May 2013, the following committers have been active in the
+past year.
 
 <div class="four-column" markdown="1">
   - Alan Conway
-  - Andrew Kennedy
   - Andrew Stitcher
   - Chuck Rolke
   - Cliff Jansen
   - Darryl Pierce
+  - Fraser Adams
   - Gordon Sim
   - Justin Ross
   - Keith Wall
   - Ken Giusti
   - Kim van der Riet
   - Mick Goulish
-  - Nuno Santos
   - Oleksandr Rudyy
   - Phil Harvey
   - Rafael Schloming
@@ -58,6 +59,7 @@ As of 1 February 2013, the following committers have been active since
 <div class="four-column" markdown="1">
   - Aidan Skinner
   - Andrea Gazzarini
+  - Andrew Kennedy
   - Arnaud Simon
   - Carl Trieloff
   - Jim Meyering
@@ -67,6 +69,7 @@ As of 1 February 2013, the following committers have been active since
   - Manuel Teira
   - Marnie McCormack
   - Martin Ritchie
+  - Nuno Santos
   - Paul Fremantle
   - Robert Greig
   - Rupert Smith
