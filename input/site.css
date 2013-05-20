@@ -192,6 +192,7 @@ div#left {
 }
 
 div#welcome {
+    font-size: 1.05em;
     padding: 0.8em 1em;
     border: 1px solid #ecece0;
     border-radius: 0.3em;

@@ -1,5 +1,10 @@
 # Documentation
 
+The documentation on this page is for our current releases,
+@current-release-link@ and @current-proton-release-link@.  You can
+find older versions with our
+[past releases](@site-url@/releases/index.html#past-releases).
+
 <div class="two-column" markdown="1">
 <div class="column" markdown="1">
 
