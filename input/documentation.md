@@ -46,7 +46,7 @@ find older versions with our
 ### Qpid Messaging API
 
  - [Overview](@site-url@/components/messaging-api/index.html)
- - [Programming in Apache Qpid](@current-release-url@/programming/book/index.html) ([PDF](@current-release-url@/programming/programming-book.pdf))
+ - [Using the Qpid Messaging API](@current-release-url@/programming/book/index.html) ([PDF](@current-release-url@/programming/programming-book.pdf))
  - [.NET API reference](@current-release-url@/messaging-api/dotnet/api/index.html)
  - [.NET examples](@current-release-url@/messaging-api/dotnet/examples/index.html)
  - [C++ API reference](@current-release-url@/messaging-api/cpp/api/index.html)

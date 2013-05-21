@@ -60,7 +60,7 @@ gen-proton-release:
 	gen-proton-release-examples
 
 gen-release-%: RELEASE_DIR := input/releases/qpid-${RELEASE}
-gen-release-%:
+gen-release-%: FORCE
 	test -n "${RELEASE}" && mkdir -p ${RELEASE_DIR}
 	scripts/gen-release-$* ${RELEASE} ${RELEASE_DIR}
 

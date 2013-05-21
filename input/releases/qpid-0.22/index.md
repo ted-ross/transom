@@ -60,8 +60,7 @@ available in the full source artefact.
 
 ## Documentation
 
-<div class="two-column" markdown="1">
-<div class="column" markdown="1">
+<div class="three-column" markdown="1">
 
 ### Installation
 
@@ -89,9 +88,6 @@ available in the full source artefact.
  - [README](http://svn.apache.org/repos/asf/qpid/tags/0.22/qpid/java/jca/README.txt)
  - [Examples](http://svn.apache.org/repos/asf/qpid/tags/0.22/qpid/java/jca/example/)
 
-</div>
-<div class="column" markdown="1">
-
 ### Qpid JMS
 
  - [Using the Qpid JMS client](programming/book/index.html#QpidJMS) ([PDF](programming/programming-book.pdf))
@@ -100,7 +96,7 @@ available in the full source artefact.
 
 ### Qpid Messaging API
 
- - [Programming in Apache Qpid](programming/book/index.html) ([PDF](programming/programming-book.pdf))
+ - [Using the Qpid Messaging API](programming/book/index.html) ([PDF](programming/programming-book.pdf))
  - [.NET API reference](messaging-api/dotnet/api/index.html)
  - [.NET examples](messaging-api/dotnet/examples/index.html)
  - [C++ API reference](messaging-api/cpp/api/index.html)
@@ -117,7 +113,6 @@ available in the full source artefact.
  - [API reference](http://msdn.microsoft.com/en-us/library/vstudio/ms735119\(v=vs.90\).aspx)
  - [Examples](http://svn.apache.org/repos/asf/qpid/tags/0.22/qpid/wcf/samples)
 
-</div>
 </div>
 
 ## More information

@@ -34,7 +34,7 @@ This is the documentation for the current released version.  You can
 find previous versions with our
 [past releases](@site-url@/releases/index.html#past-releases).
 
- - [Programming in Apache Qpid](@current-release-url@/programming/book/index.html)
+ - [Using the Qpid Messaging API](@current-release-url@/programming/book/index.html)
 
 <div class="two-column" markdown="1">
 <div class="column" markdown="1">
