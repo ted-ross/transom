@@ -5,17 +5,11 @@ The documentation on this page is for our current releases,
 find older versions with our
 [past releases](@site-url@/releases/index.html#past-releases).
 
-<div class="two-column" markdown="1">
-<div class="column" markdown="1">
+## Messaging APIs
 
-## AMQP Protocol Engine
+<div class="three-column" markdown="1">
 
- - [Overview](@site-url@/components/protocol-engine/index.html)
- - [C API reference](@current-proton-release-url@/protocol-engine/c/api/index.html)
- - [Java API reference](@current-proton-release-url@/protocol-engine/java/api/index.html)
- - [Python API reference](@current-proton-release-url@/protocol-engine/python/api/index.html)
-
-## AMQP Messenger
+### AMQP Messenger
 
  - [Overview](@site-url@/components/messenger/index.html)
  - [C API reference](@current-proton-release-url@/protocol-engine/c/api/messenger_8h.html)
@@ -27,41 +21,27 @@ find older versions with our
  - [Python examples](@current-proton-release-url@/messenger/python/examples/index.html)
  - [Ruby examples](@current-proton-release-url@/messenger/ruby/examples/index.html)
 
-## C++ Broker
+### AMQP Protocol Engine
 
- - [Overview](@site-url@/components/cpp-broker/index.html)
- - [C++ broker book](@current-release-url@/cpp-broker/book/index.html) ([PDF](@current-release-url@/cpp-broker/cpp-broker-book.pdf))
+ - [Overview](@site-url@/components/protocol-engine/index.html)
+ - [C API reference](@current-proton-release-url@/protocol-engine/c/api/index.html)
+ - [Java API reference](@current-proton-release-url@/protocol-engine/java/api/index.html)
+ - [Python API reference](@current-proton-release-url@/protocol-engine/python/api/index.html)
 
-## Java Broker
-
- - [Overview](@site-url@/components/java-broker/index.html)
- - [Java broker book](@current-release-url@/java-broker/book/index.html) ([PDF](@current-release-url@/java-broker/java-broker-book.pdf))
-
-## QMF
- 
- - [Overview](@site-url@/components/qmf/index.html)
- - [C++ API reference](@current-release-url@/qmf/cpp/api/index.html)
- - [C++ examples](@current-release-url@/qmf/cpp/examples/index.html)
- - [Python examples](@current-release-url@/qmf/python/examples/index.html)
- - [Ruby examples](@current-release-url@/qmf/ruby/examples/index.html)
-
-</div>
-<div class="column" markdown="1">
-
-## Qpid JCA
+### Qpid JCA
 
  - [Overview](@site-url@/components/qpid-jca/index.html)
  - [README](@current-release-tag@/qpid/java/jca/README.txt)
  - [Examples](@current-release-tag@/qpid/java/jca/example/)
 
-## Qpid JMS
+### Qpid JMS
 
  - [Overview](@site-url@/components/qpid-jms/index.html)
  - [Using the Qpid JMS client](@current-release-url@/programming/book/index.html#QpidJMS) ([PDF](@current-release-url@/programming/programming-book.pdf))
  - [API reference](http://docs.oracle.com/javaee/1.4/api/javax/jms/package-summary.html)
  - [Examples](@current-release-url@/qpid-jms/examples/index.html)
 
-## Qpid Messaging API
+### Qpid Messaging API
 
  - [Overview](@site-url@/components/messaging-api/index.html)
  - [Programming in Apache Qpid](@current-release-url@/programming/book/index.html) ([PDF](@current-release-url@/programming/programming-book.pdf))
@@ -74,7 +54,7 @@ find older versions with our
  - [Ruby API reference](@current-release-url@/messaging-api/ruby/api/index.html)
  - [Ruby examples](@current-release-url@/messaging-api/ruby/examples/index.html)
 
-## Qpid WCF
+### Qpid WCF
 
  - [Overview](@site-url@/components/qpid-wcf/index.html)
  - [README](@current-release-tag@/qpid/wcf/ReadMe.txt)
@@ -83,8 +63,38 @@ find older versions with our
  - [Examples](@current-release-tag@/qpid/wcf/samples)
 
 </div>
+
+## Servers and tools
+
+<div class="three-column" markdown="1">
+
+### C++ broker
+
+ - [Overview](@site-url@/components/cpp-broker/index.html)
+ - [C++ broker book](@current-release-url@/cpp-broker/book/index.html) ([PDF](@current-release-url@/cpp-broker/cpp-broker-book.pdf))
+
+### C++ broker command-line tools
+
+ - [Overview](@site-url@/components/cpp-broker-tools/index.html)
+ - [Managing the C++ broker](@current-release-url@/cpp-broker/book/index.html#section-Managing-CPP-Broker)
+
+### Java broker
+
+ - [Overview](@site-url@/components/java-broker/index.html)
+ - [Java broker book](@current-release-url@/java-broker/book/index.html) ([PDF](@current-release-url@/java-broker/java-broker-book.pdf))
+
+### QMF
+ 
+ - [Overview](@site-url@/components/qmf/index.html)
+ - [C++ API reference](@current-release-url@/qmf/cpp/api/index.html)
+ - [C++ examples](@current-release-url@/qmf/cpp/examples/index.html)
+ - [Python examples](@current-release-url@/qmf/python/examples/index.html)
+ - [Ruby examples](@current-release-url@/qmf/ruby/examples/index.html)
+
 </div>
 
 ## More information
 
+ - [Qpid messaging APIs](@site-url@/components/index.html#messaging-apis)
+ - [Qpid servers and tools](@site-url@/components/index.html#servers-and-tools)
  - [Trunk documentation](@site-url@/resources.html#trunk-documentation)

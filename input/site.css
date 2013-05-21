@@ -298,11 +298,11 @@ h2 {
 }
 
 h3 {
-    font-size: 0.95em;
+    font-size: 0.9em;
 }
 
 h4 {
-    font-size: 0.95em;
+    font-size: 0.9em;
     font-weight: 300;
 }
 
@@ -320,14 +320,20 @@ dd > dl {
     margin: 0 0 0 0.8em;
 }
 
-div.two-column, div.four-column {
-    margin: 0 0 0.8em 0;
+div.two-column, div.three-column, div.four-column {
+    margin: 0 0 1.2em 0;
 }
 
 div.two-column {
     -webkit-column-count: 2;
     -moz-column-count: 2;
     column-count: 2;
+}
+
+div.three-column {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
 }
 
 div.four-column {
