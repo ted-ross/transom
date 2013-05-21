@@ -306,6 +306,14 @@ h4 {
     font-weight: 300;
 }
 
+hr {
+    border-style: solid;
+    border: none;
+    border-top: 1px solid #d4d4ca;
+    margin: 0 0 0.8em 0;
+    height: 1px;
+}
+
 ol, ul {
     list-style-image: url(images/bullet.png);
     padding: 0 0 0 0.7em;

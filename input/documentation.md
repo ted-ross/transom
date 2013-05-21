@@ -7,6 +7,8 @@ find older versions with our
 
 ## Messaging APIs
 
+<hr/>
+
 <div class="three-column" markdown="1">
 
 ### AMQP Messenger
@@ -65,6 +67,8 @@ find older versions with our
 </div>
 
 ## Servers and tools
+
+<hr/>
 
 <div class="three-column" markdown="1">
 
