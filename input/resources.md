@@ -61,6 +61,7 @@ them.
 || || *Subscribe* || *Unsubscribe* ||
 || *Commits* || <commits-subscribe@qpid.apache.org> || <commits-unsubscribe@qpid.apache.org> ||
 || *Notifications* || <notifications-subscribe@qpid.apache.org> || <notifications-unsubscribe@qpid.apache.org> ||
+|| || Send "subscribe" in the subject || Send "unsubscribe in the subject" ||
 
 ## Trunk documentation
 

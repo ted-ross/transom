@@ -50,6 +50,7 @@ unsubscribe address.
 || || *Subscribe* || *Unsubscribe* ||
 || *Users* || <users-subscribe@qpid.apache.org> || <users-unsubscribe@qpid.apache.org> ||
 || *Developers* || <dev-subscribe@qpid.apache.org> || <dev-unsubscribe@qpid.apache.org> ||
+|| || Send "subscribe" in the subject || Send "unsubscribe" in the subject ||
 
 ### List resources
 
