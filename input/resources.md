@@ -30,7 +30,7 @@ would like your blog linked here.
  - [Sajini's Blog](http://sajinid.blogspot.com/) by Sajini De Silva
  - [Steve Huston's Networked Programming Blog](http://stevehuston.wordpress.com/) by Steve Huston
 
-## Code reviews
+## Code review
 
 Qpid contributors often use
 [Review Board](http://www.reviewboard.org/) to discuss patches.
