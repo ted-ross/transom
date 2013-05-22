@@ -102,6 +102,5 @@ find older versions with our
 
 ## More information
 
- - [Qpid messaging APIs](@site-url@/components/index.html#messaging-apis)
- - [Qpid servers and tools](@site-url@/components/index.html#servers-and-tools)
+ - More about [Qpid components](@site-url@/components/index.html)
  - [Trunk documentation](@site-url@/nightlies.html#trunk-documentation)
