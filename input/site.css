@@ -110,11 +110,15 @@ a#search-link {
     top: 0.15em;
 }
 
-a#developer-link {
+h2#developer-link {
+    margin: 0;
+}
+
+h2#developer-link a {
     color: black;
 }
 
-a#developer-link:hover {
+h2#developer-link a:hover {
     color: #0d6dad;
 }
 
@@ -204,6 +208,10 @@ div#welcome {
 
 div#welcome p:last-child {
     margin: 0;
+}
+
+div#components {
+    font-size: 1.05em;
 }
 
 div#right {

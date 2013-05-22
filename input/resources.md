@@ -79,6 +79,8 @@ them.
 
 ## More information
 
+ - [Qpid releases](@site-url@/releases/index.html)
+ - [Qpid components](@site-url@/components/index.html)
  - [About this site](site.html)
 
 ;; http://planet.apache.org/committers/
