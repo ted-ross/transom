@@ -23,7 +23,7 @@
 
 Qpid's messaging APIs can help you make your application speak AMQP.
 
- - [AMQP Messenger](messenger/index.html) - A simple but powerful message-oriented messaging API
+ - [AMQP Messenger](messenger/index.html) - A simple but powerful message-oriented API that supports many languages
  - [AMQP Protocol Engine](protocol-engine/index.html) - Fine-grained control over AMQP 1.0
  - [Qpid JCA](qpid-jca/index.html) - A JCA resource adapter for AMQP brokers
  - [Qpid JMS](qpid-jms/index.html) - An AMQP-fluent [Java Message Service](http://en.wikipedia.org/wiki/Java_Message_Service) implementation
