@@ -87,6 +87,8 @@ find older versions with our
  - [Overview](@site-url@/components/java-broker/index.html)
  - [Java broker book](@current-release-url@/java-broker/book/index.html) ([PDF](@current-release-url@/java-broker/java-broker-book.pdf))
 
+<div class="column" markdown="1">
+
 ### QMF
  
  - [Overview](@site-url@/components/qmf/index.html)
@@ -95,6 +97,7 @@ find older versions with our
  - [Python examples](@current-release-url@/qmf/python/examples/index.html)
  - [Ruby examples](@current-release-url@/qmf/ruby/examples/index.html)
 
+</div>
 </div>
 
 ## More information

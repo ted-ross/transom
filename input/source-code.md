@@ -44,8 +44,7 @@ To access the repository as a committer (note the use of *`https`*):
 When adding files to Subversion, it's important that the appropriate
 Subversion properties are set. The client can do it automatically by
 modifying the `auto-props` section of the Subversion config file.  Use
-the contents of
-<http://svn.apache.org/repos/asf/qpid/trunk/qpid/etc/svn-auto-props>.
+the contents of [qpid/etc/svn-auto-props](http://svn.apache.org/repos/asf/qpid/trunk/qpid/etc/svn-auto-props).
 
 ## Install the code
 
