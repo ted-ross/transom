@@ -40,6 +40,7 @@
 <div class="spacious" markdown="1">
 ![](@site-url@/images/logo-300-300.png) &#160;
 ![](@site-url@/images/logo-75-75.png) &#160;
+![](@site-url@/images/logo-65-65.png) &#160;
 ![](@site-url@/images/logo-50-50.png)
 
 [SVG source](@site-url@/images/logo.svg).  The "Q" is from the
