@@ -105,7 +105,7 @@ div#top a#logotype {
 
 a#search-link {
     float: right;
-    margin: 0 0 0 1.6em;
+    margin: 0 0 0 0.8em;
     position: relative;
     top: 0.15em;
 }
@@ -131,6 +131,10 @@ ul#global-navigation {
 ul#global-navigation li {
     display: inline;
     padding: 0 1.2em 0 0;
+}
+
+ul#global-navigation li:last-child {
+    padding-right: 0;
 }
 
 ul#global-navigation li.selected a {

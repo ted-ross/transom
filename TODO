@@ -17,6 +17,7 @@
    be converted to current version when 0.22 lands
  - perl doc
  - qmf2 api doc for python, ruby
+ - slab on hover for "more resources"
 
 # Low
 
