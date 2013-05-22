@@ -52,20 +52,22 @@ that no messages are dropped in transit.
 For decades, the messaging approach to application integration was
 available only from proprietary vendors.  Each vendor had its own
 messaging API and its own wire protocol, and without going to trouble,
-they wouldn't interoperate.
+they wouldn't interoperate.  Imagine each web server vendor using its
+own protocol.  That would seem intolerable, but that's precisely the
+situation messaging was in.
 
-Imagine each web server vendor using its own protocol.  That would
-seem intolerable, but that's precisely the situation messaging was in.
+With the introduction of the
+[Java Message Service](http://en.wikipedia.org/wiki/Java_Message_Service)
+API, things got a little better.  Now we had a standard messaging API.
+But JMS doesn't define a standard wire protocol, and it doesn't help
+you if you're not using Java.
 
 ## Qpid and AMQP
 
-[AMQP](amqp.html) is the first open standard for messaging.  It offers
-a standard wire protocol and all the features of a world-class
-messaging system.
-
-AMQP is foremost about the choices it gives you.  You can choose any
-AMQP solution you prefer, and if the one you chose doesn't work out,
-you can switch.  Your application will still work.
+[AMQP](amqp.html) is the first open standard wire protocol for
+messaging.  AMQP is foremost about the choices it gives you.  You can
+choose any AMQP solution you prefer, and if the one you chose doesn't
+work out, you can switch.  Your application will still work.
 
 The Qpid project aims to spur the growth of the AMQP ecosystem.  We
 offer messaging APIs and message brokers for use in your application,
