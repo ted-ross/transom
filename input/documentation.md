@@ -101,4 +101,4 @@ find older versions with our
 
  - [Qpid messaging APIs](@site-url@/components/index.html#messaging-apis)
  - [Qpid servers and tools](@site-url@/components/index.html#servers-and-tools)
- - [Trunk documentation](@site-url@/resources.html#trunk-documentation)
+ - [Trunk documentation](@site-url@/nightlies.html#trunk-documentation)

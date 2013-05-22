@@ -63,11 +63,6 @@ them.
 || *Notifications* || <notifications-subscribe@qpid.apache.org> || <notifications-unsubscribe@qpid.apache.org> ||
 || || Send "subscribe" in the subject || Send "unsubscribe in the subject" ||
 
-## Trunk documentation
-
- - [Java broker manual](@site-url@/components/java-broker/book/index.html)
- - [Programming in Apache Qpid](@site-url@/components/programming/book/index.html)
-
 ## Wiki
 
  - [Wiki home](https://cwiki.apache.org/qpid/)
