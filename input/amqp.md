@@ -28,7 +28,7 @@ point-to-point, fan-out, publish-subscribe, and request-response.
 ## AMQP and your app
 
 We offer a library, [Qpid Proton](proton/index.html), whose explicit
-aim is to help you make your app speak AMQP.
+aim is to help you make your application speak AMQP.
 
 ## More information
 

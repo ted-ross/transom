@@ -19,6 +19,25 @@
 
 # More Resources
 
+<div class="feature" markdown="1">
+<div class="four-column" markdown="1">
+
+ - [Qpid releases](@site-url@/releases/index.html)
+ - [Qpid components](@site-url@/components/index.html)
+ - [Qpid wiki](https://cwiki.apache.org/qpid/)
+ - [Qpid Proton](@site-url@/proton/index.html)
+ - [AMQP](@site-url@/amqp.html)
+ - [About this site](@site-url@/site.html)
+ - [Contributors](@site-url@/contributors.html)
+ - [Developer central](@site-url@/developer.html)
+ - [Get involved](@site-url@/get-involved.html)
+ - [Qpid overview](@site-url@/overview.html)
+ - [Qpid packages](@site-url@/packages.html)
+ - [Qpid via Maven](@site-url@/maven.html)
+
+</div>
+</div>
+
 ## Blogs
 
 [Contact us](@site-url@/discussion.html) if you write about Qpid and
@@ -76,12 +95,6 @@ them.
  - [FAQ](https://cwiki.apache.org/qpid/faq.html)
  - [Developer pages](https://cwiki.apache.org/qpid/developer-pages.html)
  - [Qpid release pages](https://cwiki.apache.org/qpid/qpid-release-page.html)
-
-## More information
-
- - [Qpid releases](@site-url@/releases/index.html)
- - [Qpid components](@site-url@/components/index.html)
- - [About this site](site.html)
 
 ;; http://planet.apache.org/committers/
 ;; http://blogs.apache.org/
