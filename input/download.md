@@ -92,4 +92,4 @@ rather than from a mirror.
 ## More information
 
  - More about [Qpid releases](@site-url@/releases/index.html)
- - [Nightly builds](@site-url@/nightlies.html)
+ - [Nightly builds](@site-url@/resources.html#nightly-builds)

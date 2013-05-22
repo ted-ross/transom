@@ -16,6 +16,7 @@
  - there are some trunk doc links in the java broker page that should
    be converted to current version when 0.22 lands
  - perl doc
+ - qmf2 api doc for python, ruby
 
 # Low
 

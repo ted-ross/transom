@@ -103,4 +103,4 @@ find older versions with our
 ## More information
 
  - More about [Qpid components](@site-url@/components/index.html)
- - [Trunk documentation](@site-url@/nightlies.html#trunk-documentation)
+ - [Trunk documentation](@site-url@/resources.html#trunk-documentation)
