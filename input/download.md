@@ -70,7 +70,7 @@ rather than from a mirror. Then verify the signatures using one of the
 following sets of commands.
 
     % pgpk -a KEYS
-    % pgpv qpid-0.@current-release@.tar.gz.asc
+    % pgpv qpid-@current-release@.tar.gz.asc
 
     % pgp -ka KEYS
     % pgp qpid-@current-release@.tar.gz.asc
