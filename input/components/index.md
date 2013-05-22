@@ -19,14 +19,11 @@
 
 # Components
 
-Qpid offers these tools to help you build AMQP-based distributed
-applications.
-
 ## Messaging APIs
 
 Qpid's messaging APIs can help you make your application speak AMQP.
 
- - [AMQP Messenger](messenger/index.html) - Forget plumbing and focus on your task
+ - [AMQP Messenger](messenger/index.html) - A simple but powerful message-oriented messaging API
  - [AMQP Protocol Engine](protocol-engine/index.html) - Fine-grained control over AMQP 1.0
  - [Qpid JCA](qpid-jca/index.html) - A JCA resource adapter for AMQP brokers
  - [Qpid JMS](qpid-jms/index.html) - An AMQP-fluent [Java Message Service](http://en.wikipedia.org/wiki/Java_Message_Service) implementation
@@ -47,6 +44,20 @@ persistence, and manageability.
  - [C++ broker command-line tools](cpp-broker-tools/index.html) - Manage the C++ broker
  - [Java broker](java-broker/index.html) - A pure-Java AMQP message broker
  - [QMF](qmf/index.html) - Management built on Qpid messaging
+ 
+## Compatibility
+
+  || *Component* || *Languages* || *Platforms* || *AMQP versions* ||
+  || [AMQP Messenger](@site-url@/components/messenger/index.html) || C, Java, Perl, PHP, Python, Ruby || Linux, OS X, JVM || 1.0 ||
+  || [AMQP Protocol Engine](@site-url@/components/protocol-engine/index.html) || C, Java, Perl, PHP, Python, Ruby || Linux, OS X, JVM || 1.0 ||
+  || [C++ broker](@site-url@/components/cpp-broker/index.html) || C++ || Linux, Windows || 1.0, 0-10 ||
+  || [C++ broker command-line tools](@site-url@/components/cpp-broker-tools/index.html) || - || Linux || 0-10 ||
+  || [Java broker](@site-url@/components/java-broker/index.html) || Java || JVM || 1.0, 0-10, 0-91, 0-9, 0-8 ||
+  || [Qpid JCA](@site-url@/components/qpid-jca/index.html) || Java || JVM || 0-10 ||
+  || [Qpid JMS](@site-url@/components/qpid-jms/index.html) || Java || JVM || 1.0, 0-10, 0-91, 0-9, 0-8 ||
+  || [Qpid Messaging API](@site-url@/components/messaging-api/index.html) || C++, Perl, Python, Ruby, .NET || Linux, Windows || 1.0, 0-10 ||
+  || [Qpid WCF](@site-url@/components/qpid-wcf/index.html) || .NET || Windows || 0-10 ||
+  || [QMF](@site-url@/components/qmf/index.html) || C++, Python || Linux || 0-10 ||
 
 ;; ## Servers
 

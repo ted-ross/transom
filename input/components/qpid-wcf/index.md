@@ -23,7 +23,7 @@ A [Windows Communication
 Foundation](http://msdn.microsoft.com/en-us/library/ms731082.aspx)
 channel implementation that speaks AMQP.
 
-  || *Languages* || C# ||
+  || *Languages* || .NET ||
   || *Platforms* || Windows ||
   || *AMQP versions* || 0-10 ||
   || *Downloads* || [qpid-wcf-@current-release@.zip](http://www.apache.org/dyn/closer.cgi/qpid/@current-release@/qpid-wcf-@current-release@.zip) \[[PGP](http://www.apache.org/dist/qpid/@current-release@/qpid-wcf-@current-release@.zip.asc)] ||
