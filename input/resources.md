@@ -22,9 +22,9 @@
 <div class="feature" markdown="1">
 <div class="four-column" markdown="1">
 
- - [Qpid releases](@site-url@/releases/index.html)
- - [Qpid components](@site-url@/components/index.html)
- - [Qpid wiki](https://cwiki.apache.org/qpid/)
+ - [Releases](@site-url@/releases/index.html)
+ - [Components](@site-url@/components/index.html)
+ - [Wiki](https://cwiki.apache.org/qpid/)
  - [Qpid Proton](@site-url@/proton/index.html)
  - [AMQP](@site-url@/amqp.html)
  - [About this site](@site-url@/site.html)
