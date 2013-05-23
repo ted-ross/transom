@@ -1,0 +1,37 @@
+<div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">3.5.&#160;Using the command line</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="Java-Broker-Getting-Started-LogFile.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;3.&#160;Getting Started</th><td align="right" width="20%">&#160;<a accesskey="n" href="Java-Broker-Concepts.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="Java-Broker-Getting-Started-CommandLine" />3.5.&#160;Using the command line</h2></div></div></div><p>The Java Broker understands a number of command line options which may be used to override the configuration.</p><p>To see usage information for all command line options, use the option <code class="option">--help</code></p><pre class="programlisting">bin/qpid-server --help</pre><pre class="screen">usage: Qpid [-b address&gt;] [-c &lt;file&gt;] [--exclude-0-10 &lt;port&gt;] [--exclude-0-8 &lt;port&gt;] [--exclude-0-9 &lt;port&gt;] [--exclude-0-9-1
+       &lt;port&gt;] [--exclude-1-0 &lt;port&gt;] [-h] [--include-0-10 &lt;port&gt;] [--include-0-8 &lt;port&gt;] [--include-0-9 &lt;port&gt;] [--include-0-9-1
+       &lt;port&gt;] [--include-1-0 &lt;port&gt;] [--jmxconnectorport &lt;port&gt;] [-l &lt;file&gt;] [-m &lt;port&gt;] [-p &lt;port&gt;] [-s &lt;port&gt;] [-v] [-w &lt;period&gt;]
+ -b,--bind &lt;address&gt;            bind to the specified address. Overrides any value in the config file
+ -c,--config &lt;file&gt;             use given configuration file
+    --exclude-0-10 &lt;port&gt;       when listening on the specified port do not accept AMQP0-10 connections. The
+                                specified port must be one specified on the command line
+    --exclude-0-8 &lt;port&gt;        when listening on the specified port do not accept AMQP0-8 connections. The
+                                specified port must be one specified on the command line
+    --exclude-0-9 &lt;port&gt;        when listening on the specified port do not accept AMQP0-9 connections. The
+                                specified port must be one specified on the command line
+    --exclude-0-9-1 &lt;port&gt;      when listening on the specified port do not accept AMQP0-9-1 connections. The
+                                specified port must be one specified on the command line
+    --exclude-1-0 &lt;port&gt;        when listening on the specified port do not accept AMQP1-0 connections. The
+                                specified port must be one specified on the command line
+ -h,--help                      print this message
+    --include-0-10 &lt;port&gt;       accept AMQP0-10 connections on this port, overriding configuration to the contrary.
+                                The specified port must be one specified on the command line
+    --include-0-8 &lt;port&gt;        accept AMQP0-8 connections on this port, overriding configuration to the contrary.
+                                The specified port must be one specified on the command line
+    --include-0-9 &lt;port&gt;        accept AMQP0-9 connections on this port, overriding configuration to the contrary.
+                                The specified port must be one specified on the command line
+    --include-0-9-1 &lt;port&gt;      accept AMQP0-9-1 connections on this port, overriding configuration to the contrary.
+                                The specified port must be one specified on the command line
+    --include-1-0 &lt;port&gt;        accept AMQP1-0 connections on this port, overriding configuration to the contrary.
+                                The specified port must be one specified on the command line
+    --jmxconnectorport &lt;port&gt;   listen on the specified management (connector server) port. Overrides any
+                                value in the config file
+ -l,--logconfig &lt;file&gt;          use the specified log4j xml configuration file. By default looks for a file named
+                                etc/log4j.xml in the same directory as the configuration file
+ -m,--jmxregistryport &lt;port&gt;    listen on the specified management (registry server) port. Overrides any
+                                value in the config file
+ -p,--port &lt;port&gt;               listen on the specified port. Overrides any value in the config file
+ -s,--sslport &lt;port&gt;            SSL port. Overrides any value in the config file
+ -v,--version                   print the version information and exit
+ -w,--logwatch &lt;period&gt;         monitor the log file configuration file for changes. Units are seconds. Zero means
+                                do not check for changes.</pre></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="Java-Broker-Getting-Started-LogFile.html">Prev</a>&#160;</td><td align="center" width="20%"><a accesskey="u" href="Java-Broker-Getting-Started.html">Up</a></td><td align="right" width="40%">&#160;<a accesskey="n" href="Java-Broker-Concepts.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">3.4.&#160;Log file&#160;</td><td align="center" width="20%"><a accesskey="h" href="index.html">Home</a></td><td align="right" valign="top" width="40%">&#160;Chapter&#160;4.&#160;Concepts</td></tr></table></div></div>

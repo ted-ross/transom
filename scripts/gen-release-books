@@ -27,7 +27,7 @@ def gen_books(release, source_dir, output_dir):
 
     stylesheet = """<?xml version='1.0'?>
     <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
-    <xsl:import href="http://docbook.sourceforge.net/release/xsl/current/xhtml/onechunk.xsl"/>
+    <xsl:import href="http://docbook.sourceforge.net/release/xsl/current/xhtml/chunk.xsl"/>
     </xsl:stylesheet>"""
 
     write(join(input_dir, "xsl", "html-custom.xsl"), stylesheet)

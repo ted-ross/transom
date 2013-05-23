@@ -1,0 +1,30 @@
+<div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">1.14.&#160;Queue Replication with the HA module</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="chap-Messaging_User_Guide-Active_Passive_Cluster.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;1.&#160;
+      Running the AMQP Messaging Broker
+    </th><td align="right" width="20%">&#160;<a accesskey="n" href="chapter-Managing-CPP-Broker.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="idm247277523264" />1.14.&#160;Queue Replication with the HA module</h2></div></div></div><p>
+    As well as support for an active-passive cluster, the <code class="filename">ha</code> module
+    also allows you to replicate individual queues. The <em class="firstterm">original</em>
+    queue is used as normal.  The <em class="firstterm">replica</em> queue is updated
+    automatically as messages are added to or removed from the original queue.
+  </p><p>
+    To create a replica you need the HA module to be loaded on both the orignal and replica
+    brokers. Note that it is not safe to modify the replica queue other than via the
+    automatic updates from the original. Adding or removing messages on the replica queue
+    will make replication inconsistent and may cause message loss. The HA module does
+    <span class="emphasis"><em>not</em></span> enforce restricted access to the replica queue (as it does in
+    the case of a cluster) so it is up to the application to ensure the replca is not used
+    until it has been disconnected from the original.
+  </p><p>
+    Suppose that <span class="command"><strong>myqueue</strong></span> is a queue on <span class="command"><strong>node1</strong></span> and
+    we want to create a replica of <span class="command"><strong>myqueue</strong></span> on <span class="command"><strong>node2</strong></span>
+    (where both brokers are using the default AMQP port.) This is accomplished by the command:
+    </p><pre class="programlisting">
+      qpid-config --broker=node2 add queue --start-replica node1 myqueue
+    </pre><p>
+  </p><p>
+    If <span class="command"><strong>myqueue</strong></span> already exists on the replica broker you  can start replication from the original queue like this:
+    </p><pre class="programlisting">
+      qpid-ha replicate -b node2 node1 myqueue
+    </pre><p>
+  </p></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="chap-Messaging_User_Guide-Active_Passive_Cluster.html">Prev</a>&#160;</td><td align="center" width="20%"><a accesskey="u" href="ch01.html">Up</a></td><td align="right" width="40%">&#160;<a accesskey="n" href="chapter-Managing-CPP-Broker.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">1.13.&#160;Active-passive Messaging Clusters&#160;</td><td align="center" width="20%"><a accesskey="h" href="index.html">Home</a></td><td align="right" valign="top" width="40%">&#160;Chapter&#160;2.&#160;
+      Managing the AMQP Messaging Broker
+    </td></tr></table></div></div>

@@ -1,0 +1,23 @@
+<div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">Chapter&#160;8.&#160;Stores</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="Java-Broker-Queues-OtherTypes.html">Prev</a>&#160;</td><th align="center" width="60%">&#160;</th><td align="right" width="20%">&#160;<a accesskey="n" href="Java-Broker-Stores-Derby-Store.html">Next</a></td></tr></table><hr /></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="Java-Broker-Stores" />Chapter&#160;8.&#160;Stores</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="section"><a href="Java-Broker-Stores.html#Java-Broker-Stores-Memory-Store">8.1. Memory Store</a></span></dt><dd><dl><dt><span class="section"><a href="Java-Broker-Stores.html#Java-Broker-Stores-Memory-Store-Configuration">8.1.1. Configuration</a></span></dt></dl></dd><dt><span class="section"><a href="Java-Broker-Stores-Derby-Store.html">8.2. Derby Store</a></span></dt><dd><dl><dt><span class="section"><a href="Java-Broker-Stores-Derby-Store.html#Java-Broker-Stores-Derby-Store-Configuration">8.2.1. Configuration</a></span></dt></dl></dd><dt><span class="section"><a href="Java-Broker-Stores-SQL-Store.html">8.3. SQL Store</a></span></dt><dt><span class="section"><a href="Java-Broker-Stores-BDB-Store.html">8.4. BDB Store</a></span></dt><dd><dl><dt><span class="section"><a href="Java-Broker-Stores-BDB-Store.html#Java-Broker-Stores-BDB-Store-BDBJE-Download">8.4.1. Oracle BDB JE download</a></span></dt><dt><span class="section"><a href="Java-Broker-Stores-BDB-Store.html#Java-Broker-Stores-BDB-Store-BDBJE-Installation">8.4.2. Oracle BDB JE jar installation</a></span></dt><dt><span class="section"><a href="Java-Broker-Stores-BDB-Store.html#Java-Broker-Stores-BDB-Store-Configuration">8.4.3. Configuration</a></span></dt></dl></dd><dt><span class="section"><a href="Java-Broker-Stores-HA-BDB-Store.html">8.5. High Availability BDB Store</a></span></dt><dd><dl><dt><span class="section"><a href="Java-Broker-Stores-HA-BDB-Store.html#Java-Broker-Stores-HA-BDB-Store-BDBJE-Download">8.5.1. Oracle BDB JE download</a></span></dt><dt><span class="section"><a href="Java-Broker-Stores-HA-BDB-Store.html#Java-Broker-Stores-HA-BDB-Store-BDBJE-Installation">8.5.2. Oracle BDB JE jar installation</a></span></dt><dt><span class="section"><a href="Java-Broker-Stores-HA-BDB-Store.html#Java-Broker-Stores-HA-BDB-Store-Configuration">8.5.3. Configuration</a></span></dt></dl></dd></dl></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="Java-Broker-Stores-Memory-Store" />8.1.&#160;Memory Store</h2></div></div></div><p>
+    The Java broker has an in-memory message store implementation.
+    This section will detail configuration for using the MemoryMessageStore.
+  </p><p>
+    Note: when using this store, the broker will store both persistent and non-persistent messages
+    in memory, which is to say that neither will be available following a broker restart, and the
+    ability to store new messages will be entirely constrained by the JVM heap size.
+  </p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Stores-Memory-Store-Configuration" />8.1.1.&#160;Configuration</h3></div></div></div><p>
+      In order to use the MemoryMessageStore, you must configure it for each VirtualHost desired by updating the store element
+      to specify the associated store class, as shown below.
+    </p><div class="example"><a id="idm247278276832" /><p class="title"><strong>Example&#160;8.1.&#160;Configuring a VirtualHost to use the MemoryMessageStore</strong></p><div class="example-contents"><pre class="programlisting">
+&lt;virtualhosts&gt;
+  &lt;virtualhost&gt;
+    &lt;name&gt;vhostname&lt;/name&gt;
+    &lt;vhostname&gt;
+      &lt;store&gt;
+        &lt;class&gt;org.apache.qpid.server.store.MemoryMessageStore&lt;/class
+      &lt;/store&gt;
+      ...
+    &lt;/vhostname&gt;
+  &lt;/virtualhost&gt;
+&lt;/virtualhosts&gt;
+</pre></div></div><br class="example-break" /></div></div></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="Java-Broker-Queues-OtherTypes.html">Prev</a>&#160;</td><td align="center" width="20%">&#160;</td><td align="right" width="40%">&#160;<a accesskey="n" href="Java-Broker-Stores-Derby-Store.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">7.2.&#160;Other Queue Types&#160;</td><td align="center" width="20%"><a accesskey="h" href="index.html">Home</a></td><td align="right" valign="top" width="40%">&#160;8.2.&#160;Derby Store</td></tr></table></div></div>

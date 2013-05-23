@@ -1,0 +1,60 @@
+<div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">9.3.&#160;REST API</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="Java-Broker-Configuring-And-Managing-Web-Console.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;9.&#160;Configuring And Managing</th><td align="right" width="20%">&#160;<a accesskey="n" href="Java-Broker-Configuring-And-Managing-JMX.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="Java-Broker-Configuring-And-Managing-REST-API" />9.3.&#160;REST API</h2></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Configuring-And-Managing-REST-API-Overview" />9.3.1.&#160;REST API Overview</h3></div></div></div><p>This section provides an overview of REST management API.</p><p>If web management is enabled (see <a class="xref" href="Java-Broker-Configuring-And-Managing.html#Java-Broker-Configuring-And-Managing-Config-Files-Web-Management" title="9.1.5.&#160;Web Management Configuration">Section&#160;9.1.5, &#8220;Web Management Configuration&#8221;</a>) 
+            the REST API can be used to monitor and manage the broker instance.</p><p>The Qpid broker REST services support traditional REST model which uses the GET method requests to retrieve 
+            the information about broker configured objects, DELETE method requests to delete the configured object,
+            PUT to create the configured object and POST to update the configured objects.</p><p>The table below lists the available REST services with brief description how they can be used.</p><div class="table"><a id="idm247278152752" /><p class="title"><strong>Table&#160;9.1.&#160;Rest services</strong></p><div class="table-contents"><table border="1" summary="Rest services"><colgroup><col /><col /><col /><col /><col /><col /></colgroup><thead><tr><th>Rest service URL</th><th>Description</th><th>GET</th><th>PUT</th><th>POST</th><th>DELETE</th></tr></thead><tbody><tr><td><p>/rest/broker</p></td><td><p>Rest service to manage broker instance</p></td><td><p>Retrieves the details of broker configuration</p></td><td><p>Not implemented yet</p></td><td><p>Not implemented yet</p></td><td><p>Not implemented yet</p></td></tr><tr><td><p>/rest/authenticationprovider</p>
+                  <p>/rest/authenticationprovider/&lt;authentication provider name&gt;</p>
+              </td><td>Rest service to manage authentication providers on the broker</td><td>Retrieves the details about authentication providers</td><td>Not implemented yet</td><td>Not implemented yet</td><td>Not implemented yet</td></tr><tr><td><p>/rest/user</p>
+                  <p>/rest/user/&lt;authentication provider name&gt;/&lt;user name&gt;</p>
+              </td><td>Rest service to manage user account</td><td>Retrieves the details about user account</td><td>Creates user account</td><td>Updates user password</td><td>Deletes user account</td></tr><tr><td><p>/rest/groupprovider</p>
+                  <p>/rest/groupprovider/&lt;group provider name&gt;</p>
+              </td><td>Rest service to manage group providers</td><td>Retrieves the details about group provider(s)</td><td>Not implemented yet</td><td>Not implemented yet</td><td>Not implemented yet</td></tr><tr><td><p>/rest/group</p>
+                  <p>/rest/group/&lt;group provider name&gt;/&lt;group name&gt;</p>
+              </td><td>Rest service to manage user group</td><td>Retrieves the details about user group</td><td>Creates group</td><td>Not implemented yet</td><td>Deletes group</td></tr><tr><td><p>/rest/groupmember</p>
+                  <p>/rest/groupmember/&lt;group provider name &gt;/&lt;group name&gt;/&lt;user name&gt;</p>
+              </td><td>Rest service to manage group member(s)</td><td>Retrieves the details about group member(s)</td><td>Add user to group</td><td>Not implemented yet</td><td>Deletes user from group</td></tr><tr><td>
+                    <p>/rest/port</p>
+                    <p>/rest/port/&lt;port name&gt;</p>
+              </td><td>Rest service to manage broker ports(s)</td><td>Retrieves the details about the broker port(s)</td><td>Not implemented yet</td><td>Not implemented yet</td><td>Not implemented yet</td></tr><tr><td>
+                    <p>/rest/port</p>
+                    <p>/rest/port/&lt;port name&gt;</p>
+              </td><td>Rest service to manage broker ports(s)</td><td>Retrieves the details about the broker port(s)</td><td>Not implemented yet</td><td>Not implemented yet</td><td>Not implemented yet</td></tr><tr><td>
+                    <p>/rest/queue</p>
+                    <p>/rest/queue/&lt;virtual host name&gt;/&gt;queue name&gt;</p>
+              </td><td>Rest service to manage queue(s)</td><td>Retrieves the details about the queue(s)</td><td>Creates queue</td><td>Not implemented yet</td><td>Deletes queue</td></tr><tr><td>
+                    <p>/rest/exchange</p>
+                    <p>/rest/exchange/&lt;virtual host name&gt;/&lt;exchange name&gt;</p>
+              </td><td>Rest service to manage exchange(s)</td><td>Retrieves the details about the exchange(s)</td><td>Creates exchange</td><td>Not implemented yet</td><td>Deletes exchange</td></tr><tr><td>
+                    <p>/rest/binding</p>
+                    <p>/rest/binding/&lt;virtual host name&gt;/&lt;exchange name&gt;/&lt;queue name&gt;/&lt;binding name&gt;</p>
+              </td><td>Rest service to manage binding(s)</td><td>Retrieves the details about the binding(s)</td><td>Binds a queue to an exchange</td><td>Not implemented yet</td><td>Deletes binding</td></tr><tr><td>
+                    <p>/rest/connection</p>
+                    <p>/rest/connection/&lt;virtual host name&gt;/&lt;connection name&gt;</p>
+              </td><td>Rest service to manage connection(s)</td><td>Retrieves the details about the connection(s)</td><td>Not implemented yet</td><td>Not implemented yet</td><td>Not implemented yet</td></tr><tr><td>
+                    <p>/rest/session</p>
+                    <p>/rest/session/&lt;virtual host name&gt;/&lt;connection name&gt;/&lt;session name&gt;</p>
+              </td><td>Rest service to manage session(s)</td><td>Retrieves the details about the session(s)</td><td>Not implemented yet</td><td>Not implemented yet</td><td>Not implemented yet</td></tr><tr><td>
+                    <p>/rest/message/*</p>
+              </td><td>Rest service to manage messages(s)</td><td>Retrieves the details about the messages(s)</td><td>Not implemented yet</td><td>Copies, moves messages</td><td>Deletes messages</td></tr><tr><td>
+                    <p>/rest/message-content/*</p>
+              </td><td>Rest service to retrieve message content</td><td>Retrieves the message content</td><td>Not implemented yet</td><td>Not implemented yet</td><td>Not implemented yet</td></tr><tr><td>
+                    <p>/rest/logrecords</p>
+              </td><td>Rest service to retrieve broker logs</td><td>Retrieves the broker logs</td><td>Not implemented yet</td><td>Not implemented yet</td><td>Not implemented yet</td></tr><tr><td>
+                    <p>/rest/sasl</p>
+              </td><td>Sasl authentication</td><td>Retrieves user current authentication status and broker supported SASL mechanisms</td><td>Authenticates user using supported SASL mechanisms</td><td>Not implemented yet</td><td>Not implemented yet</td></tr><tr><td>
+                    <p>/rest/logout</p>
+              </td><td>Log outs</td><td>Log outs user</td><td>Not implemented yet</td><td>Not implemented yet</td><td>Not implemented yet</td></tr></tbody></table></div></div><br class="table-break" /><p>Rest URL are hierarchical. It is permitted to replace rest URL elements with an "asterisks" in GET requests to denote
+        all object of a particular type. Additionally, trailing object type in the URL hierarchy can be omitted.
+        In this case GET request will return all of the object underneath of the current object.</p><p>For example, for binding URL http://localhost:8080/rest/binding/&lt;vhost&gt;/&lt;exchange&gt;/&lt;queue&gt;/&lt;binding&gt;
+        replacing of <span class="emphasis"><em>&lt;exchange&gt;</em></span> with "asterisks" (http://localhost:8080/rest/binding/&lt;vhost&gt;/*/&lt;queue&gt;/&lt;binding&gt;)
+        will result in the GET response containing the list of bindings for all of the exchanges in the virtual host having the given name and given queue.
+        If <span class="emphasis"><em>&lt;binding&gt;</em></span> and <span class="emphasis"><em>&lt;queue&gt;</em></span> are omitted in binding REST URL
+        (http://localhost:8080/rest/binding/&lt;vhostname&gt;/&lt;exchangename&gt;) the GET request will result in returning 
+        all bindings for all queues for the given exchange in the virtual host.
+        </p><div class="example"><a id="idm247278021456" /><p class="title"><strong>Example&#160;9.5.&#160;Examples of queue creation using curl:</strong></p><div class="example-contents"><pre class="programlisting">
+#create a durable queue
+curl -X PUT  -d '{"durable":true}' http://localhost:8080/rest/queue/&lt;vhostname&gt;/&lt;queuename&gt;
+#create a durable priority queue
+curl -X PUT  -d '{"durable":true,"type":"priority"}' http://localhost:8080/rest/queue/&lt;vhostname&gt;/&lt;queuename&gt;
+            </pre></div></div><br class="example-break" /><div class="example"><a id="idm247278020000" /><p class="title"><strong>Example&#160;9.6.&#160;Example of binding a queue to an exchange using curl</strong></p><div class="example-contents"><pre class="programlisting">
+curl  -X PUT  -d '{}' http://localhost:8080/rest/binding/&lt;vhostname&gt;/&lt;exchangename&gt;/&lt;queue-name&gt;/&lt;binding-name&gt;
+            </pre></div></div><br class="example-break" /><p>Qpid broker web management console calls rest interfaces internally to manage the broker.</p></div></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="Java-Broker-Configuring-And-Managing-Web-Console.html">Prev</a>&#160;</td><td align="center" width="20%"><a accesskey="u" href="Java-Broker-Configuring-And-Managing.html">Up</a></td><td align="right" width="40%">&#160;<a accesskey="n" href="Java-Broker-Configuring-And-Managing-JMX.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">9.2.&#160;Web Console&#160;</td><td align="center" width="20%"><a accesskey="h" href="index.html">Home</a></td><td align="right" valign="top" width="40%">&#160;9.4.&#160;JMX</td></tr></table></div></div>

@@ -537,8 +537,22 @@ div.docbook div.navheader {
     display: none;
 }
 
+div.docbook div.navfooter table td {
+    border: none;
+}
+
+div.docbook div.navfooter table td[align="center"] {
+    border: none;
+    text-align: center;
+}
+
+div.docbook div.navfooter table td[align="right"] {
+    border: none;
+    text-align: right;
+}
+
 div.docbook hr {
-    display: none;
+    /* display: none; */
 }
 
 div.docbook table {

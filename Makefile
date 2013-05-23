@@ -1,9 +1,4 @@
-gen-targets := gen-release gen-release-page gen-release-notes \
-	gen-release-api-doc gen-release-examples gen-release-books
-proton-gen-targets := gen-proton-release gen-proton-release-page \
-	gen-proton-release-notes gen-proton-release-api-doc gen-proton-release-examples
-
-.PHONY: default help render check-links clean publish ${gen-targets} ${proton-gen-targets}
+.PHONY: default help render check-links clean publish
 
 OUTPUT_DIR := output
 SITE_URL := file://$(shell readlink -f ${OUTPUT_DIR})
@@ -53,14 +48,14 @@ gen-release:
 	gen-release-examples
 	gen-release-books
 
-gen-proton-release: 
+gen-proton-release:
 	gen-proton-release-page
 	gen-proton-release-notes
 	gen-proton-release-api-doc
 	gen-proton-release-examples
 
 gen-release-%: RELEASE_DIR := input/releases/qpid-${RELEASE}
-gen-release-%: FORCE
+gen-release-%:
 	test -n "${RELEASE}" && mkdir -p ${RELEASE_DIR}
 	scripts/gen-release-$* ${RELEASE} ${RELEASE_DIR}
 
