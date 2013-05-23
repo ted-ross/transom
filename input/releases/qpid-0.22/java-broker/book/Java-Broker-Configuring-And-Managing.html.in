@@ -83,7 +83,7 @@ $ ./qpid-server -st memory
             If both are defined, System Property values take precedence.
         </p><p>
             The broker has the following set of core configuration properties, with the indicated default values if not otherwise configured by the user:
-            </p><div class="table"><a id="idm247277626720" /><p class="title"><strong>Table&#160;5.1.&#160;Base Configuration Properties</strong></p><div class="table-contents"><table border="1" summary="Base Configuration Properties"><colgroup><col /><col /><col /></colgroup><thead><tr><th>
+            </p><div class="table"><a id="idm247284963328" /><p class="title"><strong>Table&#160;5.1.&#160;Base Configuration Properties</strong></p><div class="table-contents"><table border="1" summary="Base Configuration Properties"><colgroup><col /><col /><col /></colgroup><thead><tr><th>
 	                        Name
                         </th><th>
 	                        Description
@@ -146,7 +146,7 @@ $ ./qpid-server -prop qpid.amqp_port=10000 -prop qpid.http_port=10001
             NOTE: when saving the broker Configuration Store, either during initialisation when generating any required IDs for the 'Initial Configuration', or when required following user-prompted change via the managmenet interface, values are
             stored in their resolved state. As such, if a Configuration Store already exists when the broker is started, it is likely that setting a Configuration Property to a value different than it was previously set could have no effect.
         </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Configuring-And-Managing-Configuration-Initial-Config-Example" />5.1.8.&#160;Example of JSON 'Initial Configuration'</h3></div></div></div><p>
-            An example of the default 'Initial Configuration' JSON file the broker uses is provided below:</p><div class="example"><a id="idm247277457248" /><p class="title"><strong>Example&#160;5.1.&#160;JSON 'Initial configuration' File</strong></p><div class="example-contents"><pre class="programlisting">
+            An example of the default 'Initial Configuration' JSON file the broker uses is provided below:</p><div class="example"><a id="idm247284865088" /><p class="title"><strong>Example&#160;5.1.&#160;JSON 'Initial configuration' File</strong></p><div class="example-contents"><pre class="programlisting">
 {
   "name" : "Broker",
   "defaultVirtualHost" : "default",

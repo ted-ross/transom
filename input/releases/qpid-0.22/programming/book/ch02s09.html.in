@@ -1,4 +1,4 @@
-<div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">2.9.&#160;Transactions</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="ch02s08.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;2.&#160;Using the Qpid Messaging API</th><td align="right" width="20%">&#160;<a accesskey="n" href="connection-options.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="idm247269800224" />2.9.&#160;Transactions</h2></div></div></div><p>Sometimes it is useful to be able to group messages
+<div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">2.9.&#160;Transactions</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="ch02s08.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;2.&#160;Using the Qpid Messaging API</th><td align="right" width="20%">&#160;<a accesskey="n" href="connection-options.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="idm247269123248" />2.9.&#160;Transactions</h2></div></div></div><p>Sometimes it is useful to be able to group messages
       transfers - sent and/or received - on a session into atomic
       grouping. This can be done be creating the session as
       transactional. On a transactional session sent messages only
@@ -6,9 +6,9 @@
       received and acknowledged messages are only discarded at their
       source on commit
 
-      <a class="footnote" href="#ftn.idm247269798896" id="idm247269798896"><sup class="footnote">[8]</sup></a>
+      <a class="footnote" href="#ftn.idm247269121920" id="idm247269121920"><sup class="footnote">[8]</sup></a>
 
-      .</p><div class="example"><a id="idm247269797984" /><p class="title"><strong>Example&#160;2.13.&#160;Transactions</strong></p><div class="example-contents"><p>C++:</p><pre class="programlisting">
+      .</p><div class="example"><a id="idm247269121008" /><p class="title"><strong>Example&#160;2.13.&#160;Transactions</strong></p><div class="example-contents"><p>C++:</p><pre class="programlisting">
 	Connection connection(broker);
 	Session session =  connection.createTransactionalSession();
 	...
@@ -26,7 +26,7 @@
 	  session.Commit();
 	  else
 	  session.Rollback();
-	</pre></div></div><br class="example-break" /><div class="footnotes"><br /><hr align="left" width="100" /><div class="footnote" id="ftn.idm247269798896"><p><a class="para" href="#idm247269798896"><sup class="para">[8] </sup></a>Note that this currently is only true for
+	</pre></div></div><br class="example-break" /><div class="footnotes"><br /><hr align="left" width="100" /><div class="footnote" id="ftn.idm247269121920"><p><a class="para" href="#idm247269121920"><sup class="para">[8] </sup></a>Note that this currently is only true for
       messages received using a reliable mode
       e.g. at-least-once. Messages sent by a broker to a receiver in
       unreliable receiver will be discarded immediately regardless of

@@ -16,7 +16,7 @@
       restricted access to the replica queue (as it does in the case of a cluster)
       so it is up to the application to ensure the replica is not used until it has
       been disconnected from the original.
-    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm247289327504" />1.12.1.&#160;Replicating queues</h3></div></div></div><p>
+    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm247290187936" />1.12.1.&#160;Replicating queues</h3></div></div></div><p>
       To create a replica queue, the <code class="filename">HA</code> module must be
       loaded on both the original and replica brokers (it is loaded by default.)
       You also need to set the configuration option:
@@ -38,7 +38,7 @@
       </p><pre class="programlisting">
 	qpid-ha replicate -b node2 node1 myqueue
       </pre><p>
-    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm247290266192" />1.12.2.&#160;Replicating queues between clusters</h3></div></div></div><p>
+    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm247286383488" />1.12.2.&#160;Replicating queues between clusters</h3></div></div></div><p>
       You can replicate queues between two standalone brokers, between a
       standalone broker and a cluster, or between two clusters (see <a class="xref" href="chapter-ha.html" title="1.11.&#160;Active-Passive Messaging Clusters">Section&#160;1.11, &#8220;Active-Passive Messaging Clusters&#8221;</a>.) For failover in a cluster there are two cases to
       consider.

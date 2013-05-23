@@ -1,6 +1,6 @@
 <div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">3.2.&#160;Apache Qpid JNDI Properties for AMQP Messaging</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="QpidJMS.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;3.&#160;Using the Qpid JMS client</th><td align="right" width="20%">&#160;<a accesskey="n" href="ch03s03.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="QpidJNDI" />3.2.&#160;Apache Qpid JNDI Properties for AMQP Messaging</h2></div></div></div><p>
 	Apache Qpid defines JNDI properties that can be used to specify JMS Connections and Destinations. Here is a typical JNDI properties file:
-      </p><div class="example"><a id="idm247269515808" /><p class="title"><strong>Example&#160;3.3.&#160;JNDI Properties File</strong></p><div class="example-contents"><pre class="programlisting">
+      </p><div class="example"><a id="idm247268838800" /><p class="title"><strong>Example&#160;3.3.&#160;JNDI Properties File</strong></p><div class="example-contents"><pre class="programlisting">
 	java.naming.factory.initial
 	= org.apache.qpid.jndi.PropertiesFileInitialContextFactory
 
@@ -9,9 +9,9 @@
 	= amqp://guest:guest@clientid/test?brokerlist='tcp://localhost:5672'
 	# destination.[jndiname] = [address_string]
 	destination.topicExchange = amq.topic
-	</pre></div></div><br class="example-break" /><p>The following sections describe the JNDI properties that Qpid uses.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm247269513568" />3.2.1.&#160;JNDI Properties for Apache Qpid</h3></div></div></div><p>
+	</pre></div></div><br class="example-break" /><p>The following sections describe the JNDI properties that Qpid uses.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm247268836560" />3.2.1.&#160;JNDI Properties for Apache Qpid</h3></div></div></div><p>
 	  Apache Qpid supports the properties shown in the following table:
-        </p><div class="table"><a id="idm247269512448" /><p class="title"><strong>Table&#160;3.1.&#160;JNDI Properties supported by Apache Qpid</strong></p><div class="table-contents"><table border="1" summary="JNDI Properties supported by Apache Qpid"><colgroup><col /><col /></colgroup><thead><tr><th>
+        </p><div class="table"><a id="idm247268835440" /><p class="title"><strong>Table&#160;3.1.&#160;JNDI Properties supported by Apache Qpid</strong></p><div class="table-contents"><table border="1" summary="JNDI Properties supported by Apache Qpid"><colgroup><col /><col /></colgroup><thead><tr><th>
 		  Property
 	        </th><th>
 		  Purpose
@@ -41,9 +41,9 @@
 		    queues, topics and header matching, using an
 		    address string.
 
-		    <a class="footnote" href="#ftn.idm247269503168" id="idm247269503168"><sup class="footnote">[a]</sup></a>
+		    <a class="footnote" href="#ftn.idm247268826160" id="idm247268826160"><sup class="footnote">[a]</sup></a>
 		  </p>
-	        </td></tr></tbody><tbody class="footnotes"><tr><td colspan="2"><div class="footnote" id="ftn.idm247269503168"><p><a class="para" href="#idm247269503168"><sup class="para">[a] </sup></a>Binding URLs, which were used in
+	        </td></tr></tbody><tbody class="footnotes"><tr><td colspan="2"><div class="footnote" id="ftn.idm247268826160"><p><a class="para" href="#idm247268826160"><sup class="para">[a] </sup></a>Binding URLs, which were used in
 		    earlier versions of the Qpid Java JMS client, can
 		    still be used instead of address
 		    strings.</p></div></td></tr></tbody></table></div></div><br class="table-break" /></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="section-jms-connection-url" />3.2.2.&#160;Connection URLs</h3></div></div></div><p>
@@ -54,7 +54,7 @@
         </p><pre class="programlisting">amqp://username:password@clientid/test?brokerlist='tcp://localhost:5672'
         </pre><p>
 	  Apache Qpid supports the following properties in Connection URLs:
-        </p><div class="table"><a id="idm247269497136" /><p class="title"><strong>Table&#160;3.2.&#160;Connection URL Properties</strong></p><div class="table-contents"><table border="1" summary="Connection URL Properties" width="100%"><colgroup><col /><col /><col /></colgroup><thead><tr><th>
+        </p><div class="table"><a id="idm247268820128" /><p class="title"><strong>Table&#160;3.2.&#160;Connection URL Properties</strong></p><div class="table-contents"><table border="1" summary="Connection URL Properties" width="100%"><colgroup><col /><col /><col /></colgroup><thead><tr><th>
 		  Option
 	        </th><th>
 		  Type
@@ -134,7 +134,7 @@
         </p><pre class="programlisting">brokerlist='tcp://localhost:5672'
         </pre><p>
 	  A broker list can contain more than one broker address; if so, the connection is made to the first broker in the list that is available. In general, it is better to use the failover exchange when using multiple brokers, since it allows applications to fail over if a broker goes down.
-	</p><div class="example"><a id="idm247269466960" /><p class="title"><strong>Example&#160;3.4.&#160;Broker Lists</strong></p><div class="example-contents"><p>A broker list can specify properties to be used when connecting to the broker, such as security options. This broker list specifies options for a Kerberos connection using GSSAPI:</p><pre class="programlisting">
+	</p><div class="example"><a id="idm247268789952" /><p class="title"><strong>Example&#160;3.4.&#160;Broker Lists</strong></p><div class="example-contents"><p>A broker list can specify properties to be used when connecting to the broker, such as security options. This broker list specifies options for a Kerberos connection using GSSAPI:</p><pre class="programlisting">
 	  amqp://guest:guest@test/test?sync_ack='true'
 	  &amp;brokerlist='tcp://ip1:5672?sasl_mechs='GSSAPI''
 	  </pre><p>This broker list specifies SSL options:</p><pre class="programlisting">
@@ -147,7 +147,7 @@
 
 	  amqp://guest:guest@/test?failover='roundrobin?cyclecount='2''
 	  &amp;brokerlist='tcp://ip1:5672?retries='5'&amp;connectdelay='2000';tcp://ip2:5672?retries='5'&amp;connectdelay='2000''
-	  </pre></div></div><br class="example-break" /><p>The following broker list options are supported.</p><div class="table"><a id="idm247269461728" /><p class="title"><strong>Table&#160;3.3.&#160;Broker List Options</strong></p><div class="table-contents"><table border="1" summary="Broker List Options" width="100%"><colgroup><col /><col /><col /></colgroup><thead><tr><th>
+	  </pre></div></div><br class="example-break" /><p>The following broker list options are supported.</p><div class="table"><a id="idm247268784720" /><p class="title"><strong>Table&#160;3.3.&#160;Broker List Options</strong></p><div class="table-contents"><table border="1" summary="Broker List Options" width="100%"><colgroup><col /><col /><col /></colgroup><thead><tr><th>
 		  Option
 	        </th><th>
 		  Type

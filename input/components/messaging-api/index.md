@@ -34,7 +34,7 @@ This is the documentation for the current released version.  You can
 find previous versions with our
 [past releases](@site-url@/releases/index.html#past-releases).
 
- - [Using the Qpid Messaging API](@current-release-url@/programming/book/index.html)
+ - [Using the Qpid Messaging API](@current-release-url@/programming/book/ch02.html)
 
 <div class="two-column" markdown="1">
 <div class="column" markdown="1">
@@ -66,6 +66,7 @@ find previous versions with our
 
 ### .NET
 
+ - [The .NET Binding for the C++ Messaging Client](@current-release-url@/programming/book/ch05.html)
  - [API reference](@current-release-url@/messaging-api/dotnet/api/index.html)
  - [Examples](@current-release-url@/messaging-api/dotnet/examples/index.html)
  - [Installing the .NET Messaging API](http://svn.apache.org/repos/asf/qpid/tags/@current-release@/qpid/cpp/bindings/qpid/dotnet/ReadMe.txt)

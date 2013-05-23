@@ -27,7 +27,7 @@
       define a queue which it both an LVQ and a priority-queue.</p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="Java-Broker-Queues-OtherTypes-CreateUsingConfig" />7.2.5.1.&#160;Using configuration</h4></div></div></div><p>To create a priority, sorted or LVQ queue within configuration, add the appropriate xml
         to the virtualhost.xml configuration file within the <code class="varname">queues</code>
         element.</p><div class="section"><div class="titlepage"><div><div><h5 class="title"><a id="Java-Broker-Queues-OtherTypes-CreateUsingConfig-Priority" />Priority</h5></div></div></div><p> To defining a priority queue, add a &lt;priority&gt;true&lt;/priority&gt; element. By
-          default the queue will have 10 distinct priorities. </p><div class="example"><a id="idm247278387472" /><p class="title"><strong>Example&#160;7.1.&#160;Configuring a priority queue</strong></p><div class="example-contents"><pre class="programlisting">&lt;queue&gt;
+          default the queue will have 10 distinct priorities. </p><div class="example"><a id="idm247274843984" /><p class="title"><strong>Example&#160;7.1.&#160;Configuring a priority queue</strong></p><div class="example-contents"><pre class="programlisting">&lt;queue&gt;
     &lt;name&gt;myqueue&lt;/name&gt;
     &lt;myqueue&gt;
         &lt;exchange&gt;amq.direct&lt;/exchange&gt;
@@ -39,7 +39,7 @@
           sent to that queue, their effective priority will be calculated by partitioning the
           priority space. If the number of effective priorities is 2, then messages with priority
           0-4 are treated the same as "lower priority" and messages with priority 5-9 are treated
-          equivalently as "higher priority". </p><div class="example"><a id="idm247278383104" /><p class="title"><strong>Example&#160;7.2.&#160;Configuring a priority queue with fewer priorities</strong></p><div class="example-contents"><pre class="programlisting">&lt;queue&gt;
+          equivalently as "higher priority". </p><div class="example"><a id="idm247274839632" /><p class="title"><strong>Example&#160;7.2.&#160;Configuring a priority queue with fewer priorities</strong></p><div class="example-contents"><pre class="programlisting">&lt;queue&gt;
     &lt;name&gt;myqueue&lt;/name&gt;
     &lt;myqueue&gt;
         &lt;exchange&gt;amq.direct&lt;/exchange&gt;
@@ -48,7 +48,7 @@
     &lt;/myqueue&gt;
 &lt;/queue&gt;</pre></div></div><br class="example-break" /></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a id="Java-Broker-Queues-OtherTypes-CreateUsingConfig-Sorted" />Sorted</h5></div></div></div><p> To define a sorted queue, add a <code class="varname">sortKey</code> element. The value of the
             <code class="varname">sortKey</code> element defines the message property to use the value of when
-          sorting the messages put onto the queue. </p><div class="example"><a id="idm247278387280" /><p class="title"><strong>Example&#160;7.3.&#160;Configuring a sorted queue</strong></p><div class="example-contents"><pre class="programlisting">&lt;queue&gt;
+          sorting the messages put onto the queue. </p><div class="example"><a id="idm247274844352" /><p class="title"><strong>Example&#160;7.3.&#160;Configuring a sorted queue</strong></p><div class="example-contents"><pre class="programlisting">&lt;queue&gt;
     &lt;name&gt;myqueue&lt;/name&gt;
     &lt;myqueue&gt;
         &lt;exchange&gt;amq.direct&lt;/exchange&gt;
@@ -57,14 +57,14 @@
 &lt;/queue&gt;</pre></div></div><br class="example-break" /></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a id="Java-Broker-Queues-OtherTypes-CreateUsingConfig-LVQ" />LVQ</h5></div></div></div><p> To define a LVQ, add a <code class="varname">lvq</code> element with the value
             <code class="constant">true</code>. Without any further configuration this will define an LVQ
           which uses the JMS message property <code class="constant">qpid.LVQ_key</code> as the key for
-          replacement. </p><div class="example"><a id="idm247278397776" /><p class="title"><strong>Example&#160;7.4.&#160;Configuring a LVQ queue</strong></p><div class="example-contents"><pre class="programlisting">&lt;queue&gt;
+          replacement. </p><div class="example"><a id="idm247274854384" /><p class="title"><strong>Example&#160;7.4.&#160;Configuring a LVQ queue</strong></p><div class="example-contents"><pre class="programlisting">&lt;queue&gt;
     &lt;name&gt;myqueue&lt;/name&gt;
     &lt;myqueue&gt;
         &lt;exchange&gt;amq.direct&lt;/exchange&gt;
         &lt;lvq&gt;true&lt;/lvq&gt;
     &lt;/myqueue&gt;
 &lt;/queue&gt;</pre></div></div><br class="example-break" /><p> If you wish to define your own property then you can do so using the
-            <code class="varname">lvqKey</code> element.</p><div class="example"><a id="idm247278394608" /><p class="title"><strong>Example&#160;7.5.&#160;Configuring a LVQ queue with custom message property name</strong></p><div class="example-contents"><pre class="programlisting">&lt;queue&gt;
+            <code class="varname">lvqKey</code> element.</p><div class="example"><a id="idm247274851232" /><p class="title"><strong>Example&#160;7.5.&#160;Configuring a LVQ queue with custom message property name</strong></p><div class="example-contents"><pre class="programlisting">&lt;queue&gt;
     &lt;name&gt;myqueue&lt;/name&gt;
     &lt;myqueue&gt;
         &lt;exchange&gt;amq.direct&lt;/exchange&gt;
@@ -72,14 +72,14 @@
         &lt;lvqKey&gt;ISIN&lt;/lvqKey&gt;
     &lt;/myqueue&gt;
 &lt;/queue&gt;</pre></div></div><br class="example-break" /></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="Java-Broker-Queues-OtherTypes-CreateUsingJmsOrJmx" />7.2.5.2.&#160;Using JMX or AMQP</h4></div></div></div><p>To create a priority, sorted or LVQ queue programmatically from JMX or using a Qpid
-        extension to JMS, pass the appropriate queue-declare arguments.</p><div class="table"><a id="idm247278398768" /><p class="title"><strong>Table&#160;7.1.&#160;Queue-declare arguments understood for priority, sorted and LVQ queues</strong></p><div class="table-contents"><table border="1" summary="Queue-declare arguments understood for priority, sorted and LVQ queues"><colgroup><col /><col /><col /><col /></colgroup><thead><tr><th>Queue type</th><th>Argument name</th><th>Argument name</th><th>Argument Description</th></tr></thead><tbody><tr><td>priority</td><td>priorities</td><td>java.lang.Integer</td><td>Specifies a priority queue with given number priorities</td></tr><tr><td>sorted</td><td>qpid.queue_sort_key</td><td>java.lang.String</td><td>Specifies sorted queue with given message property used to sort the
+        extension to JMS, pass the appropriate queue-declare arguments.</p><div class="table"><a id="idm247274855008" /><p class="title"><strong>Table&#160;7.1.&#160;Queue-declare arguments understood for priority, sorted and LVQ queues</strong></p><div class="table-contents"><table border="1" summary="Queue-declare arguments understood for priority, sorted and LVQ queues"><colgroup><col /><col /><col /><col /></colgroup><thead><tr><th>Queue type</th><th>Argument name</th><th>Argument name</th><th>Argument Description</th></tr></thead><tbody><tr><td>priority</td><td>priorities</td><td>java.lang.Integer</td><td>Specifies a priority queue with given number priorities</td></tr><tr><td>sorted</td><td>qpid.queue_sort_key</td><td>java.lang.String</td><td>Specifies sorted queue with given message property used to sort the
                 entries</td></tr><tr><td>lvq</td><td>qpid.last_value_queue_key</td><td>java.lang.String</td><td>Specifies lvq queue with given message property used to conflate the
                 entries</td></tr></tbody></table></div></div><br class="table-break" /><p>The following example illustrates the creation of the a LVQ queue from a
         javax.jms.Session object. Note that this utilises a Qpid specific extension to JMS and
-        involves casting the session object back to its Qpid base-class.</p><div class="example"><a id="idm247278412608" /><p class="title"><strong>Example&#160;7.6.&#160;Creation of an LVQ using the Qpid extension to JMS</strong></p><div class="example-contents"><pre class="programlisting">Map&lt;String,Object&gt; arguments = new HashMap&lt;String, Object&gt;();
+        involves casting the session object back to its Qpid base-class.</p><div class="example"><a id="idm247274954048" /><p class="title"><strong>Example&#160;7.6.&#160;Creation of an LVQ using the Qpid extension to JMS</strong></p><div class="example-contents"><pre class="programlisting">Map&lt;String,Object&gt; arguments = new HashMap&lt;String, Object&gt;();
 arguments.put("qpid.last_value_queue_key","ISIN");
 ((AMQSession&lt;?,?&gt;) session).createQueue(queueName, autoDelete, durable, exclusive, arguments);</pre></div></div><br class="example-break" /><p> The following example illustrates the creation of the sorted queue from a the JMX
-        interface using the ManagedBroker interface. </p><div class="example"><a id="idm247278458144" /><p class="title"><strong>Example&#160;7.7.&#160;Creation of a sorted queue using JMX</strong></p><div class="example-contents"><pre class="programlisting">Map&lt;String, Object&gt; environment = new HashMap&lt;String, Object&gt;();
+        interface using the ManagedBroker interface. </p><div class="example"><a id="idm247274956336" /><p class="title"><strong>Example&#160;7.7.&#160;Creation of a sorted queue using JMX</strong></p><div class="example-contents"><pre class="programlisting">Map&lt;String, Object&gt; environment = new HashMap&lt;String, Object&gt;();
 environment.put(JMXConnector.CREDENTIALS, new String[] {"admin","password"});
 // Connect to service
 JMXServiceURL url =  new JMXServiceURL("service:jmx:rmi:///jndi/rmi://localhost:8999/jmxrmi");
@@ -105,7 +105,7 @@ managedBroker.createNewQueue("myqueue", null, true, arguments);</pre></div></div
       environment (using -D) before creating your consumer. </p><p>A default for all client connections can be set via a system property: </p><pre class="programlisting">
 -Dmax_prefetch=1
 </pre><p> The prefetch can be also be adjusted on a per connection basis by adding a
-      <code class="varname">maxprefetch</code> value to the <a class="ulink" href="@site-url@/releases/qpid-0.20/programming/book/index.html#section-jms-connection-url" target="_top">Connection URLs</a>
+      <code class="varname">maxprefetch</code> value to the <a class="ulink" href="@site-url@/releases/qpid-0.20/programming/book/QpidJNDI.html#section-jms-connection-url" target="_top">Connection URLs</a>
     </p><pre class="programlisting">
 amqp://guest:guest@client1/development?maxprefetch='1'&amp;brokerlist='tcp://localhost:5672'
 </pre><p>Setting the Qpid pre-fetch to 1 will give exact queue-type semantics as perceived by the

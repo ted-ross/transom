@@ -38,7 +38,7 @@ This is the documentation for the current released version.  You can
 find previous versions with our
 [past releases](@site-url@/releases/index.html#past-releases).
 
- - [Using the Qpid JMS client](@current-release-url@/programming/book/index.html#QpidJMS)
+ - [Using the Qpid JMS client](@current-release-url@/programming/book/QpidJMS.html)
  - [API reference](http://docs.oracle.com/javaee/1.4/api/javax/jms/package-summary.html)
  - [Examples](@current-release-url@/qpid-jms/examples/index.html)
  - [How to build Qpid Java](https://cwiki.apache.org/qpid/qpid-java-build-how-to.html)

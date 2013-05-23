@@ -1,6 +1,6 @@
 <div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">1.6.&#160;LVQ - Last Value Queue</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="chap-Messaging_User_Guide-Security.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;1.&#160;
       Running the AMQP Messaging Broker
-    </th><td align="right" width="20%">&#160;<a accesskey="n" href="queue-state-replication.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="idm247274617504" />1.6.&#160;LVQ - Last Value Queue</h2></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="LVQ-UnderstandingLVQ" />1.6.1.&#160;Understanding LVQ</h3></div></div></div><p>
+    </th><td align="right" width="20%">&#160;<a accesskey="n" href="queue-state-replication.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="idm247286304544" />1.6.&#160;LVQ - Last Value Queue</h2></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="LVQ-UnderstandingLVQ" />1.6.1.&#160;Understanding LVQ</h3></div></div></div><p>
       A Last Value Queue is configured with the name of a message header that
       is used as a key.  The queue behaves as a normal FIFO queue with the
       exception that when a message is enqueued, any other message in the

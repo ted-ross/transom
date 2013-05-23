@@ -1,4 +1,4 @@
-<div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">Chapter&#160;4.&#160;Using the Qpid WCF client</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="ch03s06.html">Prev</a>&#160;</td><th align="center" width="60%">&#160;</th><td align="right" width="20%">&#160;<a accesskey="n" href="ch04s02.html">Next</a></td></tr></table><hr /></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="QpidWCF" />Chapter&#160;4.&#160;Using the Qpid WCF client</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="section"><a href="QpidWCF.html#idm247274309648">4.1. XML and Binary Bindings</a></span></dt><dt><span class="section"><a href="ch04s02.html">4.2. Endpoints</a></span></dt><dt><span class="section"><a href="ch04s03.html">4.3. Message Headers</a></span></dt><dt><span class="section"><a href="ch04s04.html">4.4. Security</a></span></dt><dt><span class="section"><a href="ch04s05.html">4.5. Transactions</a></span></dt></dl></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="idm247274309648" />4.1.&#160;XML and Binary Bindings</h2></div></div></div><p>The Qpid WCF client provides two bindings, each with support for
+<div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">Chapter&#160;4.&#160;Using the Qpid WCF client</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="ch03s06.html">Prev</a>&#160;</td><th align="center" width="60%">&#160;</th><td align="right" width="20%">&#160;<a accesskey="n" href="ch04s02.html">Next</a></td></tr></table><hr /></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="QpidWCF" />Chapter&#160;4.&#160;Using the Qpid WCF client</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="section"><a href="QpidWCF.html#idm247271149344">4.1. XML and Binary Bindings</a></span></dt><dt><span class="section"><a href="ch04s02.html">4.2. Endpoints</a></span></dt><dt><span class="section"><a href="ch04s03.html">4.3. Message Headers</a></span></dt><dt><span class="section"><a href="ch04s04.html">4.4. Security</a></span></dt><dt><span class="section"><a href="ch04s05.html">4.5. Transactions</a></span></dt></dl></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="idm247271149344" />4.1.&#160;XML and Binary Bindings</h2></div></div></div><p>The Qpid WCF client provides two bindings, each with support for
       Windows .NET transactions.</p><p>The AmqpBinding is suitable for communication between two WCF
       applications.  By default it uses the WCF binary .NET XML encoder
       (BinaryMessageEncodingBindingElement) for efficient message
@@ -6,7 +6,7 @@
       Optimization Mechanism (MTOM) encoders.  Here is a traditional service
       model sample program using the AmqpBinding.  It assumes that the queue
       "hello_service_node" has been created and configured on the AMQP
-      broker.</p><div class="example"><a id="idm247274307600" /><p class="title"><strong>Example&#160;4.1.&#160;Traditional service model "Hello world!" example</strong></p><div class="example-contents"><pre class="programlisting">
+      broker.</p><div class="example"><a id="idm247271147296" /><p class="title"><strong>Example&#160;4.1.&#160;Traditional service model "Hello world!" example</strong></p><div class="example-contents"><pre class="programlisting">
       namespace Apache.Qpid.Documentation.HelloService
       {
       using System;
@@ -90,7 +90,7 @@
       AmqpBinding sample where the simple greeting is encapsulated in a
       compressed SOAP envelope, the wire representation of the message
       contains the raw content and is identical and fully interoperable with
-      the Qpid C++ "Hello world!"  example.</p><div class="example"><a id="idm247274304272" /><p class="title"><strong>Example&#160;4.2.&#160;Binary  "Hello world!" example using the channel model</strong></p><div class="example-contents"><pre class="programlisting">
+      the Qpid C++ "Hello world!"  example.</p><div class="example"><a id="idm247271143968" /><p class="title"><strong>Example&#160;4.2.&#160;Binary  "Hello world!" example using the channel model</strong></p><div class="example-contents"><pre class="programlisting">
       namespace Apache.Qpid.Samples.Channel.HelloWorld
       {
       using System;
@@ -180,7 +180,7 @@
       </pre></div></div><br class="example-break" /><p>Bindings define ChannelFactories and ChannelListeners associated with
       an AMQP Broker.  WCF will frequently automatically create and manage
       the life cycle of a these and the resulting IChannel objects used in
-      message transfer.  The binding parameters that can be set are:</p><div class="table"><a id="idm247274299616" /><p class="title"><strong>Table&#160;4.1.&#160;WCF Binding Parameters</strong></p><div class="table-contents"><table border="1" summary="WCF Binding Parameters" width="100%"><colgroup><col /><col /><col /></colgroup><thead><tr><th>Parameter</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td>
+      message transfer.  The binding parameters that can be set are:</p><div class="table"><a id="idm247271139312" /><p class="title"><strong>Table&#160;4.1.&#160;WCF Binding Parameters</strong></p><div class="table-contents"><table border="1" summary="WCF Binding Parameters" width="100%"><colgroup><col /><col /><col /></colgroup><thead><tr><th>Parameter</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td>
 		BrokerHost
 	      </td><td>
 		localhost

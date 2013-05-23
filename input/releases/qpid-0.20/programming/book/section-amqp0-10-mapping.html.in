@@ -75,7 +75,7 @@
             subject exactly). For more control the x-bindings element
             in the link properties must be used.
           </p></li><li class="listitem"><p>
-            For the XML exchange,<a class="footnote" href="#ftn.idm247274690352" id="idm247274690352"><sup class="footnote">[12]</sup></a> if a subject is specified it is
+            For the XML exchange,<a class="footnote" href="#ftn.idm247271530048" id="idm247271530048"><sup class="footnote">[12]</sup></a> if a subject is specified it is
             used as the binding key and an XQuery is defined that
             matches any message with that value for
             qpid.subject. Again this means that only messages whose
@@ -104,12 +104,12 @@
       <code class="varname">message-properties</code> struct, and
       <code class="varname">dp</code> refers to an AMQP 0-10
       <code class="varname">delivery-properties</code> struct.</p><div class="table"><a id="table-amqp0-10-message-properties" /><p class="title"><strong>Table&#160;2.9.&#160;Mapping to AMQP 0-10 Message Properties</strong></p><div class="table-contents"><table border="1" summary="Mapping to AMQP 0-10 Message Properties" width="100%"><colgroup><col /><col /><col /></colgroup><thead><tr><th>Python API</th><th>C++ API
-	      <a class="footnote" href="#ftn.idm247274678816" id="idm247274678816"><sup class="footnote">[a]</sup></a>
-	      </th><th>AMQP 0-10 Property<a class="footnote" href="#ftn.idm247274677024" id="idm247274677024"><sup class="footnote">[b]</sup></a></th></tr></thead><tbody><tr><td>msg.id</td><td>msg.{get,set}MessageId()</td><td>mp.message_id</td></tr><tr><td>msg.subject</td><td>msg.{get,set}Subject()</td><td>mp.application_headers["qpid.subject"]</td></tr><tr><td>msg.user_id</td><td>msg.{get,set}UserId()</td><td>mp.user_id</td></tr><tr><td>msg.reply_to</td><td>msg.{get,set}ReplyTo()</td><td>mp.reply_to<a class="footnote" href="#ftn.idm247274669888" id="idm247274669888"><sup class="footnote">[c]</sup></a></td></tr><tr><td>msg.correlation_id</td><td>msg.{get,set}CorrelationId()</td><td>mp.correlation_id</td></tr><tr><td>msg.durable</td><td>msg.{get,set}Durable()</td><td>dp.delivery_mode == delivery_mode.persistent<a class="footnote" href="#ftn.idm247274666848" id="idm247274666848"><sup class="footnote">[d]</sup></a></td></tr><tr><td>msg.priority</td><td>msg.{get,set}Priority()</td><td>dp.priority</td></tr><tr><td>msg.ttl</td><td>msg.{get,set}Ttl()</td><td>dp.ttl</td></tr><tr><td>msg.redelivered</td><td>msg.{get,set}Redelivered()</td><td>dp.redelivered</td></tr><tr><td>msg.properties</td><td>msg.getProperties()/msg.setProperty()</td><td>mp.application_headers</td></tr><tr><td>msg.content_type</td><td>msg.{get,set}ContentType()</td><td>mp.content_type</td></tr></tbody><tbody class="footnotes"><tr><td colspan="3"><div class="footnote" id="ftn.idm247274678816"><p><a class="para" href="#idm247274678816"><sup class="para">[a] </sup></a>
+	      <a class="footnote" href="#ftn.idm247271518512" id="idm247271518512"><sup class="footnote">[a]</sup></a>
+	      </th><th>AMQP 0-10 Property<a class="footnote" href="#ftn.idm247271516720" id="idm247271516720"><sup class="footnote">[b]</sup></a></th></tr></thead><tbody><tr><td>msg.id</td><td>msg.{get,set}MessageId()</td><td>mp.message_id</td></tr><tr><td>msg.subject</td><td>msg.{get,set}Subject()</td><td>mp.application_headers["qpid.subject"]</td></tr><tr><td>msg.user_id</td><td>msg.{get,set}UserId()</td><td>mp.user_id</td></tr><tr><td>msg.reply_to</td><td>msg.{get,set}ReplyTo()</td><td>mp.reply_to<a class="footnote" href="#ftn.idm247271509584" id="idm247271509584"><sup class="footnote">[c]</sup></a></td></tr><tr><td>msg.correlation_id</td><td>msg.{get,set}CorrelationId()</td><td>mp.correlation_id</td></tr><tr><td>msg.durable</td><td>msg.{get,set}Durable()</td><td>dp.delivery_mode == delivery_mode.persistent<a class="footnote" href="#ftn.idm247271506544" id="idm247271506544"><sup class="footnote">[d]</sup></a></td></tr><tr><td>msg.priority</td><td>msg.{get,set}Priority()</td><td>dp.priority</td></tr><tr><td>msg.ttl</td><td>msg.{get,set}Ttl()</td><td>dp.ttl</td></tr><tr><td>msg.redelivered</td><td>msg.{get,set}Redelivered()</td><td>dp.redelivered</td></tr><tr><td>msg.properties</td><td>msg.getProperties()/msg.setProperty()</td><td>mp.application_headers</td></tr><tr><td>msg.content_type</td><td>msg.{get,set}ContentType()</td><td>mp.content_type</td></tr></tbody><tbody class="footnotes"><tr><td colspan="3"><div class="footnote" id="ftn.idm247271518512"><p><a class="para" href="#idm247271518512"><sup class="para">[a] </sup></a>
 		  The .NET Binding for C++ Messaging provides all the
 		  message and delivery properties described in the C++ API.
 		  See  <a class="xref" href="ch05s03.html#table-Dotnet-Binding-Message" title="Table&#160;5.13.&#160;.NET Binding for the C++ Messaging API Class: Message">Table&#160;5.13, &#8220;.NET Binding for the C++ Messaging API Class: Message&#8221;</a> .
-		</p></div><div class="footnote" id="ftn.idm247274677024"><p><a class="para" href="#idm247274677024"><sup class="para">[b] </sup></a>In these entries, <code class="literal">mp</code> refers to an AMQP message property, and <code class="literal">dp</code> refers to an AMQP delivery property.</p></div><div class="footnote" id="ftn.idm247274669888"><p><a class="para" href="#idm247274669888"><sup class="para">[c] </sup></a>The reply_to is converted from the protocol representation into an address.</p></div><div class="footnote" id="ftn.idm247274666848"><p><a class="para" href="#idm247274666848"><sup class="para">[d] </sup></a>Note that msg.durable is a boolean, not an enum.</p></div></td></tr></tbody></table></div></div><br class="table-break" /><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="section-amqp0-10-message-props" />2.16.1.&#160;0-10 Message Property Keys</h3></div></div></div><p>
+		</p></div><div class="footnote" id="ftn.idm247271516720"><p><a class="para" href="#idm247271516720"><sup class="para">[b] </sup></a>In these entries, <code class="literal">mp</code> refers to an AMQP message property, and <code class="literal">dp</code> refers to an AMQP delivery property.</p></div><div class="footnote" id="ftn.idm247271509584"><p><a class="para" href="#idm247271509584"><sup class="para">[c] </sup></a>The reply_to is converted from the protocol representation into an address.</p></div><div class="footnote" id="ftn.idm247271506544"><p><a class="para" href="#idm247271506544"><sup class="para">[d] </sup></a>Note that msg.durable is a boolean, not an enum.</p></div></td></tr></tbody></table></div></div><br class="table-break" /><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="section-amqp0-10-message-props" />2.16.1.&#160;0-10 Message Property Keys</h3></div></div></div><p>
           The QPID Messaging API also recognises special message property keys and
           automatically provides a mapping to their corresponding AMQP 0-10 definitions.
         </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>
@@ -136,8 +136,8 @@
               (<code class="literal">delivery-properties.timestamp</code>), the timestamp value will
               be made available via the <code class="literal">x-amqp-0-10.timestamp</code> message
               property.
-              <a class="footnote" href="#ftn.idm247274646560" id="idm247274646560"><sup class="footnote">[13]</sup></a>
-            </p></li></ul></div><div class="example"><a id="idm247274645280" /><p class="title"><strong>Example&#160;2.20.&#160;Accessing the AMQP 0-10 Message Timestamp in Python</strong></p><div class="example-contents"><p>
+              <a class="footnote" href="#ftn.idm247271486256" id="idm247271486256"><sup class="footnote">[13]</sup></a>
+            </p></li></ul></div><div class="example"><a id="idm247271484976" /><p class="title"><strong>Example&#160;2.20.&#160;Accessing the AMQP 0-10 Message Timestamp in Python</strong></p><div class="example-contents"><p>
             The following code fragment checks for and extracts the message timestamp from
             a received message.
           </p><pre class="programlisting" lang="python" xml:lang="python">
@@ -147,7 +147,7 @@
 	    print("Timestamp=%s" % str(msg.properties["x-amqp-0-10.timestamp"]))
 	    except Empty:
 	    pass
-          </pre></div></div><br class="example-break" /><div class="example"><a id="idm247274642896" /><p class="title"><strong>Example&#160;2.21.&#160;Accessing the AMQP 0-10 Message Timestamp in C++</strong></p><div class="example-contents"><p>
+          </pre></div></div><br class="example-break" /><div class="example"><a id="idm247271482592" /><p class="title"><strong>Example&#160;2.21.&#160;Accessing the AMQP 0-10 Message Timestamp in C++</strong></p><div class="example-contents"><p>
             The same example, except in C++.
           </p><pre class="programlisting" lang="c++" xml:lang="c++">
 	    messaging::Message msg;
@@ -156,9 +156,9 @@
 	    std::cout &lt;&lt; "Timestamp=" &lt;&lt; msg.getProperties()["x-amqp-0-10.timestamp"].asString() &lt;&lt; std::endl;
 	    }
 	    }
-          </pre></div></div><br class="example-break" /></div><div class="footnotes"><br /><hr align="left" width="100" /><div class="footnote" id="ftn.idm247274690352"><p><a class="para" href="#idm247274690352"><sup class="para">[12] </sup></a>Note that the XML
+          </pre></div></div><br class="example-break" /></div><div class="footnotes"><br /><hr align="left" width="100" /><div class="footnote" id="ftn.idm247271530048"><p><a class="para" href="#idm247271530048"><sup class="para">[12] </sup></a>Note that the XML
             exchange is not a standard AMQP exchange type. It is a
             Qpid extension and is currently only supported by the C++
-            broker.</p></div><div class="footnote" id="ftn.idm247274646560"><p><a class="para" href="#idm247274646560"><sup class="para">[13] </sup></a>
+            broker.</p></div><div class="footnote" id="ftn.idm247271486256"><p><a class="para" href="#idm247271486256"><sup class="para">[13] </sup></a>
                   This special property is currently not supported by the Qpid JMS client.
                 </p></div></div></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="ch02s15.html">Prev</a>&#160;</td><td align="center" width="20%"><a accesskey="u" href="ch02.html">Up</a></td><td align="right" width="40%">&#160;<a accesskey="n" href="Message-Groups-Guide.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">2.15.&#160;Logging&#160;</td><td align="center" width="20%"><a accesskey="h" href="index.html">Home</a></td><td align="right" valign="top" width="40%">&#160;2.17.&#160;Using Message Groups</td></tr></table></div></div>

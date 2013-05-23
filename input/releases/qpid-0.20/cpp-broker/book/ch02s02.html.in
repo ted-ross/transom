@@ -2,7 +2,7 @@
       Qpid Management Framework
     </th></tr><tr><td align="left" width="20%"><a accesskey="p" href="chapter-Managing-CPP-Broker.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;2.&#160;
       Managing the AMQP Messaging Broker
-    </th><td align="right" width="20%">&#160;<a accesskey="n" href="ch02s03.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="idm247277208272" />2.2.&#160;
+    </th><td align="right" width="20%">&#160;<a accesskey="n" href="ch02s03.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="idm247289144864" />2.2.&#160;
       Qpid Management Framework
     </h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>
                 <a class="xref" href="ch02s02.html#QpidManagementFramework-WhatIsQMF" title="2.2.1.&#160; What Is QMF">Section&#160;2.2.1, &#8220;
@@ -193,7 +193,7 @@
           </p><p>
             The XML syntax for &lt;property&gt; and &lt;statistic&gt; have
             the following XML-attributes:
-          </p><div class="table"><a id="idm247278019984" /><p class="title"><strong>Table&#160;2.1.&#160;XML Attributes for QMF Properties and Statistics</strong></p><div class="table-contents"><table border="1" summary="XML Attributes for QMF Properties and Statistics"><colgroup><col /><col /><col /><col /></colgroup><tbody><tr><td>
+          </p><div class="table"><a id="idm247287934144" /><p class="title"><strong>Table&#160;2.1.&#160;XML Attributes for QMF Properties and Statistics</strong></p><div class="table-contents"><table border="1" summary="XML Attributes for QMF Properties and Statistics"><colgroup><col /><col /><col /><col /></colgroup><tbody><tr><td>
                   Attribute
                 </td><td>
                   &lt;property&gt;
@@ -329,7 +329,7 @@
             data types. The data types are based on the rich data typing
             system provided by the AMQP messaging protocol. The following
             table describes the data types available for QMF:
-          </p><div class="table"><a id="idm247276731152" /><p class="title"><strong>Table&#160;2.2.&#160;QMF Datatypes</strong></p><div class="table-contents"><table border="1" summary="QMF Datatypes"><colgroup><col /><col /></colgroup><tbody><tr><td>
+          </p><div class="table"><a id="idm247288698688" /><p class="title"><strong>Table&#160;2.2.&#160;QMF Datatypes</strong></p><div class="table-contents"><table border="1" summary="QMF Datatypes"><colgroup><col /><col /></colgroup><tbody><tr><td>
                   QMF Type
                 </td><td>
                   Description
@@ -413,7 +413,7 @@
             attributes of different types. The following table enumerates the
             types available in the XML format, which QMF types they map to,
             and other special handling that occurs.
-          </p><div class="table"><a id="idm247279391008" /><p class="title"><strong>Table&#160;2.3.&#160;XML Schema Mapping for QMF Types</strong></p><div class="table-contents"><table border="1" summary="XML Schema Mapping for QMF Types"><colgroup><col /><col /><col /><col /></colgroup><tbody><tr><td>
+          </p><div class="table"><a id="idm247288665440" /><p class="title"><strong>Table&#160;2.3.&#160;XML Schema Mapping for QMF Types</strong></p><div class="table-contents"><table border="1" summary="XML Schema Mapping for QMF Types"><colgroup><col /><col /><col /><col /></colgroup><tbody><tr><td>
                   XML Type
                 </td><td>
                   QMF Type

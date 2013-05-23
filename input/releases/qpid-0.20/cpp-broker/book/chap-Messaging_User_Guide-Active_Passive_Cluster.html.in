@@ -1,6 +1,6 @@
 <div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">1.13.&#160;Active-passive Messaging Clusters</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="Using-message-groups.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;1.&#160;
       Running the AMQP Messaging Broker
-    </th><td align="right" width="20%">&#160;<a accesskey="n" href="ch01s14.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="chap-Messaging_User_Guide-Active_Passive_Cluster" />1.13.&#160;Active-passive Messaging Clusters</h2></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm247276811744" />1.13.1.&#160;Overview</h3></div></div></div><p>
+    </th><td align="right" width="20%">&#160;<a accesskey="n" href="ch01s14.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="chap-Messaging_User_Guide-Active_Passive_Cluster" />1.13.&#160;Active-passive Messaging Clusters</h2></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm247290733152" />1.13.1.&#160;Overview</h3></div></div></div><p>
 
       The High Availability (HA) module provides
       <em class="firstterm">active-passive</em>, <em class="firstterm">hot-standby</em>
@@ -20,7 +20,7 @@
       This approach relies on an external <em class="firstterm">cluster resource manager</em>
       to detect failures, choose the new primary and handle network partitions. <a class="ulink" href="https://fedorahosted.org/cluster/wiki/RGManager" target="_top">Rgmanager</a> is supported
       initially, but others may be supported in the future.
-    </p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="idm247277951184" />1.13.1.1.&#160;Avoiding message loss</h4></div></div></div><p>
+    </p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="idm247287511856" />1.13.1.1.&#160;Avoiding message loss</h4></div></div></div><p>
 	In order to avoid message loss, the primary broker <span class="emphasis"><em>delays
 	acknowledgment</em></span> of messages received from clients until the message has
 	been replicated to and acknowledged by all of the back-up brokers. This means that
@@ -28,11 +28,11 @@
 	brokers.
       </p><p>
 	Clients keep <span class="emphasis"><em>unacknowledged</em></span> messages in a buffer
-	<a class="footnote" href="#ftn.idm247278279904" id="idm247278279904"><sup class="footnote">[1]</sup></a>
+	<a class="footnote" href="#ftn.idm247289777552" id="idm247289777552"><sup class="footnote">[1]</sup></a>
 	until they are acknowledged by the primary. If the primary fails, clients will
 	fail-over to the new primary and <span class="emphasis"><em>re-send</em></span> all their
 	unacknowledged messages.
-	<a class="footnote" href="#ftn.idm247276269120" id="idm247276269120"><sup class="footnote">[2]</sup></a>
+	<a class="footnote" href="#ftn.idm247288628768" id="idm247288628768"><sup class="footnote">[2]</sup></a>
 	</p><p>
 	  So if the primary crashes, all the <span class="emphasis"><em>acknowledged</em></span> messages will
 	  be available on the backup that takes over as the new primary. The
@@ -63,7 +63,7 @@
 	      The newly-promoted primary, waiting for backups to connect and catch up.
 	    </p></dd><dt><span class="term">Active</span></dt><dd><p>
 	      The active primary broker with all backups connected and caught-up.
-	    </p></dd></dl></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="idm247278911936" />1.13.1.2.&#160;Replacing the old cluster module</h4></div></div></div><p>
+	    </p></dd></dl></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="idm247288685104" />1.13.1.2.&#160;Replacing the old cluster module</h4></div></div></div><p>
 	The High Availability (HA) module replaces the previous
 	<em class="firstterm">active-active</em> cluster module.  The new active-passive
 	approach has several advantages compared to the existing active-active cluster
@@ -80,7 +80,7 @@
 	  </li><li class="listitem">
 	    Improved performance and scalability due to better use of multiple CPUs
 	  </li></ul></div><p>
-      </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="idm247276292928" />1.13.1.3.&#160;Limitations</h4></div></div></div><p>
+      </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="idm247290493248" />1.13.1.3.&#160;Limitations</h4></div></div></div><p>
 	There are a number of known limitations in the current preview implementation. These
 	will be fixed in the production versions.
       </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
@@ -101,7 +101,7 @@
 	  Federated links <span class="emphasis"><em>from</em></span> the primary will be lost in fail over,
 	  they will not be re-connected to the new primary. Federation links
 	  <span class="emphasis"><em>to</em></span> the primary will fail over.
-	</li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm247276215392" />1.13.2.&#160;Virtual IP Addresses</h3></div></div></div><p>
+	</li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm247288570272" />1.13.2.&#160;Virtual IP Addresses</h3></div></div></div><p>
       Some resource managers (including <span class="command"><strong>rgmanager</strong></span>) support
       <em class="firstterm">virtual IP addresses</em>. A virtual IP address is an IP
       address that can be relocated to any of the nodes in a cluster.  The
@@ -113,7 +113,7 @@
       A virtual IP address can be used by clients and backup brokers to connect
       to the primary. The following sections will explain how to configure
       virtual IP addresses for clients or brokers.
-    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm247275826688" />1.13.3.&#160;Configuring the Brokers</h3></div></div></div><p>
+    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm247286249728" />1.13.3.&#160;Configuring the Brokers</h3></div></div></div><p>
       The broker must load the <code class="filename">ha</code> module, it is loaded by
       default. The following broker options are available for the HA module.
     </p><div class="table"><a id="ha-broker-options" /><p class="title"><strong>Table&#160;1.21.&#160;Broker Options for High Availability Messaging Cluster</strong></p><div class="table-contents"><table border="1" summary="Broker Options for High Availability Messaging Cluster"><colgroup><col align="left" class="c1" /><col align="left" class="c2" /></colgroup><thead><tr><th align="center" colspan="2">
@@ -188,7 +188,7 @@ ssl_addr = "ssl:" host [":" port]'
 		  </p></div></td></tr></tbody></table></div></div><br class="table-break" /><p>
       To configure a HA cluster you must set at least <code class="literal">ha-cluster</code> and
       <code class="literal">ha-brokers-url</code>.
-    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm247276570432" />1.13.4.&#160;The Cluster Resource Manager</h3></div></div></div><p>
+    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm247290978944" />1.13.4.&#160;The Cluster Resource Manager</h3></div></div></div><p>
       Broker fail-over is managed by a <em class="firstterm">cluster resource
       manager</em>.  An integration with <a class="ulink" href="https://fedorahosted.org/cluster/wiki/RGManager" target="_top">rgmanager</a> is
       provided, but it is possible to integrate with other resource managers.
@@ -214,7 +214,7 @@ ssl_addr = "ssl:" host [":" port]'
       network partition divide a cluster into two sub-groups which cannot see each other.
       Usually a <em class="firstterm">quorum</em> voting algorithm is used that disables nodes
       in the inquorate sub-group.
-    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm247277342512" />1.13.5.&#160;Configuring <span class="command"><strong>rgmanager</strong></span> as resource manager</h3></div></div></div><p>
+    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm247286633376" />1.13.5.&#160;Configuring <span class="command"><strong>rgmanager</strong></span> as resource manager</h3></div></div></div><p>
       This section assumes that you are already familiar with setting up and configuring
       clustered services using <span class="command"><strong>cman</strong></span> and
       <span class="command"><strong>rgmanager</strong></span>. It will show you how to configure an active-passive,
@@ -335,7 +335,7 @@ NOTE: fencing is not shown, you must configure fencing appropriately for your cl
       original node fails. Running the <code class="literal">qpidd-primary</code> script
       does not start a new broker process, it promotes the existing broker to
       become the primary.
-    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm247277291808" />1.13.6.&#160;Broker Administration Tools</h3></div></div></div><p>
+    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm247291258848" />1.13.6.&#160;Broker Administration Tools</h3></div></div></div><p>
       Normally, clients are not allowed to connect to a backup broker. However
       management tools are allowed to connect to a backup brokers. If you use
       these tools you <span class="emphasis"><em>must not</em></span> add or remove messages from
@@ -385,7 +385,7 @@ NOTE: fencing is not shown, you must configure fencing appropriately for your cl
       Note that if you bind a replicated queue to one of these exchanges, the
       binding wil <span class="emphasis"><em>not</em></span> be replicated, so the queue will not
       have the binding after a fail-over.
-    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm247279044768" />1.13.8.&#160;Client Connection and Fail-over</h3></div></div></div><p>
+    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm247286844272" />1.13.8.&#160;Client Connection and Fail-over</h3></div></div></div><p>
       Clients can only connect to the primary broker. Backup brokers
       automatically reject any connection attempt by a client.
     </p><p>
@@ -396,7 +396,7 @@ NOTE: fencing is not shown, you must configure fencing appropriately for your cl
 	</li><li class="listitem">
 	  The URL contains a single <em class="firstterm">virtual IP address</em>
 	  that is assigned to the primary broker by the resource manager.
-	  <a class="footnote" href="#ftn.idm247279131872" id="idm247279131872"><sup class="footnote">[3]</sup></a></li></ul></div><p>
+	  <a class="footnote" href="#ftn.idm247291143472" id="idm247291143472"><sup class="footnote">[3]</sup></a></li></ul></div><p>
       In the first case, clients will repeatedly re-try each address in the URL
       until they successfully connect to the primary. In the second case the
       resource manager will assign the virtual IP address to the primary broker,
@@ -425,9 +425,9 @@ NOTE: fencing is not shown, you must configure fencing appropriately for your cl
       a client you need to specify the address(es) and set the
       <code class="literal">reconnect</code> property to <code class="literal">true</code>. The
       following sub-sections show how to connect each type of client.
-    </p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="idm247279154096" />1.13.8.1.&#160;C++ clients</h4></div></div></div><p>
+    </p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="idm247286205920" />1.13.8.1.&#160;C++ clients</h4></div></div></div><p>
 	With the C++ client, you specify multiple cluster addresses in a single URL
-	<a class="footnote" href="#ftn.idm247279156656" id="idm247279156656"><sup class="footnote">[4]</sup></a>
+	<a class="footnote" href="#ftn.idm247286713200" id="idm247286713200"><sup class="footnote">[4]</sup></a>
 	You also need to specify the connection option
 	<code class="literal">reconnect</code> to be true.  For example:
       </p><pre class="programlisting">
@@ -439,7 +439,7 @@ NOTE: fencing is not shown, you must configure fencing appropriately for your cl
 	</p><pre class="programlisting">
 	  qpid::messaging::Connection c("node1,node2,node3","{reconnect:true,heartbeat:10}");
 	</pre><p>
-      </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="idm247275219408" />1.13.8.2.&#160;Python clients</h4></div></div></div><p>
+      </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="idm247291198832" />1.13.8.2.&#160;Python clients</h4></div></div></div><p>
 	With the python client, you specify <code class="literal">reconnect=True</code>
 	and a list of <em class="replaceable"><code>host:port</code></em> addresses as
 	<code class="literal">reconnect_urls</code> when calling
@@ -453,7 +453,7 @@ NOTE: fencing is not shown, you must configure fencing appropriately for your cl
 	connection via the 'heartbeat' option. For example:
       </p><pre class="programlisting">
 	connection = qpid.messaging.Connection.establish("node1", reconnect=True, reconnect_urls=["node1", "node2", "node3"], heartbeat=10)
-      </pre></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="idm247276880160" />1.13.8.3.&#160;Java JMS Clients</h4></div></div></div><p>
+      </pre></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="idm247287321440" />1.13.8.3.&#160;Java JMS Clients</h4></div></div></div><p>
 	In Java JMS clients, client fail-over is handled automatically if it is
 	enabled in the connection.  You can configure a connection to use
 	fail-over using the <span class="command"><strong>failover</strong></span> property:
@@ -471,7 +471,7 @@ NOTE: fencing is not shown, you must configure fencing appropriately for your cl
 	In a Connection URL, heartbeat is set using the <span class="command"><strong>idle_timeout</strong></span> property, which is an integer corresponding to the heartbeat period in seconds. For instance, the following line from a JNDI properties file sets the heartbeat time out to 3 seconds:
       </p><pre class="screen">
 	connectionfactory.qpidConnectionfactory = amqp://guest:guest@clientid/test?brokerlist='tcp://localhost:5672',idle_timeout=3
-      </pre></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm247275352656" />1.13.9.&#160;Security.</h3></div></div></div><p>
+      </pre></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm247289738992" />1.13.9.&#160;Security.</h3></div></div></div><p>
       You can secure your cluster using the authentication and authorization features
       described in <a class="xref" href="chap-Messaging_User_Guide-Security.html" title="1.5.&#160;Security">Section&#160;1.5, &#8220;Security&#8221;</a>.
     </p><p>
@@ -492,7 +492,7 @@ NOTE: fencing is not shown, you must configure fencing appropriately for your cl
 	    </td></tr></tbody></table></div></div><br class="table-break" /><p>
       This identity is also used to authorize actions taken on the backup broker to replicate
       from the primary, for example to create queues or exchanges.
-    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm247275613888" />1.13.10.&#160;Integrating with other Cluster Resource Managers</h3></div></div></div><p>
+    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm247287720880" />1.13.10.&#160;Integrating with other Cluster Resource Managers</h3></div></div></div><p>
       To integrate with a different resource manager you must configure it to:
       </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">Start a qpidd process on each node of the cluster.</li><li class="listitem">Restart qpidd if it crashes.</li><li class="listitem">Promote exactly one of the brokers to primary.</li><li class="listitem">Detect a failure and promote a new primary.</li></ul></div><p>
     </p><p>
@@ -515,17 +515,17 @@ NOTE: fencing is not shown, you must configure fencing appropriately for your cl
       You can also use <span class="command"><strong>qpid-ha</strong></span> to manually examine and promote brokers. This
       can be useful for testing failover scenarios without having to set up a full resource manager,
       or to simulate a cluster on a single node. For deployment, a resource manager is required.
-    </p></div><div class="footnotes"><br /><hr align="left" width="100" /><div class="footnote" id="ftn.idm247278279904"><p><a class="para" href="#idm247278279904"><sup class="para">[1] </sup></a>
+    </p></div><div class="footnotes"><br /><hr align="left" width="100" /><div class="footnote" id="ftn.idm247289777552"><p><a class="para" href="#idm247289777552"><sup class="para">[1] </sup></a>
 	    You can control the maximum number of messages in the buffer by setting the
 	    client's <code class="literal">capacity</code>. For details of how to set the capacity
 	    in client code see "Using the Qpid Messaging API" in
 	    <em class="citetitle">Programming in Apache Qpid</em>.
-	  </p></div><div class="footnote" id="ftn.idm247276269120"><p><a class="para" href="#idm247276269120"><sup class="para">[2] </sup></a>
+	  </p></div><div class="footnote" id="ftn.idm247288628768"><p><a class="para" href="#idm247288628768"><sup class="para">[2] </sup></a>
 	  Clients must use "at-least-once" reliability to enable re-send of unacknowledged
 	  messages. This is the default behavior, no options need be set to enable it. For
 	  details of client addressing options see "Using the Qpid Messaging API"
 	  in <em class="citetitle">Programming in Apache Qpid</em>.
-	  </p></div><div class="footnote" id="ftn.idm247279131872"><p><a class="para" href="#idm247279131872"><sup class="para">[3] </sup></a>Only if the resource manager supports virtual IP addresses</p></div><div class="footnote" id="ftn.idm247279156656"><p><a class="para" href="#idm247279156656"><sup class="para">[4] </sup></a>
+	  </p></div><div class="footnote" id="ftn.idm247291143472"><p><a class="para" href="#idm247291143472"><sup class="para">[3] </sup></a>Only if the resource manager supports virtual IP addresses</p></div><div class="footnote" id="ftn.idm247286713200"><p><a class="para" href="#idm247286713200"><sup class="para">[4] </sup></a>
 	    The full grammar for the URL is:
 	  </p><pre class="programlisting">
 	    url = ["amqp:"][ user ["/" password] "@" ] addr ("," addr)*

@@ -1,4 +1,4 @@
-<div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">2.8.&#160;Receiving Messages from Multiple Sources</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="acknowledgements.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;2.&#160;Using the Qpid Messaging API</th><td align="right" width="20%">&#160;<a accesskey="n" href="ch02s09.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="idm247269808912" />2.8.&#160;Receiving Messages from Multiple Sources</h2></div></div></div><p>A receiver can only read from one source, but many
+<div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">2.8.&#160;Receiving Messages from Multiple Sources</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="acknowledgements.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;2.&#160;Using the Qpid Messaging API</th><td align="right" width="20%">&#160;<a accesskey="n" href="ch02s09.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="idm247269131936" />2.8.&#160;Receiving Messages from Multiple Sources</h2></div></div></div><p>A receiver can only read from one source, but many
       programs need to be able to read messages from many sources. In
       the Qpid Messaging API, a program can ask a session for
       the <span class="quote">&#8220;<span class="quote">next receiver</span>&#8221;</span>; that is, the receiver that is
@@ -7,7 +7,7 @@
       </p><p>Note that to use this pattern you must enable prefetching
       for each receiver of interest so that the broker will send
       messages before a fetch call is made. See
-      <a class="xref" href="prefetch.html" title="2.6.&#160;Receiver Capacity (Prefetch)">Section&#160;2.6, &#8220;Receiver Capacity (Prefetch)&#8221;</a> for more on this.</p><div class="example"><a id="idm247269806032" /><p class="title"><strong>Example&#160;2.12.&#160;Receiving Messages from Multiple Sources</strong></p><div class="example-contents"><p>C++:</p><pre class="programlisting">
+      <a class="xref" href="prefetch.html" title="2.6.&#160;Receiver Capacity (Prefetch)">Section&#160;2.6, &#8220;Receiver Capacity (Prefetch)&#8221;</a> for more on this.</p><div class="example"><a id="idm247269129056" /><p class="title"><strong>Example&#160;2.12.&#160;Receiving Messages from Multiple Sources</strong></p><div class="example-contents"><p>C++:</p><pre class="programlisting">
 	Receiver receiver1 = session.createReceiver(address1);
 	receiver1.setCapacity(10);
 	Receiver receiver2 = session.createReceiver(address2);

@@ -30,20 +30,20 @@ messages using AMQP.
 ## Features
 
 <div class="two-column" markdown="1">
- - [Management](@current-release-url@/cpp-broker/book/index.html#section-Managing-CPP-Broker) via [QMF](@site-url@/components/qmf/index.html)
- - [Access control lists](@current-release-url@/cpp-broker/book/index.html#sect-Messaging_User_Guide-Security-Authorization)
- - [Federation](@current-release-url@/cpp-broker/book/index.html#chap-Messaging_User_Guide-Broker_Federation)
+ - [Management](@current-release-url@/cpp-broker/book/chapter-Managing-CPP-Broker.html#section-Managing-CPP-Broker) via [QMF](@site-url@/components/qmf/index.html)
+ - Access control lists
+ - Federation
  - Flexible logging
  - Header-based routing
  - Heartbeats
- - [High availability](@current-release-url@/cpp-broker/book/index.html#chap-Messaging_User_Guide-Active_Passive_Cluster)
+ - [High availability](@current-release-url@/cpp-broker/book/chapter-ha.html)
  - Pluggable persistence
- - [Pluggable authentication via SASL](@current-release-url@/cpp-broker/book/index.html#chap-Messaging_User_Guide-Security)
- - [Producer flow control](@current-release-url@/cpp-broker/book/index.html#producer-flow-control)
- - [Queue replication](@current-release-url@/cpp-broker/book/index.html#queue-state-replication)
- - [Resource limits](@current-release-url@/cpp-broker/book/index.html#sect-Messaging_User_Guide-Authorization-Specifying_ACL_Quotas)
- - [Secure connection via SSL](@current-release-url@/cpp-broker/book/index.html#sect-Messaging_User_Guide-Security-Encryption_using_SSL)
- - Specialized queueing with last value queue, [message groups](@current-release-url@/cpp-broker/book/index.html#Using-message-groups), priority queue, and ring queue
+ - Pluggable authentication via SASL
+ - [Producer flow control](@current-release-url@/cpp-broker/book/producer-flow-control.html)
+ - Queue replication
+ - Resource limits
+ - Secure connection via SSL
+ - Specialized queueing with last value queue, message groups, priority queue, and ring queue
  - [Threshold alerts](https://issues.apache.org/jira/browse/QPID-3002)
  - Transactions
 </div>

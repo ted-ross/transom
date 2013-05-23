@@ -11,7 +11,7 @@
           </a></span></dt><dt><span class="section"><a href="chapter-Managing-CPP-Broker.html#MgmtC-2B-2B-Usingqpidprintevents">2.1.4. 
             Using
             qpid-printevents
-          </a></span></dt><dt><span class="section"><a href="chapter-Managing-CPP-Broker.html#idm247290210224">2.1.5. Using qpid-ha</a></span></dt></dl></dd><dt><span class="section"><a href="ch02s02.html">2.2. 
+          </a></span></dt><dt><span class="section"><a href="chapter-Managing-CPP-Broker.html#idm247290923152">2.1.5. Using qpid-ha</a></span></dt></dl></dd><dt><span class="section"><a href="ch02s02.html">2.2. 
       Qpid Management Framework
     </a></span></dt><dd><dl><dt><span class="section"><a href="ch02s02.html#QpidManagementFramework-WhatIsQMF">2.2.1. 
             What Is QMF
@@ -442,7 +442,7 @@ Options:
   -h, --help  show this help message and exit
 </pre><p>
             You get the idea... have fun!
-          </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm247290210224" />2.1.5.&#160;Using qpid-ha</h3></div></div></div><p>This utility lets you monitor and control the activity of the clustering behavior provided by the HA module.
+          </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm247290923152" />2.1.5.&#160;Using qpid-ha</h3></div></div></div><p>This utility lets you monitor and control the activity of the clustering behavior provided by the HA module.
   </p><pre class="programlisting">
     
 qpid-ha --help

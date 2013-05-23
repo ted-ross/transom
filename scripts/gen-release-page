@@ -122,13 +122,14 @@ available in the full source artefact.
 
 ### Qpid JMS
 
- - [Using the Qpid JMS client](programming/book/index.html#QpidJMS) ([PDF](programming/programming-book.pdf))
+ - [Using the Qpid JMS client](programming/book/QpidJMS.html) ([PDF](programming/programming-book.pdf))
  - [API reference](http://docs.oracle.com/javaee/1.4/api/javax/jms/package-summary.html)
  - [Examples](qpid-jms/examples/index.html)
 
 ### Qpid Messaging API
 
- - [Using the Qpid Messaging API](programming/book/index.html) ([PDF](programming/programming-book.pdf))
+ - [Using the Qpid Messaging API](programming/book/ch02.html) ([PDF](programming/programming-book.pdf))
+ - [The .NET Binding for the C++ Messaging Client](programming/book/ch05.html)
  - [.NET API reference](messaging-api/dotnet/api/index.html)
  - [.NET examples](messaging-api/dotnet/examples/index.html)
  - [C++ API reference](messaging-api/cpp/api/index.html)
@@ -141,7 +142,7 @@ available in the full source artefact.
 ### Qpid WCF
 
  - [README](http://svn.apache.org/repos/asf/qpid/tags/{release}/qpid/wcf/ReadMe.txt)
- - [Using the Qpid WCF client](programming/book/index.html#QpidWCF) ([PDF](programming/programming-book.pdf))
+ - [Using the Qpid WCF client](programming/book/QpidWCF.html) ([PDF](programming/programming-book.pdf))
  - [API reference](http://msdn.microsoft.com/en-us/library/vstudio/ms735119\(v=vs.90\).aspx)
  - [Examples](http://svn.apache.org/repos/asf/qpid/tags/{release}/qpid/wcf/samples)
 

@@ -31,4 +31,4 @@ This is the documentation for the current released version.  You can
 find previous versions with our
 [past releases](@site-url@/releases/index.html#past-releases).
 
- - [Managing the C++ broker](@current-release-url@/cpp-broker/book/index.html#section-Managing-CPP-Broker)
+ - [Managing the C++ broker](@current-release-url@/cpp-broker/book/chapter-Managing-CPP-Broker.html#section-Managing-CPP-Broker)

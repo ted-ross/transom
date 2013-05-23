@@ -3,7 +3,7 @@
     authenticated. The Java Broker supports a number of different authentication schemes, each
     with its own "authentication manager". Each of these are outlined below, along with details
     of <a class="link" href="Java-Broker-Security-Authentication-Providers.html#MultipleAuthProviders" title="10.3.6.&#160;Configuring multiple Authentication Providers"> using more than one at a time</a>.
-  </p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm247278002032" />10.3.1.&#160;Password File</h3></div></div></div><p>
+  </p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm247274700688" />10.3.1.&#160;Password File</h3></div></div></div><p>
       TODO
     </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="LDAPAuthManager" />10.3.2.&#160;LDAP</h3></div></div></div><p>
     LDAP authentication can be configured using the &lt;simple-ldap-auth-manager&gt; element
@@ -13,7 +13,7 @@
   </p><p>
     <span class="emphasis"><em>NOTE: When using LDAP authentication, you must also use SSL on the brokers AMQP messaging and
     JMX/HTTP management ports in order to protect passwords during transmission to the broker.</em></span>
-  </p><div class="example"><a id="idm247277997808" /><p class="title"><strong>Example&#160;10.1.&#160;Configuring LDAP authentication</strong></p><div class="example-contents"><pre class="programlisting">
+  </p><div class="example"><a id="idm247274691360" /><p class="title"><strong>Example&#160;10.1.&#160;Configuring LDAP authentication</strong></p><div class="example-contents"><pre class="programlisting">
 &lt;security&gt;
   &lt;default-auth-manager&gt;SimpleLDAPAuthenticationManager&lt;/default-auth-manager&gt;
   &lt;simple-ldap-auth-manager&gt;
@@ -53,7 +53,7 @@
   </p><p>
     By default com.sun.jndi.ldap.LdapCtxFactory is used to create the context, however this can be
     overridden by specifying &lt;ldap-context-factory&gt; in the configuration.
-  </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm247277992832" />10.3.3.&#160;Kerberos</h3></div></div></div><p>
+  </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm247274580576" />10.3.3.&#160;Kerberos</h3></div></div></div><p>
     Kereberos Authentication is configured using the &lt;kerberos-auth-manager&gt; element within
     the &lt;security&gt; section. When referencing from the default-auth-manager or port-mapping
     sections, its name is KerberosAuthenticationManager.
@@ -61,7 +61,7 @@
     Since Kerberos support only works where SASL authentication is available (e.g. not for JMX
     authentication) you may wish to also include an alternative Authentication Manager
     configuration, and use this for other ports:
-  </p><div class="example"><a id="idm247277990752" /><p class="title"><strong>Example&#160;10.2.&#160;Configuring Kerberos authentication</strong></p><div class="example-contents"><pre class="programlisting">
+  </p><div class="example"><a id="idm247274578496" /><p class="title"><strong>Example&#160;10.2.&#160;Configuring Kerberos authentication</strong></p><div class="example-contents"><pre class="programlisting">
 &lt;security&gt;
   &lt;pd-auth-manager&gt;
     &lt;principal-database&gt;
@@ -124,7 +124,7 @@ com.sun.security.jgss.accept {
       <a class="link" href="Java-Broker-Security-Authentication-Providers.html#MultipleAuthProviders" title="10.3.6.&#160;Configuring multiple Authentication Providers">include another Authentication Manager for use on non-AMQP ports</a>,
       as is done in the example below. Perhaps the only exception to this would be where the broker is embedded in a
       container that is itself externally protecting the HTTP interface and then providing the remote users name.
-    </p><div class="example"><a id="idm247277931072" /><p class="title"><strong>Example&#160;10.3.&#160;Configuring external authentication (SSL client auth)</strong></p><div class="example-contents"><pre class="programlisting">
+    </p><div class="example"><a id="idm247274566448" /><p class="title"><strong>Example&#160;10.3.&#160;Configuring external authentication (SSL client auth)</strong></p><div class="example-contents"><pre class="programlisting">
 &lt;security&gt;
   &lt;pd-auth-manager&gt;
     &lt;principal-database&gt;
@@ -150,7 +150,7 @@ com.sun.security.jgss.accept {
       The AnonymousAuthenticationManager will allow users to connect with or without credentials and result
       in their identification on the broker as the user ANONYMOUS. It may be enabled by adding an empty
       anonymous-auth-manager element to the security configuration section, as shown below.
-    </p><div class="example"><a id="idm247277973168" /><p class="title"><strong>Example&#160;10.4.&#160;Configuring anonymous authentication</strong></p><div class="example-contents"><pre class="programlisting">
+    </p><div class="example"><a id="idm247274562592" /><p class="title"><strong>Example&#160;10.4.&#160;Configuring anonymous authentication</strong></p><div class="example-contents"><pre class="programlisting">
 &lt;security&gt;
   &lt;anonymous-auth-manager/&gt;
   ...
@@ -168,7 +168,7 @@ com.sun.security.jgss.accept {
       The following configuration sets up three authentication managers, using a password file as the
       default (e.g. for the JMX and HTTP ports), Kerberos on port 5672 (the regular AMQP port) and Anonymous
       on port 5673 (e.g a second AMQP port the broker could have been configured with).
-    </p><div class="example"><a id="idm247277968416" /><p class="title"><strong>Example&#160;10.5.&#160;Configuring multiple (per-port) authentication schemes</strong></p><div class="example-contents"><pre class="programlisting">
+    </p><div class="example"><a id="idm247274557856" /><p class="title"><strong>Example&#160;10.5.&#160;Configuring multiple (per-port) authentication schemes</strong></p><div class="example-contents"><pre class="programlisting">
 &lt;security&gt;
   &lt;pd-auth-manager&gt;
     &lt;principal-database&gt;

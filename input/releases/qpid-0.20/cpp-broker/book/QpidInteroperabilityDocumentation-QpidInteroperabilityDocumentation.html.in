@@ -16,7 +16,7 @@
             This table list the various SASL mechanisms that each component
             supports. The version listed shows when this
             functionality was added to the product.
-          </p><div class="table"><a id="idm247278932992" /><p class="title"><strong>Table&#160;1.17.&#160;SASL Mechanism Support</strong></p><div class="table-contents"><table border="1" summary="SASL Mechanism Support"><colgroup><col /><col /><col /><col /><col /><col /><col /></colgroup><tbody><tr><td>
+          </p><div class="table"><a id="idm247286759408" /><p class="title"><strong>Table&#160;1.17.&#160;SASL Mechanism Support</strong></p><div class="table-contents"><table border="1" summary="SASL Mechanism Support"><colgroup><col /><col /><col /><col /><col /><col /><col /></colgroup><tbody><tr><td>
                   Component
                 </td><td>
                   ANONYMOUS
@@ -157,7 +157,7 @@
           </h4></div></div></div><p>
             There have been some custom mechanisms added to our
             implementations.
-          </p><div class="table"><a id="idm247276491248" /><p class="title"><strong>Table&#160;1.18.&#160;SASL Custom Mechanisms</strong></p><div class="table-contents"><table border="1" summary="SASL Custom Mechanisms"><colgroup><col /><col /><col /></colgroup><tbody><tr><td>
+          </p><div class="table"><a id="idm247288872864" /><p class="title"><strong>Table&#160;1.18.&#160;SASL Custom Mechanisms</strong></p><div class="table-contents"><table border="1" summary="SASL Custom Mechanisms"><colgroup><col /><col /><col /></colgroup><tbody><tr><td>
                   Component
                 </td><td>
                   AMQPLAIN
@@ -205,7 +205,7 @@
                   M2
                 </td><td>
                   &#160;
-                </td></tr></tbody></table></div></div><br class="table-break" /><div class="section"><div class="titlepage"><div><div><h5 class="title"><a id="idm247274540560" />AMQPLAIN</h5></div></div></div><p /></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a id="idm247274791424" />CRAM-MD5-HASHED</h5></div></div></div><p>
+                </td></tr></tbody></table></div></div><br class="table-break" /><div class="section"><div class="titlepage"><div><div><h5 class="title"><a id="idm247289993872" />AMQPLAIN</h5></div></div></div><p /></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a id="idm247290014624" />CRAM-MD5-HASHED</h5></div></div></div><p>
             The Java SASL implementations require that you have the password
             of the user to validate the incoming request. This then means
             that the user's password must be stored on disk. For this to be

@@ -70,9 +70,9 @@ def gen_books(release, source_dir, output_dir):
 
             # Repair links
             content = content.replace("../../Programming-In-Apache-Qpid/html/QpidJNDI.html#section-jms-connection-url",
-                                      "@site-url@/releases/qpid-{}/programming/book/index.html#section-jms-connection-url".format(release))
+                                      "@site-url@/releases/qpid-{}/programming/book/QpidJNDI.html#section-jms-connection-url".format(release))
             content = content.replace("../../Programming-In-Apache-Qpid/html/QpidJNDI.html",
-                                      "@site-url@/releases/qpid-{}/programming/book/index.html#QpidJNDI".format(release))
+                                      "@site-url@/releases/qpid-{}/programming/book/QpidJNDI.html".format(release))
             content = content.replace("../../Programming-In-Apache-Qpid/html/",
                                       "@site-url@/releases/qpid-{}/programming/book/index.html".format(release))
             content = content.replace("../../AMQP-Messaging-Broker-CPP-Book/html/",

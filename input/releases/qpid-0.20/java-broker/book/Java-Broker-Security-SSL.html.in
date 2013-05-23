@@ -4,7 +4,7 @@
     </p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="SSL-Keystore" />10.5.1.&#160;Keystore Configuration</h3></div></div></div><p>
             The broker configuration file (config.xml) needs to be updated to include the required SSL keystore
             configuration, an example of which can be found below.
-        </p><div class="example"><a id="idm247277726656" /><p class="title"><strong>Example&#160;10.6.&#160;Configuring an SSL Keystore</strong></p><div class="example-contents"><pre class="programlisting">
+        </p><div class="example"><a id="idm247274184240" /><p class="title"><strong>Example&#160;10.6.&#160;Configuring an SSL Keystore</strong></p><div class="example-contents"><pre class="programlisting">
 &lt;connector&gt;
   ...
   &lt;ssl&gt;
@@ -27,7 +27,7 @@
             The SSL trustore and related Client Certificate Authentication behaviour can be configured with
             additional configuration as shown in the example below, in which the broker requires client
             certificate authentication.
-        </p><div class="example"><a id="idm247277720896" /><p class="title"><strong>Example&#160;10.7.&#160;Configuring an SSL Truststore and client auth</strong></p><div class="example-contents"><pre class="programlisting">
+        </p><div class="example"><a id="idm247274178480" /><p class="title"><strong>Example&#160;10.7.&#160;Configuring an SSL Truststore and client auth</strong></p><div class="example-contents"><pre class="programlisting">
 &lt;connector&gt;
   ...
   &lt;ssl&gt;

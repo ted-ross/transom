@@ -48,12 +48,12 @@
    value will have the DLQ/Maximum Delivery Count feature disabled.</p><p>The queue 'localhost-queue' has the DLQ/Maximum Delivery Count features enabled, as neither
    the queue itself or the 'localhost' virtualhost specifies a configuration value and so the broker
    level value of true is used. Any such queue in the 'localhost' virtualhost which does not specify
-   its own configuration value will have the features enabled.</p><div class="example"><a id="idm247277911104" /><p class="title"><strong>Example&#160;11.4.&#160;Enabling DLQs and maximum delivery count at broker level within config.xml</strong></p><div class="example-contents"><pre class="programlisting">&lt;broker&gt;
+   its own configuration value will have the features enabled.</p><div class="example"><a id="idm247274368320" /><p class="title"><strong>Example&#160;11.4.&#160;Enabling DLQs and maximum delivery count at broker level within config.xml</strong></p><div class="example-contents"><pre class="programlisting">&lt;broker&gt;
  ...
  &lt;deadLetterQueues&gt;true&lt;/deadLetterQueues&gt;
  &lt;maximumDeliveryCount&gt;5&lt;/maximumDeliveryCount&gt;
  ...
-&lt;/broker&gt;</pre></div></div><br class="example-break" /><div class="example"><a id="idm247277909696" /><p class="title"><strong>Example&#160;11.5.&#160;Enabling DLQs and maximum delivery count at virtualhost and queue level within
+&lt;/broker&gt;</pre></div></div><br class="example-break" /><div class="example"><a id="idm247274366912" /><p class="title"><strong>Example&#160;11.5.&#160;Enabling DLQs and maximum delivery count at virtualhost and queue level within
     virtualhosts.xml</strong></p><div class="example-contents"><pre class="programlisting">&lt;virtualhosts&gt;
  ...
  &lt;virtualhost&gt;

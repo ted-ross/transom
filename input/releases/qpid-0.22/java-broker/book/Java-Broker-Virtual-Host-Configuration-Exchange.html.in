@@ -2,7 +2,7 @@
     To declare Exchanges within Virtual Host configuration, add the appropriate xml
     to the virtualhost.xml configuration file within the <code class="varname">exchanges</code> element.
     An example of such declaration is shown below:
-    </p><div class="example"><a id="idm247276737408" /><p class="title"><strong>Example&#160;14.6.&#160;Configuring Exchanges on VirtualHost</strong></p><div class="example-contents"><pre class="programlisting">
+    </p><div class="example"><a id="idm247284334160" /><p class="title"><strong>Example&#160;14.6.&#160;Configuring Exchanges on VirtualHost</strong></p><div class="example-contents"><pre class="programlisting">
 &lt;virtualhosts&gt;
   &lt;virtualhost&gt;
     &lt;name&gt;vhostname&lt;/name&gt;

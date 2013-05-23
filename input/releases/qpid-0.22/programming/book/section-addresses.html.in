@@ -1,7 +1,7 @@
 <div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">2.4.&#160;Addresses</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="ch02s03.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;2.&#160;Using the Qpid Messaging API</th><td align="right" width="20%">&#160;<a accesskey="n" href="replay.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="section-addresses" />2.4.&#160;Addresses</h2></div></div></div><p>An <em class="firstterm">address</em> is the name of a message
       target or message source.
 
-      <a class="footnote" href="#ftn.idm247275525040" id="idm247275525040"><sup class="footnote">[2]</sup></a>
+      <a class="footnote" href="#ftn.idm247274849184" id="idm247274849184"><sup class="footnote">[2]</sup></a>
 
       The methods that create senders and receivers require an
       address. The details of sending to a particular target or
@@ -12,22 +12,22 @@
       Qpid Messaging API recognises two kinds of nodes,
       <em class="firstterm">queues</em> and <em class="firstterm">topics</em>
 
-      <a class="footnote" href="#ftn.idm247275521568" id="idm247275521568"><sup class="footnote">[3]</sup></a>.
+      <a class="footnote" href="#ftn.idm247274845712" id="idm247274845712"><sup class="footnote">[3]</sup></a>.
 
       A queue stores each message until it has been received and
       acknowledged, and only one receiver can receive a given message
 
-      <a class="footnote" href="#ftn.idm247275518800" id="idm247275518800"><sup class="footnote">[4]</sup></a>.
+      <a class="footnote" href="#ftn.idm247274842944" id="idm247274842944"><sup class="footnote">[4]</sup></a>.
 
       A topic immediately delivers a message to all eligible
       receivers; if there are no eligible receivers, it discards the
       message.  In the AMQP 0-10 implementation of the API,
 
-      <a class="footnote" href="#ftn.idm247275517184" id="idm247275517184"><sup class="footnote">[5]</sup></a>
+      <a class="footnote" href="#ftn.idm247274841328" id="idm247274841328"><sup class="footnote">[5]</sup></a>
 
       queues map to AMQP queues, and topics map to AMQP exchanges.
 
-      <a class="footnote" href="#ftn.idm247275516480" id="idm247275516480"><sup class="footnote">[6]</sup></a>
+      <a class="footnote" href="#ftn.idm247274840624" id="idm247274840624"><sup class="footnote">[6]</sup></a>
       </p><p>In the rest of this tutorial, we present many examples
       using two programs that take an address as a command line
       parameter.  <span class="command"><strong>spout</strong></span> sends messages to the
@@ -39,13 +39,13 @@
       configure behavior&#8212;use the <span class="command"><strong>-h</strong></span> option
       for documentation on these options.
 
-      <a class="footnote" href="#ftn.idm247275512736" id="idm247275512736"><sup class="footnote">[7]</sup></a>
+      <a class="footnote" href="#ftn.idm247274836880" id="idm247274836880"><sup class="footnote">[7]</sup></a>
 
 
       The examples in this tutorial also use the
       <span class="command"><strong>qpid-config</strong></span> utility to configure AMQP 0-10
       queues and exchanges on a Qpid broker.
-      </p><div class="example"><a id="idm247275509504" /><p class="title"><strong>Example&#160;2.4.&#160;Queues</strong></p><div class="example-contents"><p>Create a queue with <span class="command"><strong>qpid-config</strong></span>, send a message using
+      </p><div class="example"><a id="idm247274833648" /><p class="title"><strong>Example&#160;2.4.&#160;Queues</strong></p><div class="example-contents"><p>Create a queue with <span class="command"><strong>qpid-config</strong></span>, send a message using
 	<span class="command"><strong>spout</strong></span>, and read it using <span class="command"><strong>drain</strong></span>:</p><pre class="screen">
 	  $ qpid-config add queue hello-world
 	  $ ./spout hello-world
@@ -58,7 +58,7 @@
 	<span class="command"><strong>drain</strong></span> one more time, no messages will be retrieved.</p><pre class="screen">
 	  $ ./drain hello-world
 	  $
-	</pre></div></div><br class="example-break" /><div class="example"><a id="idm247275500400" /><p class="title"><strong>Example&#160;2.5.&#160;Topics</strong></p><div class="example-contents"><p>This example is similar to the previous example, but it
+	</pre></div></div><br class="example-break" /><div class="example"><a id="idm247274824496" /><p class="title"><strong>Example&#160;2.5.&#160;Topics</strong></p><div class="example-contents"><p>This example is similar to the previous example, but it
 	uses a topic instead of a queue.</p><p>First, use <span class="command"><strong>qpid-config</strong></span> to remove the queue
 	and create an exchange with the same name:</p><pre class="screen">
 	  $ qpid-config del queue hello-world
@@ -85,7 +85,7 @@
 	  Message(properties={spout-id:7da2d27d-93e6-4803-8a61-536d87b8d93f:0}, content='')
         </pre><p>You can run <span class="command"><strong>drain</strong></span> in several separate
 	windows; each creates a subscription for the exchange, and
-	each receives all messages sent to the exchange.</p></div></div><br class="example-break" /><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm247270000928" />2.4.1.&#160;Address Strings</h3></div></div></div><p>So far, our examples have used address strings that
+	each receives all messages sent to the exchange.</p></div></div><br class="example-break" /><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm247269323984" />2.4.1.&#160;Address Strings</h3></div></div></div><p>So far, our examples have used address strings that
 	contain only the name of a node. An <em class="firstterm">address
 	string</em> can also contain a
 	<em class="firstterm">subject</em> and
@@ -97,7 +97,7 @@
 	maps, or lists. A complete BNF for address strings appears in
 	<a class="xref" href="section-addresses.html#section-address-string-bnf" title="2.4.4.&#160;Address String Grammar">Section&#160;2.4.4, &#8220;Address String Grammar&#8221;</a>.</p><p>So far, the address strings in this tutorial have only
 	used simple names. The following sections show how to use
-	subjects and options.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm247269995680" />2.4.2.&#160;Subjects</h3></div></div></div><p>Every message has a property called
+	subjects and options.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm247269318736" />2.4.2.&#160;Subjects</h3></div></div></div><p>Every message has a property called
 	<em class="firstterm">subject</em>, which is analogous to the
 	subject on an email message. If no subject is specified, the
 	message's subject is null. For convenience, address strings
@@ -116,7 +116,7 @@
 	    Currently, a receiver bound to a queue ignores subjects,
 	    receiving messages from the queue without filtering. Support
 	    for subject filtering on queues will be implemented soon.
-	  </p></div><div class="example"><a id="idm247269991808" /><p class="title"><strong>Example&#160;2.6.&#160;Using subjects</strong></p><div class="example-contents"><p>In this example we show how subjects affect message
+	  </p></div><div class="example"><a id="idm247269314864" /><p class="title"><strong>Example&#160;2.6.&#160;Using subjects</strong></p><div class="example-contents"><p>In this example we show how subjects affect message
 	  flow.</p><p>First, let's use <span class="command"><strong>qpid-config</strong></span> to create a topic exchange.</p><pre class="screen">
 	    $ qpid-config add exchange topic news-service
 	  </pre><p>Now we use drain to receive messages from <code class="literal">news-service</code> that match the subject <code class="literal">sports</code>.</p><p><span class="emphasis"><em>First Window:</em></span></p><pre class="screen">
@@ -152,7 +152,7 @@
 	<code class="literal">usa.news</code>; if it is
 	<code class="literal">europe.#</code>, it matches messages with subjects
 	like <code class="literal">europe.news</code> or
-	<code class="literal">europe.pseudo.news</code>.</p><div class="example"><a id="idm247269971040" /><p class="title"><strong>Example&#160;2.7.&#160;Subjects with multi-word keys</strong></p><div class="example-contents"><p>This example uses drain and spout to demonstrate the
+	<code class="literal">europe.pseudo.news</code>.</p><div class="example"><a id="idm247269294080" /><p class="title"><strong>Example&#160;2.7.&#160;Subjects with multi-word keys</strong></p><div class="example-contents"><p>This example uses drain and spout to demonstrate the
 	  use of subjects with two-word keys.</p><p>Let's use <span class="command"><strong>drain</strong></span> with the subject
 	  <code class="literal">*.news</code> to listen for messages in which
 	  the second word of the key is
@@ -187,7 +187,7 @@
 	    Message(properties={qpid.subject:news, spout-id:cbd42b0f-c87b-4088-8206-26d7627c9640:0}, content='')
 	    Message(properties={qpid.subject:usa.news, spout-id:234a78d7-daeb-4826-90e1-1c6540781eac:0}, content='')
 	    Message(properties={qpid.subject:usa.faux.news, spout-id:6029430a-cfcb-4700-8e9b-cbe4a81fca5f:0}, content='')
-	  </pre></div></div><br class="example-break" /></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm247269955264" />2.4.3.&#160;Address String Options</h3></div></div></div><p>
+	  </pre></div></div><br class="example-break" /></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm247269278304" />2.4.3.&#160;Address String Options</h3></div></div></div><p>
 	  The options in an address string can contain additional
 	  information for the senders or receivers created for it,
 	  including:
@@ -223,11 +223,11 @@
 	  Let's use some examples to show how these different kinds of
 	  address string options affect the behavior of senders and
 	  receives.
-	</p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="idm247269943248" />2.4.3.1.&#160;assert</h4></div></div></div><p>
+	</p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="idm247269266288" />2.4.3.1.&#160;assert</h4></div></div></div><p>
 	    In this section, we use the <code class="literal">assert</code> option
 	    to ensure that the address resolves to a node of the required
 	    type.
-	  </p><div class="example"><a id="idm247269941488" /><p class="title"><strong>Example&#160;2.8.&#160;Assertions on Nodes</strong></p><div class="example-contents"><p>Let's use <span class="command"><strong>qpid-config</strong></span> to create a
+	  </p><div class="example"><a id="idm247269264528" /><p class="title"><strong>Example&#160;2.8.&#160;Assertions on Nodes</strong></p><div class="example-contents"><p>Let's use <span class="command"><strong>qpid-config</strong></span> to create a
 	    queue and a topic.</p><pre class="screen">
 	      $ qpid-config add queue my-queue
 	      $ qpid-config add exchange topic my-topic
@@ -252,15 +252,15 @@
 	      Queue my-topic does not exist
 	    </pre></div></div><br class="example-break" /><p>Now let's use the <code class="literal">create</code> option to
 	  create the queue <code class="literal">xoxox</code> if it does not already
-	  exist:</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="idm247269933744" />2.4.3.2.&#160;create</h4></div></div></div><p>In previous examples, we created the queue before
+	  exist:</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="idm247269256784" />2.4.3.2.&#160;create</h4></div></div></div><p>In previous examples, we created the queue before
 	  listening for messages on it. Using <code class="literal">create:
 	  always</code>, the queue is automatically created if it
-	  does not exist.</p><div class="example"><a id="idm247269931904" /><p class="title"><strong>Example&#160;2.9.&#160;Creating a Queue Automatically</strong></p><div class="example-contents"><p><span class="emphasis"><em>First Window:</em></span></p><pre class="screen">$ ./drain -t 30 "xoxox ; {create: always}"</pre><p>Now we can send messages to this queue:</p><p><span class="emphasis"><em>Second Window:</em></span></p><pre class="screen">$ ./spout "xoxox ; {create: always}"</pre><p>Returning to the first window, we see that <span class="command"><strong>drain</strong></span> has received this message:</p><pre class="screen">Message(properties={spout-id:1a1a3842-1a8b-4f88-8940-b4096e615a7d:0}, content='')</pre></div></div><br class="example-break" /><p>The details of the node thus created can be controlled by further options within the node. See <a class="xref" href="section-addresses.html#table-node-properties" title="Table&#160;2.2.&#160;Node Properties">Table&#160;2.2, &#8220;Node Properties&#8221;</a> for details.</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="idm247269925632" />2.4.3.3.&#160;browse</h4></div></div></div><p>Some options specify message transfer semantics; for
+	  does not exist.</p><div class="example"><a id="idm247269254944" /><p class="title"><strong>Example&#160;2.9.&#160;Creating a Queue Automatically</strong></p><div class="example-contents"><p><span class="emphasis"><em>First Window:</em></span></p><pre class="screen">$ ./drain -t 30 "xoxox ; {create: always}"</pre><p>Now we can send messages to this queue:</p><p><span class="emphasis"><em>Second Window:</em></span></p><pre class="screen">$ ./spout "xoxox ; {create: always}"</pre><p>Returning to the first window, we see that <span class="command"><strong>drain</strong></span> has received this message:</p><pre class="screen">Message(properties={spout-id:1a1a3842-1a8b-4f88-8940-b4096e615a7d:0}, content='')</pre></div></div><br class="example-break" /><p>The details of the node thus created can be controlled by further options within the node. See <a class="xref" href="section-addresses.html#table-node-properties" title="Table&#160;2.2.&#160;Node Properties">Table&#160;2.2, &#8220;Node Properties&#8221;</a> for details.</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="idm247269248672" />2.4.3.3.&#160;browse</h4></div></div></div><p>Some options specify message transfer semantics; for
 	  instance, they may state whether messages should be consumed or
 	  read in browsing mode, or specify reliability
 	  characteristics. The following example uses the
 	  <code class="literal">browse</code> option to receive messages without
-	  removing them from a queue.</p><div class="example"><a id="idm247269923664" /><p class="title"><strong>Example&#160;2.10.&#160;Browsing a Queue</strong></p><div class="example-contents"><p>
+	  removing them from a queue.</p><div class="example"><a id="idm247269246704" /><p class="title"><strong>Example&#160;2.10.&#160;Browsing a Queue</strong></p><div class="example-contents"><p>
 	      Let's use the browse mode to receive messages without
 	      removing them from the queue. First we send three messages to the
 	      queue:
@@ -278,7 +278,7 @@
 	      Message(properties={spout-id:fbb93f30-0e82-4b6d-8c1d-be60eb132530:0}, content='one')
 	      Message(properties={spout-id:ab9e7c31-19b0-4455-8976-34abe83edc5f:0}, content='two')
 	      Message(properties={spout-id:ea75d64d-ea37-47f9-96a9-d38e01c97925:0}, content='three')
-	    </pre></div></div><br class="example-break" /></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="idm247269918544" />2.4.3.4.&#160;x-bindings</h4></div></div></div><p>Greater control over the AMQP 0-10 binding process can
+	    </pre></div></div><br class="example-break" /></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="idm247269241584" />2.4.3.4.&#160;x-bindings</h4></div></div></div><p>Greater control over the AMQP 0-10 binding process can
 	  be achieved by including an <code class="literal">x-bindings</code>
 	  option in an address string.
 
@@ -308,7 +308,7 @@
 	  </pre><p>When using longer queries with <span class="command"><strong>drain</strong></span>,
 	  it is often useful to place the query in a file, and use
 	  <span class="command"><strong>cat</strong></span> in the command line. We do this in the
-	  following example.</p><div class="example"><a id="idm247269910160" /><p class="title"><strong>Example&#160;2.11.&#160;Using the XML Exchange</strong></p><div class="example-contents"><p>This example uses an x-binding that contains queries, which filter based on the content of XML messages. Here is an XQuery that we will use in this example:</p><pre class="programlisting">
+	  following example.</p><div class="example"><a id="idm247269233200" /><p class="title"><strong>Example&#160;2.11.&#160;Using the XML Exchange</strong></p><div class="example-contents"><p>This example uses an x-binding that contains queries, which filter based on the content of XML messages. Here is an XQuery that we will use in this example:</p><pre class="programlisting">
 	      
 		       let $w := ./weather
 		       return $w/station = 'Raleigh-Durham International Airport (KRDU)'
@@ -337,7 +337,7 @@
 	      &lt;temperature_f&gt;40&lt;/temperature_f&gt;
 	      &lt;dewpoint&gt;35&lt;/dewpoint&gt;
 	      &lt;/weather&gt;') 
-	      </pre></div></div><br class="example-break" /></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="idm247269898176" />2.4.3.5.&#160;Address String Options - Reference</h4></div></div></div><div class="table"><a id="idm247269897536" /><p class="title"><strong>Table&#160;2.1.&#160;Address String Options</strong></p><div class="table-contents"><table border="1" summary="Address String Options" width="100%"><colgroup><col /><col /><col /></colgroup><thead><tr><th>option</th><th>value</th><th>semantics</th></tr></thead><tbody><tr><td>
+	      </pre></div></div><br class="example-break" /></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="idm247269221200" />2.4.3.5.&#160;Address String Options - Reference</h4></div></div></div><div class="table"><a id="idm247269220560" /><p class="title"><strong>Table&#160;2.1.&#160;Address String Options</strong></p><div class="table-contents"><table border="1" summary="Address String Options" width="100%"><colgroup><col /><col /><col /></colgroup><thead><tr><th>option</th><th>value</th><th>semantics</th></tr></thead><tbody><tr><td>
 		    assert
 		  </td><td>
 		    one of: always, never, sender or receiver
@@ -454,7 +454,7 @@
 		    that a message is not lost, and is delivered precisely
 		    once. Currently only <code class="literal">unreliable</code>
 		    and <code class="literal">at-least-once</code> are supported.
-		    <a class="footnote" href="#ftn.idm247269853568" id="idm247269853568"><sup class="footnote">[a]</sup></a>
+		    <a class="footnote" href="#ftn.idm247269176592" id="idm247269176592"><sup class="footnote">[a]</sup></a>
 		  </td></tr><tr><td>
 		    durable
 		  </td><td>
@@ -489,7 +489,7 @@
 		    independent of the create option. They are considered
 		    logically part of the linking process rather than of
 		    node creation.
-		  </td></tr></tbody><tbody class="footnotes"><tr><td colspan="3"><div class="footnote" id="ftn.idm247269853568"><p><a class="para" href="#idm247269853568"><sup class="para">[a] </sup></a>If at-most-once is requested,
+		  </td></tr></tbody><tbody class="footnotes"><tr><td colspan="3"><div class="footnote" id="ftn.idm247269176592"><p><a class="para" href="#idm247269176592"><sup class="para">[a] </sup></a>If at-most-once is requested,
 		    unreliable will be used and for durable messages on
 		    durable queues there is the possibility that messages
 		    will be redelivered; if exactly-once is requested,
@@ -545,10 +545,10 @@
 	</pre><div class="itemizedlist"><p class="title"><strong>Create, Delete, and Assert Policies</strong></p><p>The create, delete, and assert policies specify who should
 	  perfom the associated action:</p><ul class="itemizedlist" type="disc"><li class="listitem"><p><span class="emphasis"><em>always</em></span>: the action is performed by any messaging client</p></li><li class="listitem"><p><span class="emphasis"><em>sender</em></span>: the action is only performed by a sender</p></li><li class="listitem"><p><span class="emphasis"><em>receiver</em></span>: the action is only performed by a receiver</p></li><li class="listitem"><p><span class="emphasis"><em>never</em></span>: the action is never performed (this is the default)</p></li></ul></div><div class="itemizedlist"><p class="title"><strong>Node-Type</strong></p><p>The node-type is one of:</p><ul class="itemizedlist" type="disc"><li class="listitem"><p><span class="emphasis"><em>topic</em></span>: in the AMQP 0-10
 	  mapping, a topic node defaults to the topic exchange, x-declare
-	  may be used to specify other exchange types</p></li><li class="listitem"><p><span class="emphasis"><em>queue</em></span>: this is the default node-type</p></li></ul></div></div><div class="footnotes"><br /><hr align="left" width="100" /><div class="footnote" id="ftn.idm247275525040"><p><a class="para" href="#idm247275525040"><sup class="para">[2] </sup></a>In the programs we have just seen, we used
+	  may be used to specify other exchange types</p></li><li class="listitem"><p><span class="emphasis"><em>queue</em></span>: this is the default node-type</p></li></ul></div></div><div class="footnotes"><br /><hr align="left" width="100" /><div class="footnote" id="ftn.idm247274849184"><p><a class="para" href="#idm247274849184"><sup class="para">[2] </sup></a>In the programs we have just seen, we used
       <code class="literal">amq.topic</code> as the default address if none is
       passed in. This is the name of a standard exchange that always
-      exists on an AMQP 0-10 messaging broker.</p></div><div class="footnote" id="ftn.idm247275521568"><p><a class="para" href="#idm247275521568"><sup class="para">[3] </sup></a>The terms <span class="emphasis"><em>queue</em></span> and
+      exists on an AMQP 0-10 messaging broker.</p></div><div class="footnote" id="ftn.idm247274845712"><p><a class="para" href="#idm247274845712"><sup class="para">[3] </sup></a>The terms <span class="emphasis"><em>queue</em></span> and
       <span class="emphasis"><em>topic</em></span> here were chosen to align with
       their meaning in JMS. These two addressing 'patterns',
       queue and topic, are sometimes refered as point-to-point
@@ -556,11 +556,11 @@
       called a <span class="emphasis"><em>topic exchange</em></span>. When the term
       <span class="emphasis"><em>topic</em></span> occurs alone, it refers to a
       Messaging API topic, not the topic
-      exchange.</p></div><div class="footnote" id="ftn.idm247275518800"><p><a class="para" href="#idm247275518800"><sup class="para">[4] </sup></a>There are exceptions to this rule; for instance,
+      exchange.</p></div><div class="footnote" id="ftn.idm247274842944"><p><a class="para" href="#idm247274842944"><sup class="para">[4] </sup></a>There are exceptions to this rule; for instance,
       a receiver can use <code class="literal">browse</code> mode, which leaves
       messages on the queue for other receivers to
-      read.</p></div><div class="footnote" id="ftn.idm247275517184"><p><a class="para" href="#idm247275517184"><sup class="para">[5] </sup></a>The AMQP 0-10 implementation is the only one
-      that currently exists.</p></div><div class="footnote" id="ftn.idm247275516480"><p><a class="para" href="#idm247275516480"><sup class="para">[6] </sup></a>In AMQP 0-10, messages are sent to
+      read.</p></div><div class="footnote" id="ftn.idm247274841328"><p><a class="para" href="#idm247274841328"><sup class="para">[5] </sup></a>The AMQP 0-10 implementation is the only one
+      that currently exists.</p></div><div class="footnote" id="ftn.idm247274840624"><p><a class="para" href="#idm247274840624"><sup class="para">[6] </sup></a>In AMQP 0-10, messages are sent to
       exchanges, and read from queues. The Messaging API also
       allows a sender to send messages to a queue; internally,
       Qpid implements this by sending the message to the default
@@ -569,7 +569,7 @@
       from a topic; internally, Qpid implements this by setting up
       a private subscription queue for the receiver and binding
       the subscription queue to the exchange that corresponds to
-      the topic.</p></div><div class="footnote" id="ftn.idm247275512736"><p><a class="para" href="#idm247275512736"><sup class="para">[7] </sup></a>Currently, the C++, Python, and .NET C#
+      the topic.</p></div><div class="footnote" id="ftn.idm247274836880"><p><a class="para" href="#idm247274836880"><sup class="para">[7] </sup></a>Currently, the C++, Python, and .NET C#
       implementations of <span class="command"><strong>drain</strong></span> and
       <span class="command"><strong>spout</strong></span> have slightly different
       options. This tutorial uses the C++ implementation. The

@@ -2,7 +2,7 @@
       QMF Python Console Tutorial
     </th></tr><tr><td align="left" width="20%"><a accesskey="p" href="ch02s02.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;2.&#160;
       Managing the AMQP Messaging Broker
-    </th><td align="right" width="20%">&#160;</td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="idm247279221264" />2.3.&#160;
+    </th><td align="right" width="20%">&#160;</td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="idm247289124128" />2.3.&#160;
       QMF Python Console Tutorial
     </h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>
                 <a class="xref" href="ch02s03.html#QMFPythonConsoleTutorial-PrerequisiteInstallQpidMessaging" title="2.3.1.&#160; Prerequisite - Install Qpid Messaging">Section&#160;2.3.1, &#8220;
@@ -404,7 +404,7 @@ OK
             methods. Any number of these methods may be overridden by the
             console application. Any method that is not overridden defaults
             to a null handler which takes no action when invoked.
-          </p><div class="table"><a id="idm247274994336" /><p class="title"><strong>Table&#160;2.4.&#160;QMF Python Console Class Methods</strong></p><div class="table-contents"><table border="1" summary="QMF Python Console Class Methods"><colgroup><col /><col /><col /></colgroup><tbody><tr><td>
+          </p><div class="table"><a id="idm247289692224" /><p class="title"><strong>Table&#160;2.4.&#160;QMF Python Console Class Methods</strong></p><div class="table-contents"><table border="1" summary="QMF Python Console Class Methods"><colgroup><col /><col /><col /></colgroup><tbody><tr><td>
                   Method
                 </td><td>
                   Arguments

@@ -3,7 +3,7 @@
         specifying connection options. For example, connections can be
         configured to automatically reconnect if the connection to a
         broker is lost.
-      </p><div class="example"><a id="idm247269792720" /><p class="title"><strong>Example&#160;2.14.&#160;Specifying Connection Options in C++, Python, and .NET</strong></p><div class="example-contents"><p>In C++, these options can be set using <code class="function">Connection::setOption()</code> or by passing in a set of options to the constructor. The options can be passed in as a map or in string form:</p><pre class="programlisting">
+      </p><div class="example"><a id="idm247269115744" /><p class="title"><strong>Example&#160;2.14.&#160;Specifying Connection Options in C++, Python, and .NET</strong></p><div class="example-contents"><p>In C++, these options can be set using <code class="function">Connection::setOption()</code> or by passing in a set of options to the constructor. The options can be passed in as a map or in string form:</p><pre class="programlisting">
 	Connection connection("localhost:5672", "{reconnect: true}");
 	try {
 	connection.open();
@@ -41,7 +41,7 @@
 	  try {
 	  connection.Open();
 	  !!! SNIP !!!
-	</pre><p>See the reference documentation for details in each language.</p></div></div><br class="example-break" /><p>The following table lists the supported connection options.</p><div class="table"><a id="idm247269781568" /><p class="title"><strong>Table&#160;2.4.&#160;Connection Options</strong></p><div class="table-contents"><table border="1" summary="Connection Options" width="100%"><colgroup><col /><col /><col /></colgroup><thead><tr><th>option name</th><th>value type</th><th>semantics</th></tr></thead><tbody><tr><td>
+	</pre><p>See the reference documentation for details in each language.</p></div></div><br class="example-break" /><p>The following table lists the supported connection options.</p><div class="table"><a id="idm247269104592" /><p class="title"><strong>Table&#160;2.4.&#160;Connection Options</strong></p><div class="table-contents"><table border="1" summary="Connection Options" width="100%"><colgroup><col /><col /><col /></colgroup><thead><tr><th>option name</th><th>value type</th><th>semantics</th></tr></thead><tbody><tr><td>
 		<code class="literal">username</code>
 	      </td><td>
 		string

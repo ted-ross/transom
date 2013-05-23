@@ -542,12 +542,10 @@ div.docbook div.navfooter table td {
 }
 
 div.docbook div.navfooter table td[align="center"] {
-    border: none;
     text-align: center;
 }
 
 div.docbook div.navfooter table td[align="right"] {
-    border: none;
     text-align: right;
 }
 
