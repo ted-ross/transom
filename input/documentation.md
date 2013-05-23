@@ -47,6 +47,7 @@ find older versions with our
 
  - [Overview](@site-url@/components/messaging-api/index.html)
  - [Using the Qpid Messaging API](@current-release-url@/programming/book/index.html) ([PDF](@current-release-url@/programming/programming-book.pdf))
+ - [The .NET Binding for the C++ Messaging Client](@current-release-url@/programming/book/ch05.html)
  - [.NET API reference](@current-release-url@/messaging-api/dotnet/api/index.html)
  - [.NET examples](@current-release-url@/messaging-api/dotnet/examples/index.html)
  - [C++ API reference](@current-release-url@/messaging-api/cpp/api/index.html)
