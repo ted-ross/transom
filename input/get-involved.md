@@ -57,7 +57,7 @@ you want guidance, [discuss it with us](@site-url@/discussion.html).
    works in your environment, for your application.
 
  - *Write documentation* - Good documentation is as important as good
-   code.  If you excell at clear communication, consider focusing your
+   code.  If you excel at clear communication, consider focusing your
    talents on our documentation.
 
  - *Develop new components* - If you have an idea and a need for a new
