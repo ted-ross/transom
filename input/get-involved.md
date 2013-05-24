@@ -42,14 +42,34 @@ progress and voice your opinion.
 
 ## Make Qpid work for you
 
-Each new user brings a new use case and new challenges.  Maybe Qpid
+Each new user brings new scenarios and new challenges.  Maybe Qpid
 doesn't do something that you need.  Since Qpid is open source, *you
 can make Qpid do what you need*.  Write a patch and send it to us.  If
 you want guidance, [discuss it with us](@site-url@/discussion.html).
 
-## Write about it
+## Contribute
 
-We think Qpid is good stuff, and more people ought to know about it.
-If you use Qpid to do something cool, tell others about it in a [blog
-post](@site-url@/resources.html#blogs), news article, or your
-project's website.  We really appreciate it.
+ - *Fix bugs* - Reporting bugs is a considerable service to us.
+   Sending patches is even better.
+
+ - *Test new releases* - Each new release goes through a long period
+   of user testing, and we could use your feedback.  Tell us if it
+   works in your environment, for your application.
+
+ - *Write documentation* - Good documentation is as important as good
+   code.  If you excell at clear communication, consider focusing your
+   talents on our documentation.
+
+ - *Develop new components* - If you have an idea and a need for a new
+   component that speaks AMQP, you can build and host it at Qpid.
+
+ - *Package Qpid for new environments* - Maybe Qpid isn't available
+   from the package repository for your OS or language.  We want Qpid
+   to be everywhere and just a few clicks away.  We value any
+   expertise you have in offering Qpid in new places.
+
+ - *Tell others about Qpid* - We think Qpid is good stuff, and more
+   people ought to know about it.  If you use Qpid to do something
+   cool, tell others about it in a
+   [blog post](@site-url@/resources.html#blogs), news article, or your
+   project's website.  We really appreciate it.
