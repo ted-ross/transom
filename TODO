@@ -1,6 +1,7 @@
 # High
 
   - per component jira queries
+  - user and dev list descriptions
 
 # Medium
 
@@ -20,6 +21,9 @@
  - perl doc
  - qmf2 api doc for python, ruby
  - slab on hover for "more resources"
+ - nightly qpid and qpid-proton
+   - need artifact location
+   - need way of running doc gen scripts
 
 # Low
 
