@@ -43,6 +43,7 @@ messages using AMQP.
  - Queue replication
  - Resource limits
  - Secure connection via SSL
+ - [Server-side selectors](https://issues.apache.org/jira/browse/QPID-4558?focusedCommentId=13592659&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-13592659)
  - Specialized queueing with last value queue, message groups, priority queue, and ring queue
  - [Threshold alerts](https://issues.apache.org/jira/browse/QPID-3002)
  - Transactions

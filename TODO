@@ -1,24 +1,22 @@
 # High
 
-  - per component jira queries
-  - user and dev list descriptions
-  - highlight selected fragments?
-  - assert committed and uptodate before publish
-  - add snapshots repo to maven
+ - per component jira queries
+ - user and dev list descriptions
+ - anchor points
+ - highlight selected fragments?
+ - assert committed and uptodate before publish
+ - anon jira filing form - discussion started on list
+ - debian install directions
 
 # Medium
 
- - anchor points
  - comments service
- - anon jira filing form - discussion started on list
- - debian install directions
  - gen messenger book (when its in a tagged release)
  - related projects section
  - custom templates for api docs
    - nav from api ref back to site
  - tarballs of apidocs and examples
  - qmf2 examples
- - becoming a contributor, more detail, what to do with patches
  - there are some trunk doc links in the java broker page that should
    be converted to current version when 0.22 lands
  - perl doc
