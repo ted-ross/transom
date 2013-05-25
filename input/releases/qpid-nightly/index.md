@@ -25,16 +25,16 @@ Python, Ruby, and .NET.  More about [Qpid](@site-url@/index.html).
 
 ## Downloads
 
-  || *Content* || *Download* || *Signature* ||
-  || Full source || [qpid-nightly.tar.gz](http://www.apache.org/dist/qpid/nightly/qpid-nightly.tar.gz) || [PGP](http://www.apache.org/dist/qpid/nightly/qpid-nightly.tar.gz.asc) ||
-  || C++ broker, Qpid Messaging API (C++, bindings) || [qpid-cpp-nightly.tar.gz](http://www.apache.org/dist/qpid/nightly/qpid-cpp-nightly.tar.gz) || [PGP](http://www.apache.org/dist/qpid/nightly/qpid-cpp-nightly.tar.gz.asc) ||
-  || C++ broker command-line tools || [qpid-tools-nightly.tar.gz](http://www.apache.org/dist/qpid/nightly/qpid-tools-nightly.tar.gz) || [PGP](http://www.apache.org/dist/qpid/nightly/qpid-tools-nightly.tar.gz.asc) ||
-  || Java broker, Qpid JCA || [qpid-java-broker-nightly.tar.gz](http://www.apache.org/dist/qpid/nightly/qpid-java-broker-nightly.tar.gz) || [PGP](http://www.apache.org/dist/qpid/nightly/qpid-java-broker-nightly.tar.gz.asc) ||
-  || Qpid JMS (AMQP 0-10, 0-91, 0-9, 0-8) || [qpid-java-client-nightly.tar.gz](http://www.apache.org/dist/qpid/nightly/qpid-java-client-nightly.tar.gz) || [PGP](http://www.apache.org/dist/qpid/nightly/qpid-java-client-nightly.tar.gz.asc) ||
-  || Qpid JMS (AMQP 1.0) || [qpid-java-amqp-1-0-client-jms-nightly.tar.gz](http://www.apache.org/dist/qpid/nightly/qpid-java-amqp-1-0-client-jms-nightly.tar.gz) || [PGP](http://www.apache.org/dist/qpid/nightly/qpid-java-amqp-1-0-client-jms-nightly.tar.gz.asc) ||
-  || Qpid Messaging API (Python) || [qpid-python-nightly.tar.gz](http://www.apache.org/dist/qpid/nightly/qpid-python-nightly.tar.gz) || [PGP](http://www.apache.org/dist/qpid/nightly/qpid-python-nightly.tar.gz.asc) ||
-  || Qpid WCF || [qpid-wcf-nightly.zip](http://www.apache.org/dist/qpid/nightly/qpid-wcf-nightly.zip) || [PGP](http://www.apache.org/dist/qpid/nightly/qpid-wcf-nightly.zip.asc) ||
-  || QMF || [qpid-qmf-nightly.tar.gz](http://www.apache.org/dist/qpid/nightly/qpid-qmf-nightly.tar.gz) || [PGP](http://www.apache.org/dist/qpid/nightly/qpid-qmf-nightly.tar.gz.asc) ||
+  || *Content* || *Download* ||
+  || Full source || [qpid-nightly.tar.gz](http://www.apache.org/dist/qpid/nightly/qpid-nightly.tar.gz) ||
+  || C++ broker, Qpid Messaging API (C++, bindings) || [qpid-cpp-nightly.tar.gz](http://www.apache.org/dist/qpid/nightly/qpid-cpp-nightly.tar.gz) ||
+  || C++ broker command-line tools || [qpid-tools-nightly.tar.gz](http://www.apache.org/dist/qpid/nightly/qpid-tools-nightly.tar.gz) ||
+  || Java broker, Qpid JCA || [qpid-java-broker-nightly.tar.gz](http://www.apache.org/dist/qpid/nightly/qpid-java-broker-nightly.tar.gz) ||
+  || Qpid JMS (AMQP 0-10, 0-91, 0-9, 0-8) || [qpid-java-client-nightly.tar.gz](http://www.apache.org/dist/qpid/nightly/qpid-java-client-nightly.tar.gz) ||
+  || Qpid JMS (AMQP 1.0) || [qpid-java-amqp-1-0-client-jms-nightly.tar.gz](http://www.apache.org/dist/qpid/nightly/qpid-java-amqp-1-0-client-jms-nightly.tar.gz) ||
+  || Qpid Messaging API (Python) || [qpid-python-nightly.tar.gz](http://www.apache.org/dist/qpid/nightly/qpid-python-nightly.tar.gz) ||
+  || Qpid WCF || [qpid-wcf-nightly.zip](http://www.apache.org/dist/qpid/nightly/qpid-wcf-nightly.zip) ||
+  || QMF || [qpid-qmf-nightly.tar.gz](http://www.apache.org/dist/qpid/nightly/qpid-qmf-nightly.tar.gz) ||
 
 Java artefacts are released as compiled bytecode.  Source code is
 available in the full source artefact.

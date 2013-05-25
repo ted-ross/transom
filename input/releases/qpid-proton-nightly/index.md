@@ -25,8 +25,8 @@ Proton](file:///home/jross/transom/output/proton/index.html).
 
 ## Downloads
 
-  || *Content* || *Download* || *Signature* ||
-  || AMQP Messenger, AMQP Protocol Engine || [qpid-proton-nightly.tar.gz](http://www.apache.org/dist/qpid/proton/nightly/qpid-proton-nightly.tar.gz) || [PGP](http://www.apache.org/dist/qpid/proton/nightly/qpid-proton-nightly.tar.gz.asc) ||
+  || *Content* || *Download* ||
+  || AMQP Messenger, AMQP Protocol Engine || [qpid-proton-nightly.tar.gz](http://www.apache.org/dist/qpid/proton/nightly/qpid-proton-nightly.tar.gz) ||
 
 ## Components
 
