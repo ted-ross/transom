@@ -3,6 +3,8 @@
   - per component jira queries
   - user and dev list descriptions
   - highlight selected fragments?
+  - assert committed and uptodate before publish
+  - add snapshots repo to maven
 
 # Medium
 

@@ -61,5 +61,6 @@ be the following.
 
 ## More information
 
+ - [Snapshot repository](https://repository.apache.org/content/repositories/snapshots/)
  - [Maven project](http://maven.apache.org/)
  - [Maven central repository](http://maven.apache.org/guides/mini/guide-central-repository-upload.html)
