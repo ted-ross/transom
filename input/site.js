@@ -96,7 +96,6 @@ function registerEventListeners() {
 
     if (jiraSearchForm) {
         jiraSearchForm.addEventListener("submit", searchJiras, false);
-        window.addEventListener("hashchange", focusJiraSearchForm, false);
     }
 
     if (viewvcGotoForm) {
@@ -170,7 +169,27 @@ function updatePathNavigation() {
     }
 }
 
+function updateHeadingSelection() {
+    var hash = window.location.hash;
+
+    if (!hash) {
+        return;
+    }
+
+    var elem = document.getElementById(hash.substring(1));
+
+    if (!elem) {
+        return;
+    }
+
+    elem.className = "selected";
+}
+
 window.addEventListener("load", registerEventListeners, false);
 window.addEventListener("load", focusJiraSearchForm, false);
 window.addEventListener("load", updateGlobalNavigation, false);
 window.addEventListener("load", updatePathNavigation, false);
+window.addEventListener("load", updateHeadingSelection, false);
+
+window.addEventListener("hashchange", focusJiraSearchForm, false);
+window.addEventListener("hashchange", updateHeadingSelection, false);

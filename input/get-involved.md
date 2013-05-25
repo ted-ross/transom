@@ -36,9 +36,8 @@ can ask questions on the Qpid
 
 Qpid is an active community.  There's ongoing development of new
 features, lots of bug fixing, and discussion of messaging
-architecture.  Subscribe to our
-[mailing lists](@site-url@/discussion.html#subscribe) to watch our
-progress and voice your opinion.
+architecture.  [Subscribe](@site-url@/discussion.html#subscribe) to
+our mailing lists to watch our progress and voice your opinion.
 
 ## Make Qpid work for you
 
