@@ -26,28 +26,31 @@ messages using AMQP.
   || *AMQP versions* || 1.0, 0-10, 0-91, 0-9, 0-8 ||
   || *Download* || [qpid-java-broker-@current-release@.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/@current-release@/qpid-java-broker-@current-release@.tar.gz) \[[PGP](http://www.apache.org/dist/qpid/@current-release@/qpid-java-broker-@current-release@.tar.gz.asc)] ||
   || *Source location* ||  <http://svn.apache.org/repos/asf/qpid/trunk/qpid/java/> ||
+  || *Issues* || [Completed features](https://issues.apache.org/jira/issues/?jql=project+%3D+%22Qpid%22+and+issuetype+%3D+%22New+Feature%22+and+status+in+%28%22Closed%22%2C+%22Resolved%22%29+and+resolution+%3D+%22Fixed%22+and+component+%3D+%22Java+Broker%22) ||
 
 ## Features
 
 <div class="two-column" markdown="1">
  - JMS 1.1 compliant
  - Speaks and translates among all versions of AMQP
- - Management via JMX, REST, QMF, and web console
+ - [Management](@current-release-url@/java-broker/book/Java-Broker-Configuring-And-Managing.html) via JMX, REST, QMF, and web console
  - [Access control lists](@current-release-url@/java-broker/book/Java-Broker-Security-ACLs.html)
- - [Flexible logging](https://cwiki.apache.org/qpid/configure-operational-status-logging.html)
+ - Flexible logging
  - Flow to disk
  - Header-based routing
- - [Heartbeats](https://cwiki.apache.org/qpid/configure-broker-and-client-heartbeating.html)
+ - Heartbeats
  - [High availability](@current-release-url@/java-broker/book/Java-Broker-High-Availability.html)
+ - Message groups
  - [Pluggable persistence](@current-release-url@/java-broker/book/Java-Broker-Stores.html) supporting Derby, SQL, and BDB stores
  - [Pluggable authentication](@current-release-url@/java-broker/book/Java-Broker-Security-Authentication-Providers.html) supporting LDAP, Kerberos, and SSL client certificates
  - [Producer flow control](@current-release-url@/java-broker/book/Qpid-Producer-Flow-Control.html)
  - [Secure connection via SSL](@current-release-url@/java-broker/book/Java-Broker-Security-SSL.html)
  - Server-side selectors
- - [Specialized queuing](@current-release-url@/java-broker/book/Java-Broker-Queues.html) with last value queue, message groups, priority queue, and sorted queue
+ - [Specialized queuing](@current-release-url@/java-broker/book/Java-Broker-Queues.html) with last value queue, priority queue, and sorted queue
  - Threshold alerts
  - Transactions
- - [Virtual hosts](https://cwiki.apache.org/qpid/configure-the-virtual-hosts-via-virtualhostsxml.html)
+ - [Undeliverable message handling](@current-release-url@/java-broker/book/Java-Broker-Runtime-Handling-Undeliverable-Messages.html)
+ - [Virtual hosts](@current-release-url@/java-broker/book/Java-Broker-Virtual-Hosts.html)
 </div>
 
 ## Documentation

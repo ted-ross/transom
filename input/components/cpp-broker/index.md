@@ -26,10 +26,12 @@ messages using AMQP.
   || *AMQP versions* || 1.0, 0-10 ||
   || *Download* || [qpid-cpp-@current-release@.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/@current-release@/qpid-cpp-@current-release@.tar.gz) \[[PGP](http://www.apache.org/dist/qpid/@current-release@/qpid-cpp-@current-release@.tar.gz.asc)] ||
   || *Source location* ||  <http://svn.apache.org/repos/asf/qpid/trunk/qpid/cpp/> ||
+  || *Issues* || [Completed features](https://issues.apache.org/jira/issues/?jql=project+%3D+%22Qpid%22+and+issuetype+%3D+%22New+Feature%22+and+status+in+%28%22Closed%22%2C+%22Resolved%22%29+and+resolution+%3D+%22Fixed%22+and+component+%3D+%22C%2B%2B+Broker%22) ||
 
 ## Features
 
 <div class="two-column" markdown="1">
+ - Speaks and translates between AMQP 1.0 and 0-10
  - [Management](@current-release-url@/cpp-broker/book/chapter-Managing-CPP-Broker.html#section-Managing-CPP-Broker) via [QMF](@site-url@/components/qmf/index.html)
  - Access control lists
  - [Federation](@current-release-url@/cpp-broker/book/chap-Messaging_User_Guide-Broker_Federation.html)
@@ -40,7 +42,7 @@ messages using AMQP.
  - [Message groups](@current-release-url@/cpp-broker/book/Using-message-groups.html)
  - Message TTLs and arrival timestamps
  - Pluggable persistence
- - Pluggable authentication via SASL
+ - [Pluggable authentication via SASL](@current-release-url@/cpp-broker/book/chap-Messaging_User_Guide-Security.html)
  - [Producer flow control](@current-release-url@/cpp-broker/book/producer-flow-control.html)
  - [Queue replication](@current-release-url@/cpp-broker/book/ha-queue-replication.html)
  - Resource limits
@@ -49,6 +51,7 @@ messages using AMQP.
  - Specialized queueing with [last value queue](@current-release-url@/cpp-broker/book/ch01s06.html), priority queue, and ring queue
  - [Threshold alerts](https://issues.apache.org/jira/browse/QPID-3002)
  - Transactions
+ - Undeliverable message handling
 </div>
 
 ## Documentation

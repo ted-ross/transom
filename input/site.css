@@ -271,7 +271,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h2.selected, h3.selected, h4.selected, h5.selected, h6.selected {
     color: #0d6dad;
-    text-shadow: 0em 0em 0.1em #d0c6e7;
+    text-shadow: 0em 0em 0.2em #d0c6e7;
 }
 
 h1 {
