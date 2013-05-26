@@ -32,19 +32,21 @@ messages using AMQP.
 <div class="two-column" markdown="1">
  - [Management](@current-release-url@/cpp-broker/book/chapter-Managing-CPP-Broker.html#section-Managing-CPP-Broker) via [QMF](@site-url@/components/qmf/index.html)
  - Access control lists
- - Federation
+ - [Federation](@current-release-url@/cpp-broker/book/chap-Messaging_User_Guide-Broker_Federation.html)
  - Flexible logging
  - Header-based routing
  - Heartbeats
  - [High availability](@current-release-url@/cpp-broker/book/chapter-ha.html)
+ - [Message groups](@current-release-url@/cpp-broker/book/Using-message-groups.html)
+ - Message TTLs and arrival timestamps
  - Pluggable persistence
  - Pluggable authentication via SASL
  - [Producer flow control](@current-release-url@/cpp-broker/book/producer-flow-control.html)
- - Queue replication
+ - [Queue replication](@current-release-url@/cpp-broker/book/ha-queue-replication.html)
  - Resource limits
  - Secure connection via SSL
  - [Server-side selectors](https://issues.apache.org/jira/browse/QPID-4558?focusedCommentId=13592659&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-13592659)
- - Specialized queueing with last value queue, message groups, priority queue, and ring queue
+ - Specialized queueing with [last value queue](@current-release-url@/cpp-broker/book/ch01s06.html), priority queue, and ring queue
  - [Threshold alerts](https://issues.apache.org/jira/browse/QPID-3002)
  - Transactions
 </div>

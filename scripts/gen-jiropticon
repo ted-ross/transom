@@ -42,4 +42,41 @@ template = \
 ;;
 
 # Jiropticon
+
+## Completed features by component
+
+{completed_features}
 """
+
+def gen_jiropticon(output_path):
+    jql = """
+    project = "Qpid" and issuetype = "New Feature"
+    and status in ("Closed", "Resolved") and resolution = "Fixed"
+    and component = "C++ Broker"
+    """
+
+    lines = list()
+    query = QpidQuery()
+    query.add("issuetype", "=", "New Feature")
+    query.add("status", "in", """("Closed", "Resolved")""")
+    query.add("resolution", "=", "Fixed")
+
+    for component in query.components:
+        copy = query.copy()
+        copy.add("component", "=", component)
+        href = copy.render()
+        lines.append(" - [{}]({})".format(component, href))
+
+    completed_features = "\n".join(lines)
+
+    output = template.format(**locals())
+    output = output.strip()
+
+    write(output_path, output)
+
+if len(sys.argv) != 2:
+    sys.exit("Usage: script OUTPUT-PATH")
+
+output_path = sys.argv[1]
+
+gen_jiropticon(output_path)

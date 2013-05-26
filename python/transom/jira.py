@@ -17,8 +17,10 @@
 # under the License.
 #
 
-import sqlite3
+import copy
 import os
+import sqlite3
+import urllib
 
 from xml.etree.ElementTree import *
 
@@ -150,3 +152,140 @@ class _Record(object):
         #print dml, args
 
         cursor.execute(dml, args)
+
+class Query(object):
+    statuses = (
+        "Open",
+        "Closed",
+        "Reopened",
+        "In Progress",
+        "Ready To Review",
+        "Resolved",
+        )
+
+    resolutions = (
+        "Fixed",
+        "Won't Fix",
+        "Duplicate",
+        "Invalid",
+        "Incomplete",
+        "Cannot Reproduce",
+        "Later",
+        "Not A Problem",
+        "Unresolved",
+        "Implemented",
+        )
+
+    def __init__(self):
+        self.base_url = "https://issues.apache.org/jira/issues/"
+        self.exprs = list()
+
+    def copy(self):
+        other = Query()
+        other.exprs = copy.copy(self.exprs)
+        return other
+
+    def add(self, name, operator, value):
+        if operator in ("=", "!=", "~"):
+            value = "\"{}\"".format(value)
+
+        self.exprs.append((name, operator, value))
+
+    def render(self):
+        exprs = ["{} {} {}".format(*x) for x in self.exprs]
+        jql = " and ".join(exprs)
+        jql = urllib.quote_plus(jql)
+
+        return "{}?jql={}".format(self.base_url, jql)
+
+class QpidQuery(Query):
+    project = "Qpid"
+
+    components = (
+        "Build Tools",
+        "C++ Broker",
+        "C++ Client",
+        "C++ Clustering",
+        "Documentation",
+        "Dot Net Client",
+        "Interop Testing",
+        "Java Broker",
+        "Java Client",
+        "Java Common",
+        "Java Management : JMX Console",
+        "Java Performance Tests",
+        "Java Tests",
+        "Java Tools",
+        "JCA",
+        "Packaging",
+        "Perl Client",
+        "Proton",
+        "Python Client",
+        "Python Test Suite",
+        "Python Tools",
+        "Qpid Dispatch",
+        "Qpid Examples",
+        "Qpid Management Framework",
+        "Ruby Client",
+        "Tools",
+        "WCF/C++ Client",
+        "Website",
+        )
+
+    versions = (
+        "0.23",
+        "0.22",
+        "0.21",
+        "0.20",
+        "0.19",
+        "0.18",
+        "0.17",
+        "0.16",
+        "0.15",
+        "0.14",
+        "0.13",
+        "0.12",
+        "0.11",
+        "0.10",
+        "0.9",
+        "0.8",
+        "0.7",
+        "0.6",
+        "0.5",
+        "M4",
+        "M3",
+        "M2.1",
+        "M2",
+        "M1",
+        "JIRA Cleanup",
+        "Future",
+        )
+
+    committers = (
+        "Alan Conway",
+        "Alex Rudyy",
+        "Andrew Stitcher",
+        "Chuck Rolke",
+        "Cliff Jansen",
+        "Darryl L. Pierce",
+        "Fraser Adams",
+        "Gordon Sim",
+        "Justin Ross",
+        "Keith Wall",
+        "Ken Giusti",
+        "Kim van der Riet",
+        "michael j. goulish",
+        "Philip Harvey",
+        "Rafael H. Schloming",
+        "Rajith Attapattu",
+        "Rob Godfrey",
+        "Robbie Gemmell",
+        "Steve Huston",
+        "Ted Ross",
+        "Weston M. Price",
+        )
+
+    def __init__(self):
+        super(QpidQuery, self).__init__()
+
+        self.add("project", "=", self.project)

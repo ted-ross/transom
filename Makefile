@@ -63,3 +63,6 @@ gen-proton-release-%: RELEASE_DIR := input/releases/qpid-proton-${RELEASE}
 gen-proton-release-%:
 	test -n "${RELEASE}" && mkdir -p ${RELEASE_DIR}
 	scripts/gen-proton-release-$* ${RELEASE} ${RELEASE_DIR}
+
+gen-jiropticon:
+	scripts/gen-jiropticon input/jiropticon.md
