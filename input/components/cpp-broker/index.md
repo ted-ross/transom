@@ -26,7 +26,7 @@ messages using AMQP.
   || *AMQP versions* || 1.0, 0-10 ||
   || *Download* || [qpid-cpp-@current-release@.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/@current-release@/qpid-cpp-@current-release@.tar.gz) \[[PGP](http://www.apache.org/dist/qpid/@current-release@/qpid-cpp-@current-release@.tar.gz.asc)] ||
   || *Source location* ||  <http://svn.apache.org/repos/asf/qpid/trunk/qpid/cpp/> ||
-  || *Issues* || [Completed features](https://issues.apache.org/jira/issues/?jql=project+%3D+%22Qpid%22+and+issuetype+%3D+%22New+Feature%22+and+status+in+%28%22Closed%22%2C+%22Resolved%22%29+and+resolution+%3D+%22Fixed%22+and+component+%3D+%22C%2B%2B+Broker%22) ||
+  || *Issues* || [Open bugs](https://issues.apache.org/jira/issues/?jql=project+%3D+%22Qpid%22+and+issuetype+%3D+%22Bug%22+and+status+in+%28%22Open%22%2C+%22Reopened%22%2C+%22In+Progress%22%2C+%22Ready+To+Review%22%29+and+component+%3D+%22C%2B%2B+Broker%22), [Completed features](https://issues.apache.org/jira/issues/?jql=project+%3D+%22Qpid%22+and+issuetype+%3D+%22New+Feature%22+and+status+in+%28%22Closed%22%2C+%22Resolved%22%29+and+resolution+%3D+%22Fixed%22+and+component+%3D+%22C%2B%2B+Broker%22), [Requested features](https://issues.apache.org/jira/issues/?jql=project+%3D+%22Qpid%22+and+issuetype+%3D+%22New+Feature%22+and+status+in+%28%22Open%22%2C+%22Reopened%22%2C+%22In+Progress%22%2C+%22Ready+To+Review%22%29+and+component+%3D+%22C%2B%2B+Broker%22) ||
 
 ## Features
 

@@ -46,20 +46,46 @@ template = \
 ## Completed features by component
 
 {completed_features}
+
+## Requested features by component
+
+{requested_features}
+
+## Open bugs by component
+
+{open_bugs}
 """
 
 def gen_jiropticon(output_path):
-    jql = """
-    project = "Qpid" and issuetype = "New Feature"
-    and status in ("Closed", "Resolved") and resolution = "Fixed"
-    and component = "C++ Broker"
-    """
-
-    lines = list()
     query = QpidQuery()
     query.add("issuetype", "=", "New Feature")
     query.add("status", "in", """("Closed", "Resolved")""")
     query.add("resolution", "=", "Fixed")
+
+    completed_features = render_component_list(query)
+
+    query = QpidQuery()
+    query.add("issuetype", "=", "New Feature")
+    query.add("status", "in",
+              """("Open", "Reopened", "In Progress", "Ready To Review")""")
+
+    requested_features = render_component_list(query)
+
+    query = QpidQuery()
+
+    query.add("issuetype", "=", "Bug")
+    query.add("status", "in",
+              """("Open", "Reopened", "In Progress", "Ready To Review")""")
+
+    open_bugs = render_component_list(query)
+
+    output = template.format(**locals())
+    output = output.strip()
+
+    write(output_path, output)
+
+def render_component_list(query):
+    lines = list()
 
     for component in query.components:
         copy = query.copy()
@@ -67,12 +93,7 @@ def gen_jiropticon(output_path):
         href = copy.render()
         lines.append(" - [{}]({})".format(component, href))
 
-    completed_features = "\n".join(lines)
-
-    output = template.format(**locals())
-    output = output.strip()
-
-    write(output_path, output)
+    return "\n".join(lines)
 
 if len(sys.argv) != 2:
     sys.exit("Usage: script OUTPUT-PATH")
