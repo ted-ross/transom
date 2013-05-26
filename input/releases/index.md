@@ -38,13 +38,13 @@ and the
  - [Qpid 0.16](qpid-0.16/index.html), May 2012
  - [Qpid 0.14](qpid-0.14/index.html), January 2012
  
+Still older releases are available at
+<http://archive.apache.org/dist/qpid/>.
+
 ## Nightly releases
 
  - [Qpid Nightly](qpid-nightly/index.html)
  - [Qpid Proton Nightly](qpid-proton-nightly/index.html)
-
-Still older releases are available at
-<http://archive.apache.org/dist/qpid/>.
 
 ## More information
 
