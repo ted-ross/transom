@@ -24,6 +24,8 @@
    opened 24 March
  - [Qpid 0.22](https://cwiki.apache.org/qpid/022-release.html) -
    Preparing for release in May
+ - [Qpid Nightly](@site-url@/releases/qpid-nightly/index.html)
+ - [Qpid Proton Nightly](@site-url@/releases/qpid-proton-nightly/index.html)
 
 ## Issues
 
@@ -48,7 +50,6 @@
 ## Resources
 
  - [Automated tests in Jenkins](https://builds.apache.org//view/M-R/view/Qpid/)
- - [Nightly builds](@site-url@/resources.html#nightly-builds)
  - [Review Board requests](https://reviews.apache.org/groups/qpid/)
  - [Developer pages on the wiki](https://cwiki.apache.org/qpid/developer-pages.html)
  - [Developer guide](https://cwiki.apache.org/qpid/qpid-project-developers-guide.html)
