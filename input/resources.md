@@ -63,13 +63,6 @@ Qpid contributors often use
  - [Automated tests in Jenkins](https://builds.apache.org//view/M-R/view/Qpid/)
  - [Overview of Qpid CI](https://cwiki.apache.org/qpid/continuous-integration.html)
 
-## Nightly builds
-
-### Trunk documentation
-
- - [Java broker manual](@site-url@/components/java-broker/book/index.html)
- - [Programming in Apache Qpid](@site-url@/components/programming/book/index.html)
-
 ## Notifications
 
 The traffic on these lists is automatically generated.  With the
@@ -88,6 +81,11 @@ them.
 || *Commits* || <commits-subscribe@qpid.apache.org> || <commits-unsubscribe@qpid.apache.org> ||
 || *Notifications* || <notifications-subscribe@qpid.apache.org> || <notifications-unsubscribe@qpid.apache.org> ||
 || || Send "subscribe" in the subject || Send "unsubscribe" in the subject ||
+
+## Trunk documentation
+
+ - [Java broker manual](@site-url@/components/java-broker/book/index.html)
+ - [Programming in Apache Qpid](@site-url@/components/programming/book/index.html)
 
 ## Wiki
 
