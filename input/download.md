@@ -93,4 +93,3 @@ rather than from a mirror.
 
  - [Qpid releases](@site-url@/releases/index.html)
  - [Qpid components](@site-url@/components/index.html)
- - [Nightly builds](@site-url@/resources.html#nightly-builds)
