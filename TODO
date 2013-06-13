@@ -1,12 +1,12 @@
-# High
+## High
 
+ - update readme for simplified publish
  - per component jira queries
  - user and dev list descriptions
- - assert committed and uptodate before publish
  - anon jira filing form - discussion started on list
  - debian install directions
 
-# Medium
+## Medium
 
  - comments service
  - gen messenger book (when its in a tagged release)
@@ -15,16 +15,13 @@
    - nav from api ref back to site
  - tarballs of apidocs and examples
  - qmf2 examples
- - there are some trunk doc links in the java broker page that should
-   be converted to current version when 0.22 lands
  - perl doc
  - qmf2 api doc for python, ruby
- - slab on hover for "more resources"
  - nightly qpid and qpid-proton
    - need artifact location
    - need way of running doc gen scripts
 
-# Low
+## Low
 
  - add more links into book content (qmf, for example)
  - videos

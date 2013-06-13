@@ -1,6 +1,6 @@
 .PHONY: default help render check-links clean publish
 
-OUTPUT_DIR := output
+OUTPUT_DIR := docs
 SITE_URL := file://$(shell readlink -f ${OUTPUT_DIR})
 
 default: render
