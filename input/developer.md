@@ -35,8 +35,8 @@
 
 ## Source code
 
- - Qpid [trunk](https://svn.apache.org/repos/asf/qpid/trunk/qpid), [branches](https://svn.apache.org/repos/asf/qpid/branches)
- - Qpid Proton [trunk](https://svn.apache.org/repos/asf/qpid/proton/trunk), [branches](https://svn.apache.org/repos/asf/qpid/proton/branches)
+ - Qpid [trunk](https://svn.apache.org/repos/asf/qpid/trunk/qpid), [branches](https://svn.apache.org/repos/asf/qpid/branches), [tags](https://svn.apache.org/repos/asf/qpid/tags)
+ - Qpid Proton [trunk](https://svn.apache.org/repos/asf/qpid/proton/trunk), [branches](https://svn.apache.org/repos/asf/qpid/proton/branches), [tags](https://svn.apache.org/repos/asf/qpid/proton/tags)
 
 </div>
 <div class="column" markdown="1">
