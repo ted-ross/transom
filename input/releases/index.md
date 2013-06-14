@@ -41,10 +41,10 @@ and the
 Still older releases are available at
 <http://archive.apache.org/dist/qpid/>.
 
-## Nightly releases
-
- - [Qpid Nightly](qpid-nightly/index.html)
- - [Qpid Proton Nightly](qpid-proton-nightly/index.html)
+;; ## Nightly releases
+;;
+;;  - [Qpid Nightly](qpid-nightly/index.html)
+;;  - [Qpid Proton Nightly](qpid-proton-nightly/index.html)
 
 ## More information
 

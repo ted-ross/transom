@@ -26,7 +26,7 @@ Python, Ruby, and .NET.  More about [Qpid](@site-url@/index.html).
 ## Downloads
 
   || *Content* || *Download* ||
-  || Full source || [qpid-nightly.tar.gz]()) ||
+  || Full source || [qpid-nightly.tar.gz]() ||
   || C++ broker, Qpid Messaging API (C++, bindings) || [qpid-cpp-nightly.tar.gz]() ||
   || C++ broker command-line tools || [qpid-tools-nightly.tar.gz]() ||
   || Java broker, Qpid JCA || [qpid-java-broker-nightly.tar.gz]() ||
@@ -111,5 +111,5 @@ available in the full source artefact.
 
 ## More information
 
- - [All release artefacts](http://www.apache.org/dist/qpid/nightly)
+ - [All release artefacts]()
  - [Source repository](http://svn.apache.org/repos/asf/qpid/tunk)

@@ -26,7 +26,7 @@ Proton](file:///home/jross/transom/output/proton/index.html).
 ## Downloads
 
   || *Content* || *Download* ||
-  || AMQP Messenger, AMQP Protocol Engine || [qpid-proton-nightly.tar.gz](http://www.apache.org/dist/qpid/proton/nightly/qpid-proton-nightly.tar.gz) ||
+  || AMQP Messenger, AMQP Protocol Engine || [qpid-proton-nightly.tar.gz]() ||
 
 ## Components
 
@@ -45,28 +45,28 @@ Proton](file:///home/jross/transom/output/proton/index.html).
 
 ### AMQP Protocol Engine
 
- - [C API reference](protocol-engine/c/api/index.html)
- - [Java API reference](protocol-engine/java/api/index.html)
- - [Python API reference](protocol-engine/python/api/index.html)
+ - [C API reference]()
+ - [Java API reference]()
+ - [Python API reference]()
 
 </div>
 <div class="column" markdown="1">
 
 ### AMQP Messenger
 
- - [C API reference](protocol-engine/c/api/messenger_8h.html)
- - [C examples](messenger/c/examples/index.html)
- - [Java API reference](protocol-engine/java/api/org/apache/qpid/proton/messenger/Messenger.html)
- - [Perl examples](messenger/perl/examples/index.html)
- - [PHP examples](messenger/php/examples/index.html)
- - [Python API reference](protocol-engine/python/api/proton.Messenger-class.html)
- - [Python examples](messenger/python/examples/index.html)
- - [Ruby examples](messenger/ruby/examples/index.html)
+ - [C API reference]()
+ - [C examples]()
+ - [Java API reference]()
+ - [Perl examples]()
+ - [PHP examples]()
+ - [Python API reference]()
+ - [Python examples]()
+ - [Ruby examples]()
 
 </div>
 </div>
 
 ## More information
 
- - [All release artefacts](http://www.apache.org/dist/qpid/proton/nightly)
+ - [All release artefacts]()
  - [Source repository](http://svn.apache.org/repos/asf/qpid/proton/trunk)

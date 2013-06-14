@@ -22,10 +22,8 @@
 
  - [Qpid 0.24](https://cwiki.apache.org/qpid/024-release.html) - Trunk
    opened 24 March
- - [Qpid 0.22](https://cwiki.apache.org/qpid/022-release.html) -
-   Preparing for release in May
- - [Qpid Nightly](@site-url@/releases/qpid-nightly/index.html)
- - [Qpid Proton Nightly](@site-url@/releases/qpid-proton-nightly/index.html)
+;; - [Qpid Nightly](@site-url@/releases/qpid-nightly/index.html)
+;; - [Qpid Proton Nightly](@site-url@/releases/qpid-proton-nightly/index.html)
 
 ## Issues
 
