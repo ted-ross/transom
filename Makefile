@@ -1,4 +1,4 @@
-.PHONY: default help render check-links clean publish
+.PHONY: default help render check-links clean publish-devel
 
 OUTPUT_DIR := docs
 SITE_URL := file://$(shell readlink -f ${OUTPUT_DIR})
@@ -24,15 +24,7 @@ check-links: render
 
 clean:
 	test -n "${OUTPUT_DIR}"
-	rm -rf ${OUTPUT_DIR}
-
-publish: OUTPUT_DIR := $(shell mktemp -d)
-publish: SITE_URL := http://qpid.apache.org
-publish: PUBLISH_DIR := ""
-publish: render
-	test -n "${PUBLISH_DIR}" -a -d ${PUBLISH_DIR} -a -f ${PUBLISH_DIR}/index.html
-	cp -a ${OUTPUT_DIR}/* ${PUBLISH_DIR}
-	rm -rf ${OUTPUT_DIR}
+	find ${OUTPUT_DIR} -type f -delete
 
 publish-devel: TAG := "head"
 publish-devel: OUTPUT_DIR := $(shell mktemp -d)

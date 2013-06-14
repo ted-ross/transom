@@ -14,7 +14,7 @@ To setup paths in your environment, source the `config.sh` script.
     python/               # Python library code; used by scripts
     scripts/              # Scripts called by the make rules
     input/                # The site content before rendering
-    output/               # The rendered result
+    docs/                 # The rendered result
 
 Some notable files in `input/`:
 
@@ -28,8 +28,8 @@ Some notable files in `input/`:
 After that most everything is accomplished by running make targets.
 These are the important ones:
 
-    transom$ make render  # Renders input/* to output/
-    transom$ make clean   # Removes output/
+    transom$ make render  # Renders input/* to docs/
+    transom$ make clean   # Removes docs/
 
 ## Adding content
 
@@ -43,12 +43,12 @@ These are the important ones:
 
 3. To look at the result in your browser, navigate to 
 
-        file:///$somepath/transom/output/somepage.html
+        file:///$somepath/transom/docs/somepage.html
 
 ## Render transformations
 
 The render step takes files under `input/` and reproduces them under
-`output/`.  The following transformations are applied in the process:
+`docs/`.  The following transformations are applied in the process:
 
  - `.html` files are just copied
  - `.html.in` files are wrapped in the site template and copied
@@ -109,28 +109,6 @@ install all the required dependencies on Fedora or RHEL.
 
 ## Publishing your work
 
-Once you're done making changes, commit your work.  There are still a
-few more steps, however, before the world can see it.
-
-Qpid uses Subversion to update the public website from the content at
-https://svn.apache.org/repos/asf/qpid/site/docs/. Any changes
-committed there will be reflected on the Qpid website.
-
-First make sure you have a local checkout of `qpid/site/docs`, then
-run the following command.  For this example I'll assume
-`qpid/site/docs` is checked out to `$HOME/qpid-site/docs`.
-
-    transom$ make publish PUBLISH_DIR=$HOME/qpid-site/docs
-
-This will copy your new content to the publish directory.  The final
-step is to commit the changes there.
-
-    transom$ cd $HOME/qpid-site/docs
-
-    # Check that everything looks right; 'svn add' any new files
-    docs$ svn status
-    M       index.html
-    ?       somenewfile.html
-
-    # Last step! After this, the content is live
-    docs$ svn commit -m "Here I make an account of what I changed"
+Once you're done making changes, commit your work.  All changes
+committed under `docs/` will be automatically propagated to the live
+Qpid website.
