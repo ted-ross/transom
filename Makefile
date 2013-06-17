@@ -24,7 +24,7 @@ check-links: render
 
 clean:
 	test -n "${OUTPUT_DIR}"
-	find ${OUTPUT_DIR} -type f -delete
+	find ${OUTPUT_DIR} -depth -name .svn -prune -o -type f -delete
 
 publish-devel: TAG := "head"
 publish-devel: OUTPUT_DIR := $(shell mktemp -d)
