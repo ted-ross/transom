@@ -2,17 +2,16 @@
 
  - user and dev list descriptions
  - anon jira filing form - discussion started on list
- - debian install directions
+ - related projects section
 
 ## Medium
 
+ - debian install directions
  - "send feedback" button
    - or comments service
  - gen messenger book (when its in a tagged release)
- - related projects section
  - custom templates for api docs
    - nav from api ref back to site
- - tarballs of apidocs and examples
  - qmf2 examples
  - perl doc
  - qmf2 api doc for python, ruby
@@ -38,3 +37,4 @@
  - live ci status
  - generate site map
  - var substitution in js and css files
+ - tarballs of apidocs and examples
