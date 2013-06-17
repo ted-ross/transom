@@ -8,11 +8,12 @@
   <button type="submit">Search</button>
 </form>
 
-### Search the wiki
+### Search mailing lists
 
-<form id="wiki-search-form" action="http://www.google.com/search" method="get">
-  <input type="hidden" name="sitesearch" value="cwiki.apache.org/qpid"/>
-  <input type="text" name="q" maxlength="255" value="" tabindex="2"/>
+<form action="http://qpid.2158936.n2.nabble.com/template/NamlServlet.jtp" method="get">
+  <input type="hidden" name="macro" value="search_page"/>
+  <input type="hidden" name="node" value="7106518"/>
+  <input type="text" name="query" tabindex="2"/>
   <button type="submit">Search</button>
 </form>
 
@@ -23,11 +24,10 @@
   <button type="submit">Search</button>
 </form>
 
-### Search mailing lists
+### Search the wiki
 
-<form action="http://qpid.2158936.n2.nabble.com/template/NamlServlet.jtp" method="get">
-  <input type="hidden" name="macro" value="search_page"/>
-  <input type="hidden" name="node" value="7106518"/>
-  <input type="text" name="query" tabindex="4"/>
+<form id="wiki-search-form" action="http://www.google.com/search" method="get">
+  <input type="hidden" name="sitesearch" value="cwiki.apache.org/qpid"/>
+  <input type="text" name="q" maxlength="255" value="" tabindex="4"/>
   <button type="submit">Search</button>
 </form>
