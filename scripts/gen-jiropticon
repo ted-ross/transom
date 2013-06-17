@@ -43,11 +43,11 @@ template = \
 
 # Jiropticon
 
-## Completed features by component
+## Completed features and improvements by component
 
 {completed_features}
 
-## Requested features by component
+## Requested features and improvements by component
 
 {requested_features}
 
@@ -58,14 +58,14 @@ template = \
 
 def gen_jiropticon(output_path):
     query = QpidQuery()
-    query.add("issuetype", "=", "New Feature")
+    query.add("issuetype", "in", """("New Feature", "Improvement")""")
     query.add("status", "in", """("Closed", "Resolved")""")
     query.add("resolution", "=", "Fixed")
 
     completed_features = render_component_list(query)
 
     query = QpidQuery()
-    query.add("issuetype", "=", "New Feature")
+    query.add("issuetype", "in", """("New Feature", "Improvement")""")
     query.add("status", "in",
               """("Open", "Reopened", "In Progress", "Ready To Review")""")
 

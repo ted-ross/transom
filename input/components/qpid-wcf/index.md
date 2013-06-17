@@ -28,6 +28,7 @@ channel implementation that speaks AMQP.
   || *AMQP versions* || 0-10 ||
   || *Downloads* || [qpid-wcf-@current-release@.zip](http://www.apache.org/dyn/closer.cgi/qpid/@current-release@/qpid-wcf-@current-release@.zip) \[[PGP](http://www.apache.org/dist/qpid/@current-release@/qpid-wcf-@current-release@.zip.asc)] ||
   || *Source location* ||  <http://svn.apache.org/repos/asf/qpid/trunk/qpid/wcf/> ||
+  || *Issues* || [Open bugs](https://issues.apache.org/jira/issues/?jql=project+%3D+%22Qpid%22+and+issuetype+%3D+%22Bug%22+and+status+in+%28%22Open%22%2C+%22Reopened%22%2C+%22In+Progress%22%2C+%22Ready+To+Review%22%29+and+component+%3D+%22WCF%2FC%2B%2B+Client%22), [Completed enhancements](https://issues.apache.org/jira/issues/?jql=project+%3D+%22Qpid%22+and+issuetype+in+%28%22New+Feature%22%2C+%22Improvement%22%29+and+status+in+%28%22Closed%22%2C+%22Resolved%22%29+and+resolution+%3D+%22Fixed%22+and+component+%3D+%22WCF%2FC%2B%2B+Client%22), [Requested enhancements](https://issues.apache.org/jira/issues/?jql=project+%3D+%22Qpid%22+and+issuetype+in+%28%22New+Feature%22%2C+%22Improvement%22%29+and+status+in+%28%22Open%22%2C+%22Reopened%22%2C+%22In+Progress%22%2C+%22Ready+To+Review%22%29+and+component+%3D+%22WCF%2FC%2B%2B+Client%22) ||
 
 ## Documentation
 

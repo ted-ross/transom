@@ -1,13 +1,13 @@
 ## High
 
- - per component jira queries
  - user and dev list descriptions
  - anon jira filing form - discussion started on list
  - debian install directions
 
 ## Medium
 
- - comments service
+ - "send feedback" button
+   - or comments service
  - gen messenger book (when its in a tagged release)
  - related projects section
  - custom templates for api docs
@@ -22,6 +22,7 @@
 
 ## Low
 
+ - test for page reachability
  - add more links into book content (qmf, for example)
  - videos
  - useful jira queries

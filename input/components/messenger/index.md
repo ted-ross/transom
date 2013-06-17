@@ -32,6 +32,7 @@ application speak AMQP.
   || *AMQP versions* || 1.0 ||
   || *Download* || [qpid-proton-@current-proton-release@.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/proton/@current-proton-release@/qpid-proton-@current-proton-release@.tar.gz) \[[PGP](http://www.apache.org/dist/qpid/proton/@current-proton-release@/qpid-proton-@current-proton-release@.tar.gz.asc)] ||
   || *Source location* ||  <http://svn.apache.org/repos/asf/qpid/proton/trunk/> ||
+  || *Issues* || [Open bugs](https://issues.apache.org/jira/issues/?jql=project%20%3D%20PROTON%20AND%20issuetype%20%3D%20Bug%20AND%20status%20in%20\(Open%2C%20%22In%20Progress%22%2C%20Reopened\)), [Completed enhancements](https://issues.apache.org/jira/issues/?jql=project%20%3D%20PROTON%20AND%20issuetype%20in%20\(Improvement%2C%20%22New%20Feature%22\)%20AND%20resolution%20%3D%20Fixed%20AND%20status%20in%20\(Resolved%2C%20Closed\)), [Requested enhancements](https://issues.apache.org/jira/issues/?jql=project%20%3D%20PROTON%20AND%20issuetype%20in%20\(Improvement%2C%20%22New%20Feature%22\)%20AND%20status%20in%20\(Open%2C%20%22In%20Progress%22%2C%20Reopened\)) ||
 
 ## Documentation
 

@@ -225,7 +225,7 @@ class QpidQuery(Query):
         "Python Tools",
         "Qpid Dispatch",
         "Qpid Examples",
-        "Qpid Management Framework",
+        "Qpid Managment Framework",
         "Ruby Client",
         "Tools",
         "WCF/C++ Client",
