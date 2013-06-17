@@ -30,6 +30,7 @@ publish-devel: TAG := "head"
 publish-devel: OUTPUT_DIR := $(shell mktemp -d)
 publish-devel: SITE_URL := /~jross/transom/${TAG}
 publish-devel: render
+	chmod 755 ${OUTPUT_DIR}
 	rsync -av ${OUTPUT_DIR}/ jross@people.apache.org:public_html/transom/${TAG}
 	rm -rf ${OUTPUT_DIR}
 
