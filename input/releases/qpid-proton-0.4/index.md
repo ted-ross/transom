@@ -33,7 +33,7 @@ integrity](@site-url@/download.html#verify-what-you-download) of the
 files you download.
 
   || *Content* || *Download* || *Signature* ||
-  || AMQP Messenger, AMQP Protocol Engine || [qpid-proton-0.4.tar.gz](http://www.apache.org/dist/qpid/proton/0.4/qpid-proton-0.4.tar.gz) || [PGP](http://www.apache.org/dist/qpid/proton/0.4/qpid-proton-0.4.tar.gz.asc) ||
+  || AMQP Messenger, AMQP Protocol Engine || [qpid-proton-0.4.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/proton/0.4/qpid-proton-0.4.tar.gz) || [PGP](http://www.apache.org/dist/qpid/proton/0.4/qpid-proton-0.4.tar.gz.asc) ||
 
 ## Components
 

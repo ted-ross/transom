@@ -113,15 +113,20 @@ files you download.
  - [Source repository tag](http://svn.apache.org/repos/asf/qpid/proton/tags/{release})
 """
 
-def gen_release_page(release, release_dir):
+def gen_release_page(release, release_dir, current):
     output_path = join(release_dir, "index.md")
 
     downloads = list()
     components = list()
 
+    source_artifact_url = "http://www.apache.org/dist/qpid/proton/{}/{}"
+
+    if current:
+        source_artifact_url = "http://www.apache.org/dyn/closer.cgi/qpid/proton/{}/{}"
+
     for artifact, summary in download_records:
         artifact = artifact.format(release)
-        artifact_url = "http://www.apache.org/dist/qpid/proton/{}/{}".format(release, artifact)
+        artifact_url = source_artifact_url.format(release, artifact)
         sig_url = "http://www.apache.org/dist/qpid/proton/{}/{}.asc".format(release, artifact)
 
         args = summary, artifact, artifact_url, sig_url
@@ -143,10 +148,17 @@ def gen_release_page(release, release_dir):
 
     write(output_path, output)
 
-if len(sys.argv) != 3:
-    sys.exit("Usage: script RELEASE RELEASE-DIR")
+if len(sys.argv) not in (3, 4):
+    sys.exit("Usage: script RELEASE RELEASE-DIR [CURRENT]")
 
 release = sys.argv[1]
 release_dir = sys.argv[2]
+current = 0
 
-gen_release_page(release, release_dir)
+try:
+    current = sys.argv[3]
+    current = int(current)
+except:
+    pass
+
+gen_release_page(release, release_dir, current)

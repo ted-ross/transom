@@ -33,15 +33,16 @@ integrity](@site-url@/download.html#verify-what-you-download) of the
 files you download.
 
   || *Content* || *Download* || *Signature* ||
-  || Full source || [qpid-0.22.tar.gz](http://www.apache.org/dist/qpid/0.22/qpid-0.22.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.22/qpid-0.22.tar.gz.asc) ||
-  || C++ broker, Qpid Messaging API (C++, bindings) || [qpid-cpp-0.22.tar.gz](http://www.apache.org/dist/qpid/0.22/qpid-cpp-0.22.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.22/qpid-cpp-0.22.tar.gz.asc) ||
-  || C++ broker command-line tools || [qpid-tools-0.22.tar.gz](http://www.apache.org/dist/qpid/0.22/qpid-tools-0.22.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.22/qpid-tools-0.22.tar.gz.asc) ||
-  || Java broker, Qpid JCA || [qpid-java-broker-0.22.tar.gz](http://www.apache.org/dist/qpid/0.22/qpid-java-broker-0.22.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.22/qpid-java-broker-0.22.tar.gz.asc) ||
-  || Qpid JMS (AMQP 0-10, 0-91, 0-9, 0-8) || [qpid-java-client-0.22.tar.gz](http://www.apache.org/dist/qpid/0.22/qpid-java-client-0.22.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.22/qpid-java-client-0.22.tar.gz.asc) ||
-  || Qpid JMS (AMQP 1.0) || [qpid-java-amqp-1-0-client-jms-0.22.tar.gz](http://www.apache.org/dist/qpid/0.22/qpid-java-amqp-1-0-client-jms-0.22.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.22/qpid-java-amqp-1-0-client-jms-0.22.tar.gz.asc) ||
-  || Qpid Messaging API (Python) || [qpid-python-0.22.tar.gz](http://www.apache.org/dist/qpid/0.22/qpid-python-0.22.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.22/qpid-python-0.22.tar.gz.asc) ||
-  || Qpid WCF || [qpid-wcf-0.22.zip](http://www.apache.org/dist/qpid/0.22/qpid-wcf-0.22.zip) || [PGP](http://www.apache.org/dist/qpid/0.22/qpid-wcf-0.22.zip.asc) ||
-  || QMF || [qpid-qmf-0.22.tar.gz](http://www.apache.org/dist/qpid/0.22/qpid-qmf-0.22.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.22/qpid-qmf-0.22.tar.gz.asc) ||
+  || Full source || [qpid-0.22.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.22/qpid-0.22.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.22/qpid-0.22.tar.gz.asc) ||
+  || C++ broker, Qpid Messaging API (C++, bindings) || [qpid-cpp-0.22.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.22/qpid-cpp-0.22.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.22/qpid-cpp-0.22.tar.gz.asc) ||
+  || C++ broker command-line tools || [qpid-tools-0.22.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.22/qpid-tools-0.22.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.22/qpid-tools-0.22.tar.gz.asc) ||
+  || Java broker || [qpid-java-broker-0.22.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.22/qpid-java-broker-0.22.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.22/qpid-java-broker-0.22.tar.gz.asc) ||
+  || Qpid JMS (AMQP 0-10, 0-91, 0-9, 0-8) || [qpid-java-client-0.22.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.22/qpid-java-client-0.22.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.22/qpid-java-client-0.22.tar.gz.asc) ||
+  || Qpid JMS (AMQP 1.0) || [qpid-java-amqp-1-0-client-jms-0.22.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.22/qpid-java-amqp-1-0-client-jms-0.22.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.22/qpid-java-amqp-1-0-client-jms-0.22.tar.gz.asc) ||
+  || Qpid JCA || [qpid-java-0.22.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.22/qpid-java-0.22.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.22/qpid-java-0.22.tar.gz.asc) ||
+  || Qpid Messaging API (Python) || [qpid-python-0.22.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.22/qpid-python-0.22.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.22/qpid-python-0.22.tar.gz.asc) ||
+  || Qpid WCF || [qpid-wcf-0.22.zip](http://www.apache.org/dyn/closer.cgi/qpid/0.22/qpid-wcf-0.22.zip) || [PGP](http://www.apache.org/dist/qpid/0.22/qpid-wcf-0.22.zip.asc) ||
+  || QMF || [qpid-qmf-0.22.tar.gz](http://www.apache.org/dyn/closer.cgi/qpid/0.22/qpid-qmf-0.22.tar.gz) || [PGP](http://www.apache.org/dist/qpid/0.22/qpid-qmf-0.22.tar.gz.asc) ||
 
 Java artefacts are released as compiled bytecode.  Source code is
 available in the full source artefact.

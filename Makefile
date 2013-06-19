@@ -47,6 +47,18 @@ gen-proton-release:
 	gen-proton-release-api-doc
 	gen-proton-release-examples
 
+gen-release-page: RELEASE_DIR := input/releases/qpid-${RELEASE}
+gen-release-page: CURRENT := 0
+gen-release-page:
+	test -n "${RELEASE}" && mkdir -p ${RELEASE_DIR}
+	scripts/gen-release-page ${RELEASE} ${RELEASE_DIR} ${CURRENT}
+
+gen-proton-release-page: RELEASE_DIR := input/releases/qpid-proton-${RELEASE}
+gen-proton-release-page: CURRENT := 0
+gen-proton-release-page:
+	test -n "${RELEASE}" && mkdir -p ${RELEASE_DIR}
+	scripts/gen-proton-release-page ${RELEASE} ${RELEASE_DIR} ${CURRENT}
+
 gen-release-%: RELEASE_DIR := input/releases/qpid-${RELEASE}
 gen-release-%:
 	test -n "${RELEASE}" && mkdir -p ${RELEASE_DIR}

@@ -24,9 +24,10 @@ download_records = (
     ("qpid-{}.tar.gz", "Full source"),
     ("qpid-cpp-{}.tar.gz", "C++ broker, Qpid Messaging API (C++, bindings)"),
     ("qpid-tools-{}.tar.gz", "C++ broker command-line tools"),
-    ("qpid-java-broker-{}.tar.gz", "Java broker, Qpid JCA"),
+    ("qpid-java-broker-{}.tar.gz", "Java broker"),
     ("qpid-java-client-{}.tar.gz", "Qpid JMS (AMQP 0-10, 0-91, 0-9, 0-8)"),
     ("qpid-java-amqp-1-0-client-jms-{}.tar.gz", "Qpid JMS (AMQP 1.0)"),
+    ("qpid-java-{}.tar.gz", "Qpid JCA"),
     ("qpid-python-{}.tar.gz", "Qpid Messaging API (Python)"),
     ("qpid-wcf-{}.zip", "Qpid WCF"),
     ("qpid-qmf-{}.tar.gz", "QMF"),
@@ -156,7 +157,7 @@ available in the full source artefact.
  - [Source repository tag](http://svn.apache.org/repos/asf/qpid/tags/{release})
 """
 
-def gen_release_page(release, release_dir):
+def gen_release_page(release, release_dir, current):
     output_path = join(release_dir, "index.md")
 
     devel_version = float(release) - 0.01
@@ -165,9 +166,14 @@ def gen_release_page(release, release_dir):
     downloads = list()
     components = list()
 
+    source_artifact_url = "http://www.apache.org/dist/qpid/{}/{}"
+
+    if current:
+        source_artifact_url = "http://www.apache.org/dyn/closer.cgi/qpid/{}/{}"
+
     for artifact, summary in download_records:
         artifact = artifact.format(release)
-        artifact_url = "http://www.apache.org/dist/qpid/{}/{}".format(release, artifact)
+        artifact_url = source_artifact_url.format(release, artifact)
         sig_url = "http://www.apache.org/dist/qpid/{}/{}.asc".format(release, artifact)
 
         args = summary, artifact, artifact_url, sig_url
@@ -192,10 +198,17 @@ def gen_release_page(release, release_dir):
 
     write(output_path, output)
 
-if len(sys.argv) != 3:
-    sys.exit("Usage: script RELEASE RELEASE-DIR")
+if len(sys.argv) not in (3, 4):
+    sys.exit("Usage: script RELEASE RELEASE-DIR [CURRENT]")
 
 release = sys.argv[1]
 release_dir = sys.argv[2]
+current = 0
 
-gen_release_page(release, release_dir)
+try:
+    current = sys.argv[3]
+    current = int(current)
+except:
+    pass
+
+gen_release_page(release, release_dir, current)
