@@ -42,8 +42,8 @@ messages using AMQP.
  - [High availability](@current-release-url@/java-broker/book/Java-Broker-High-Availability.html)
  - Message groups
  - [Pluggable persistence](@current-release-url@/java-broker/book/Java-Broker-Stores.html) supporting Derby, SQL, and BDB stores
- - [Pluggable authentication](@current-release-url@/java-broker/book/Java-Broker-Security-Authentication-Providers.html) supporting LDAP, Kerberos, and SSL client certificates
- - [Producer flow control](@current-release-url@/java-broker/book/Qpid-Producer-Flow-Control.html)
+ - [Pluggable authentication](@current-release-url@/java-broker/book/Java-Broker-Security.html#Java-Broker-Security-Authentication-Providers) supporting LDAP, Kerberos, and SSL client certificates
+ - [Producer flow control](@current-release-url@/java-broker/book/Java-Broker-Runtime-Disk-Space-Management.html#Qpid-Producer-Flow-Control)
  - [Secure connection via SSL](@current-release-url@/java-broker/book/Java-Broker-Security-SSL.html)
  - Server-side selectors
  - [Specialized queuing](@current-release-url@/java-broker/book/Java-Broker-Queues.html) with last value queue, priority queue, and sorted queue
