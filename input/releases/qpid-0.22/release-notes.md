@@ -31,6 +31,13 @@ process. A list of these JIRA issues can be found below.
 For more information about this release, including download links and
 documentation, see the [release overview](index.html).
 
+**Note:** This release addresses CVE-2013-1909. See
+[QPID-4918](https://issues.apache.org/jira/browse/QPID-4918).
+
+**Note:** The C++ broker clustering implementation has been replaced
+by a new HA capability. See
+[README-HA.txt](https://svn.apache.org/repos/asf/qpid/tags/0.22/qpid/cpp/README-HA.txt)
+for information about how to migrate.
 
 ## New features and improvements
 
@@ -99,16 +106,21 @@ documentation, see the [release overview](index.html).
  - [QPID-4768](https://issues.apache.org/jira/browse/QPID-4768) - [Java Broker] Resolve compatibility issues in web management console for old versions of IE and FF
  - [QPID-4769](https://issues.apache.org/jira/browse/QPID-4769) - [Java Broker] Add port tab into web management console for consistency with other object tabs
  - [QPID-4773](https://issues.apache.org/jira/browse/QPID-4773) - [Java Broker] Add functionality to display connection errors which might occurs on sending update requests to the broker
+ - [QPID-4777](https://issues.apache.org/jira/browse/QPID-4777) - [Java Broker] Add UI to view and edit web management configuration
  - [QPID-4778](https://issues.apache.org/jira/browse/QPID-4778) - [Java Broker] Introduce additional states for configured objects: ERRORED and REPLICA
  - [QPID-4791](https://issues.apache.org/jira/browse/QPID-4791) - [Java Broker] Make it possible to run web management consoles in the same browser from brokers running on the same host but on different ports
  - [QPID-4803](https://issues.apache.org/jira/browse/QPID-4803) - [Java Broker] Ensure the modelVersion and storeVersion attributes are saved to the configuration store and validated at startup
  - [QPID-4809](https://issues.apache.org/jira/browse/QPID-4809) - [Java Broker] add support for specifying configuration properties and use them to default the port numbers and work dir for the initial-config
  - [QPID-4814](https://issues.apache.org/jira/browse/QPID-4814) - [Java Broker] Implement configured objects updates by name and multiple parents
  - [QPID-4815](https://issues.apache.org/jira/browse/QPID-4815) - [Java Broker] make BrokerOptions the primary source for the location of the logging configuration file 
+ - [QPID-4817](https://issues.apache.org/jira/browse/QPID-4817) - Add message grouping to Java Broker book
+ - [QPID-4824](https://issues.apache.org/jira/browse/QPID-4824) - [Java AMQP 1.0] Reduce memory usage of codec
+ - [QPID-4865](https://issues.apache.org/jira/browse/QPID-4865) - HA Update documents for queue replication
 
 ## Bugs fixed
 
  - [QPID-2789](https://issues.apache.org/jira/browse/QPID-2789) - prevent additional message enqueues once a queue has begun to be deleted
+ - [QPID-3769](https://issues.apache.org/jira/browse/QPID-3769) - NPE in client AMQDestination.equals()
  - [QPID-4134](https://issues.apache.org/jira/browse/QPID-4134) - Provide Perl language bindings for Qpid
  - [QPID-4240](https://issues.apache.org/jira/browse/QPID-4240) - --link-maintenance-interval option is misspelled
  - [QPID-4274](https://issues.apache.org/jira/browse/QPID-4274) - second invocation of createConsumer fails for queue in JNDI properties
@@ -129,11 +141,14 @@ documentation, see the [release overview](index.html).
  - [QPID-4491](https://issues.apache.org/jira/browse/QPID-4491) - Update JCA Documentation for Property Name Changes
  - [QPID-4492](https://issues.apache.org/jira/browse/QPID-4492) - Provide README Doc for JBoss EAP 6 Configuration
  - [QPID-4493](https://issues.apache.org/jira/browse/QPID-4493) - Memory leak in perl bindings?
+ - [QPID-4496](https://issues.apache.org/jira/browse/QPID-4496) - [Java client] Improve error reporting for invalid addresses
+ - [QPID-4497](https://issues.apache.org/jira/browse/QPID-4497) - [Java client] Exclusive property for the subscription queue cannot be overridden using the address string
  - [QPID-4507](https://issues.apache.org/jira/browse/QPID-4507) - Perl language bindings not properly mapping uint8_t type
  - [QPID-4513](https://issues.apache.org/jira/browse/QPID-4513) - [Java Client] can erroneously log "Unable to load custom SASL providers." when loaded with multiple class loaders
  - [QPID-4518](https://issues.apache.org/jira/browse/QPID-4518) - Unknown qpidd config-file options should prevent startup.
  - [QPID-4531](https://issues.apache.org/jira/browse/QPID-4531) - Variant.cpp cast of -0 failing with older GCC
  - [QPID-4537](https://issues.apache.org/jira/browse/QPID-4537) - qpid-stat: fix undefined name error
+ - [QPID-4540](https://issues.apache.org/jira/browse/QPID-4540) - The subscription queue should only be deleted by the consumer.
  - [QPID-4541](https://issues.apache.org/jira/browse/QPID-4541) - Messages are replayed after XA commit in a failover scenario
  - [QPID-4543](https://issues.apache.org/jira/browse/QPID-4543) - QMF queueMoveMessages method returns "InvalidParameter" exception when there are simply no messages available to move from the source queue - this is confusing.
  - [QPID-4545](https://issues.apache.org/jira/browse/QPID-4545) - AMQP 1.0 support doesn't work under cmake build
@@ -154,6 +169,7 @@ documentation, see the [release overview](index.html).
  - [QPID-4595](https://issues.apache.org/jira/browse/QPID-4595) - Invoking Receiver::fetch() in a loop for slow producer causes only first &lt;prefetch&gt; messages received
  - [QPID-4602](https://issues.apache.org/jira/browse/QPID-4602) - Java broker fails to start if the default log4j configuration is used
  - [QPID-4607](https://issues.apache.org/jira/browse/QPID-4607) - C++ Broker connection limits counting fails and self tests don't catch the errors
+ - [QPID-4608](https://issues.apache.org/jira/browse/QPID-4608) - JMS client authorization failure throws JMSException instead of JMSSecurityException
  - [QPID-4609](https://issues.apache.org/jira/browse/QPID-4609) - Incorrect lock in the synchronize statement in org.apache.qpid.server.model.adapter.BrokerAdapter
  - [QPID-4617](https://issues.apache.org/jira/browse/QPID-4617) - getJMSReplyTo does not return null for when ReplyTo property is empty
  - [QPID-4625](https://issues.apache.org/jira/browse/QPID-4625) - Amqp 1.0 message properties (from the application-properties section) cannot be extracted
@@ -195,6 +211,7 @@ documentation, see the [release overview](index.html).
  - [QPID-4731](https://issues.apache.org/jira/browse/QPID-4731) - [Java Broker] unregistering a topic subscription with selector can silently prevent temporary queue deletion
  - [QPID-4751](https://issues.apache.org/jira/browse/QPID-4751) - Hello example still use the 'test' virtualhost, which no longer exists in the initial Java broker config
  - [QPID-4776](https://issues.apache.org/jira/browse/QPID-4776) - Unable to build Ruby language bindings with Cmake 2.6
+ - [QPID-4781](https://issues.apache.org/jira/browse/QPID-4781) - cmake build of perl bindings fails in RC2
  - [QPID-4782](https://issues.apache.org/jira/browse/QPID-4782) - [Java Broker] ConnectionAdapter.getSessions() can cause a ConcurrentModificationException
  - [QPID-4784](https://issues.apache.org/jira/browse/QPID-4784) - [Java Broker] simplify PrincipalDatabaseAuthentication manager SASL handling for clarity and to prevent logging erroneous errors when creating additional instances
  - [QPID-4785](https://issues.apache.org/jira/browse/QPID-4785) - [Java Broker] relax restrictions on editing ports outwith management-mode
@@ -206,6 +223,26 @@ documentation, see the [release overview](index.html).
  - [QPID-4813](https://issues.apache.org/jira/browse/QPID-4813) - [Java Broker] Protect operations to change queue attributes and exchange attributes with ACL
  - [QPID-4818](https://issues.apache.org/jira/browse/QPID-4818) - [Java Broker]  Remove a redundant providerSearchUrl attribute for Simple Ldap Authentication Provider
  - [QPID-4823](https://issues.apache.org/jira/browse/QPID-4823) - [Java Broker] add missing field to web management UI to set the 'alertThresholdQueueDepthBytes' attribute when creating a queue
+ - [QPID-4829](https://issues.apache.org/jira/browse/QPID-4829) - [JMS AMQP 1.0] Sessions added to started connections should be automatically started
+ - [QPID-4830](https://issues.apache.org/jira/browse/QPID-4830) - [JMS AMQP 1.0] Improve error handling in the JMS client
+ - [QPID-4841](https://issues.apache.org/jira/browse/QPID-4841) - [Java Broker] Ensure all data values returned through the REST API are properly sanitised before displaying in HTML to prevent XSS attacks
+ - [QPID-4845](https://issues.apache.org/jira/browse/QPID-4845) - [JMS AMQP 1.0] Client incorrectly reports temporary destinations as deleted
+ - [QPID-4847](https://issues.apache.org/jira/browse/QPID-4847) - [Java Broker] add support for message group configuration via the HTTP management interface
+ - [QPID-4851](https://issues.apache.org/jira/browse/QPID-4851) - [JMS AMQP 1.0] ConcurrentModificationException is thrown on closing of AMQP 1.0 connection with existing sessions
+ - [QPID-4852](https://issues.apache.org/jira/browse/QPID-4852) - [Java Broker] Opened AMQP 1.0 connections are not get closed on broker shutdown 
+ - [QPID-4855](https://issues.apache.org/jira/browse/QPID-4855) - [AMQP 1.0] compilation error on older compilers
+ - [QPID-4856](https://issues.apache.org/jira/browse/QPID-4856) - make distcheck fails on qpid.pm file
+ - [QPID-4858](https://issues.apache.org/jira/browse/QPID-4858) - [Java Broker] HTTP management ports configured with 'HTTP' protocol and 'SSL' transport options will silently fail to use SSL
+ - [QPID-4860](https://issues.apache.org/jira/browse/QPID-4860) - [Java Broker] Transition virtual host into ERRORED state on failure to activate
+ - [QPID-4861](https://issues.apache.org/jira/browse/QPID-4861) - [Java Broker] Allow users to access http management using '/' instead of forcing them to type '/management' or '/index.html'
+ - [QPID-4862](https://issues.apache.org/jira/browse/QPID-4862) - [Java Broker] Improve registration/unregistration for JMX MBean objects
+ - [QPID-4863](https://issues.apache.org/jira/browse/QPID-4863) - [Java Broker] Validate plugin attribute changes and throw UnsupportedOperationException where attribute changes are not supported
+ - [QPID-4868](https://issues.apache.org/jira/browse/QPID-4868) - [Java Broker] Add UI into web management console to edit JMX management configuration
+ - [QPID-4869](https://issues.apache.org/jira/browse/QPID-4869) - Small fix: Perl shouldn't be required to build Qpid
+ - [QPID-4876](https://issues.apache.org/jira/browse/QPID-4876) - Java Broker should not allow creation of Virtual Host from configuration file having no configuration for the host
+ - [QPID-4879](https://issues.apache.org/jira/browse/QPID-4879) - Merged patch removed endif(), breaking CMake build on 0.22
+ - [QPID-4881](https://issues.apache.org/jira/browse/QPID-4881) - [Java Broker] new --config-property argument cannot be used with qpid-server.bat (windows)
+ - [QPID-4918](https://issues.apache.org/jira/browse/QPID-4918) - Python client does not enforce SSL certificate validation even if CAs configured
 
 ## Tasks
 
