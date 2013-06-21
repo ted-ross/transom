@@ -19,15 +19,25 @@
 
 # Qpid Packages
 
-;; ## Debian
+## Debian
+
+Use `apt-get` to install Qpid and its dependencies.
+
+To install the C++ broker and management tools:
+
+    % apt-get install qpidd qpid-tools
+
+To install the C++ and Python Messaging APIs:
+
+    % apt-get install libqpidmessaging2-dev python-qpid
 
 ## Fedora
 
 Use `yum` to install Qpid and its dependencies.
 
-To install the C++ broker:
+To install the C++ broker and management tools:
 
-    % yum install qpid-cpp-server
+    % yum install qpid-cpp-server qpid-tools
 
 To install the C++ and Python Messaging APIs:
 
