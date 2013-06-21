@@ -35,3 +35,4 @@ aim is to help you make your application speak AMQP.
  - [AMQP website](http://www.amqp.org/)
  - [AMQP 1.0 specification](http://docs.oasis-open.org/amqp/core/v1.0/os/amqp-core-overview-v1.0-os.html)
  - [OASIS AMQP technical committee](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp)
+ - [AMQP on Wikipedia](http://en.wikipedia.org/wiki/Advanced_Message_Queuing_Protocol)

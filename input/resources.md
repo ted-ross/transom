@@ -82,6 +82,12 @@ them.
 || *Notifications* || <notifications-subscribe@qpid.apache.org> || <notifications-unsubscribe@qpid.apache.org> ||
 || || Send "subscribe" in the subject || Send "unsubscribe" in the subject ||
 
+## Related projects
+
+ - [ActiveMQ and AMQP using Qpid Proton](http://activemq.apache.org/amqp.html)
+ - [Apache Camel and AMQP using Qpid](http://camel.apache.org/amqp.html)
+ - [Apache Axis and AMQP using Qpid](http://axis.apache.org/axis2/c/core/docs/axis2c_manual.html#amqptrans)
+
 ## Trunk documentation
 
  - [Java broker manual](@site-url@/components/java-broker/book/index.html)
