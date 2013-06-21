@@ -402,6 +402,10 @@ a[href]:visited {
     color: #0d567f;
 }
 
+a img {
+    border: none;
+}
+
 strong {
     font-weight: bold;
 }
