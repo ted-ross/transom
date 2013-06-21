@@ -185,11 +185,13 @@ function updateHeadingSelection() {
     elem.className = "selected";
 }
 
-window.addEventListener("load", registerEventListeners, false);
-window.addEventListener("load", focusJiraSearchForm, false);
-window.addEventListener("load", updateGlobalNavigation, false);
-window.addEventListener("load", updatePathNavigation, false);
-window.addEventListener("load", updateHeadingSelection, false);
+if ("addEventListener" in window) {
+    window.addEventListener("load", registerEventListeners, false);
+    window.addEventListener("load", focusJiraSearchForm, false);
+    window.addEventListener("load", updateGlobalNavigation, false);
+    window.addEventListener("load", updatePathNavigation, false);
+    window.addEventListener("load", updateHeadingSelection, false);
 
-window.addEventListener("hashchange", focusJiraSearchForm, false);
-window.addEventListener("hashchange", updateHeadingSelection, false);
+    window.addEventListener("hashchange", focusJiraSearchForm, false);
+    window.addEventListener("hashchange", updateHeadingSelection, false);
+}
