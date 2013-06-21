@@ -7,6 +7,6 @@
         also provides management plugins to allow configuring and monitoring it.
         </p><p>
         The following diagram depicts the Broker model:
-        </p><div class="figure"><a id="idm247285108704" /><p class="title"><strong>Figure&#160;4.1.&#160;Broker Model</strong></p><div class="figure-contents"><div class="mediaobject"><img alt="Broker Model" src="images/Broker-Model.png" /></div></div></div><p><br class="figure-break" />
+        </p><div class="figure"><a id="idm252993610512" /><p class="title"><strong>Figure&#160;4.1.&#160;Broker Model</strong></p><div class="figure-contents"><div class="mediaobject"><img alt="Broker Model" src="images/Broker-Model.png" /></div></div></div><p><br class="figure-break" />
         These concepts will be expanded upon in the forthcoming pages.
         </p></div></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="Java-Broker-Getting-Started-CommandLine.html">Prev</a>&#160;</td><td align="center" width="20%">&#160;</td><td align="right" width="40%">&#160;<a accesskey="n" href="Java-Broker-Concepts-Virtual-Hosts.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">3.5.&#160;Using the command line&#160;</td><td align="center" width="20%"><a accesskey="h" href="index.html">Home</a></td><td align="right" valign="top" width="40%">&#160;4.2.&#160;Virtual Hosts</td></tr></table></div></div>

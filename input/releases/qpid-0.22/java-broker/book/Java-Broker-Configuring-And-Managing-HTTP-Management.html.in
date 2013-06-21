@@ -22,7 +22,7 @@
             instance although it is still evolving toward being fully considered a seperately supported interface.
         </p><p>The brokers REST interface support traditional REST model which uses the GET method requests to retrieve
             the information about broker configured objects, DELETE method requests to delete the configured object,
-            PUT to create or update the configured object and POST to perform the configured objects updates not available with the PUT requests.</p><p>The table below lists the available REST services with brief description how they can be used.</p><div class="table"><a id="idm247284798624" /><p class="title"><strong>Table&#160;5.2.&#160;Rest services</strong></p><div class="table-contents"><table border="1" summary="Rest services"><colgroup><col /><col /><col /><col /><col /><col /></colgroup><thead><tr><th>REST Service URL</th><th>Description</th><th>GET</th><th>PUT</th><th>POST</th><th>DELETE</th></tr></thead><tbody><tr><td><p>/rest/broker</p></td><td><p>Rest service to manage broker instance</p></td><td><p>Retrieves the details of broker configuration</p></td><td><p>Updates broker attributes</p></td><td><p>Not implemented yet</p></td><td><p>Not implemented yet</p></td></tr><tr><td><p>/rest/authenticationprovider</p>
+            PUT to create or update the configured object and POST to perform the configured objects updates not available with the PUT requests.</p><p>The table below lists the available REST services with brief description how they can be used.</p><div class="table"><a id="idm252993299184" /><p class="title"><strong>Table&#160;5.2.&#160;Rest services</strong></p><div class="table-contents"><table border="1" summary="Rest services"><colgroup><col /><col /><col /><col /><col /><col /></colgroup><thead><tr><th>REST Service URL</th><th>Description</th><th>GET</th><th>PUT</th><th>POST</th><th>DELETE</th></tr></thead><tbody><tr><td><p>/rest/broker</p></td><td><p>Rest service to manage broker instance</p></td><td><p>Retrieves the details of broker configuration</p></td><td><p>Updates broker attributes</p></td><td><p>Not implemented yet</p></td><td><p>Not implemented yet</p></td></tr><tr><td><p>/rest/authenticationprovider</p>
                   <p>/rest/authenticationprovider/&lt;authentication provider name&gt;</p>
               </td><td>Rest service to manage authentication providers on the broker</td><td>Retrieves the details about authentication providers</td><td>Creates or updates authentication providers</td><td>Not implemented yet</td><td>Deletes authentication providers</td></tr><tr><td><p>/rest/user</p>
                   <p>/rest/user/&lt;authentication provider name&gt;/&lt;user name&gt;</p>
@@ -76,12 +76,12 @@
         If <span class="emphasis"><em>&lt;binding&gt;</em></span> and <span class="emphasis"><em>&lt;queue&gt;</em></span> are omitted in binding REST URL
         (http://localhost:8080/rest/binding/&lt;vhostname&gt;/&lt;exchangename&gt;) the GET request will result in returning 
         all bindings for all queues for the given exchange in the virtual host.
-        </p><div class="example"><a id="idm247284708512" /><p class="title"><strong>Example&#160;5.2.&#160;Examples of queue creation using curl:</strong></p><div class="example-contents"><pre class="programlisting">
+        </p><div class="example"><a id="idm252993209072" /><p class="title"><strong>Example&#160;5.2.&#160;Examples of queue creation using curl:</strong></p><div class="example-contents"><pre class="programlisting">
 #create a durable queue
 curl -X PUT  -d '{"durable":true}' http://localhost:8080/rest/queue/&lt;vhostname&gt;/&lt;queuename&gt;
 #create a durable priority queue
 curl -X PUT  -d '{"durable":true,"type":"priority"}' http://localhost:8080/rest/queue/&lt;vhostname&gt;/&lt;queuename&gt;
-            </pre></div></div><br class="example-break" /><div class="example"><a id="idm247284707056" /><p class="title"><strong>Example&#160;5.3.&#160;Example of binding a queue to an exchange using curl</strong></p><div class="example-contents"><pre class="programlisting">
+            </pre></div></div><br class="example-break" /><div class="example"><a id="idm252993207616" /><p class="title"><strong>Example&#160;5.3.&#160;Example of binding a queue to an exchange using curl</strong></p><div class="example-contents"><pre class="programlisting">
 curl  -X PUT  -d '{}' http://localhost:8080/rest/binding/&lt;vhostname&gt;/&lt;exchangename&gt;/&lt;queue-name&gt;/&lt;binding-name&gt;
             </pre></div></div><br class="example-break" /><p>
             NOTE: the above examples were performed after editing the

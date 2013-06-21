@@ -6,7 +6,7 @@
    queue. Any such queue in the 'dev-only' virtualhost which does not specify its own configuration
    value will have the DLQ/Maximum Delivery Count feature disabled.</p><p>The queue 'localhost-queue' has the DLQ/Maximum Delivery Count features disabled.
   Any other queue in the 'localhost' virtualhost which does not specify
-   its own configuration value will have the features enabled (inherited from parent virtual host).</p><div class="example"><a id="idm247283920992" /><p class="title"><strong>Example&#160;14.17.&#160;Enabling DLQs and maximum delivery count at virtualhost and queue level within
+   its own configuration value will have the features enabled (inherited from parent virtual host).</p><div class="example"><a id="idm252992816992" /><p class="title"><strong>Example&#160;14.17.&#160;Enabling DLQs and maximum delivery count at virtualhost and queue level within
     virtualhosts.xml</strong></p><div class="example-contents"><pre class="programlisting">&lt;virtualhosts&gt;
  ...
  &lt;virtualhost&gt;

@@ -33,11 +33,11 @@
 	active consumers.
       </p><p>
 	Clients keep <span class="emphasis"><em>unacknowledged</em></span> messages in a buffer
-	<a class="footnote" href="#ftn.idm247290970960" id="idm247290970960"><sup class="footnote">[1]</sup></a>
+	<a class="footnote" href="#ftn.idm252980382592" id="idm252980382592"><sup class="footnote">[1]</sup></a>
 	until they are acknowledged by the primary. If the primary fails, clients will
 	fail-over to the new primary and <span class="emphasis"><em>re-send</em></span> all their
 	unacknowledged messages.
-	<a class="footnote" href="#ftn.idm247288251376" id="idm247288251376"><sup class="footnote">[2]</sup></a>
+	<a class="footnote" href="#ftn.idm252983076976" id="idm252983076976"><sup class="footnote">[2]</sup></a>
       </p><p>
 	If the primary crashes, all the <span class="emphasis"><em>acknowledged</em></span>
 	messages will be available on the backup that takes over as the new
@@ -442,7 +442,7 @@ NOTE: fencing is not shown, you must configure fencing appropriately for your cl
       following sub-sections show how to connect each type of client.
     </p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="ha-clients" />1.11.8.1.&#160;C++ clients</h4></div></div></div><p>
 	With the C++ client, you specify multiple cluster addresses in a single URL
-	<a class="footnote" href="#ftn.idm247287757616" id="idm247287757616"><sup class="footnote">[3]</sup></a>
+	<a class="footnote" href="#ftn.idm252982531984" id="idm252982531984"><sup class="footnote">[3]</sup></a>
 	You also need to specify the connection option
 	<code class="literal">reconnect</code> to be true.  For example:
       </p><pre class="programlisting">
@@ -579,17 +579,17 @@ NOTE: fencing is not shown, you must configure fencing appropriately for your cl
       Whenever the system fails over to a new primary your commands will be run
       and your replicas or links created before the primary begins to accept
       connections from backups and clients.
-    </p></div><div class="footnotes"><br /><hr align="left" width="100" /><div class="footnote" id="ftn.idm247290970960"><p><a class="para" href="#idm247290970960"><sup class="para">[1] </sup></a>
+    </p></div><div class="footnotes"><br /><hr align="left" width="100" /><div class="footnote" id="ftn.idm252980382592"><p><a class="para" href="#idm252980382592"><sup class="para">[1] </sup></a>
 	    You can control the maximum number of messages in the buffer by setting the
 	    client's <code class="literal">capacity</code>. For details of how to set the capacity
 	    in client code see "Using the Qpid Messaging API" in
 	    <em class="citetitle">Programming in Apache Qpid</em>.
-	  </p></div><div class="footnote" id="ftn.idm247288251376"><p><a class="para" href="#idm247288251376"><sup class="para">[2] </sup></a>
+	  </p></div><div class="footnote" id="ftn.idm252983076976"><p><a class="para" href="#idm252983076976"><sup class="para">[2] </sup></a>
 	  Clients must use "at-least-once" reliability to enable re-send of unacknowledged
 	  messages. This is the default behavior, no options need be set to enable it. For
 	  details of client addressing options see "Using the Qpid Messaging API"
 	  in <em class="citetitle">Programming in Apache Qpid</em>.
-	  </p></div><div class="footnote" id="ftn.idm247287757616"><p><a class="para" href="#idm247287757616"><sup class="para">[3] </sup></a>
+	  </p></div><div class="footnote" id="ftn.idm252982531984"><p><a class="para" href="#idm252982531984"><sup class="para">[3] </sup></a>
 	    The full grammar for the URL is:
 	  </p><pre class="programlisting">
 	    url = ["amqp:"][ user ["/" password] "@" ] addr ("," addr)*

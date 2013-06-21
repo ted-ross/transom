@@ -1,13 +1,13 @@
 <div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">14.9.&#160;Configuring Queues</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="Java-Broker-Virtual-Host-Configuration-Exchange.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;14.&#160;Virtual Host XML configuration file</th><td align="right" width="20%">&#160;<a accesskey="n" href="Java-Broker-Virtual-Host-Configure-Flow-Control.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="Java-Broker-Virtual-Host-Declare-Queues" />14.9.&#160;Configuring Queues</h2></div></div></div><p>To create a priority, sorted or LVQ queue within configuration, add the appropriate xml
         to the virtualhost.xml configuration file within the <code class="varname">queues</code>
-        element.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Queues-OtherTypes-CreateUsingConfig-Simple" />14.9.1.&#160;Simple</h3></div></div></div><p>For declaration of a simple queue define a queue entry in the virtual host configuration as in example below</p><div class="example"><a id="idm247284327984" /><p class="title"><strong>Example&#160;14.7.&#160;Configuring a simple queue</strong></p><div class="example-contents"><pre class="programlisting">&lt;queue&gt;
+        element.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Queues-OtherTypes-CreateUsingConfig-Simple" />14.9.1.&#160;Simple</h3></div></div></div><p>For declaration of a simple queue define a queue entry in the virtual host configuration as in example below</p><div class="example"><a id="idm252992621872" /><p class="title"><strong>Example&#160;14.7.&#160;Configuring a simple queue</strong></p><div class="example-contents"><pre class="programlisting">&lt;queue&gt;
     &lt;name&gt;my-simple-queue&lt;/name&gt;
     &lt;my-simple-queue&gt;
         &lt;exchange&gt;amq.direct&lt;/exchange&gt;
         &lt;durable&gt;true&lt;/durable&gt;
     &lt;/my-simple-queue&gt;
 &lt;/queue&gt;</pre></div></div><br class="example-break" /></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Queues-OtherTypes-CreateUsingConfig-Priority" />14.9.2.&#160;Priority</h3></div></div></div><p> To defining a priority queue, add a &lt;priority&gt;true&lt;/priority&gt; element. By
-          default the queue will have 10 distinct priorities. </p><div class="example"><a id="idm247284324496" /><p class="title"><strong>Example&#160;14.8.&#160;Configuring a priority queue</strong></p><div class="example-contents"><pre class="programlisting">&lt;queue&gt;
+          default the queue will have 10 distinct priorities. </p><div class="example"><a id="idm252992618384" /><p class="title"><strong>Example&#160;14.8.&#160;Configuring a priority queue</strong></p><div class="example-contents"><pre class="programlisting">&lt;queue&gt;
     &lt;name&gt;myqueue&lt;/name&gt;
     &lt;myqueue&gt;
         &lt;exchange&gt;amq.direct&lt;/exchange&gt;
@@ -19,7 +19,7 @@
           sent to that queue, their effective priority will be calculated by partitioning the
           priority space. If the number of effective priorities is 2, then messages with priority
           0-4 are treated the same as "lower priority" and messages with priority 5-9 are treated
-          equivalently as "higher priority". </p><div class="example"><a id="idm247284321568" /><p class="title"><strong>Example&#160;14.9.&#160;Configuring a priority queue with fewer priorities</strong></p><div class="example-contents"><pre class="programlisting">&lt;queue&gt;
+          equivalently as "higher priority". </p><div class="example"><a id="idm252992615456" /><p class="title"><strong>Example&#160;14.9.&#160;Configuring a priority queue with fewer priorities</strong></p><div class="example-contents"><pre class="programlisting">&lt;queue&gt;
     &lt;name&gt;myqueue&lt;/name&gt;
     &lt;myqueue&gt;
         &lt;exchange&gt;amq.direct&lt;/exchange&gt;
@@ -28,7 +28,7 @@
     &lt;/myqueue&gt;
 &lt;/queue&gt;</pre></div></div><br class="example-break" /></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Queues-OtherTypes-CreateUsingConfig-Sorted" />14.9.3.&#160;Sorted</h3></div></div></div><p> To define a sorted queue, add a <code class="varname">sortKey</code> element. The value of the
             <code class="varname">sortKey</code> element defines the message property to use the value of when
-          sorting the messages put onto the queue. </p><div class="example"><a id="idm247284317088" /><p class="title"><strong>Example&#160;14.10.&#160;Configuring a sorted queue</strong></p><div class="example-contents"><pre class="programlisting">&lt;queue&gt;
+          sorting the messages put onto the queue. </p><div class="example"><a id="idm252992647296" /><p class="title"><strong>Example&#160;14.10.&#160;Configuring a sorted queue</strong></p><div class="example-contents"><pre class="programlisting">&lt;queue&gt;
     &lt;name&gt;myqueue&lt;/name&gt;
     &lt;myqueue&gt;
         &lt;exchange&gt;amq.direct&lt;/exchange&gt;
@@ -37,14 +37,14 @@
 &lt;/queue&gt;</pre></div></div><br class="example-break" /></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Queues-OtherTypes-CreateUsingConfig-LVQ" />14.9.4.&#160;LVQ</h3></div></div></div><p> To define a LVQ, add a <code class="varname">lvq</code> element with the value
             <code class="constant">true</code>. Without any further configuration this will define an LVQ
           which uses the JMS message property <code class="constant">qpid.LVQ_key</code> as the key for
-          replacement. </p><div class="example"><a id="idm247283948384" /><p class="title"><strong>Example&#160;14.11.&#160;Configuring a LVQ queue</strong></p><div class="example-contents"><pre class="programlisting">&lt;queue&gt;
+          replacement. </p><div class="example"><a id="idm252992642384" /><p class="title"><strong>Example&#160;14.11.&#160;Configuring a LVQ queue</strong></p><div class="example-contents"><pre class="programlisting">&lt;queue&gt;
     &lt;name&gt;myqueue&lt;/name&gt;
     &lt;myqueue&gt;
         &lt;exchange&gt;amq.direct&lt;/exchange&gt;
         &lt;lvq&gt;true&lt;/lvq&gt;
     &lt;/myqueue&gt;
 &lt;/queue&gt;</pre></div></div><br class="example-break" /><p> If you wish to define your own property then you can do so using the
-            <code class="varname">lvqKey</code> element.</p><div class="example"><a id="idm247283945968" /><p class="title"><strong>Example&#160;14.12.&#160;Configuring a LVQ queue with custom message property name</strong></p><div class="example-contents"><pre class="programlisting">&lt;queue&gt;
+            <code class="varname">lvqKey</code> element.</p><div class="example"><a id="idm252992640064" /><p class="title"><strong>Example&#160;14.12.&#160;Configuring a LVQ queue with custom message property name</strong></p><div class="example-contents"><pre class="programlisting">&lt;queue&gt;
     &lt;name&gt;myqueue&lt;/name&gt;
     &lt;myqueue&gt;
         &lt;exchange&gt;amq.direct&lt;/exchange&gt;

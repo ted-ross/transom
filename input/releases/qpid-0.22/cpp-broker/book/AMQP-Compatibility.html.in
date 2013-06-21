@@ -39,7 +39,7 @@
           </p><p>
             Here is a matrix that describes the different versions supported
             by each release. The status symbols are interpreted as follows:
-          </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">Y</span></dt><dd><p>supported</p></dd><dt><span class="term">N</span></dt><dd><p>unsupported</p></dd><dt><span class="term">IP</span></dt><dd><p>in progress</p></dd><dt><span class="term">P</span></dt><dd><p>planned</p></dd></dl></div><div class="table"><a id="idm247286254352" /><p class="title"><strong>Table&#160;1.14.&#160;AMQP Version Support by Qpid Release</strong></p><div class="table-contents"><table border="1" summary="AMQP Version Support by Qpid Release"><colgroup><col /><col /><col /><col /><col /><col /></colgroup><tbody><tr><td>
+          </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">Y</span></dt><dd><p>supported</p></dd><dt><span class="term">N</span></dt><dd><p>unsupported</p></dd><dt><span class="term">IP</span></dt><dd><p>in progress</p></dd><dt><span class="term">P</span></dt><dd><p>planned</p></dd></dl></div><div class="table"><a id="idm252980249856" /><p class="title"><strong>Table&#160;1.14.&#160;AMQP Version Support by Qpid Release</strong></p><div class="table-contents"><table border="1" summary="AMQP Version Support by Qpid Release"><colgroup><col /><col /><col /><col /><col /><col /></colgroup><tbody><tr><td>
                   Component
                 </td><td>
                   Spec
@@ -248,7 +248,7 @@
             table by AMQP specification version
           </h3></div></div></div><p>
             Above table represented in another format.
-          </p><div class="table"><a id="idm247291082352" /><p class="title"><strong>Table&#160;1.15.&#160;AMQP Version Support - alternate format</strong></p><div class="table-contents"><table border="1" summary="AMQP Version Support - alternate format"><colgroup><col /><col /><col /><col /><col /></colgroup><tbody><tr><td>
+          </p><div class="table"><a id="idm252982294992" /><p class="title"><strong>Table&#160;1.15.&#160;AMQP Version Support - alternate format</strong></p><div class="table-contents"><table border="1" summary="AMQP Version Support - alternate format"><colgroup><col /><col /><col /><col /><col /></colgroup><tbody><tr><td>
                   &#160;
                 </td><td>
                   release

@@ -4,7 +4,7 @@ and associated objects. Client <span class="emphasis"><em>Connection</em></span>
 with one being configured as the default for clients that can't or don't specify which they wish to connect to.
 </p><p>
     The following diagram depicts the Virtual Host model:
-    </p><div class="figure"><a id="idm247285131696" /><p class="title"><strong>Figure&#160;4.2.&#160;Virtual Host Model</strong></p><div class="figure-contents"><div class="mediaobject"><img alt="Virtual Host Model" src="images/VirtualHost-Model.png" /></div></div></div><p><br class="figure-break" />
+    </p><div class="figure"><a id="idm252993633552" /><p class="title"><strong>Figure&#160;4.2.&#160;Virtual Host Model</strong></p><div class="figure-contents"><div class="mediaobject"><img alt="Virtual Host Model" src="images/VirtualHost-Model.png" /></div></div></div><p><br class="figure-break" />
 </p><p>Each <span class="emphasis"><em>Virtual Host</em></span> has its own <span class="emphasis"><em>Message Store</em></span> which is used to store persistent
 messages on durable <span class="emphasis"><em>Queues</em></span> it contains, as well as the configuration of any durable
 <span class="emphasis"><em>Queues</em></span>, <span class="emphasis"><em>Exchanges</em></span>, and <span class="emphasis"><em>Bindings</em></span> made during its operation.</p><p>

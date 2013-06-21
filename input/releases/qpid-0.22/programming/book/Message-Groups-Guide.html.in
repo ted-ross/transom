@@ -9,20 +9,20 @@
   </div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="messagegroups-setup" />2.17.1.&#160;Creating Message Group Queues</h3></div></div></div><p>
       The following examples show how to create a message group queue that enforces
       ordered group consumption across multiple consumers.
-    </p><div class="example"><a id="idm247269175760" /><p class="title"><strong>Example&#160;2.22.&#160;Message Group Queue Creation - Python</strong></p><div class="example-contents"><pre class="programlisting" lang="python" xml:lang="python">
+    </p><div class="example"><a id="idm252974808992" /><p class="title"><strong>Example&#160;2.22.&#160;Message Group Queue Creation - Python</strong></p><div class="example-contents"><pre class="programlisting" lang="python" xml:lang="python">
 sender = connection.session().sender("msg-group-q;" +
                                      " {create:always, delete:receiver," +
                                      " node: {x-declare: {arguments:" +
                                      " {'qpid.group_header_key':'THE-GROUP'," +
                                      " 'qpid.shared_msg_group':1}}}}")
-      </pre></div></div><br class="example-break" /><div class="example"><a id="idm247269174080" /><p class="title"><strong>Example&#160;2.23.&#160;Message Group Queue Creation - C++</strong></p><div class="example-contents"><pre class="programlisting" lang="c++" xml:lang="c++">
+      </pre></div></div><br class="example-break" /><div class="example"><a id="idm252974807312" /><p class="title"><strong>Example&#160;2.23.&#160;Message Group Queue Creation - C++</strong></p><div class="example-contents"><pre class="programlisting" lang="c++" xml:lang="c++">
 std::string addr("msg-group-q; "
                  " {create:always, delete:receiver,"
                  " node: {x-declare: {arguments:"
                  " {qpid.group_header_key:'THE-GROUP',"
                  " qpid.shared_msg_group:1}}}}");
 Sender sender = session.createSender(addr);
-      </pre></div></div><br class="example-break" /><div class="example"><a id="idm247269172176" /><p class="title"><strong>Example&#160;2.24.&#160;Message Group Queue Creation - Java</strong></p><div class="example-contents"><pre class="programlisting" lang="java" xml:lang="java">
+      </pre></div></div><br class="example-break" /><div class="example"><a id="idm252974805408" /><p class="title"><strong>Example&#160;2.24.&#160;Message Group Queue Creation - Java</strong></p><div class="example-contents"><pre class="programlisting" lang="java" xml:lang="java">
 Session s = c.createSession(false, Session.CLIENT_ACKNOWLEDGE);
 String addr = "msg-group-q; {create:always, delete:receiver," +
                              " node: {x-declare: {arguments:" +
@@ -40,7 +40,7 @@ MessageProducer sender = s.createProducer(d);
       group identifier to the outgoing message.  If using the C++ broker, the group identifier
       must be a string type.  The key used for the property must exactly match the value passed in the
       'qpid.group_header_key' configuration argument.
-    </p><div class="example"><a id="idm247274916736" /><p class="title"><strong>Example&#160;2.25.&#160;Sending Grouped Messages - Python</strong></p><div class="example-contents"><pre class="programlisting" lang="python" xml:lang="python">
+    </p><div class="example"><a id="idm252980544352" /><p class="title"><strong>Example&#160;2.25.&#160;Sending Grouped Messages - Python</strong></p><div class="example-contents"><pre class="programlisting" lang="python" xml:lang="python">
 group = "A"
 m = Message(content="some data", properties={"THE-GROUP": group})
 sender.send(m)
@@ -52,7 +52,7 @@ sender.send(m)
 group = "A"
 m = Message(content="more data for group 'A'", properties={"THE-GROUP": group})
 sender.send(m)
-      </pre></div></div><br class="example-break" /><div class="example"><a id="idm247274914800" /><p class="title"><strong>Example&#160;2.26.&#160;Sending Grouped Messages - C++</strong></p><div class="example-contents"><pre class="programlisting" lang="C++" xml:lang="C++">
+      </pre></div></div><br class="example-break" /><div class="example"><a id="idm252980542416" /><p class="title"><strong>Example&#160;2.26.&#160;Sending Grouped Messages - C++</strong></p><div class="example-contents"><pre class="programlisting" lang="C++" xml:lang="C++">
 
 const std::string groupKey("THE-GROUP");
 {
@@ -70,7 +70,7 @@ const std::string groupKey("THE-GROUP");
     msg.getProperties()[groupKey] = std::string("A");
     sender.send(msg);
 }
-      </pre></div></div><br class="example-break" /><div class="example"><a id="idm247274912784" /><p class="title"><strong>Example&#160;2.27.&#160;Sending Grouped Messages - Java</strong></p><div class="example-contents"><pre class="programlisting" lang="java" xml:lang="java">
+      </pre></div></div><br class="example-break" /><div class="example"><a id="idm252980540400" /><p class="title"><strong>Example&#160;2.27.&#160;Sending Grouped Messages - Java</strong></p><div class="example-contents"><pre class="programlisting" lang="java" xml:lang="java">
 String groupKey = "THE-GROUP";
 
 TextMessage tmsg1 = s.createTextMessage("some data");

@@ -116,7 +116,7 @@ com.sun.security.jgss.accept {
     row in providers grid on Broker tab) the list of existing credentials is displayed on the tab with the buttons "Add User"
     and "Delete Users" to add new user credentials and delete the existing user credentials respectively.
     On clicking into user name on Users grid the pop-up dialog to change the password is displayed.
-    </p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="idm247284460624" />11.1.5.1.&#160;Plain Password File Format</h4></div></div></div><p>
+    </p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="idm252992961392" />11.1.5.1.&#160;Plain Password File Format</h4></div></div></div><p>
             The user credentials are stored on the single file line as user name and user password pairs separated by colon character.
         </p><pre class="programlisting">
 # password file format
